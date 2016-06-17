@@ -1,0 +1,15 @@
+PODS:
+  - ReSwift (1.0.0)
+  - SwiftyStoreKit (0.2.9)
+
+DEPENDENCIES:
+  - ReSwift
+  - SwiftyStoreKit
+
+SPEC CHECKSUMS:
+  ReSwift: 2097946852b045bcc04182b63cdab9ab7fc35812
+  SwiftyStoreKit: 4024adcf71f584af6e298c3d47f30cc0a5204459
+
+PODFILE CHECKSUM: 9bedea113914dbe88a9dafd058da48c7d3a92c33
+
+COCOAPODS: 1.0.0.beta.6

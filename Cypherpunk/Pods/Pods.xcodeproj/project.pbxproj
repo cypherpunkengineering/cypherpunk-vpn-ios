@@ -1,0 +1,1075 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		068B0F851A95C11F0035DFEC2CB81E71 /* SwiftyStoreKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0423E0887A24872D31232FF19D49729B /* SwiftyStoreKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EDDED68AC387AD5C1BF63A3C8DA240A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		157AB97C6EF3EE6CF741879249292772 /* Pods-CypherpunkUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 31266417DA716AB3236F5F5FA35D2DF0 /* Pods-CypherpunkUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		159FAC5BF29E56412B88E4740542E64A /* CombinedReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3735D97187D9A813E1E125C822CB8A /* CombinedReducer.swift */; };
+		253F9B392842A05D5D8569204C134BEC /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9682723A0BDC42635C5F6A29763211AD /* Reducer.swift */; };
+		334AF33563F9A3566B53E84BB768F7BF /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CC5DD1A8F0E14DAEF250225E0491F /* InAppReceiptRefreshRequest.swift */; };
+		375AE8DC5059401552D51AB27D31E75A /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E011E2EDFA89256716581B214AB617F1 /* TypeHelper.swift */; };
+		3768A02D123BA333854380B3AD822265 /* InAppCompleteTransactionsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABC81B02FDDE772606059DC5212238 /* InAppCompleteTransactionsObserver.swift */; };
+		44601A549CC51DAB43ED5DA476DDF346 /* InAppProductPurchaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FB21E65121C8B6535804DF32FF6E09 /* InAppProductPurchaseRequest.swift */; };
+		58DB43A30ADB26569125601EEDDEFC51 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE4D10184B887B236D457D27FA3D10 /* Store.swift */; };
+		61AC5A95D962D1984FFC23B225BAFF5E /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E248CAE535A4BA2F469A82F69D567770 /* Coding.swift */; };
+		6816A24541A5FD698E7F09B3A4C2A4A4 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9ADBA6094D04A0A3DB2033D6E2A8F2 /* Action.swift */; };
+		7571800CC3BD8D8E28729FE6E4DCE10F /* Pods-Cypherpunk-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D487AD379B43A9CEB3B5FBBA9977A1 /* Pods-Cypherpunk-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79DF944632E4B8DA1DCCA34FEDD96702 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		7A388EB150077ECD4C6FA4B867DC0FA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		935837E5C1F04324A727F006EA7F62AD /* StoreSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E26048467412AB995501E89C39BC5A /* StoreSubscriber.swift */; };
+		94E4A0EEAE3C26460D845B29A07DB5EF /* ReSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA8AECA6940E3E3DCC61EBC6A6B7BB /* ReSwift-dummy.m */; };
+		954812D18383A76C66D76BF36EF00FA6 /* InAppProductQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1095532A6BD129D28638ACD5146F25 /* InAppProductQueryRequest.swift */; };
+		A97ECEC45122A647FE71E098C671A6D5 /* OS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BADBBB6B6E6F43756B0D3CAF713884C /* OS.swift */; };
+		AF0EA51BAEFD9FFF09BF33568FFB2493 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		B0D62230EFD9FF594EDE23A42EB18D68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		B84901EB66204F4924452F8CB4A63B6A /* Pods-CypherpunkUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 246101469F0A67580F783BD01B01645F /* Pods-CypherpunkUITests-dummy.m */; };
+		C715FAA361099510B858523D504C1598 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A74C117C8A83328502BBC2131085A /* Subscription.swift */; };
+		D9CA0AA16C15C4196B1A49B567552832 /* ReSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E80A9A5D1BC75371FE976B51399872F /* ReSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB6ADA88C9A4A2AAC38F73A2DEFD9852 /* InAppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBF42C2AA961B2037470A8DA3D8ECA /* InAppReceipt.swift */; };
+		E0F6C4C4ADADC6084614E9CC040C498D /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D45D0319C18FA9F382B21E80D3B49 /* Middleware.swift */; };
+		E3FA1226CBA1D9169F377931CEF6F3D3 /* SwiftyStoreKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012AF327121C8288EA976CC0845E30E /* SwiftyStoreKit-dummy.m */; };
+		E688200983113B06AD572346D0D5CEB1 /* Pods-Cypherpunk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE59D12D918145A1536CC00C6723526 /* Pods-Cypherpunk-dummy.m */; };
+		E9EEE6ADB3E66B5CF0046A9A8EC454C9 /* Pods-CypherpunkTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B6F5115D4F95BCE8F9A3BF3C01FD96 /* Pods-CypherpunkTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECBF7E0F4283322D54CBCD9DB597D7A7 /* Pods-CypherpunkTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5971918CAEA42FCB74480D6843BEBB /* Pods-CypherpunkTests-dummy.m */; };
+		ECF25BBD0588F09A3291F4CD359ABCF0 /* SwiftyStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D3C1EB62B8ECB6C4A42BF27119DE8F /* SwiftyStoreKit.swift */; };
+		F0C56FB410FD489B487F5936410152C7 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45AFCD13B47846C8A6A3621ECA1FA68 /* StoreType.swift */; };
+		F50F8DBFEB3FE5AA591C852D539ECFC5 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = E843EAB9A9A9E2586551079FEA4D77E9 /* State.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F4390A38FA44D47ACE15D6EB97F773D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 225D70E44DE38559B019F18175F9AA36;
+			remoteInfo = SwiftyStoreKit;
+		};
+		6A42FB534FBF15C56276B36DA409601F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F19CDF218D703E23CAD4113FF3CABDA8;
+			remoteInfo = ReSwift;
+		};
+		D4ABE39407870CF3A4D54EB49EB5D64D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F19CDF218D703E23CAD4113FF3CABDA8;
+			remoteInfo = ReSwift;
+		};
+		F6FC7FFE2AE41A705BC29DE5F69676A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F19CDF218D703E23CAD4113FF3CABDA8;
+			remoteInfo = ReSwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02925C9EBA8091A2C09754DD919BB394 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0423E0887A24872D31232FF19D49729B /* SwiftyStoreKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-umbrella.h"; sourceTree = "<group>"; };
+		0B4890FD0F5BBD6AF53866AF46474730 /* Pods-CypherpunkUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CypherpunkUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		0E0C88995218AE943F5D045FD2B36DFA /* Pods-CypherpunkUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CypherpunkUITests-resources.sh"; sourceTree = "<group>"; };
+		0E1095532A6BD129D28638ACD5146F25 /* InAppProductQueryRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppProductQueryRequest.swift; path = SwiftyStoreKit/InAppProductQueryRequest.swift; sourceTree = "<group>"; };
+		0F1CC5DD1A8F0E14DAEF250225E0491F /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptRefreshRequest.swift; path = SwiftyStoreKit/InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
+		19D4041F32FCEBFD734D81FF87D749F9 /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
+		1BADBBB6B6E6F43756B0D3CAF713884C /* OS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OS.swift; path = SwiftyStoreKit/OS.swift; sourceTree = "<group>"; };
+		1F5971918CAEA42FCB74480D6843BEBB /* Pods-CypherpunkTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CypherpunkTests-dummy.m"; sourceTree = "<group>"; };
+		246101469F0A67580F783BD01B01645F /* Pods-CypherpunkUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CypherpunkUITests-dummy.m"; sourceTree = "<group>"; };
+		27849DDEB978C295DE9526C66E09C800 /* Pods-Cypherpunk.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Cypherpunk.modulemap"; sourceTree = "<group>"; };
+		31266417DA716AB3236F5F5FA35D2DF0 /* Pods-CypherpunkUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CypherpunkUITests-umbrella.h"; sourceTree = "<group>"; };
+		34F2E14206ED2708ADB9DD080139AA6E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3EE4D4A8056C859955C63B22D81133CC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4012AF327121C8288EA976CC0845E30E /* SwiftyStoreKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyStoreKit-dummy.m"; sourceTree = "<group>"; };
+		48E26048467412AB995501E89C39BC5A /* StoreSubscriber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoreSubscriber.swift; path = ReSwift/CoreTypes/StoreSubscriber.swift; sourceTree = "<group>"; };
+		52D487AD379B43A9CEB3B5FBBA9977A1 /* Pods-Cypherpunk-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Cypherpunk-umbrella.h"; sourceTree = "<group>"; };
+		53F15A905C61511971E27731F423330F /* Pods-CypherpunkTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CypherpunkTests-frameworks.sh"; sourceTree = "<group>"; };
+		55627131794CC6B78A055BAC3AAF36C1 /* Pods-CypherpunkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CypherpunkTests.release.xcconfig"; sourceTree = "<group>"; };
+		55CBF42C2AA961B2037470A8DA3D8ECA /* InAppReceipt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceipt.swift; path = SwiftyStoreKit/InAppReceipt.swift; sourceTree = "<group>"; };
+		5BAE4D10184B887B236D457D27FA3D10 /* Store.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Store.swift; path = ReSwift/CoreTypes/Store.swift; sourceTree = "<group>"; };
+		5E2DD5A5982E4CC7E96CB0FB3743D906 /* Pods-Cypherpunk-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Cypherpunk-acknowledgements.plist"; sourceTree = "<group>"; };
+		5E8F96DC6E72C723934B382A68958213 /* Pods-CypherpunkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CypherpunkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		63BB58E37B7D647BD6055BB2954B8EC0 /* Pods-CypherpunkTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CypherpunkTests.modulemap"; sourceTree = "<group>"; };
+		66FB21E65121C8B6535804DF32FF6E09 /* InAppProductPurchaseRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppProductPurchaseRequest.swift; path = SwiftyStoreKit/InAppProductPurchaseRequest.swift; sourceTree = "<group>"; };
+		790FF023DFE1A60112A5F1F93D917752 /* ReSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		798376C2379038880AC2BD8A459CBAF7 /* Pods-CypherpunkTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CypherpunkTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		7AB171F36A1361A670ED57DC68F0A728 /* Pods_CypherpunkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CypherpunkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BB925EFDCB532533DC49C42069DABD3 /* SwiftyStoreKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-prefix.pch"; sourceTree = "<group>"; };
+		7E3735D97187D9A813E1E125C822CB8A /* CombinedReducer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedReducer.swift; path = ReSwift/CoreTypes/CombinedReducer.swift; sourceTree = "<group>"; };
+		7E80A9A5D1BC75371FE976B51399872F /* ReSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReSwift-umbrella.h"; sourceTree = "<group>"; };
+		8653C734F2FD6E96B24BFF1AB3DD18AF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A3F287B92D1FA75B2AA873E88DEB77E /* Pods-Cypherpunk-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Cypherpunk-resources.sh"; sourceTree = "<group>"; };
+		8D2295C91DD60CAD71C4604BB83EEC2E /* Pods-CypherpunkUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CypherpunkUITests.modulemap"; sourceTree = "<group>"; };
+		908669E82B9FBC0A17F4EA1B5106D9AA /* Pods-CypherpunkUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CypherpunkUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		90ABC81B02FDDE772606059DC5212238 /* InAppCompleteTransactionsObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppCompleteTransactionsObserver.swift; path = SwiftyStoreKit/InAppCompleteTransactionsObserver.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9682723A0BDC42635C5F6A29763211AD /* Reducer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reducer.swift; path = ReSwift/CoreTypes/Reducer.swift; sourceTree = "<group>"; };
+		980A74C117C8A83328502BBC2131085A /* Subscription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Subscription.swift; path = ReSwift/CoreTypes/Subscription.swift; sourceTree = "<group>"; };
+		9EFFBFF5AA8C826AD44FCF10F3B75022 /* Pods_CypherpunkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CypherpunkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A33519765FBF6580C4CD6C3D4E944455 /* ReSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReSwift.xcconfig; sourceTree = "<group>"; };
+		A5BCCCD7F1E572ECEBDDA1626365B601 /* Pods-Cypherpunk-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Cypherpunk-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A966FE6F77BAF115282674147AF3534B /* Pods-CypherpunkTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CypherpunkTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		ABBE6BD87AA168368BECBC1090ED0D78 /* Pods-CypherpunkUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CypherpunkUITests-frameworks.sh"; sourceTree = "<group>"; };
+		B095952DE0C60661867C2E4F13CC75ED /* SwiftyStoreKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.xcconfig; sourceTree = "<group>"; };
+		B2D37C2280B2C567D00FE0C64741D32C /* Pods-Cypherpunk-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Cypherpunk-frameworks.sh"; sourceTree = "<group>"; };
+		B604994CD9D457A5D51E58AC642511A5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8E8F204783CCC415F4E49C0270E03EC /* ReSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ReSwift.modulemap; sourceTree = "<group>"; };
+		BDAAB77E30351AF3EF03C7C53C9B2DB4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3B6F5115D4F95BCE8F9A3BF3C01FD96 /* Pods-CypherpunkTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CypherpunkTests-umbrella.h"; sourceTree = "<group>"; };
+		CA77B9BE6B977B85B7BE35FBA627A3FE /* SwiftyStoreKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyStoreKit.modulemap; sourceTree = "<group>"; };
+		D30AEDEFEFC587BB05DE8635D4DE1C55 /* Pods-CypherpunkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CypherpunkUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DBCDFE58D18647E3D0D95B19E9F12FB6 /* ReSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReSwift-prefix.pch"; sourceTree = "<group>"; };
+		E011E2EDFA89256716581B214AB617F1 /* TypeHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TypeHelper.swift; path = ReSwift/Utils/TypeHelper.swift; sourceTree = "<group>"; };
+		E248CAE535A4BA2F469A82F69D567770 /* Coding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Coding.swift; path = ReSwift/Utils/Coding.swift; sourceTree = "<group>"; };
+		E45AFCD13B47846C8A6A3621ECA1FA68 /* StoreType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoreType.swift; path = ReSwift/CoreTypes/StoreType.swift; sourceTree = "<group>"; };
+		E843EAB9A9A9E2586551079FEA4D77E9 /* State.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = State.swift; path = ReSwift/CoreTypes/State.swift; sourceTree = "<group>"; };
+		ECE59D12D918145A1536CC00C6723526 /* Pods-Cypherpunk-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Cypherpunk-dummy.m"; sourceTree = "<group>"; };
+		ED7D45D0319C18FA9F382B21E80D3B49 /* Middleware.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Middleware.swift; path = ReSwift/CoreTypes/Middleware.swift; sourceTree = "<group>"; };
+		F07B45BD7235EBBF7930D51C91CF9B66 /* Pods-CypherpunkTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CypherpunkTests-resources.sh"; sourceTree = "<group>"; };
+		F0FF0809AAC4A8A4A6A7A5CFD74B36A8 /* Pods-Cypherpunk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Cypherpunk.release.xcconfig"; sourceTree = "<group>"; };
+		F5D3C1EB62B8ECB6C4A42BF27119DE8F /* SwiftyStoreKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyStoreKit.swift; path = SwiftyStoreKit/SwiftyStoreKit.swift; sourceTree = "<group>"; };
+		F826D090614C141F00A755D6E2FBC27B /* Pods-CypherpunkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CypherpunkUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F8F372EA5CF562B87A4276A994E6096A /* Pods_Cypherpunk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cypherpunk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBCA8AECA6940E3E3DCC61EBC6A6B7BB /* ReSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReSwift-dummy.m"; sourceTree = "<group>"; };
+		FE9ADBA6094D04A0A3DB2033D6E2A8F2 /* Action.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Action.swift; path = ReSwift/CoreTypes/Action.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		067DDC1443D58E804D91F8455559D01F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79DF944632E4B8DA1DCCA34FEDD96702 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E5E149D36B5F1A5C60AF887DA616965 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0D62230EFD9FF594EDE23A42EB18D68 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		556B6CEF57D462208B7DE5F3E1FB614E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A388EB150077ECD4C6FA4B867DC0FA5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CD4E98700C7F6A4CEBE15C22FCF6DD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EDDED68AC387AD5C1BF63A3C8DA240A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9D428F31BB1D5D9337FAB8CF06D6264 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF0EA51BAEFD9FFF09BF33568FFB2493 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		025636FDEBF02FD1D4FC4A7E6CA286D3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8653C734F2FD6E96B24BFF1AB3DD18AF /* Info.plist */,
+				CA77B9BE6B977B85B7BE35FBA627A3FE /* SwiftyStoreKit.modulemap */,
+				B095952DE0C60661867C2E4F13CC75ED /* SwiftyStoreKit.xcconfig */,
+				4012AF327121C8288EA976CC0845E30E /* SwiftyStoreKit-dummy.m */,
+				7BB925EFDCB532533DC49C42069DABD3 /* SwiftyStoreKit-prefix.pch */,
+				0423E0887A24872D31232FF19D49729B /* SwiftyStoreKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyStoreKit";
+			sourceTree = "<group>";
+		};
+		0EC2D13872D818DF7C979A3D01ED7271 /* Pods-Cypherpunk */ = {
+			isa = PBXGroup;
+			children = (
+				3EE4D4A8056C859955C63B22D81133CC /* Info.plist */,
+				27849DDEB978C295DE9526C66E09C800 /* Pods-Cypherpunk.modulemap */,
+				A5BCCCD7F1E572ECEBDDA1626365B601 /* Pods-Cypherpunk-acknowledgements.markdown */,
+				5E2DD5A5982E4CC7E96CB0FB3743D906 /* Pods-Cypherpunk-acknowledgements.plist */,
+				ECE59D12D918145A1536CC00C6723526 /* Pods-Cypherpunk-dummy.m */,
+				B2D37C2280B2C567D00FE0C64741D32C /* Pods-Cypherpunk-frameworks.sh */,
+				8A3F287B92D1FA75B2AA873E88DEB77E /* Pods-Cypherpunk-resources.sh */,
+				52D487AD379B43A9CEB3B5FBBA9977A1 /* Pods-Cypherpunk-umbrella.h */,
+				19D4041F32FCEBFD734D81FF87D749F9 /* Pods-Cypherpunk.debug.xcconfig */,
+				F0FF0809AAC4A8A4A6A7A5CFD74B36A8 /* Pods-Cypherpunk.release.xcconfig */,
+			);
+			name = "Pods-Cypherpunk";
+			path = "Target Support Files/Pods-Cypherpunk";
+			sourceTree = "<group>";
+		};
+		103CB14EEC7D6573CAA4D5A7BCBD47F5 /* Pods-CypherpunkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				34F2E14206ED2708ADB9DD080139AA6E /* Info.plist */,
+				8D2295C91DD60CAD71C4604BB83EEC2E /* Pods-CypherpunkUITests.modulemap */,
+				908669E82B9FBC0A17F4EA1B5106D9AA /* Pods-CypherpunkUITests-acknowledgements.markdown */,
+				0B4890FD0F5BBD6AF53866AF46474730 /* Pods-CypherpunkUITests-acknowledgements.plist */,
+				246101469F0A67580F783BD01B01645F /* Pods-CypherpunkUITests-dummy.m */,
+				ABBE6BD87AA168368BECBC1090ED0D78 /* Pods-CypherpunkUITests-frameworks.sh */,
+				0E0C88995218AE943F5D045FD2B36DFA /* Pods-CypherpunkUITests-resources.sh */,
+				31266417DA716AB3236F5F5FA35D2DF0 /* Pods-CypherpunkUITests-umbrella.h */,
+				D30AEDEFEFC587BB05DE8635D4DE1C55 /* Pods-CypherpunkUITests.debug.xcconfig */,
+				F826D090614C141F00A755D6E2FBC27B /* Pods-CypherpunkUITests.release.xcconfig */,
+			);
+			name = "Pods-CypherpunkUITests";
+			path = "Target Support Files/Pods-CypherpunkUITests";
+			sourceTree = "<group>";
+		};
+		112C7921E3A497328D11F4930CBBC9CA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		11E8A4E9DA670E038AD7C75C931786A4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B604994CD9D457A5D51E58AC642511A5 /* Info.plist */,
+				B8E8F204783CCC415F4E49C0270E03EC /* ReSwift.modulemap */,
+				A33519765FBF6580C4CD6C3D4E944455 /* ReSwift.xcconfig */,
+				FBCA8AECA6940E3E3DCC61EBC6A6B7BB /* ReSwift-dummy.m */,
+				DBCDFE58D18647E3D0D95B19E9F12FB6 /* ReSwift-prefix.pch */,
+				7E80A9A5D1BC75371FE976B51399872F /* ReSwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ReSwift";
+			sourceTree = "<group>";
+		};
+		250ADB09D70EEC2B41958360A496ACEE /* Pods-CypherpunkTests */ = {
+			isa = PBXGroup;
+			children = (
+				BDAAB77E30351AF3EF03C7C53C9B2DB4 /* Info.plist */,
+				63BB58E37B7D647BD6055BB2954B8EC0 /* Pods-CypherpunkTests.modulemap */,
+				A966FE6F77BAF115282674147AF3534B /* Pods-CypherpunkTests-acknowledgements.markdown */,
+				798376C2379038880AC2BD8A459CBAF7 /* Pods-CypherpunkTests-acknowledgements.plist */,
+				1F5971918CAEA42FCB74480D6843BEBB /* Pods-CypherpunkTests-dummy.m */,
+				53F15A905C61511971E27731F423330F /* Pods-CypherpunkTests-frameworks.sh */,
+				F07B45BD7235EBBF7930D51C91CF9B66 /* Pods-CypherpunkTests-resources.sh */,
+				C3B6F5115D4F95BCE8F9A3BF3C01FD96 /* Pods-CypherpunkTests-umbrella.h */,
+				5E8F96DC6E72C723934B382A68958213 /* Pods-CypherpunkTests.debug.xcconfig */,
+				55627131794CC6B78A055BAC3AAF36C1 /* Pods-CypherpunkTests.release.xcconfig */,
+			);
+			name = "Pods-CypherpunkTests";
+			path = "Target Support Files/Pods-CypherpunkTests";
+			sourceTree = "<group>";
+		};
+		46F4D1DFC9E10FCD7292CEB4672DA511 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				563C6A4B0FBB89C962F7E302CE20302D /* ReSwift */,
+				7F5214377FB2C94EBD86D463556F44DC /* SwiftyStoreKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		563C6A4B0FBB89C962F7E302CE20302D /* ReSwift */ = {
+			isa = PBXGroup;
+			children = (
+				FE9ADBA6094D04A0A3DB2033D6E2A8F2 /* Action.swift */,
+				E248CAE535A4BA2F469A82F69D567770 /* Coding.swift */,
+				7E3735D97187D9A813E1E125C822CB8A /* CombinedReducer.swift */,
+				ED7D45D0319C18FA9F382B21E80D3B49 /* Middleware.swift */,
+				9682723A0BDC42635C5F6A29763211AD /* Reducer.swift */,
+				E843EAB9A9A9E2586551079FEA4D77E9 /* State.swift */,
+				5BAE4D10184B887B236D457D27FA3D10 /* Store.swift */,
+				48E26048467412AB995501E89C39BC5A /* StoreSubscriber.swift */,
+				E45AFCD13B47846C8A6A3621ECA1FA68 /* StoreType.swift */,
+				980A74C117C8A83328502BBC2131085A /* Subscription.swift */,
+				E011E2EDFA89256716581B214AB617F1 /* TypeHelper.swift */,
+				11E8A4E9DA670E038AD7C75C931786A4 /* Support Files */,
+			);
+			path = ReSwift;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				46F4D1DFC9E10FCD7292CEB4672DA511 /* Pods */,
+				A471EF202C55909C4B1B9B308CC4D6FB /* Products */,
+				EE8540F03D88DBF7D8850747A78A1F0D /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7F5214377FB2C94EBD86D463556F44DC /* SwiftyStoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				90ABC81B02FDDE772606059DC5212238 /* InAppCompleteTransactionsObserver.swift */,
+				66FB21E65121C8B6535804DF32FF6E09 /* InAppProductPurchaseRequest.swift */,
+				0E1095532A6BD129D28638ACD5146F25 /* InAppProductQueryRequest.swift */,
+				55CBF42C2AA961B2037470A8DA3D8ECA /* InAppReceipt.swift */,
+				0F1CC5DD1A8F0E14DAEF250225E0491F /* InAppReceiptRefreshRequest.swift */,
+				1BADBBB6B6E6F43756B0D3CAF713884C /* OS.swift */,
+				F5D3C1EB62B8ECB6C4A42BF27119DE8F /* SwiftyStoreKit.swift */,
+				025636FDEBF02FD1D4FC4A7E6CA286D3 /* Support Files */,
+			);
+			path = SwiftyStoreKit;
+			sourceTree = "<group>";
+		};
+		A471EF202C55909C4B1B9B308CC4D6FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8F372EA5CF562B87A4276A994E6096A /* Pods_Cypherpunk.framework */,
+				9EFFBFF5AA8C826AD44FCF10F3B75022 /* Pods_CypherpunkTests.framework */,
+				7AB171F36A1361A670ED57DC68F0A728 /* Pods_CypherpunkUITests.framework */,
+				790FF023DFE1A60112A5F1F93D917752 /* ReSwift.framework */,
+				02925C9EBA8091A2C09754DD919BB394 /* SwiftyStoreKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				112C7921E3A497328D11F4930CBBC9CA /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE8540F03D88DBF7D8850747A78A1F0D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EC2D13872D818DF7C979A3D01ED7271 /* Pods-Cypherpunk */,
+				250ADB09D70EEC2B41958360A496ACEE /* Pods-CypherpunkTests */,
+				103CB14EEC7D6573CAA4D5A7BCBD47F5 /* Pods-CypherpunkUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		43802F50BB8D4C02DD4B92F299FEFA49 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9CA0AA16C15C4196B1A49B567552832 /* ReSwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70FA6BF45625C83E14911C66A0274017 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				068B0F851A95C11F0035DFEC2CB81E71 /* SwiftyStoreKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		714ABA807C5B0A955C18CC28270DFBB8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				157AB97C6EF3EE6CF741879249292772 /* Pods-CypherpunkUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		793AAD27A50AF022AEE1E08522C6C7CA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9EEE6ADB3E66B5CF0046A9A8EC454C9 /* Pods-CypherpunkTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D235C0BCE9A089945E7063BB5F5C4BE4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7571800CC3BD8D8E28729FE6E4DCE10F /* Pods-Cypherpunk-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		225D70E44DE38559B019F18175F9AA36 /* SwiftyStoreKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4929EC4219882FCC4C4786F8F61A2D29 /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */;
+			buildPhases = (
+				6865F5216DA43F1CE7D520767E3F0528 /* Sources */,
+				556B6CEF57D462208B7DE5F3E1FB614E /* Frameworks */,
+				70FA6BF45625C83E14911C66A0274017 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyStoreKit;
+			productName = SwiftyStoreKit;
+			productReference = 02925C9EBA8091A2C09754DD919BB394 /* SwiftyStoreKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2A13F089F9E42F93EA0AE4357A155549 /* Pods-CypherpunkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CFF2EE75F0F7E093184285D84AD08F6 /* Build configuration list for PBXNativeTarget "Pods-CypherpunkTests" */;
+			buildPhases = (
+				FFAAB411F00C9EC04BDB130CA5331627 /* Sources */,
+				2E5E149D36B5F1A5C60AF887DA616965 /* Frameworks */,
+				793AAD27A50AF022AEE1E08522C6C7CA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8EE4AF9FCBF120778D71E998F5005BE1 /* PBXTargetDependency */,
+			);
+			name = "Pods-CypherpunkTests";
+			productName = "Pods-CypherpunkTests";
+			productReference = 9EFFBFF5AA8C826AD44FCF10F3B75022 /* Pods_CypherpunkTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C215A205C24C69F61C8569D15EE7EA01 /* Pods-Cypherpunk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CCA9B29A68A04E72FAFF0AA992E2C3E /* Build configuration list for PBXNativeTarget "Pods-Cypherpunk" */;
+			buildPhases = (
+				9154B1CCBF37016EE12BA9B1B40F7A3E /* Sources */,
+				6CD4E98700C7F6A4CEBE15C22FCF6DD2 /* Frameworks */,
+				D235C0BCE9A089945E7063BB5F5C4BE4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68853709547912019227D2EBB7B3E636 /* PBXTargetDependency */,
+				AD286F8C9124F93C98840A4CC278618A /* PBXTargetDependency */,
+			);
+			name = "Pods-Cypherpunk";
+			productName = "Pods-Cypherpunk";
+			productReference = F8F372EA5CF562B87A4276A994E6096A /* Pods_Cypherpunk.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E316264CBB6C6CC7EF06FF8943C2B9D7 /* Pods-CypherpunkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9A2AFD759D6E33DCA146809B04B4C0E /* Build configuration list for PBXNativeTarget "Pods-CypherpunkUITests" */;
+			buildPhases = (
+				57B85B6EEB419C97694BA7596C2D855E /* Sources */,
+				C9D428F31BB1D5D9337FAB8CF06D6264 /* Frameworks */,
+				714ABA807C5B0A955C18CC28270DFBB8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C8AB87E9092A92DF4588A15F179E337B /* PBXTargetDependency */,
+			);
+			name = "Pods-CypherpunkUITests";
+			productName = "Pods-CypherpunkUITests";
+			productReference = 7AB171F36A1361A670ED57DC68F0A728 /* Pods_CypherpunkUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F19CDF218D703E23CAD4113FF3CABDA8 /* ReSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0811C31C0F617C28EFBCEDDF80C5FA2F /* Build configuration list for PBXNativeTarget "ReSwift" */;
+			buildPhases = (
+				168E523DBE11C5C66A25E1164F9EB6D7 /* Sources */,
+				067DDC1443D58E804D91F8455559D01F /* Frameworks */,
+				43802F50BB8D4C02DD4B92F299FEFA49 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReSwift;
+			productName = ReSwift;
+			productReference = 790FF023DFE1A60112A5F1F93D917752 /* ReSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = A471EF202C55909C4B1B9B308CC4D6FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C215A205C24C69F61C8569D15EE7EA01 /* Pods-Cypherpunk */,
+				2A13F089F9E42F93EA0AE4357A155549 /* Pods-CypherpunkTests */,
+				E316264CBB6C6CC7EF06FF8943C2B9D7 /* Pods-CypherpunkUITests */,
+				F19CDF218D703E23CAD4113FF3CABDA8 /* ReSwift */,
+				225D70E44DE38559B019F18175F9AA36 /* SwiftyStoreKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		168E523DBE11C5C66A25E1164F9EB6D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6816A24541A5FD698E7F09B3A4C2A4A4 /* Action.swift in Sources */,
+				61AC5A95D962D1984FFC23B225BAFF5E /* Coding.swift in Sources */,
+				159FAC5BF29E56412B88E4740542E64A /* CombinedReducer.swift in Sources */,
+				E0F6C4C4ADADC6084614E9CC040C498D /* Middleware.swift in Sources */,
+				253F9B392842A05D5D8569204C134BEC /* Reducer.swift in Sources */,
+				94E4A0EEAE3C26460D845B29A07DB5EF /* ReSwift-dummy.m in Sources */,
+				F50F8DBFEB3FE5AA591C852D539ECFC5 /* State.swift in Sources */,
+				58DB43A30ADB26569125601EEDDEFC51 /* Store.swift in Sources */,
+				935837E5C1F04324A727F006EA7F62AD /* StoreSubscriber.swift in Sources */,
+				F0C56FB410FD489B487F5936410152C7 /* StoreType.swift in Sources */,
+				C715FAA361099510B858523D504C1598 /* Subscription.swift in Sources */,
+				375AE8DC5059401552D51AB27D31E75A /* TypeHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57B85B6EEB419C97694BA7596C2D855E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B84901EB66204F4924452F8CB4A63B6A /* Pods-CypherpunkUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6865F5216DA43F1CE7D520767E3F0528 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3768A02D123BA333854380B3AD822265 /* InAppCompleteTransactionsObserver.swift in Sources */,
+				44601A549CC51DAB43ED5DA476DDF346 /* InAppProductPurchaseRequest.swift in Sources */,
+				954812D18383A76C66D76BF36EF00FA6 /* InAppProductQueryRequest.swift in Sources */,
+				DB6ADA88C9A4A2AAC38F73A2DEFD9852 /* InAppReceipt.swift in Sources */,
+				334AF33563F9A3566B53E84BB768F7BF /* InAppReceiptRefreshRequest.swift in Sources */,
+				A97ECEC45122A647FE71E098C671A6D5 /* OS.swift in Sources */,
+				E3FA1226CBA1D9169F377931CEF6F3D3 /* SwiftyStoreKit-dummy.m in Sources */,
+				ECF25BBD0588F09A3291F4CD359ABCF0 /* SwiftyStoreKit.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9154B1CCBF37016EE12BA9B1B40F7A3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E688200983113B06AD572346D0D5CEB1 /* Pods-Cypherpunk-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFAAB411F00C9EC04BDB130CA5331627 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECBF7E0F4283322D54CBCD9DB597D7A7 /* Pods-CypherpunkTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68853709547912019227D2EBB7B3E636 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReSwift;
+			target = F19CDF218D703E23CAD4113FF3CABDA8 /* ReSwift */;
+			targetProxy = D4ABE39407870CF3A4D54EB49EB5D64D /* PBXContainerItemProxy */;
+		};
+		8EE4AF9FCBF120778D71E998F5005BE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReSwift;
+			target = F19CDF218D703E23CAD4113FF3CABDA8 /* ReSwift */;
+			targetProxy = 6A42FB534FBF15C56276B36DA409601F /* PBXContainerItemProxy */;
+		};
+		AD286F8C9124F93C98840A4CC278618A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyStoreKit;
+			target = 225D70E44DE38559B019F18175F9AA36 /* SwiftyStoreKit */;
+			targetProxy = 3F4390A38FA44D47ACE15D6EB97F773D /* PBXContainerItemProxy */;
+		};
+		C8AB87E9092A92DF4588A15F179E337B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReSwift;
+			target = F19CDF218D703E23CAD4113FF3CABDA8 /* ReSwift */;
+			targetProxy = F6FC7FFE2AE41A705BC29DE5F69676A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		074922092A15666C292415789AB2944F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19D4041F32FCEBFD734D81FF87D749F9 /* Pods-Cypherpunk.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Cypherpunk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Cypherpunk;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4C2A306CA3D6CB3272E131C96488538B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A33519765FBF6580C4CD6C3D4E944455 /* ReSwift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ReSwift/ReSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ReSwift/ReSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ReSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		67AE7B289AE17085208A838CFBFCB385 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B095952DE0C60661867C2E4F13CC75ED /* SwiftyStoreKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftyStoreKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		79BE6E8D63CA4E554D59570AA7F4E574 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55627131794CC6B78A055BAC3AAF36C1 /* Pods-CypherpunkTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CypherpunkTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CypherpunkTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		811519CB8F683AC06F9C98B55AC40F11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		882EB4391EC2E701934974DA86F7343F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		95CE73D968988D295C792456B8DFB86C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F826D090614C141F00A755D6E2FBC27B /* Pods-CypherpunkUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CypherpunkUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CypherpunkUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A5B5D56E0CA72CA741475DD820F9B8FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D30AEDEFEFC587BB05DE8635D4DE1C55 /* Pods-CypherpunkUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CypherpunkUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CypherpunkUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BDA1104F2C176641044FD9B24FB3AEE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B095952DE0C60661867C2E4F13CC75ED /* SwiftyStoreKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyStoreKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C55C9B9D230D1F9416C7E45BF060A452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0FF0809AAC4A8A4A6A7A5CFD74B36A8 /* Pods-Cypherpunk.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Cypherpunk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Cypherpunk;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D55F525DD2659055DBE4A451C7CBBC83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A33519765FBF6580C4CD6C3D4E944455 /* ReSwift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ReSwift/ReSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ReSwift/ReSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ReSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F3935777E77DF90F1596A1CBC97196CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E8F96DC6E72C723934B382A68958213 /* Pods-CypherpunkTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CypherpunkTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CypherpunkTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0811C31C0F617C28EFBCEDDF80C5FA2F /* Build configuration list for PBXNativeTarget "ReSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D55F525DD2659055DBE4A451C7CBBC83 /* Debug */,
+				4C2A306CA3D6CB3272E131C96488538B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CFF2EE75F0F7E093184285D84AD08F6 /* Build configuration list for PBXNativeTarget "Pods-CypherpunkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3935777E77DF90F1596A1CBC97196CB /* Debug */,
+				79BE6E8D63CA4E554D59570AA7F4E574 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				882EB4391EC2E701934974DA86F7343F /* Debug */,
+				811519CB8F683AC06F9C98B55AC40F11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4929EC4219882FCC4C4786F8F61A2D29 /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67AE7B289AE17085208A838CFBFCB385 /* Debug */,
+				BDA1104F2C176641044FD9B24FB3AEE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CCA9B29A68A04E72FAFF0AA992E2C3E /* Build configuration list for PBXNativeTarget "Pods-Cypherpunk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				074922092A15666C292415789AB2944F /* Debug */,
+				C55C9B9D230D1F9416C7E45BF060A452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9A2AFD759D6E33DCA146809B04B4C0E /* Build configuration list for PBXNativeTarget "Pods-CypherpunkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B5D56E0CA72CA741475DD820F9B8FC /* Debug */,
+				95CE73D968988D295C792456B8DFB86C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
