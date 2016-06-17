@@ -15,6 +15,8 @@
 		2038097E1D13D89D005145CD /* CypherpunkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038097D1D13D89D005145CD /* CypherpunkTests.swift */; };
 		203809891D13D89D005145CD /* CypherpunkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203809881D13D89D005145CD /* CypherpunkUITests.swift */; };
 		203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203809961D13DAF3005145CD /* NetworkExtension.framework */; };
+		2038099D1D13EEA9005145CD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099C1D13EEA9005145CD /* AppState.swift */; };
+		2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099E1D13EEEB005145CD /* AppReducer.swift */; };
 		40D56BF49E63C019A46839C7 /* Pods_CypherpunkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7BA02BCC3C2DBACF87A027 /* Pods_CypherpunkUITests.framework */; };
 		46608F04506E5B087F2FB8C7 /* Pods_Cypherpunk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF74B2C8826884133507A33 /* Pods_Cypherpunk.framework */; };
 		67EAD3423BEDD3AA0A7ED1AC /* Pods_CypherpunkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3ED4EE5A25CC00172322E3 /* Pods_CypherpunkTests.framework */; };
@@ -53,6 +55,8 @@
 		2038098A1D13D89D005145CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		203809961D13DAF3005145CD /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		203809981D13DAF3005145CD /* Cypherpunk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cypherpunk.entitlements; sourceTree = "<group>"; };
+		2038099C1D13EEA9005145CD /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		2038099E1D13EEEB005145CD /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		2FDB752259C501D90C4A7A8D /* Pods-CypherpunkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A532A863B7DD850AE5424D3 /* Pods-CypherpunkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5C3ED4EE5A25CC00172322E3 /* Pods_CypherpunkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CypherpunkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +138,9 @@
 			children = (
 				203809981D13DAF3005145CD /* Cypherpunk.entitlements */,
 				203809681D13D89D005145CD /* AppDelegate.swift */,
+				2038099A1D13ED96005145CD /* Action */,
+				203809991D13ED84005145CD /* State */,
+				2038099B1D13EDA1005145CD /* Reducer */,
 				2038096A1D13D89D005145CD /* ViewController.swift */,
 				2038096C1D13D89D005145CD /* Main.storyboard */,
 				2038096F1D13D89D005145CD /* Assets.xcassets */,
@@ -159,6 +166,29 @@
 				2038098A1D13D89D005145CD /* Info.plist */,
 			);
 			path = CypherpunkUITests;
+			sourceTree = "<group>";
+		};
+		203809991D13ED84005145CD /* State */ = {
+			isa = PBXGroup;
+			children = (
+				2038099C1D13EEA9005145CD /* AppState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		2038099A1D13ED96005145CD /* Action */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		2038099B1D13EDA1005145CD /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				2038099E1D13EEEB005145CD /* AppReducer.swift */,
+			);
+			path = Reducer;
 			sourceTree = "<group>";
 		};
 		BCFC6193A7F401D78A06D6FE /* Frameworks */ = {
@@ -439,7 +469,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				2038096B1D13D89D005145CD /* ViewController.swift in Sources */,
+				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
