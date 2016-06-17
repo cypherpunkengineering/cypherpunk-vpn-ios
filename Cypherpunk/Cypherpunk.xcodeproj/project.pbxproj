@@ -14,6 +14,7 @@
 		203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203809711D13D89D005145CD /* LaunchScreen.storyboard */; };
 		2038097E1D13D89D005145CD /* CypherpunkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038097D1D13D89D005145CD /* CypherpunkTests.swift */; };
 		203809891D13D89D005145CD /* CypherpunkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203809881D13D89D005145CD /* CypherpunkUITests.swift */; };
+		203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203809961D13DAF3005145CD /* NetworkExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		203809841D13D89D005145CD /* CypherpunkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CypherpunkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		203809881D13D89D005145CD /* CypherpunkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CypherpunkUITests.swift; sourceTree = "<group>"; };
 		2038098A1D13D89D005145CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		203809961D13DAF3005145CD /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		203809981D13DAF3005145CD /* Cypherpunk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cypherpunk.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +81,7 @@
 		2038095C1D13D89D005145CD = {
 			isa = PBXGroup;
 			children = (
+				203809961D13DAF3005145CD /* NetworkExtension.framework */,
 				203809671D13D89D005145CD /* Cypherpunk */,
 				2038097C1D13D89D005145CD /* CypherpunkTests */,
 				203809871D13D89D005145CD /* CypherpunkUITests */,
@@ -97,6 +102,7 @@
 		203809671D13D89D005145CD /* Cypherpunk */ = {
 			isa = PBXGroup;
 			children = (
+				203809981D13DAF3005145CD /* Cypherpunk.entitlements */,
 				203809681D13D89D005145CD /* AppDelegate.swift */,
 				2038096A1D13D89D005145CD /* ViewController.swift */,
 				2038096C1D13D89D005145CD /* Main.storyboard */,
@@ -193,6 +199,12 @@
 				TargetAttributes = {
 					203809641D13D89D005145CD = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = EHYVN7A599;
+						SystemCapabilities = {
+							com.apple.VPNLite = {
+								enabled = 1;
+							};
+						};
 					};
 					203809781D13D89D005145CD = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -349,7 +361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -388,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -399,7 +411,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.Cypherpunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,7 +424,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.Cypherpunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -482,6 +498,7 @@
 				2038098F1D13D89D005145CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		203809901D13D89D005145CD /* Build configuration list for PBXNativeTarget "CypherpunkTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +507,7 @@
 				203809921D13D89D005145CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		203809931D13D89E005145CD /* Build configuration list for PBXNativeTarget "CypherpunkUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +516,7 @@
 				203809951D13D89E005145CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
