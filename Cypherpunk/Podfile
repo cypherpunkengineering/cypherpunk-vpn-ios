@@ -8,17 +8,20 @@ target 'Cypherpunk' do
        pod 'SwiftyStoreKit'
        pod ‘APIKit’
        pod ‘Himotoki’
+       pod 'R.swift'
 end
 
 target 'CypherpunkTests' do
        pod 'ReSwift'
        pod ‘APIKit’
        pod ‘Himotoki’
+       pod 'R.swift'
 end
 
 target 'CypherpunkUITests' do
        pod 'ReSwift'
        pod ‘APIKit’
        pod ‘Himotoki’
+       pod 'R.swift'
 end
 

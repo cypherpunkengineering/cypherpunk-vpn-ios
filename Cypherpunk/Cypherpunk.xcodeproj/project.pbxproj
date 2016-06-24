@@ -206,6 +206,7 @@
 			buildConfigurationList = 2038098D1D13D89D005145CD /* Build configuration list for PBXNativeTarget "Cypherpunk" */;
 			buildPhases = (
 				AD57511EA56D5C40F2045039 /* 📦 Check Pods Manifest.lock */,
+				206D93F21D1D03D8002B6913 /* ShellScript */,
 				203809611D13D89D005145CD /* Sources */,
 				203809621D13D89D005145CD /* Frameworks */,
 				203809631D13D89D005145CD /* Resources */,
@@ -353,6 +354,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		206D93F21D1D03D8002B6913 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
 		};
 		4BF2CA5C18CB8F2EBE04BF34 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
