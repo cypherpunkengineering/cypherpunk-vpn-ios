@@ -1,8 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S0F-tv-VVa">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="rkd-Ja-ff8">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="S0F-tv-VVa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maF-7z-fWz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ejC-qT-kA7" kind="relationship" relationship="rootViewController" id="Qh3-IK-H8b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t96-cY-oXk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="518"/>
+        </scene>
+        <!--Nav Drawer Controller-->
+        <scene sceneID="wN9-Fo-ja1">
+            <objects>
+                <viewController id="ejC-qT-kA7" customClass="CKNavDrawerController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OuE-7r-OQ5"/>
+                        <viewControllerLayoutGuide type="bottom" id="dNF-Jg-KQS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MiZ-X0-57f">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Oec-8x-U1s"/>
+                    <connections>
+                        <outlet property="drawerIBSettings" destination="pRP-Dp-J1o" id="YG0-m1-bgH"/>
+                        <outlet property="drawerSettings" destination="vJb-wz-e0Q" id="6cd-Gt-BBW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EuI-EP-k5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="vJb-wz-e0Q" customClass="CKNavDrawerSettings">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="widthPercentage">
+                            <real key="value" value="0.81999999999999995"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
+                <customObject id="pRP-Dp-J1o" customClass="CKNavDrawerIBSettings" customModule="Cypherpunk" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSbname" value="Drawer"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="centerSbname" value="Top"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="centerID" value="Top"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="drawerID" value="Drawer"/>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="764" y="518"/>
+        </scene>
+    </scenes>
 </document>
