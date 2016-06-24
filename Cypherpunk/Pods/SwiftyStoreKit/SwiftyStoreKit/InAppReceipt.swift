@@ -127,7 +127,7 @@ public enum ReceiptInfoField: String {
         case expires_date
         // For a transaction that was canceled by Apple customer support, the time and date of the cancellation. Treat a canceled receipt the same as if no purchase had ever been made.
         case cancellation_date
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
         // A string that the App Store uses to uniquely identify the application that created the transaction. If your server supports multiple applications, you can use this value to differentiate between them. Apps are assigned an identifier only in the production environment, so this key is not present for receipts created in the test environment. This field is not present for Mac apps. See also Bundle Identifier.
         case app_item_id
         #endif
@@ -290,17 +290,15 @@ internal class InAppReceipt {
     
         // Return the expires dates sorted desc
         let expiryDateValues = receiptsInfo
-            .map { (receipt) -> NSString? in
-                let key = duration != nil ? "original_purchase_date_ms" : "expires_date_ms"
-                return receipt[key] as? NSString
+            .flatMap { (receipt) -> String? in
+                let key: String = duration != nil ? "original_purchase_date_ms" : "expires_date_ms"
+                return receipt[key] as? String
             }
-            .filter { (dateString) -> Bool in
-                return dateString != nil
-            }
-            .map { (dateString) -> NSDate in
+            .flatMap { (dateString) -> NSDate? in
+                guard let doubleValue = Double(dateString) else { return nil }
                 // If duration is set, create an "expires date" value calculated from the original purchase date
-                let addDuration = duration ?? 0
-                let expiryDateDouble = (dateString!.doubleValue / 1000 + addDuration)
+                let addedDuration = duration ?? 0
+                let expiryDateDouble = (doubleValue / 1000 + addedDuration)
                 return NSDate(timeIntervalSince1970: expiryDateDouble)
             }
             .sort { (a, b) -> Bool in

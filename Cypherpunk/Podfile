@@ -6,13 +6,19 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'Cypherpunk' do
        pod 'ReSwift'
        pod 'SwiftyStoreKit'
+       pod ‘APIKit’
+       pod ‘Himotoki’
 end
 
 target 'CypherpunkTests' do
        pod 'ReSwift'
+       pod ‘APIKit’
+       pod ‘Himotoki’
 end
 
 target 'CypherpunkUITests' do
        pod 'ReSwift'
+       pod ‘APIKit’
+       pod ‘Himotoki’
 end
 

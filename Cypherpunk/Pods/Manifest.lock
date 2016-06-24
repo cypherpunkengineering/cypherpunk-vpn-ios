@@ -1,15 +1,24 @@
 PODS:
+  - APIKit (2.0.1):
+    - Result (~> 2.0.0)
+  - Himotoki (2.1.0)
+  - Result (2.0.0)
   - ReSwift (1.0.0)
-  - SwiftyStoreKit (0.2.9)
+  - SwiftyStoreKit (0.2.10)
 
 DEPENDENCIES:
+  - APIKit
+  - Himotoki
   - ReSwift
   - SwiftyStoreKit
 
 SPEC CHECKSUMS:
+  APIKit: 7b61788273235bab213477b22f1897872047da10
+  Himotoki: 59d8ab0cfed411c9d2109cfd365998094ee77d96
+  Result: 9e75e1111c774c6ac594e14907b15057053a7959
   ReSwift: 2097946852b045bcc04182b63cdab9ab7fc35812
-  SwiftyStoreKit: 4024adcf71f584af6e298c3d47f30cc0a5204459
+  SwiftyStoreKit: 7d129a07cb26ebaeecfafd3ae06d07286d200d9e
 
-PODFILE CHECKSUM: 9bedea113914dbe88a9dafd058da48c7d3a92c33
+PODFILE CHECKSUM: 930a61504f4bdd9490ab27462ddfd73f023683c3
 
 COCOAPODS: 1.0.0.beta.6
