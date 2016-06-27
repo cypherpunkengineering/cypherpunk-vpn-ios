@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReachabilitySwift
 
 class TopViewController: UIViewController {
 
@@ -16,7 +17,7 @@ class TopViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        
         IPAddressLabel.text = NetworkInterface.Cellular.IPAddress ?? NetworkInterface.Wifi.IPAddress        
     }
 
