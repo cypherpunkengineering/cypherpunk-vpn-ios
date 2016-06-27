@@ -18,7 +18,7 @@ class TopViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        IPAddressLabel.text = NetworkInterface.Cellular.IPAddress ?? NetworkInterface.Wifi.IPAddress        
+        IPAddressLabel.text = NetworkInterface.Wifi.IPAddress ?? NetworkInterface.Cellular.IPAddress
     }
 
     override func didReceiveMemoryWarning() {
