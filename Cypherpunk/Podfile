@@ -9,6 +9,7 @@ target 'Cypherpunk' do
        pod 'APIKit'
        pod 'Himotoki'
        pod 'R.swift'
+       pod 'ReachabilitySwift'
 end
 
 target 'CypherpunkTests' do

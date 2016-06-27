@@ -10,10 +10,14 @@ import UIKit
 
 class TopViewController: UIViewController {
 
+    @IBOutlet weak var IPAddressLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        IPAddressLabel.text = NetworkInterface.Cellular.IPAddress ?? NetworkInterface.Wifi.IPAddress        
     }
 
     override func didReceiveMemoryWarning() {

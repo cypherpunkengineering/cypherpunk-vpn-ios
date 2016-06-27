@@ -25,13 +25,27 @@
                                     <action selector="drawerToggleAction:" destination="uCa-HA-ERA" eventType="touchUpInside" id="eDI-vb-u6E"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="255.255.255.255" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwg-Z8-Pjv">
+                                <rect key="frame" x="234" y="456" width="132" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="WqQ-mW-owJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333330000001" green="0.1058823529" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" id="9cj-Tr-Qel"/>
+                            <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="bwg-Z8-Pjv" secondAttribute="bottom" constant="123" id="CC4-Gg-FqR"/>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leadingMargin" id="bC8-zv-LdF"/>
+                            <constraint firstItem="bwg-Z8-Pjv" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="tfd-YI-Vb6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="IPAddressLabel" destination="bwg-Z8-Pjv" id="hdE-Ae-5XN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4u-Fc-mfr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

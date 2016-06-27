@@ -5,6 +5,7 @@ PODS:
   - R.swift (2.3.0):
     - R.swift.Library (~> 2.1.0)
   - R.swift.Library (2.1.0)
+  - ReachabilitySwift (2.3.3)
   - Result (2.0.0)
   - ReSwift (1.0.0)
   - SwiftyStoreKit (0.2.10)
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - APIKit
   - Himotoki
   - R.swift
+  - ReachabilitySwift
   - ReSwift
   - SwiftyStoreKit
 
@@ -21,10 +23,11 @@ SPEC CHECKSUMS:
   Himotoki: 59d8ab0cfed411c9d2109cfd365998094ee77d96
   R.swift: 38b2191a603c3d491a09baddfb4ccc7aa9be4d9d
   R.swift.Library: e5e077ed04f6867a95676af491650091b23518e9
+  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
   ReSwift: 2097946852b045bcc04182b63cdab9ab7fc35812
   SwiftyStoreKit: 7d129a07cb26ebaeecfafd3ae06d07286d200d9e
 
-PODFILE CHECKSUM: d92645b5fe81c323479f000653031276ad47d9e9
+PODFILE CHECKSUM: d2197a39480c5946ae029bde3e184c10d550d0ca
 
 COCOAPODS: 1.0.0.beta.6
