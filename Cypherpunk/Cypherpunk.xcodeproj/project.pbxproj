@@ -30,6 +30,7 @@
 		2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1661D20D64600D4326C /* Dosis-Regular.otf */; };
 		2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1671D20D64600D4326C /* Dosis-SemiBold.otf */; };
 		2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B45C1731D21076000D4326C /* UINavigationController+StatusBar.m */; };
+		2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */; };
 		40D56BF49E63C019A46839C7 /* Pods_CypherpunkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7BA02BCC3C2DBACF87A027 /* Pods_CypherpunkUITests.framework */; };
 		46608F04506E5B087F2FB8C7 /* Pods_Cypherpunk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF74B2C8826884133507A33 /* Pods_Cypherpunk.framework */; };
 		67EAD3423BEDD3AA0A7ED1AC /* Pods_CypherpunkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3ED4EE5A25CC00172322E3 /* Pods_CypherpunkTests.framework */; };
@@ -85,6 +86,7 @@
 		2B45C1671D20D64600D4326C /* Dosis-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-SemiBold.otf"; sourceTree = "<group>"; };
 		2B45C1721D21076000D4326C /* UINavigationController+StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StatusBar.h"; sourceTree = "<group>"; };
 		2B45C1731D21076000D4326C /* UINavigationController+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBar.m"; sourceTree = "<group>"; };
+		2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNConfigurationCoordinator.swift; sourceTree = "<group>"; };
 		2FDB752259C501D90C4A7A8D /* Pods-CypherpunkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A532A863B7DD850AE5424D3 /* Pods-CypherpunkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5C3ED4EE5A25CC00172322E3 /* Pods_CypherpunkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CypherpunkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 				2B45C16F1D21072500D4326C /* Extension */,
 				20D895E81D1D0C17002B9F9D /* External */,
 				203809681D13D89D005145CD /* AppDelegate.swift */,
+				2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */,
 				20D895F11D1D1954002B9F9D /* ViewControllers */,
 				2038099A1D13ED96005145CD /* Action */,
 				203809991D13ED84005145CD /* State */,
@@ -568,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
+				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,

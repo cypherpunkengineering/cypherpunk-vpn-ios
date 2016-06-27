@@ -39,13 +39,29 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="disconnected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNd-hX-uZx">
+                                <rect key="frame" x="248.5" y="325" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qIq-MF-TaH">
+                                <rect key="frame" x="276" y="387" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeConnectStateAction:" destination="uCa-HA-ERA" eventType="valueChanged" id="QTb-Jg-IhH"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qIq-MF-TaH" firstAttribute="top" secondItem="TNd-hX-uZx" secondAttribute="bottom" constant="41" id="4W5-Zw-Rux"/>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" constant="20" id="9cj-Tr-Qel"/>
                             <constraint firstItem="bwg-Z8-Pjv" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="C72-U0-3Z6"/>
+                            <constraint firstItem="qIq-MF-TaH" firstAttribute="centerX" secondItem="bwg-Z8-Pjv" secondAttribute="centerX" id="Ofu-CQ-BET"/>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" id="ZEd-9Z-m75"/>
+                            <constraint firstItem="bwg-Z8-Pjv" firstAttribute="top" secondItem="qIq-MF-TaH" secondAttribute="bottom" constant="38" id="aKe-Ij-LMU"/>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leadingMargin" id="bC8-zv-LdF"/>
+                            <constraint firstItem="TNd-hX-uZx" firstAttribute="centerX" secondItem="qIq-MF-TaH" secondAttribute="centerX" id="dME-pk-db8"/>
                             <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="bwg-Z8-Pjv" secondAttribute="bottom" constant="123" id="vcp-HO-pIM"/>
                         </constraints>
                         <variation key="default">
@@ -56,6 +72,8 @@
                     </view>
                     <connections>
                         <outlet property="IPAddressLabel" destination="bwg-Z8-Pjv" id="hdE-Ae-5XN"/>
+                        <outlet property="connectSwitch" destination="qIq-MF-TaH" id="5YL-zn-DyX"/>
+                        <outlet property="connectionStateLabel" destination="TNd-hX-uZx" id="bVN-4e-sWL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4u-Fc-mfr" userLabel="First Responder" sceneMemberID="firstResponder"/>
