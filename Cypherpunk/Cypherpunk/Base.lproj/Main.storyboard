@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="74" y="518"/>
         </scene>
-        <!--View Controller-->
+        <!--Background View Controller-->
         <scene sceneID="TaU-zJ-cky">
             <objects>
-                <viewController id="mm5-Oy-m51" sceneMemberID="viewController">
+                <viewController id="mm5-Oy-m51" customClass="BackgroundViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KtR-47-d5z"/>
                         <viewControllerLayoutGuide type="bottom" id="qc9-SV-0DG"/>
@@ -51,6 +51,7 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gp2-Og-cCg">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="S0F-tv-VVa" kind="embed" id="Sga-nA-0E3"/>
                                 </connections>

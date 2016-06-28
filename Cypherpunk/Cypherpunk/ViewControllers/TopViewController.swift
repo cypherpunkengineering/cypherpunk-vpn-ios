@@ -34,11 +34,7 @@ class TopViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        if let image = R.image.key_bg() {
-            self.view.backgroundColor = UIColor(patternImage: image)
-        }
-        
+                
         IPAddressLabel.text = NetworkInterface.Wifi.IPAddress ?? NetworkInterface.Cellular.IPAddress
         
         // Do any additional setup after loading the view.

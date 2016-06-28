@@ -52,7 +52,7 @@
                                 </connections>
                             </switch>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qIq-MF-TaH" firstAttribute="top" secondItem="TNd-hX-uZx" secondAttribute="bottom" constant="41" id="4W5-Zw-Rux"/>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" constant="20" id="9cj-Tr-Qel"/>
