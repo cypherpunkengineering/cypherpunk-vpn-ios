@@ -22,6 +22,9 @@
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
 		20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F41D1D1C6F002B9F9D /* IPAddress.swift */; };
+		20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FB1D23A1E7002B9F9D /* LoginState.swift */; };
+		20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FD1D23A637002B9F9D /* LoginReducer.swift */; };
+		20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FF1D23A84D002B9F9D /* LoginAction.swift */; };
 		2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1611D20D64600D4326C /* Dosis-Bold.otf */; };
 		2B45C1691D20D64600D4326C /* Dosis-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */; };
 		2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */; };
@@ -78,6 +81,9 @@
 		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		20D895F41D1D1C6F002B9F9D /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		20D895F61D1D1CC1002B9F9D /* Cypherpunk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cypherpunk-Bridging-Header.h"; sourceTree = "<group>"; };
+		20D895FB1D23A1E7002B9F9D /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
+		20D895FD1D23A637002B9F9D /* LoginReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginReducer.swift; sourceTree = "<group>"; };
+		20D895FF1D23A84D002B9F9D /* LoginAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAction.swift; sourceTree = "<group>"; };
 		2B45C1611D20D64600D4326C /* Dosis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.otf"; sourceTree = "<group>"; };
 		2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
 		2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				2038099C1D13EEA9005145CD /* AppState.swift */,
+				20D895FB1D23A1E7002B9F9D /* LoginState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -219,6 +226,7 @@
 		2038099A1D13ED96005145CD /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				20D895FF1D23A84D002B9F9D /* LoginAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -227,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				2038099E1D13EEEB005145CD /* AppReducer.swift */,
+				20D895FD1D23A637002B9F9D /* LoginReducer.swift */,
 			);
 			path = Reducer;
 			sourceTree = "<group>";
@@ -573,9 +582,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */,
+				20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
+				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
