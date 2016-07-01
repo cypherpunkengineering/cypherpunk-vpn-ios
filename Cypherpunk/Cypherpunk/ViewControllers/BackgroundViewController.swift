@@ -17,7 +17,9 @@ class BackgroundViewController: UIViewController {
         if let image = R.image.key_bg() {
             self.view.backgroundColor = UIColor(patternImage: image)
         }
-
+        
+        self.performSegueWithIdentifier(R.segue.backgroundViewController.signIn, sender: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
