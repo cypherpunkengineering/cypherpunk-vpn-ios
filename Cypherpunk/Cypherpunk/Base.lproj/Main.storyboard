@@ -40,7 +40,7 @@
         <!--Background View Controller-->
         <scene sceneID="TaU-zJ-cky">
             <objects>
-                <viewController id="mm5-Oy-m51" customClass="BackgroundViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Background" id="mm5-Oy-m51" customClass="BackgroundViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KtR-47-d5z"/>
                         <viewControllerLayoutGuide type="bottom" id="qc9-SV-0DG"/>
@@ -66,10 +66,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KQ5-ag-Tnm"/>
+                    <connections>
+                        <segue destination="TdH-G6-2P9" kind="presentation" identifier="SignIn" animates="NO" modalPresentationStyle="fullScreen" id="ekz-AR-nJR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4q-gg-uvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="764" y="-175"/>
+        </scene>
+        <!--SignIn-->
+        <scene sceneID="PJR-Ni-Orv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignIn" id="TdH-G6-2P9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cdx-1O-on0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1305.5" y="-422"/>
         </scene>
         <!--Nav Drawer Controller-->
         <scene sceneID="wN9-Fo-ja1">

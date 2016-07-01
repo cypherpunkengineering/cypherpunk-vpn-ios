@@ -14,6 +14,7 @@ struct AppReducer: Reducer {
     func handleAction(action: Action, state: AppState?) -> AppState {
         
         return AppState(
+            loginState: LoginReducer.handleAction(action, state: state?.loginState)
         )
     }
 }

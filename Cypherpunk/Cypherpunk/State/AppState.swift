@@ -11,5 +11,5 @@ import Foundation
 import ReSwift
 
 struct AppState: StateType {
-    
+    let loginState: LoginState
 }

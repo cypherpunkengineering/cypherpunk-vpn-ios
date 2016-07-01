@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */; };
 		203809691D13D89D005145CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203809681D13D89D005145CD /* AppDelegate.swift */; };
 		2038096E1D13D89D005145CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2038096C1D13D89D005145CD /* Main.storyboard */; };
 		203809701D13D89D005145CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2038096F1D13D89D005145CD /* Assets.xcassets */; };
@@ -22,6 +23,14 @@
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
 		20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F41D1D1C6F002B9F9D /* IPAddress.swift */; };
+		20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FB1D23A1E7002B9F9D /* LoginState.swift */; };
+		20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FD1D23A637002B9F9D /* LoginReducer.swift */; };
+		20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FF1D23A84D002B9F9D /* LoginAction.swift */; };
+		20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896011D23ACE9002B9F9D /* SignInViewController.swift */; };
+		20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */; };
+		20D896061D23B0DD002B9F9D /* MailAddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */; };
+		20D896081D23B0F4002B9F9D /* ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896071D23B0F4002B9F9D /* ValidationTests.swift */; };
+		20D8960A1D23B764002B9F9D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D896091D23B764002B9F9D /* SignIn.storyboard */; };
 		2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1611D20D64600D4326C /* Dosis-Bold.otf */; };
 		2B45C1691D20D64600D4326C /* Dosis-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */; };
 		2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */; };
@@ -55,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		203809651D13D89D005145CD /* Cypherpunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cypherpunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		203809681D13D89D005145CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2038096D1D13D89D005145CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +88,13 @@
 		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		20D895F41D1D1C6F002B9F9D /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		20D895F61D1D1CC1002B9F9D /* Cypherpunk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cypherpunk-Bridging-Header.h"; sourceTree = "<group>"; };
+		20D895FB1D23A1E7002B9F9D /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
+		20D895FD1D23A637002B9F9D /* LoginReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginReducer.swift; sourceTree = "<group>"; };
+		20D895FF1D23A84D002B9F9D /* LoginAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAction.swift; sourceTree = "<group>"; };
+		20D896011D23ACE9002B9F9D /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAddressValidator.swift; sourceTree = "<group>"; };
+		20D896071D23B0F4002B9F9D /* ValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTests.swift; sourceTree = "<group>"; };
+		20D896091D23B764002B9F9D /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SignIn.storyboard; path = Cypherpunk/SignIn.storyboard; sourceTree = SOURCE_ROOT; };
 		2B45C1611D20D64600D4326C /* Dosis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.otf"; sourceTree = "<group>"; };
 		2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
 		2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -174,11 +191,13 @@
 				20D895E81D1D0C17002B9F9D /* External */,
 				203809681D13D89D005145CD /* AppDelegate.swift */,
 				2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */,
+				20D896031D23AE83002B9F9D /* Validator */,
 				20D895F11D1D1954002B9F9D /* ViewControllers */,
 				2038099A1D13ED96005145CD /* Action */,
 				203809991D13ED84005145CD /* State */,
 				2038099B1D13EDA1005145CD /* Reducer */,
 				2038096C1D13D89D005145CD /* Main.storyboard */,
+				20D896091D23B764002B9F9D /* SignIn.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20D895E91D1D0D75002B9F9D /* Drawer.storyboard */,
 				2038096F1D13D89D005145CD /* Assets.xcassets */,
@@ -194,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				2038097D1D13D89D005145CD /* CypherpunkTests.swift */,
+				20D896071D23B0F4002B9F9D /* ValidationTests.swift */,
 				2038097F1D13D89D005145CD /* Info.plist */,
 			);
 			path = CypherpunkTests;
@@ -212,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				2038099C1D13EEA9005145CD /* AppState.swift */,
+				20D895FB1D23A1E7002B9F9D /* LoginState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -219,6 +240,7 @@
 		2038099A1D13ED96005145CD /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				20D895FF1D23A84D002B9F9D /* LoginAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -227,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				2038099E1D13EEEB005145CD /* AppReducer.swift */,
+				20D895FD1D23A637002B9F9D /* LoginReducer.swift */,
 			);
 			path = Reducer;
 			sourceTree = "<group>";
@@ -245,8 +268,17 @@
 			children = (
 				20D895F21D1D1970002B9F9D /* TopViewController.swift */,
 				2B45C1791D2257A100D4326C /* BackgroundViewController.swift */,
+				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		20D896031D23AE83002B9F9D /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */,
+			);
+			path = Validator;
 			sourceTree = "<group>";
 		};
 		2B45C1601D20D61B00D4326C /* Font */ = {
@@ -268,6 +300,7 @@
 			children = (
 				2B45C1721D21076000D4326C /* UINavigationController+StatusBar.h */,
 				2B45C1731D21076000D4326C /* UINavigationController+StatusBar.m */,
+				2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -413,6 +446,7 @@
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
 				2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */,
+				20D8960A1D23B764002B9F9D /* SignIn.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,10 +607,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
+				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
+				20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */,
+				20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
+				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
+				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
@@ -590,6 +630,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D896061D23B0DD002B9F9D /* MailAddressValidator.swift in Sources */,
+				20D896081D23B0F4002B9F9D /* ValidationTests.swift in Sources */,
 				2038097E1D13D89D005145CD /* CypherpunkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

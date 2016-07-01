@@ -45,7 +45,10 @@ class TopViewController: UIViewController {
             name: NEVPNStatusDidChangeNotification,
             object: nil
         )
-
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
