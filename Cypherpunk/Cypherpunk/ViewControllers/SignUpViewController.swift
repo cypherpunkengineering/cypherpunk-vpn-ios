@@ -1,55 +1,56 @@
 //
-//  SignInViewController.swift
+//  SignUpViewController.swift
 //  Cypherpunk
 //
-//  Created by 木村圭佑 on 2016/06/29.
+//  Created by KeisukeKimura on 2016/07/04.
 //  Copyright © 2016年 Cypherpunk. All rights reserved.
 //
 
 import UIKit
 
-class SignInViewController: UIViewController, HasShownKeyboardType {
+class SignUpViewController: UIViewController, HasShownKeyboardType {
 
     @IBOutlet weak var mailAddressField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
     
     @IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mailAddressField.text = "test@test.com"
-        passwordField.text = "password"
-    }
 
+        // Do any additional setup after loading the view.
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        registerKeyboardNotification()
+        self.registerKeyboardNotification()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        removeKeyboardNotification()
+        self.removeKeyboardNotification()
     }
-    
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func signInAction() {
-        signIn()
+    
+    @IBAction func signUpAction() {
+        signUp()
     }
-
-    func signIn() {
-        if let address = mailAddressField.text, let password = passwordField.text where isValidMailAddress(address) && password != "" {
-            mainStore.dispatch(LoginAction.Login(mailAddress: address, password: password))            
+    
+    func signUp() {
+        if let address = mailAddressField.text where isValidMailAddress(address) {
+            mainStore.dispatch(LoginAction.SignUp(mailAddress: address))
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-    }    
+    }
+    
 }
 
-extension SignInViewController: UITextFieldDelegate {
+extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         

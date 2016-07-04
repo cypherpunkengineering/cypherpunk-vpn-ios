@@ -31,6 +31,9 @@
 		20D896061D23B0DD002B9F9D /* MailAddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */; };
 		20D896081D23B0F4002B9F9D /* ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896071D23B0F4002B9F9D /* ValidationTests.swift */; };
 		20D8960A1D23B764002B9F9D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D896091D23B764002B9F9D /* SignIn.storyboard */; };
+		2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4489201D2A53A700D202F9 /* SignUp.storyboard */; };
+		2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489221D2A59F500D202F9 /* SignUpViewController.swift */; };
+		2B4489261D2A625A00D202F9 /* HasShownKeyboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489251D2A625A00D202F9 /* HasShownKeyboardType.swift */; };
 		2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1611D20D64600D4326C /* Dosis-Bold.otf */; };
 		2B45C1691D20D64600D4326C /* Dosis-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */; };
 		2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */; };
@@ -95,6 +98,9 @@
 		20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAddressValidator.swift; sourceTree = "<group>"; };
 		20D896071D23B0F4002B9F9D /* ValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTests.swift; sourceTree = "<group>"; };
 		20D896091D23B764002B9F9D /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SignIn.storyboard; path = Cypherpunk/SignIn.storyboard; sourceTree = SOURCE_ROOT; };
+		2B4489201D2A53A700D202F9 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		2B4489221D2A59F500D202F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		2B4489251D2A625A00D202F9 /* HasShownKeyboardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasShownKeyboardType.swift; sourceTree = "<group>"; };
 		2B45C1611D20D64600D4326C /* Dosis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.otf"; sourceTree = "<group>"; };
 		2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
 		2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 			children = (
 				2B45C1601D20D61B00D4326C /* Font */,
 				203809981D13DAF3005145CD /* Cypherpunk.entitlements */,
+				2B4489241D2A623A00D202F9 /* Protocol */,
 				2B45C16F1D21072500D4326C /* Extension */,
 				20D895E81D1D0C17002B9F9D /* External */,
 				203809681D13D89D005145CD /* AppDelegate.swift */,
@@ -198,6 +205,7 @@
 				2038099B1D13EDA1005145CD /* Reducer */,
 				2038096C1D13D89D005145CD /* Main.storyboard */,
 				20D896091D23B764002B9F9D /* SignIn.storyboard */,
+				2B4489201D2A53A700D202F9 /* SignUp.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20D895E91D1D0D75002B9F9D /* Drawer.storyboard */,
 				2038096F1D13D89D005145CD /* Assets.xcassets */,
@@ -269,6 +277,7 @@
 				20D895F21D1D1970002B9F9D /* TopViewController.swift */,
 				2B45C1791D2257A100D4326C /* BackgroundViewController.swift */,
 				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
+				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -279,6 +288,14 @@
 				20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */,
 			);
 			path = Validator;
+			sourceTree = "<group>";
+		};
+		2B4489241D2A623A00D202F9 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2B4489251D2A625A00D202F9 /* HasShownKeyboardType.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		2B45C1601D20D61B00D4326C /* Font */ = {
@@ -444,6 +461,7 @@
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
+				2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
 				2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */,
 				20D8960A1D23B764002B9F9D /* SignIn.storyboard in Resources */,
@@ -612,9 +630,11 @@
 				20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */,
 				20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
+				2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
+				2B4489261D2A625A00D202F9 /* HasShownKeyboardType.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
