@@ -131,6 +131,18 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmO-Xg-NBN">
+                                        <rect key="frame" x="40" y="404" width="520" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="sOx-Ly-jPk"/>
+                                        </constraints>
+                                        <state key="normal" title="Don't you have account? Sign Up">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="NZK-DU-nsM" kind="show" id="fbC-dW-tKx"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-QR-9oM">
                                         <rect key="frame" x="40" y="323" width="520" height="48"/>
                                         <constraints>
@@ -159,8 +171,11 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstItem="UGd-5B-lqG" firstAttribute="top" secondItem="C0C-oH-jeW" secondAttribute="bottom" constant="20" id="15c-mz-gj9"/>
+                                    <constraint firstItem="LmO-Xg-NBN" firstAttribute="trailing" secondItem="Ikb-QR-9oM" secondAttribute="trailing" id="5i4-j3-Ejd"/>
                                     <constraint firstItem="C0C-oH-jeW" firstAttribute="top" secondItem="UhM-Gr-BZT" secondAttribute="bottom" constant="31" id="Cxk-cg-hhv"/>
+                                    <constraint firstItem="LmO-Xg-NBN" firstAttribute="leading" secondItem="Ikb-QR-9oM" secondAttribute="leading" id="E8c-A8-1F5"/>
                                     <constraint firstItem="Epb-yZ-YBw" firstAttribute="top" secondItem="5xe-hE-xun" secondAttribute="bottom" constant="45" id="Gty-dG-Cw1"/>
+                                    <constraint firstItem="LmO-Xg-NBN" firstAttribute="top" secondItem="Ikb-QR-9oM" secondAttribute="bottom" constant="33" id="Nvf-YZ-9k3"/>
                                     <constraint firstItem="Ikb-QR-9oM" firstAttribute="top" secondItem="UGd-5B-lqG" secondAttribute="bottom" constant="20" id="RXc-FD-ixu"/>
                                     <constraint firstItem="Ikb-QR-9oM" firstAttribute="leading" secondItem="UGd-5B-lqG" secondAttribute="leading" id="Sg5-oU-7MS"/>
                                     <constraint firstItem="UhM-Gr-BZT" firstAttribute="leading" secondItem="Rmh-5r-RxF" secondAttribute="leading" constant="40" id="WwO-4W-0ce"/>
@@ -196,6 +211,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fRZ-lW-eF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1282" y="561"/>
+        </scene>
+        <!--SignUp-->
+        <scene sceneID="ela-Ik-5Kz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" id="NZK-DU-nsM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dnc-If-qZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1694.5" y="760"/>
         </scene>
     </scenes>
     <resources>

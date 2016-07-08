@@ -25,13 +25,12 @@ class SignInViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        registerKeyboardNotification()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        removeKeyboardNotification()
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,7 +46,10 @@ class SignInViewController: UIViewController {
             mainStore.dispatch(LoginAction.Login(mailAddress: address, password: password))            
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-    }
+    }    
+}
+
+extension SignInViewController {
     
     func keyboardWillShow(sender: NSNotification) {
         if let userInfo = sender.userInfo {
@@ -59,11 +61,26 @@ class SignInViewController: UIViewController {
             }
         }
     }
-
+    
     func keyboardWillHide(sender: NSNotification) {
         bottomSpaceConstraint.constant = 0.0
         UIView.animateWithDuration(0.25, animations: { () -> Void in self.view.layoutIfNeeded() })
     }
+    
+    func registerKeyboardNotification() {
+        let defaultCenter = NSNotificationCenter.defaultCenter()
+        
+        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillShow(_:)) , name: UIKeyboardWillShowNotification, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func removeKeyboardNotification() {
+        let defaultCenter = NSNotificationCenter.defaultCenter()
+        
+        defaultCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        defaultCenter.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+
 }
 
 extension SignInViewController: UITextFieldDelegate {
