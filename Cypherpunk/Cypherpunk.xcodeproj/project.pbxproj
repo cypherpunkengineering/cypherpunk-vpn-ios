@@ -33,7 +33,7 @@
 		20D8960A1D23B764002B9F9D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D896091D23B764002B9F9D /* SignIn.storyboard */; };
 		2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4489201D2A53A700D202F9 /* SignUp.storyboard */; };
 		2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489221D2A59F500D202F9 /* SignUpViewController.swift */; };
-		2B4489261D2A625A00D202F9 /* HasShownKeyboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489251D2A625A00D202F9 /* HasShownKeyboardType.swift */; };
+		2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */; };
 		2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1611D20D64600D4326C /* Dosis-Bold.otf */; };
 		2B45C1691D20D64600D4326C /* Dosis-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */; };
 		2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */; };
@@ -100,7 +100,7 @@
 		20D896091D23B764002B9F9D /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SignIn.storyboard; path = Cypherpunk/SignIn.storyboard; sourceTree = SOURCE_ROOT; };
 		2B4489201D2A53A700D202F9 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		2B4489221D2A59F500D202F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		2B4489251D2A625A00D202F9 /* HasShownKeyboardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasShownKeyboardType.swift; sourceTree = "<group>"; };
+		2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorGradientView.swift; sourceTree = "<group>"; };
 		2B45C1611D20D64600D4326C /* Dosis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.otf"; sourceTree = "<group>"; };
 		2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
 		2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -267,6 +267,7 @@
 			children = (
 				206D93F31D1D06EE002B6913 /* CKNavDrawerController.swift */,
 				20D895F41D1D1C6F002B9F9D /* IPAddress.swift */,
+				2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -293,7 +294,6 @@
 		2B4489241D2A623A00D202F9 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				2B4489251D2A625A00D202F9 /* HasShownKeyboardType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -628,13 +628,13 @@
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */,
+				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
 				2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
-				2B4489261D2A625A00D202F9 /* HasShownKeyboardType.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,

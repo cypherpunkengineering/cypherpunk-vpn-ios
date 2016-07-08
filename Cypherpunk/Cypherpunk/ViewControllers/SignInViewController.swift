@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController, HasShownKeyboardType {
+class SignInViewController: UIViewController {
 
     @IBOutlet weak var mailAddressField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -47,6 +47,40 @@ class SignInViewController: UIViewController, HasShownKeyboardType {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }    
+}
+
+extension SignInViewController {
+    
+    func keyboardWillShow(sender: NSNotification) {
+        if let userInfo = sender.userInfo {
+            if let keyboardHeight = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size.height {
+                bottomSpaceConstraint.constant = keyboardHeight
+                UIView.animateWithDuration(0.25, animations: { () -> Void in
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        bottomSpaceConstraint.constant = 0.0
+        UIView.animateWithDuration(0.25, animations: { () -> Void in self.view.layoutIfNeeded() })
+    }
+    
+    func registerKeyboardNotification() {
+        let defaultCenter = NSNotificationCenter.defaultCenter()
+        
+        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillShow(_:)) , name: UIKeyboardWillShowNotification, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func removeKeyboardNotification() {
+        let defaultCenter = NSNotificationCenter.defaultCenter()
+        
+        defaultCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        defaultCenter.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+
 }
 
 extension SignInViewController: UITextFieldDelegate {
