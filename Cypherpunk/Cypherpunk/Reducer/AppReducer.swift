@@ -11,10 +11,14 @@ import Foundation
 import ReSwift
 
 struct AppReducer: Reducer {
+    
+    let loginReducer = LoginReducer()
+    
     func handleAction(action: Action, state: AppState?) -> AppState {
         
         return AppState(
-            loginState: LoginReducer.handleAction(action, state: state?.loginState)
+            loginState: loginReducer.handleAction(action, state: state?.loginState),
+            regionState:  RegionReducer.handleAction(action, state: state?.regionState)
         )
     }
 }

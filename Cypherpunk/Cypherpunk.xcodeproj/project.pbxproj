@@ -31,6 +31,10 @@
 		20D896061D23B0DD002B9F9D /* MailAddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */; };
 		20D896081D23B0F4002B9F9D /* ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896071D23B0F4002B9F9D /* ValidationTests.swift */; };
 		20D8960A1D23B764002B9F9D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D896091D23B764002B9F9D /* SignIn.storyboard */; };
+		20EC4A321D2F702100785399 /* Region.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20EC4A311D2F702100785399 /* Region.storyboard */; };
+		20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A331D2F785600785399 /* RegionSelectViewController.swift */; };
+		20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A371D2F7BAE00785399 /* RegionState.swift */; };
+		20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A391D2F82CC00785399 /* RegionReducer.swift */; };
 		2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4489201D2A53A700D202F9 /* SignUp.storyboard */; };
 		2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489221D2A59F500D202F9 /* SignUpViewController.swift */; };
 		2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */; };
@@ -98,6 +102,10 @@
 		20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAddressValidator.swift; sourceTree = "<group>"; };
 		20D896071D23B0F4002B9F9D /* ValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTests.swift; sourceTree = "<group>"; };
 		20D896091D23B764002B9F9D /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SignIn.storyboard; path = Cypherpunk/SignIn.storyboard; sourceTree = SOURCE_ROOT; };
+		20EC4A311D2F702100785399 /* Region.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Region.storyboard; sourceTree = "<group>"; };
+		20EC4A331D2F785600785399 /* RegionSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionSelectViewController.swift; sourceTree = "<group>"; };
+		20EC4A371D2F7BAE00785399 /* RegionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionState.swift; sourceTree = "<group>"; };
+		20EC4A391D2F82CC00785399 /* RegionReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionReducer.swift; sourceTree = "<group>"; };
 		2B4489201D2A53A700D202F9 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		2B4489221D2A59F500D202F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorGradientView.swift; sourceTree = "<group>"; };
@@ -204,6 +212,7 @@
 				203809991D13ED84005145CD /* State */,
 				2038099B1D13EDA1005145CD /* Reducer */,
 				2038096C1D13D89D005145CD /* Main.storyboard */,
+				20EC4A311D2F702100785399 /* Region.storyboard */,
 				20D896091D23B764002B9F9D /* SignIn.storyboard */,
 				2B4489201D2A53A700D202F9 /* SignUp.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
@@ -241,6 +250,7 @@
 			children = (
 				2038099C1D13EEA9005145CD /* AppState.swift */,
 				20D895FB1D23A1E7002B9F9D /* LoginState.swift */,
+				20EC4A371D2F7BAE00785399 /* RegionState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -258,6 +268,7 @@
 			children = (
 				2038099E1D13EEEB005145CD /* AppReducer.swift */,
 				20D895FD1D23A637002B9F9D /* LoginReducer.swift */,
+				20EC4A391D2F82CC00785399 /* RegionReducer.swift */,
 			);
 			path = Reducer;
 			sourceTree = "<group>";
@@ -279,6 +290,7 @@
 				2B45C1791D2257A100D4326C /* BackgroundViewController.swift */,
 				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
 				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
+				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -457,6 +469,7 @@
 				20D895EA1D1D0D75002B9F9D /* Drawer.storyboard in Resources */,
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
+				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
 				2038096E1D13D89D005145CD /* Main.storyboard in Resources */,
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
@@ -634,6 +647,7 @@
 				2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
+				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
@@ -641,8 +655,10 @@
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
 				206D93F41D1D06EE002B6913 /* CKNavDrawerController.swift in Sources */,
+				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,
+				20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

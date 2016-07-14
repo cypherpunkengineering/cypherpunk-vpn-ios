@@ -10,8 +10,8 @@ import Foundation
 
 import ReSwift
 
-struct LoginReducer {
-    static func handleAction(action: Action, state: LoginState?) -> LoginState {
+struct LoginReducer: Reducer {
+    func handleAction(action: Action, state: LoginState?) -> LoginState {
         
         var loginState = state ?? LoginState(isLoggedIn: false, mailAddress: "", password: "")
         
