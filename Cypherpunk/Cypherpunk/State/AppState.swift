@@ -13,4 +13,5 @@ import ReSwift
 struct AppState: StateType {
     let loginState: LoginState
     let regionState: RegionState
+    let settingsState: SettingsState
 }

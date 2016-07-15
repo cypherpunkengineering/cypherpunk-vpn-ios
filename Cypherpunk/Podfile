@@ -10,6 +10,7 @@ target 'Cypherpunk' do
        pod 'Himotoki'
        pod 'R.swift'
        pod 'ReachabilitySwift'
+       pod 'KeychainAccess'
 end
 
 target 'CypherpunkTests' do

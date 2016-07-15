@@ -45,6 +45,13 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCs-I6-CIn">
+                                <rect key="frame" x="283" y="544" width="36" height="36"/>
+                                <state key="normal" image="ic_place_white"/>
+                                <connections>
+                                    <segue destination="91n-X5-09H" kind="presentation" id="Dtc-ZU-9uP"/>
+                                </connections>
+                            </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qIq-MF-TaH">
                                 <rect key="frame" x="276" y="386" width="51" height="31"/>
                                 <connections>
@@ -58,10 +65,12 @@
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" constant="20" id="9cj-Tr-Qel"/>
                             <constraint firstItem="bwg-Z8-Pjv" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="C72-U0-3Z6"/>
                             <constraint firstItem="qIq-MF-TaH" firstAttribute="centerX" secondItem="bwg-Z8-Pjv" secondAttribute="centerX" id="Ofu-CQ-BET"/>
+                            <constraint firstItem="UCs-I6-CIn" firstAttribute="centerX" secondItem="qIq-MF-TaH" secondAttribute="centerX" id="P71-6Y-a0q"/>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" id="ZEd-9Z-m75"/>
                             <constraint firstItem="bwg-Z8-Pjv" firstAttribute="top" secondItem="qIq-MF-TaH" secondAttribute="bottom" constant="38" id="aKe-Ij-LMU"/>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leadingMargin" id="bC8-zv-LdF"/>
                             <constraint firstItem="TNd-hX-uZx" firstAttribute="centerX" secondItem="qIq-MF-TaH" secondAttribute="centerX" id="dME-pk-db8"/>
+                            <constraint firstAttribute="bottom" secondItem="UCs-I6-CIn" secondAttribute="bottom" constant="20" symbolic="YES" id="iP8-93-Rva"/>
                             <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="bwg-Z8-Pjv" secondAttribute="bottom" constant="123" id="vcp-HO-pIM"/>
                         </constraints>
                         <variation key="default">
@@ -80,8 +89,17 @@
             </objects>
             <point key="canvasLocation" x="259" y="535"/>
         </scene>
+        <!--Region-->
+        <scene sceneID="mmh-kJ-wDM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Region" id="91n-X5-09H" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oz2-xM-HMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="732.5" y="784"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_menu" width="24" height="24"/>
+        <image name="ic_place_white" width="36" height="36"/>
     </resources>
 </document>

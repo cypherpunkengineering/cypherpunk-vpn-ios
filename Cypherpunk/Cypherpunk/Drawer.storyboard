@@ -10,10 +10,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Table View Controller-->
+        <!--Nav Drawer View Controller-->
         <scene sceneID="7NG-qO-0Qm">
             <objects>
-                <tableViewController storyboardIdentifier="Drawer" id="c4L-h5-Acl" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Drawer" id="c4L-h5-Acl" customClass="NavDrawerViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qSd-dg-iWx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,14 +82,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Free Plan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SpT-d9-iil">
-                                                    <rect key="frame" x="15" y="14" width="67.5" height="19.5"/>
+                                                    <rect key="frame" x="15" y="13" width="68" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="sample@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rfu-gW-NhQ">
-                                                    <rect key="frame" x="15" y="33.5" width="101.5" height="13.5"/>
+                                                    <rect key="frame" x="15" y="33" width="102" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -126,6 +126,9 @@
                                             <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="Mqx-Ht-wgN" kind="show" id="rDd-nG-M0V"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -140,9 +143,17 @@
             </objects>
             <point key="canvasLocation" x="393" y="405"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="6sc-eo-66D">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="Mqx-Ht-wgN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZXk-BV-OFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912.5" y="405"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_settings" width="24" height="24"/>
-        <image name="logo" width="60" height="111"/>
+        <image name="logo" width="162" height="282"/>
     </resources>
 </document>

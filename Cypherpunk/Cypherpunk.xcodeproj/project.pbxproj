@@ -35,6 +35,12 @@
 		20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A331D2F785600785399 /* RegionSelectViewController.swift */; };
 		20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A371D2F7BAE00785399 /* RegionState.swift */; };
 		20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A391D2F82CC00785399 /* RegionReducer.swift */; };
+		20EC4A401D376C5200785399 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20EC4A3F1D376C5200785399 /* Settings.storyboard */; };
+		20EC4A421D37719400785399 /* NavDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A411D37719400785399 /* NavDrawerViewController.swift */; };
+		20EC4A441D377A1200785399 /* AdvancedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */; };
+		20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A451D3780BC00785399 /* SettingsState.swift */; };
+		20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A471D37851200785399 /* SettingsReducer.swift */; };
+		20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A491D378CBC00785399 /* SettingsAction.swift */; };
 		2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4489201D2A53A700D202F9 /* SignUp.storyboard */; };
 		2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489221D2A59F500D202F9 /* SignUpViewController.swift */; };
 		2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */; };
@@ -106,6 +112,12 @@
 		20EC4A331D2F785600785399 /* RegionSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionSelectViewController.swift; sourceTree = "<group>"; };
 		20EC4A371D2F7BAE00785399 /* RegionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionState.swift; sourceTree = "<group>"; };
 		20EC4A391D2F82CC00785399 /* RegionReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionReducer.swift; sourceTree = "<group>"; };
+		20EC4A3F1D376C5200785399 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		20EC4A411D37719400785399 /* NavDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavDrawerViewController.swift; sourceTree = "<group>"; };
+		20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsViewController.swift; sourceTree = "<group>"; };
+		20EC4A451D3780BC00785399 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
+		20EC4A471D37851200785399 /* SettingsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
+		20EC4A491D378CBC00785399 /* SettingsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
 		2B4489201D2A53A700D202F9 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		2B4489221D2A59F500D202F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorGradientView.swift; sourceTree = "<group>"; };
@@ -217,6 +229,7 @@
 				2B4489201D2A53A700D202F9 /* SignUp.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20D895E91D1D0D75002B9F9D /* Drawer.storyboard */,
+				20EC4A3F1D376C5200785399 /* Settings.storyboard */,
 				2038096F1D13D89D005145CD /* Assets.xcassets */,
 				203809711D13D89D005145CD /* LaunchScreen.storyboard */,
 				20D895ED1D1D16FB002B9F9D /* R.generated.swift */,
@@ -251,6 +264,7 @@
 				2038099C1D13EEA9005145CD /* AppState.swift */,
 				20D895FB1D23A1E7002B9F9D /* LoginState.swift */,
 				20EC4A371D2F7BAE00785399 /* RegionState.swift */,
+				20EC4A451D3780BC00785399 /* SettingsState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -259,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				20D895FF1D23A84D002B9F9D /* LoginAction.swift */,
+				20EC4A491D378CBC00785399 /* SettingsAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -269,6 +284,7 @@
 				2038099E1D13EEEB005145CD /* AppReducer.swift */,
 				20D895FD1D23A637002B9F9D /* LoginReducer.swift */,
 				20EC4A391D2F82CC00785399 /* RegionReducer.swift */,
+				20EC4A471D37851200785399 /* SettingsReducer.swift */,
 			);
 			path = Reducer;
 			sourceTree = "<group>";
@@ -291,6 +307,8 @@
 				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
 				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
+				20EC4A411D37719400785399 /* NavDrawerViewController.swift */,
+				20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -474,6 +492,7 @@
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
+				20EC4A401D376C5200785399 /* Settings.storyboard in Resources */,
 				2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
 				2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */,
@@ -638,6 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */,
@@ -647,10 +667,13 @@
 				2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
+				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
+				20EC4A421D37719400785399 /* NavDrawerViewController.swift in Sources */,
+				20EC4A441D377A1200785399 /* AdvancedSettingsViewController.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
@@ -659,6 +682,7 @@
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,
 				20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */,
+				20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

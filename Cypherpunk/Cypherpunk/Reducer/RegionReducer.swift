@@ -10,8 +10,8 @@ import Foundation
 
 import ReSwift
 
-struct RegionReducer {
-    static func handleAction(action: Action, state: RegionState?) -> RegionState {
+struct RegionReducer: Reducer {
+    func handleAction(action: Action, state: RegionState?) -> RegionState {
         
         let regionState = state ?? RegionState(serverURL: "", selectedArea: .Americas)
         
