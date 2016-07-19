@@ -24,6 +24,8 @@ public class JSONDataParser: DataParserType {
             return [:]
         }
 
+        print(String(data: data, encoding: NSUTF8StringEncoding))
+        
         return try NSJSONSerialization.JSONObjectWithData(data, options: readingOptions)
     }
 }

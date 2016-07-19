@@ -12,6 +12,6 @@ import ReSwift
 enum LoginAction: Action {
     case SignUp(mailAddress: String)
     case Activate(mailAddress: String, password: String)
-    case Login(mailAddress: String, password: String)
+    case Login(response: LoginResponse)
     case Logout
 }

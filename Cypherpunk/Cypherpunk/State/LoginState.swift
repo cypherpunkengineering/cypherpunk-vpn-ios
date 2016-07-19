@@ -14,4 +14,5 @@ struct LoginState : StateType {
     var isLoggedIn: Bool
     var mailAddress: String
     var password: String
+    var secret: String
 }
