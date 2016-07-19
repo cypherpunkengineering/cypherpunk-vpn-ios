@@ -190,7 +190,6 @@
 			children = (
 				203809961D13DAF3005145CD /* NetworkExtension.framework */,
 				203809671D13D89D005145CD /* Cypherpunk */,
-				2038097C1D13D89D005145CD /* CypherpunkTests */,
 				203809871D13D89D005145CD /* CypherpunkUITests */,
 				203809661D13D89D005145CD /* Products */,
 				0E7B828B580702FADF507CEC /* Pods */,
@@ -211,6 +210,7 @@
 		203809671D13D89D005145CD /* Cypherpunk */ = {
 			isa = PBXGroup;
 			children = (
+				2038097C1D13D89D005145CD /* CypherpunkTests */,
 				2B45C1601D20D61B00D4326C /* Font */,
 				203809981D13DAF3005145CD /* Cypherpunk.entitlements */,
 				2B4489241D2A623A00D202F9 /* Protocol */,
@@ -247,7 +247,7 @@
 				2038097F1D13D89D005145CD /* Info.plist */,
 			);
 			path = CypherpunkTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		203809871D13D89D005145CD /* CypherpunkUITests */ = {
 			isa = PBXGroup;
