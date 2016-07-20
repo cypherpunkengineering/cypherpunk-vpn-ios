@@ -20,7 +20,7 @@ public class VPNConfigurationCoordinator {
 
             newIPSec.authenticationMethod = .None
             
-            newIPSec.serverAddress = "free-nl.hide.me"
+            newIPSec.serverAddress = "tokyo.hide.me"
             newIPSec.username = "corosuke_k"
             
             
@@ -42,7 +42,7 @@ public class VPNConfigurationCoordinator {
                 manager.`protocol` = newIPSec
             }
             
-            manager.localizedDescription = "IPSec Demo"
+            manager.localizedDescription = "Cyperpunk VPN"
             
             // ここだけ毎回saveしなければいけないpropertyのはずなので、別途その画面を作る際には毎回やる必要があるはず
             manager.onDemandEnabled = true
