@@ -8,7 +8,12 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+import APIKit
+import ReSwift
+
+import SVProgressHUD
+
+class SignInViewController: UIViewController, StoreSubscriber {
 
     @IBOutlet weak var mailAddressField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -18,18 +23,19 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mailAddressField.text = "test@test.com"
-        passwordField.text = "password"
+        mailAddressField.text = "test@test.test"
+        passwordField.text = "test123"
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        mainStore.subscribe(self, selector: nil)
         registerKeyboardNotification()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        mainStore.unsubscribe(self)
         removeKeyboardNotification()
     }
     
@@ -43,10 +49,31 @@ class SignInViewController: UIViewController {
 
     func signIn() {
         if let address = mailAddressField.text, let password = passwordField.text where isValidMailAddress(address) && password != "" {
-            mainStore.dispatch(LoginAction.Login(mailAddress: address, password: password))            
+            
+            SVProgressHUD.show()
+            
+            let request = LoginRequest(login: address, password: password)
+            Session.sendRequest(request) { result in
+                switch result {
+                case .Success(let response):
+                    SVProgressHUD.dismiss()
+                    mainStore.dispatch(LoginAction.Login(response: response))
+                case .Failure(let error):
+                    SVProgressHUD.showErrorWithStatus("\(error)")
+                }
+            }
+
+        }
+    }
+    
+    func newState(state: AppState)
+    {
+        if state.loginState.isLoggedIn {
+            // TODO: transition to send email screen
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-    }    
+    }
+
 }
 
 extension SignInViewController {

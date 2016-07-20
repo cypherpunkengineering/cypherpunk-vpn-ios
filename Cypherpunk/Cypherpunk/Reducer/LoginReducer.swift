@@ -13,7 +13,7 @@ import ReSwift
 struct LoginReducer: Reducer {
     func handleAction(action: Action, state: LoginState?) -> LoginState {
         
-        var loginState = state ?? LoginState(isLoggedIn: false, mailAddress: "", password: "")
+        var loginState = state ?? LoginState(isLoggedIn: false, mailAddress: "", password: "", secret: "")
         
         guard let loginAction = action as? LoginAction else {
             return loginState
@@ -28,10 +28,10 @@ struct LoginReducer: Reducer {
             loginState.isLoggedIn = true
             loginState.mailAddress = mailAddress
             loginState.password = password
-        case .Login(let mailAddress, let password):
+        case .Login(let response):
             loginState.isLoggedIn = true
-            loginState.mailAddress = mailAddress
-            loginState.password = password
+            loginState.mailAddress = response.account.email
+            loginState.secret = response.secret
         case .Logout:
             loginState.isLoggedIn = false
         }
