@@ -11,6 +11,8 @@ import UIKit
 import APIKit
 import ReSwift
 
+import SVProgressHUD
+
 class SignInViewController: UIViewController, StoreSubscriber {
 
     @IBOutlet weak var mailAddressField: UITextField!
@@ -47,13 +49,17 @@ class SignInViewController: UIViewController, StoreSubscriber {
 
     func signIn() {
         if let address = mailAddressField.text, let password = passwordField.text where isValidMailAddress(address) && password != "" {
+            
+            SVProgressHUD.show()
+            
             let request = LoginRequest(login: address, password: password)
             Session.sendRequest(request) { result in
                 switch result {
                 case .Success(let response):
+                    SVProgressHUD.dismiss()
                     mainStore.dispatch(LoginAction.Login(response: response))
                 case .Failure(let error):
-                    print(error)
+                    SVProgressHUD.showErrorWithStatus("\(error)")
                 }
             }
 
