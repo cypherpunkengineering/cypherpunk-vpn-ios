@@ -42,6 +42,9 @@
 		20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A471D37851200785399 /* SettingsReducer.swift */; };
 		20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A491D378CBC00785399 /* SettingsAction.swift */; };
 		20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F850901D3DF40A009079A0 /* LoginAPI.swift */; };
+		2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */; };
+		2B2B59E31D3F8E0A003FA705 /* CountrySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E21D3F8E0A003FA705 /* CountrySelectViewController.swift */; };
+		2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E41D3F98D0003FA705 /* RegionAction.swift */; };
 		2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4489201D2A53A700D202F9 /* SignUp.storyboard */; };
 		2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489221D2A59F500D202F9 /* SignUpViewController.swift */; };
 		2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */; };
@@ -120,6 +123,9 @@
 		20EC4A471D37851200785399 /* SettingsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		20EC4A491D378CBC00785399 /* SettingsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
 		20F850901D3DF40A009079A0 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAPI.swift; sourceTree = "<group>"; };
+		2B2B59E21D3F8E0A003FA705 /* CountrySelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelectViewController.swift; sourceTree = "<group>"; };
+		2B2B59E41D3F98D0003FA705 /* RegionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionAction.swift; sourceTree = "<group>"; };
 		2B4489201D2A53A700D202F9 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		2B4489221D2A59F500D202F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorGradientView.swift; sourceTree = "<group>"; };
@@ -270,6 +276,7 @@
 			children = (
 				20D895FF1D23A84D002B9F9D /* LoginAction.swift */,
 				20EC4A491D378CBC00785399 /* SettingsAction.swift */,
+				2B2B59E41D3F98D0003FA705 /* RegionAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -303,6 +310,7 @@
 				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
 				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
+				2B2B59E21D3F8E0A003FA705 /* CountrySelectViewController.swift */,
 				20EC4A411D37719400785399 /* NavDrawerViewController.swift */,
 				20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */,
 			);
@@ -336,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				20F850901D3DF40A009079A0 /* LoginAPI.swift */,
+				2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -684,7 +693,10 @@
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
+				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
+				2B2B59E31D3F8E0A003FA705 /* CountrySelectViewController.swift in Sources */,
 				2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */,
+				2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,

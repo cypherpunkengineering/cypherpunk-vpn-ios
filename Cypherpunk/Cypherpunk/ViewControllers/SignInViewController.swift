@@ -54,12 +54,15 @@ class SignInViewController: UIViewController, StoreSubscriber {
             
             let request = LoginRequest(login: address, password: password)
             Session.sendRequest(request) { result in
+                
                 switch result {
                 case .Success(let response):
+                    let listRequest = RegionListRequest(session: response.session)
+                    Session.sendRequest(listRequest)
                     SVProgressHUD.dismiss()
                     mainStore.dispatch(LoginAction.Login(response: response))
                 case .Failure(let error):
-                    SVProgressHUD.showErrorWithStatus("\(error)")
+                    SVProgressHUD.showErrorWithStatus("\((error as NSError).localizedDescription)")
                 }
             }
 

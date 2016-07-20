@@ -49,7 +49,7 @@
                                 <rect key="frame" x="283" y="544" width="36" height="36"/>
                                 <state key="normal" image="ic_place_white"/>
                                 <connections>
-                                    <segue destination="91n-X5-09H" kind="presentation" id="Dtc-ZU-9uP"/>
+                                    <segue destination="91n-X5-09H" kind="showDetail" id="Dtc-ZU-9uP"/>
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qIq-MF-TaH">

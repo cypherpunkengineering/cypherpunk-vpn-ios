@@ -9,25 +9,7 @@
 import Foundation
 import ReSwift
 
-enum RegionArea {
-    case Americas
-    case Europe
-    case Asia
-    case Pacific
-    
-    static var areas: [RegionArea] = [
-        .Americas,
-        .Europe,
-        .Asia,
-        .Pacific
-    ]
-    
-    static var count: Int {
-        return areas.count
-    }
-}
-
 struct RegionState: StateType {
-    let serverURL: String
-    let selectedArea: RegionArea
+    var cityName: String
+    var serverIP: String
 }
