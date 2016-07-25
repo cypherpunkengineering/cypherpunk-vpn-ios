@@ -13,14 +13,22 @@ import RealmSwift
 
 class RegionSelectViewController: UITableViewController {
 
-    var region: Region? = nil
+    var areaNames: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         let realm = try! Realm()
-        region = realm.objects(Region).first
+        let regions = realm.objects(Region)
+        areaNames = regions.reduce([]) { (names, region) -> [String] in
+            var ret = names
+            if names.contains(region.area) == false {
+                ret.append(region.area)
+            }
+            return ret
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,13 +50,35 @@ class RegionSelectViewController: UITableViewController {
         }
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Recentry connected"
+        }
+        return "Region"
+    }
+        
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return region?.areas.count ?? 0
+        if section == 0 {
+            return 0
+        }
+        return areaNames.count + 1 ?? 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
-        cell?.textLabel?.text = region?.areas[indexPath.row].name
+        
+        if indexPath.row == 0 {
+            cell?.textLabel?.text = "Auto select region"
+            cell?.accessoryType = .None
+        } else {
+            cell?.textLabel?.text = areaNames[indexPath.row - 1]
+        }
+        
         return cell!
     }
     
@@ -56,9 +86,15 @@ class RegionSelectViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        areaName = region?.areas[indexPath.row].name
+        if indexPath.section == 1 {
+            if indexPath.row != 0 {
+                areaName = areaNames[indexPath.row - 1]
+                self.performSegueWithIdentifier(R.segue.regionSelectViewController.toCountry, sender: nil)
+                return
+            }
+        }
         
-        self.performSegueWithIdentifier(R.segue.regionSelectViewController.toCountry, sender: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func closeAction(sender: AnyObject) {
@@ -70,9 +106,10 @@ class RegionSelectViewController: UITableViewController {
 
 class CountrySelectViewController: UITableViewController {
     
-    var areaName: String? = nil
-    var area: Area? = nil
-    
+    var areaName: String! = nil
+    var countryNames: [String] = []
+
+    var areaResults: Results<Region>! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -83,9 +120,17 @@ class CountrySelectViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         let realm = try! Realm()
-        let result = realm.objects(Area).filter("name BEGINSWITH %@", areaName!)
-        print(result)
-        area = result.first
+        areaResults = realm.objects(Region).filter("area == %@", areaName)
+        
+        countryNames = areaResults.reduce([]) { (names, region) -> [String] in
+            var ret = names
+            if names.contains(region.countryCode) == false {
+                ret.append(region.countryCode)
+            }
+            return ret
+        }
+
+        self.title = areaName
         tableView.reloadData()
     }
     
@@ -102,25 +147,27 @@ class CountrySelectViewController: UITableViewController {
         let destination = segue.destinationViewController
         
         if let destination = destination as? ServerSelectViewController {
+            destination.areaName = areaName
             destination.countryName = countryName
         }
     }
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return area?.countries.count ?? 0
+        return countryNames.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
         
-        if let country = area?.countries[indexPath.row] {
-            cell?.textLabel?.text = country.name
-            if country.servers.count == 1 {
-                cell?.accessoryType = .None
-            } else {
-                cell?.accessoryType = .DisclosureIndicator
-            }
+        let countryName = countryNames[indexPath.row]
+        
+        cell?.textLabel?.text = countryName
+        if areaResults.filter("countryCode == %@", countryName).count == 1 {
+            cell?.accessoryType = .None
+        } else {
+            cell?.accessoryType = .DisclosureIndicator
+            
         }
         
         return cell!
@@ -130,28 +177,31 @@ class CountrySelectViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if let country = area?.countries[indexPath.row] {
-            
-            if country.servers.count == 1 {
-                if let server = country.servers.first {
-                    mainStore.dispatch(RegionAction.ChangeRegion(cityName: server.city, serverIP: server.ip))
-                    
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                }
-            } else {
-                countryName = country.name
-                self.performSegueWithIdentifier(R.segue.countrySelectViewController.toServer, sender: nil)
+        let countryName = countryNames[indexPath.row]
+        
+        let regionResults = areaResults.filter("countryCode == %@", countryName)
+        if regionResults.count == 1 {
+            if let region = regionResults.first {
+                mainStore.dispatch(RegionAction.ChangeRegion(cityName: region.city, serverIP: region.ipAddress))
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
+        } else {
+            self.countryName = countryName
+            self.performSegueWithIdentifier(R.segue.countrySelectViewController.toServer, sender: nil)
         }
+
     }
     
 }
 
 class ServerSelectViewController: UITableViewController {
     
-    var countryName: String? = nil
-    var country: Country? = nil
+    var areaName: String! = nil
+    var countryName: String! = nil
     
+    var cityNames: [String] = []
+    var areaResults: Results<Region>! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -162,8 +212,17 @@ class ServerSelectViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         let realm = try! Realm()
-        let result = realm.objects(Country).filter("name BEGINSWITH %@", countryName!)
-        country = result.first
+        areaResults = realm.objects(Region).filter("area == %@ AND countryCode == %@", areaName, countryName)
+        
+        cityNames = areaResults.reduce([]) { (names, region) -> [String] in
+            var ret = names
+            if names.contains(region.city) == false {
+                ret.append(region.city)
+            }
+            return ret
+        }
+
+        self.title = countryName
         tableView.reloadData()
     }
     
@@ -175,20 +234,23 @@ class ServerSelectViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return country?.servers.count ?? 0
+        return cityNames.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
-        cell?.textLabel?.text = country?.servers[indexPath.row].city
+        cell?.textLabel?.text = cityNames[indexPath.row]
         return cell!
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        if let server = country?.servers[indexPath.row] {
-            mainStore.dispatch(RegionAction.ChangeRegion(cityName: server.city, serverIP: server.ip))
+
+        let cityName = cityNames[indexPath.row]
+        let regionResults = areaResults.filter("city == %@", cityName)
+
+        if let region = regionResults.first {
+            mainStore.dispatch(RegionAction.ChangeRegion(cityName: region.city, serverIP: region.ipAddress))
             
             self.dismissViewControllerAnimated(true, completion: nil)
         }
