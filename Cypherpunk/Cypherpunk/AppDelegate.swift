@@ -9,13 +9,13 @@
 import UIKit
 
 import ReSwift
+import SVProgressHUD
 
 let mainStore = Store<AppState>(
     reducer: AppReducer(),
     state: nil
 )
 
-import APIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Gradient)
+
         return true
     }
 

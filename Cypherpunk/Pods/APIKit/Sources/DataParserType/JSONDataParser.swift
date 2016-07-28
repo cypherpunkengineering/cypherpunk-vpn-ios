@@ -23,8 +23,6 @@ public class JSONDataParser: DataParserType {
         guard data.length > 0 else {
             return [:]
         }
-
-        print(String(data: data, encoding: NSUTF8StringEncoding))
         
         return try NSJSONSerialization.JSONObjectWithData(data, options: readingOptions)
     }

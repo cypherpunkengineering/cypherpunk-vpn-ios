@@ -26,7 +26,6 @@ struct LoginRequest: RequestType {
         return .POST
     }
     
-    
     var path: String {
         return "/account/authenticate/userpasswd"
     }
@@ -39,7 +38,16 @@ struct LoginRequest: RequestType {
     }
     
     func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Response {
-        return try decodeValue(object)
+        var response: Response = try decodeValue(object)
+
+        if let cookie = URLResponse.allHeaderFields["Set-Cookie"] as? String {
+            let separetedField = cookie.componentsSeparatedByString(";")
+            if let session = separetedField.first {
+                response.session = session
+            }
+        }
+        
+        return response
     }
     
     var dataParser: DataParserType {
@@ -50,11 +58,13 @@ struct LoginRequest: RequestType {
 struct LoginResponse: Decodable {
     let secret: String
     let account: Account
+    var session: String
     
     static func decode(e: Extractor) throws -> LoginResponse {
         return try LoginResponse(
             secret: e.value("secret"),
-            account: e.value("acct")
+            account: e.value("acct"),
+            session: ""
         )
     }
 }

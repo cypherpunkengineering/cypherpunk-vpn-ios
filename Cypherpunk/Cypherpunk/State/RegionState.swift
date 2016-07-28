@@ -9,25 +9,52 @@
 import Foundation
 import ReSwift
 
-enum RegionArea {
-    case Americas
-    case Europe
-    case Asia
-    case Pacific
+struct RegionState: StateType {
+    var areaName: String
+    var countryName: String
+    var cityName: String
+    var serverIP: String
     
-    static var areas: [RegionArea] = [
-        .Americas,
-        .Europe,
-        .Asia,
-        .Pacific
-    ]
+    var isAutoSelect: Bool = true
     
-    static var count: Int {
-        return areas.count
+    var recentryConnected: [RegionHistory] = []
+    
+    var title: String {
+        if isAutoSelect {
+            return "Auto Region Select"
+        } else {
+            return cityName + ", " + countryName
+        }
     }
+    
 }
 
-struct RegionState: StateType {
-    let serverURL: String
-    let selectedArea: RegionArea
+struct RegionHistory {
+    var areaName: String
+    var countryName: String
+    var cityName: String
+    var serverIP: String
+    
+    init(state: RegionState) {
+        self.areaName = state.areaName
+        self.countryName = state.countryName
+        self.cityName = state.cityName
+        self.serverIP = state.serverIP
+    }
+    
+    var title: String {
+        return cityName + ", " + countryName
+    }
+
+}
+
+extension RegionHistory: Equatable {
+}
+
+
+func ==(lhs: RegionHistory, rhs:RegionHistory) -> Bool {
+    return lhs.areaName == rhs.areaName &&
+    lhs.countryName == rhs.countryName &&
+    lhs.cityName == rhs.cityName &&
+    lhs.serverIP == rhs.serverIP
 }

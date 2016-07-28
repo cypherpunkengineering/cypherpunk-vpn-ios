@@ -4,3 +4,9 @@
 
 #import <ifaddrs.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+
+#import <CommonCrypto/CommonCryptor.h>
+#import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonHMAC.h>
+#import <CommonCrypto/CommonKeyDerivation.h>
+#import <CommonCrypto/CommonSymmetricKeywrap.h>
