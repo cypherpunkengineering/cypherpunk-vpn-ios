@@ -8,6 +8,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Dosis-Regular.otf">
             <string>Dosis-Regular</string>
+            <string>Dosis-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -46,8 +47,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCs-I6-CIn">
-                                <rect key="frame" x="283" y="544" width="36" height="36"/>
-                                <state key="normal" image="ic_place_white"/>
+                                <rect key="frame" x="20" y="544" width="560" height="36"/>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="28"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="9" maxX="18" maxY="0.0"/>
+                                <state key="normal" title="test" image="ic_arrow_down"/>
                                 <connections>
                                     <segue destination="91n-X5-09H" kind="showDetail" id="Dtc-ZU-9uP"/>
                                 </connections>
@@ -64,6 +67,8 @@
                             <constraint firstItem="qIq-MF-TaH" firstAttribute="top" secondItem="TNd-hX-uZx" secondAttribute="bottom" constant="41" id="4W5-Zw-Rux"/>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" constant="20" id="9cj-Tr-Qel"/>
                             <constraint firstItem="bwg-Z8-Pjv" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="C72-U0-3Z6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UCs-I6-CIn" secondAttribute="trailing" id="CRY-QI-srI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="UCs-I6-CIn" secondAttribute="leading" id="Nc9-FH-BkB"/>
                             <constraint firstItem="qIq-MF-TaH" firstAttribute="centerX" secondItem="bwg-Z8-Pjv" secondAttribute="centerX" id="Ofu-CQ-BET"/>
                             <constraint firstItem="UCs-I6-CIn" firstAttribute="centerX" secondItem="qIq-MF-TaH" secondAttribute="centerX" id="P71-6Y-a0q"/>
                             <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" id="ZEd-9Z-m75"/>
@@ -83,6 +88,7 @@
                         <outlet property="IPAddressLabel" destination="bwg-Z8-Pjv" id="hdE-Ae-5XN"/>
                         <outlet property="connectSwitch" destination="qIq-MF-TaH" id="5YL-zn-DyX"/>
                         <outlet property="connectionStateLabel" destination="TNd-hX-uZx" id="bVN-4e-sWL"/>
+                        <outlet property="regionButton" destination="UCs-I6-CIn" id="Xdz-Tu-3RX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4u-Fc-mfr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -99,7 +105,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_arrow_down" width="18" height="18"/>
         <image name="ic_menu" width="24" height="24"/>
-        <image name="ic_place_white" width="36" height="36"/>
     </resources>
 </document>

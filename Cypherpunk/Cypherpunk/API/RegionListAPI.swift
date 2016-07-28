@@ -42,7 +42,7 @@ struct RegionListRequest: RequestType {
             
             let realm = try! Realm()
             try! realm.write({
-                
+                realm.deleteAll()
                 for (areaname, list) in areaDictionary {
                     if let countriesDictionary = list as? Dictionary<String, AnyObject> {
                         for (countryname, list) in countriesDictionary {

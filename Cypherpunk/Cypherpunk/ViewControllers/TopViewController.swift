@@ -10,6 +10,8 @@ import UIKit
 import ReachabilitySwift
 import NetworkExtension
 
+import ReSwift
+
 extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
         switch self {
@@ -24,12 +26,16 @@ extension NEVPNStatus: CustomStringConvertible {
 }
 
 
-class TopViewController: UIViewController {
+class TopViewController: UIViewController, StoreSubscriber {
 
     @IBOutlet weak var IPAddressLabel: UILabel!
     
     @IBOutlet weak var connectionStateLabel: UILabel!
     @IBOutlet weak var connectSwitch: UISwitch!
+    
+    @IBOutlet weak var regionButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,10 +51,24 @@ class TopViewController: UIViewController {
             name: NEVPNStatusDidChangeNotification,
             object: nil
         )
+        
+        regionButton.transform = CGAffineTransformMakeScale(-1.0, 1.0)
+        regionButton.titleLabel?.transform = CGAffineTransformMakeScale(-1.0, 1.0)
+        regionButton.imageView?.transform = CGAffineTransformMakeScale(-1.0, 1.0)
+        
+        regionButton.setTitle(mainStore.state.regionState.title, forState: .Normal)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        mainStore.subscribe(self)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        mainStore.unsubscribe(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,6 +84,10 @@ class TopViewController: UIViewController {
     func didChangeVPNStatus(notification: NSNotification) {
         guard let connection = notification.object as? NEVPNConnection else {
             return
+        }
+        
+        if connection.status == .Connected {
+            mainStore.dispatch(RegionAction.Connect)
         }
         
         connectionStateLabel.text = String(connection.status)
@@ -99,5 +123,8 @@ class TopViewController: UIViewController {
         }
     }
 
+    func newState(state: AppState) {
+        regionButton.setTitle(state.regionState.title, forState: .Normal)
+    }
 
 }

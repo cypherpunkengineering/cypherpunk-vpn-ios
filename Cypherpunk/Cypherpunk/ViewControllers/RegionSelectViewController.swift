@@ -63,7 +63,7 @@ class RegionSelectViewController: UITableViewController {
         
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 0
+            return mainStore.state.regionState.recentryConnected.count
         }
         return areaNames.count + 1 ?? 1
     }
@@ -72,12 +72,20 @@ class RegionSelectViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
         
-        if indexPath.row == 0 {
-            cell?.textLabel?.text = "Auto select region"
+        switch indexPath.section {
+        case 0:
+            cell?.textLabel?.text = mainStore.state.regionState.recentryConnected[indexPath.row].title
             cell?.accessoryType = .None
-        } else {
-            cell?.textLabel?.text = areaNames[indexPath.row - 1]
+            
+        default:
+            if indexPath.row == 0 {
+                cell?.textLabel?.text = "Auto select region"
+                cell?.accessoryType = .None
+            } else {
+                cell?.textLabel?.text = areaNames[indexPath.row - 1]
+            }
         }
+        
         
         return cell!
     }
@@ -86,12 +94,18 @@ class RegionSelectViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+        let row = indexPath.row
         if indexPath.section == 1 {
-            if indexPath.row != 0 {
-                areaName = areaNames[indexPath.row - 1]
+            if row != 0 {
+                areaName = areaNames[row - 1]
                 self.performSegueWithIdentifier(R.segue.regionSelectViewController.toCountry, sender: nil)
                 return
+            } else {
+                mainStore.dispatch(RegionAction.ActiveAutoSelect)
             }
+        } else {
+            let history = mainStore.state.regionState.recentryConnected[row]
+            mainStore.dispatch(RegionAction.ChangeRegion(areaName: history.areaName, countryName: history.countryName, cityName: history.cityName, serverIP: history.serverIP))
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -182,7 +196,7 @@ class CountrySelectViewController: UITableViewController {
         let regionResults = areaResults.filter("countryCode == %@", countryName)
         if regionResults.count == 1 {
             if let region = regionResults.first {
-                mainStore.dispatch(RegionAction.ChangeRegion(cityName: region.city, serverIP: region.ipAddress))
+                mainStore.dispatch(RegionAction.ChangeRegion(areaName: areaName, countryName: countryName, cityName: region.city, serverIP: region.ipAddress))
                 
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
@@ -191,6 +205,10 @@ class CountrySelectViewController: UITableViewController {
             self.performSegueWithIdentifier(R.segue.countrySelectViewController.toServer, sender: nil)
         }
 
+    }
+ 
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.0
     }
     
 }
@@ -250,7 +268,7 @@ class ServerSelectViewController: UITableViewController {
         let regionResults = areaResults.filter("city == %@", cityName)
 
         if let region = regionResults.first {
-            mainStore.dispatch(RegionAction.ChangeRegion(cityName: region.city, serverIP: region.ipAddress))
+            mainStore.dispatch(RegionAction.ChangeRegion(areaName: areaName, countryName: countryName, cityName: region.city, serverIP: region.ipAddress))
             
             self.dismissViewControllerAnimated(true, completion: nil)
         }
