@@ -4,6 +4,12 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Dosis-Medium.otf">
+            <string>Dosis-Medium</string>
+            <string>Dosis-Medium</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="ajP-r0-dCH">
@@ -14,6 +20,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="6cP-c8-pOc" kind="relationship" relationship="rootViewController" id="1hD-sL-xzh"/>
@@ -23,40 +32,106 @@
             </objects>
             <point key="canvasLocation" x="-331" y="421"/>
         </scene>
-        <!--Account View Controller-->
+        <!--Accounts-->
         <scene sceneID="6ap-4Q-RGT">
             <objects>
-                <tableViewController id="6cP-c8-pOc" customClass="AccountViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oNE-bh-P0s">
+                <tableViewController title="Accounts" id="6cP-c8-pOc" customClass="AccountViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" id="oNE-bh-P0s">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RSk-eC-5gX">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RSk-eC-5gX" id="GbO-K7-FiG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <sections>
+                            <tableViewSection id="J9V-yS-bYt">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" id="RSk-eC-5gX">
+                                        <rect key="frame" x="0.0" y="64" width="600" height="67"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RSk-eC-5gX" id="GbO-K7-FiG">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRj-fE-Wdw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="20"/>
+                                                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="vpntestmax@gmail.com" image="iconAccount"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BRj-fE-Wdw" firstAttribute="top" secondItem="GbO-K7-FiG" secondAttribute="top" id="0e9-RJ-YDm"/>
+                                                <constraint firstAttribute="bottom" secondItem="BRj-fE-Wdw" secondAttribute="bottom" id="aSX-yz-3BO"/>
+                                                <constraint firstItem="BRj-fE-Wdw" firstAttribute="leading" secondItem="GbO-K7-FiG" secondAttribute="leading" id="fWJ-nO-aP0"/>
+                                                <constraint firstAttribute="trailing" secondItem="BRj-fE-Wdw" secondAttribute="trailing" id="meY-Y1-XNG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="ReA-NN-Mav">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" id="uua-ta-U9T">
+                                        <rect key="frame" x="0.0" y="131" width="600" height="67"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uua-ta-U9T" id="dmv-va-R8l">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uE0-kI-fyC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <state key="normal" title="Sign Out">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="uE0-kI-fyC" secondAttribute="trailing" id="18R-fo-H9Q"/>
+                                                <constraint firstItem="uE0-kI-fyC" firstAttribute="leading" secondItem="dmv-va-R8l" secondAttribute="leading" id="dAD-cG-8aS"/>
+                                                <constraint firstAttribute="bottom" secondItem="uE0-kI-fyC" secondAttribute="bottom" id="iN2-Ny-x81"/>
+                                                <constraint firstItem="uE0-kI-fyC" firstAttribute="top" secondItem="dmv-va-R8l" secondAttribute="top" id="v1h-65-8gJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="6cP-c8-pOc" id="WuU-7M-Xaa"/>
                             <outlet property="delegate" destination="6cP-c8-pOc" id="SL8-fM-b80"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Jd5-5a-zor">
+                    <navigationItem key="navigationItem" title="Accounts" id="Jd5-5a-zor">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="gIL-3J-s21">
                             <connections>
                                 <action selector="closeAction:" destination="6cP-c8-pOc" id="Uml-U7-7Iv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mailLabelButton" destination="BRj-fE-Wdw" id="uNZ-Gw-cIf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zv4-Wn-HD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Accounts" id="Xes-9p-lxQ">
+                    <barButtonItem key="leftBarButtonItem" title="Close" id="CVv-Px-bBq">
+                        <connections>
+                            <action selector="closeAction:" destination="6cP-c8-pOc" id="Won-v6-BTd"/>
+                        </connections>
+                    </barButtonItem>
+                </navigationItem>
             </objects>
             <point key="canvasLocation" x="332" y="421"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconAccount" width="14" height="22"/>
+    </resources>
 </document>
