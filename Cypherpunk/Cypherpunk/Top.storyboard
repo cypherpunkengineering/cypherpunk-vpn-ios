@@ -9,9 +9,26 @@
         <mutableArray key="Dosis-Regular.otf">
             <string>Dosis-Regular</string>
             <string>Dosis-Regular</string>
+            <string>Dosis-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Settings-->
+        <scene sceneID="Wuf-f8-sWh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="hMQ-nG-SEs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h4g-b8-Wh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="736.5" y="530"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="CNm-R8-xSB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Account" id="6yG-oL-xP6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WqB-yU-GpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="736.5" y="483"/>
+        </scene>
         <!--Top View Controller-->
         <scene sceneID="ugK-lY-tEB">
             <objects>
@@ -39,21 +56,61 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCs-I6-CIn">
-                                <rect key="frame" x="20" y="544" width="560" height="36"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="28"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="9" maxX="18" maxY="0.0"/>
-                                <state key="normal" title="test" image="ic_arrow_down"/>
-                                <connections>
-                                    <segue destination="91n-X5-09H" kind="showDetail" id="Dtc-ZU-9uP"/>
-                                </connections>
-                            </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qIq-MF-TaH">
                                 <rect key="frame" x="276" y="386" width="51" height="31"/>
                                 <connections>
                                     <action selector="changeConnectStateAction:" destination="uCa-HA-ERA" eventType="valueChanged" id="QTb-Jg-IhH"/>
                                 </connections>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atV-Jj-QsS">
+                                <rect key="frame" x="238" y="31" width="124" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="JqP-20-UL5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="21"/>
+                                <inset key="titleEdgeInsets" minX="4.5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Cypherpunk"/>
+                                <state key="disabled" image="logoGray_small"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqE-g0-SsY">
+                                <rect key="frame" x="9" y="31" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="TIO-cY-FsE"/>
+                                    <constraint firstAttribute="width" constant="44" id="i4L-eV-qV3"/>
+                                </constraints>
+                                <state key="normal" image="iconSettings">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hMQ-nG-SEs" kind="showDetail" id="2tD-kb-ohd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21W-Q1-Rs0">
+                                <rect key="frame" x="545" y="31" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2q3-UB-GTL"/>
+                                    <constraint firstAttribute="width" constant="44" id="idH-1P-NZ2"/>
+                                </constraints>
+                                <state key="normal" image="iconAccount"/>
+                                <connections>
+                                    <segue destination="6yG-oL-xP6" kind="showDetail" id="qGv-MO-Ekw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCs-I6-CIn">
+                                <rect key="frame" x="20" y="544" width="560" height="36"/>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="28"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="9" maxX="18" maxY="0.0"/>
+                                <state key="normal" title="test" image="ic_arrow_down"/>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="focused">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="91n-X5-09H" kind="showDetail" id="Dtc-ZU-9uP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -65,8 +122,14 @@
                             <constraint firstItem="UCs-I6-CIn" firstAttribute="centerX" secondItem="qIq-MF-TaH" secondAttribute="centerX" id="P71-6Y-a0q"/>
                             <constraint firstItem="bwg-Z8-Pjv" firstAttribute="top" secondItem="qIq-MF-TaH" secondAttribute="bottom" constant="38" id="aKe-Ij-LMU"/>
                             <constraint firstItem="TNd-hX-uZx" firstAttribute="centerX" secondItem="qIq-MF-TaH" secondAttribute="centerX" id="dME-pk-db8"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="qqE-g0-SsY" secondAttribute="leading" constant="11" id="fbV-RH-Apr"/>
+                            <constraint firstItem="atV-Jj-QsS" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="fvT-De-OzN"/>
                             <constraint firstAttribute="bottom" secondItem="UCs-I6-CIn" secondAttribute="bottom" constant="20" symbolic="YES" id="iP8-93-Rva"/>
+                            <constraint firstItem="qqE-g0-SsY" firstAttribute="top" secondItem="atV-Jj-QsS" secondAttribute="top" id="iW3-SP-ZMn"/>
+                            <constraint firstAttribute="trailing" secondItem="21W-Q1-Rs0" secondAttribute="trailing" constant="11" id="sQO-dQ-PZ8"/>
                             <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="bwg-Z8-Pjv" secondAttribute="bottom" constant="123" id="vcp-HO-pIM"/>
+                            <constraint firstItem="21W-Q1-Rs0" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" constant="11" id="wdE-rC-ib3"/>
+                            <constraint firstItem="atV-Jj-QsS" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" constant="11" id="ysx-D1-eWL"/>
                         </constraints>
                     </view>
                     <connections>
@@ -86,10 +149,13 @@
                 <viewControllerPlaceholder storyboardName="Region" id="91n-X5-09H" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oz2-xM-HMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732.5" y="784"/>
+            <point key="canvasLocation" x="732" y="587"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic_arrow_down" width="18" height="18"/>
+        <image name="iconAccount" width="14" height="22"/>
+        <image name="iconSettings" width="22" height="23"/>
+        <image name="logoGray_small" width="19" height="36"/>
     </resources>
 </document>

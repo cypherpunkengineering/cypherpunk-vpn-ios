@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200955621D4B45B800BEEE0A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200955611D4B45B800BEEE0A /* SettingsViewController.swift */; };
+		200955641D4B46C000BEEE0A /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200955631D4B46C000BEEE0A /* Account.storyboard */; };
+		200955661D4B48C200BEEE0A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200955651D4B48C200BEEE0A /* AccountViewController.swift */; };
 		2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */; };
 		203809691D13D89D005145CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203809681D13D89D005145CD /* AppDelegate.swift */; };
 		2038096E1D13D89D005145CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2038096C1D13D89D005145CD /* Main.storyboard */; };
@@ -77,6 +80,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		200955611D4B45B800BEEE0A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		200955631D4B46C000BEEE0A /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		200955651D4B48C200BEEE0A /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		203809651D13D89D005145CD /* Cypherpunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cypherpunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		203809681D13D89D005145CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -301,6 +307,8 @@
 				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
 				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
+				200955611D4B45B800BEEE0A /* SettingsViewController.swift */,
+				200955651D4B48C200BEEE0A /* AccountViewController.swift */,
 				20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -322,6 +330,7 @@
 				20EC4A311D2F702100785399 /* Region.storyboard */,
 				20D896091D23B764002B9F9D /* SignIn.storyboard */,
 				2B4489201D2A53A700D202F9 /* SignUp.storyboard */,
+				200955631D4B46C000BEEE0A /* Account.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20EC4A3F1D376C5200785399 /* Settings.storyboard */,
 			);
@@ -503,6 +512,7 @@
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
+				200955641D4B46C000BEEE0A /* Account.storyboard in Resources */,
 				2038096E1D13D89D005145CD /* Main.storyboard in Resources */,
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
@@ -692,9 +702,11 @@
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				20EC4A441D377A1200785399 /* AdvancedSettingsViewController.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
+				200955661D4B48C200BEEE0A /* AccountViewController.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
+				200955621D4B45B800BEEE0A /* SettingsViewController.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,
 				20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */,
