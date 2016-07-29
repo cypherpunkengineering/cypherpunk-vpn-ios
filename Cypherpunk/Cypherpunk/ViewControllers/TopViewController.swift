@@ -25,7 +25,6 @@ extension NEVPNStatus: CustomStringConvertible {
     }
 }
 
-
 class TopViewController: UIViewController, StoreSubscriber {
 
     @IBOutlet weak var IPAddressLabel: UILabel!
@@ -35,6 +34,7 @@ class TopViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var regionButton: UIButton!
     
+    internal var connectionObserver: NSObjectProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +62,11 @@ class TopViewController: UIViewController, StoreSubscriber {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        VPNConfigurationCoordinator.load {
+            let status = NEVPNManager.sharedManager().connection.status
+            self.updateViewWithVPNStatus(status)
+        }
+        
         mainStore.subscribe(self)
     }
     
@@ -81,16 +86,31 @@ class TopViewController: UIViewController, StoreSubscriber {
         notificationCenter.removeObserver(self)
     }
     
+    func updateViewWithVPNStatus(status: NEVPNStatus) {
+        switch status {
+        case .Connected:
+            connectSwitch.setOn(true, animated: true)
+        case .Disconnected, .Invalid, .Reasserting:
+            connectSwitch.setOn(false, animated: true)
+        default:
+            break
+        }
+        
+        connectionStateLabel.text = String(status)
+    }
+    
     func didChangeVPNStatus(notification: NSNotification) {
         guard let connection = notification.object as? NEVPNConnection else {
             return
         }
+
+        let status = connection.status
         
-        if connection.status == .Connected {
+        if status == .Connected {
             mainStore.dispatch(RegionAction.Connect)
         }
         
-        connectionStateLabel.text = String(connection.status)
+        updateViewWithVPNStatus(status)
     }
 
 

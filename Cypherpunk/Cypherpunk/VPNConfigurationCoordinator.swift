@@ -10,6 +10,15 @@ import Foundation
 import NetworkExtension
 
 public class VPNConfigurationCoordinator {
+    
+    class func load(completion: () -> ()) {
+        let manager = NEVPNManager.sharedManager()
+        // VPN設定をロードする。なければ作らなければいけない
+        manager.loadFromPreferencesWithCompletionHandler { (error) in
+            completion()
+        }
+    }
+    
     class func start(completion: () -> ()) {
         let manager = NEVPNManager.sharedManager()
         // VPN設定をロードする。なければ作らなければいけない
