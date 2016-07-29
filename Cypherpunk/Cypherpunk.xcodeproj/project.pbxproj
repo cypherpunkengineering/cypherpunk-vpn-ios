@@ -17,8 +17,6 @@
 		203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203809961D13DAF3005145CD /* NetworkExtension.framework */; };
 		2038099D1D13EEA9005145CD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099C1D13EEA9005145CD /* AppState.swift */; };
 		2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099E1D13EEEB005145CD /* AppReducer.swift */; };
-		206D93F41D1D06EE002B6913 /* CKNavDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D93F31D1D06EE002B6913 /* CKNavDrawerController.swift */; };
-		20D895EA1D1D0D75002B9F9D /* Drawer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895E91D1D0D75002B9F9D /* Drawer.storyboard */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
@@ -36,7 +34,6 @@
 		20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A371D2F7BAE00785399 /* RegionState.swift */; };
 		20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A391D2F82CC00785399 /* RegionReducer.swift */; };
 		20EC4A401D376C5200785399 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20EC4A3F1D376C5200785399 /* Settings.storyboard */; };
-		20EC4A421D37719400785399 /* NavDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A411D37719400785399 /* NavDrawerViewController.swift */; };
 		20EC4A441D377A1200785399 /* AdvancedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */; };
 		20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A451D3780BC00785399 /* SettingsState.swift */; };
 		20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A471D37851200785399 /* SettingsReducer.swift */; };
@@ -97,8 +94,6 @@
 		203809981D13DAF3005145CD /* Cypherpunk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cypherpunk.entitlements; sourceTree = "<group>"; };
 		2038099C1D13EEA9005145CD /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		2038099E1D13EEEB005145CD /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
-		206D93F31D1D06EE002B6913 /* CKNavDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKNavDrawerController.swift; sourceTree = "<group>"; };
-		20D895E91D1D0D75002B9F9D /* Drawer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Drawer.storyboard; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		20D895ED1D1D16FB002B9F9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +111,6 @@
 		20EC4A371D2F7BAE00785399 /* RegionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionState.swift; sourceTree = "<group>"; };
 		20EC4A391D2F82CC00785399 /* RegionReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionReducer.swift; sourceTree = "<group>"; };
 		20EC4A3F1D376C5200785399 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		20EC4A411D37719400785399 /* NavDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavDrawerViewController.swift; sourceTree = "<group>"; };
 		20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsViewController.swift; sourceTree = "<group>"; };
 		20EC4A451D3780BC00785399 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		20EC4A471D37851200785399 /* SettingsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
@@ -293,7 +287,6 @@
 		20D895E81D1D0C17002B9F9D /* External */ = {
 			isa = PBXGroup;
 			children = (
-				206D93F31D1D06EE002B6913 /* CKNavDrawerController.swift */,
 				20D895F41D1D1C6F002B9F9D /* IPAddress.swift */,
 				2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */,
 			);
@@ -308,7 +301,6 @@
 				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
 				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
-				20EC4A411D37719400785399 /* NavDrawerViewController.swift */,
 				20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -331,7 +323,6 @@
 				20D896091D23B764002B9F9D /* SignIn.storyboard */,
 				2B4489201D2A53A700D202F9 /* SignUp.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
-				20D895E91D1D0D75002B9F9D /* Drawer.storyboard */,
 				20EC4A3F1D376C5200785399 /* Settings.storyboard */,
 			);
 			name = Storyboard;
@@ -509,7 +500,6 @@
 				2B45C1691D20D64600D4326C /* Dosis-ExtraBold.otf in Resources */,
 				2B45C16C1D20D64600D4326C /* Dosis-Medium.otf in Resources */,
 				2B45C16B1D20D64600D4326C /* Dosis-Light.otf in Resources */,
-				20D895EA1D1D0D75002B9F9D /* Drawer.storyboard in Resources */,
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
@@ -700,12 +690,10 @@
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
-				20EC4A421D37719400785399 /* NavDrawerViewController.swift in Sources */,
 				20EC4A441D377A1200785399 /* AdvancedSettingsViewController.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
-				206D93F41D1D06EE002B6913 /* CKNavDrawerController.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,

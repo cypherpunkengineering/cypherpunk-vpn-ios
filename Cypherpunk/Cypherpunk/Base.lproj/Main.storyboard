@@ -21,27 +21,6 @@
             </objects>
             <point key="canvasLocation" x="74" y="-175"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="rkd-Ja-ff8">
-            <objects>
-                <navigationController navigationBarHidden="YES" id="S0F-tv-VVa" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maF-7z-fWz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ejC-qT-kA7" kind="relationship" relationship="rootViewController" id="Qh3-IK-H8b"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t96-cY-oXk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="74" y="518"/>
-        </scene>
         <!--Background View Controller-->
         <scene sceneID="TaU-zJ-cky">
             <objects>
@@ -58,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="S0F-tv-VVa" kind="embed" id="afa-UR-WWP"/>
+                                    <segue destination="PrA-pd-pcT" kind="embed" id="smE-Rn-S5w"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -85,44 +64,15 @@
                 <viewControllerPlaceholder storyboardName="SignIn" id="TdH-G6-2P9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cdx-1O-on0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1305.5" y="-422"/>
+            <point key="canvasLocation" x="1301.5" y="-175"/>
         </scene>
-        <!--Nav Drawer Controller-->
-        <scene sceneID="wN9-Fo-ja1">
+        <!--Top-->
+        <scene sceneID="ujZ-Ls-n2Y">
             <objects>
-                <viewController id="ejC-qT-kA7" customClass="CKNavDrawerController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OuE-7r-OQ5"/>
-                        <viewControllerLayoutGuide type="bottom" id="dNF-Jg-KQS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MiZ-X0-57f">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Oec-8x-U1s"/>
-                    <connections>
-                        <outlet property="drawerIBSettings" destination="pRP-Dp-J1o" id="YG0-m1-bgH"/>
-                        <outlet property="drawerSettings" destination="vJb-wz-e0Q" id="6cd-Gt-BBW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EuI-EP-k5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="vJb-wz-e0Q" customClass="CKNavDrawerSettings">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="widthPercentage">
-                            <real key="value" value="0.81999999999999995"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </customObject>
-                <customObject id="pRP-Dp-J1o" customClass="CKNavDrawerIBSettings" customModule="Cypherpunk" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSbname" value="Drawer"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="centerSbname" value="Top"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="centerID" value="Top"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="drawerID" value="Drawer"/>
-                    </userDefinedRuntimeAttributes>
-                </customObject>
+                <viewControllerPlaceholder storyboardName="Top" id="PrA-pd-pcT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XCE-7M-YtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764" y="518"/>
+            <point key="canvasLocation" x="1293.5" y="-101"/>
         </scene>
     </scenes>
 </document>

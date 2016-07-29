@@ -24,13 +24,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eV2-bB-ndE">
-                                <rect key="frame" x="20" y="40" width="24" height="24"/>
-                                <state key="normal" image="ic_menu"/>
-                                <connections>
-                                    <action selector="drawerToggleAction:" destination="uCa-HA-ERA" eventType="touchUpInside" id="eDI-vb-u6E"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="255.255.255.255" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwg-Z8-Pjv">
                                 <rect key="frame" x="234" y="455" width="132" height="22"/>
                                 <constraints>
@@ -65,24 +58,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qIq-MF-TaH" firstAttribute="top" secondItem="TNd-hX-uZx" secondAttribute="bottom" constant="41" id="4W5-Zw-Rux"/>
-                            <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" constant="20" id="9cj-Tr-Qel"/>
                             <constraint firstItem="bwg-Z8-Pjv" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="C72-U0-3Z6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UCs-I6-CIn" secondAttribute="trailing" id="CRY-QI-srI"/>
                             <constraint firstAttribute="leadingMargin" secondItem="UCs-I6-CIn" secondAttribute="leading" id="Nc9-FH-BkB"/>
                             <constraint firstItem="qIq-MF-TaH" firstAttribute="centerX" secondItem="bwg-Z8-Pjv" secondAttribute="centerX" id="Ofu-CQ-BET"/>
                             <constraint firstItem="UCs-I6-CIn" firstAttribute="centerX" secondItem="qIq-MF-TaH" secondAttribute="centerX" id="P71-6Y-a0q"/>
-                            <constraint firstItem="eV2-bB-ndE" firstAttribute="top" secondItem="Qds-3i-Vqi" secondAttribute="bottom" id="ZEd-9Z-m75"/>
                             <constraint firstItem="bwg-Z8-Pjv" firstAttribute="top" secondItem="qIq-MF-TaH" secondAttribute="bottom" constant="38" id="aKe-Ij-LMU"/>
-                            <constraint firstItem="eV2-bB-ndE" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leadingMargin" id="bC8-zv-LdF"/>
                             <constraint firstItem="TNd-hX-uZx" firstAttribute="centerX" secondItem="qIq-MF-TaH" secondAttribute="centerX" id="dME-pk-db8"/>
                             <constraint firstAttribute="bottom" secondItem="UCs-I6-CIn" secondAttribute="bottom" constant="20" symbolic="YES" id="iP8-93-Rva"/>
                             <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="bwg-Z8-Pjv" secondAttribute="bottom" constant="123" id="vcp-HO-pIM"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ZEd-9Z-m75"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="IPAddressLabel" destination="bwg-Z8-Pjv" id="hdE-Ae-5XN"/>
@@ -106,6 +91,5 @@
     </scenes>
     <resources>
         <image name="ic_arrow_down" width="18" height="18"/>
-        <image name="ic_menu" width="24" height="24"/>
     </resources>
 </document>

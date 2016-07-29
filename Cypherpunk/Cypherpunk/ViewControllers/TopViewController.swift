@@ -104,11 +104,6 @@ class TopViewController: UIViewController, StoreSubscriber {
     }
     */
     
-    @IBAction func drawerToggleAction(sender: AnyObject) {
-        let notification = NSNotification(name: CKNavDrawerActionNotification.Open, object: nil)
-        NSNotificationCenter.defaultCenter().postNotification(notification)
-    }
-    
     @IBAction func changeConnectStateAction(sender: AnyObject) {
         guard let connectionSwitch = sender as? UISwitch else {
             return
