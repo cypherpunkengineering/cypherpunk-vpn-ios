@@ -41,7 +41,6 @@ class TopViewController: UIViewController, StoreSubscriber {
 
         // Do any additional setup after loading the view.
                 
-        IPAddressLabel.text = NetworkInterface.Wifi.IPAddress ?? NetworkInterface.Cellular.IPAddress
         
         // Do any additional setup after loading the view.
         let notificationCenter = NSNotificationCenter.defaultCenter()
@@ -67,6 +66,8 @@ class TopViewController: UIViewController, StoreSubscriber {
             self.updateViewWithVPNStatus(status)
         }
         
+        IPAddressLabel.text = NetworkInterface.Wifi.IPAddress ?? NetworkInterface.Cellular.IPAddress
+
         mainStore.subscribe(self)
     }
     
@@ -131,7 +132,11 @@ class TopViewController: UIViewController, StoreSubscriber {
         
         if connectionSwitch.on {
                 VPNConfigurationCoordinator.start({
-                    try! VPNConfigurationCoordinator.connect()
+                    do{
+                        try VPNConfigurationCoordinator.connect()
+                    }catch (let error) {
+                        print(error)
+                    }
                 })
         } else {
             VPNConfigurationCoordinator.disconnect()
