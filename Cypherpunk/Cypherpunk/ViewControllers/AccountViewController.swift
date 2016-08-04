@@ -19,7 +19,6 @@ class AccountViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.tableView.scrollEnabled = false
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         mailLabelButton.setTitle(mainStore.state.loginState.mailAddress, forState: .Normal)
     }
@@ -31,6 +30,10 @@ class AccountViewController: UITableViewController {
 
     @IBAction func closeAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
 }
