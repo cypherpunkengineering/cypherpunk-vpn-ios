@@ -26,22 +26,28 @@ public class VPNConfigurationCoordinator {
             
             // なければ作るし、あっても上書きしとけば問題ないのでerrorかどうかではわけない
             let newIPSec = NEVPNProtocolIKEv2()
+            
+            newIPSec.authenticationMethod = .Certificate
+            newIPSec.serverAddress = "d06f3402.wiz.network"
 
-            newIPSec.authenticationMethod = .None
+            newIPSec.username = "testuser"
+
+
             
-            newIPSec.serverAddress = "tokyo.hide.me"
-            newIPSec.username = "corosuke_k"
+            let path = NSBundle.mainBundle().pathForResource("test", ofType: "p12")
+            let p12 = NSData(contentsOfFile: path!)
+            newIPSec.identityData = p12
             
-            
-            let password = "A3w-kKF-yJs-EkQ"
+            let password = "testpassword"
             let passwordValue = password.dataUsingEncoding(NSUTF8StringEncoding)
+
             
             newIPSec.passwordReference = passwordValue
 
             newIPSec.useExtendedAuthentication = true
 
             newIPSec.localIdentifier = ""
-            newIPSec.remoteIdentifier = "hide.me"
+            newIPSec.remoteIdentifier = "d06f3401.wiz.network"
             
             newIPSec.disconnectOnSleep = false
             
@@ -73,8 +79,9 @@ public class VPNConfigurationCoordinator {
         if #available(iOS 9.0, *) {
             try manager.connection.startVPNTunnelWithOptions(
                 [
-                    NEVPNConnectionStartOptionUsername : "corosuke_k",
-                    NEVPNConnectionStartOptionPassword : "A3w-kKF-yJs-EkQ"
+                    NEVPNConnectionStartOptionUsername : "testuser",
+                    NEVPNConnectionStartOptionPassword : "testpassword"
+
                 ])
         } else {
             try manager.connection.startVPNTunnel()
