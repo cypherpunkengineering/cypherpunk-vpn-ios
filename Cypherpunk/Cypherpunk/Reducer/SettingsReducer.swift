@@ -15,10 +15,20 @@ struct SettingsReducer: Reducer {
         
         if let action = action as? SettingsAction {
             switch action {
-            case .ConnectWhenAppStarts(let isOn):
-                state.connectWhenAppStarts = isOn
-            case .ConnectWhenWifiIsOn(let isOn):
-                state.connectWhenWifiIsOn = isOn
+            case .cypherpunkMode(let isOn):
+                state.cypherpunkMode = isOn
+            case .protectOnDeviceStartup(let isOn):
+                state.protectOnDeviceStartup = isOn
+            case .protectOnUntrustedNetworks(let isOn):
+                state.protectOnUntrustedNetworks = isOn
+            case .encryption(let value):
+                state.encryption = value
+            case .authenitication(let value):
+                state.authenitication = value
+            case .handshake(let value):
+                if #available(iOS 8.3, *) {
+                    state.handshake = value
+                }
             }
         }
         return state
