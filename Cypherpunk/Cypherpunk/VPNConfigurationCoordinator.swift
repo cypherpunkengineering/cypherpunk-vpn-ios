@@ -28,24 +28,21 @@ public class VPNConfigurationCoordinator {
             let newIPSec = NEVPNProtocolIKEv2()
             
             newIPSec.authenticationMethod = .Certificate
-            newIPSec.serverAddress = "208.111.52.140"
+            newIPSec.serverAddress = "208.111.52.2"
 
             newIPSec.username = "testuser"
-
-
+            
+            let password = "testpassword"
+            let passwordValue = password.dataUsingEncoding(NSUTF8StringEncoding)
+            newIPSec.passwordReference = passwordValue
             
             let path = NSBundle.mainBundle().pathForResource("test", ofType: "p12")
             let p12 = NSData(contentsOfFile: path!)
-//            if #available(iOS 9.0, *) {
-//                newIPSec.identityReference = p12
-//            } else {
+            if #available(iOS 9.0, *) {
+                newIPSec.identityReference = p12
+            } else {
                 newIPSec.identityData = p12
-//            }
-            let password = "testpassword"
-            let passwordValue = password.dataUsingEncoding(NSUTF8StringEncoding)
-
-            
-            newIPSec.passwordReference = passwordValue
+            }
 
             newIPSec.useExtendedAuthentication = true
 
