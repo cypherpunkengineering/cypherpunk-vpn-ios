@@ -26,7 +26,6 @@ enum NetworkInterface {
         }
     }
     
-    // Return IP address of WiFi interface (en0) as a String, or `nil`
     var IPAddress: String? {
         var address : String?
         
@@ -61,7 +60,7 @@ enum NetworkInterface {
             }
             freeifaddrs(ifaddr)
         }
-        
+        print("IPAddress: \(address)")
         return address
     }
     

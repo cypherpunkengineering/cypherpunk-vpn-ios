@@ -32,12 +32,16 @@
 		20D896061D23B0DD002B9F9D /* MailAddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */; };
 		20D896081D23B0F4002B9F9D /* ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896071D23B0F4002B9F9D /* ValidationTests.swift */; };
 		20D8960A1D23B764002B9F9D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D896091D23B764002B9F9D /* SignIn.storyboard */; };
+		20EBFD381D5454B0008B9F14 /* HandshakeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EBFD371D5454B0008B9F14 /* HandshakeSelectViewController.swift */; };
+		20EBFD3A1D545EDE008B9F14 /* EncryptionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EBFD391D545EDE008B9F14 /* EncryptionSelectViewController.swift */; };
+		20EBFD3C1D545F3D008B9F14 /* AuthenticationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EBFD3B1D545F3D008B9F14 /* AuthenticationSelectViewController.swift */; };
+		20EBFD3E1D547B18008B9F14 /* SettingsTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EBFD3D1D547B18008B9F14 /* SettingsTopViewController.swift */; };
+		20EBFD401D5485D8008B9F14 /* SettingsStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EBFD3F1D5485D8008B9F14 /* SettingsStatusViewController.swift */; };
 		20EC4A321D2F702100785399 /* Region.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20EC4A311D2F702100785399 /* Region.storyboard */; };
 		20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A331D2F785600785399 /* RegionSelectViewController.swift */; };
 		20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A371D2F7BAE00785399 /* RegionState.swift */; };
 		20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A391D2F82CC00785399 /* RegionReducer.swift */; };
 		20EC4A401D376C5200785399 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20EC4A3F1D376C5200785399 /* Settings.storyboard */; };
-		20EC4A441D377A1200785399 /* AdvancedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */; };
 		20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A451D3780BC00785399 /* SettingsState.swift */; };
 		20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A471D37851200785399 /* SettingsReducer.swift */; };
 		20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A491D378CBC00785399 /* SettingsAction.swift */; };
@@ -113,12 +117,16 @@
 		20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAddressValidator.swift; sourceTree = "<group>"; };
 		20D896071D23B0F4002B9F9D /* ValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTests.swift; sourceTree = "<group>"; };
 		20D896091D23B764002B9F9D /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SignIn.storyboard; path = Cypherpunk/SignIn.storyboard; sourceTree = SOURCE_ROOT; };
+		20EBFD371D5454B0008B9F14 /* HandshakeSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandshakeSelectViewController.swift; sourceTree = "<group>"; };
+		20EBFD391D545EDE008B9F14 /* EncryptionSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptionSelectViewController.swift; sourceTree = "<group>"; };
+		20EBFD3B1D545F3D008B9F14 /* AuthenticationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationSelectViewController.swift; sourceTree = "<group>"; };
+		20EBFD3D1D547B18008B9F14 /* SettingsTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTopViewController.swift; sourceTree = "<group>"; };
+		20EBFD3F1D5485D8008B9F14 /* SettingsStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStatusViewController.swift; sourceTree = "<group>"; };
 		20EC4A311D2F702100785399 /* Region.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Region.storyboard; sourceTree = "<group>"; };
 		20EC4A331D2F785600785399 /* RegionSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionSelectViewController.swift; sourceTree = "<group>"; };
 		20EC4A371D2F7BAE00785399 /* RegionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionState.swift; sourceTree = "<group>"; };
 		20EC4A391D2F82CC00785399 /* RegionReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionReducer.swift; sourceTree = "<group>"; };
 		20EC4A3F1D376C5200785399 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsViewController.swift; sourceTree = "<group>"; };
 		20EC4A451D3780BC00785399 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		20EC4A471D37851200785399 /* SettingsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		20EC4A491D378CBC00785399 /* SettingsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
@@ -311,8 +319,12 @@
 				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
 				200955611D4B45B800BEEE0A /* SettingsViewController.swift */,
+				20EBFD3D1D547B18008B9F14 /* SettingsTopViewController.swift */,
+				20EBFD3F1D5485D8008B9F14 /* SettingsStatusViewController.swift */,
 				200955651D4B48C200BEEE0A /* AccountViewController.swift */,
-				20EC4A431D377A1200785399 /* AdvancedSettingsViewController.swift */,
+				20EBFD391D545EDE008B9F14 /* EncryptionSelectViewController.swift */,
+				20EBFD3B1D545F3D008B9F14 /* AuthenticationSelectViewController.swift */,
+				20EBFD371D5454B0008B9F14 /* HandshakeSelectViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -692,6 +704,7 @@
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
+				20EBFD401D5485D8008B9F14 /* SettingsStatusViewController.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */,
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
@@ -699,6 +712,7 @@
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
 				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
 				2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */,
+				20EBFD3A1D545EDE008B9F14 /* EncryptionSelectViewController.swift in Sources */,
 				2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
@@ -706,8 +720,8 @@
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
+				20EBFD3C1D545F3D008B9F14 /* AuthenticationSelectViewController.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
-				20EC4A441D377A1200785399 /* AdvancedSettingsViewController.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				200955661D4B48C200BEEE0A /* AccountViewController.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
@@ -716,6 +730,8 @@
 				200955621D4B45B800BEEE0A /* SettingsViewController.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,
+				20EBFD381D5454B0008B9F14 /* HandshakeSelectViewController.swift in Sources */,
+				20EBFD3E1D547B18008B9F14 /* SettingsTopViewController.swift in Sources */,
 				20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */,
 				20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */,
 			);
