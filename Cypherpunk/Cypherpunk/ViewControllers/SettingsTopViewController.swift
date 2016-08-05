@@ -43,9 +43,8 @@ class SettingsTopViewController: UIViewController {
 
         self.addChildViewController(pageViewController)
         containerView.addSubview(pageViewController.view)
-        
-        statusTriangleLabel.hidden = true
-        displayStatusButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+
+        displaySettingsAction(displaySettingsButton)
     }
 
     override func didReceiveMemoryWarning() {
