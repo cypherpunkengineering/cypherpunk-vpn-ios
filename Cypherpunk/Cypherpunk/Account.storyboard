@@ -3,9 +3,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Dosis-Medium.otf">
+            <string>Dosis-Medium</string>
             <string>Dosis-Medium</string>
             <string>Dosis-Medium</string>
             <string>Dosis-Medium</string>
@@ -50,26 +52,89 @@
                         <sections>
                             <tableViewSection id="J9V-yS-bYt">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" id="RSk-eC-5gX">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="206" id="RSk-eC-5gX">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="206"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RSk-eC-5gX" id="GbO-K7-FiG">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="205.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRj-fE-Wdw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="20"/>
-                                                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="vpntestmax@gmail.com" image="iconAccount"/>
-                                                </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Anf-xm-o5F">
+                                                    <rect key="frame" x="24" y="24" width="552" height="157.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly / until 2017.07.04" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMu-P1-xt8">
+                                                            <rect key="frame" x="0.0" y="58" width="552" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="BnX-Gf-rJ7"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                            <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va0-KB-ryJ">
+                                                            <rect key="frame" x="75" y="98" width="402" height="39.5"/>
+                                                            <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="7" maxY="0.0"/>
+                                                            <state key="normal" title="Upgrade" image="iconUpgrade">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRj-fE-Wdw">
+                                                            <rect key="frame" x="0.0" y="23" width="552" height="23"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="23" id="WgM-1T-cHs"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="20"/>
+                                                            <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <state key="normal" title="vpntestmax@gmail.com" image="iconAccount"/>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="oMu-P1-xt8" secondAttribute="trailing" id="5GQ-mO-qwk"/>
+                                                        <constraint firstItem="BRj-fE-Wdw" firstAttribute="leading" secondItem="Anf-xm-o5F" secondAttribute="leading" id="CH9-3L-fcY"/>
+                                                        <constraint firstItem="va0-KB-ryJ" firstAttribute="top" secondItem="oMu-P1-xt8" secondAttribute="bottom" constant="20" id="GeN-qF-JNj"/>
+                                                        <constraint firstAttribute="trailing" secondItem="va0-KB-ryJ" secondAttribute="trailing" constant="75" id="Xif-EO-Lt3"/>
+                                                        <constraint firstItem="oMu-P1-xt8" firstAttribute="leading" secondItem="Anf-xm-o5F" secondAttribute="leading" id="i3b-kh-heL"/>
+                                                        <constraint firstItem="BRj-fE-Wdw" firstAttribute="top" secondItem="Anf-xm-o5F" secondAttribute="top" constant="23" id="j8p-rt-OTt"/>
+                                                        <constraint firstItem="oMu-P1-xt8" firstAttribute="top" secondItem="BRj-fE-Wdw" secondAttribute="bottom" constant="12" id="oNe-Sq-4Ye"/>
+                                                        <constraint firstAttribute="bottom" secondItem="va0-KB-ryJ" secondAttribute="bottom" constant="20" id="r4A-6s-uN2"/>
+                                                        <constraint firstItem="va0-KB-ryJ" firstAttribute="leading" secondItem="Anf-xm-o5F" secondAttribute="leading" constant="75" id="wWf-LI-kdO"/>
+                                                        <constraint firstAttribute="trailing" secondItem="BRj-fE-Wdw" secondAttribute="trailing" id="zbx-O4-Mxd"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="BRj-fE-Wdw" firstAttribute="top" secondItem="GbO-K7-FiG" secondAttribute="top" id="0e9-RJ-YDm"/>
-                                                <constraint firstAttribute="bottom" secondItem="BRj-fE-Wdw" secondAttribute="bottom" id="aSX-yz-3BO"/>
-                                                <constraint firstItem="BRj-fE-Wdw" firstAttribute="leading" secondItem="GbO-K7-FiG" secondAttribute="leading" id="fWJ-nO-aP0"/>
-                                                <constraint firstAttribute="trailing" secondItem="BRj-fE-Wdw" secondAttribute="trailing" id="meY-Y1-XNG"/>
+                                                <constraint firstItem="Anf-xm-o5F" firstAttribute="leading" secondItem="GbO-K7-FiG" secondAttribute="leading" constant="24" id="2Nx-Gi-Flp"/>
+                                                <constraint firstItem="Anf-xm-o5F" firstAttribute="leading" secondItem="GbO-K7-FiG" secondAttribute="leadingMargin" constant="24" id="3W5-gW-VD8"/>
+                                                <constraint firstAttribute="bottom" secondItem="Anf-xm-o5F" secondAttribute="bottom" constant="24" id="6Mo-TY-yXf"/>
+                                                <constraint firstAttribute="bottom" secondItem="Anf-xm-o5F" secondAttribute="bottom" constant="24" id="EzG-cx-NtQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="Anf-xm-o5F" secondAttribute="trailing" constant="24" id="H8S-Ke-8JP"/>
+                                                <constraint firstItem="Anf-xm-o5F" firstAttribute="leading" secondItem="GbO-K7-FiG" secondAttribute="leading" constant="24" id="OrP-n7-WMx"/>
+                                                <constraint firstItem="Anf-xm-o5F" firstAttribute="top" secondItem="GbO-K7-FiG" secondAttribute="top" constant="24" id="QDF-fE-iIJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Anf-xm-o5F" secondAttribute="trailing" constant="24" id="QUQ-e5-aTe"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Anf-xm-o5F" secondAttribute="bottom" constant="24" id="fKo-W1-glY"/>
+                                                <constraint firstItem="Anf-xm-o5F" firstAttribute="top" secondItem="GbO-K7-FiG" secondAttribute="topMargin" constant="24" id="hte-IZ-Bgl"/>
+                                                <constraint firstItem="Anf-xm-o5F" firstAttribute="top" secondItem="GbO-K7-FiG" secondAttribute="top" constant="24" id="lIN-cr-xVK"/>
+                                                <constraint firstAttribute="trailing" secondItem="Anf-xm-o5F" secondAttribute="trailing" constant="24" id="tN5-PQ-CoK"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="2Nx-Gi-Flp"/>
+                                                    <exclude reference="3W5-gW-VD8"/>
+                                                    <exclude reference="EzG-cx-NtQ"/>
+                                                    <exclude reference="QDF-fE-iIJ"/>
+                                                    <exclude reference="QUQ-e5-aTe"/>
+                                                    <exclude reference="fKo-W1-glY"/>
+                                                    <exclude reference="hte-IZ-Bgl"/>
+                                                    <exclude reference="tN5-PQ-CoK"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
@@ -80,14 +145,14 @@
                             <tableViewSection id="WOu-10-u32">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" textLabel="u2P-Vq-aAQ" style="IBUITableViewCellStyleDefault" id="R08-bc-sFe">
-                                        <rect key="frame" x="0.0" y="202" width="600" height="67"/>
+                                        <rect key="frame" x="0.0" y="341" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R08-bc-sFe" id="vPm-1C-DDn">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u2P-Vq-aAQ">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="66"/>
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="66.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -100,14 +165,14 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" textLabel="cha-kD-mZC" style="IBUITableViewCellStyleDefault" id="Pjd-uH-B8V">
-                                        <rect key="frame" x="0.0" y="269" width="600" height="67"/>
+                                        <rect key="frame" x="0.0" y="408" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pjd-uH-B8V" id="aYV-uI-2Sb">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cha-kD-mZC">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="66"/>
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="66.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,14 +189,14 @@
                             <tableViewSection id="JnY-4g-3yO">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" textLabel="9jF-Ov-63n" style="IBUITableViewCellStyleDefault" id="kaG-l2-3nF">
-                                        <rect key="frame" x="0.0" y="372" width="600" height="67"/>
+                                        <rect key="frame" x="0.0" y="511" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kaG-l2-3nF" id="UwP-pX-xRc">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Contact us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9jF-Ov-63n">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="66"/>
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="66.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -144,14 +209,14 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" textLabel="dt1-Xc-XsQ" style="IBUITableViewCellStyleDefault" id="DBl-st-fOf">
-                                        <rect key="frame" x="0.0" y="439" width="600" height="67"/>
+                                        <rect key="frame" x="0.0" y="578" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DBl-st-fOf" id="gd0-bb-3BP">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Write a review / Rate us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dt1-Xc-XsQ">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="66"/>
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="66.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,14 +229,14 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" textLabel="Qgd-D7-qDE" style="IBUITableViewCellStyleDefault" id="Ws6-FJ-772">
-                                        <rect key="frame" x="0.0" y="506" width="600" height="67"/>
+                                        <rect key="frame" x="0.0" y="645" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ws6-FJ-772" id="eMv-C2-OMB">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Quick Tutorial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qgd-D7-qDE">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="66"/>
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="66.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,14 +253,14 @@
                             <tableViewSection id="fSv-Ux-XUn">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" textLabel="ZqD-18-vYR" style="IBUITableViewCellStyleDefault" id="Wq6-5I-yt9">
-                                        <rect key="frame" x="0.0" y="609" width="600" height="67"/>
+                                        <rect key="frame" x="0.0" y="748" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wq6-5I-yt9" id="Gvf-xg-gzO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sign out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZqD-18-vYR">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="66"/>
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="66.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -240,5 +305,6 @@
     </scenes>
     <resources>
         <image name="iconAccount" width="14" height="22"/>
+        <image name="iconUpgrade" width="16" height="16"/>
     </resources>
 </document>
