@@ -13,18 +13,21 @@ class SettingsViewController: UITableViewController, PageContent {
     var pageIndex: Int = 0
     
     private enum Section: Int {
+        case HelpMeChoose
         case NetworkSettings
         case AdvancedSettings
         case CryptoSettings
         
         var title: String {
             switch self {
+            case.HelpMeChoose:
+                return "Help me choose"
             case .NetworkSettings:
-                return "NetworkSettings"
+                return "Network settings"
             case .AdvancedSettings:
-                return "AdvancedSettings"
+                return "Advanced settings"
             case .CryptoSettings:
-                return "CryptoSettings"
+                return "Crypto settings"
             }
         }
     }
