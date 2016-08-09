@@ -49,10 +49,6 @@ class TopViewController: UIViewController, StoreSubscriber {
             object: nil
         )
         
-        regionButton.transform = CGAffineTransformMakeScale(-1.0, 1.0)
-        regionButton.titleLabel?.transform = CGAffineTransformMakeScale(-1.0, 1.0)
-        regionButton.imageView?.transform = CGAffineTransformMakeScale(-1.0, 1.0)
-        
         regionButton.setTitle(mainStore.state.regionState.title, forState: .Normal)
     }
     

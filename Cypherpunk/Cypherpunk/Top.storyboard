@@ -66,7 +66,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="28"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="9" maxX="18" maxY="0.0"/>
-                                        <state key="normal" title="test" image="ic_arrow_down"/>
+                                        <state key="normal" title="test"/>
                                         <state key="highlighted">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -77,12 +77,21 @@
                                             <segue destination="91n-X5-09H" kind="showDetail" id="Dtc-ZU-9uP"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="ja7-7d-bx4">
+                                        <rect key="frame" x="569" y="22" width="7" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="7" id="6lb-WZ-Ac6"/>
+                                            <constraint firstAttribute="height" constant="12" id="lRC-Eg-oMK"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="A0I-3v-k0s"/>
                                     <constraint firstAttribute="bottom" secondItem="UCs-I6-CIn" secondAttribute="bottom" id="RxK-MW-YSg"/>
+                                    <constraint firstAttribute="trailing" secondItem="ja7-7d-bx4" secondAttribute="trailing" constant="24" id="Vai-bQ-yUr"/>
                                     <constraint firstItem="UCs-I6-CIn" firstAttribute="top" secondItem="HFa-D7-Pqs" secondAttribute="top" id="b1W-jB-BPg"/>
+                                    <constraint firstItem="ja7-7d-bx4" firstAttribute="centerY" secondItem="UCs-I6-CIn" secondAttribute="centerY" id="cQv-J3-gGb"/>
                                     <constraint firstItem="UCs-I6-CIn" firstAttribute="leading" secondItem="HFa-D7-Pqs" secondAttribute="leading" id="qf9-Rn-vx5"/>
                                     <constraint firstAttribute="trailing" secondItem="UCs-I6-CIn" secondAttribute="trailing" id="z6N-IO-tmO"/>
                                 </constraints>
@@ -264,7 +273,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_arrow_down" width="18" height="18"/>
+        <image name="arrow_down" width="12" height="8"/>
         <image name="iconAccount" width="14" height="22"/>
         <image name="iconSettings" width="22" height="23"/>
         <image name="io_btn_green" width="40" height="89"/>
