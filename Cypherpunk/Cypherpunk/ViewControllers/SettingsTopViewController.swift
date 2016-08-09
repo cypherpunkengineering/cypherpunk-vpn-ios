@@ -45,6 +45,7 @@ class SettingsTopViewController: UIViewController {
         containerView.addSubview(pageViewController.view)
 
         displaySettingsAction(displaySettingsButton)
+        
     }
 
     override func didReceiveMemoryWarning() {
