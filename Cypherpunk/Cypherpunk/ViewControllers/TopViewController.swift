@@ -15,22 +15,23 @@ import ReSwift
 extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .Connected: return "Connected"
-        case .Connecting: return "Connecting"
-        case .Disconnected: return "Disconnected"
-        case .Disconnecting: return "Disconnecting"
-        case .Invalid: return "Invalid"
-        case .Reasserting: return "Reasserting"
+        case .Connected: return "CONNECTED"
+        case .Connecting: return "CONNECTING..."
+        case .Disconnected: return "DISCONNECTED"
+        case .Disconnecting: return "DISCONNECTING..."
+        case .Invalid: return "INVALID"
+        case .Reasserting: return "REASSERTING"
         }
     }
 }
 
 class TopViewController: UIViewController, StoreSubscriber {
-
-    @IBOutlet weak var IPAddressLabel: UILabel!
     
+    @IBOutlet weak var connectedButton: UIButton!
+    @IBOutlet weak var connectingButton: UIButton!
+    @IBOutlet weak var disconnectedButton: UIButton!
+    @IBOutlet weak var outsideCircleView: UIView!
     @IBOutlet weak var connectionStateLabel: UILabel!
-    @IBOutlet weak var connectSwitch: UISwitch!
     
     @IBOutlet weak var regionButton: UIButton!
     
@@ -39,9 +40,6 @@ class TopViewController: UIViewController, StoreSubscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-                
-        
         // Do any additional setup after loading the view.
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(
@@ -66,8 +64,6 @@ class TopViewController: UIViewController, StoreSubscriber {
             self.updateViewWithVPNStatus(status)
         }
         
-        IPAddressLabel.text = NetworkInterface.Wifi.IPAddress ?? NetworkInterface.Cellular.IPAddress
-
         mainStore.subscribe(self)
     }
     
@@ -90,11 +86,35 @@ class TopViewController: UIViewController, StoreSubscriber {
     func updateViewWithVPNStatus(status: NEVPNStatus) {
         switch status {
         case .Connected:
-            connectSwitch.setOn(true, animated: true)
-        case .Disconnected, .Invalid, .Reasserting:
-            connectSwitch.setOn(false, animated: true)
-        default:
-            break
+            outsideCircleView.backgroundColor = UIColor(red: 110.0 / 255.0 , green: 201.0 / 255.0 , blue: 9.0 / 255.0 , alpha: 0.60)
+            connectedButton.hidden = false
+            connectingButton.hidden = true
+            disconnectedButton.hidden = true
+            disconnectedButton.enabled = true
+        case .Connecting:
+            outsideCircleView.backgroundColor = UIColor(red: 255.0 / 255.0 , green: 120.0 / 255.0 , blue: 27.0 / 255.0 , alpha: 0.60)
+            connectedButton.hidden = true
+            connectingButton.hidden = false
+            disconnectedButton.hidden = true
+            disconnectedButton.enabled = true
+        case .Disconnected:
+            outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
+            connectedButton.hidden = true
+            connectingButton.hidden = true
+            disconnectedButton.hidden = false
+            disconnectedButton.enabled = true
+        case .Invalid, .Reasserting:
+            outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
+            connectedButton.hidden = true
+            connectingButton.hidden = true
+            disconnectedButton.hidden = false
+            disconnectedButton.enabled = false
+        case .Disconnecting:
+            outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
+            connectedButton.hidden = true
+            connectingButton.hidden = true
+            disconnectedButton.hidden = false
+            disconnectedButton.enabled = false
         }
         
         connectionStateLabel.text = String(status)
@@ -114,31 +134,14 @@ class TopViewController: UIViewController, StoreSubscriber {
         updateViewWithVPNStatus(status)
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    @IBAction func changeConnectStateAction(sender: AnyObject) {
-        guard let connectionSwitch = sender as? UISwitch else {
-            return
-        }
-        
-        if connectionSwitch.on {
-                VPNConfigurationCoordinator.start({
-                    do{
-                        try VPNConfigurationCoordinator.connect()
-                    }catch (let error) {
-                        print(error)
-                    }
-                })
-        } else {
+    @IBAction func connectAction(sender: UIButton) {
+        if sender == self.disconnectedButton {
+            do{
+                try VPNConfigurationCoordinator.connect()
+            }catch (let error) {
+                print(error)
+            }
+        } else if sender == self.connectedButton {
             VPNConfigurationCoordinator.disconnect()
         }
     }
