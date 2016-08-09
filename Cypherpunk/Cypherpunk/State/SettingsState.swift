@@ -64,34 +64,124 @@ extension NEVPNIKEv2CertificateType {
     }
 }
 
+enum VPNProtocolMode: Int {
+    case IPSec = 1
+    case IKEv2 = 2
+    
+    var description: String {
+        switch self {
+        case .IPSec:
+            return "IPSec"
+        case .IKEv2:
+            return "IKEv2"
+        }
+    }
+
+}
+
+enum RemotePort: Int {
+    case Auto = 1
+
+    var description: String {
+        switch self {
+        case .Auto:
+            return "Auto"
+        }
+    }
+
+}
+
 struct SettingsState: StateType {
     private let keychain = Keychain(service: "com.cyperpunk.ios.vpn.Settings")
 
-    var cypherpunkMode: Bool {
+    
+    var isAutoReconnect: Bool {
         get{
-            return NSString(string: keychain[SettingsStateKey.cypherpunkMode] ?? "true").boolValue
+            return NSString(string: keychain[SettingsStateKey.isAutoReconnect] ?? "true").boolValue
         }
         set(newValue) {
-            keychain[SettingsStateKey.cypherpunkMode] = String(newValue)
+            keychain[SettingsStateKey.isAutoReconnect] = String(newValue)
         }
     }
     
-    var protectOnDeviceStartup: Bool {
+    
+    var isAutoConnectOnBoot: Bool {
         get{
-            return NSString(string: keychain[SettingsStateKey.protectOnDeviceStartup] ?? "true").boolValue
+            return NSString(string: keychain[SettingsStateKey.isAutoConnectOnBoot] ?? "true").boolValue
         }
         set(newValue) {
-            keychain[SettingsStateKey.protectOnDeviceStartup] = String(newValue)
+            keychain[SettingsStateKey.isAutoConnectOnBoot] = String(newValue)
         }
     }
-    var protectOnUntrustedNetworks: Bool {
+    
+    var isAutoConnectVPNOnUntrusted: Bool {
         get {
-            return NSString(string: keychain[SettingsStateKey.protectOnUntrustedNetworks] ?? "true").boolValue
+            return NSString(string: keychain[SettingsStateKey.isAutoConnectVPNOnUntrusted] ?? "true").boolValue
         }
         set(newValue) {
-            keychain[SettingsStateKey.protectOnUntrustedNetworks] = String(newValue)
+            keychain[SettingsStateKey.isAutoConnectVPNOnUntrusted] = String(newValue)
         }
     }
+
+    var isTrustCellularNetworks: Bool {
+        get {
+            return NSString(string: keychain[SettingsStateKey.isTrustCellularNetworks] ?? "true").boolValue
+        }
+        set(newValue) {
+            keychain[SettingsStateKey.isTrustCellularNetworks] = String(newValue)
+        }
+    }
+
+    var isBlockLocalNetwork: Bool {
+        get {
+            return NSString(string: keychain[SettingsStateKey.isBlockLocalNetwork] ?? "true").boolValue
+        }
+        set(newValue) {
+            keychain[SettingsStateKey.isBlockLocalNetwork] = String(newValue)
+        }
+    }
+
+    var isKillSwitch: Bool {
+        get {
+            return NSString(string: keychain[SettingsStateKey.isKillSwitch] ?? "true").boolValue
+        }
+        set(newValue) {
+            keychain[SettingsStateKey.isKillSwitch] = String(newValue)
+        }
+    }
+
+    
+    /* VPN Settings */
+    var vpnProtocolMode: VPNProtocolMode {
+        get {
+            let value: Int = NSString(string: keychain[SettingsStateKey.vpnProtocolMode] ?? "2").integerValue
+            return VPNProtocolMode(rawValue: value) ?? .IKEv2
+        }
+        set(newValue) {
+            keychain[SettingsStateKey.vpnProtocolMode] = String(newValue.rawValue)
+        }
+    }
+
+    var remotePort: RemotePort {
+        get {
+            let value: Int = NSString(string: keychain[SettingsStateKey.remotePort] ?? "1").integerValue
+            return RemotePort(rawValue: value) ?? .Auto
+        }
+        set(newValue) {
+            keychain[SettingsStateKey.remotePort] = String(newValue.rawValue)
+        }
+    }
+
+    var isUseSmallPackets: Bool {
+        get {
+            return NSString(string: keychain[SettingsStateKey.isUseSmallPackets] ?? "true").boolValue
+        }
+        set(newValue) {
+            keychain[SettingsStateKey.isUseSmallPackets] = String(newValue)
+        }
+    }
+    
+
     
     var encryption: NEVPNIKEv2EncryptionAlgorithm {
         get {
@@ -124,14 +214,22 @@ struct SettingsState: StateType {
         }
     }
     
-
     private struct SettingsStateKey {
         static let encryption = "encryption"
         static let authenitication = "authenitication"
         static let handshake = "handshake"
+        
+        static let isAutoReconnect = "isAutoReconnect"
+        static let isAutoConnectOnBoot = "isAutoConnectOnBoot"
+        static let isAutoConnectVPNOnUntrusted = "isAutoConnectVPNOnUntrusted"
+        static let isTrustCellularNetworks = "isTrustCellularNetworks"
+        static let isBlockLocalNetwork = "isBlockLocalNetwork"
+        static let isKillSwitch = "isKillSwitch"
+        
+        static let vpnProtocolMode = "vpnProtocolMode"
+        static let remotePort = "remotePort"
+        static let isUseSmallPackets = "isUseSmallPackets"
 
-        static let cypherpunkMode = "cypherpunkMode"
-        static let protectOnDeviceStartup = "protectOnDeviceStartup"
-        static let protectOnUntrustedNetworks = "protectOnUntrustedNetworks"
+
     }
 }

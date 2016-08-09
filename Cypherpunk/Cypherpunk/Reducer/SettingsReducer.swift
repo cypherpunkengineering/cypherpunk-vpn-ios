@@ -15,12 +15,24 @@ struct SettingsReducer: Reducer {
         
         if let action = action as? SettingsAction {
             switch action {
-            case .cypherpunkMode(let isOn):
-                state.cypherpunkMode = isOn
-            case .protectOnDeviceStartup(let isOn):
-                state.protectOnDeviceStartup = isOn
-            case .protectOnUntrustedNetworks(let isOn):
-                state.protectOnUntrustedNetworks = isOn
+            case .isAutoReconnect(let isOn):
+                state.isAutoReconnect = isOn
+            case .isAutoConnectOnBoot(let isOn):
+                state.isAutoConnectOnBoot = isOn
+            case .isAutoConnectVPNOnUntrusted(let isOn):
+                state.isAutoConnectVPNOnUntrusted = isOn
+            case .isTrustCellularNetworks(let isOn):
+                state.isTrustCellularNetworks = isOn
+            case .isBlockLocalNetwork(let isOn):
+                state.isBlockLocalNetwork = isOn
+            case .isKillSwitch(let isOn):
+                state.isKillSwitch = isOn
+            case .vpnProtocolMode(let value):
+                state.vpnProtocolMode = value
+            case .remotePort(let value):
+                state.remotePort = value
+            case .isUseSmallPackets(let isOn):
+                state.isUseSmallPackets = isOn
             case .encryption(let value):
                 state.encryption = value
             case .authenitication(let value):

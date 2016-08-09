@@ -46,6 +46,8 @@
 		20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A471D37851200785399 /* SettingsReducer.swift */; };
 		20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A491D378CBC00785399 /* SettingsAction.swift */; };
 		20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F850901D3DF40A009079A0 /* LoginAPI.swift */; };
+		2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */; };
+		2B193EC71D591E2600308DCA /* RemotePortSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B193EC61D591E2600308DCA /* RemotePortSelectViewController.swift */; };
 		2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */; };
 		2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E41D3F98D0003FA705 /* RegionAction.swift */; };
 		2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4489201D2A53A700D202F9 /* SignUp.storyboard */; };
@@ -131,6 +133,8 @@
 		20EC4A471D37851200785399 /* SettingsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		20EC4A491D378CBC00785399 /* SettingsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
 		20F850901D3DF40A009079A0 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNProtocolSelectViewController.swift; sourceTree = "<group>"; };
+		2B193EC61D591E2600308DCA /* RemotePortSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemotePortSelectViewController.swift; sourceTree = "<group>"; };
 		2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAPI.swift; sourceTree = "<group>"; };
 		2B2B59E41D3F98D0003FA705 /* RegionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionAction.swift; sourceTree = "<group>"; };
 		2B4489201D2A53A700D202F9 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -325,6 +329,8 @@
 				20EBFD391D545EDE008B9F14 /* EncryptionSelectViewController.swift */,
 				20EBFD3B1D545F3D008B9F14 /* AuthenticationSelectViewController.swift */,
 				20EBFD371D5454B0008B9F14 /* HandshakeSelectViewController.swift */,
+				2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */,
+				2B193EC61D591E2600308DCA /* RemotePortSelectViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -703,6 +709,7 @@
 			files = (
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
+				2B193EC71D591E2600308DCA /* RemotePortSelectViewController.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				20EBFD401D5485D8008B9F14 /* SettingsStatusViewController.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */,
@@ -718,6 +725,7 @@
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
+				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20EBFD3C1D545F3D008B9F14 /* AuthenticationSelectViewController.swift in Sources */,
