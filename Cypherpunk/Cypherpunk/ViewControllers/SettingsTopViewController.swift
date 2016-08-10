@@ -107,9 +107,9 @@ extension SettingsTopViewController: UIPageViewControllerDataSource {
     @IBAction func displaySettingsAction(sender: AnyObject) {
         settingsTriangleLabel.hidden = false
         statusTriangleLabel.hidden = true
-        
-        displayStatusButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        displaySettingsButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+
+        displayStatusButton.alpha = 0.3
+        displaySettingsButton.alpha = 1.0
 
         pageViewController.setViewControllers([viewControllers[0]], direction: .Reverse, animated: true, completion: nil)
     }
@@ -117,8 +117,8 @@ extension SettingsTopViewController: UIPageViewControllerDataSource {
         settingsTriangleLabel.hidden = true
         statusTriangleLabel.hidden = false
         
-        displayStatusButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        displaySettingsButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+        displayStatusButton.alpha = 1.0
+        displaySettingsButton.alpha = 0.3
 
         pageViewController.setViewControllers([viewControllers[1]], direction: .Forward, animated: true, completion: nil)
     }
@@ -131,14 +131,14 @@ extension SettingsTopViewController: UIPageViewControllerDelegate {
                 settingsTriangleLabel.hidden = true
                 statusTriangleLabel.hidden = false
 
-                displayStatusButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-                displaySettingsButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+                displayStatusButton.alpha = 1.0
+                displaySettingsButton.alpha = 0.3
             } else {
                 settingsTriangleLabel.hidden = false
                 statusTriangleLabel.hidden = true
                 
-                displayStatusButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-                displaySettingsButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                displayStatusButton.alpha = 0.3
+                displaySettingsButton.alpha = 1.0
             }
         }
     }

@@ -9,7 +9,7 @@
         <scene sceneID="owr-Pz-BLy">
             <objects>
                 <navigationController id="ZtU-5e-HHX" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ise-Aa-Ip5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ise-Aa-Ip5" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,13 +36,13 @@
         <scene sceneID="Ice-3g-CQl">
             <objects>
                 <tableViewController id="MK2-CU-Fce" customClass="RegionSelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="ayz-hL-ECB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="ayz-hL-ECB" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="9zI-WM-cTs" style="IBUITableViewCellStyleDefault" id="Sw4-3g-qUE">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="9zI-WM-cTs" style="IBUITableViewCellStyleDefault" id="Sw4-3g-qUE" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="600" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sw4-3g-qUE" id="8Ph-oT-ydU">
@@ -68,16 +68,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Region Select" id="WyB-SC-K3S">
-                        <barButtonItem key="leftBarButtonItem" id="9Rr-4y-Htv">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Ml-QE-RYU">
-                                <rect key="frame" x="20" y="4" width="36" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ic_close_white"/>
-                                <connections>
-                                    <action selector="closeAction:" destination="MK2-CU-Fce" eventType="touchUpInside" id="qLG-Cg-Tty"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="9Rr-4y-Htv"/>
                     </navigationItem>
                     <connections>
                         <segue destination="DII-Ie-KuW" kind="show" identifier="ToCountry" id="Sle-IX-cfg"/>
@@ -91,13 +82,13 @@
         <scene sceneID="rEV-P4-Zov">
             <objects>
                 <tableViewController title="Country" id="DII-Ie-KuW" customClass="CountrySelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="69T-zw-HIr">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="69T-zw-HIr" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="7GO-5y-GRu" style="IBUITableViewCellStyleDefault" id="geC-hG-JCO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="7GO-5y-GRu" style="IBUITableViewCellStyleDefault" id="geC-hG-JCO" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="600" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="geC-hG-JCO" id="sHB-Zy-4MJ">
@@ -133,13 +124,13 @@
         <scene sceneID="vBT-Rg-CYe">
             <objects>
                 <tableViewController title="Server" id="eij-xe-k8l" customClass="ServerSelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="sBb-SO-mMU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="sBb-SO-mMU" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="jR9-0f-Gtc" style="IBUITableViewCellStyleDefault" id="U2a-bX-bbB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="jR9-0f-Gtc" style="IBUITableViewCellStyleDefault" id="U2a-bX-bbB" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="600" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2a-bX-bbB" id="90x-IH-5L6">
@@ -169,7 +160,4 @@
             <point key="canvasLocation" x="1630" y="400"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ic_close_white" width="24" height="24"/>
-    </resources>
 </document>

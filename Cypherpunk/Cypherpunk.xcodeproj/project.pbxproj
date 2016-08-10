@@ -11,6 +11,16 @@
 		200955641D4B46C000BEEE0A /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200955631D4B46C000BEEE0A /* Account.storyboard */; };
 		200955661D4B48C200BEEE0A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200955651D4B48C200BEEE0A /* AccountViewController.swift */; };
 		2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */; };
+		201809E61D5B394900730FA4 /* ThemedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */; };
+		201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */; };
+		201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809E91D5B3BF100730FA4 /* ThemedNavigationBar.swift */; };
+		201809EC1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809EB1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift */; };
+		201809EE1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809ED1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift */; };
+		201809F01D5B49E200730FA4 /* ThemedSettingsTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809EF1D5B49E200730FA4 /* ThemedSettingsTabButton.swift */; };
+		201809F21D5B4C0500730FA4 /* ThemedChangeIPAddressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809F11D5B4C0500730FA4 /* ThemedChangeIPAddressButton.swift */; };
+		201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809F31D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift */; };
+		201809F61D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809F51D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift */; };
+		201809F81D5B503200730FA4 /* ThemedMapImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809F71D5B503200730FA4 /* ThemedMapImageView.swift */; };
 		203809691D13D89D005145CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203809681D13D89D005145CD /* AppDelegate.swift */; };
 		2038096E1D13D89D005145CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2038096C1D13D89D005145CD /* Main.storyboard */; };
 		203809701D13D89D005145CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2038096F1D13D89D005145CD /* Assets.xcassets */; };
@@ -20,7 +30,21 @@
 		203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203809961D13DAF3005145CD /* NetworkExtension.framework */; };
 		2038099D1D13EEA9005145CD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099C1D13EEA9005145CD /* AppState.swift */; };
 		2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099E1D13EEEB005145CD /* AppReducer.swift */; };
+		203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF41D5AFC9B00EA2536 /* ThemedBackgroundView.swift */; };
+		203F4EF71D5AFCDA00EA2536 /* ThemeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */; };
+		203F4EF91D5AFD1700EA2536 /* ThemeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */; };
+		203F4EFB1D5AFD5100EA2536 /* ThemeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EFA1D5AFD5100EA2536 /* ThemeAction.swift */; };
+		203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */; };
+		203F4EFF1D5B079D00EA2536 /* UIColor+CIAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */; };
+		203F4F051D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4F041D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift */; };
+		203F4F071D5B188200EA2536 /* ThemedNavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4F061D5B188200EA2536 /* ThemedNavigationButton.swift */; };
+		203F4F091D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4F081D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift */; };
+		203F4F0B1D5B1BAA00EA2536 /* ThemedLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4F0A1D5B1BAA00EA2536 /* ThemedLogoView.swift */; };
 		204350501D59D088009AF327 /* AdvancedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2043504F1D59D088009AF327 /* AdvancedSettingsViewController.swift */; };
+		204BE90C1D5B23D8003D7CB5 /* ThemedArrowDownImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BE90B1D5B23D8003D7CB5 /* ThemedArrowDownImageView.swift */; };
+		204BE90E1D5B28B7003D7CB5 /* ThemedSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BE90D1D5B28B7003D7CB5 /* ThemedSeparatorView.swift */; };
+		204BE9101D5B30AA003D7CB5 /* ThemedUpgradeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BE90F1D5B30AA003D7CB5 /* ThemedUpgradeButton.swift */; };
+		204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BE9111D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
@@ -92,6 +116,16 @@
 		200955631D4B46C000BEEE0A /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		200955651D4B48C200BEEE0A /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
+		201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTableViewCell.swift; sourceTree = "<group>"; };
+		201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTableView.swift; sourceTree = "<group>"; };
+		201809E91D5B3BF100730FA4 /* ThemedNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationBar.swift; sourceTree = "<group>"; };
+		201809EB1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasSwitchThemedTableViewCell.swift; sourceTree = "<group>"; };
+		201809ED1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedModeTableViewCell.swift; sourceTree = "<group>"; };
+		201809EF1D5B49E200730FA4 /* ThemedSettingsTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSettingsTabButton.swift; sourceTree = "<group>"; };
+		201809F11D5B4C0500730FA4 /* ThemedChangeIPAddressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedChangeIPAddressButton.swift; sourceTree = "<group>"; };
+		201809F31D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTimeLabelButton.swift; sourceTree = "<group>"; };
+		201809F51D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedIPAddressPanelView.swift; sourceTree = "<group>"; };
+		201809F71D5B503200730FA4 /* ThemedMapImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedMapImageView.swift; sourceTree = "<group>"; };
 		203809651D13D89D005145CD /* Cypherpunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cypherpunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		203809681D13D89D005145CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2038096D1D13D89D005145CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,7 +142,21 @@
 		203809981D13DAF3005145CD /* Cypherpunk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cypherpunk.entitlements; sourceTree = "<group>"; };
 		2038099C1D13EEA9005145CD /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		2038099E1D13EEEB005145CD /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		203F4EF41D5AFC9B00EA2536 /* ThemedBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedBackgroundView.swift; sourceTree = "<group>"; };
+		203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeState.swift; sourceTree = "<group>"; };
+		203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeReducer.swift; sourceTree = "<group>"; };
+		203F4EFA1D5AFD5100EA2536 /* ThemeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeAction.swift; sourceTree = "<group>"; };
+		203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
+		203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+CIAdditions.swift"; sourceTree = "<group>"; };
+		203F4F041D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSubTitleLabel.swift; sourceTree = "<group>"; };
+		203F4F061D5B188200EA2536 /* ThemedNavigationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationButton.swift; sourceTree = "<group>"; };
+		203F4F081D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTintedNavigationButton.swift; sourceTree = "<group>"; };
+		203F4F0A1D5B1BAA00EA2536 /* ThemedLogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedLogoView.swift; sourceTree = "<group>"; };
 		2043504F1D59D088009AF327 /* AdvancedSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsViewController.swift; sourceTree = "<group>"; };
+		204BE90B1D5B23D8003D7CB5 /* ThemedArrowDownImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedArrowDownImageView.swift; sourceTree = "<group>"; };
+		204BE90D1D5B28B7003D7CB5 /* ThemedSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSeparatorView.swift; sourceTree = "<group>"; };
+		204BE90F1D5B30AA003D7CB5 /* ThemedUpgradeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedUpgradeButton.swift; sourceTree = "<group>"; };
+		204BE9111D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedAccountBackgroundView.swift; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		20D895ED1D1D16FB002B9F9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +289,7 @@
 				2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */,
 				20F8508F1D3DF3D9009079A0 /* API */,
 				20D896031D23AE83002B9F9D /* Validator */,
+				203F4EF31D5AFC8200EA2536 /* View */,
 				20D895F11D1D1954002B9F9D /* ViewControllers */,
 				2038099A1D13ED96005145CD /* Action */,
 				203809991D13ED84005145CD /* State */,
@@ -282,6 +331,7 @@
 				20D895FB1D23A1E7002B9F9D /* LoginState.swift */,
 				20EC4A371D2F7BAE00785399 /* RegionState.swift */,
 				20EC4A451D3780BC00785399 /* SettingsState.swift */,
+				203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -292,6 +342,7 @@
 				20D895FF1D23A84D002B9F9D /* LoginAction.swift */,
 				20EC4A491D378CBC00785399 /* SettingsAction.swift */,
 				2B2B59E41D3F98D0003FA705 /* RegionAction.swift */,
+				203F4EFA1D5AFD5100EA2536 /* ThemeAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -303,8 +354,36 @@
 				20D895FD1D23A637002B9F9D /* LoginReducer.swift */,
 				20EC4A391D2F82CC00785399 /* RegionReducer.swift */,
 				20EC4A471D37851200785399 /* SettingsReducer.swift */,
+				203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */,
 			);
 			path = Reducer;
+			sourceTree = "<group>";
+		};
+		203F4EF31D5AFC8200EA2536 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				203F4EF41D5AFC9B00EA2536 /* ThemedBackgroundView.swift */,
+				203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */,
+				201809EF1D5B49E200730FA4 /* ThemedSettingsTabButton.swift */,
+				203F4F041D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift */,
+				203F4F061D5B188200EA2536 /* ThemedNavigationButton.swift */,
+				203F4F081D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift */,
+				203F4F0A1D5B1BAA00EA2536 /* ThemedLogoView.swift */,
+				204BE9111D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift */,
+				204BE90B1D5B23D8003D7CB5 /* ThemedArrowDownImageView.swift */,
+				204BE90D1D5B28B7003D7CB5 /* ThemedSeparatorView.swift */,
+				204BE90F1D5B30AA003D7CB5 /* ThemedUpgradeButton.swift */,
+				201809F11D5B4C0500730FA4 /* ThemedChangeIPAddressButton.swift */,
+				201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */,
+				201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */,
+				201809E91D5B3BF100730FA4 /* ThemedNavigationBar.swift */,
+				201809EB1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift */,
+				201809ED1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift */,
+				201809F31D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift */,
+				201809F51D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift */,
+				201809F71D5B503200730FA4 /* ThemedMapImageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		20D895E81D1D0C17002B9F9D /* External */ = {
@@ -312,6 +391,7 @@
 			children = (
 				20D895F41D1D1C6F002B9F9D /* IPAddress.swift */,
 				2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */,
+				203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -710,37 +790,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */,
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
 				2B193EC71D591E2600308DCA /* RemotePortSelectViewController.swift in Sources */,
+				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				20EBFD401D5485D8008B9F14 /* SettingsStatusViewController.swift in Sources */,
+				203F4F0B1D5B1BAA00EA2536 /* ThemedLogoView.swift in Sources */,
+				201809EC1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift in Sources */,
+				204BE90E1D5B28B7003D7CB5 /* ThemedSeparatorView.swift in Sources */,
+				203F4EFB1D5AFD5100EA2536 /* ThemeAction.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */,
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
+				201809EE1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift in Sources */,
+				203F4F091D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift in Sources */,
 				20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */,
+				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
 				204350501D59D088009AF327 /* AdvancedSettingsViewController.swift in Sources */,
+				201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */,
+				204BE9101D5B30AA003D7CB5 /* ThemedUpgradeButton.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
+				201809F81D5B503200730FA4 /* ThemedMapImageView.swift in Sources */,
+				203F4EF71D5AFCDA00EA2536 /* ThemeState.swift in Sources */,
 				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
+				201809E61D5B394900730FA4 /* ThemedTableViewCell.swift in Sources */,
 				2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */,
+				204BE90C1D5B23D8003D7CB5 /* ThemedArrowDownImageView.swift in Sources */,
 				20EBFD3A1D545EDE008B9F14 /* EncryptionSelectViewController.swift in Sources */,
 				2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */,
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
+				201809F61D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
+				203F4F051D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift in Sources */,
+				201809F01D5B49E200730FA4 /* ThemedSettingsTabButton.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20EBFD3C1D545F3D008B9F14 /* AuthenticationSelectViewController.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
+				203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */,
 				200955661D4B48C200BEEE0A /* AccountViewController.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
+				204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				200955621D4B45B800BEEE0A /* SettingsViewController.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
+				203F4EFF1D5B079D00EA2536 /* UIColor+CIAdditions.swift in Sources */,
+				203F4EF91D5AFD1700EA2536 /* ThemeReducer.swift in Sources */,
+				203F4F071D5B188200EA2536 /* ThemedNavigationButton.swift in Sources */,
+				201809F21D5B4C0500730FA4 /* ThemedChangeIPAddressButton.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,
 				20EBFD381D5454B0008B9F14 /* HandshakeSelectViewController.swift in Sources */,
 				20EBFD3E1D547B18008B9F14 /* SettingsTopViewController.swift in Sources */,

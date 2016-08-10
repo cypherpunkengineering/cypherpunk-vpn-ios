@@ -14,4 +14,9 @@ struct AppState: StateType {
     let loginState: LoginState
     let regionState: RegionState
     let settingsState: SettingsState
+    let themeState: ThemeState
+    
+    static func getSharedState() -> AppState {
+        return mainStore.state
+    }
 }

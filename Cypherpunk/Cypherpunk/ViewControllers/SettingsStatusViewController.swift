@@ -30,6 +30,12 @@ class SettingsStatusViewController: UITableViewController, PageContent {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,7 +50,14 @@ class SettingsStatusViewController: UITableViewController, PageContent {
         
         titleLabel.font = R.font.dosisMedium(size: 14)
         titleLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-        titleLabel.textColor = UIColor(red: 204.0 / 255.0 , green: 204.0 / 255.0 , blue: 204.0 / 255.0 , alpha: 1.0)
+        
+        let theme = mainStore.state.themeState.themeType
+        switch theme {
+        case .White:
+            titleLabel.textColor = UIColor.whiteThemeTextColor()
+        case .Black:
+            titleLabel.textColor = UIColor.whiteThemeIndicatorColor()
+        }
         
         view.addSubview(titleLabel)
         
