@@ -26,34 +26,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vq-2R-XQK">
-                                        <rect key="frame" x="240" y="28" width="121" height="72"/>
+                                        <rect key="frame" x="238" y="28" width="124" height="72"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cypherpunk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xe-hE-xun">
-                                                <rect key="frame" x="23" y="23" width="98" height="27"/>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhi-82-vhD" customClass="ThemedLogoView" customModule="Cypherpunk" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="72"/>
                                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="21"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="pPX-gh-D02">
-                                                <rect key="frame" x="0.0" y="18" width="19" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="5Rg-Pg-z9n"/>
-                                                    <constraint firstAttribute="width" constant="19" id="zIR-ml-i3U"/>
-                                                </constraints>
-                                            </imageView>
+                                                <inset key="titleEdgeInsets" minX="4.5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" image="map_wh"/>
+                                                <state key="disabled" title="Cypherpunk" image="logoGray_small"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="jhi-82-vhD" secondAttribute="trailing" id="0h3-oo-FoP"/>
                                             <constraint firstAttribute="height" constant="72" id="1S8-cU-J8b"/>
-                                            <constraint firstAttribute="trailing" secondItem="5xe-hE-xun" secondAttribute="trailing" id="9Lk-2g-K6F"/>
-                                            <constraint firstItem="5xe-hE-xun" firstAttribute="centerY" secondItem="pPX-gh-D02" secondAttribute="centerY" id="NIB-LJ-f1a"/>
-                                            <constraint firstItem="pPX-gh-D02" firstAttribute="leading" secondItem="4Vq-2R-XQK" secondAttribute="leading" id="Wrb-AK-WGU"/>
-                                            <constraint firstAttribute="width" constant="121" id="eqt-1I-WPh"/>
-                                            <constraint firstItem="5xe-hE-xun" firstAttribute="centerY" secondItem="4Vq-2R-XQK" secondAttribute="centerY" id="hoa-B9-Enc"/>
-                                            <constraint firstItem="5xe-hE-xun" firstAttribute="leading" secondItem="pPX-gh-D02" secondAttribute="trailing" constant="4" id="pb7-ZR-9VO"/>
+                                            <constraint firstItem="jhi-82-vhD" firstAttribute="leading" secondItem="4Vq-2R-XQK" secondAttribute="leading" id="c05-9X-R9u"/>
+                                            <constraint firstAttribute="width" constant="124" id="eqt-1I-WPh"/>
+                                            <constraint firstItem="jhi-82-vhD" firstAttribute="top" secondItem="4Vq-2R-XQK" secondAttribute="top" id="m7R-vo-qdo"/>
+                                            <constraint firstAttribute="bottom" secondItem="jhi-82-vhD" secondAttribute="bottom" id="z5O-jt-kY2"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epb-yZ-YBw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epb-yZ-YBw" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="275" y="123" width="50" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="0NM-19-1Ru"/>
@@ -63,14 +56,14 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UhM-Gr-BZT">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UhM-Gr-BZT">
                                         <rect key="frame" x="40" y="155" width="520" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="mM9-M8-aZO"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0C-oH-jeW">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0C-oH-jeW">
                                         <rect key="frame" x="40" y="187" width="520" height="48"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bDU-gV-ac6">
@@ -99,7 +92,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UGd-5B-lqG">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGd-5B-lqG">
                                         <rect key="frame" x="40" y="255" width="520" height="48"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BfM-hQ-pe9">
@@ -131,7 +124,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmO-Xg-NBN">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmO-Xg-NBN">
                                         <rect key="frame" x="40" y="404" width="520" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="sOx-Ly-jPk"/>
@@ -143,7 +136,7 @@
                                             <segue destination="NZK-DU-nsM" kind="show" id="fbC-dW-tKx"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-QR-9oM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-QR-9oM">
                                         <rect key="frame" x="40" y="323" width="520" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="pkq-QZ-iXf"/>
@@ -174,10 +167,10 @@
                                     <constraint firstItem="LmO-Xg-NBN" firstAttribute="trailing" secondItem="Ikb-QR-9oM" secondAttribute="trailing" id="5i4-j3-Ejd"/>
                                     <constraint firstItem="C0C-oH-jeW" firstAttribute="top" secondItem="UhM-Gr-BZT" secondAttribute="bottom" constant="31" id="Cxk-cg-hhv"/>
                                     <constraint firstItem="LmO-Xg-NBN" firstAttribute="leading" secondItem="Ikb-QR-9oM" secondAttribute="leading" id="E8c-A8-1F5"/>
-                                    <constraint firstItem="Epb-yZ-YBw" firstAttribute="top" secondItem="5xe-hE-xun" secondAttribute="bottom" constant="45" id="Gty-dG-Cw1"/>
                                     <constraint firstItem="LmO-Xg-NBN" firstAttribute="top" secondItem="Ikb-QR-9oM" secondAttribute="bottom" constant="33" id="Nvf-YZ-9k3"/>
                                     <constraint firstItem="Ikb-QR-9oM" firstAttribute="top" secondItem="UGd-5B-lqG" secondAttribute="bottom" constant="20" id="RXc-FD-ixu"/>
                                     <constraint firstItem="Ikb-QR-9oM" firstAttribute="leading" secondItem="UGd-5B-lqG" secondAttribute="leading" id="Sg5-oU-7MS"/>
+                                    <constraint firstItem="Epb-yZ-YBw" firstAttribute="top" secondItem="4Vq-2R-XQK" secondAttribute="bottom" constant="23" id="T3M-fJ-lQr"/>
                                     <constraint firstItem="UhM-Gr-BZT" firstAttribute="leading" secondItem="Rmh-5r-RxF" secondAttribute="leading" constant="40" id="WwO-4W-0ce"/>
                                     <constraint firstItem="C0C-oH-jeW" firstAttribute="leading" secondItem="UhM-Gr-BZT" secondAttribute="leading" id="Z44-Zw-8o6"/>
                                     <constraint firstItem="4Vq-2R-XQK" firstAttribute="centerX" secondItem="Rmh-5r-RxF" secondAttribute="centerX" id="agw-De-ghk"/>
@@ -222,6 +215,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="162" height="282"/>
+        <image name="logoGray_small" width="19" height="36"/>
+        <image name="map_wh" width="360" height="173"/>
     </resources>
 </document>

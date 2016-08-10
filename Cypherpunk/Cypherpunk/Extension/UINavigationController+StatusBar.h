@@ -15,3 +15,10 @@
 @interface UIViewController (StatusBar)
 
 @end
+
+@interface UIApplication (StatusBar)
+
+- (void)changeStatusBarStyleToLightContent;
+- (void)changeStatusBarStyleToDefault;
+
+@end

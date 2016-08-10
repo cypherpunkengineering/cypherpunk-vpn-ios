@@ -8,10 +8,13 @@
 
 #import "UINavigationController+StatusBar.h"
 
+#import "Cypherpunk-Swift.h"
+UIStatusBarStyle currentStatusBarStyle = UIStatusBarStyleLightContent;
+
 @implementation UINavigationController (StatusBar)
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    return currentStatusBarStyle;
 }
 
 @end
@@ -19,7 +22,22 @@
 @implementation UIViewController (StatusBar)
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    return currentStatusBarStyle;
 }
+
+@end
+
+@implementation UIApplication (StatusBar)
+
+- (void)changeStatusBarStyleToLightContent
+{
+    currentStatusBarStyle = UIStatusBarStyleLightContent;
+}
+
+- (void)changeStatusBarStyleToDefault
+{
+    currentStatusBarStyle = UIStatusBarStyleDefault;
+}
+
 
 @end
