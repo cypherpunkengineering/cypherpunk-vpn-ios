@@ -41,7 +41,7 @@ class EncryptionSelectViewController: UITableViewController {
         
         self.title = "Encryption"
         
-        self.tableView.reloadView()
+        self.tableView.configureView()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,7 +56,7 @@ class EncryptionSelectViewController: UITableViewController {
         let cell = ThemedTableViewCell(style: .Default, reuseIdentifier: "Cell")
         let value = NEVPNIKEv2EncryptionAlgorithm.arrayDescription[indexPath.row]
         
-        cell.reloadView()
+        cell.configureView()
         
         cell.textLabel?.text = value.description
         if value == selectedValue {

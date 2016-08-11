@@ -28,7 +28,7 @@ class RemotePortSelectViewController: UITableViewController {
         super.viewDidLoad()
         
         self.title = "Remote Port"
-        self.tableView.reloadView()
+        self.tableView.configureView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,7 +49,7 @@ class RemotePortSelectViewController: UITableViewController {
         let value = RemotePort.arrayDescription[indexPath.row]
         
         cell.prepareDisclosureIndicator()
-        cell.reloadView()
+        cell.configureView()
         
         cell.textLabel?.text = value.description
         if value == selectedValue {

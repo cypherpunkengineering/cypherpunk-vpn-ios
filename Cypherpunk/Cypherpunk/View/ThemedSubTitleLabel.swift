@@ -11,10 +11,10 @@ import UIKit
 class ThemedSubTitleLabel: UILabel {
     
     override func awakeFromNib() {
-        reloadView()
+        configureView()
     }
     
-    func reloadView() {
+    func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
         case .White:

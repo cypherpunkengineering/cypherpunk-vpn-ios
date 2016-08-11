@@ -13,9 +13,9 @@ class ThemedMapImageView: UIImageView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        reloadView()
+        configureView()
     }
-    func reloadView() {
+    func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
         case .White:

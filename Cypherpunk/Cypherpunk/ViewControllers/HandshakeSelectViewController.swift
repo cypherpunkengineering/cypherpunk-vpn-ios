@@ -36,7 +36,7 @@ class HandshakeSelectViewController: UITableViewController {
 
         self.title = "Handshake"
         
-        self.tableView.reloadView()
+        self.tableView.configureView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +57,7 @@ class HandshakeSelectViewController: UITableViewController {
         let value = NEVPNIKEv2CertificateType.arrayDescription[indexPath.row]
         
         cell.prepareDisclosureIndicator()
-        cell.reloadView()
+        cell.configureView()
 
         cell.textLabel?.text = value.description
         if value == selectedValue {

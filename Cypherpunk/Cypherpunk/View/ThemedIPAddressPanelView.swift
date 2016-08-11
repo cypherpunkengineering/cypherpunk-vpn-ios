@@ -14,10 +14,10 @@ class ThemedIPAddressPanelView: UIView {
     @IBOutlet weak var regionLabelButton: UIButton!
     
     override func awakeFromNib() {
-        reloadView()
+        configureView()
     }
     
-    func reloadView() {
+    func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
         case .White:

@@ -14,10 +14,10 @@ class ThemedTimeLabelButton: UIButton {
         let image = UIImage(resource: R.image.icon_time)?.imageWithRenderingMode(.AlwaysTemplate)
         self.setImage(image, forState: .Normal)
         
-        reloadView()
+        configureView()
     }
     
-    func reloadView() {
+    func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
         case .White:

@@ -17,12 +17,12 @@ extension UIColor {
 class ThemedTableView: UITableView {
     
     override func awakeFromNib() {
-        reloadView()
+        configureView()
     }
 }
 
 extension UITableView {
-    func reloadView() {
+    func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
         case .White:

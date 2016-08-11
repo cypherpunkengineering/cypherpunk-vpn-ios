@@ -14,9 +14,9 @@ class ThemedTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         prepareDisclosureIndicator()
-        reloadView()
+        configureView()
     }
-    func reloadView() {
+    func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
         case .White:

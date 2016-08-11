@@ -30,7 +30,7 @@ class VPNProtocolSelectViewController: UITableViewController {
         
         self.title = "VPN protocol"
         
-        self.tableView.reloadView()
+        self.tableView.configureView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,7 +51,7 @@ class VPNProtocolSelectViewController: UITableViewController {
         let value = VPNProtocolMode.arrayDescription[indexPath.row]
         
         cell.prepareDisclosureIndicator()
-        cell.reloadView()
+        cell.configureView()
         
         cell.textLabel?.text = value.description
         if value == selectedValue {
