@@ -11,10 +11,10 @@ import UIKit
 class ThemedNavigationBar: UINavigationBar {
     
     override func awakeFromNib() {
-        reloadView()
+        configureView()
     }
     
-    func reloadView() {
+    func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
         case .White:

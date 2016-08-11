@@ -12,10 +12,10 @@ class ThemedTintedNavigationButton: UIButton {
 
     override func awakeFromNib() {
         self.setImage(self.imageView?.image, forState: .Normal)
-        reloadView()
+        configureView()
     }
     
-    func reloadView() {
+    func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
         case .White:
