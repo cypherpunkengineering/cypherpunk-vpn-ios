@@ -43,14 +43,14 @@
                         <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="9zI-WM-cTs" style="IBUITableViewCellStyleDefault" id="Sw4-3g-qUE" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="600" height="48"/>
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sw4-3g-qUE" id="8Ph-oT-ydU">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="47"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="47.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9zI-WM-cTs">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="47"/>
+                                            <rect key="frame" x="15" y="0.0" width="550" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,7 +68,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Region Select" id="WyB-SC-K3S">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="9Rr-4y-Htv"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="9Rr-4y-Htv">
+                            <connections>
+                                <action selector="closeAction:" destination="MK2-CU-Fce" id="3Ka-e7-mOf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="DII-Ie-KuW" kind="show" identifier="ToCountry" id="Sle-IX-cfg"/>
@@ -89,14 +93,14 @@
                         <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="7GO-5y-GRu" style="IBUITableViewCellStyleDefault" id="geC-hG-JCO" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="600" height="48"/>
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="geC-hG-JCO" id="sHB-Zy-4MJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="47"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="47.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7GO-5y-GRu">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="47"/>
+                                            <rect key="frame" x="15" y="0.0" width="550" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,14 +135,14 @@
                         <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="jR9-0f-Gtc" style="IBUITableViewCellStyleDefault" id="U2a-bX-bbB" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="600" height="48"/>
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2a-bX-bbB" id="90x-IH-5L6">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="47"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="47.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jR9-0f-Gtc">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="47"/>
+                                            <rect key="frame" x="15" y="0.0" width="570" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
