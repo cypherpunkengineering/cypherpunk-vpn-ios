@@ -35,14 +35,13 @@ extension NEVPNIKEv2EncryptionAlgorithm {
 class EncryptionSelectViewController: UITableViewController {
     
     var selectedValue: NEVPNIKEv2EncryptionAlgorithm = mainStore.state.settingsState.encryption
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Encryption"
         
-        tableView.backgroundColor = UIColor(red: 26 / 255.0, green: 26 / 255.0, blue: 26 / 255.0, alpha: 1.0)
-        tableView.separatorColor = UIColor(red: 69 / 255.0, green: 69 / 255.0, blue: 69 / 255.0, alpha: 1.0)
+        self.tableView.reloadView()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,12 +53,10 @@ class EncryptionSelectViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
+        let cell = ThemedTableViewCell(style: .Default, reuseIdentifier: "Cell")
         let value = NEVPNIKEv2EncryptionAlgorithm.arrayDescription[indexPath.row]
         
-        cell.backgroundColor = UIColor(red: 42 / 255.0, green: 42 / 255.0, blue: 42 / 255.0, alpha: 1.0)
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.tintColor = UIColor(red: 153 / 255.0, green: 153 / 255.0, blue: 153 / 255.0, alpha: 1.0)
+        cell.reloadView()
         
         cell.textLabel?.text = value.description
         if value == selectedValue {

@@ -19,7 +19,9 @@ class ThemedTableView: UITableView {
     override func awakeFromNib() {
         reloadView()
     }
-    
+}
+
+extension UITableView {
     func reloadView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {

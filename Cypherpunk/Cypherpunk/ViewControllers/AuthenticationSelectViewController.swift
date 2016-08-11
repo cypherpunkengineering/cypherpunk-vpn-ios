@@ -34,8 +34,7 @@ class AuthenticationSelectViewController: UITableViewController {
         
         self.title = "Authentication"
         
-        tableView.backgroundColor = UIColor(red: 26 / 255.0, green: 26 / 255.0, blue: 26 / 255.0, alpha: 1.0)
-        tableView.separatorColor = UIColor(red: 69 / 255.0, green: 69 / 255.0, blue: 69 / 255.0, alpha: 1.0)
+        self.tableView.reloadView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,12 +51,11 @@ class AuthenticationSelectViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
+        let cell = ThemedTableViewCell(style: .Default, reuseIdentifier: "Cell")
         let value = NEVPNIKEv2IntegrityAlgorithm.arrayDescription[indexPath.row]
         
-        cell.backgroundColor = UIColor(red: 42 / 255.0, green: 42 / 255.0, blue: 42 / 255.0, alpha: 1.0)
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.tintColor = UIColor(red: 153 / 255.0, green: 153 / 255.0, blue: 153 / 255.0, alpha: 1.0)
+        cell.prepareDisclosureIndicator()
+        cell.reloadView()
         
         cell.textLabel?.text = value.description
         if value == selectedValue {
