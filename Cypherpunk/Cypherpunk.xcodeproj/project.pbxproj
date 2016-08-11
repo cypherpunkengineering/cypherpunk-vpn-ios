@@ -88,6 +88,8 @@
 		2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B45C1731D21076000D4326C /* UINavigationController+StatusBar.m */; };
 		2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */; };
 		2B45C17A1D2257A100D4326C /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B45C1791D2257A100D4326C /* BackgroundViewController.swift */; };
+		2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B73C70E1D5C7F670090FF8B /* Animation.storyboard */; };
+		2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */; };
 		2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF33BC41D5314F1003FCFF3 /* test.p12 */; };
 		40D56BF49E63C019A46839C7 /* Pods_CypherpunkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7BA02BCC3C2DBACF87A027 /* Pods_CypherpunkUITests.framework */; };
 		46608F04506E5B087F2FB8C7 /* Pods_Cypherpunk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF74B2C8826884133507A33 /* Pods_Cypherpunk.framework */; };
@@ -201,6 +203,8 @@
 		2B45C1731D21076000D4326C /* UINavigationController+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBar.m"; sourceTree = "<group>"; };
 		2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNConfigurationCoordinator.swift; sourceTree = "<group>"; };
 		2B45C1791D2257A100D4326C /* BackgroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		2B73C70E1D5C7F670090FF8B /* Animation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Animation.storyboard; sourceTree = "<group>"; };
+		2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		2BF33BC41D5314F1003FCFF3 /* test.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.p12; sourceTree = "<group>"; };
 		2FDB752259C501D90C4A7A8D /* Pods-CypherpunkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A532A863B7DD850AE5424D3 /* Pods-CypherpunkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
 				200955611D4B45B800BEEE0A /* SettingsViewController.swift */,
 				2043504F1D59D088009AF327 /* AdvancedSettingsViewController.swift */,
+				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
 				20EBFD3D1D547B18008B9F14 /* SettingsTopViewController.swift */,
 				20EBFD3F1D5485D8008B9F14 /* SettingsStatusViewController.swift */,
 				200955651D4B48C200BEEE0A /* AccountViewController.swift */,
@@ -437,6 +442,7 @@
 				200955631D4B46C000BEEE0A /* Account.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20EC4A3F1D376C5200785399 /* Settings.storyboard */,
+				2B73C70E1D5C7F670090FF8B /* Animation.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -622,6 +628,7 @@
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
 				200955641D4B46C000BEEE0A /* Account.storyboard in Resources */,
 				2038096E1D13D89D005145CD /* Main.storyboard in Resources */,
+				2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */,
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
@@ -837,6 +844,7 @@
 				200955661D4B48C200BEEE0A /* AccountViewController.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */,
+				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				200955621D4B45B800BEEE0A /* SettingsViewController.swift in Sources */,
