@@ -32,7 +32,14 @@ class AnimationViewController: UIViewController {
                 textLayer.string = String(number)
                 textLayer.font = font
                 textLayer.fontSize = 20
-                textLayer.foregroundColor = UIColor.whiteThemeNavigationColor().colorWithAlphaComponent(0.15).CGColor
+                let baseColor = UIColor.whiteThemeNavigationColor()
+                
+                switch mainStore.state.themeState.themeType {
+                case .White:
+                    textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.15).CGColor
+                case .Black:
+                    textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.5).CGColor
+                }
                 textLayer.frame = frame
                 
                 textLayer.alignmentMode = kCAAlignmentCenter
