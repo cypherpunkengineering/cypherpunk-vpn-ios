@@ -11,22 +11,61 @@ import CoreGraphics
 
 class AnimationViewController: UIViewController {
 
-    let size = CGSizeMake(15,21)
-    
+    let itemSize = CGSizeMake(15,21)
+    var animationLayer: CALayer!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if animationLayer != nil {
+            animationLayer.removeFromSuperlayer()
+            animationLayer = instanceAnimationLayer()
+            self.view.layer.addSublayer(animationLayer)
+            startDisconnectedAnimation()
 
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
 
-        let horizontalItemsCount = Int(floor(view.frame.width / size.width))
-        let verticalItemsCount = Int(floor(view.frame.height / size.height))
+        animationLayer = instanceAnimationLayer()
+        self.view.layer.addSublayer(animationLayer)
+        startDisconnectedAnimation()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func instanceAnimationLayer() -> CALayer {
+        
+        let layer = CALayer()
+        layer.frame = self.view.frame
+        
+        let horizontalItemsCount = Int(ceil(view.frame.width / itemSize.width))
+        let verticalItemsCount = Int(ceil(view.frame.height / itemSize.height)) + 1
         let font = R.font.dosisRegular(size: 20)
-
+        
         for x in 0...horizontalItemsCount {
+            let verticalLayer = CALayer()
+            
+            let size = CGSize(width: itemSize.width, height: CGFloat(verticalItemsCount) * itemSize.height)
+            verticalLayer.frame = CGRect(origin: CGPoint(x: CGFloat(x) * itemSize.width , y: 0), size: size)
+            
             for y in 0...verticalItemsCount {
-                
                 let number: Int = random() % 2
-                let layoutPoint = CGPoint(x: CGFloat(x) * size.width , y: CGFloat(y) * size.height)
-                let frame = CGRect(origin: layoutPoint, size: size)
+                let layoutPoint = CGPoint(x: 0 , y: CGFloat(y) * itemSize.height)
+                let frame = CGRect(origin: layoutPoint, size: itemSize)
                 
                 let textLayer = CATextLayer()
                 textLayer.string = String(number)
@@ -44,15 +83,25 @@ class AnimationViewController: UIViewController {
                 
                 textLayer.alignmentMode = kCAAlignmentCenter
                 textLayer.contentsScale = UIScreen.mainScreen().scale
-                self.view.layer.addSublayer(textLayer)
+                verticalLayer.addSublayer(textLayer)
             }
+            layer.addSublayer(verticalLayer)
         }
+        return layer
+    }
+
+    func startDisconnectedAnimation() {
         
+        for i in 0 ..< animationLayer.sublayers!.count {
+            let verticalLayer = animationLayer.sublayers![i]
+            let direction = AnimationDirection(rawValue: i % 2)!
+            
+            let animator = VerticalScrollAnimator(
+                itemCount: verticalLayer.sublayers!.count,
+                verticalLayer: verticalLayer,
+                direction: direction
+            )
+            animator.animationStart()
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
