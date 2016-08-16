@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VPNConfigurationCoordinator.start {
             
         }
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Light)
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Gradient)
 
         return true
