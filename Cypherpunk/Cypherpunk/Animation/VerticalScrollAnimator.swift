@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NetworkExtension
 
 enum AnimationDirection: Int {
     case Down
@@ -17,14 +18,18 @@ class VerticalScrollAnimator: NSObject {
     let itemCount: Int
     let verticalLayer: CALayer
     let direction: AnimationDirection
+    let speed: Float
     
+    private let animationKeyPath = "position.y"
+    private let animationKey = "scrollAnimation"
+    private let durationSecPerItem = 21.0 / 2.0
     private let itemSize = CGSizeMake(15,21)
     
-    init(itemCount: Int, verticalLayer: CALayer, direction: AnimationDirection) {
+    init(itemCount: Int, verticalLayer: CALayer, direction: AnimationDirection, speed: Float = 1.0) {
         self.itemCount = itemCount
         self.verticalLayer = verticalLayer
         self.direction = direction
-
+        self.speed = speed
         super.init()
     }
     
@@ -37,50 +42,78 @@ class VerticalScrollAnimator: NSObject {
     }
     
     func animationStop() {
-        verticalLayer.removeAllAnimations()
+        for layer in verticalLayer.sublayers! {
+            layer.removeAllAnimations()
+        }
+    }
+    
+    func animationResume() {
+        let pausedTime = verticalLayer.timeOffset
+        verticalLayer.speed = 1.0
+        verticalLayer.timeOffset = 0.0
+        verticalLayer.beginTime = 0.0
+        
+        let timeSincePause = verticalLayer.convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
+        verticalLayer.beginTime = timeSincePause
+    }
+    
+    func animationPause() {
+        
+        let pausedTime = verticalLayer.convertTime(CACurrentMediaTime(), toLayer: nil)
+        verticalLayer.speed = 0.0
+        verticalLayer.timeOffset = pausedTime
     }
     
     private func addScrollAnimation(layer: CALayer) {
-        let animation = CAKeyframeAnimation(keyPath: "position.y")
+        let animation = CAKeyframeAnimation(keyPath: animationKeyPath)
         animation.repeatCount = 1.0
         animation.values = valuesForKeyFrame(layer.position.y)
-        animation.duration = Double(animation.values!.count * 1)
+        animation.duration = Double(animation.values!.count) * durationSecPerItem
+        animation.speed = speed
         animation.delegate = self
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        layer.addAnimation(animation, forKey: "scrollAnimation")
+        animation.removedOnCompletion = false
+        layer.addAnimation(animation, forKey: animationKey)
     }
     
     private var count = 0
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         if flag == true {
-            let textLayer: CALayer
-            switch direction {
-            case .Down:
-                textLayer = verticalLayer.sublayers![itemCount - count - 1]
-            case .Up:
-                textLayer = verticalLayer.sublayers![count]
-            }
 
-            switch direction {
-            case .Down:
-                textLayer.position = CGPointMake(textLayer.position.x,0)
-            case .Up:
-                textLayer.position = CGPointMake(textLayer.position.x, CGFloat(itemCount - 1) * itemSize.height - itemSize.height / 2)
-            }
+            self.animationPause()
+            let itemCount = self.itemCount
+            let count = self.count
+            let itemSize = self.itemSize
             
-            addScrollAnimation(textLayer)
+            dispatch_async(dispatch_get_main_queue(), {
+                let textLayer: CALayer
+                
+                switch self.direction {
+                case .Down:
+                    textLayer = self.verticalLayer.sublayers![itemCount - count - 1]
+                    textLayer.position = CGPointMake(textLayer.position.x,0)
+                case .Up:
+                    textLayer = self.verticalLayer.sublayers![count]
+                    textLayer.position = CGPointMake(textLayer.position.x, CGFloat(itemCount - 1) * itemSize.height - itemSize.height / 2)
+                }
+                
+                textLayer.removeAnimationForKey(self.animationKey)
+                
+                self.addScrollAnimation(textLayer)
+                self.animationResume()
+
+                self.count = (count + 1) % itemCount
+            })
             
-            count = (count + 1) % itemCount
         }
     }
     
     func valuesForKeyFrame(startY: CGFloat) -> [CGFloat] {
-        let verticalItemsCount = Int(ceil(verticalLayer.frame.height / itemSize.height))
         let index = Int(startY / itemSize.height)
         var values: [CGFloat] = []
         switch direction {
         case .Down:
-            for i in index ... verticalItemsCount {
+            for i in index ..< itemCount  {
                 values.append(CGFloat(i - 1) * itemSize.height)
             }
         case .Up:
@@ -91,5 +124,5 @@ class VerticalScrollAnimator: NSObject {
         }
         return values
     }
-
+    
 }

@@ -1,16 +1,15 @@
 //
-//  AnimationViewController.swift
+//  ConnectedAnimationViewController.swift
 //  Cypherpunk
 //
-//  Created by KeisukeKimura on 2016/08/11.
+//  Created by 木村圭佑 on 2016/08/12.
 //  Copyright © 2016年 Cypherpunk. All rights reserved.
 //
 
 import UIKit
-import CoreGraphics
 
-class AnimationViewController: UIViewController {
-
+class ConnectedAnimationViewController: UIViewController {
+    
     let itemSize = CGSizeMake(15,21)
     var animationLayer: CALayer!
     override func viewDidLoad() {
@@ -43,14 +42,13 @@ class AnimationViewController: UIViewController {
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        animationPause()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func instanceAnimationLayer() -> CALayer {
         
         let layer = CALayer()
@@ -67,12 +65,12 @@ class AnimationViewController: UIViewController {
             verticalLayer.frame = CGRect(origin: CGPoint(x: CGFloat(x) * itemSize.width , y: 0), size: size)
             
             for y in 0...verticalItemsCount {
-                let number: Int = random() % 2
+                let character: Character = RandomCharacterGenerator.generate()
                 let layoutPoint = CGPoint(x: 0 , y: CGFloat(y) * itemSize.height)
                 let frame = CGRect(origin: layoutPoint, size: itemSize)
                 
                 let textLayer = CATextLayer()
-                textLayer.string = String(number)
+                textLayer.string = String(character)
                 textLayer.font = font
                 textLayer.fontSize = 20
                 let baseColor = UIColor.whiteThemeNavigationColor()
@@ -93,7 +91,7 @@ class AnimationViewController: UIViewController {
         }
         return layer
     }
-
+    
     func animationResume() {
         for animator in animators {
             animator.animationResume()
@@ -116,10 +114,12 @@ class AnimationViewController: UIViewController {
             let animator = VerticalScrollAnimator(
                 itemCount: verticalLayer.sublayers!.count,
                 verticalLayer: verticalLayer,
-                direction: direction
+                direction: direction,
+                speed: 3.0
             )
             animator.animationStart()
             animators.append(animator)
         }
     }
+
 }

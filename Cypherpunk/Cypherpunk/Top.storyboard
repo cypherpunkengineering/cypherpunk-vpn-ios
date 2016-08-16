@@ -43,11 +43,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiV-Ib-aBx">
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiV-Ib-aBx" userLabel="Disconnected Container View">
                                 <rect key="frame" x="0.0" y="84" width="600" height="460"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="vmw-wZ-2Yp" kind="embed" id="rhs-n4-PlX"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w14-4p-a7z" userLabel="Connected Container View">
+                                <rect key="frame" x="0.0" y="84" width="600" height="460"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="gzn-q5-B7I" kind="embed" id="RS9-Lq-CBX"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCONNECTED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNd-hX-uZx" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
@@ -238,10 +245,12 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="L3D-bb-k2q" secondAttribute="trailing" id="0ai-N4-RYX"/>
                             <constraint firstItem="TNd-hX-uZx" firstAttribute="top" secondItem="Erh-L3-cN9" secondAttribute="bottom" constant="26" id="25y-dV-2zs"/>
-                            <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="HFa-D7-Pqs" secondAttribute="bottom" id="44m-Ai-UKP"/>
                             <constraint firstAttribute="trailing" secondItem="HFa-D7-Pqs" secondAttribute="trailing" id="6Cz-2R-OqY"/>
+                            <constraint firstItem="w14-4p-a7z" firstAttribute="trailing" secondItem="XiV-Ib-aBx" secondAttribute="trailing" id="7nA-zZ-TuS"/>
                             <constraint firstItem="HFa-D7-Pqs" firstAttribute="top" secondItem="Qfa-J5-gG4" secondAttribute="bottom" id="C0Q-hL-ZHw"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="top" secondItem="ssu-Hg-qEf" secondAttribute="bottom" id="C4L-LU-fnb"/>
+                            <constraint firstItem="w14-4p-a7z" firstAttribute="leading" secondItem="XiV-Ib-aBx" secondAttribute="leading" id="CEL-ar-O4h"/>
+                            <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="HFa-D7-Pqs" secondAttribute="bottom" id="Dol-aG-C4c"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="Edc-YA-2nr"/>
                             <constraint firstItem="XiV-Ib-aBx" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="FgW-mW-HqL"/>
                             <constraint firstItem="ssu-Hg-qEf" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="GwB-f2-Mxt"/>
@@ -252,20 +261,24 @@
                             <constraint firstItem="XiV-Ib-aBx" firstAttribute="top" secondItem="L3D-bb-k2q" secondAttribute="bottom" id="cZ9-9S-hUh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TNd-hX-uZx" secondAttribute="trailing" id="dED-Iz-aMU"/>
                             <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="fW9-5M-8Sm"/>
+                            <constraint firstItem="w14-4p-a7z" firstAttribute="bottom" secondItem="XiV-Ib-aBx" secondAttribute="bottom" id="gDx-vA-rDT"/>
                             <constraint firstItem="HFa-D7-Pqs" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="kbb-Hg-jLo"/>
                             <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerY" secondItem="br5-Ct-iYb" secondAttribute="centerY" id="qCh-gP-1hn"/>
                             <constraint firstItem="Qfa-J5-gG4" firstAttribute="top" secondItem="XiV-Ib-aBx" secondAttribute="bottom" id="qEj-34-1hm"/>
                             <constraint firstAttribute="trailing" secondItem="ssu-Hg-qEf" secondAttribute="trailing" id="sOv-ir-Sve"/>
                             <constraint firstAttribute="trailing" secondItem="XiV-Ib-aBx" secondAttribute="trailing" id="sno-Tf-Ngq"/>
+                            <constraint firstItem="w14-4p-a7z" firstAttribute="top" secondItem="XiV-Ib-aBx" secondAttribute="top" id="tI9-q0-ag0"/>
                             <constraint firstItem="Qfa-J5-gG4" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="ylm-3F-Vq1"/>
                             <constraint firstAttribute="trailing" secondItem="Qfa-J5-gG4" secondAttribute="trailing" id="zoD-UO-m4x"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="connectedAnimationContainerView" destination="w14-4p-a7z" id="JBT-lF-AkF"/>
                         <outlet property="connectedButton" destination="oM3-K3-kcv" id="Ffq-cB-qvF"/>
                         <outlet property="connectingButton" destination="dUD-ZZ-CJa" id="Thp-lo-n5Y"/>
                         <outlet property="connectionStateLabel" destination="TNd-hX-uZx" id="bVN-4e-sWL"/>
+                        <outlet property="disconnectedAnimationContainerView" destination="XiV-Ib-aBx" id="am0-Te-icb"/>
                         <outlet property="disconnectedButton" destination="Erh-L3-cN9" id="wGj-Dp-nGF"/>
                         <outlet property="outsideCircleView" destination="ODW-nh-w3U" id="PZO-VX-wq6"/>
                         <outlet property="regionButton" destination="UCs-I6-CIn" id="Xdz-Tu-3RX"/>
@@ -282,6 +295,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbw-Y3-mF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="383" y="1064"/>
+        </scene>
+        <!--ConnectedAnimation-->
+        <scene sceneID="QdS-vE-zgI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Animation" referencedIdentifier="ConnectedAnimation" id="gzn-q5-B7I" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nVT-6p-qCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="607.5" y="1051"/>
         </scene>
         <!--Region-->
         <scene sceneID="mmh-kJ-wDM">

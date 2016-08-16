@@ -45,6 +45,8 @@
 		204BE90E1D5B28B7003D7CB5 /* ThemedSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BE90D1D5B28B7003D7CB5 /* ThemedSeparatorView.swift */; };
 		204BE9101D5B30AA003D7CB5 /* ThemedUpgradeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BE90F1D5B30AA003D7CB5 /* ThemedUpgradeButton.swift */; };
 		204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BE9111D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift */; };
+		2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */; };
+		2079C8881D5DDD10004274ED /* ConnectedAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8871D5DDD10004274ED /* ConnectedAnimationViewController.swift */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
@@ -160,6 +162,8 @@
 		204BE90D1D5B28B7003D7CB5 /* ThemedSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSeparatorView.swift; sourceTree = "<group>"; };
 		204BE90F1D5B30AA003D7CB5 /* ThemedUpgradeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedUpgradeButton.swift; sourceTree = "<group>"; };
 		204BE9111D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedAccountBackgroundView.swift; sourceTree = "<group>"; };
+		2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCharacterGenerator.swift; sourceTree = "<group>"; };
+		2079C8871D5DDD10004274ED /* ConnectedAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectedAnimationViewController.swift; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		20D895ED1D1D16FB002B9F9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -414,6 +418,7 @@
 				200955611D4B45B800BEEE0A /* SettingsViewController.swift */,
 				2043504F1D59D088009AF327 /* AdvancedSettingsViewController.swift */,
 				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
+				2079C8871D5DDD10004274ED /* ConnectedAnimationViewController.swift */,
 				20EBFD3D1D547B18008B9F14 /* SettingsTopViewController.swift */,
 				20EBFD3F1D5485D8008B9F14 /* SettingsStatusViewController.swift */,
 				200955651D4B48C200BEEE0A /* AccountViewController.swift */,
@@ -494,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				2B73C7131D5CDBFF0090FF8B /* VerticalScrollAnimator.swift */,
+				2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -824,6 +830,7 @@
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				201809EE1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift in Sources */,
+				2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */,
 				203F4F091D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift in Sources */,
 				20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */,
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
@@ -858,6 +865,7 @@
 				204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */,
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
+				2079C8881D5DDD10004274ED /* ConnectedAnimationViewController.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				200955621D4B45B800BEEE0A /* SettingsViewController.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,

@@ -27,6 +27,9 @@ extension NEVPNStatus: CustomStringConvertible {
 
 class TopViewController: UIViewController, StoreSubscriber {
     
+    @IBOutlet weak var disconnectedAnimationContainerView: UIView!
+    @IBOutlet weak var connectedAnimationContainerView: UIView!
+    
     @IBOutlet weak var connectedButton: UIButton!
     @IBOutlet weak var connectingButton: UIButton!
     @IBOutlet weak var disconnectedButton: UIButton!
@@ -87,30 +90,47 @@ class TopViewController: UIViewController, StoreSubscriber {
             connectingButton.hidden = true
             disconnectedButton.hidden = true
             disconnectedButton.enabled = true
+            
+            disconnectedAnimationContainerView.hidden = true
+            connectedAnimationContainerView.hidden = false
         case .Connecting:
             outsideCircleView.backgroundColor = UIColor(red: 255.0 / 255.0 , green: 120.0 / 255.0 , blue: 27.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
             connectingButton.hidden = false
             disconnectedButton.hidden = true
             disconnectedButton.enabled = true
+
+            disconnectedAnimationContainerView.hidden = false
+            connectedAnimationContainerView.hidden = true
+
         case .Disconnected:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
             connectingButton.hidden = true
             disconnectedButton.hidden = false
             disconnectedButton.enabled = true
+
+            disconnectedAnimationContainerView.hidden = false
+            connectedAnimationContainerView.hidden = true
+
         case .Invalid, .Reasserting:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
             connectingButton.hidden = true
             disconnectedButton.hidden = false
             disconnectedButton.enabled = false
+            
+            disconnectedAnimationContainerView.hidden = false
+            connectedAnimationContainerView.hidden = true
         case .Disconnecting:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
             connectingButton.hidden = true
             disconnectedButton.hidden = false
             disconnectedButton.enabled = false
+            
+            disconnectedAnimationContainerView.hidden = false
+            connectedAnimationContainerView.hidden = true
         }
         
         connectionStateLabel.text = String(status)
