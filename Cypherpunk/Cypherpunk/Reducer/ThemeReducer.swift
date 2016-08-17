@@ -21,6 +21,9 @@ struct ThemeReducer: Reducer {
             case .ChangeToBlack:
                 state.themeType = .Black
                 UIApplication.sharedApplication().changeStatusBarStyleToLightContent()
+            case .ChangeToIndigo:
+                state.themeType = .Indigo
+                UIApplication.sharedApplication().changeStatusBarStyleToLightContent()
             }
         }
         return state

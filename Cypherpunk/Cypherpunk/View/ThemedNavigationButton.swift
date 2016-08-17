@@ -34,6 +34,10 @@ class ThemedNavigationButton: UIButton {
             self.setImage(self.imageView?.image, forState: .Normal)
             self.tintColor = UIColor.lightGrayColor()
             self.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        case .Indigo:
+            self.setImage(self.imageView?.image, forState: .Normal)
+            self.tintColor = UIColor.whiteColor()
+            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         }
     }
 

@@ -45,23 +45,7 @@ class SettingsStatusViewController: UITableViewController, PageContent {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
-        let titleLabel = UILabel(frame: CGRect(x: 20, y: 9, width: 300, height: 17))
-        
-        titleLabel.font = R.font.dosisMedium(size: 14)
-        titleLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-        
-        let theme = mainStore.state.themeState.themeType
-        switch theme {
-        case .White:
-            titleLabel.textColor = UIColor.whiteThemeTextColor()
-        case .Black:
-            titleLabel.textColor = UIColor.whiteThemeIndicatorColor()
-        }
-        
-        view.addSubview(titleLabel)
-        
-        return view
+        return nil
     }
 
 }

@@ -26,6 +26,9 @@ class HasSwitchThemedTableViewCell: UITableViewCell {
         case .Black:
             self.titleLabel?.textColor = UIColor.whiteColor()
             self.backgroundColor = UIColor.blackThemeCellBackgroundColor()
+        case .Indigo:
+            self.titleLabel?.textColor = UIColor.whiteColor()
+            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.16)
         }
     }
 }

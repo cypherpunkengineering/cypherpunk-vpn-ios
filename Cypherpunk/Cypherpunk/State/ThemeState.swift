@@ -12,8 +12,9 @@ import ReSwift
 enum ThemeType: Int {
     case White
     case Black
+    case Indigo
 }
 
 struct ThemeState: StateType {
-    var themeType: ThemeType = .White
+    var themeType: ThemeType = .Indigo
 }

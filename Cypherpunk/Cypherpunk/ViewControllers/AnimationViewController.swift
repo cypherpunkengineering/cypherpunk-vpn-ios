@@ -98,6 +98,8 @@ class AnimationViewController: UIViewController {
                     textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.15).CGColor
                 case .Black:
                     textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.5).CGColor
+                case .Indigo:
+                    textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.15).CGColor                    
                 }
                 textLayer.frame = frame
                 

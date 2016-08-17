@@ -27,6 +27,11 @@ class ThemedTableViewCell: UITableViewCell {
             self.textLabel?.textColor = UIColor.whiteColor()
             self.detailTextLabel?.textColor = UIColor.whiteThemeIndicatorColor()
             self.backgroundColor = UIColor.blackThemeCellBackgroundColor()
+        case .Indigo:
+            self.textLabel?.textColor = UIColor.whiteColor()
+            self.detailTextLabel?.textColor = UIColor(white: 227.0 / 255.0, alpha: 1.0)
+            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.16)
+            self.tintColor = UIColor.whiteColor()
         }
     }
 

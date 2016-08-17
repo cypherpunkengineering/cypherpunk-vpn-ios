@@ -61,6 +61,8 @@ extension SettingsViewController {
             titleLabel.textColor = UIColor.whiteThemeTextColor()
         case .Black:
             titleLabel.textColor = UIColor.whiteThemeIndicatorColor()
+        case .Indigo:
+            titleLabel.textColor = UIColor.whiteColor()
         }
         
         view.addSubview(titleLabel)

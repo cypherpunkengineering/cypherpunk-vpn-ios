@@ -25,6 +25,10 @@ class ThemedArrowDownImageView: UIImageView {
             let image = UIImage(resource: R.image.arrow_down)
             self.image = image
             self.tintColor = UIColor.lightGrayColor()
+        case .Indigo:
+            let image = UIImage(resource: R.image.arrow_down)
+            self.image = image
+            self.tintColor = UIColor.whiteColor()
         }
     }
 }

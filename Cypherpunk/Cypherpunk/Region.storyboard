@@ -1,20 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZtU-5e-HHX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phI-3o-TNp">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--View Controller-->
+        <scene sceneID="c0h-Uv-rrd">
+            <objects>
+                <viewController id="phI-3o-TNp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="phL-LL-8F5"/>
+                        <viewControllerLayoutGuide type="bottom" id="knT-kl-RdT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X3l-pV-8DQ" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkW-4a-Kws">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="ZtU-5e-HHX" kind="embed" id="uVf-Po-rcr"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4h-ne-mCr" customClass="ThemedStatusBarBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="LJB-J6-Sqq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wkW-4a-Kws" firstAttribute="bottom" secondItem="knT-kl-RdT" secondAttribute="top" id="0qL-54-CQi"/>
+                            <constraint firstItem="d4h-ne-mCr" firstAttribute="top" secondItem="wkW-4a-Kws" secondAttribute="top" id="9cd-fC-9PX"/>
+                            <constraint firstItem="wkW-4a-Kws" firstAttribute="leading" secondItem="X3l-pV-8DQ" secondAttribute="leading" id="P1e-6i-O0e"/>
+                            <constraint firstItem="d4h-ne-mCr" firstAttribute="leading" secondItem="wkW-4a-Kws" secondAttribute="leading" id="WFt-40-Mlr"/>
+                            <constraint firstItem="knT-kl-RdT" firstAttribute="top" secondItem="d4h-ne-mCr" secondAttribute="bottom" constant="532" id="Yqy-wz-Jth"/>
+                            <constraint firstItem="wkW-4a-Kws" firstAttribute="top" secondItem="X3l-pV-8DQ" secondAttribute="top" id="cyW-u3-wNi"/>
+                            <constraint firstAttribute="trailing" secondItem="wkW-4a-Kws" secondAttribute="trailing" id="mA7-dq-zBi"/>
+                            <constraint firstItem="d4h-ne-mCr" firstAttribute="trailing" secondItem="wkW-4a-Kws" secondAttribute="trailing" id="yT5-SP-7rP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Yqy-wz-Jth"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VMz-Nn-DdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1071" y="407"/>
+        </scene>
+        <!--Themed Navigation View Controller-->
         <scene sceneID="owr-Pz-BLy">
             <objects>
-                <navigationController id="ZtU-5e-HHX" sceneMemberID="viewController">
+                <navigationController id="ZtU-5e-HHX" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ise-Aa-Ip5" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -25,7 +74,7 @@
                         </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="MK2-CU-Fce" kind="relationship" relationship="rootViewController" id="tBG-P3-JeK"/>
+                        <segue destination="TEr-Ls-Ty1" kind="relationship" relationship="rootViewController" id="3Os-ww-Vga"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfq-XO-Iun" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -33,135 +82,82 @@
             <point key="canvasLocation" x="-360" y="400"/>
         </scene>
         <!--Region Select-->
-        <scene sceneID="Ice-3g-CQl">
+        <scene sceneID="HNp-ht-zZa">
             <objects>
-                <tableViewController id="MK2-CU-Fce" customClass="RegionSelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="ayz-hL-ECB" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                <viewController id="TEr-Ls-Ty1" customClass="RegionSelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CTX-Hl-ON6"/>
+                        <viewControllerLayoutGuide type="bottom" id="nq1-O9-bKS"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="mVf-td-ZI8">
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="9zI-WM-cTs" style="IBUITableViewCellStyleDefault" id="Sw4-3g-qUE" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="48"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sw4-3g-qUE" id="8Ph-oT-ydU">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="47.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9zI-WM-cTs">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="47.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="MK2-CU-Fce" id="J1f-o3-rKT"/>
-                            <outlet property="delegate" destination="MK2-CU-Fce" id="4Kl-5X-dFE"/>
-                        </connections>
-                    </tableView>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfL-tP-Ln8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="RHW-B4-rJx" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="gI5-mr-QEx" style="IBUITableViewCellStyleDefault" id="MRN-7f-HR7" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="49.5" width="600" height="48"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MRN-7f-HR7" id="eIy-xJ-qlr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="47.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gI5-mr-QEx">
+                                                            <rect key="frame" x="15" y="0.0" width="570" height="47.5"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="TEr-Ls-Ty1" id="cI6-dv-pek"/>
+                                            <outlet property="delegate" destination="TEr-Ls-Ty1" id="cBU-X6-4Ew"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="RHW-B4-rJx" firstAttribute="top" secondItem="kfL-tP-Ln8" secondAttribute="top" id="73q-kk-auK"/>
+                                    <constraint firstAttribute="bottom" secondItem="RHW-B4-rJx" secondAttribute="bottom" id="84l-bq-cDO"/>
+                                    <constraint firstAttribute="trailing" secondItem="RHW-B4-rJx" secondAttribute="trailing" id="YGK-Se-fUh"/>
+                                    <constraint firstItem="RHW-B4-rJx" firstAttribute="leading" secondItem="kfL-tP-Ln8" secondAttribute="leading" id="egc-cR-0mk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="kfL-tP-Ln8" secondAttribute="bottom" id="JcF-Bb-Wrz"/>
+                            <constraint firstItem="kfL-tP-Ln8" firstAttribute="top" secondItem="mVf-td-ZI8" secondAttribute="top" id="Oze-qZ-Z8a"/>
+                            <constraint firstAttribute="trailing" secondItem="kfL-tP-Ln8" secondAttribute="trailing" id="qHw-ty-IdI"/>
+                            <constraint firstItem="kfL-tP-Ln8" firstAttribute="leading" secondItem="mVf-td-ZI8" secondAttribute="leading" id="woz-hK-57r"/>
+                        </constraints>
+                    </view>
                     <navigationItem key="navigationItem" title="Region Select" id="WyB-SC-K3S">
                         <barButtonItem key="leftBarButtonItem" image="ic_close_white" style="done" id="9Rr-4y-Htv">
                             <connections>
-                                <action selector="closeAction:" destination="MK2-CU-Fce" id="3Ka-e7-mOf"/>
+                                <action selector="closeAction:" destination="TEr-Ls-Ty1" id="OMJ-3I-w26"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="DII-Ie-KuW" kind="show" identifier="ToCountry" id="Sle-IX-cfg"/>
+                        <outlet property="tableView" destination="RHW-B4-rJx" id="aFN-qw-HVb"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LOu-G1-wMM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dq4-NM-qzf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="354" y="400"/>
-        </scene>
-        <!--Country-->
-        <scene sceneID="rEV-P4-Zov">
-            <objects>
-                <tableViewController title="Country" id="DII-Ie-KuW" customClass="CountrySelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="69T-zw-HIr" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="7GO-5y-GRu" style="IBUITableViewCellStyleDefault" id="geC-hG-JCO" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="48"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="geC-hG-JCO" id="sHB-Zy-4MJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="47.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7GO-5y-GRu">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="47.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="DII-Ie-KuW" id="0iV-OI-3DX"/>
-                            <outlet property="delegate" destination="DII-Ie-KuW" id="UZ3-h7-K48"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <segue destination="eij-xe-k8l" kind="show" identifier="ToServer" id="ZYM-U3-8wT"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uun-Az-kUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="992" y="400"/>
-        </scene>
-        <!--Server-->
-        <scene sceneID="vBT-Rg-CYe">
-            <objects>
-                <tableViewController title="Server" id="eij-xe-k8l" customClass="ServerSelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="sBb-SO-mMU" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="jR9-0f-Gtc" style="IBUITableViewCellStyleDefault" id="U2a-bX-bbB" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="48"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2a-bX-bbB" id="90x-IH-5L6">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="47.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jR9-0f-Gtc">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="47.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="eij-xe-k8l" id="bSB-Et-jPO"/>
-                            <outlet property="delegate" destination="eij-xe-k8l" id="cpr-Jp-lc8"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0yk-Jf-FHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1630" y="400"/>
+            <point key="canvasLocation" x="328" y="400"/>
         </scene>
     </scenes>
     <resources>

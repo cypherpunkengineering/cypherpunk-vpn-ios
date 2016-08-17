@@ -28,6 +28,10 @@ class ThemedIPAddressPanelView: UIView {
             self.titleLabel.textColor = UIColor.whiteColor()
             self.regionLabelButton.setTitleColor(UIColor.whiteThemeSeparatorColor(), forState: .Normal)
             self.backgroundColor = UIColor.whiteThemeTextColor()
+        case .Indigo:
+            self.titleLabel.textColor = UIColor.whiteColor()
+            self.regionLabelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            self.backgroundColor = UIColor.whiteThemeAccountCellColor().colorWithAlphaComponent(0.16)
         }
     }
 }

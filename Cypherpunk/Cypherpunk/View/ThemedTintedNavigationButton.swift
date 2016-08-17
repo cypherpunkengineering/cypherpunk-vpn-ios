@@ -26,6 +26,9 @@ class ThemedTintedNavigationButton: UIButton {
         case .Black:
             self.tintColor = UIColor.lightGrayColor()
             self.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        case .Indigo:
+            self.tintColor = UIColor.whiteColor()
+            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         }
     }
     

@@ -14,4 +14,5 @@ let KeyChangeThemeNotification = "KeyChangeThemeNotification"
 enum ThemeAction: Action {
     case ChangeToWhite
     case ChangeToBlack
+    case ChangeToIndigo
 }

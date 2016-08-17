@@ -28,6 +28,10 @@ class ThemedChangeIPAddressButton: UIButton {
             self.tintColor = UIColor.whiteColor()
             self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             self.borderColor = UIColor.whiteColor()
+        case .Indigo:
+            self.tintColor = UIColor.whiteColor()
+            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            self.borderColor = UIColor.whiteColor()            
         }
     }
 
