@@ -32,8 +32,8 @@ class SettingsStatusViewController: UITableViewController, PageContent {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
+        self.navigationController?.navigationBarHidden = false
+        self.title = "Connection Status"
     }
     
     override func didReceiveMemoryWarning() {

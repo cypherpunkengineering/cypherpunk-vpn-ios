@@ -68,7 +68,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Region Select" id="WyB-SC-K3S">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="9Rr-4y-Htv">
+                        <barButtonItem key="leftBarButtonItem" image="ic_close_white" style="done" id="9Rr-4y-Htv">
                             <connections>
                                 <action selector="closeAction:" destination="MK2-CU-Fce" id="3Ka-e7-mOf"/>
                             </connections>
@@ -164,4 +164,7 @@
             <point key="canvasLocation" x="1630" y="400"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_close_white" width="24" height="24"/>
+    </resources>
 </document>

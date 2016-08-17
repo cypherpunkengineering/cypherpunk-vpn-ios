@@ -31,7 +31,8 @@ class SettingsViewController: UITableViewController, PageContent {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController?.navigationBarHidden = false
+        self.title = "Configuration"
     }
     
     

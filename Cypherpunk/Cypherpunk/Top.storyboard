@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uCa-HA-ERA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Wa-Pa-3en">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,23 +15,23 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Settings-->
-        <scene sceneID="Wuf-f8-sWh">
+        <!--Navigation Controller-->
+        <scene sceneID="md1-T3-gjZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="hMQ-nG-SEs" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h4g-b8-Wh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="9Wa-Pa-3en" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CHk-p9-fsV" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uCa-HA-ERA" kind="relationship" relationship="rootViewController" id="B0p-2P-2ep"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3t-9h-Pl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804.5" y="524"/>
+            <point key="canvasLocation" x="-336" y="510"/>
         </scene>
-        <!--Account-->
-        <scene sceneID="CNm-R8-xSB">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Account" id="6yG-oL-xP6" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WqB-yU-GpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="804.5" y="433"/>
-        </scene>
-        <!--Top View Controller-->
+        <!-- -->
         <scene sceneID="ugK-lY-tEB">
             <objects>
                 <viewController storyboardIdentifier="Top" id="uCa-HA-ERA" customClass="TopViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,20 +43,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiV-Ib-aBx" userLabel="Disconnected Container View">
-                                <rect key="frame" x="0.0" y="84" width="600" height="460"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="vmw-wZ-2Yp" kind="embed" id="rhs-n4-PlX"/>
-                                </connections>
-                            </containerView>
-                            <containerView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w14-4p-a7z" userLabel="Connected Container View">
-                                <rect key="frame" x="0.0" y="84" width="600" height="460"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="gzn-q5-B7I" kind="embed" id="RS9-Lq-CBX"/>
-                                </connections>
-                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCONNECTED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNd-hX-uZx" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
                                 <rect key="frame" x="20" y="392" width="560" height="32"/>
                                 <constraints>
@@ -121,7 +107,7 @@
                                         </constraints>
                                         <state key="normal" image="iconSettings"/>
                                         <connections>
-                                            <segue destination="hMQ-nG-SEs" kind="showDetail" id="B2I-bm-Vin"/>
+                                            <action selector="transitionToConfigurationAction:" destination="uCa-HA-ERA" eventType="touchUpInside" id="0ym-7W-qnQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqE-g0-SsY" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
@@ -135,7 +121,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="6yG-oL-xP6" kind="showDetail" id="g3B-Wi-aRc"/>
+                                            <action selector="transitionToConnectionStatusAction:" destination="uCa-HA-ERA" eventType="touchUpInside" id="TtX-LE-1M9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atV-Jj-QsS" customClass="ThemedLogoView" customModule="Cypherpunk" customModuleProvider="target">
@@ -246,39 +232,32 @@
                             <constraint firstAttribute="trailing" secondItem="L3D-bb-k2q" secondAttribute="trailing" id="0ai-N4-RYX"/>
                             <constraint firstItem="TNd-hX-uZx" firstAttribute="top" secondItem="Erh-L3-cN9" secondAttribute="bottom" constant="26" id="25y-dV-2zs"/>
                             <constraint firstAttribute="trailing" secondItem="HFa-D7-Pqs" secondAttribute="trailing" id="6Cz-2R-OqY"/>
-                            <constraint firstItem="w14-4p-a7z" firstAttribute="trailing" secondItem="XiV-Ib-aBx" secondAttribute="trailing" id="7nA-zZ-TuS"/>
                             <constraint firstItem="HFa-D7-Pqs" firstAttribute="top" secondItem="Qfa-J5-gG4" secondAttribute="bottom" id="C0Q-hL-ZHw"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="top" secondItem="ssu-Hg-qEf" secondAttribute="bottom" id="C4L-LU-fnb"/>
-                            <constraint firstItem="w14-4p-a7z" firstAttribute="leading" secondItem="XiV-Ib-aBx" secondAttribute="leading" id="CEL-ar-O4h"/>
                             <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="HFa-D7-Pqs" secondAttribute="bottom" id="Dol-aG-C4c"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="Edc-YA-2nr"/>
-                            <constraint firstItem="XiV-Ib-aBx" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="FgW-mW-HqL"/>
                             <constraint firstItem="ssu-Hg-qEf" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="GwB-f2-Mxt"/>
                             <constraint firstItem="ssu-Hg-qEf" firstAttribute="top" secondItem="br5-Ct-iYb" secondAttribute="top" constant="20" id="V16-uV-SBf"/>
                             <constraint firstItem="ODW-nh-w3U" firstAttribute="centerY" secondItem="Mtc-fc-kyh" secondAttribute="centerY" id="VAu-bJ-YYd"/>
                             <constraint firstItem="TNd-hX-uZx" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leadingMargin" id="VwS-BV-lrk"/>
                             <constraint firstItem="ODW-nh-w3U" firstAttribute="centerX" secondItem="Mtc-fc-kyh" secondAttribute="centerX" id="ZSh-Hh-vLT"/>
-                            <constraint firstItem="XiV-Ib-aBx" firstAttribute="top" secondItem="L3D-bb-k2q" secondAttribute="bottom" id="cZ9-9S-hUh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TNd-hX-uZx" secondAttribute="trailing" id="dED-Iz-aMU"/>
                             <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="fW9-5M-8Sm"/>
-                            <constraint firstItem="w14-4p-a7z" firstAttribute="bottom" secondItem="XiV-Ib-aBx" secondAttribute="bottom" id="gDx-vA-rDT"/>
                             <constraint firstItem="HFa-D7-Pqs" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="kbb-Hg-jLo"/>
                             <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerY" secondItem="br5-Ct-iYb" secondAttribute="centerY" id="qCh-gP-1hn"/>
-                            <constraint firstItem="Qfa-J5-gG4" firstAttribute="top" secondItem="XiV-Ib-aBx" secondAttribute="bottom" id="qEj-34-1hm"/>
                             <constraint firstAttribute="trailing" secondItem="ssu-Hg-qEf" secondAttribute="trailing" id="sOv-ir-Sve"/>
-                            <constraint firstAttribute="trailing" secondItem="XiV-Ib-aBx" secondAttribute="trailing" id="sno-Tf-Ngq"/>
-                            <constraint firstItem="w14-4p-a7z" firstAttribute="top" secondItem="XiV-Ib-aBx" secondAttribute="top" id="tI9-q0-ag0"/>
                             <constraint firstItem="Qfa-J5-gG4" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="ylm-3F-Vq1"/>
                             <constraint firstAttribute="trailing" secondItem="Qfa-J5-gG4" secondAttribute="trailing" id="zoD-UO-m4x"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title=" " id="YjC-k8-sDr">
+                        <barButtonItem key="backBarButtonItem" title=" " id="x2N-Gl-DN8"/>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="connectedAnimationContainerView" destination="w14-4p-a7z" id="JBT-lF-AkF"/>
                         <outlet property="connectedButton" destination="oM3-K3-kcv" id="Ffq-cB-qvF"/>
                         <outlet property="connectingButton" destination="dUD-ZZ-CJa" id="Thp-lo-n5Y"/>
                         <outlet property="connectionStateLabel" destination="TNd-hX-uZx" id="bVN-4e-sWL"/>
-                        <outlet property="disconnectedAnimationContainerView" destination="XiV-Ib-aBx" id="am0-Te-icb"/>
                         <outlet property="disconnectedButton" destination="Erh-L3-cN9" id="wGj-Dp-nGF"/>
                         <outlet property="outsideCircleView" destination="ODW-nh-w3U" id="PZO-VX-wq6"/>
                         <outlet property="regionButton" destination="UCs-I6-CIn" id="Xdz-Tu-3RX"/>
@@ -310,7 +289,7 @@
                 <viewControllerPlaceholder storyboardName="Region" id="91n-X5-09H" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oz2-xM-HMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="575"/>
+            <point key="canvasLocation" x="828" y="543"/>
         </scene>
     </scenes>
     <resources>
