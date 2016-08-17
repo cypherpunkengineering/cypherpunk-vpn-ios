@@ -12,29 +12,41 @@ class ConnectedAnimationViewController: UIViewController {
     
     let itemSize = CGSizeMake(15,21)
     var animationLayer: CALayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let defaultCenter = NSNotificationCenter.defaultCenter()
+        defaultCenter.addObserver(self, selector: #selector(AnimationViewController.willResignActive), name: UIApplicationWillResignActiveNotification, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(AnimationViewController.didBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
+    }
+    
+    func willResignActive() {
+        if animationLayer != nil {
+            self.animationLayer.removeFromSuperlayer()
+            self.animationLayer = self.instanceAnimationLayer()
+            self.view.layer.addSublayer(self.animationLayer)
+        }
+    }
+    
+    func didBecomeActive() {
+        if animationLayer != nil {
+            self.startAnimation()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         if animationLayer != nil {
-            let createAnimationLayer = {
-                self.animationLayer.removeFromSuperlayer()
-                self.animationLayer = self.instanceAnimationLayer()
-                self.view.layer.addSublayer(self.animationLayer)
-                self.startAnimation()
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), createAnimationLayer)
+            self.startAnimation()
         }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
         animationLayer = instanceAnimationLayer()
         self.view.layer.addSublayer(animationLayer)
         startAnimation()
@@ -42,6 +54,12 @@ class ConnectedAnimationViewController: UIViewController {
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+        
+        if animationLayer != nil {
+            self.animationLayer.removeFromSuperlayer()
+            self.animationLayer = self.instanceAnimationLayer()
+            self.view.layer.addSublayer(self.animationLayer)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -121,5 +139,5 @@ class ConnectedAnimationViewController: UIViewController {
             animators.append(animator)
         }
     }
-
+    
 }
