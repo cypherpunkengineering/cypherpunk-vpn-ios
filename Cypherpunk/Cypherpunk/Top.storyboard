@@ -21,7 +21,7 @@
                 <viewControllerPlaceholder storyboardName="Settings" id="hMQ-nG-SEs" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4g-b8-Wh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="736.5" y="530"/>
+            <point key="canvasLocation" x="804.5" y="524"/>
         </scene>
         <!--Account-->
         <scene sceneID="CNm-R8-xSB">
@@ -29,7 +29,7 @@
                 <viewControllerPlaceholder storyboardName="Account" id="6yG-oL-xP6" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WqB-yU-GpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="736.5" y="483"/>
+            <point key="canvasLocation" x="804.5" y="433"/>
         </scene>
         <!--Top View Controller-->
         <scene sceneID="ugK-lY-tEB">
@@ -131,7 +131,7 @@
                                             <constraint firstAttribute="height" constant="44" id="TIO-cY-FsE"/>
                                             <constraint firstAttribute="width" constant="44" id="i4L-eV-qV3"/>
                                         </constraints>
-                                        <state key="normal" image="iconAccount">
+                                        <state key="normal" image="iconInfo">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -310,13 +310,13 @@
                 <viewControllerPlaceholder storyboardName="Region" id="91n-X5-09H" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oz2-xM-HMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="587"/>
+            <point key="canvasLocation" x="814" y="575"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow_down" width="12" height="8"/>
-        <image name="iconAccount" width="14" height="22"/>
-        <image name="iconSettings" width="22" height="23"/>
+        <image name="iconInfo" width="22" height="22"/>
+        <image name="iconSettings" width="22" height="22"/>
         <image name="io_btn_green" width="40" height="89"/>
         <image name="io_btn_orange" width="40" height="46"/>
         <image name="io_btn_red" width="40" height="46"/>
