@@ -116,7 +116,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="wxJ-Tj-jIa"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
-                                                            <state key="normal" title="Tokyo, Japan">
+                                                            <state key="normal" title="Japan">
                                                                 <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                         </button>
@@ -126,7 +126,7 @@
                                                                 <constraint firstAttribute="height" constant="39" id="AkZ-Up-y4I"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="31"/>
-                                                            <color key="textColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.84705882352941175" green="0.30196078431372547" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -182,7 +182,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="181.41.220.60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rr-kH-l4K">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25.102.5.31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rr-kH-l4K">
                                                             <rect key="frame" x="0.0" y="39" width="552" height="39"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="39" id="GVe-93-LrQ"/>
@@ -197,7 +197,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="hhY-SR-cJz"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
-                                                            <state key="normal" title="Tokyo, Japan">
+                                                            <state key="normal" title="USA">
                                                                 <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                         </button>
@@ -607,10 +607,10 @@
             </objects>
             <point key="canvasLocation" x="65" y="1054"/>
         </scene>
-        <!--Connection Status-->
+        <!--Configuration-->
         <scene sceneID="9VT-yi-Gak">
             <objects>
-                <viewController storyboardIdentifier="Settings" title="Connection Status" id="MYz-Gm-7jh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" title="Configuration" id="MYz-Gm-7jh" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="40p-FY-V3A"/>
                         <viewControllerLayoutGuide type="bottom" id="Sv5-q4-8ap"/>
@@ -653,7 +653,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4E5-xx-D8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationItem title="Connection Status" id="WoR-0M-efn">
+                <navigationItem title="Configuration" id="WoR-0M-efn">
                     <barButtonItem key="backBarButtonItem" title=" " id="fWL-zt-LzW"/>
                 </navigationItem>
             </objects>
