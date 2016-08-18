@@ -25,9 +25,13 @@ class ThemedTimeLabelButton: UIButton {
             self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
             self.borderColor = UIColor.whiteThemeTextColor()
         case .Black:
-            self.tintColor = UIColor.whiteColor()
-            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            self.borderColor = UIColor.whiteColor()
+            self.tintColor = UIColor.blackThemeTextColor()
+            self.setTitleColor(UIColor.blackThemeTextColor(), forState: .Normal)
+            self.borderColor = UIColor.blackThemeTextColor()
+        case .Indigo:
+            self.tintColor = UIColor.blackThemeTextColor()
+            self.setTitleColor(UIColor.blackThemeTextColor(), forState: .Normal)
+            self.borderColor = UIColor.blackThemeTextColor()
         }
     }
 

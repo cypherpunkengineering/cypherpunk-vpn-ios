@@ -22,6 +22,8 @@ class ThemedMapImageView: UIImageView {
             self.image = UIImage(resource: R.image.map_bk)
         case .Black:
             self.image = UIImage(resource: R.image.map_wh)
+        case .Indigo:
+            self.image = UIImage(resource: R.image.map_bk)
         }
     }
 }

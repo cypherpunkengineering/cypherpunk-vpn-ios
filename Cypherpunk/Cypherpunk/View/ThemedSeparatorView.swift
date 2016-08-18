@@ -21,6 +21,8 @@ class ThemedSeparatorView: UIView {
             self.backgroundColor = UIColor.whiteThemeSeparatorColor()
         case .Black:
             self.backgroundColor = UIColor.whiteThemeTextColor()
+        case .Indigo:
+            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.30)
         }
     }
 }

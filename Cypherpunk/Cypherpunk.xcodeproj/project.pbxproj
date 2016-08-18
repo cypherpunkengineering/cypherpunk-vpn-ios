@@ -93,6 +93,17 @@
 		2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B73C70E1D5C7F670090FF8B /* Animation.storyboard */; };
 		2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */; };
 		2B73C7141D5CDBFF0090FF8B /* VerticalScrollAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7131D5CDBFF0090FF8B /* VerticalScrollAnimator.swift */; };
+		2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */; };
+		2BDBD0C21D64FBED00080E67 /* ThemedNavigationBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C11D64FBED00080E67 /* ThemedNavigationBackgroundView.swift */; };
+		2BDBD0C41D65041100080E67 /* ThemedStatusBarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C31D65041100080E67 /* ThemedStatusBarBackgroundView.swift */; };
+		2BDBD0C61D6514AB00080E67 /* ConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C51D6514AB00080E67 /* ConfigurationTableViewController.swift */; };
+		2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C71D65191400080E67 /* Email.storyboard */; };
+		2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C91D651C8100080E67 /* ThemedTextField.swift */; };
+		2BDBD0CC1D651D6700080E67 /* UpdateEmailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */; };
+		2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */; };
+		2BDBD0D01D65286D00080E67 /* UpdateEmailRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0CF1D65286D00080E67 /* UpdateEmailRootViewController.swift */; };
+		2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDBD0D11D65295F00080E67 /* Password.storyboard */; };
+		2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */; };
 		2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF33BC41D5314F1003FCFF3 /* test.p12 */; };
 		40D56BF49E63C019A46839C7 /* Pods_CypherpunkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7BA02BCC3C2DBACF87A027 /* Pods_CypherpunkUITests.framework */; };
 		46608F04506E5B087F2FB8C7 /* Pods_Cypherpunk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF74B2C8826884133507A33 /* Pods_Cypherpunk.framework */; };
@@ -211,6 +222,17 @@
 		2B73C70E1D5C7F670090FF8B /* Animation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Animation.storyboard; sourceTree = "<group>"; };
 		2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		2B73C7131D5CDBFF0090FF8B /* VerticalScrollAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalScrollAnimator.swift; sourceTree = "<group>"; };
+		2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationViewController.swift; sourceTree = "<group>"; };
+		2BDBD0C11D64FBED00080E67 /* ThemedNavigationBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationBackgroundView.swift; sourceTree = "<group>"; };
+		2BDBD0C31D65041100080E67 /* ThemedStatusBarBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedStatusBarBackgroundView.swift; sourceTree = "<group>"; };
+		2BDBD0C51D6514AB00080E67 /* ConfigurationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewController.swift; sourceTree = "<group>"; };
+		2BDBD0C71D65191400080E67 /* Email.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Email.storyboard; sourceTree = "<group>"; };
+		2BDBD0C91D651C8100080E67 /* ThemedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTextField.swift; sourceTree = "<group>"; };
+		2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateEmailTableViewController.swift; sourceTree = "<group>"; };
+		2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationRootViewController.swift; sourceTree = "<group>"; };
+		2BDBD0CF1D65286D00080E67 /* UpdateEmailRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateEmailRootViewController.swift; sourceTree = "<group>"; };
+		2BDBD0D11D65295F00080E67 /* Password.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
+		2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactusViewController.swift; sourceTree = "<group>"; };
 		2BF33BC41D5314F1003FCFF3 /* test.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.p12; sourceTree = "<group>"; };
 		2FDB752259C501D90C4A7A8D /* Pods-CypherpunkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A532A863B7DD850AE5424D3 /* Pods-CypherpunkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -388,11 +410,14 @@
 				201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */,
 				201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */,
 				201809E91D5B3BF100730FA4 /* ThemedNavigationBar.swift */,
+				2BDBD0C11D64FBED00080E67 /* ThemedNavigationBackgroundView.swift */,
+				2BDBD0C31D65041100080E67 /* ThemedStatusBarBackgroundView.swift */,
 				201809EB1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift */,
 				201809ED1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift */,
 				201809F31D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift */,
 				201809F51D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift */,
 				201809F71D5B503200730FA4 /* ThemedMapImageView.swift */,
+				2BDBD0C91D651C8100080E67 /* ThemedTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -415,6 +440,11 @@
 				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
 				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
+				2BDBD0C51D6514AB00080E67 /* ConfigurationTableViewController.swift */,
+				2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */,
+				2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */,
+				2BDBD0CF1D65286D00080E67 /* UpdateEmailRootViewController.swift */,
+				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
 				200955611D4B45B800BEEE0A /* SettingsViewController.swift */,
 				2043504F1D59D088009AF327 /* AdvancedSettingsViewController.swift */,
 				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
@@ -427,6 +457,7 @@
 				20EBFD371D5454B0008B9F14 /* HandshakeSelectViewController.swift */,
 				2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */,
 				2B193EC61D591E2600308DCA /* RemotePortSelectViewController.swift */,
+				2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -450,6 +481,8 @@
 				200955631D4B46C000BEEE0A /* Account.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20EC4A3F1D376C5200785399 /* Settings.storyboard */,
+				2BDBD0C71D65191400080E67 /* Email.storyboard */,
+				2BDBD0D11D65295F00080E67 /* Password.storyboard */,
 				2B73C70E1D5C7F670090FF8B /* Animation.storyboard */,
 			);
 			name = Storyboard;
@@ -643,6 +676,7 @@
 				2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
+				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				200955641D4B46C000BEEE0A /* Account.storyboard in Resources */,
 				2038096E1D13D89D005145CD /* Main.storyboard in Resources */,
 				2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */,
@@ -652,6 +686,7 @@
 				20EC4A401D376C5200785399 /* Settings.storyboard in Resources */,
 				2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
+				2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */,
 				2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */,
 				20D8960A1D23B764002B9F9D /* SignIn.storyboard in Resources */,
 			);
@@ -823,6 +858,7 @@
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				20EBFD401D5485D8008B9F14 /* SettingsStatusViewController.swift in Sources */,
 				203F4F0B1D5B1BAA00EA2536 /* ThemedLogoView.swift in Sources */,
+				2BDBD0CC1D651D6700080E67 /* UpdateEmailTableViewController.swift in Sources */,
 				201809EC1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift in Sources */,
 				204BE90E1D5B28B7003D7CB5 /* ThemedSeparatorView.swift in Sources */,
 				203F4EFB1D5AFD5100EA2536 /* ThemeAction.swift in Sources */,
@@ -831,12 +867,15 @@
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				201809EE1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift in Sources */,
 				2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */,
+				2BDBD0C21D64FBED00080E67 /* ThemedNavigationBackgroundView.swift in Sources */,
 				203F4F091D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift in Sources */,
+				2BDBD0C41D65041100080E67 /* ThemedStatusBarBackgroundView.swift in Sources */,
 				20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */,
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
 				204350501D59D088009AF327 /* AdvancedSettingsViewController.swift in Sources */,
 				201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */,
 				204BE9101D5B30AA003D7CB5 /* ThemedUpgradeButton.swift in Sources */,
+				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
 				201809F81D5B503200730FA4 /* ThemedMapImageView.swift in Sources */,
 				203F4EF71D5AFCDA00EA2536 /* ThemeState.swift in Sources */,
@@ -854,23 +893,28 @@
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
 				203F4F051D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift in Sources */,
+				2BDBD0D01D65286D00080E67 /* UpdateEmailRootViewController.swift in Sources */,
 				201809F01D5B49E200730FA4 /* ThemedSettingsTabButton.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20EBFD3C1D545F3D008B9F14 /* AuthenticationSelectViewController.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
+				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */,
+				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
 				200955661D4B48C200BEEE0A /* AccountViewController.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */,
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
 				2079C8881D5DDD10004274ED /* ConnectedAnimationViewController.swift in Sources */,
+				2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				200955621D4B45B800BEEE0A /* SettingsViewController.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 				203F4EFF1D5B079D00EA2536 /* UIColor+CIAdditions.swift in Sources */,
 				203F4EF91D5AFD1700EA2536 /* ThemeReducer.swift in Sources */,
+				2BDBD0C61D6514AB00080E67 /* ConfigurationTableViewController.swift in Sources */,
 				203F4F071D5B188200EA2536 /* ThemedNavigationButton.swift in Sources */,
 				201809F21D5B4C0500730FA4 /* ThemedChangeIPAddressButton.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,

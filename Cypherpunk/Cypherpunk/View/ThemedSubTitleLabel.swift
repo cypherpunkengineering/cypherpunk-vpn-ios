@@ -21,6 +21,8 @@ class ThemedSubTitleLabel: UILabel {
             self.textColor = UIColor.whiteThemeNavigationColor()
         case .Black:
             self.textColor = UIColor.lightGrayColor()
+        case .Indigo:
+            self.textColor = UIColor.whiteColor()
         }
     }
 

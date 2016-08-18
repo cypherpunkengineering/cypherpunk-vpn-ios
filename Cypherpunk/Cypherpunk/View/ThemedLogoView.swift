@@ -31,6 +31,13 @@ class ThemedLogoView: UIButton {
             self.tintColor = UIColor.lightGrayColor()
             self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
             self.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
+        case .Indigo:
+            let image = UIImage(resource: R.image.logoGray_small)
+            self.setImage(image, forState: .Normal)
+            self.setImage(image, forState: .Disabled)
+            self.tintColor = UIColor.whiteColor()
+            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            self.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
         }
     }
 }

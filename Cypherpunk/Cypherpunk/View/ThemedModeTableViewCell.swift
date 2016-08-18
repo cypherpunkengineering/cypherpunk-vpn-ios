@@ -35,6 +35,12 @@ class ThemedModeTableViewCell: UITableViewCell {
             privacyModeView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
             speedModeView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
             self.backgroundColor = UIColor.blackThemeCellBackgroundColor()
+        case .Indigo:
+            self.titleLabel?.textColor = UIColor.whiteColor()
+            self.descriptionView?.textColor = UIColor.whiteColor()
+            privacyModeView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
+            speedModeView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
+            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.16)
         }
     }
 

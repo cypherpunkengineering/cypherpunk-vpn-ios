@@ -21,6 +21,8 @@ class ThemedSettingsTabButton: UIButton {
             self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
         case .Black:
             self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        case .Indigo:
+            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         }
     }
     
