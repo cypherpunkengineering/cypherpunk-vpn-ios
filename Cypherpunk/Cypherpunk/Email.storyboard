@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4XP-Ts-dsi">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Dosis-Medium.otf">
+            <string>Dosis-Medium</string>
+            <string>Dosis-Medium</string>
+            <string>Dosis-Medium</string>
+            <string>Dosis-Medium</string>
+            <string>Dosis-Medium</string>
+            <string>Dosis-Medium</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Update Email-->
+        <scene sceneID="Ihj-Go-DBW">
+            <objects>
+                <viewController storyboardIdentifier="Email" title="Update Email" id="4XP-Ts-dsi" customClass="UpdateEmailRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nXB-qC-FT0"/>
+                        <viewControllerLayoutGuide type="bottom" id="pKL-Ak-47H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hPy-xc-Bca" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KG9-7c-gAw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="D7N-na-4mo" kind="embed" id="5AL-s0-RoD"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh1-y0-IDp" customClass="ThemedNavigationBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="zT0-Dj-ITx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gh1-y0-IDp" firstAttribute="leading" secondItem="KG9-7c-gAw" secondAttribute="leading" id="2vO-eY-XCL"/>
+                            <constraint firstItem="Gh1-y0-IDp" firstAttribute="trailing" secondItem="KG9-7c-gAw" secondAttribute="trailing" id="6J8-kN-Dhc"/>
+                            <constraint firstAttribute="trailing" secondItem="KG9-7c-gAw" secondAttribute="trailing" id="Jrr-lT-NJz"/>
+                            <constraint firstItem="Gh1-y0-IDp" firstAttribute="top" secondItem="KG9-7c-gAw" secondAttribute="top" id="M09-nv-dvo"/>
+                            <constraint firstItem="KG9-7c-gAw" firstAttribute="leading" secondItem="hPy-xc-Bca" secondAttribute="leading" id="cPZ-VC-whq"/>
+                            <constraint firstItem="KG9-7c-gAw" firstAttribute="top" secondItem="hPy-xc-Bca" secondAttribute="top" id="jrG-bt-GPg"/>
+                            <constraint firstItem="KG9-7c-gAw" firstAttribute="bottom" secondItem="pKL-Ak-47H" secondAttribute="top" id="lzd-b3-dJR"/>
+                            <constraint firstItem="pKL-Ak-47H" firstAttribute="top" secondItem="Gh1-y0-IDp" secondAttribute="bottom" constant="532" id="wLJ-EY-4hf"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="wLJ-EY-4hf"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HKs-cl-47C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="336"/>
+        </scene>
+        <!--UpdateEmail-->
+        <scene sceneID="k54-jf-jJV">
+            <objects>
+                <tableViewController title="Accounts" id="D7N-na-4mo" userLabel="UpdateEmail" customClass="UpdateEmailTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="A3r-97-m3W" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <sections>
+                            <tableViewSection id="A5R-lL-mx9">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="44" id="j7y-qQ-rYa" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="35" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j7y-qQ-rYa" id="F3F-2j-Q6t">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="New Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ap-Of-3ch" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="0.0" width="74" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="74" id="1ln-M8-ZTh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-sD-kRU" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="127" y="0.0" width="465" height="43.5"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0ap-Of-3ch" firstAttribute="leading" secondItem="F3F-2j-Q6t" secondAttribute="leading" constant="15" id="5E7-iy-KsQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="dI4-sD-kRU" secondAttribute="bottom" id="BR6-po-fZu"/>
+                                                <constraint firstItem="dI4-sD-kRU" firstAttribute="top" secondItem="F3F-2j-Q6t" secondAttribute="top" id="DGp-WL-6aq"/>
+                                                <constraint firstAttribute="bottom" secondItem="0ap-Of-3ch" secondAttribute="bottom" id="Z8c-cK-xMb"/>
+                                                <constraint firstAttribute="trailing" secondItem="dI4-sD-kRU" secondAttribute="trailing" constant="8" id="h3f-KJ-n2q"/>
+                                                <constraint firstItem="0ap-Of-3ch" firstAttribute="top" secondItem="F3F-2j-Q6t" secondAttribute="top" id="hI9-QM-RTO"/>
+                                                <constraint firstItem="dI4-sD-kRU" firstAttribute="leading" secondItem="0ap-Of-3ch" secondAttribute="trailing" constant="38" id="rG9-0v-mrj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="44" id="Xnl-ow-P3B" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="79" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xnl-ow-P3B" id="ePh-np-sDx">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WA-Lc-bhQ" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="0.0" width="74" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="74" id="IeZ-n4-14B"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gwe-U5-k7T" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="127" y="0.0" width="465" height="43.5"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9WA-Lc-bhQ" firstAttribute="leading" secondItem="ePh-np-sDx" secondAttribute="leading" constant="15" id="1L1-Vy-bGH"/>
+                                                <constraint firstAttribute="bottom" secondItem="Gwe-U5-k7T" secondAttribute="bottom" id="5GG-2b-ncK"/>
+                                                <constraint firstAttribute="trailing" secondItem="Gwe-U5-k7T" secondAttribute="trailing" constant="8" id="FYm-Yy-ypg"/>
+                                                <constraint firstAttribute="bottom" secondItem="9WA-Lc-bhQ" secondAttribute="bottom" id="G4G-mU-3Ch"/>
+                                                <constraint firstItem="9WA-Lc-bhQ" firstAttribute="top" secondItem="ePh-np-sDx" secondAttribute="top" id="Hnd-iz-0xV"/>
+                                                <constraint firstItem="Gwe-U5-k7T" firstAttribute="top" secondItem="ePh-np-sDx" secondAttribute="top" id="lah-Dx-18g"/>
+                                                <constraint firstItem="Gwe-U5-k7T" firstAttribute="leading" secondItem="9WA-Lc-bhQ" secondAttribute="trailing" constant="38" id="qey-8K-qTd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="3SN-2p-oAW">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="44" id="Zpf-x6-vD3" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="159" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zpf-x6-vD3" id="IHa-Zv-5TL">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YiL-cL-9lj" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="0.0" width="74" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="74" id="mjS-xX-JTU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5D-rK-vtJ" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="127" y="0.0" width="465" height="43.5"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="YiL-cL-9lj" secondAttribute="bottom" id="0z3-tf-lgc"/>
+                                                <constraint firstAttribute="bottom" secondItem="d5D-rK-vtJ" secondAttribute="bottom" id="5fo-OU-hHm"/>
+                                                <constraint firstItem="d5D-rK-vtJ" firstAttribute="top" secondItem="IHa-Zv-5TL" secondAttribute="top" id="LtD-Pn-1Jx"/>
+                                                <constraint firstItem="YiL-cL-9lj" firstAttribute="leading" secondItem="IHa-Zv-5TL" secondAttribute="leading" constant="15" id="Mt1-Gn-kOm"/>
+                                                <constraint firstItem="d5D-rK-vtJ" firstAttribute="leading" secondItem="YiL-cL-9lj" secondAttribute="trailing" constant="38" id="OgS-vV-viB"/>
+                                                <constraint firstItem="YiL-cL-9lj" firstAttribute="top" secondItem="IHa-Zv-5TL" secondAttribute="top" id="TUs-oe-S46"/>
+                                                <constraint firstAttribute="trailing" secondItem="d5D-rK-vtJ" secondAttribute="trailing" constant="8" id="zUr-hL-kzV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="D7N-na-4mo" id="eWO-l1-VEG"/>
+                            <outlet property="delegate" destination="D7N-na-4mo" id="cFq-yO-UTm"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5aQ-qc-EdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Accounts" id="hfd-bG-ubO">
+                    <barButtonItem key="leftBarButtonItem" title="Close" id="zQV-ps-lOM">
+                        <connections>
+                            <action selector="closeAction:" destination="D7N-na-4mo" id="4Od-Bj-aPe"/>
+                        </connections>
+                    </barButtonItem>
+                </navigationItem>
+            </objects>
+            <point key="canvasLocation" x="813" y="336"/>
+        </scene>
+    </scenes>
+</document>

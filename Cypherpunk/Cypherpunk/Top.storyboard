@@ -267,22 +267,6 @@
             </objects>
             <point key="canvasLocation" x="383" y="510"/>
         </scene>
-        <!--Animation-->
-        <scene sceneID="e2O-rl-QLw">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Animation" id="vmw-wZ-2Yp" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fbw-Y3-mF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="383" y="1064"/>
-        </scene>
-        <!--ConnectedAnimation-->
-        <scene sceneID="QdS-vE-zgI">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Animation" referencedIdentifier="ConnectedAnimation" id="gzn-q5-B7I" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nVT-6p-qCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="607.5" y="1051"/>
-        </scene>
         <!--Region-->
         <scene sceneID="mmh-kJ-wDM">
             <objects>
