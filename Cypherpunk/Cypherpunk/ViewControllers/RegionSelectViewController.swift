@@ -11,6 +11,52 @@ import UIKit
 import ReSwift
 import RealmSwift
 
+enum AreaIPAddress: Int {
+    case Tokyo1
+    case Tokyo2
+    case Honolulu
+
+    var IPAddress: String {
+        switch self {
+        case .Tokyo1: return "208.111.52.1"
+        case .Tokyo2: return "208.111.52.2"
+        case .Honolulu: return "199.68.252.203"
+        }
+    }
+    
+    var countryName: String {
+        switch self {
+        case .Tokyo1: return "Japan"
+        case .Tokyo2: return "Japan"
+        case .Honolulu: return "America"
+        }
+    }
+
+    var areaName: String {
+        switch self {
+        case .Tokyo1: return "Tokyo1"
+        case .Tokyo2: return "Tokyo2"
+        case .Honolulu: return "Honolulu"
+        }
+    }
+
+    var cityName: String {
+        switch self {
+        case .Tokyo1: return "Tokyo1"
+        case .Tokyo2: return "Tokyo2"
+        case .Honolulu: return "Honolulu"
+        }
+    }
+
+    static var array: [AreaIPAddress] {
+        return [.Tokyo1, .Tokyo2, .Honolulu]
+    }
+    
+    static var count: Int {
+        return array.count
+    }
+}
+
 class RegionSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: ThemedTableView!
@@ -20,15 +66,7 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let realm = try! Realm()
-        let regions = realm.objects(Region)
-        areaNames = regions.reduce([]) { (names, region) -> [String] in
-            var ret = names
-            if names.contains(region.area) == false {
-                ret.append(region.area)
-            }
-            return ret
-        }
+        areaNames = ["Tokyo1","Tokyo2","Honolulu"]
         
     }
 
@@ -38,7 +76,7 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -64,43 +102,26 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Recentry connected"
-        }
-        return "Region"
+        return ""
     }
         
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return mainStore.state.regionState.recentryConnected.count
-        }
-        return areaNames.count + 1 ?? 1
+        return areaNames.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
         
-        switch indexPath.section {
-        case 0:
-            cell?.textLabel?.text = mainStore.state.regionState.recentryConnected[indexPath.row].title
-            cell?.accessoryType = .None
-            
-        default:
-            if indexPath.row == 0 {
-                cell?.textLabel?.text = "Auto select region"
-                cell?.accessoryType = .None
-            } else {
-                cell?.textLabel?.text = areaNames[indexPath.row - 1]
-            }
-        }
-        
+        cell?.textLabel?.text = areaNames[indexPath.row]
         
         return cell!
     }
     
     private var areaName: String! = ""
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let area = AreaIPAddress(rawValue:indexPath.row)
+        mainStore.dispatch(RegionAction.ChangeRegion(areaName: area!.areaName, countryName: area!.countryName, cityName: area!.cityName, serverIP: area!.IPAddress))
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
