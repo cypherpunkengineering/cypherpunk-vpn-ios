@@ -134,7 +134,7 @@
                                             <constraint firstAttribute="height" constant="48" id="pkq-QZ-iXf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="SIGN IN">
+                                        <state key="normal" title="Log In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -182,7 +182,7 @@
                             <constraint firstItem="Rmh-5r-RxF" firstAttribute="top" secondItem="Yen-cJ-5LN" secondAttribute="top" constant="64" id="bR3-t2-f5h"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign In" id="7iC-uv-RFa">
+                    <navigationItem key="navigationItem" title="Log In" id="7iC-uv-RFa">
                         <barButtonItem key="backBarButtonItem" title=" " id="Vbk-HR-BwK"/>
                     </navigationItem>
                     <connections>

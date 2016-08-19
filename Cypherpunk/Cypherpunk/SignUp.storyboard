@@ -92,7 +92,7 @@
                                             <constraint firstAttribute="height" constant="48" id="Vix-JJ-7lX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="SIGN UP">
+                                        <state key="normal" title="Sign Up">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
