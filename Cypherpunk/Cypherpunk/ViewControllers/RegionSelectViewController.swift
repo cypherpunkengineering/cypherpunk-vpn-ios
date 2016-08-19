@@ -122,7 +122,9 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let area = AreaIPAddress(rawValue:indexPath.row)
         mainStore.dispatch(RegionAction.ChangeRegion(areaName: area!.areaName, countryName: area!.countryName, cityName: area!.cityName, serverIP: area!.IPAddress))
-        self.dismissViewControllerAnimated(true, completion: nil)
+        VPNConfigurationCoordinator.start { 
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     @IBAction func closeAction(sender: AnyObject) {
