@@ -36,7 +36,11 @@ class ConfigurationTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationController?.navigationBarHidden = false
+        
+        let loginstate = mainStore.state.loginState
+        mailAddressLabel.text = loginstate.mailAddress
     }
     
     override func viewWillDisappear(animated: Bool) {
