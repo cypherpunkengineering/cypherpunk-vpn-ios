@@ -44,18 +44,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfa-J5-gG4" customClass="ThemedSeparatorView" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="544" width="600" height="1"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="8XQ-Lh-kQ7"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFa-D7-Pqs">
-                                <rect key="frame" x="0.0" y="545" width="600" height="55"/>
+                                <rect key="frame" x="0.0" y="525" width="600" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCs-I6-CIn" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
+                                        <rect key="frame" x="44" y="4" width="512" height="48"/>
                                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="28"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="9" maxX="18" maxY="0.0"/>
                                         <state key="normal" title="test"/>
@@ -65,12 +58,23 @@
                                         <state key="focused">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="91n-X5-09H" kind="showDetail" id="Dtc-ZU-9uP"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="ja7-7d-bx4" customClass="ThemedArrowDownImageView" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="569" y="22" width="7" height="12"/>
+                                        <rect key="frame" x="534" y="22" width="7" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="7" id="6lb-WZ-Ac6"/>
                                             <constraint firstAttribute="height" constant="12" id="lRC-Eg-oMK"/>
@@ -79,13 +83,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="ja7-7d-bx4" firstAttribute="leading" secondItem="UCs-I6-CIn" secondAttribute="trailing" constant="-22" id="1hC-Dg-hPA"/>
                                     <constraint firstAttribute="height" constant="55" id="A0I-3v-k0s"/>
-                                    <constraint firstAttribute="bottom" secondItem="UCs-I6-CIn" secondAttribute="bottom" id="RxK-MW-YSg"/>
-                                    <constraint firstAttribute="trailing" secondItem="ja7-7d-bx4" secondAttribute="trailing" constant="24" id="Vai-bQ-yUr"/>
-                                    <constraint firstItem="UCs-I6-CIn" firstAttribute="top" secondItem="HFa-D7-Pqs" secondAttribute="top" id="b1W-jB-BPg"/>
-                                    <constraint firstItem="ja7-7d-bx4" firstAttribute="centerY" secondItem="UCs-I6-CIn" secondAttribute="centerY" id="cQv-J3-gGb"/>
-                                    <constraint firstItem="UCs-I6-CIn" firstAttribute="leading" secondItem="HFa-D7-Pqs" secondAttribute="leading" id="qf9-Rn-vx5"/>
-                                    <constraint firstAttribute="trailing" secondItem="UCs-I6-CIn" secondAttribute="trailing" id="z6N-IO-tmO"/>
+                                    <constraint firstAttribute="trailing" secondItem="UCs-I6-CIn" secondAttribute="trailing" constant="44" id="Hr9-FJ-BJ4"/>
+                                    <constraint firstItem="ja7-7d-bx4" firstAttribute="centerY" secondItem="UCs-I6-CIn" secondAttribute="centerY" id="SXr-DN-HJu"/>
+                                    <constraint firstItem="UCs-I6-CIn" firstAttribute="leading" secondItem="HFa-D7-Pqs" secondAttribute="leading" constant="44" id="Uq3-fa-zzB"/>
+                                    <constraint firstItem="UCs-I6-CIn" firstAttribute="centerY" secondItem="HFa-D7-Pqs" secondAttribute="centerY" id="xac-af-DUG"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssu-Hg-qEf">
@@ -265,10 +268,9 @@
                             <constraint firstAttribute="trailing" secondItem="L3D-bb-k2q" secondAttribute="trailing" id="0ai-N4-RYX"/>
                             <constraint firstItem="TNd-hX-uZx" firstAttribute="top" secondItem="Erh-L3-cN9" secondAttribute="bottom" constant="26" id="25y-dV-2zs"/>
                             <constraint firstAttribute="trailing" secondItem="HFa-D7-Pqs" secondAttribute="trailing" id="6Cz-2R-OqY"/>
-                            <constraint firstItem="HFa-D7-Pqs" firstAttribute="top" secondItem="Qfa-J5-gG4" secondAttribute="bottom" id="C0Q-hL-ZHw"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="top" secondItem="ssu-Hg-qEf" secondAttribute="bottom" id="C4L-LU-fnb"/>
                             <constraint firstItem="Nic-2J-BX6" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="Ce8-tp-7pd"/>
-                            <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="HFa-D7-Pqs" secondAttribute="bottom" id="Dol-aG-C4c"/>
+                            <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="HFa-D7-Pqs" secondAttribute="bottom" constant="20" id="Dol-aG-C4c"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="Edc-YA-2nr"/>
                             <constraint firstItem="ssu-Hg-qEf" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="GwB-f2-Mxt"/>
                             <constraint firstItem="ssu-Hg-qEf" firstAttribute="top" secondItem="br5-Ct-iYb" secondAttribute="top" constant="20" id="V16-uV-SBf"/>
@@ -278,11 +280,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="TNd-hX-uZx" secondAttribute="trailing" id="dED-Iz-aMU"/>
                             <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="fW9-5M-8Sm"/>
                             <constraint firstItem="HFa-D7-Pqs" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="kbb-Hg-jLo"/>
-                            <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerY" secondItem="br5-Ct-iYb" secondAttribute="centerY" id="qCh-gP-1hn"/>
+                            <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerY" secondItem="br5-Ct-iYb" secondAttribute="centerY" priority="750" id="qCh-gP-1hn"/>
                             <constraint firstAttribute="trailing" secondItem="ssu-Hg-qEf" secondAttribute="trailing" id="sOv-ir-Sve"/>
                             <constraint firstItem="Nic-2J-BX6" firstAttribute="top" secondItem="TNd-hX-uZx" secondAttribute="bottom" constant="29" id="tHt-2V-HFd"/>
-                            <constraint firstItem="Qfa-J5-gG4" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="ylm-3F-Vq1"/>
-                            <constraint firstAttribute="trailing" secondItem="Qfa-J5-gG4" secondAttribute="trailing" id="zoD-UO-m4x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="YjC-k8-sDr">
@@ -310,7 +310,7 @@
                 <viewControllerPlaceholder storyboardName="Region" id="91n-X5-09H" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oz2-xM-HMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="543"/>
+            <point key="canvasLocation" x="828" y="510"/>
         </scene>
     </scenes>
     <resources>
