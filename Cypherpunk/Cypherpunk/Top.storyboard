@@ -9,6 +9,7 @@
         <mutableArray key="Dosis-Regular.otf">
             <string>Dosis-Regular</string>
             <string>Dosis-Regular</string>
+            <string>Dosis-Regular</string>
         </mutableArray>
         <mutableArray key="Dosis-SemiBold.otf">
             <string>Dosis-SemiBold</string>
@@ -43,15 +44,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCONNECTED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNd-hX-uZx" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="20" y="392" width="560" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="R7s-5O-tmx"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="25"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfa-J5-gG4" customClass="ThemedSeparatorView" customModule="Cypherpunk" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="544" width="600" height="1"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -183,7 +175,7 @@
                                             <action selector="connectAction:" destination="uCa-HA-ERA" eventType="touchUpInside" id="TmJ-bk-io1"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-ZZ-CJa">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-ZZ-CJa">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="39" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" image="io_btn_orange"/>
@@ -191,7 +183,7 @@
                                             <action selector="connectAction:" destination="uCa-HA-ERA" eventType="touchUpInside" id="L7S-ME-Led"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oM3-K3-kcv">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oM3-K3-kcv">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
                                         <state key="normal" image="io_btn_green"/>
                                         <connections>
@@ -201,12 +193,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="oM3-K3-kcv" firstAttribute="leading" secondItem="Erh-L3-cN9" secondAttribute="leading" id="5LZ-80-htV"/>
+                                    <constraint firstItem="oM3-K3-kcv" firstAttribute="top" secondItem="Erh-L3-cN9" secondAttribute="top" id="736-Rs-NaU"/>
                                     <constraint firstAttribute="bottom" secondItem="Erh-L3-cN9" secondAttribute="bottom" id="HBK-Dg-2aJ"/>
                                     <constraint firstAttribute="width" constant="132" id="JdO-xu-mEZ"/>
                                     <constraint firstAttribute="height" constant="132" id="RLw-ui-pvq"/>
+                                    <constraint firstItem="oM3-K3-kcv" firstAttribute="trailing" secondItem="Erh-L3-cN9" secondAttribute="trailing" id="UYD-P6-ghg"/>
                                     <constraint firstItem="Erh-L3-cN9" firstAttribute="leading" secondItem="Mtc-fc-kyh" secondAttribute="leading" id="e5C-dp-38r"/>
                                     <constraint firstItem="Erh-L3-cN9" firstAttribute="top" secondItem="Mtc-fc-kyh" secondAttribute="top" id="ewq-E1-O3L"/>
+                                    <constraint firstItem="dUD-ZZ-CJa" firstAttribute="trailing" secondItem="Erh-L3-cN9" secondAttribute="trailing" id="fpe-35-fE5"/>
+                                    <constraint firstItem="dUD-ZZ-CJa" firstAttribute="bottom" secondItem="Erh-L3-cN9" secondAttribute="bottom" id="h2K-h7-3KD"/>
+                                    <constraint firstItem="oM3-K3-kcv" firstAttribute="bottom" secondItem="Erh-L3-cN9" secondAttribute="bottom" id="kQf-mH-l94"/>
+                                    <constraint firstItem="dUD-ZZ-CJa" firstAttribute="top" secondItem="Erh-L3-cN9" secondAttribute="top" id="lze-H0-Y5w"/>
                                     <constraint firstAttribute="trailing" secondItem="Erh-L3-cN9" secondAttribute="trailing" id="qOl-Tz-Slx"/>
+                                    <constraint firstItem="dUD-ZZ-CJa" firstAttribute="leading" secondItem="Erh-L3-cN9" secondAttribute="leading" id="rdX-2E-Prf"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -226,6 +226,39 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCONNECTED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNd-hX-uZx" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="20" y="392" width="560" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="R7s-5O-tmx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nic-2J-BX6">
+                                <rect key="frame" x="279" y="453" width="43" height="20"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3JQ-d3-4z9">
+                                        <rect key="frame" x="0.0" y="0.0" width="43" height="20"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="uCa-HA-ERA" eventType="touchUpInside" id="RdB-r9-Vjb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="3JQ-d3-4z9" firstAttribute="top" secondItem="Nic-2J-BX6" secondAttribute="top" id="5ED-yC-Dwx"/>
+                                    <constraint firstAttribute="width" constant="43" id="7wW-Xz-RZs"/>
+                                    <constraint firstItem="3JQ-d3-4z9" firstAttribute="leading" secondItem="Nic-2J-BX6" secondAttribute="leading" id="Pkc-ac-MEM"/>
+                                    <constraint firstAttribute="trailing" secondItem="3JQ-d3-4z9" secondAttribute="trailing" id="QzZ-Bs-Qkx"/>
+                                    <constraint firstAttribute="height" constant="20" id="kfH-hH-bgk"/>
+                                    <constraint firstAttribute="bottom" secondItem="3JQ-d3-4z9" secondAttribute="bottom" id="nXh-PG-sVR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -234,6 +267,7 @@
                             <constraint firstAttribute="trailing" secondItem="HFa-D7-Pqs" secondAttribute="trailing" id="6Cz-2R-OqY"/>
                             <constraint firstItem="HFa-D7-Pqs" firstAttribute="top" secondItem="Qfa-J5-gG4" secondAttribute="bottom" id="C0Q-hL-ZHw"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="top" secondItem="ssu-Hg-qEf" secondAttribute="bottom" id="C4L-LU-fnb"/>
+                            <constraint firstItem="Nic-2J-BX6" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="Ce8-tp-7pd"/>
                             <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="HFa-D7-Pqs" secondAttribute="bottom" id="Dol-aG-C4c"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="Edc-YA-2nr"/>
                             <constraint firstItem="ssu-Hg-qEf" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="GwB-f2-Mxt"/>
@@ -246,6 +280,7 @@
                             <constraint firstItem="HFa-D7-Pqs" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="kbb-Hg-jLo"/>
                             <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerY" secondItem="br5-Ct-iYb" secondAttribute="centerY" id="qCh-gP-1hn"/>
                             <constraint firstAttribute="trailing" secondItem="ssu-Hg-qEf" secondAttribute="trailing" id="sOv-ir-Sve"/>
+                            <constraint firstItem="Nic-2J-BX6" firstAttribute="top" secondItem="TNd-hX-uZx" secondAttribute="bottom" constant="29" id="tHt-2V-HFd"/>
                             <constraint firstItem="Qfa-J5-gG4" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="ylm-3F-Vq1"/>
                             <constraint firstAttribute="trailing" secondItem="Qfa-J5-gG4" secondAttribute="trailing" id="zoD-UO-m4x"/>
                         </constraints>
@@ -255,6 +290,8 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="cancelButton" destination="3JQ-d3-4z9" id="AwN-wa-VvN"/>
+                        <outlet property="cancelEmbededView" destination="Nic-2J-BX6" id="2MH-uv-anq"/>
                         <outlet property="connectedButton" destination="oM3-K3-kcv" id="Ffq-cB-qvF"/>
                         <outlet property="connectingButton" destination="dUD-ZZ-CJa" id="Thp-lo-n5Y"/>
                         <outlet property="connectionStateLabel" destination="TNd-hX-uZx" id="bVN-4e-sWL"/>

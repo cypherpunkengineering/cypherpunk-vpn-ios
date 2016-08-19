@@ -15,9 +15,9 @@ import ReSwift
 extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .Connected: return "CONNECTED"
+        case .Connected: return "You are now protected"
         case .Connecting: return "CONNECTING..."
-        case .Disconnected: return "DISCONNECTED"
+        case .Disconnected: return "Touch to Start"
         case .Disconnecting: return "DISCONNECTING..."
         case .Invalid: return "INVALID"
         case .Reasserting: return "REASSERTING"
@@ -33,6 +33,8 @@ class TopViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var outsideCircleView: UIView!
     @IBOutlet weak var connectionStateLabel: UILabel!
     
+    @IBOutlet weak var cancelEmbededView: UIView!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var regionButton: UIButton!
     
     internal var connectionObserver: NSObjectProtocol!
@@ -48,8 +50,16 @@ class TopViewController: UIViewController, StoreSubscriber {
             name: NEVPNStatusDidChangeNotification,
             object: nil
         )
-        
+    
+        let attributes: [String: AnyObject] = [
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ]
+        let cancelAttributed = NSAttributedString(string: "Cancel", attributes: attributes)
+        cancelButton.setAttributedTitle(cancelAttributed, forState: .Normal)
         regionButton.setTitle(mainStore.state.regionState.title, forState: .Normal)
+        
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -88,32 +98,35 @@ class TopViewController: UIViewController, StoreSubscriber {
             connectingButton.hidden = true
             disconnectedButton.hidden = true
             disconnectedButton.enabled = true
+            cancelEmbededView.hidden = true
         case .Connecting:
             outsideCircleView.backgroundColor = UIColor(red: 255.0 / 255.0 , green: 120.0 / 255.0 , blue: 27.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
             connectingButton.hidden = false
             disconnectedButton.hidden = true
             disconnectedButton.enabled = true
-
+            cancelEmbededView.hidden = false
         case .Disconnected:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
             connectingButton.hidden = true
             disconnectedButton.hidden = false
             disconnectedButton.enabled = true
-
+            cancelEmbededView.hidden = true
         case .Invalid, .Reasserting:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
             connectingButton.hidden = true
             disconnectedButton.hidden = false
             disconnectedButton.enabled = false
+            cancelEmbededView.hidden = true
         case .Disconnecting:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
             connectingButton.hidden = true
             disconnectedButton.hidden = false
             disconnectedButton.enabled = false
+            cancelEmbededView.hidden = true
         }
         
         connectionStateLabel.text = String(status)
@@ -145,6 +158,10 @@ class TopViewController: UIViewController, StoreSubscriber {
         }
     }
 
+    @IBAction func cancelAction(sender: AnyObject) {
+        VPNConfigurationCoordinator.disconnect()
+    }
+    
     func newState(state: AppState) {
         regionButton.setTitle(state.regionState.title, forState: .Normal)
     }
