@@ -13,7 +13,13 @@ import ReSwift
 struct RegionReducer: Reducer {
     func handleAction(action: Action, state: RegionState?) -> RegionState {
         
-        var regionState = state ?? RegionState(areaName: "", countryName: "", cityName: "", serverIP: "", isAutoSelect: true, recentryConnected: [])
+        var regionState = state ?? RegionState(
+            areaName: AreaIPAddress.Tokyo1.areaName,
+            countryName: AreaIPAddress.Tokyo1.countryName,
+            cityName: AreaIPAddress.Tokyo1.cityName,
+            serverIP: AreaIPAddress.Tokyo1.IPAddress,
+            isAutoSelect: false,
+            recentryConnected: [])
         
         if let action = action as? RegionAction {
             switch action {

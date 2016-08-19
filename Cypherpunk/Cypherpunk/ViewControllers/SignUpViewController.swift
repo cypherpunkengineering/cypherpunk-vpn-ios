@@ -12,15 +12,14 @@ import ReSwift
 class SignUpViewController: UIViewController, StoreSubscriber {
 
     @IBOutlet weak var mailAddressField: UITextField!
-    
+    @IBOutlet weak var passwordField: UITextField!
+
     @IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        mailAddressField.attributedPlaceholder = NSAttributedString(string:"Email",
-                                                               attributes:[NSForegroundColorAttributeName: UIColor(red: 130.0/255.0, green: 130.0/255.0, blue: 130.0/255.0, alpha: 1.0)])
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -92,11 +91,17 @@ class SignUpViewController: UIViewController, StoreSubscriber {
 
 }
 
+
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
-        textField.resignFirstResponder()
-        signUp()
+        
+        if textField == mailAddressField {
+            passwordField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            signUp()
+        }
         
         return true
     }

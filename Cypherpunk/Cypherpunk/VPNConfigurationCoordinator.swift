@@ -28,7 +28,7 @@ public class VPNConfigurationCoordinator {
             let newIPSec = NEVPNProtocolIKEv2()
             
             newIPSec.authenticationMethod = .Certificate
-            newIPSec.serverAddress = "208.111.52.2"
+            newIPSec.serverAddress = mainStore.state.regionState.serverIP
 
             newIPSec.username = "testuser"
             

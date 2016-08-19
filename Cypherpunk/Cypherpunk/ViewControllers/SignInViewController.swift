@@ -29,6 +29,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
         mainStore.subscribe(self, selector: nil)
         registerKeyboardNotification()
     }
