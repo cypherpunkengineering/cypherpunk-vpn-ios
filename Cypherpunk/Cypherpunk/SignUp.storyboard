@@ -117,7 +117,7 @@
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" priority="250" constant="61" id="h8i-94-xcm"/>
                                             <constraint firstAttribute="width" constant="220" id="uNz-Iw-jBa"/>
                                         </constraints>
-                                        <string key="text">Sign up and start your 7 day
+                                        <string key="text">Sign Up and start your 7 day
 Free Premium Trial now!</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
