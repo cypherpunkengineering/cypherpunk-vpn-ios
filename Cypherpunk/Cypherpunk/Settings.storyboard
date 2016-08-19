@@ -20,6 +20,9 @@
             <string>Dosis-Regular</string>
             <string>Dosis-Regular</string>
             <string>Dosis-Regular</string>
+            <string>Dosis-Regular</string>
+            <string>Dosis-Regular</string>
+            <string>Dosis-Regular</string>
         </mutableArray>
         <mutableArray key="Dosis-SemiBold.otf">
             <string>Dosis-SemiBold</string>
@@ -65,22 +68,56 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUA-At-SXU" customClass="ThemedTimeLabelButton" customModule="Cypherpunk" customModuleProvider="target">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disconnected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHd-GQ-s3I">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="22"/>
-                                                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="00:14:25" image="icon_time">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
+                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                                    <color key="textColor" red="0.77647058823529413" green="0.1803921568627451" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDj-sh-DeO">
+                                                    <rect key="frame" x="223" y="0.0" width="155" height="22"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUA-At-SXU" customClass="ThemedTimeLabelButton" customModule="Cypherpunk" customModuleProvider="target">
+                                                            <rect key="frame" x="66" y="0.0" width="89" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                                                            <state key="normal" title="00:14:25" image="icon_time">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUo-9R-xdm">
+                                                            <rect key="frame" x="0.0" y="0.0" width="66" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                                            <color key="textColor" red="0.65490196078431373" green="0.83137254901960778" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="jUo-9R-xdm" firstAttribute="leading" secondItem="tDj-sh-DeO" secondAttribute="leading" id="3bO-dd-29H"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NUA-At-SXU" secondAttribute="trailing" id="BGK-ig-P5Y"/>
+                                                        <constraint firstItem="NUA-At-SXU" firstAttribute="leading" secondItem="jUo-9R-xdm" secondAttribute="trailing" id="Ciu-B4-AOj"/>
+                                                        <constraint firstItem="NUA-At-SXU" firstAttribute="top" secondItem="tDj-sh-DeO" secondAttribute="top" id="EmK-n3-UB8"/>
+                                                        <constraint firstAttribute="bottom" secondItem="jUo-9R-xdm" secondAttribute="bottom" id="O2R-oS-OpC"/>
+                                                        <constraint firstItem="jUo-9R-xdm" firstAttribute="top" secondItem="tDj-sh-DeO" secondAttribute="top" id="fOV-1i-SU1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="NUA-At-SXU" secondAttribute="bottom" id="gzC-Gf-f2u"/>
+                                                        <constraint firstAttribute="width" constant="155" id="tpw-oP-Rrs"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="NUA-At-SXU" firstAttribute="top" secondItem="wgd-Bq-rUU" secondAttribute="top" id="1WO-kw-baN"/>
-                                                <constraint firstAttribute="bottom" secondItem="NUA-At-SXU" secondAttribute="bottom" id="D7B-QJ-IUb"/>
-                                                <constraint firstItem="NUA-At-SXU" firstAttribute="leading" secondItem="wgd-Bq-rUU" secondAttribute="leading" id="Ye9-XP-JNA"/>
-                                                <constraint firstAttribute="trailing" secondItem="NUA-At-SXU" secondAttribute="trailing" id="qRb-1c-1kz"/>
+                                                <constraint firstAttribute="trailing" secondItem="nHd-GQ-s3I" secondAttribute="trailing" id="0tW-W7-Wuw"/>
+                                                <constraint firstAttribute="bottom" secondItem="nHd-GQ-s3I" secondAttribute="bottom" id="EFy-5Z-bbv"/>
+                                                <constraint firstAttribute="bottom" secondItem="tDj-sh-DeO" secondAttribute="bottom" id="MQ0-HZ-FuV"/>
+                                                <constraint firstItem="tDj-sh-DeO" firstAttribute="top" secondItem="wgd-Bq-rUU" secondAttribute="top" id="PTN-A5-duB"/>
+                                                <constraint firstItem="nHd-GQ-s3I" firstAttribute="leading" secondItem="wgd-Bq-rUU" secondAttribute="leading" id="Pvz-7P-ISB"/>
+                                                <constraint firstItem="nHd-GQ-s3I" firstAttribute="top" secondItem="wgd-Bq-rUU" secondAttribute="top" id="m7Q-F0-7ie"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="tDj-sh-DeO" firstAttribute="centerX" secondItem="pkq-cO-g0a" secondAttribute="centerX" id="6en-la-FTl"/>
+                                        </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="16" id="DF1-9j-Q9b">
                                         <rect key="frame" x="0.0" y="229" width="600" height="16"/>
@@ -293,7 +330,9 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="connectedTimeView" destination="tDj-sh-DeO" id="XGQ-Bm-tU0"/>
                         <outlet property="connectionTimeLabelButton" destination="NUA-At-SXU" id="gM6-oG-4sL"/>
+                        <outlet property="disconnectedLabel" destination="nHd-GQ-s3I" id="fqd-6E-S6Y"/>
                         <outlet property="newIPAddressLabel" destination="4rr-kH-l4K" id="w1v-P2-cAR"/>
                         <outlet property="newLocalLabelButton" destination="OQI-ZQ-Eue" id="K4Q-jK-CdA"/>
                         <outlet property="originalIPAddressLabel" destination="f5n-TQ-hIV" id="Yur-zs-rv0"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkExtension
 
 class SettingsStatusViewController: UITableViewController, PageContent {
 
@@ -17,6 +18,8 @@ class SettingsStatusViewController: UITableViewController, PageContent {
     @IBOutlet weak var originalIPAddressLabel: UILabel!
     @IBOutlet weak var originalLocaleLabelButton: UIButton!
 
+    @IBOutlet weak var disconnectedLabel: UILabel!
+    @IBOutlet weak var connectedTimeView: UIView!
     @IBOutlet weak var newIPAddressLabel: UILabel!
     @IBOutlet weak var newLocalLabelButton: UIButton!
     
@@ -34,6 +37,15 @@ class SettingsStatusViewController: UITableViewController, PageContent {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
         self.title = "Connection Status"
+
+        let status = NEVPNManager.sharedManager().connection.status
+        if status == .Connected {
+            connectedTimeView.hidden = false
+            disconnectedLabel.hidden = true
+        } else {
+            connectedTimeView.hidden = true
+            disconnectedLabel.hidden = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,6 +56,14 @@ class SettingsStatusViewController: UITableViewController, PageContent {
     @IBAction func changeIPAddressAction(sender: AnyObject) {
     }
     
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let status = NEVPNManager.sharedManager().connection.status
+        if status == .Connected {
+            return super.tableView(tableView, numberOfRowsInSection: section)
+        } else {
+            return 4
+        }
+    }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return nil
     }
