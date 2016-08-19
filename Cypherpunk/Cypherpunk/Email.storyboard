@@ -81,11 +81,17 @@
                                         <rect key="frame" x="0.0" y="35" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j7y-qQ-rYa" id="F3F-2j-Q6t">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-sD-kRU" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="127" y="0.0" width="465" height="43"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                </textField>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="New Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ap-Of-3ch" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="0.0" width="74" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="74" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="1ln-M8-ZTh"/>
                                                     </constraints>
@@ -93,12 +99,6 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-sD-kRU" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="127" y="0.0" width="465" height="43.5"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="0ap-Of-3ch" firstAttribute="leading" secondItem="F3F-2j-Q6t" secondAttribute="leading" constant="15" id="5E7-iy-KsQ"/>
@@ -118,11 +118,17 @@
                                         <rect key="frame" x="0.0" y="79" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xnl-ow-P3B" id="ePh-np-sDx">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gwe-U5-k7T" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="127" y="0.0" width="465" height="43"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                </textField>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WA-Lc-bhQ" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="0.0" width="74" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="74" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="IeZ-n4-14B"/>
                                                     </constraints>
@@ -130,12 +136,6 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gwe-U5-k7T" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="127" y="0.0" width="465" height="43.5"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9WA-Lc-bhQ" firstAttribute="leading" secondItem="ePh-np-sDx" secondAttribute="leading" constant="15" id="1L1-Vy-bGH"/>
@@ -159,11 +159,11 @@
                                         <rect key="frame" x="0.0" y="159" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zpf-x6-vD3" id="IHa-Zv-5TL">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YiL-cL-9lj" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="0.0" width="74" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="74" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="mjS-xX-JTU"/>
                                                     </constraints>
@@ -172,7 +172,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5D-rK-vtJ" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="127" y="0.0" width="465" height="43.5"/>
+                                                    <rect key="frame" x="127" y="0.0" width="465" height="43"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
