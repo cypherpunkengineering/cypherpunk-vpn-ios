@@ -83,7 +83,7 @@ class SignUpViewController: UIViewController, StoreSubscriber {
 
     func newState(state: AppState)
     {
-        if state.loginState.mailAddress != "" {
+        if state.loginState.isLoggedIn == true {
             // TODO: transition to send email screen
             self.dismissViewControllerAnimated(true, completion: nil)
         }

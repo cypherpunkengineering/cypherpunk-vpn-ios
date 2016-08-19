@@ -10,8 +10,20 @@ import UIKit
 
 class ConfigurationTableViewController: UITableViewController {
 
+    private enum Rows: Int {
+        case Account = 00
+        case PaymentDetail = 10
+        case PaymentUpgrade = 11
+        case AccountEmailDetail = 20
+        case AccountPasswordDetail = 21
+        case AutoReconnect = 30
+        case Contactus = 40
+        case SignOut = 41
+    }
+    
     @IBOutlet weak var usernameLabelButton: ThemedTintedNavigationButton!
     @IBOutlet weak var mailAddressLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,6 +69,24 @@ class ConfigurationTableViewController: UITableViewController {
         view.addSubview(titleLabel)
         
         return view
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let row = Rows(rawValue: indexPath.section * 10 + indexPath.row) {
+            switch row {
+            case .SignOut:
+                let vc = R.storyboard.signIn.initialViewController()
+                mainStore.dispatch(LoginAction.Logout)
+                self.navigationController?.presentViewController(vc!, animated: true, completion: {
+                    self.navigationController?.popViewControllerAnimated(false)
+                })
+            default:
+                break
+            }
+        } else {
+            fatalError()
+        }
+        
     }
 
 
