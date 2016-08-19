@@ -1,72 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nwz-Kb-17F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jHX-1W-7XO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Dosis-Regular.otf">
-            <string>Dosis-Regular</string>
+        <mutableArray key="Dosis-Medium.otf">
+            <string>Dosis-Medium</string>
+            <string>Dosis-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Sign In View Controller-->
+        <!--Themed Navigation View Controller-->
+        <scene sceneID="xxf-pT-KD3">
+            <objects>
+                <navigationController id="jHX-1W-7XO" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jaw-GQ-zYz" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nwz-Kb-17F" kind="relationship" relationship="rootViewController" id="v5J-nd-2eG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ztz-TK-LZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="469" y="592"/>
+        </scene>
+        <!--Sign In-->
         <scene sceneID="qDn-X8-Otx">
             <objects>
-                <viewController id="nwz-Kb-17F" customClass="SignInViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign In" id="nwz-Kb-17F" customClass="SignInViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xW0-Nu-8wl"/>
                         <viewControllerLayoutGuide type="bottom" id="ohM-SA-4UR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Yen-cJ-5LN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="Yen-cJ-5LN" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmh-5r-RxF">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="472"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vq-2R-XQK">
-                                        <rect key="frame" x="238" y="28" width="124" height="72"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhi-82-vhD" customClass="ThemedLogoView" customModule="Cypherpunk" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="124" height="72"/>
-                                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="21"/>
-                                                <inset key="titleEdgeInsets" minX="4.5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" image="map_wh"/>
-                                                <state key="disabled" title="Cypherpunk" image="logoGray_small"/>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="jhi-82-vhD" secondAttribute="trailing" id="0h3-oo-FoP"/>
-                                            <constraint firstAttribute="height" constant="72" id="1S8-cU-J8b"/>
-                                            <constraint firstItem="jhi-82-vhD" firstAttribute="leading" secondItem="4Vq-2R-XQK" secondAttribute="leading" id="c05-9X-R9u"/>
-                                            <constraint firstAttribute="width" constant="124" id="eqt-1I-WPh"/>
-                                            <constraint firstItem="jhi-82-vhD" firstAttribute="top" secondItem="4Vq-2R-XQK" secondAttribute="top" id="m7R-vo-qdo"/>
-                                            <constraint firstAttribute="bottom" secondItem="jhi-82-vhD" secondAttribute="bottom" id="z5O-jt-kY2"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epb-yZ-YBw" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="275" y="123" width="50" height="19"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="0NM-19-1Ru"/>
-                                            <constraint firstAttribute="height" constant="19" id="jQr-lw-HIr"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UhM-Gr-BZT">
-                                        <rect key="frame" x="40" y="155" width="520" height="1"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="mM9-M8-aZO"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0C-oH-jeW">
-                                        <rect key="frame" x="40" y="187" width="520" height="48"/>
+                                        <rect key="frame" x="40" y="29" width="520" height="48"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bDU-gV-ac6">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username/Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bDU-gV-ac6" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
                                                 <rect key="frame" x="13" y="0.0" width="494" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,9 +74,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGd-5B-lqG">
-                                        <rect key="frame" x="40" y="255" width="520" height="48"/>
+                                        <rect key="frame" x="40" y="97" width="520" height="48"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BfM-hQ-pe9">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BfM-hQ-pe9" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
                                                 <rect key="frame" x="13" y="0.0" width="494" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,25 +105,36 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmO-Xg-NBN">
-                                        <rect key="frame" x="40" y="404" width="520" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account yet?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9st-Z8-vTb" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="433" width="144" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="sOx-Ly-jPk"/>
+                                            <constraint firstAttribute="height" constant="21" id="eJZ-9A-49F"/>
+                                            <constraint firstAttribute="width" constant="144" id="yzM-d9-Jy1"/>
                                         </constraints>
-                                        <state key="normal" title="Don't you have account? Sign Up">
+                                        <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-s2-kNj">
+                                        <rect key="frame" x="528" y="435" width="57" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="o0b-kY-EgL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                        <state key="normal" title="SIGN UP">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="NZK-DU-nsM" kind="show" id="fbC-dW-tKx"/>
+                                            <segue destination="NZK-DU-nsM" kind="show" id="VPP-y4-E8U"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-QR-9oM">
-                                        <rect key="frame" x="40" y="323" width="520" height="48"/>
+                                        <rect key="frame" x="40" y="165" width="520" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="pkq-QZ-iXf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Sign In">
+                                        <state key="normal" title="SIGN IN">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -161,28 +153,24 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="UGd-5B-lqG" firstAttribute="top" secondItem="C0C-oH-jeW" secondAttribute="bottom" constant="20" id="15c-mz-gj9"/>
-                                    <constraint firstItem="LmO-Xg-NBN" firstAttribute="trailing" secondItem="Ikb-QR-9oM" secondAttribute="trailing" id="5i4-j3-Ejd"/>
-                                    <constraint firstItem="C0C-oH-jeW" firstAttribute="top" secondItem="UhM-Gr-BZT" secondAttribute="bottom" constant="31" id="Cxk-cg-hhv"/>
-                                    <constraint firstItem="LmO-Xg-NBN" firstAttribute="leading" secondItem="Ikb-QR-9oM" secondAttribute="leading" id="E8c-A8-1F5"/>
-                                    <constraint firstItem="LmO-Xg-NBN" firstAttribute="top" secondItem="Ikb-QR-9oM" secondAttribute="bottom" constant="33" id="Nvf-YZ-9k3"/>
+                                    <constraint firstAttribute="bottom" secondItem="9st-Z8-vTb" secondAttribute="bottom" constant="18" id="3KO-LO-oBJ"/>
+                                    <constraint firstItem="C0C-oH-jeW" firstAttribute="leading" secondItem="Rmh-5r-RxF" secondAttribute="leading" constant="40" id="7Cr-E2-SkH"/>
+                                    <constraint firstAttribute="trailing" secondItem="TrU-s2-kNj" secondAttribute="trailing" constant="15" id="8nF-79-koS"/>
+                                    <constraint firstItem="9st-Z8-vTb" firstAttribute="leading" secondItem="Rmh-5r-RxF" secondAttribute="leading" constant="16" id="Caz-d0-UvW"/>
+                                    <constraint firstItem="C0C-oH-jeW" firstAttribute="centerX" secondItem="Rmh-5r-RxF" secondAttribute="centerX" id="LIM-xJ-YLn"/>
                                     <constraint firstItem="Ikb-QR-9oM" firstAttribute="top" secondItem="UGd-5B-lqG" secondAttribute="bottom" constant="20" id="RXc-FD-ixu"/>
                                     <constraint firstItem="Ikb-QR-9oM" firstAttribute="leading" secondItem="UGd-5B-lqG" secondAttribute="leading" id="Sg5-oU-7MS"/>
-                                    <constraint firstItem="Epb-yZ-YBw" firstAttribute="top" secondItem="4Vq-2R-XQK" secondAttribute="bottom" constant="23" id="T3M-fJ-lQr"/>
-                                    <constraint firstItem="UhM-Gr-BZT" firstAttribute="leading" secondItem="Rmh-5r-RxF" secondAttribute="leading" constant="40" id="WwO-4W-0ce"/>
-                                    <constraint firstItem="C0C-oH-jeW" firstAttribute="leading" secondItem="UhM-Gr-BZT" secondAttribute="leading" id="Z44-Zw-8o6"/>
-                                    <constraint firstItem="4Vq-2R-XQK" firstAttribute="centerX" secondItem="Rmh-5r-RxF" secondAttribute="centerX" id="agw-De-ghk"/>
-                                    <constraint firstItem="4Vq-2R-XQK" firstAttribute="top" secondItem="Rmh-5r-RxF" secondAttribute="top" priority="750" constant="28" id="bDQ-0r-KZ4"/>
+                                    <constraint firstItem="C0C-oH-jeW" firstAttribute="top" secondItem="Rmh-5r-RxF" secondAttribute="top" constant="29" id="Yld-tJ-EYk"/>
                                     <constraint firstItem="UGd-5B-lqG" firstAttribute="leading" secondItem="C0C-oH-jeW" secondAttribute="leading" id="eTe-9u-L6y"/>
-                                    <constraint firstAttribute="trailing" secondItem="UhM-Gr-BZT" secondAttribute="trailing" constant="40" id="fw7-Pr-o1O"/>
+                                    <constraint firstItem="C0C-oH-jeW" firstAttribute="leading" secondItem="Rmh-5r-RxF" secondAttribute="leading" constant="40" id="gWz-NH-fNl"/>
                                     <constraint firstItem="UGd-5B-lqG" firstAttribute="trailing" secondItem="C0C-oH-jeW" secondAttribute="trailing" id="gaY-fz-Peg"/>
                                     <constraint firstItem="Ikb-QR-9oM" firstAttribute="trailing" secondItem="UGd-5B-lqG" secondAttribute="trailing" id="iSx-Zr-0ss"/>
-                                    <constraint firstItem="C0C-oH-jeW" firstAttribute="trailing" secondItem="UhM-Gr-BZT" secondAttribute="trailing" id="lf6-cw-1pX"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ikb-QR-9oM" secondAttribute="bottom" constant="20" id="ly5-Ky-pA8"/>
-                                    <constraint firstItem="UhM-Gr-BZT" firstAttribute="top" secondItem="Epb-yZ-YBw" secondAttribute="bottom" constant="13" id="vj0-zm-SeA"/>
-                                    <constraint firstItem="Epb-yZ-YBw" firstAttribute="centerX" secondItem="Rmh-5r-RxF" secondAttribute="centerX" id="xmc-cu-Ttt"/>
+                                    <constraint firstAttribute="bottom" secondItem="TrU-s2-kNj" secondAttribute="bottom" constant="15" id="rj5-n5-PLt"/>
+                                    <constraint firstAttribute="trailing" secondItem="C0C-oH-jeW" secondAttribute="trailing" constant="40" id="tJx-gR-98B"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -191,10 +179,12 @@
                             <constraint firstItem="ohM-SA-4UR" firstAttribute="top" secondItem="Rmh-5r-RxF" secondAttribute="bottom" id="IeT-f2-7iM"/>
                             <constraint firstItem="Rmh-5r-RxF" firstAttribute="leading" secondItem="Yen-cJ-5LN" secondAttribute="leading" id="PWY-nZ-nss"/>
                             <constraint firstAttribute="trailing" secondItem="Rmh-5r-RxF" secondAttribute="trailing" id="Vq2-yh-bbW"/>
-                            <constraint firstItem="Rmh-5r-RxF" firstAttribute="top" secondItem="Yen-cJ-5LN" secondAttribute="top" id="bR3-t2-f5h"/>
+                            <constraint firstItem="Rmh-5r-RxF" firstAttribute="top" secondItem="Yen-cJ-5LN" secondAttribute="top" constant="64" id="bR3-t2-f5h"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7iC-uv-RFa"/>
+                    <navigationItem key="navigationItem" title="Sign In" id="7iC-uv-RFa">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Vbk-HR-BwK"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomSpaceConstraint" destination="IeT-f2-7iM" id="r6k-ME-buP"/>
                         <outlet property="mailAddressField" destination="bDU-gV-ac6" id="R91-HV-asy"/>
@@ -203,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fRZ-lW-eF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282" y="561"/>
+            <point key="canvasLocation" x="1280" y="592"/>
         </scene>
         <!--SignUp-->
         <scene sceneID="ela-Ik-5Kz">
@@ -214,8 +204,4 @@
             <point key="canvasLocation" x="1694.5" y="760"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="logoGray_small" width="19" height="36"/>
-        <image name="map_wh" width="360" height="173"/>
-    </resources>
 </document>
