@@ -29,7 +29,7 @@ class VPNProtocolSelectViewController: UITableViewController {
         super.viewDidLoad()
         
         self.title = "VPN protocol"
-        
+        self.automaticallyAdjustsScrollViewInsets = false
         self.tableView.configureView()
     }
     

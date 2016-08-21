@@ -25,7 +25,12 @@ public class VPNConfigurationCoordinator {
         manager.loadFromPreferencesWithCompletionHandler { (error) in
             
             // なければ作るし、あっても上書きしとけば問題ないのでerrorかどうかではわけない
-            let newIPSec = NEVPNProtocolIKEv2()
+            let newIPSec : NEVPNProtocolIPSec
+            if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
+                newIPSec = NEVPNProtocolIKEv2()
+            } else {
+                newIPSec = NEVPNProtocolIPSec()
+            }
             
             newIPSec.authenticationMethod = .Certificate
             newIPSec.serverAddress = mainStore.state.regionState.serverIP

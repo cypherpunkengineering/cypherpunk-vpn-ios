@@ -42,6 +42,9 @@ struct SettingsReducer: Reducer {
                     state.handshake = value
                 }
             }
+            VPNConfigurationCoordinator.start{
+                
+            }
         }
         return state
     }

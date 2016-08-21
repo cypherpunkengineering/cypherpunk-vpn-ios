@@ -17,13 +17,15 @@ class ConfigurationTableViewController: UITableViewController {
         case AccountEmailDetail = 20
         case AccountPasswordDetail = 21
         case AutoReconnect = 30
+        case VPNProtocol = 31
         case Contactus = 40
         case SignOut = 41
     }
     
     @IBOutlet weak var usernameLabelButton: ThemedTintedNavigationButton!
     @IBOutlet weak var mailAddressLabel: UILabel!
-
+    @IBOutlet weak var vpnProtocolDetailLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +43,7 @@ class ConfigurationTableViewController: UITableViewController {
         
         let loginstate = mainStore.state.loginState
         mailAddressLabel.text = loginstate.mailAddress
+        vpnProtocolDetailLabel.text = mainStore.state.settingsState.vpnProtocolMode.description
     }
     
     override func viewWillDisappear(animated: Bool) {

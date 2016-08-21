@@ -14,14 +14,28 @@ class BackgroundViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if let image = R.image.key_bg() {
-            self.view.backgroundColor = UIColor(patternImage: image)
-        }
-        
+//        if let image = R.image.key_bg() {
+//            self.view.backgroundColor = UIColor(patternImage: image)
+//        }
+        self.automaticallyAdjustsScrollViewInsets = false
         self.performSegueWithIdentifier(R.segue.backgroundViewController.signIn, sender: nil)
         
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let topColor = UIColor(red: 118.0 / 255.0, green: 168.0 / 255.0 , blue: 231.0 / 255.0 , alpha: 1.0)
+        let bottomColor = UIColor(red: 3.0 / 255.0, green: 70.0 / 255.0 , blue: 152.0 / 255.0 , alpha: 1.0)
+        let gradientColors: [CGColor] = [topColor.CGColor, bottomColor.CGColor]
+        
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.frame = self.view.layer.frame
+        
+        self.view.layer.insertSublayer(gradientLayer, atIndex: 0)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
