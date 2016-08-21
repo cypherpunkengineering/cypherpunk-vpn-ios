@@ -34,6 +34,7 @@ struct LoginReducer: Reducer {
             loginState.secret = response.secret
         case .Logout:
             loginState.isLoggedIn = false
+            VPNConfigurationCoordinator.disconnect()
         }
         
         return loginState
