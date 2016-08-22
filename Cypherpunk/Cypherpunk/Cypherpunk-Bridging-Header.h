@@ -12,3 +12,4 @@
 #import <CommonCrypto/CommonSymmetricKeywrap.h>
 
 #import "UINavigationController+StatusBar.h"
+#import "VPNSharedSecretReferenceGenerator.h"

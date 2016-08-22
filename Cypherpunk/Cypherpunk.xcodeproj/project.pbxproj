@@ -93,6 +93,7 @@
 		2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B73C70E1D5C7F670090FF8B /* Animation.storyboard */; };
 		2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */; };
 		2B73C7141D5CDBFF0090FF8B /* VerticalScrollAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7131D5CDBFF0090FF8B /* VerticalScrollAnimator.swift */; };
+		2B75524A1D6AE80700E07A4B /* VPNSharedSecretReferenceGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7552491D6AE80700E07A4B /* VPNSharedSecretReferenceGenerator.m */; };
 		2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */; };
 		2BDBD0C21D64FBED00080E67 /* ThemedNavigationBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C11D64FBED00080E67 /* ThemedNavigationBackgroundView.swift */; };
 		2BDBD0C41D65041100080E67 /* ThemedStatusBarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C31D65041100080E67 /* ThemedStatusBarBackgroundView.swift */; };
@@ -222,6 +223,8 @@
 		2B73C70E1D5C7F670090FF8B /* Animation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Animation.storyboard; sourceTree = "<group>"; };
 		2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		2B73C7131D5CDBFF0090FF8B /* VerticalScrollAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalScrollAnimator.swift; sourceTree = "<group>"; };
+		2B7552491D6AE80700E07A4B /* VPNSharedSecretReferenceGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNSharedSecretReferenceGenerator.m; sourceTree = "<group>"; };
+		2B75524B1D6AE9CA00E07A4B /* VPNSharedSecretReferenceGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNSharedSecretReferenceGenerator.h; sourceTree = "<group>"; };
 		2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationViewController.swift; sourceTree = "<group>"; };
 		2BDBD0C11D64FBED00080E67 /* ThemedNavigationBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationBackgroundView.swift; sourceTree = "<group>"; };
 		2BDBD0C31D65041100080E67 /* ThemedStatusBarBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedStatusBarBackgroundView.swift; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 				20D895F41D1D1C6F002B9F9D /* IPAddress.swift */,
 				2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */,
 				203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */,
+				2B7552491D6AE80700E07A4B /* VPNSharedSecretReferenceGenerator.m */,
+				2B75524B1D6AE9CA00E07A4B /* VPNSharedSecretReferenceGenerator.h */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -852,6 +857,7 @@
 				203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */,
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
+				2B75524A1D6AE80700E07A4B /* VPNSharedSecretReferenceGenerator.m in Sources */,
 				2B193EC71D591E2600308DCA /* RemotePortSelectViewController.swift in Sources */,
 				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
 				2B73C7141D5CDBFF0090FF8B /* VerticalScrollAnimator.swift in Sources */,

@@ -28,28 +28,47 @@ public class VPNConfigurationCoordinator {
             let newIPSec : NEVPNProtocolIPSec
             if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
                 newIPSec = NEVPNProtocolIKEv2()
+                
+                newIPSec.authenticationMethod = .Certificate
+                newIPSec.serverAddress = mainStore.state.regionState.serverIP
+                
+                newIPSec.username = "testuser"
+                
+                let password = "testpassword"
+                let passwordValue = password.dataUsingEncoding(NSUTF8StringEncoding)
+                newIPSec.passwordReference = passwordValue
+                
+                let path = NSBundle.mainBundle().pathForResource("test", ofType: "p12")
+                let p12 = NSData(contentsOfFile: path!)
+                if #available(iOS 9.0, *) {
+                    newIPSec.identityReference = p12
+                } else {
+                    newIPSec.identityData = p12
+                }
+                
+                newIPSec.useExtendedAuthentication = true
+
             } else {
                 newIPSec = NEVPNProtocolIPSec()
-            }
-            
-            newIPSec.authenticationMethod = .Certificate
-            newIPSec.serverAddress = mainStore.state.regionState.serverIP
+                
+                newIPSec.authenticationMethod = .SharedSecret
+                newIPSec.serverAddress = mainStore.state.regionState.serverIP
+                
+                newIPSec.username = "testuser"
+                
+                let password = "testpassword"
+                let passwordValue = password.dataUsingEncoding(NSUTF8StringEncoding)
 
-            newIPSec.username = "testuser"
-            
-            let password = "testpassword"
-            let passwordValue = password.dataUsingEncoding(NSUTF8StringEncoding)
-            newIPSec.passwordReference = passwordValue
-            
-            let path = NSBundle.mainBundle().pathForResource("test", ofType: "p12")
-            let p12 = NSData(contentsOfFile: path!)
-            if #available(iOS 9.0, *) {
-                newIPSec.identityReference = p12
-            } else {
-                newIPSec.identityData = p12
+                newIPSec.passwordReference = passwordValue
+                
+                newIPSec.useExtendedAuthentication = true
+
+                let pskString = "presharedsecretkey"
+                
+                newIPSec.sharedSecretReference = VPNSharedSecretReferenceGenerator.persistentReferenceForSavedPassword(pskString, forKey: "psk")
             }
 
-            newIPSec.useExtendedAuthentication = true
+
 
             newIPSec.localIdentifier = ""
             newIPSec.remoteIdentifier = "d06f348c.wiz.network"
@@ -82,12 +101,26 @@ public class VPNConfigurationCoordinator {
     class func connect() throws {
         let manager = NEVPNManager.sharedManager()
         if #available(iOS 9.0, *) {
-            try manager.connection.startVPNTunnelWithOptions(
-                [
-                    NEVPNConnectionStartOptionUsername : "testuser",
-                    NEVPNConnectionStartOptionPassword : "testpassword"
-
-                ])
+            
+            if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
+                try manager.connection.startVPNTunnelWithOptions(
+                    [
+                        NEVPNConnectionStartOptionUsername : "testuser",
+                        NEVPNConnectionStartOptionPassword : "testpassword"
+                        
+                    ])
+            } else {
+                /*
+                 iOSのバグでPasswordがUsernameに指定されるため、逆に指定してみている
+                 */
+                try manager.connection.startVPNTunnelWithOptions(
+                    [
+                        NEVPNConnectionStartOptionUsername : "testpassword",
+                        NEVPNConnectionStartOptionPassword : "testuser"
+                        
+                    ])
+                
+            }
         } else {
             try manager.connection.startVPNTunnel()
         }
