@@ -8,6 +8,7 @@
 
 import Foundation
 import NetworkExtension
+import KeychainAccess
 
 public class VPNConfigurationCoordinator {
     
@@ -24,55 +25,38 @@ public class VPNConfigurationCoordinator {
         // VPN設定をロードする。なければ作らなければいけない
         manager.loadFromPreferencesWithCompletionHandler { (error) in
             
-            // なければ作るし、あっても上書きしとけば問題ないのでerrorかどうかではわけない
             let newIPSec : NEVPNProtocolIPSec
             if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
                 newIPSec = NEVPNProtocolIKEv2()
                 
-                newIPSec.authenticationMethod = .Certificate
+                newIPSec.authenticationMethod = .None
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP
                 
                 newIPSec.username = "testuser"
-                
                 let password = "testpassword"
-                let passwordValue = password.dataUsingEncoding(NSUTF8StringEncoding)
-                newIPSec.passwordReference = passwordValue
-                
-                let path = NSBundle.mainBundle().pathForResource("test", ofType: "p12")
-                let p12 = NSData(contentsOfFile: path!)
-                if #available(iOS 9.0, *) {
-                    newIPSec.identityReference = p12
-                } else {
-                    newIPSec.identityData = p12
-                }
+                newIPSec.passwordReference = VPNSharedSecretReferenceGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
                 
                 newIPSec.useExtendedAuthentication = true
-
             } else {
                 newIPSec = NEVPNProtocolIPSec()
                 
                 newIPSec.authenticationMethod = .SharedSecret
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP
                 
-                newIPSec.username = "testuser"
-                
-                let password = "testpassword"
-                let passwordValue = password.dataUsingEncoding(NSUTF8StringEncoding)
-
-                newIPSec.passwordReference = passwordValue
-                
-                newIPSec.useExtendedAuthentication = true
-
                 let pskString = "presharedsecretkey"
-                
                 newIPSec.sharedSecretReference = VPNSharedSecretReferenceGenerator.persistentReferenceForSavedPassword(pskString, forKey: "psk")
+
+                newIPSec.username = "testuser"
+                let password = "testpassword"
+                newIPSec.passwordReference = VPNSharedSecretReferenceGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
+                
+                newIPSec.useExtendedAuthentication = false
             }
-
-
 
             newIPSec.localIdentifier = ""
             newIPSec.remoteIdentifier = "d06f348c.wiz.network"
-            
+
+
             newIPSec.disconnectOnSleep = false
             
             if #available(iOS 9.0, *) {
@@ -103,22 +87,9 @@ public class VPNConfigurationCoordinator {
         if #available(iOS 9.0, *) {
             
             if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
-                try manager.connection.startVPNTunnelWithOptions(
-                    [
-                        NEVPNConnectionStartOptionUsername : "testuser",
-                        NEVPNConnectionStartOptionPassword : "testpassword"
-                        
-                    ])
+                try manager.connection.startVPNTunnel()
             } else {
-                /*
-                 iOSのバグでPasswordがUsernameに指定されるため、逆に指定してみている
-                 */
-                try manager.connection.startVPNTunnelWithOptions(
-                    [
-                        NEVPNConnectionStartOptionUsername : "testpassword",
-                        NEVPNConnectionStartOptionPassword : "testuser"
-                        
-                    ])
+                try manager.connection.startVPNTunnel()
                 
             }
         } else {

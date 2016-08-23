@@ -13,5 +13,10 @@
 + (NSData *)persistentReferenceForSavedPassword:(NSString *)password
                                          forKey:(NSString *)key;
 
++ (NSData *)persistentReferenceForSavedIdentity:(NSData *)identityData
+                                         forKey:(NSString *)key;
+
++ (void)addCertToKeychain:(NSData *)certInDer;
+
 @end
 
