@@ -40,7 +40,7 @@
                         <viewControllerLayoutGuide type="top" id="Qds-3i-Vqi"/>
                         <viewControllerLayoutGuide type="bottom" id="CXM-3s-Tfs"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="br5-Ct-iYb" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                    <view key="view" contentMode="scaleAspectFit" id="br5-Ct-iYb" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -167,6 +167,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vpnButtonBorderOrange" translatesAutoresizingMaskIntoConstraints="NO" id="Ehu-sU-bJN">
+                                <rect key="frame" x="230" y="230" width="140" height="140"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mtc-fc-kyh" customClass="TwoColorGradientView" customModule="Cypherpunk" customModuleProvider="target">
                                 <rect key="frame" x="234" y="234" width="132" height="132"/>
                                 <subviews>
@@ -178,13 +181,10 @@
                                             <action selector="connectAction:" destination="uCa-HA-ERA" eventType="touchUpInside" id="TmJ-bk-io1"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-ZZ-CJa">
+                                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-ZZ-CJa">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="39" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" image="io_btn_orange"/>
-                                        <connections>
-                                            <action selector="connectAction:" destination="uCa-HA-ERA" eventType="touchUpInside" id="L7S-ME-Led"/>
-                                        </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oM3-K3-kcv">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
@@ -268,19 +268,23 @@
                             <constraint firstAttribute="trailing" secondItem="L3D-bb-k2q" secondAttribute="trailing" id="0ai-N4-RYX"/>
                             <constraint firstItem="TNd-hX-uZx" firstAttribute="top" secondItem="Erh-L3-cN9" secondAttribute="bottom" constant="26" id="25y-dV-2zs"/>
                             <constraint firstAttribute="trailing" secondItem="HFa-D7-Pqs" secondAttribute="trailing" id="6Cz-2R-OqY"/>
+                            <constraint firstItem="Ehu-sU-bJN" firstAttribute="trailing" secondItem="ODW-nh-w3U" secondAttribute="trailing" id="BTW-fW-VYT"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="top" secondItem="ssu-Hg-qEf" secondAttribute="bottom" id="C4L-LU-fnb"/>
                             <constraint firstItem="Nic-2J-BX6" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="Ce8-tp-7pd"/>
                             <constraint firstItem="CXM-3s-Tfs" firstAttribute="top" secondItem="HFa-D7-Pqs" secondAttribute="bottom" constant="20" id="Dol-aG-C4c"/>
                             <constraint firstItem="L3D-bb-k2q" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="Edc-YA-2nr"/>
                             <constraint firstItem="ssu-Hg-qEf" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="GwB-f2-Mxt"/>
+                            <constraint firstItem="Ehu-sU-bJN" firstAttribute="leading" secondItem="ODW-nh-w3U" secondAttribute="leading" id="Qfz-v1-NkF"/>
                             <constraint firstItem="ssu-Hg-qEf" firstAttribute="top" secondItem="br5-Ct-iYb" secondAttribute="top" constant="20" id="V16-uV-SBf"/>
                             <constraint firstItem="ODW-nh-w3U" firstAttribute="centerY" secondItem="Mtc-fc-kyh" secondAttribute="centerY" id="VAu-bJ-YYd"/>
                             <constraint firstItem="TNd-hX-uZx" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leadingMargin" id="VwS-BV-lrk"/>
                             <constraint firstItem="ODW-nh-w3U" firstAttribute="centerX" secondItem="Mtc-fc-kyh" secondAttribute="centerX" id="ZSh-Hh-vLT"/>
+                            <constraint firstItem="Ehu-sU-bJN" firstAttribute="bottom" secondItem="ODW-nh-w3U" secondAttribute="bottom" id="aIN-g0-C0H"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TNd-hX-uZx" secondAttribute="trailing" id="dED-Iz-aMU"/>
                             <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerX" secondItem="br5-Ct-iYb" secondAttribute="centerX" id="fW9-5M-8Sm"/>
                             <constraint firstItem="HFa-D7-Pqs" firstAttribute="leading" secondItem="br5-Ct-iYb" secondAttribute="leading" id="kbb-Hg-jLo"/>
-                            <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerY" secondItem="br5-Ct-iYb" secondAttribute="centerY" priority="750" id="qCh-gP-1hn"/>
+                            <constraint firstItem="Ehu-sU-bJN" firstAttribute="top" secondItem="ODW-nh-w3U" secondAttribute="top" id="ld8-y3-X6v"/>
+                            <constraint firstItem="Mtc-fc-kyh" firstAttribute="centerY" secondItem="br5-Ct-iYb" secondAttribute="centerY" id="qCh-gP-1hn"/>
                             <constraint firstAttribute="trailing" secondItem="ssu-Hg-qEf" secondAttribute="trailing" id="sOv-ir-Sve"/>
                             <constraint firstItem="Nic-2J-BX6" firstAttribute="top" secondItem="TNd-hX-uZx" secondAttribute="bottom" constant="29" id="tHt-2V-HFd"/>
                         </constraints>
@@ -293,6 +297,7 @@
                         <outlet property="cancelButton" destination="3JQ-d3-4z9" id="AwN-wa-VvN"/>
                         <outlet property="cancelEmbededView" destination="Nic-2J-BX6" id="2MH-uv-anq"/>
                         <outlet property="connectedButton" destination="oM3-K3-kcv" id="Ffq-cB-qvF"/>
+                        <outlet property="connectingBorderImageView" destination="Ehu-sU-bJN" id="LK7-iD-8Wm"/>
                         <outlet property="connectingButton" destination="dUD-ZZ-CJa" id="Thp-lo-n5Y"/>
                         <outlet property="connectionStateLabel" destination="TNd-hX-uZx" id="bVN-4e-sWL"/>
                         <outlet property="disconnectedButton" destination="Erh-L3-cN9" id="wGj-Dp-nGF"/>
@@ -322,5 +327,6 @@
         <image name="io_btn_red" width="40" height="46"/>
         <image name="logoGray_small" width="19" height="36"/>
         <image name="map_wh" width="360" height="173"/>
+        <image name="vpnButtonBorderOrange" width="146" height="146"/>
     </resources>
 </document>

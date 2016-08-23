@@ -31,6 +31,7 @@ class TopViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var connectingButton: UIButton!
     @IBOutlet weak var disconnectedButton: UIButton!
     @IBOutlet weak var outsideCircleView: UIView!
+    @IBOutlet weak var connectingBorderImageView: UIImageView!
     @IBOutlet weak var connectionStateLabel: UILabel!
     
     @IBOutlet weak var cancelEmbededView: UIView!
@@ -39,6 +40,8 @@ class TopViewController: UIViewController, StoreSubscriber {
     
     internal var connectionObserver: NSObjectProtocol!
     
+    private var circleAnimationDuration: CFTimeInterval = 1.3333
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,12 +75,21 @@ class TopViewController: UIViewController, StoreSubscriber {
         }
         
         mainStore.subscribe(self)
+        
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.fromValue = 0
+        animation.toValue = M_PI * 2.0
+        animation.duration = circleAnimationDuration
+        animation.repeatCount = HUGE
+        connectingBorderImageView.layer.addAnimation(animation, forKey: "rotation")
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         mainStore.unsubscribe(self)
+        connectingBorderImageView.layer.removeAnimationForKey("rotation")
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,6 +111,8 @@ class TopViewController: UIViewController, StoreSubscriber {
             disconnectedButton.hidden = true
             disconnectedButton.enabled = true
             cancelEmbededView.hidden = true
+            connectingBorderImageView.hidden = true
+            outsideCircleView.hidden = false
         case .Connecting:
             outsideCircleView.backgroundColor = UIColor(red: 255.0 / 255.0 , green: 120.0 / 255.0 , blue: 27.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
@@ -106,6 +120,8 @@ class TopViewController: UIViewController, StoreSubscriber {
             disconnectedButton.hidden = true
             disconnectedButton.enabled = true
             cancelEmbededView.hidden = false
+            connectingBorderImageView.hidden = false
+            outsideCircleView.hidden = true
         case .Disconnected:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
@@ -113,6 +129,10 @@ class TopViewController: UIViewController, StoreSubscriber {
             disconnectedButton.hidden = false
             disconnectedButton.enabled = true
             cancelEmbededView.hidden = true
+            connectingBorderImageView.hidden = true
+
+            outsideCircleView.hidden = false
+
         case .Invalid, .Reasserting:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
@@ -120,6 +140,10 @@ class TopViewController: UIViewController, StoreSubscriber {
             disconnectedButton.hidden = false
             disconnectedButton.enabled = false
             cancelEmbededView.hidden = true
+            connectingBorderImageView.hidden = true
+
+            outsideCircleView.hidden = false
+
         case .Disconnecting:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
@@ -127,8 +151,11 @@ class TopViewController: UIViewController, StoreSubscriber {
             disconnectedButton.hidden = false
             disconnectedButton.enabled = false
             cancelEmbededView.hidden = true
+            connectingBorderImageView.hidden = true
+
+            outsideCircleView.hidden = false
         }
-        
+
         connectionStateLabel.text = String(status)
     }
     
