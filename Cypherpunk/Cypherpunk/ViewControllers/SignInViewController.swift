@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 import APIKit
 import ReSwift
@@ -25,6 +26,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
         
         mailAddressField.text = "test@test.test"
         passwordField.text = "test123"
+        
     }
 
     override func viewWillAppear(animated: Bool) {

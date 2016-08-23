@@ -47,6 +47,7 @@
 		204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BE9111D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift */; };
 		2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */; };
 		2079C8881D5DDD10004274ED /* ConnectedAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8871D5DDD10004274ED /* ConnectedAnimationViewController.swift */; };
+		2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
@@ -176,6 +177,7 @@
 		204BE9111D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedAccountBackgroundView.swift; sourceTree = "<group>"; };
 		2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCharacterGenerator.swift; sourceTree = "<group>"; };
 		2079C8871D5DDD10004274ED /* ConnectedAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectedAnimationViewController.swift; sourceTree = "<group>"; };
+		2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentContainerViewController.swift; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		20D895ED1D1D16FB002B9F9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */,
 				2B193EC61D591E2600308DCA /* RemotePortSelectViewController.swift */,
 				2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */,
+				2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
 				2B73C7141D5CDBFF0090FF8B /* VerticalScrollAnimator.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
+				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
 				20EBFD401D5485D8008B9F14 /* SettingsStatusViewController.swift in Sources */,
 				203F4F0B1D5B1BAA00EA2536 /* ThemedLogoView.swift in Sources */,
 				2BDBD0CC1D651D6700080E67 /* UpdateEmailTableViewController.swift in Sources */,

@@ -414,31 +414,22 @@
                                     <segue destination="Rsw-pb-lZT" kind="embed" id="TBF-Wh-0qm"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tmm-pF-BcN" customClass="ThemedNavigationBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="QcN-cI-uiL"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="i2O-Za-u3F" firstAttribute="leading" secondItem="S1d-iP-D4u" secondAttribute="leading" id="0jo-R9-eTz"/>
-                            <constraint firstItem="Sv5-q4-8ap" firstAttribute="top" secondItem="Tmm-pF-BcN" secondAttribute="bottom" constant="532" id="Zlh-em-kk5"/>
-                            <constraint firstItem="Tmm-pF-BcN" firstAttribute="top" secondItem="i2O-Za-u3F" secondAttribute="top" id="ZzR-kH-act"/>
-                            <constraint firstItem="Tmm-pF-BcN" firstAttribute="leading" secondItem="i2O-Za-u3F" secondAttribute="leading" id="f5U-1K-oMi"/>
+                            <constraint firstItem="i2O-Za-u3F" firstAttribute="top" secondItem="40p-FY-V3A" secondAttribute="bottom" id="C2J-4H-EKd"/>
                             <constraint firstItem="i2O-Za-u3F" firstAttribute="bottom" secondItem="Sv5-q4-8ap" secondAttribute="top" id="kji-Tq-ZRa"/>
                             <constraint firstAttribute="trailing" secondItem="i2O-Za-u3F" secondAttribute="trailing" id="ufg-jb-Xuc"/>
-                            <constraint firstItem="Tmm-pF-BcN" firstAttribute="trailing" secondItem="i2O-Za-u3F" secondAttribute="trailing" id="umy-bZ-tQ8"/>
                             <constraint firstItem="i2O-Za-u3F" firstAttribute="top" secondItem="S1d-iP-D4u" secondAttribute="top" id="vYj-2W-5xk"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Zlh-em-kk5"/>
+                                <exclude reference="vYj-2W-5xk"/>
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4E5-xx-D8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Configuration" id="WoR-0M-efn">
@@ -836,26 +827,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zyx-9p-FFl">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.16" colorSpace="calibratedRGB"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nW7-4b-2cW">
+                                <rect key="frame" x="1" y="64" width="599" height="537"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="b1D-gc-66o">
+                                        <rect key="frame" x="23" y="22" width="553" height="493"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="b1D-gc-66o" secondAttribute="bottom" constant="22" id="5Yf-LI-BFA"/>
+                                    <constraint firstItem="b1D-gc-66o" firstAttribute="leading" secondItem="nW7-4b-2cW" secondAttribute="leading" constant="23" id="GFH-IM-fSz"/>
+                                    <constraint firstItem="b1D-gc-66o" firstAttribute="top" secondItem="nW7-4b-2cW" secondAttribute="top" constant="22" id="K89-pb-hl8"/>
+                                    <constraint firstAttribute="trailing" secondItem="b1D-gc-66o" secondAttribute="trailing" constant="23" id="oFJ-4f-z7i"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zyx-9p-FFl" firstAttribute="leading" secondItem="HmN-bW-H1p" secondAttribute="leading" id="IcJ-l3-5wb"/>
-                            <constraint firstAttribute="trailing" secondItem="zyx-9p-FFl" secondAttribute="trailing" id="mrF-hL-wxh"/>
-                            <constraint firstItem="q2z-WY-MEV" firstAttribute="top" secondItem="zyx-9p-FFl" secondAttribute="bottom" id="oD5-YH-eKX"/>
-                            <constraint firstItem="zyx-9p-FFl" firstAttribute="top" secondItem="0Wu-na-kKp" secondAttribute="bottom" id="yzu-Gc-Sip"/>
+                            <constraint firstItem="nW7-4b-2cW" firstAttribute="top" secondItem="HmN-bW-H1p" secondAttribute="top" constant="64" id="2Fb-B4-TQH"/>
+                            <constraint firstItem="nW7-4b-2cW" firstAttribute="leading" secondItem="HmN-bW-H1p" secondAttribute="leading" constant="1" id="85r-6d-ct7"/>
+                            <constraint firstAttribute="trailing" secondItem="nW7-4b-2cW" secondAttribute="trailing" id="biJ-5V-pUf"/>
+                            <constraint firstAttribute="bottom" secondItem="nW7-4b-2cW" secondAttribute="bottom" constant="-1" id="uht-Rp-Hxw"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="bottomSpaceConstraint" destination="oD5-YH-eKX" id="7ml-jP-eMd"/>
-                        <outlet property="textView" destination="zyx-9p-FFl" id="hKU-Mb-ece"/>
+                        <outlet property="bottomSpaceConstraint" destination="uht-Rp-Hxw" id="Htc-1z-X34"/>
+                        <outlet property="textView" destination="b1D-gc-66o" id="IXq-it-KtR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Km5-Fw-Igx" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -22,9 +22,12 @@ class ContactusViewController: UIViewController {
         registerKeyboardNotification()
         
         self.automaticallyAdjustsScrollViewInsets = false
-        textView.becomeFirstResponder()
+        textView.placeholder = "Please describe the issues you are having…"
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     deinit{
         removeKeyboardNotification()
     }

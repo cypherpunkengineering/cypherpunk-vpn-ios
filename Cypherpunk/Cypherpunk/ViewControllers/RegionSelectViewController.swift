@@ -127,8 +127,4 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    @IBAction func closeAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-
 }
