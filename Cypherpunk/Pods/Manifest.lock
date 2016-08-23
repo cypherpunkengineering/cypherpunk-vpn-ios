@@ -16,6 +16,7 @@ PODS:
   - ReSwift (2.0.0)
   - SVProgressHUD (2.0.3)
   - SwiftyStoreKit (0.3.0)
+  - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
   - APIKit
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - ReSwift
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - SwiftyStoreKit
+  - UITextView+Placeholder (~> 1.2)
 
 EXTERNAL SOURCES:
   SVProgressHUD:
@@ -34,7 +36,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SVProgressHUD:
-    :commit: 6ca5946638ed5bbf8ae36e3c3191901f76bf173b
+    :commit: cc5f7d68fe76afdb79e215b8ff00133575fafacc
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
 
 SPEC CHECKSUMS:
@@ -50,7 +52,8 @@ SPEC CHECKSUMS:
   ReSwift: 7abc536a87955c34bf60de3fd32ce9a02ee3ad87
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftyStoreKit: 6df86a58380d591d06f204eaee92bfaf39704627
+  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 7a095d71da7531b8fa62b03966575ee3ab44dfde
+PODFILE CHECKSUM: 3def6ae0c082ef08dda32395727fd8435b384447
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.0.beta.6
