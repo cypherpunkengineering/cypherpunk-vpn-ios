@@ -8,7 +8,7 @@
 
 #import "UINavigationController+StatusBar.h"
 
-#import "Cypherpunk-Swift.h"
+
 UIStatusBarStyle currentStatusBarStyle = UIStatusBarStyleLightContent;
 
 @implementation UINavigationController (StatusBar)
@@ -21,10 +21,12 @@ UIStatusBarStyle currentStatusBarStyle = UIStatusBarStyleLightContent;
 
 @implementation UIViewController (StatusBar)
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return currentStatusBarStyle;
 }
-
+#pragma clang diagnostic pop
 @end
 
 @implementation UIApplication (StatusBar)
