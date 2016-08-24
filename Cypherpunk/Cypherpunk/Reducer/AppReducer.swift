@@ -16,6 +16,7 @@ struct AppReducer: Reducer {
     let regionReducer = RegionReducer()
     let settingsReducer = SettingsReducer()
     let themeReducer = ThemeReducer()
+    let statusReducer = StatusReducer()
     
     func handleAction(action: Action, state: AppState?) -> AppState {
         
@@ -23,7 +24,8 @@ struct AppReducer: Reducer {
             loginState: loginReducer.handleAction(action, state: state?.loginState),
             regionState:  regionReducer.handleAction(action, state: state?.regionState),
             settingsState: settingsReducer.handleAction(action, state: state?.settingsState),
-            themeState: themeReducer.handleAction(action, state: state?.themeState)
+            themeState: themeReducer.handleAction(action, state: state?.themeState),
+            statusState:  statusReducer.handleAction(action, state: state?.statusState)
         )
     }
 }

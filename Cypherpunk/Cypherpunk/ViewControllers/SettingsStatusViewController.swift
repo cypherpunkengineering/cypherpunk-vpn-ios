@@ -46,8 +46,16 @@ class SettingsStatusViewController: UITableViewController, PageContent {
             connectedTimeView.hidden = true
             disconnectedLabel.hidden = false
         }
+        
+        mainStore.subscribe(self)
+
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        mainStore.unsubscribe(self)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,4 +76,13 @@ class SettingsStatusViewController: UITableViewController, PageContent {
         return nil
     }
 
+}
+
+import ReSwift
+extension SettingsStatusViewController: StoreSubscriber {
+    func newState(state: AppState) {
+        let statusState = state.statusState
+        self.originalIPAddressLabel.text = statusState.originalIPAddress ?? "---.---.---.---"
+        self.newIPAddressLabel.text = statusState.newIPAddress ?? "---.---.---.---"
+    }
 }

@@ -11,6 +11,7 @@ import ReachabilitySwift
 import NetworkExtension
 
 import ReSwift
+import APIKit
 
 extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
@@ -113,6 +114,22 @@ class TopViewController: UIViewController, StoreSubscriber {
             cancelEmbededView.hidden = true
             connectingBorderImageView.hidden = true
             outsideCircleView.hidden = false
+            
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC / 2))
+            dispatch_after(time, dispatch_get_main_queue(), { 
+                let IPRequest = JSONIPRequest()
+                Session.sendRequest(IPRequest) {
+                    (result) in
+                    switch result {
+                    case .Success(let response):
+                        let IPAddress = response.IPAddress
+                        mainStore.dispatch(StatusAction.GetNewIPAddress(address: IPAddress))
+                    default:
+                        break
+                    }
+                }    
+            })
+            
         case .Connecting:
             outsideCircleView.backgroundColor = UIColor(red: 255.0 / 255.0 , green: 120.0 / 255.0 , blue: 27.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
@@ -132,7 +149,19 @@ class TopViewController: UIViewController, StoreSubscriber {
             connectingBorderImageView.hidden = true
 
             outsideCircleView.hidden = false
-
+            
+            let IPRequest = JSONIPRequest()
+            Session.sendRequest(IPRequest) {
+                (result) in
+                switch result {
+                case .Success(let response):
+                    let IPAddress = response.IPAddress
+                    mainStore.dispatch(StatusAction.GetOriginalIPAddress(address: IPAddress))
+                default:
+                    break
+                }
+            }
+            
         case .Invalid, .Reasserting:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.hidden = true
@@ -169,8 +198,8 @@ class TopViewController: UIViewController, StoreSubscriber {
         if status == .Connected {
             mainStore.dispatch(RegionAction.Connect)
         }
-        
-        updateViewWithVPNStatus(status)
+
+        self.updateViewWithVPNStatus(status)
     }
 
     @IBAction func connectAction(sender: UIButton) {
