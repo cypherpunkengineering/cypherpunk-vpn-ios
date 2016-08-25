@@ -1,5 +1,5 @@
 //
-//  VPNSharedSecretReferenceGenerator.h
+//  VPNPersistentDataGenerator.
 //  Cypherpunk
 //
 //  Created by KeisukeKimura on 2016/08/22.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface  VPNSharedSecretReferenceGenerator : NSObject
+@interface  VPNPersistentDataGenerator : NSObject
 
 + (NSData *)persistentReferenceForSavedPassword:(NSString *)password
                                          forKey:(NSString *)key;

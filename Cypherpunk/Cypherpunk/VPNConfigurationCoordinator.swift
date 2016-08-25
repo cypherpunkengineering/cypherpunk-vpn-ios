@@ -14,7 +14,6 @@ public class VPNConfigurationCoordinator {
     
     class func load(completion: () -> ()) {
         let manager = NEVPNManager.sharedManager()
-        // VPN設定をロードする。なければ作らなければいけない
         manager.loadFromPreferencesWithCompletionHandler { (error) in
             completion()
         }
@@ -22,7 +21,6 @@ public class VPNConfigurationCoordinator {
     
     class func start(completion: () -> ()) {
         let manager = NEVPNManager.sharedManager()
-        // VPN設定をロードする。なければ作らなければいけない
         manager.loadFromPreferencesWithCompletionHandler { (error) in
             
             let newIPSec : NEVPNProtocolIPSec
@@ -34,7 +32,10 @@ public class VPNConfigurationCoordinator {
                 
                 newIPSec.username = "testuser"
                 let password = "testpassword"
-                newIPSec.passwordReference = VPNSharedSecretReferenceGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
+                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
+                
+                newIPSec.localIdentifier = ""
+                newIPSec.remoteIdentifier = "d06f348c.wiz.network"
                 
                 newIPSec.useExtendedAuthentication = true
             } else {
@@ -44,17 +45,18 @@ public class VPNConfigurationCoordinator {
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP
                 
                 let pskString = "presharedsecretkey"
-                newIPSec.sharedSecretReference = VPNSharedSecretReferenceGenerator.persistentReferenceForSavedPassword(pskString, forKey: "psk")
-
+                newIPSec.sharedSecretReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(pskString, forKey: "psk")
+                
                 newIPSec.username = "testuser"
                 let password = "testpassword"
-                newIPSec.passwordReference = VPNSharedSecretReferenceGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
+                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
                 
-                newIPSec.useExtendedAuthentication = false
+                newIPSec.useExtendedAuthentication = true
+                
+                newIPSec.localIdentifier = ""
+                newIPSec.remoteIdentifier = "vpn.cypherpunk.com"
             }
 
-            newIPSec.localIdentifier = ""
-            newIPSec.remoteIdentifier = "d06f348c.wiz.network"
 
 
             newIPSec.disconnectOnSleep = false
@@ -67,13 +69,10 @@ public class VPNConfigurationCoordinator {
             
             manager.localizedDescription = "Cyperpunk VPN"
             
-            // ここだけ毎回saveしなければいけないpropertyのはずなので、別途その画面を作る際には毎回やる必要があるはず
             manager.onDemandEnabled = true
             manager.enabled = true
             
-            // VPNProfileを保存する（最初の一回目はPermissionを得るために設定アプリに遷移して戻ってくる
             manager.saveToPreferencesWithCompletionHandler({ (error) in
-                // VPNに接続
                 if error != nil {
                     print(error)
                 }

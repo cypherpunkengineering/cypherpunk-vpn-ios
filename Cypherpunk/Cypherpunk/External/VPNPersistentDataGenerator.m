@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Cypherpunk. All rights reserved.
 //
 
-#import "VPNSharedSecretReferenceGenerator.h"
+#import "VPNPersistentDataGenerator.h"
 
-@implementation VPNSharedSecretReferenceGenerator
+@implementation VPNPersistentDataGenerator
 
 + (NSData *)persistentReferenceForSavedPassword:(NSString *)password
                                          forKey:(NSString *)key
