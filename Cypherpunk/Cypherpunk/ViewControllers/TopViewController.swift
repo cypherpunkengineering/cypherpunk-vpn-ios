@@ -41,7 +41,7 @@ class TopViewController: UIViewController, StoreSubscriber {
     
     internal var connectionObserver: NSObjectProtocol!
     
-    private var circleAnimationDuration: CFTimeInterval = 1.3333
+    private var circleAnimationDuration: CFTimeInterval = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
