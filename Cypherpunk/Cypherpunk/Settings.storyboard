@@ -813,15 +813,19 @@
                         <viewControllerLayoutGuide type="top" id="0Wu-na-kKp"/>
                         <viewControllerLayoutGuide type="bottom" id="q2z-WY-MEV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HmN-bW-H1p" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="HmN-bW-H1p">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKW-HU-pB1" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nW7-4b-2cW">
-                                <rect key="frame" x="1" y="64" width="599" height="537"/>
+                                <rect key="frame" x="-3" y="64" width="606" height="236"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="b1D-gc-66o">
-                                        <rect key="frame" x="23" y="22" width="553" height="493"/>
+                                        <rect key="frame" x="23" y="22" width="560" height="192"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -833,11 +837,12 @@
                                     <constraint firstAttribute="bottom" secondItem="b1D-gc-66o" secondAttribute="bottom" constant="22" id="5Yf-LI-BFA"/>
                                     <constraint firstItem="b1D-gc-66o" firstAttribute="leading" secondItem="nW7-4b-2cW" secondAttribute="leading" constant="23" id="GFH-IM-fSz"/>
                                     <constraint firstItem="b1D-gc-66o" firstAttribute="top" secondItem="nW7-4b-2cW" secondAttribute="top" constant="22" id="K89-pb-hl8"/>
+                                    <constraint firstAttribute="height" constant="236" id="dLB-x1-HsK"/>
                                     <constraint firstAttribute="trailing" secondItem="b1D-gc-66o" secondAttribute="trailing" constant="23" id="oFJ-4f-z7i"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
@@ -848,16 +853,24 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nW7-4b-2cW" firstAttribute="top" secondItem="HmN-bW-H1p" secondAttribute="top" constant="64" id="2Fb-B4-TQH"/>
-                            <constraint firstItem="nW7-4b-2cW" firstAttribute="leading" secondItem="HmN-bW-H1p" secondAttribute="leading" constant="1" id="85r-6d-ct7"/>
-                            <constraint firstAttribute="trailing" secondItem="nW7-4b-2cW" secondAttribute="trailing" id="biJ-5V-pUf"/>
-                            <constraint firstAttribute="bottom" secondItem="nW7-4b-2cW" secondAttribute="bottom" constant="-1" id="uht-Rp-Hxw"/>
+                            <constraint firstItem="nW7-4b-2cW" firstAttribute="leading" secondItem="HmN-bW-H1p" secondAttribute="leading" constant="-3" id="85r-6d-ct7"/>
+                            <constraint firstItem="SKW-HU-pB1" firstAttribute="leading" secondItem="HmN-bW-H1p" secondAttribute="leading" id="JGK-O2-Quy"/>
+                            <constraint firstAttribute="trailing" secondItem="nW7-4b-2cW" secondAttribute="trailing" constant="-3" id="biJ-5V-pUf"/>
+                            <constraint firstItem="SKW-HU-pB1" firstAttribute="top" secondItem="0Wu-na-kKp" secondAttribute="bottom" id="hf8-M1-w7P"/>
+                            <constraint firstAttribute="trailing" secondItem="SKW-HU-pB1" secondAttribute="trailing" id="m1e-I6-eTx"/>
+                            <constraint firstItem="q2z-WY-MEV" firstAttribute="top" secondItem="SKW-HU-pB1" secondAttribute="bottom" id="nqY-1g-gSq"/>
+                            <constraint firstAttribute="bottom" secondItem="nW7-4b-2cW" secondAttribute="bottom" constant="40" id="uht-Rp-Hxw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="uht-Rp-Hxw"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="bottomSpaceConstraint" destination="uht-Rp-Hxw" id="Htc-1z-X34"/>
-                        <outlet property="textView" destination="b1D-gc-66o" id="IXq-it-KtR"/>
+                        <outlet property="textView" destination="b1D-gc-66o" id="p4c-b8-yqQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Km5-Fw-Igx" userLabel="First Responder" sceneMemberID="firstResponder"/>

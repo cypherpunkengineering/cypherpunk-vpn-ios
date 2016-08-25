@@ -11,13 +11,13 @@ import UIKit
 class ContactusViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         let button = UIBarButtonItem(title: "Submit", style: .Done, target: self, action: #selector(ContactusViewController.submitAction))
-        self.navigationItem.setRightBarButtonItem(button, animated: true)
+        self.navigationItem.setRightBarButtonItem(button, animated: false)
         
         registerKeyboardNotification()
         
@@ -27,6 +27,14 @@ class ContactusViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        textView.selectable = true
+        textView.becomeFirstResponder()
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
     }
     deinit{
         removeKeyboardNotification()
@@ -59,7 +67,7 @@ extension ContactusViewController {
     func keyboardWillShow(sender: NSNotification) {
         if let userInfo = sender.userInfo {
             if let keyboardHeight = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size.height {
-                bottomSpaceConstraint.constant = keyboardHeight
+                bottomSpaceConstraint?.constant = keyboardHeight
                 UIView.animateWithDuration(0.25, animations: { () -> Void in
                     self.view.layoutIfNeeded()
                 })
@@ -68,7 +76,7 @@ extension ContactusViewController {
     }
     
     func keyboardWillHide(sender: NSNotification) {
-        bottomSpaceConstraint.constant = 0.0
+        bottomSpaceConstraint?.constant = 0.0
         UIView.animateWithDuration(0.25, animations: { () -> Void in self.view.layoutIfNeeded() })
     }
     
