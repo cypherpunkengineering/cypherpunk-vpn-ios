@@ -19,7 +19,9 @@ struct StatusReducer: Reducer {
                 state.originalIPAddress = address
                 state.newIPAddress = nil
             case .GetNewIPAddress(let address):
-                state.newIPAddress = address
+                if state.originalIPAddress != state.newIPAddress {
+                    state.newIPAddress = address                    
+                }
             }
         }
         
