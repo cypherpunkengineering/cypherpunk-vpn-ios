@@ -16,7 +16,7 @@ let mainStore = Store<AppState>(
     state: nil
 )
 
-
+var contactUs: UIViewController? = nil
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -26,11 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         mainStore.dispatch(ThemeAction.ChangeToIndigo)
         VPNConfigurationCoordinator.start {
-            
         }
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Gradient)
 
+        contactUs = R.storyboard.settings.contactus()
+        
         return true
     }
 

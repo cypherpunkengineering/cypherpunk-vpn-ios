@@ -27,14 +27,15 @@ class ContactusViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        textView.selectable = true
-        textView.becomeFirstResponder()
-
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
+        
+        textView.becomeFirstResponder()
     }
     deinit{
         removeKeyboardNotification()
@@ -67,17 +68,15 @@ extension ContactusViewController {
     func keyboardWillShow(sender: NSNotification) {
         if let userInfo = sender.userInfo {
             if let keyboardHeight = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size.height {
-                bottomSpaceConstraint?.constant = keyboardHeight
-                UIView.animateWithDuration(0.25, animations: { () -> Void in
-                    self.view.layoutIfNeeded()
-                })
+                bottomSpaceConstraint?.constant = keyboardHeight + 44
+                UIView.animateWithDuration(0.25, animations:self.view.layoutIfNeeded)
             }
         }
     }
     
     func keyboardWillHide(sender: NSNotification) {
         bottomSpaceConstraint?.constant = 0.0
-        UIView.animateWithDuration(0.25, animations: { () -> Void in self.view.layoutIfNeeded() })
+        UIView.animateWithDuration(0.25, animations: self.view.layoutIfNeeded)
     }
     
     func registerKeyboardNotification() {

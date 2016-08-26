@@ -82,6 +82,8 @@ class ConfigurationTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if let row = Rows(rawValue: indexPath.section * 10 + indexPath.row) {
             switch row {
+            case .Contactus:
+                self.navigationController?.pushViewController(contactUs!, animated: true)
             case .SignOut:
                 let vc = R.storyboard.signIn.initialViewController()
                 mainStore.dispatch(LoginAction.Logout)

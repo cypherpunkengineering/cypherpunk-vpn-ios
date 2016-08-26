@@ -30,6 +30,8 @@
 		203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203809961D13DAF3005145CD /* NetworkExtension.framework */; };
 		2038099D1D13EEA9005145CD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099C1D13EEA9005145CD /* AppState.swift */; };
 		2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099E1D13EEEB005145CD /* AppReducer.swift */; };
+		203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203C62EB1D7014B700891F91 /* Upgrade.storyboard */; };
+		203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */; };
 		203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF41D5AFC9B00EA2536 /* ThemedBackgroundView.swift */; };
 		203F4EF71D5AFCDA00EA2536 /* ThemeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */; };
 		203F4EF91D5AFD1700EA2536 /* ThemeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */; };
@@ -164,6 +166,8 @@
 		203809981D13DAF3005145CD /* Cypherpunk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cypherpunk.entitlements; sourceTree = "<group>"; };
 		2038099C1D13EEA9005145CD /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		2038099E1D13EEEB005145CD /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		203C62EB1D7014B700891F91 /* Upgrade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Upgrade.storyboard; sourceTree = "<group>"; };
+		203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeSelectTableViewController.swift; sourceTree = "<group>"; };
 		203F4EF41D5AFC9B00EA2536 /* ThemedBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedBackgroundView.swift; sourceTree = "<group>"; };
 		203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeState.swift; sourceTree = "<group>"; };
 		203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeReducer.swift; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 				2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */,
 				2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */,
 				2BDBD0CF1D65286D00080E67 /* UpdateEmailRootViewController.swift */,
+				203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */,
 				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
 				200955611D4B45B800BEEE0A /* SettingsViewController.swift */,
 				2043504F1D59D088009AF327 /* AdvancedSettingsViewController.swift */,
@@ -500,6 +505,7 @@
 				200955631D4B46C000BEEE0A /* Account.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20EC4A3F1D376C5200785399 /* Settings.storyboard */,
+				203C62EB1D7014B700891F91 /* Upgrade.storyboard */,
 				2BDBD0C71D65191400080E67 /* Email.storyboard */,
 				2BDBD0D11D65295F00080E67 /* Password.storyboard */,
 				2B73C70E1D5C7F670090FF8B /* Animation.storyboard */,
@@ -693,6 +699,7 @@
 				2B45C16C1D20D64600D4326C /* Dosis-Medium.otf in Resources */,
 				2B45C16B1D20D64600D4326C /* Dosis-Light.otf in Resources */,
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
+				203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */,
 				2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
@@ -933,6 +940,7 @@
 				204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */,
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
+				203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */,
 				2079C8881D5DDD10004274ED /* ConnectedAnimationViewController.swift in Sources */,
 				2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
@@ -1101,7 +1109,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.Cypherpunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Debug;
 		};
@@ -1119,6 +1127,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.Cypherpunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
