@@ -32,6 +32,11 @@
 		2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099E1D13EEEB005145CD /* AppReducer.swift */; };
 		203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203C62EB1D7014B700891F91 /* Upgrade.storyboard */; };
 		203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */; };
+		203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203C62EF1D702CD900891F91 /* FirstOpen.storyboard */; };
+		203C62F21D7035D800891F91 /* TwoColorGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62F11D7035D800891F91 /* TwoColorGradientButton.swift */; };
+		203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62F31D7036C900891F91 /* FirstOpenViewController.swift */; };
+		203C62F61D7038E400891F91 /* GetPremiumPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62F51D7038E400891F91 /* GetPremiumPlanTableViewController.swift */; };
+		203C62F81D703A7B00891F91 /* GetPremiumPlanRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62F71D703A7B00891F91 /* GetPremiumPlanRootViewController.swift */; };
 		203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF41D5AFC9B00EA2536 /* ThemedBackgroundView.swift */; };
 		203F4EF71D5AFCDA00EA2536 /* ThemeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */; };
 		203F4EF91D5AFD1700EA2536 /* ThemeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */; };
@@ -168,6 +173,11 @@
 		2038099E1D13EEEB005145CD /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		203C62EB1D7014B700891F91 /* Upgrade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Upgrade.storyboard; sourceTree = "<group>"; };
 		203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeSelectTableViewController.swift; sourceTree = "<group>"; };
+		203C62EF1D702CD900891F91 /* FirstOpen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstOpen.storyboard; sourceTree = "<group>"; };
+		203C62F11D7035D800891F91 /* TwoColorGradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorGradientButton.swift; sourceTree = "<group>"; };
+		203C62F31D7036C900891F91 /* FirstOpenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstOpenViewController.swift; sourceTree = "<group>"; };
+		203C62F51D7038E400891F91 /* GetPremiumPlanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPremiumPlanTableViewController.swift; sourceTree = "<group>"; };
+		203C62F71D703A7B00891F91 /* GetPremiumPlanRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPremiumPlanRootViewController.swift; sourceTree = "<group>"; };
 		203F4EF41D5AFC9B00EA2536 /* ThemedBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedBackgroundView.swift; sourceTree = "<group>"; };
 		203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeState.swift; sourceTree = "<group>"; };
 		203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeReducer.swift; sourceTree = "<group>"; };
@@ -447,6 +457,7 @@
 			children = (
 				20D895F41D1D1C6F002B9F9D /* IPAddress.swift */,
 				2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */,
+				203C62F11D7035D800891F91 /* TwoColorGradientButton.swift */,
 				203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */,
 				2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */,
 				2B75524B1D6AE9CA00E07A4B /* VPNPersistentDataGenerator.h */,
@@ -474,6 +485,9 @@
 				2079C8871D5DDD10004274ED /* ConnectedAnimationViewController.swift */,
 				20EBFD3D1D547B18008B9F14 /* SettingsTopViewController.swift */,
 				20EBFD3F1D5485D8008B9F14 /* SettingsStatusViewController.swift */,
+				203C62F31D7036C900891F91 /* FirstOpenViewController.swift */,
+				203C62F71D703A7B00891F91 /* GetPremiumPlanRootViewController.swift */,
+				203C62F51D7038E400891F91 /* GetPremiumPlanTableViewController.swift */,
 				200955651D4B48C200BEEE0A /* AccountViewController.swift */,
 				20EBFD391D545EDE008B9F14 /* EncryptionSelectViewController.swift */,
 				20EBFD3B1D545F3D008B9F14 /* AuthenticationSelectViewController.swift */,
@@ -502,6 +516,7 @@
 				20EC4A311D2F702100785399 /* Region.storyboard */,
 				20D896091D23B764002B9F9D /* SignIn.storyboard */,
 				2B4489201D2A53A700D202F9 /* SignUp.storyboard */,
+				203C62EF1D702CD900891F91 /* FirstOpen.storyboard */,
 				200955631D4B46C000BEEE0A /* Account.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20EC4A3F1D376C5200785399 /* Settings.storyboard */,
@@ -706,6 +721,7 @@
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				200955641D4B46C000BEEE0A /* Account.storyboard in Resources */,
 				2038096E1D13D89D005145CD /* Main.storyboard in Resources */,
+				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
 				2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */,
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
@@ -877,9 +893,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */,
+				203C62F21D7035D800891F91 /* TwoColorGradientButton.swift in Sources */,
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
 				2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */,
+				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
 				2B193EC71D591E2600308DCA /* RemotePortSelectViewController.swift in Sources */,
 				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
 				2B73C7141D5CDBFF0090FF8B /* VerticalScrollAnimator.swift in Sources */,
@@ -888,6 +906,7 @@
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
 				20EBFD401D5485D8008B9F14 /* SettingsStatusViewController.swift in Sources */,
 				203F4F0B1D5B1BAA00EA2536 /* ThemedLogoView.swift in Sources */,
+				203C62F81D703A7B00891F91 /* GetPremiumPlanRootViewController.swift in Sources */,
 				2BDBD0CC1D651D6700080E67 /* UpdateEmailTableViewController.swift in Sources */,
 				201809EC1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift in Sources */,
 				204BE90E1D5B28B7003D7CB5 /* ThemedSeparatorView.swift in Sources */,
@@ -921,6 +940,7 @@
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
 				201809F61D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift in Sources */,
 				2B0641721D6D7546009475F4 /* StatusReducer.swift in Sources */,
+				203C62F61D7038E400891F91 /* GetPremiumPlanTableViewController.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,

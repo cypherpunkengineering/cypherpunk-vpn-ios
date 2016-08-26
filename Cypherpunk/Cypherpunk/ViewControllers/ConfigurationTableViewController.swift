@@ -85,7 +85,7 @@ class ConfigurationTableViewController: UITableViewController {
             case .Contactus:
                 self.navigationController?.pushViewController(contactUs!, animated: true)
             case .SignOut:
-                let vc = R.storyboard.signIn.initialViewController()
+                let vc = R.storyboard.firstOpen.initialViewController()
                 mainStore.dispatch(LoginAction.Logout)
                 self.navigationController?.presentViewController(vc!, animated: true, completion: {
                     self.navigationController?.popViewControllerAnimated(false)

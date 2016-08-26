@@ -25,6 +25,7 @@ class SignUpViewController: UIViewController, StoreSubscriber {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBarHidden = false
         self.registerKeyboardNotification()
         mainStore.subscribe(self, selector: nil)
     }

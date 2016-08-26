@@ -32,7 +32,7 @@
         <!--Sign In-->
         <scene sceneID="qDn-X8-Otx">
             <objects>
-                <viewController title="Sign In" id="nwz-Kb-17F" customClass="SignInViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignIn" title="Sign In" id="nwz-Kb-17F" customClass="SignInViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xW0-Nu-8wl"/>
                         <viewControllerLayoutGuide type="bottom" id="ohM-SA-4UR"/>
@@ -115,13 +115,13 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-s2-kNj">
-                                        <rect key="frame" x="528" y="435" width="57" height="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-s2-kNj">
+                                        <rect key="frame" x="532" y="435" width="53" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="o0b-kY-EgL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
-                                        <state key="normal" title="SIGN UP">
+                                        <state key="normal" title="Sign Up">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
