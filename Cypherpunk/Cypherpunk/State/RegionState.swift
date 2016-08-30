@@ -23,7 +23,7 @@ struct RegionState: StateType {
         if isAutoSelect {
             return "Auto Region Select"
         } else {
-            return cityName + ", " + countryName
+            return countryName
         }
     }
     
