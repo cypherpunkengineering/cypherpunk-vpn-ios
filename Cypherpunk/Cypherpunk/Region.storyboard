@@ -109,14 +109,14 @@
                                         <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegionBasic" textLabel="gI5-mr-QEx" style="IBUITableViewCellStyleDefault" id="MRN-7f-HR7" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="50" width="600" height="48"/>
+                                                <rect key="frame" x="0.0" y="49.5" width="600" height="48"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MRN-7f-HR7" id="eIy-xJ-qlr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="47"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="47.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gI5-mr-QEx">
-                                                            <rect key="frame" x="15" y="0.0" width="570" height="47"/>
+                                                            <rect key="frame" x="15" y="0.0" width="570" height="47.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

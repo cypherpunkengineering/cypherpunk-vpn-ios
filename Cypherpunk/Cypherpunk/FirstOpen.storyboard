@@ -227,7 +227,6 @@
         <!--Get Cypherpunk Premium-->
         <scene sceneID="P0A-dy-8wa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u1b-2y-pWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Get Cypherpunk Premium" automaticallyAdjustsScrollViewInsets="NO" id="mUW-UR-c2c" customClass="GetPremiumPlanRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WOZ-Ii-NPs"/>
@@ -254,13 +253,14 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u1b-2y-pWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="825" y="830"/>
         </scene>
         <!--Get Cypherpunk Premium-->
         <scene sceneID="DCP-VQ-74C">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="6zm-cN-xjx" customClass="GetPremiumPlanTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="GetPremium" automaticallyAdjustsScrollViewInsets="NO" id="6zm-cN-xjx" customClass="GetPremiumPlanTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cqh-Ds-ewv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

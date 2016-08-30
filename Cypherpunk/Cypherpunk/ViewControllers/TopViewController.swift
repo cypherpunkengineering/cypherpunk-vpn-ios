@@ -42,6 +42,8 @@ class TopViewController: UIViewController, StoreSubscriber {
     internal var connectionObserver: NSObjectProtocol!
     
     private var circleAnimationDuration: CFTimeInterval = 2
+    @IBOutlet weak var getPremiumHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var getPremiumView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +72,15 @@ class TopViewController: UIViewController, StoreSubscriber {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
 
+        if mainStore.state.loginState.isLoggedIn == false {
+            getPremiumHeightConstraint.constant = 50.0
+            getPremiumView.hidden = false
+        } else {
+            getPremiumHeightConstraint.constant = 0.0
+            getPremiumView.hidden = true
+        }
+        self.view.setNeedsLayout()
+        
         VPNConfigurationCoordinator.load {
             let status = NEVPNManager.sharedManager().connection.status
             self.updateViewWithVPNStatus(status)
