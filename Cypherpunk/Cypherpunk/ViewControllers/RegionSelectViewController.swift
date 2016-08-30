@@ -48,6 +48,21 @@ enum AreaIPAddress: Int {
         }
     }
 
+    var isFavorited: Bool {
+        switch self {
+        case .Tokyo1: return true
+        case .Tokyo2: return false
+        case .Honolulu: return false
+        }
+    }
+    
+    var isRecommended: Bool {
+        switch self {
+        case .Tokyo1: return true
+        case .Tokyo2: return true
+        case .Honolulu: return false
+        }
+    }
     static var array: [AreaIPAddress] {
         return [.Tokyo1, .Tokyo2, .Honolulu]
     }
@@ -59,6 +74,12 @@ enum AreaIPAddress: Int {
 
 class RegionSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    private enum Section: Int {
+        case favorite
+        case recommended
+        case allLocation
+    }
+    
     @IBOutlet weak var tableView: ThemedTableView!
     var areaNames: [String] = []
     
@@ -66,7 +87,6 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        areaNames = ["Tokyo1","Tokyo2","Honolulu"]
         
     }
 
@@ -76,7 +96,7 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -102,26 +122,52 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
+        return ["FAVORITE","RECOMMENDED","ALL LOCATIONS"][section]
     }
         
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return areaNames.count
+        return areasInSection(section).count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
+        let areas = areasInSection(indexPath.section)
         
-        cell?.textLabel?.text = areaNames[indexPath.row]
+        cell?.textLabel?.text = areas[indexPath.row].cityName
         
         return cell!
     }
     
+    func areasInSection(section: Int) -> [AreaIPAddress] {
+        let section = Section(rawValue: section)
+        
+        switch section! {
+        case .favorite:
+            return AreaIPAddress.array.filter({
+                return $0.isFavorited
+            })
+        case .recommended:
+            return AreaIPAddress.array.filter({
+                return $0.isRecommended
+            }).filter({
+                return !$0.isFavorited
+            })
+        case .allLocation:
+            return AreaIPAddress.array.filter({
+                return !$0.isFavorited
+            }).filter({
+                return !$0.isRecommended
+            })
+
+        }
+    }
+    
     private var areaName: String! = ""
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let area = AreaIPAddress(rawValue:indexPath.row)
-        mainStore.dispatch(RegionAction.ChangeRegion(areaName: area!.areaName, countryName: area!.countryName, cityName: area!.cityName, serverIP: area!.IPAddress))
+        let areas = areasInSection(indexPath.section)
+        let area = areas[indexPath.row]
+        mainStore.dispatch(RegionAction.ChangeRegion(areaName: area.areaName, countryName: area.countryName, cityName: area.cityName, serverIP: area.IPAddress))
         VPNConfigurationCoordinator.start { 
             self.dismissViewControllerAnimated(true, completion: nil)
         }
