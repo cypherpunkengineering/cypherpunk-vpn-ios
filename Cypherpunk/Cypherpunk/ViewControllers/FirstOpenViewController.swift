@@ -9,10 +9,12 @@
 import UIKit
 
 class FirstOpenViewController: UIViewController {
-
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
     }    
+    @IBAction func startFreeNowAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

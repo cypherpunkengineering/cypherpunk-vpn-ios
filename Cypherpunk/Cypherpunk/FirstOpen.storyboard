@@ -144,7 +144,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Kj9-LE-rmS" kind="show" id="WTu-AP-iQ9"/>
+                                    <action selector="startFreeNowAction:" destination="iYn-5g-QgO" eventType="touchUpInside" id="jNH-id-LDj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pi6-49-rD5">
@@ -199,14 +199,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUO-Gr-PE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="825" y="106"/>
-        </scene>
-        <!--Top-->
-        <scene sceneID="P5Z-13-PJJ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Top" id="Kj9-LE-rmS" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sp1-yH-mhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1327.5" y="73"/>
         </scene>
         <!--SignIn-->
         <scene sceneID="X5Q-ee-UVa">

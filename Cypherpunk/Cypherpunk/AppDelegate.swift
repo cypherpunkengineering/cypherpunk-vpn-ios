@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         // Override point for customization after application launch.
         mainStore.dispatch(ThemeAction.ChangeToIndigo)
         VPNConfigurationCoordinator.start {
@@ -31,6 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Gradient)
 
         contactUs = R.storyboard.settings.contactus()
+        
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            let firstOpen = R.storyboard.firstOpen.initialViewController()
+            
+            if mainStore.state.loginState.isLoggedIn == false {
+                self.window?.rootViewController!.presentViewController(firstOpen!, animated: false, completion: nil)
+            }
+        }
         
         return true
     }
