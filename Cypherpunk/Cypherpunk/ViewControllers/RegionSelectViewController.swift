@@ -101,7 +101,12 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
-        let titleLabel = UILabel(frame: CGRect(x: 20, y: 9, width: 300, height: 17))
+        let titleLabel: UILabel
+        if section == 0 {
+            titleLabel = UILabel(frame: CGRect(x: 20, y: 26, width: 300, height: 17))
+        } else {
+            titleLabel = UILabel(frame: CGRect(x: 20, y: 9, width: 300, height: 17))
+        }
         
         titleLabel.font = R.font.dosisMedium(size: 14)
         titleLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
@@ -171,7 +176,6 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    private var areaName: String! = ""
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let areas = areasInSection(indexPath.section)
         let area = areas[indexPath.row]
