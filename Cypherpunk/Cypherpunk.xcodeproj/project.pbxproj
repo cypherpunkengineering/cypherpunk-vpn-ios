@@ -117,6 +117,7 @@
 		2BDBD0D01D65286D00080E67 /* UpdateEmailRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0CF1D65286D00080E67 /* UpdateEmailRootViewController.swift */; };
 		2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDBD0D11D65295F00080E67 /* Password.storyboard */; };
 		2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */; };
+		2BEC968F1D75FF8900CBBC04 /* RegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */; };
 		2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF33BC41D5314F1003FCFF3 /* test.p12 */; };
 		40D56BF49E63C019A46839C7 /* Pods_CypherpunkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7BA02BCC3C2DBACF87A027 /* Pods_CypherpunkUITests.framework */; };
 		46608F04506E5B087F2FB8C7 /* Pods_Cypherpunk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF74B2C8826884133507A33 /* Pods_Cypherpunk.framework */; };
@@ -260,6 +261,7 @@
 		2BDBD0CF1D65286D00080E67 /* UpdateEmailRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateEmailRootViewController.swift; sourceTree = "<group>"; };
 		2BDBD0D11D65295F00080E67 /* Password.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
 		2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactusViewController.swift; sourceTree = "<group>"; };
+		2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionTableViewCell.swift; sourceTree = "<group>"; };
 		2BF33BC41D5314F1003FCFF3 /* test.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.p12; sourceTree = "<group>"; };
 		2FDB752259C501D90C4A7A8D /* Pods-CypherpunkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A532A863B7DD850AE5424D3 /* Pods-CypherpunkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				201809F51D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift */,
 				201809F71D5B503200730FA4 /* ThemedMapImageView.swift */,
 				2BDBD0C91D651C8100080E67 /* ThemedTextField.swift */,
+				2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 				20EBFD381D5454B0008B9F14 /* HandshakeSelectViewController.swift in Sources */,
 				20EBFD3E1D547B18008B9F14 /* SettingsTopViewController.swift in Sources */,
 				20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */,
+				2BEC968F1D75FF8900CBBC04 /* RegionTableViewCell.swift in Sources */,
 				20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

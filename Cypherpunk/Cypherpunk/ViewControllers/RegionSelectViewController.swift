@@ -131,10 +131,18 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let section = Section(rawValue: indexPath.section)!
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
         let areas = areasInSection(indexPath.section)
         
-        cell?.textLabel?.text = areas[indexPath.row].cityName
+        cell?.titleLabel.text = areas[indexPath.row].cityName
+        
+        switch section {
+        case .favorite:
+            cell?.starButton.setImage(R.image.iconStarOn(), forState: .Normal)
+        default:
+            cell?.starButton.setImage(R.image.iconStar(), forState: .Normal)
+        }
         
         return cell!
     }
