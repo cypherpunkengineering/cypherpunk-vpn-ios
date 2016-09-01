@@ -31,6 +31,14 @@ class SettingsStatusViewController: UITableViewController, PageContent {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(didChangeVPNStatus),
+            name: NEVPNStatusDidChangeNotification,
+            object: nil
+        )
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -60,6 +68,11 @@ class SettingsStatusViewController: UITableViewController, PageContent {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit{
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
+    }
+
     var timerSource: dispatch_source_t!
     func startTimer() {
         let source = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue())
@@ -91,6 +104,20 @@ class SettingsStatusViewController: UITableViewController, PageContent {
             timerSource = nil
         }
     }
+    
+    func didChangeVPNStatus(notification: NSNotification) {
+        guard let connection = notification.object as? NEVPNConnection else {
+            return
+        }
+        
+        let status = connection.status
+        
+        if status == .Connected || status == .Disconnected {
+            self.tableView.reloadData()
+        }
+    }
+
+    
     @IBAction func changeIPAddressAction(sender: AnyObject) {
     }
     
