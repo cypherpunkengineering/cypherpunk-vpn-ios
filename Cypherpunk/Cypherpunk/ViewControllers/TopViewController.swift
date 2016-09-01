@@ -17,11 +17,11 @@ extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
         switch self {
         case .Connected: return "You are now protected"
-        case .Connecting: return "CONNECTING..."
-        case .Disconnected: return "Touch to Start"
-        case .Disconnecting: return "DISCONNECTING..."
-        case .Invalid: return "INVALID"
-        case .Reasserting: return "REASSERTING"
+        case .Connecting: return "Connecting..."
+        case .Disconnected: return "Tap to protect"
+        case .Disconnecting: return "Disconnecting..."
+        case .Invalid: return "invalid"
+        case .Reasserting: return "reasserting"
         }
     }
 }
