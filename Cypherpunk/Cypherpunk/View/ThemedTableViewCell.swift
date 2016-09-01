@@ -18,6 +18,9 @@ class ThemedTableViewCell: UITableViewCell {
     }
     func configureView() {
         let themeState = mainStore.state.themeState
+        self.textLabel?.font = R.font.dosisMedium(size: 18.0)
+        self.detailTextLabel?.font = R.font.dosisMedium(size: 16.0)
+
         switch themeState.themeType {
         case .White:
             self.textLabel?.textColor = UIColor.whiteThemeTextColor()
