@@ -12,4 +12,5 @@ import ReSwift
 enum StatusAction: Action {
     case GetOriginalIPAddress(address: String)
     case GetNewIPAddress(address: String)
+    case SetConnectedDate(date: NSDate?)
 }

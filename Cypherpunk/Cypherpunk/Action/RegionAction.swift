@@ -11,7 +11,6 @@ import Foundation
 import ReSwift
 
 enum RegionAction: Action {
-    case ActiveAutoSelect
     case ChangeRegion(areaName: String, countryName: String, cityName: String, serverIP: String)
     case Connect
 }

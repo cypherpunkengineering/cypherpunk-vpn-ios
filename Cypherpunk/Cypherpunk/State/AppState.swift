@@ -16,7 +16,7 @@ struct AppState: StateType {
     let settingsState: SettingsState
     let themeState: ThemeState
     let statusState: StatusState
-    
+        
     static func getSharedState() -> AppState {
         return mainStore.state
     }

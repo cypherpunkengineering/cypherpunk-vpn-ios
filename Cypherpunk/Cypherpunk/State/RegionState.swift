@@ -15,16 +15,10 @@ struct RegionState: StateType {
     var cityName: String
     var serverIP: String
     
-    var isAutoSelect: Bool = true
-    
     var recentryConnected: [RegionHistory] = []
     
     var title: String {
-        if isAutoSelect {
-            return "Auto Region Select"
-        } else {
-            return countryName
-        }
+        return countryName
     }
     
 }

@@ -11,7 +11,7 @@ import ReSwift
 
 struct StatusReducer: Reducer {
     func handleAction(action: Action, state: StatusState?) -> StatusState {
-        var state: StatusState = state ?? StatusState(originalIPAddress: nil, newIPAddress: nil)
+        var state: StatusState = state ?? StatusState(originalIPAddress: nil, newIPAddress: nil, connectedDate: nil)
         
         if let action = action as? StatusAction {
             switch action {
@@ -22,6 +22,8 @@ struct StatusReducer: Reducer {
                 if state.originalIPAddress != state.newIPAddress {
                     state.newIPAddress = address                    
                 }
+            case .SetConnectedDate(let date):
+                state.connectedDate = date
             }
         }
         

@@ -73,12 +73,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDj-sh-DeO">
-                                                    <rect key="frame" x="223" y="0.0" width="155" height="22"/>
+                                                    <rect key="frame" x="220.5" y="0.0" width="160" height="22"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUA-At-SXU" customClass="ThemedTimeLabelButton" customModule="Cypherpunk" customModuleProvider="target">
-                                                            <rect key="frame" x="66" y="0.0" width="89" height="22"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUA-At-SXU" customClass="ThemedTimeLabelButton" customModule="Cypherpunk" customModuleProvider="target">
+                                                            <rect key="frame" x="66" y="0.0" width="94" height="22"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                                                            <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="00:14:25" image="icon_time">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
@@ -99,7 +100,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="jUo-9R-xdm" secondAttribute="bottom" id="O2R-oS-OpC"/>
                                                         <constraint firstItem="jUo-9R-xdm" firstAttribute="top" secondItem="tDj-sh-DeO" secondAttribute="top" id="fOV-1i-SU1"/>
                                                         <constraint firstAttribute="bottom" secondItem="NUA-At-SXU" secondAttribute="bottom" id="gzC-Gf-f2u"/>
-                                                        <constraint firstAttribute="width" constant="155" id="tpw-oP-Rrs"/>
+                                                        <constraint firstAttribute="width" constant="160" id="tpw-oP-Rrs"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

@@ -46,21 +46,51 @@ class SettingsStatusViewController: UITableViewController, PageContent {
             connectedTimeView.hidden = true
             disconnectedLabel.hidden = false
         }
-        
+        startTimer()
         mainStore.subscribe(self)
-
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        cancelTimer()
         mainStore.unsubscribe(self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    var timerSource: dispatch_source_t!
+    func startTimer() {
+        let source = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue())
+        
+        if source != nil {
+            let secondsToFire: Double = 0.1
+            let now = dispatch_time(DISPATCH_TIME_NOW, Int64(secondsToFire * Double(NSEC_PER_SEC)))
+            let interval = UInt64(secondsToFire * Double(NSEC_PER_SEC))
+            dispatch_source_set_timer(source, now, interval, (1 * NSEC_PER_SEC) / 10)
+            dispatch_source_set_event_handler(source, {
+                let statusState = mainStore.state.statusState
+                if let date = statusState.connectedDate {
+                    let formatter = NSDateFormatter()
+                    formatter.dateFormat = "HH:mm:ss"
+                    formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+                    let difference = NSDate(timeIntervalSince1970: NSDate().timeIntervalSinceDate(date))
+                    
+                    self.connectionTimeLabelButton.setTitle(formatter.stringFromDate(difference), forState: .Normal)
+                }
+            })
+            dispatch_resume(source)
+        }
+        timerSource = source
+    }
 
+    func cancelTimer() {
+        if (timerSource != nil) {
+            dispatch_source_cancel(timerSource)
+            timerSource = nil
+        }
+    }
     @IBAction func changeIPAddressAction(sender: AnyObject) {
     }
     

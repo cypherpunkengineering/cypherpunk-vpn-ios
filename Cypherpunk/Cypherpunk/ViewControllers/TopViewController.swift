@@ -208,6 +208,9 @@ class TopViewController: UIViewController, StoreSubscriber {
         
         if status == .Connected {
             mainStore.dispatch(RegionAction.Connect)
+            mainStore.dispatch(StatusAction.SetConnectedDate(date: NSDate()))
+        } else if status == .Disconnected {
+            mainStore.dispatch(StatusAction.SetConnectedDate(date: nil))
         }
 
         self.updateViewWithVPNStatus(status)

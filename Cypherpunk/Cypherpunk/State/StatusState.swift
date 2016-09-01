@@ -12,4 +12,5 @@ import ReSwift
 struct StatusState: StateType {
     var originalIPAddress: String?
     var newIPAddress: String?
+    var connectedDate: NSDate?
 }
