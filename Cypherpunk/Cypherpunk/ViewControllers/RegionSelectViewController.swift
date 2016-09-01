@@ -127,7 +127,7 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ["FAVORITE","RECOMMENDED","ALL LOCATIONS"][section]
+        return ["Favorite","Recommended","All Locations"][section]
     }
         
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
