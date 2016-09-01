@@ -686,7 +686,7 @@
         <!--Get Premium-->
         <scene sceneID="lGj-7f-yyy">
             <objects>
-                <viewController title="Get Premium" automaticallyAdjustsScrollViewInsets="NO" id="paA-t1-5Vp" customClass="PresentContainerViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Get Premium" id="paA-t1-5Vp" customClass="PresentContainerViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kce-q8-FVj"/>
                         <viewControllerLayoutGuide type="bottom" id="1IG-BD-Thd"/>
@@ -696,7 +696,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Da5-5S-eZl">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="-64" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="w5u-AZ-NOE" kind="embed" id="I1O-4W-mQg"/>
@@ -705,13 +705,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Da5-5S-eZl" firstAttribute="top" secondItem="Kce-q8-FVj" secondAttribute="bottom" id="4G5-NG-VcE"/>
+                            <constraint firstItem="Da5-5S-eZl" firstAttribute="top" secondItem="Kce-q8-FVj" secondAttribute="bottom" constant="-64" id="4G5-NG-VcE"/>
                             <constraint firstAttribute="trailing" secondItem="Da5-5S-eZl" secondAttribute="trailing" id="iqP-I6-hhs"/>
                             <constraint firstItem="1IG-BD-Thd" firstAttribute="top" secondItem="Da5-5S-eZl" secondAttribute="bottom" id="mN3-IC-gV1"/>
                             <constraint firstItem="Da5-5S-eZl" firstAttribute="leading" secondItem="zQg-aT-zga" secondAttribute="leading" id="nHm-mF-Tt3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Get Cypherpunk Premium" id="yKq-7S-XQw">
+                    <navigationItem key="navigationItem" title="Sign Up" id="yKq-7S-XQw">
                         <barButtonItem key="leftBarButtonItem" image="ic_close_white" style="done" id="6I5-aL-z7d">
                             <connections>
                                 <action selector="closeAction:" destination="paA-t1-5Vp" id="1Mu-L2-8RX"/>
@@ -723,10 +723,10 @@
             </objects>
             <point key="canvasLocation" x="1062" y="1956"/>
         </scene>
-        <!--GetPremium-->
+        <!--SignUp-->
         <scene sceneID="gS3-e4-vhk">
             <objects>
-                <viewControllerPlaceholder storyboardName="FirstOpen" referencedIdentifier="GetPremium" id="w5u-AZ-NOE" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SignUp" id="w5u-AZ-NOE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PG1-H5-REa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1581.5" y="1893"/>
