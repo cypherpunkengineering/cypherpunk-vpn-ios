@@ -231,7 +231,7 @@
                                             <constraint firstAttribute="height" constant="12" id="lRC-Eg-oMK"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCs-I6-CIn" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCs-I6-CIn" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="44" y="4" width="512" height="48"/>
                                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="28"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="9" maxX="18" maxY="0.0"/>
@@ -558,7 +558,7 @@
                                             <constraint firstAttribute="width" constant="7" id="TVM-7D-Y0c"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UT-dM-AT4" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UT-dM-AT4" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="44" y="4" width="512" height="48"/>
                                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="28"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="9" maxX="18" maxY="0.0"/>

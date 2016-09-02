@@ -16,7 +16,6 @@ let mainStore = Store<AppState>(
     state: nil
 )
 
-var contactUs: UIViewController? = nil
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -30,13 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Gradient)
-
-        contactUs = R.storyboard.settings.contactus()
         
         dispatch_async(dispatch_get_main_queue()) { [unowned self] in
             let firstOpen = R.storyboard.firstOpen.initialViewController()
             
-            if mainStore.state.loginState.isLoggedIn == false {
+            if mainStore.state.accountState.isLoggedIn == false {
                 self.window?.rootViewController!.presentViewController(firstOpen!, animated: false, completion: nil)
             }
         }

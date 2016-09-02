@@ -63,7 +63,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
                     let listRequest = RegionListRequest(session: response.session)
                     Session.sendRequest(listRequest)
                     SVProgressHUD.dismiss()
-                    mainStore.dispatch(LoginAction.Login(response: response))
+                    mainStore.dispatch(AccountAction.Login(response: response))
                 case .Failure(let error):
                     SVProgressHUD.showErrorWithStatus("\((error as NSError).localizedDescription)")
                 }
@@ -74,7 +74,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
     
     func newState(state: AppState)
     {
-        if state.loginState.isLoggedIn {
+        if state.accountState.isLoggedIn {
             // TODO: transition to send email screen
             self.dismissViewControllerAnimated(true, completion: nil)
         }

@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController, StoreSubscriber {
     
     func signUp() {
         if let address = mailAddressField.text where isValidMailAddress(address) {
-            mainStore.dispatch(LoginAction.SignUp(mailAddress: address))
+            mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
         }
     }
     
@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController, StoreSubscriber {
 
     func newState(state: AppState)
     {
-        if state.loginState.isLoggedIn == true {
+        if state.accountState.isLoggedIn == true {
             // TODO: transition to send email screen
             self.dismissViewControllerAnimated(true, completion: nil)
         }

@@ -72,7 +72,7 @@ class TopViewController: UIViewController, StoreSubscriber {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
 
-        if mainStore.state.loginState.isLoggedIn == false {
+        if mainStore.state.accountState.isLoggedIn == false {
             getPremiumHeightConstraint.constant = 50.0
             getPremiumView.hidden = false
         } else {

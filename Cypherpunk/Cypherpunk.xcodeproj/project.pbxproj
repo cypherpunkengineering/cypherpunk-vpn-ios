@@ -60,9 +60,9 @@
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
 		20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F41D1D1C6F002B9F9D /* IPAddress.swift */; };
-		20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FB1D23A1E7002B9F9D /* LoginState.swift */; };
-		20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FD1D23A637002B9F9D /* LoginReducer.swift */; };
-		20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FF1D23A84D002B9F9D /* LoginAction.swift */; };
+		20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FB1D23A1E7002B9F9D /* AccountState.swift */; };
+		20D895FE1D23A637002B9F9D /* AccountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FD1D23A637002B9F9D /* AccountReducer.swift */; };
+		20D896001D23A84D002B9F9D /* AccountAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FF1D23A84D002B9F9D /* AccountAction.swift */; };
 		20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896011D23ACE9002B9F9D /* SignInViewController.swift */; };
 		20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */; };
 		20D896061D23B0DD002B9F9D /* MailAddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */; };
@@ -203,9 +203,9 @@
 		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		20D895F41D1D1C6F002B9F9D /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		20D895F61D1D1CC1002B9F9D /* Cypherpunk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cypherpunk-Bridging-Header.h"; sourceTree = "<group>"; };
-		20D895FB1D23A1E7002B9F9D /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
-		20D895FD1D23A637002B9F9D /* LoginReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginReducer.swift; sourceTree = "<group>"; };
-		20D895FF1D23A84D002B9F9D /* LoginAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAction.swift; sourceTree = "<group>"; };
+		20D895FB1D23A1E7002B9F9D /* AccountState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountState.swift; sourceTree = "<group>"; };
+		20D895FD1D23A637002B9F9D /* AccountReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountReducer.swift; sourceTree = "<group>"; };
+		20D895FF1D23A84D002B9F9D /* AccountAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountAction.swift; sourceTree = "<group>"; };
 		20D896011D23ACE9002B9F9D /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAddressValidator.swift; sourceTree = "<group>"; };
 		20D896071D23B0F4002B9F9D /* ValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTests.swift; sourceTree = "<group>"; };
@@ -390,7 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				2038099C1D13EEA9005145CD /* AppState.swift */,
-				20D895FB1D23A1E7002B9F9D /* LoginState.swift */,
+				20D895FB1D23A1E7002B9F9D /* AccountState.swift */,
 				20EC4A371D2F7BAE00785399 /* RegionState.swift */,
 				20EC4A451D3780BC00785399 /* SettingsState.swift */,
 				203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */,
@@ -402,7 +402,7 @@
 		2038099A1D13ED96005145CD /* Action */ = {
 			isa = PBXGroup;
 			children = (
-				20D895FF1D23A84D002B9F9D /* LoginAction.swift */,
+				20D895FF1D23A84D002B9F9D /* AccountAction.swift */,
 				20EC4A491D378CBC00785399 /* SettingsAction.swift */,
 				2B2B59E41D3F98D0003FA705 /* RegionAction.swift */,
 				203F4EFA1D5AFD5100EA2536 /* ThemeAction.swift */,
@@ -415,7 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				2038099E1D13EEEB005145CD /* AppReducer.swift */,
-				20D895FD1D23A637002B9F9D /* LoginReducer.swift */,
+				20D895FD1D23A637002B9F9D /* AccountReducer.swift */,
 				20EC4A391D2F82CC00785399 /* RegionReducer.swift */,
 				20EC4A471D37851200785399 /* SettingsReducer.swift */,
 				203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */,
@@ -915,7 +915,7 @@
 				204BE90E1D5B28B7003D7CB5 /* ThemedSeparatorView.swift in Sources */,
 				2B0641701D6D7444009475F4 /* StatusAction.swift in Sources */,
 				203F4EFB1D5AFD5100EA2536 /* ThemeAction.swift in Sources */,
-				20D895FE1D23A637002B9F9D /* LoginReducer.swift in Sources */,
+				20D895FE1D23A637002B9F9D /* AccountReducer.swift in Sources */,
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				201809EE1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift in Sources */,
@@ -923,7 +923,7 @@
 				2BDBD0C21D64FBED00080E67 /* ThemedNavigationBackgroundView.swift in Sources */,
 				203F4F091D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift in Sources */,
 				2BDBD0C41D65041100080E67 /* ThemedStatusBarBackgroundView.swift in Sources */,
-				20D896001D23A84D002B9F9D /* LoginAction.swift in Sources */,
+				20D896001D23A84D002B9F9D /* AccountAction.swift in Sources */,
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
 				204350501D59D088009AF327 /* AdvancedSettingsViewController.swift in Sources */,
 				201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */,
@@ -946,7 +946,7 @@
 				203C62F61D7038E400891F91 /* GetPremiumPlanTableViewController.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
-				20D895FC1D23A1E7002B9F9D /* LoginState.swift in Sources */,
+				20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */,
 				203F4F051D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift in Sources */,
 				2BDBD0D01D65286D00080E67 /* UpdateEmailRootViewController.swift in Sources */,
 				201809F01D5B49E200730FA4 /* ThemedSettingsTabButton.swift in Sources */,

@@ -41,9 +41,12 @@ class ConfigurationTableViewController: UITableViewController {
         
         self.navigationController?.navigationBarHidden = false
         
-        let loginstate = mainStore.state.loginState
-        mailAddressLabel.text = loginstate.mailAddress
+        let accountState = mainStore.state.accountState
+        mailAddressLabel.text = accountState.mailAddress
         vpnProtocolDetailLabel.text = mainStore.state.settingsState.vpnProtocolMode.description
+        
+        self.tableView.reloadData()
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -56,6 +59,55 @@ class ConfigurationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            // AccountType
+            let accountState = mainStore.state.accountState
+            switch accountState.subscriptionType {
+            case .Year:
+                return 1
+            default:
+                return 2
+            }
+        }
+        return super.tableView(tableView, numberOfRowsInSection: section)
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let row = Rows(rawValue: indexPath.section * 10 + indexPath.row)!
+        let cell: UITableViewCell
+        switch row {
+        case .PaymentDetail:
+            cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+
+            let accountState = mainStore.state.accountState
+            let subscription = accountState.subscriptionType
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
+            
+            let dateString: String
+            if let d = accountState.expiredDate {
+                dateString = dateFormatter.stringFromDate(d)
+            } else {
+                dateString = ""
+            }
+            
+            cell.textLabel?.text = subscription.title
+                cell.detailTextLabel?.text = subscription.detailMessage + " " + dateString
+        case .PaymentUpgrade:
+            let accountState = mainStore.state.accountState
+
+            if accountState.isLoggedIn {
+                cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+            } else {
+                cell = super.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section))
+            }
+        default:
+            cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        }
+        return cell
+    }
+    
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
         let titleLabel = UILabel(frame: CGRect(x: 15, y: 9, width: 300, height: 17))
@@ -82,11 +134,9 @@ class ConfigurationTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if let row = Rows(rawValue: indexPath.section * 10 + indexPath.row) {
             switch row {
-            case .Contactus:
-                self.navigationController?.pushViewController(contactUs!, animated: true)
             case .SignOut:
                 let vc = R.storyboard.firstOpen.initialViewController()
-                mainStore.dispatch(LoginAction.Logout)
+                mainStore.dispatch(AccountAction.Logout)
                 self.navigationController?.presentViewController(vc!, animated: true, completion: {
                     self.navigationController?.popViewControllerAnimated(false)
                 })

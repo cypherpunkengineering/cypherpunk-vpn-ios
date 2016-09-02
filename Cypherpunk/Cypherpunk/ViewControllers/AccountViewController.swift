@@ -20,7 +20,7 @@ class AccountViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-        mailLabelButton.setTitle(mainStore.state.loginState.mailAddress, forState: .Normal)
+        mailLabelButton.setTitle(mainStore.state.accountState.mailAddress, forState: .Normal)
     }
 
     override func didReceiveMemoryWarning() {
