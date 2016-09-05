@@ -21,7 +21,7 @@ struct AccountReducer: Reducer {
         
         switch accountAction {
         case .SignUp(let mailAddress):
-            accountState.isLoggedIn = false
+            accountState.isLoggedIn = true
             accountState.mailAddress = mailAddress
             accountState.password = ""
         case .Activate(let mailAddress, let password):

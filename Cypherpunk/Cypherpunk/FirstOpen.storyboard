@@ -294,12 +294,15 @@
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="6zm-cN-xjx" id="d3d-7v-5so"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -374,6 +377,9 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="551" height="76"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <state key="normal" title=" "/>
+                                                            <connections>
+                                                                <action selector="oneMonthUpgradeAction:" destination="6zm-cN-xjx" eventType="touchUpInside" id="bYq-U5-H5p"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 MONTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgi-3S-bhh">
                                                             <rect key="frame" x="21" y="24" width="87" height="26"/>
@@ -485,6 +491,9 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="551" height="76"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <state key="normal" title=" "/>
+                                                            <connections>
+                                                                <action selector="halfYearUpgradeAction:" destination="6zm-cN-xjx" eventType="touchUpInside" id="iQb-1G-REZ"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
@@ -544,11 +553,6 @@
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4t-x3-rLY">
                                                     <rect key="frame" x="25" y="0.0" width="551" height="76"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2M-n9-Sdf">
-                                                            <rect key="frame" x="-25" y="0.0" width="30" height="34"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <state key="normal" title=" "/>
-                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 MONTHS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z13-Bc-WVk">
                                                             <rect key="frame" x="21" y="24" width="87" height="26"/>
                                                             <constraints>
@@ -594,8 +598,8 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 6.67" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcB-TY-cUy">
-                                                            <rect key="frame" x="194" y="2" width="339" height="48"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$ 6.67" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcB-TY-cUy">
+                                                            <rect key="frame" x="195" y="2" width="339" height="48"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="afA-gQ-MLd"/>
                                                             </constraints>
@@ -603,6 +607,14 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2M-n9-Sdf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="551" height="76"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <state key="normal" title=" "/>
+                                                            <connections>
+                                                                <action selector="yearUpgradeAction:" destination="6zm-cN-xjx" eventType="touchUpInside" id="yD5-xk-4qp"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -615,9 +627,14 @@
                                                         <constraint firstItem="z13-Bc-WVk" firstAttribute="leading" secondItem="K4t-x3-rLY" secondAttribute="leading" constant="21" id="Go4-Cp-Wda"/>
                                                         <constraint firstAttribute="bottom" secondItem="z13-Bc-WVk" secondAttribute="bottom" constant="26" id="Sku-v9-2sX"/>
                                                         <constraint firstAttribute="trailing" secondItem="DKx-14-khB" secondAttribute="trailing" constant="17" id="Z4a-Xz-4ES"/>
+                                                        <constraint firstAttribute="trailing" secondItem="t2M-n9-Sdf" secondAttribute="trailing" id="an8-5M-ZPO"/>
+                                                        <constraint firstItem="t2M-n9-Sdf" firstAttribute="leading" secondItem="K4t-x3-rLY" secondAttribute="leading" id="bbK-Uq-lpp"/>
+                                                        <constraint firstAttribute="bottom" secondItem="t2M-n9-Sdf" secondAttribute="bottom" id="g4E-yc-AwY"/>
+                                                        <constraint firstItem="z13-Bc-WVk" firstAttribute="leading" secondItem="t2M-n9-Sdf" secondAttribute="trailing" id="gSh-MD-WCz"/>
                                                         <constraint firstAttribute="bottom" secondItem="g8c-nv-VN2" secondAttribute="bottom" constant="29" id="gnX-hz-gBc"/>
                                                         <constraint firstItem="NcB-TY-cUy" firstAttribute="top" secondItem="K4t-x3-rLY" secondAttribute="top" constant="2" id="nX3-84-2Ja"/>
                                                         <constraint firstItem="z13-Bc-WVk" firstAttribute="top" secondItem="K4t-x3-rLY" secondAttribute="top" constant="24" id="v4A-go-7QX"/>
+                                                        <constraint firstItem="t2M-n9-Sdf" firstAttribute="top" secondItem="K4t-x3-rLY" secondAttribute="top" id="zUc-Wn-5tB"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -629,6 +646,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="gSh-MD-WCz"/>
                                                             <exclude reference="CcS-wr-vny"/>
                                                         </mask>
                                                     </variation>
@@ -654,6 +672,9 @@
                     <navigationItem key="navigationItem" title="Get Cypherpunk Premium" id="no9-dq-xyP">
                         <barButtonItem key="backBarButtonItem" title=" " id="IDO-t7-wgv"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mailAddressField" destination="uLF-hA-4Kg" id="DDw-PP-2S7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaj-IH-8Hl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
