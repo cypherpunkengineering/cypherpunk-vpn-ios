@@ -25,6 +25,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // Override point for customization after application launch.
+        
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: R.font.dosisSemiBold(size: 18.0)!,
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+        ]
+        
+        UINavigationBar.appearance().shadowImage = R.image.lineColor()
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+            ], forState: .Normal)
+        
         mainStore.dispatch(ThemeAction.ChangeToIndigo)
         VPNConfigurationCoordinator.start {
         }
