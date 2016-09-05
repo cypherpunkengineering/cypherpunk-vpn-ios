@@ -114,10 +114,10 @@
                                         <color key="separatorColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegionBasic" id="MRN-7f-HR7" customClass="RegionTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="49.5" width="600" height="48"/>
+                                                <rect key="frame" x="0.0" y="50" width="600" height="48"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MRN-7f-HR7" id="eIy-xJ-qlr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="47.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="47"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6hf-fp-Gke">
@@ -129,7 +129,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9m3-d2-cES">
-                                                            <rect key="frame" x="69" y="0.0" width="463" height="47.5"/>
+                                                            <rect key="frame" x="69" y="0.0" width="463" height="48"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -141,6 +141,9 @@
                                                                 <constraint firstAttribute="height" constant="44" id="yxW-ut-qI4"/>
                                                             </constraints>
                                                             <state key="normal" image="iconStar"/>
+                                                            <connections>
+                                                                <action selector="didSelectFavoriteAction:" destination="TEr-Ls-Ty1" eventType="touchUpInside" id="NW2-6c-Qlr"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>

@@ -60,8 +60,6 @@ class SignInViewController: UIViewController, StoreSubscriber {
                 
                 switch result {
                 case .Success(let response):
-                    let listRequest = RegionListRequest(session: response.session)
-                    Session.sendRequest(listRequest)
                     SVProgressHUD.dismiss()
                     mainStore.dispatch(AccountAction.Login(response: response))
                 case .Failure(let error):

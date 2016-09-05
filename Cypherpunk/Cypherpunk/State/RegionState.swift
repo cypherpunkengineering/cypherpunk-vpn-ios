@@ -10,34 +10,28 @@ import Foundation
 import ReSwift
 
 struct RegionState: StateType {
-    var areaName: String
-    var countryName: String
-    var cityName: String
+    var name: String
     var serverIP: String
     
     var recentryConnected: [RegionHistory] = []
     
     var title: String {
-        return countryName
+        return name
     }
     
 }
 
 struct RegionHistory {
-    var areaName: String
-    var countryName: String
-    var cityName: String
+    var name: String
     var serverIP: String
     
     init(state: RegionState) {
-        self.areaName = state.areaName
-        self.countryName = state.countryName
-        self.cityName = state.cityName
+        self.name = state.name
         self.serverIP = state.serverIP
     }
     
     var title: String {
-        return cityName + ", " + countryName
+        return name
     }
 
 }
@@ -45,10 +39,6 @@ struct RegionHistory {
 extension RegionHistory: Equatable {
 }
 
-
 func ==(lhs: RegionHistory, rhs:RegionHistory) -> Bool {
-    return lhs.areaName == rhs.areaName &&
-    lhs.countryName == rhs.countryName &&
-    lhs.cityName == rhs.cityName &&
-    lhs.serverIP == rhs.serverIP
+    return lhs.name == rhs.name
 }

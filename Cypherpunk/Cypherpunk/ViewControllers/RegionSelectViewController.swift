@@ -11,67 +11,6 @@ import UIKit
 import ReSwift
 import RealmSwift
 
-enum AreaIPAddress: Int {
-    case Tokyo1
-    case Tokyo2
-    case Honolulu
-
-    var IPAddress: String {
-        switch self {
-        case .Tokyo1: return "208.111.52.1"
-        case .Tokyo2: return "208.111.52.2"
-        case .Honolulu: return "199.68.252.203"
-        }
-    }
-    
-    var countryName: String {
-        switch self {
-        case .Tokyo1: return "Japan"
-        case .Tokyo2: return "Japan"
-        case .Honolulu: return "America"
-        }
-    }
-
-    var areaName: String {
-        switch self {
-        case .Tokyo1: return "Tokyo1"
-        case .Tokyo2: return "Tokyo2"
-        case .Honolulu: return "Honolulu"
-        }
-    }
-
-    var cityName: String {
-        switch self {
-        case .Tokyo1: return "Tokyo1"
-        case .Tokyo2: return "Tokyo2"
-        case .Honolulu: return "Honolulu"
-        }
-    }
-
-    var isFavorited: Bool {
-        switch self {
-        case .Tokyo1: return true
-        case .Tokyo2: return false
-        case .Honolulu: return false
-        }
-    }
-    
-    var isRecommended: Bool {
-        switch self {
-        case .Tokyo1: return true
-        case .Tokyo2: return true
-        case .Honolulu: return false
-        }
-    }
-    static var array: [AreaIPAddress] {
-        return [.Tokyo1, .Tokyo2, .Honolulu]
-    }
-    
-    static var count: Int {
-        return array.count
-    }
-}
-
 class RegionSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     private enum Section: Int {
@@ -81,12 +20,19 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBOutlet weak var tableView: ThemedTableView!
-    var areaNames: [String] = []
+    
+    var favoriteResults: Results<Region>!
+    var recommendedResults: Results<Region>!
+    var otherResults: Results<Region>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let realm = try! Realm()
+        favoriteResults = realm.objects(Region).filter("isFavorite = true")
+        recommendedResults = realm.objects(Region).filter("isFavorite = false AND isRecommended = true")
+        otherResults = realm.objects(Region).filter("isFavorite = false AND isRecommended = false")
         
     }
 
@@ -131,58 +77,80 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     }
         
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return areasInSection(section).count
+        let section = Section(rawValue: section)!
+
+        switch section {
+        case .favorite:
+            return favoriteResults.count
+        case .recommended:
+            return recommendedResults.count
+        case .allLocation:
+            return otherResults.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let section = Section(rawValue: indexPath.section)!
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
-        let areas = areasInSection(indexPath.section)
-        
-        cell?.titleLabel.text = areas[indexPath.row].cityName
         
         switch section {
         case .favorite:
+            cell?.titleLabel.text = favoriteResults[indexPath.row].name
             cell?.starButton.setImage(R.image.iconStarOn(), forState: .Normal)
-        default:
+        case .recommended:
+            cell?.titleLabel.text = recommendedResults[indexPath.row].name
+            cell?.starButton.setImage(R.image.iconStar(), forState: .Normal)
+        case .allLocation:
+            cell?.titleLabel.text = otherResults[indexPath.row].name
             cell?.starButton.setImage(R.image.iconStar(), forState: .Normal)
         }
+        
+        cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
         
         return cell!
     }
     
-    func areasInSection(section: Int) -> [AreaIPAddress] {
-        let section = Section(rawValue: section)
-        
-        switch section! {
-        case .favorite:
-            return AreaIPAddress.array.filter({
-                return $0.isFavorited
-            })
-        case .recommended:
-            return AreaIPAddress.array.filter({
-                return $0.isRecommended
-            }).filter({
-                return !$0.isFavorited
-            })
-        case .allLocation:
-            return AreaIPAddress.array.filter({
-                return !$0.isFavorited
-            }).filter({
-                return !$0.isRecommended
-            })
-
-        }
-    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let areas = areasInSection(indexPath.section)
-        let area = areas[indexPath.row]
-        mainStore.dispatch(RegionAction.ChangeRegion(areaName: area.areaName, countryName: area.countryName, cityName: area.cityName, serverIP: area.IPAddress))
+        let section = Section(rawValue: indexPath.section)!
+        
+        let region: Region
+        switch section {
+        case .favorite:
+            region = favoriteResults[indexPath.row]
+        case .recommended:
+            region = recommendedResults[indexPath.row]
+        case .allLocation:
+            region = otherResults[indexPath.row]
+        }
+
+        mainStore.dispatch(RegionAction.ChangeRegion(name: region.name, serverIP: region.ipAddress))
         VPNConfigurationCoordinator.start { 
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
+    @IBAction func didSelectFavoriteAction(sender: UIButton) {
+        let row = sender.tag % 10000
+        let section = Section(rawValue: sender.tag / 100000)!
+
+        let target: Region
+        switch section {
+        case .favorite:
+            target = favoriteResults[row]
+        case .recommended:
+            target = recommendedResults[row]
+        case .allLocation:
+            target = otherResults[row]
+        }
+        let realm = try! Realm()
+        try! realm.write {
+            target.isFavorite = !target.isFavorite
+            realm.add(target, update: true)
+        }
+        self.tableView.beginUpdates()
+        let set = NSIndexSet(indexesInRange: NSRange(location: 0, length: 3))
+        self.tableView.reloadSections(set, withRowAnimation: .Automatic)
+        self.tableView.endUpdates()
+    }
 }

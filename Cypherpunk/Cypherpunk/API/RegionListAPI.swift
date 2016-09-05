@@ -43,15 +43,15 @@ struct RegionListRequest: RequestType {
             let realm = try! Realm()
             try! realm.write({
                 realm.deleteAll()
-                for (areaname, list) in areaDictionary {
+                for (_, list) in areaDictionary {
                     if let countriesDictionary = list as? Dictionary<String, AnyObject> {
-                        for (countryname, list) in countriesDictionary {
+                        for (_, list) in countriesDictionary {
                             if let cityList = list as? Array<Dictionary<String, String>> {
                                 for city in cityList {
                                     let cityname = city["city"]
                                     let ip = city["ip"]
                                     
-                                    let region = Region(area: areaname, countryCode: countryname, city: cityname!, ipAddress: ip!)
+                                    let region = Region(name: cityname!, ipAddress: ip!)
                                     realm.add(region, update: true)
                                 }
                             }
@@ -74,21 +74,16 @@ struct RegionListRequest: RequestType {
 import Realm
 
 class Region: Object {
-    dynamic var id: String = ""
-    dynamic var area: String = ""
-    dynamic var countryCode: String = ""
-    dynamic var city: String = ""
+    dynamic var name: String = ""
     dynamic var ipAddress: String = ""
+    dynamic var isFavorite: Bool = false
+    dynamic var isRecommended: Bool = false
     
-    init(area: String, countryCode: String, city: String, ipAddress: String) {
+    init(name: String, ipAddress: String) {
         super.init()
-        
-        self.area = area
-        self.countryCode = countryCode
-        self.city = city
+
+        self.name = name
         self.ipAddress = ipAddress
-        
-        self.id = Region.calcId(area, countryCode: countryCode, city: city)
     }
     
     required init(realm: RLMRealm, schema: RLMObjectSchema) {
@@ -102,19 +97,13 @@ class Region: Object {
     required init(value: AnyObject, schema: RLMSchema) {
         super.init(value: value, schema: schema)
     }
-    
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    private static func calcId(area: String, countryCode: String, city: String) -> String {
-        let str = area + "##" + countryCode + "##" + city
-        return str.sha256String
-    }
 
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+    
     override var hashValue: Int {
-        return id != "" ? id.hashValue : 0
+        return name != "" ? name.hashValue : 0
     }
 
 }

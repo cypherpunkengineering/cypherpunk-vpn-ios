@@ -14,18 +14,14 @@ struct RegionReducer: Reducer {
     func handleAction(action: Action, state: RegionState?) -> RegionState {
         
         var regionState = state ?? RegionState(
-            areaName: AreaIPAddress.Tokyo1.areaName,
-            countryName: AreaIPAddress.Tokyo1.countryName,
-            cityName: AreaIPAddress.Tokyo1.cityName,
-            serverIP: AreaIPAddress.Tokyo1.IPAddress,
+            name:  "",
+            serverIP: "",
             recentryConnected: [])
         
         if let action = action as? RegionAction {
             switch action {
-            case .ChangeRegion(let areaName, let countryName, let cityName, let serverIP):
-                regionState.areaName = areaName
-                regionState.countryName = countryName
-                regionState.cityName = cityName
+            case .ChangeRegion(let name, let serverIP):
+                regionState.name = name
                 regionState.serverIP = serverIP
             case .Connect:
                 let history = RegionHistory(state: regionState)
