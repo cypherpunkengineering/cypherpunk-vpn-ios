@@ -69,7 +69,7 @@ public class VPNConfigurationCoordinator {
             
             manager.localizedDescription = "Cyperpunk VPN"
             
-            manager.onDemandEnabled = true
+            manager.onDemandEnabled = false
             manager.enabled = true
             
             manager.saveToPreferencesWithCompletionHandler({ (error) in
