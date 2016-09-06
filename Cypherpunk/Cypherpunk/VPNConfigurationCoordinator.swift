@@ -34,7 +34,7 @@ public class VPNConfigurationCoordinator {
                 let password = "testpassword"
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
                 
-                newIPSec.localIdentifier = ""
+                newIPSec.localIdentifier = String.randomStringForLocalIdentifier()
                 newIPSec.remoteIdentifier = "d06f348c.wiz.network"
                 
                 newIPSec.useExtendedAuthentication = true
@@ -53,7 +53,7 @@ public class VPNConfigurationCoordinator {
                 
                 newIPSec.useExtendedAuthentication = true
                 
-                newIPSec.localIdentifier = ""
+                newIPSec.localIdentifier = String.randomStringForLocalIdentifier()
                 newIPSec.remoteIdentifier = "vpn.cypherpunk.com"
             }
 
@@ -99,5 +99,28 @@ public class VPNConfigurationCoordinator {
     class func disconnect() {
         let manager = NEVPNManager.sharedManager()
         manager.connection.stopVPNTunnel()
+    }
+}
+
+
+private extension String {
+    static func randomStringForLocalIdentifier() -> String {
+        
+        let keychain = Keychain()
+        let accessKey = "com.cypherpunk.data.localIdentifier.key"
+        if let wrappedIdentifier = try? keychain.getString(accessKey), let unwrapped = wrappedIdentifier {
+            return unwrapped
+        } else {
+            let alphabet = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            let upperBound = UInt32(alphabet.characters.count)
+            
+            let localIdentifier =  String((0..<10).map { _ -> Character in
+                return alphabet[alphabet.startIndex.advancedBy(Int(arc4random_uniform(upperBound)))]
+                })
+            
+            try! keychain.set(localIdentifier, key: accessKey)
+            return localIdentifier
+        }
+        
     }
 }
