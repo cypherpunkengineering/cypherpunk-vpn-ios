@@ -9,9 +9,7 @@
 import UIKit
 import NetworkExtension
 
-class SettingsStatusViewController: UITableViewController, PageContent {
-
-    var pageIndex: Int = 1
+class SettingsStatusViewController: UITableViewController {
     
     @IBOutlet weak var connectionTimeLabelButton: UIButton!
     

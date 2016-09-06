@@ -1,11 +1,14 @@
 PODS:
-  - APIKit (2.0.4):
+  - APIKit (2.0.5):
     - Result (~> 2.1.1)
   - Himotoki (2.1.1)
   - KeychainAccess (2.3.6)
-  - R.swift (2.4.0):
-    - R.swift.Library (~> 2.2.0)
-  - R.swift.Library (2.2.0)
+  - MZAppearance (1.1.6)
+  - MZFormSheetPresentationController (2.4.2):
+    - MZAppearance
+  - R.swift (2.5.0):
+    - R.swift.Library (~> 2.3.0)
+  - R.swift.Library (2.3.0)
   - ReachabilitySwift (2.3.3)
   - Realm (1.0.2):
     - Realm/Headers (= 1.0.2)
@@ -22,6 +25,7 @@ DEPENDENCIES:
   - APIKit
   - Himotoki
   - KeychainAccess
+  - MZFormSheetPresentationController
   - R.swift
   - ReachabilitySwift
   - RealmSwift
@@ -40,11 +44,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
 
 SPEC CHECKSUMS:
-  APIKit: 08089ab5da33faece57dfecc4bfe787a731e218b
+  APIKit: c78ad25192db1a2b0703d888c0a7cbb8127102f8
   Himotoki: 0e539e721830384e128b0c0c94cbd9693ca30761
   KeychainAccess: 7f10e2ef998ddf954a64d5d608be08677774684d
-  R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
-  R.swift.Library: 31a487b65381f37a7d203a6f1f935b43c9be35b0
+  MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
+  MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
+  R.swift: 01b9966e8dbe587a11ca2f65a1834dac2fa7b247
+  R.swift.Library: 75df6abfd22492c852136c4d7b6a9ca21664772a
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
@@ -54,6 +60,6 @@ SPEC CHECKSUMS:
   SwiftyStoreKit: 6df86a58380d591d06f204eaee92bfaf39704627
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 3def6ae0c082ef08dda32395727fd8435b384447
+PODFILE CHECKSUM: 63e7fffcf5ed64a15f98ee658fa89e8024dd0fcb
 
-COCOAPODS: 1.0.0.beta.6
+COCOAPODS: 1.0.0
