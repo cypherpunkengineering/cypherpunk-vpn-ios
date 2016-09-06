@@ -30,10 +30,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Settings Status View Controller-->
+        <!--Connection Status View Controller-->
         <scene sceneID="THP-QE-Fag">
             <objects>
-                <tableViewController id="xtE-zI-TQX" customClass="SettingsStatusViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="xtE-zI-TQX" customClass="ConnectionStatusViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="6Cg-53-KET" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,7 +347,7 @@
         <!--Connection Status-->
         <scene sceneID="ZwX-CS-nan">
             <objects>
-                <viewController storyboardIdentifier="Status" title="Connection Status" id="bKj-AR-6Z6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectionStatus" title="Connection Status" id="bKj-AR-6Z6" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dig-YJ-PY6"/>
                         <viewControllerLayoutGuide type="bottom" id="eOI-B8-FYC"/>
@@ -399,7 +399,7 @@
         <!--Configuration-->
         <scene sceneID="9VT-yi-Gak">
             <objects>
-                <viewController storyboardIdentifier="Settings" title="Configuration" id="MYz-Gm-7jh" customClass="ConfigurationRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Configuration" title="Configuration" id="MYz-Gm-7jh" customClass="ConfigurationRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="40p-FY-V3A"/>
                         <viewControllerLayoutGuide type="bottom" id="Sv5-q4-8ap"/>
@@ -439,10 +439,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="336"/>
         </scene>
-        <!--Accounts-->
+        <!--Configuration-->
         <scene sceneID="MTo-CB-NCr">
             <objects>
-                <tableViewController title="Accounts" id="Rsw-pb-lZT" customClass="ConfigurationTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Configuration" id="Rsw-pb-lZT" customClass="ConfigurationTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ido-Iu-NI1" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -731,13 +731,6 @@
                             <outlet property="delegate" destination="Rsw-pb-lZT" id="cry-HE-eOZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Accounts" id="j1L-kF-2k8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="6xm-it-ik9">
-                            <connections>
-                                <action selector="closeAction:" destination="Rsw-pb-lZT" id="UDj-ef-gHm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="mailAddressLabel" destination="FpT-Lh-UF4" id="pec-Th-8nV"/>
                         <outlet property="usernameLabelButton" destination="t3g-BA-opR" id="Grd-Iu-Pez"/>
@@ -745,13 +738,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVQ-qa-Lia" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationItem title="Accounts" id="QIg-36-qMp">
-                    <barButtonItem key="leftBarButtonItem" title="Close" id="vb9-ZR-8gk">
-                        <connections>
-                            <action selector="closeAction:" destination="Rsw-pb-lZT" id="JOF-en-JjP"/>
-                        </connections>
-                    </barButtonItem>
-                </navigationItem>
             </objects>
             <point key="canvasLocation" x="813" y="336"/>
         </scene>

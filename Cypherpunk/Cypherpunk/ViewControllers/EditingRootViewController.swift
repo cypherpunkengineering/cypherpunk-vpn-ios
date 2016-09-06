@@ -1,5 +1,5 @@
 //
-//  UpdateEmailRootViewController.swift
+//  EditingRootViewController.swift
 //  Cypherpunk
 //
 //  Created by KeisukeKimura on 2016/08/18.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class UpdateEmailRootViewController: UIViewController {
+class EditingRootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let button = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(UpdateEmailRootViewController.doneAction))
+        let button = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(EditingRootViewController.doneAction))
         self.navigationItem.setRightBarButtonItem(button, animated: true)
     }
 

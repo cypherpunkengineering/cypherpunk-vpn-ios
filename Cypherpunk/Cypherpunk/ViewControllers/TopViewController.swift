@@ -237,11 +237,11 @@ class TopViewController: UIViewController, StoreSubscriber {
     }
 
     @IBAction func transitionToConfigurationAction(sender: AnyObject) {
-        let vc = R.storyboard.settings.settings()
+        let vc = R.storyboard.configuration.configuration()
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     @IBAction func transitionToConnectionStatusAction(sender: AnyObject) {
-        let vc = R.storyboard.settings.status()
+        let vc = R.storyboard.configuration.connectionStatus()
         self.navigationController?.pushViewController(vc!, animated: true)
     }
 }

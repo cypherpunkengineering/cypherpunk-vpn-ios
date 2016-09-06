@@ -1,5 +1,5 @@
 //
-//  SettingsStatusViewController.swift
+//  ConnectionStatusViewController.swift
 //  Cypherpunk
 //
 //  Created by 木村圭佑 on 2016/08/05.
@@ -9,7 +9,7 @@
 import UIKit
 import NetworkExtension
 
-class SettingsStatusViewController: UITableViewController {
+class ConnectionStatusViewController: UITableViewController {
     
     @IBOutlet weak var connectionTimeLabelButton: UIButton!
     
@@ -134,7 +134,7 @@ class SettingsStatusViewController: UITableViewController {
 }
 
 import ReSwift
-extension SettingsStatusViewController: StoreSubscriber {
+extension ConnectionStatusViewController: StoreSubscriber {
     func newState(state: AppState) {
         let statusState = state.statusState
         self.originalIPAddressLabel.text = statusState.originalIPAddress ?? "---.---.---.---"
