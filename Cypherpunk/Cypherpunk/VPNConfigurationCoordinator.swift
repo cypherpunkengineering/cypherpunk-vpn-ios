@@ -34,7 +34,7 @@ public class VPNConfigurationCoordinator {
                 let password = "testpassword"
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
                 
-                newIPSec.localIdentifier = String.randomStringForLocalIdentifier()
+                newIPSec.localIdentifier = ""
                 newIPSec.remoteIdentifier = "d06f348c.wiz.network"
                 
                 newIPSec.useExtendedAuthentication = true
