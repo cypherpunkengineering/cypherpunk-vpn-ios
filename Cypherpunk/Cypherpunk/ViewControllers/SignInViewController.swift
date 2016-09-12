@@ -21,6 +21,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,19 +53,20 @@ class SignInViewController: UIViewController, StoreSubscriber {
 
     func signIn() {
         if let address = mailAddressField.text, let password = passwordField.text where isValidMailAddress(address) && password != "" {
-            
-            SVProgressHUD.show()
+
+            IndicatorView.show()
             
             let request = LoginRequest(login: address, password: password)
             Session.sendRequest(request) { result in
                 
                 switch result {
                 case .Success(let response):
-                    SVProgressHUD.dismiss()
                     mainStore.dispatch(AccountAction.Login(response: response))
                 case .Failure(let error):
                     SVProgressHUD.showErrorWithStatus("\((error as NSError).localizedDescription)")
                 }
+                
+                IndicatorView.dismiss()
             }
 
         }
