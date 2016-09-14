@@ -94,7 +94,6 @@ class TopViewController: UIViewController, StoreSubscriber {
         animation.duration = circleAnimationDuration
         animation.repeatCount = HUGE
         connectingBorderImageView.layer.addAnimation(animation, forKey: "rotation")
-        
     }
     
     override func viewWillDisappear(animated: Bool) {

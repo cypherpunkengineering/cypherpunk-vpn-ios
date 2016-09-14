@@ -50,7 +50,6 @@
 		2061342D1D8296AC00480621 /* BlurredIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2061342C1D8296AC00480621 /* BlurredIndicatorView.xib */; };
 		206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4D6F1D82BDF300853B47 /* IndicatorView.swift */; };
 		2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */; };
-		2079C8881D5DDD10004274ED /* ConnectedAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8871D5DDD10004274ED /* ConnectedAnimationViewController.swift */; };
 		2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */; };
 		2085F33D1D6C4A76002D35C2 /* JSONIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33C1D6C4A76002D35C2 /* JSONIP.swift */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
@@ -95,7 +94,6 @@
 		2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */; };
 		2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B73C70E1D5C7F670090FF8B /* Animation.storyboard */; };
 		2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */; };
-		2B73C7141D5CDBFF0090FF8B /* VerticalScrollAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7131D5CDBFF0090FF8B /* VerticalScrollAnimator.swift */; };
 		2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */; };
 		2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */; };
 		2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */; };
@@ -184,7 +182,6 @@
 		2061342C1D8296AC00480621 /* BlurredIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlurredIndicatorView.xib; sourceTree = "<group>"; };
 		206D4D6F1D82BDF300853B47 /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCharacterGenerator.swift; sourceTree = "<group>"; };
-		2079C8871D5DDD10004274ED /* ConnectedAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectedAnimationViewController.swift; sourceTree = "<group>"; };
 		2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentContainerViewController.swift; sourceTree = "<group>"; };
 		2085F33C1D6C4A76002D35C2 /* JSONIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONIP.swift; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
@@ -230,7 +227,6 @@
 		2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNConfigurationCoordinator.swift; sourceTree = "<group>"; };
 		2B73C70E1D5C7F670090FF8B /* Animation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Animation.storyboard; sourceTree = "<group>"; };
 		2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
-		2B73C7131D5CDBFF0090FF8B /* VerticalScrollAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalScrollAnimator.swift; sourceTree = "<group>"; };
 		2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNPersistentDataGenerator.m; sourceTree = "<group>"; };
 		2B75524B1D6AE9CA00E07A4B /* VPNPersistentDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNPersistentDataGenerator.h; sourceTree = "<group>"; };
 		2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordTableViewController.swift; sourceTree = "<group>"; };
@@ -468,7 +464,6 @@
 				203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */,
 				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
 				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
-				2079C8871D5DDD10004274ED /* ConnectedAnimationViewController.swift */,
 				20EBFD3F1D5485D8008B9F14 /* ConnectionStatusViewController.swift */,
 				203C62F31D7036C900891F91 /* FirstOpenViewController.swift */,
 				203C62F71D703A7B00891F91 /* GetPremiumPlanRootViewController.swift */,
@@ -550,7 +545,6 @@
 		2B73C7121D5CDBCD0090FF8B /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				2B73C7131D5CDBFF0090FF8B /* VerticalScrollAnimator.swift */,
 				2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */,
 			);
 			path = Animation;
@@ -878,7 +872,6 @@
 				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
 				206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */,
 				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
-				2B73C7141D5CDBFF0090FF8B /* VerticalScrollAnimator.swift in Sources */,
 				2B06416E1D6D73E5009475F4 /* StatusState.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
@@ -935,7 +928,6 @@
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
 				203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */,
-				2079C8881D5DDD10004274ED /* ConnectedAnimationViewController.swift in Sources */,
 				2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
@@ -1094,6 +1086,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1112,6 +1105,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

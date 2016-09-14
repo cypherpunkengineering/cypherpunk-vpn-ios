@@ -8,58 +8,41 @@
 
 import UIKit
 import CoreGraphics
+import NetworkExtension
 
 class AnimationViewController: UIViewController {
     
-    let itemSize = CGSizeMake(15,21)
+    let itemSize = CGSizeMake(14,22)
     var animationLayer: CALayer!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let defaultCenter = NSNotificationCenter.defaultCenter()
-        defaultCenter.addObserver(self, selector: #selector(AnimationViewController.willResignActive), name: UIApplicationWillResignActiveNotification, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(AnimationViewController.didBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
-        
-    }
-    
-    func willResignActive() {
-        if animationLayer != nil {
-            self.animationLayer.removeFromSuperlayer()
-            self.animationLayer = self.instanceAnimationLayer()
-            self.view.layer.addSublayer(self.animationLayer)
-        }
-    }
-    
-    func didBecomeActive() {
-        if animationLayer != nil {
-            self.startAnimation()
-        }
+        // Do any additional setup after loading the view.
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(didChangeVPNStatus),
+            name: NEVPNStatusDidChangeNotification,
+            object: nil
+        )
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if animationLayer != nil {
-            self.startAnimation()
-        }
+        super.viewWillAppear(animated)        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        animationLayer = instanceAnimationLayer()
-        self.view.layer.addSublayer(animationLayer)
-        startAnimation()
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
-        if animationLayer != nil {
-            self.animationLayer.removeFromSuperlayer()
-            self.animationLayer = self.instanceAnimationLayer()
-            self.view.layer.addSublayer(self.animationLayer)
+        if animationLayer == nil {
+            animationLayer = instanceAnimationLayer()
+            self.view.layer.insertSublayer(animationLayer, atIndex: 0)
+            startTimer()
         }
+        //    startAnimation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,20 +50,43 @@ class AnimationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    var speed = 1.0
+    func didChangeVPNStatus(notification: NSNotification) {
+        guard let connection = notification.object as? NEVPNConnection else {
+            return
+        }
+        
+        let status = connection.status
+
+        switch status {
+        case .Connected:
+            speed = 2.0
+        case .Connecting:
+            speed = 1.5
+        case .Disconnected:
+            speed = 1.0
+        case .Disconnecting:
+            speed = 1.5
+        default:
+            speed = 0
+        }
+        
+    }
+
     func instanceAnimationLayer() -> CALayer {
         
         let layer = CALayer()
         layer.frame = self.view.frame
         
         let horizontalItemsCount = Int(ceil(view.frame.width / itemSize.width))
-        let verticalItemsCount = Int(ceil(view.frame.height / itemSize.height)) + 1
-        let font = R.font.dosisRegular(size: 20)
+        let verticalItemsCount = Int(ceil(view.frame.height / itemSize.height)) + 4
+        let font = UIFont(name: "Menlo-Regular", size: 21)
         
         for x in 0...horizontalItemsCount {
             let verticalLayer = CALayer()
             
             let size = CGSize(width: itemSize.width, height: CGFloat(verticalItemsCount) * itemSize.height)
-            verticalLayer.frame = CGRect(origin: CGPoint(x: CGFloat(x) * itemSize.width , y: 0), size: size)
+            verticalLayer.frame = CGRect(origin: CGPoint(x: CGFloat(x) * itemSize.width + CGFloat(x) * 3.0 , y: 0), size: size)
             
             for y in 0...verticalItemsCount {
                 let number: Int = random() % 2
@@ -90,17 +96,11 @@ class AnimationViewController: UIViewController {
                 let textLayer = CATextLayer()
                 textLayer.string = String(number)
                 textLayer.font = font
-                textLayer.fontSize = 20
-                let baseColor = UIColor.whiteThemeNavigationColor()
+                textLayer.fontSize = 21
                 
-                switch mainStore.state.themeState.themeType {
-                case .White:
-                    textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.15).CGColor
-                case .Black:
-                    textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.5).CGColor
-                case .Indigo:
-                    textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.15).CGColor                    
-                }
+                let baseColor = UIColor.whiteColor()
+                
+                textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.15).CGColor
                 textLayer.frame = frame
                 
                 textLayer.alignmentMode = kCAAlignmentCenter
@@ -111,33 +111,49 @@ class AnimationViewController: UIViewController {
         }
         return layer
     }
-    
-    func animationResume() {
-        for animator in animators {
-            animator.animationResume()
+
+    var beforeSec: NSTimeInterval = 0
+    var timer: NSTimer!
+    func update() {
+        let now = NSDate().timeIntervalSince1970
+
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        var index = 0
+        for sub in self.animationLayer.sublayers! {
+            for textLayer in sub.sublayers! {
+                switch index % 2 {
+                case 0:
+                    var yPosition = textLayer.position.y + CGFloat(10.5 * Double(now - self.beforeSec) * speed)
+                    if yPosition >= sub.frame.size.height {
+                        yPosition = yPosition - (sub.frame.size.height + itemSize.height)
+                    }
+                    textLayer.position = CGPoint(x: textLayer.position.x, y: yPosition)
+
+                case 1:
+                    var yPosition = textLayer.position.y - CGFloat(10.5 * Double(now - self.beforeSec) * speed)
+                    if yPosition <= -itemSize.height {
+                        yPosition = yPosition + sub.frame.size.height + itemSize.height
+                    }
+                    textLayer.position = CGPoint(x: textLayer.position.x, y: yPosition)
+                default:
+                    fatalError()
+                }
+            }
+            index = index + 1
         }
+        CATransaction.commit()
+        self.beforeSec = now
     }
     
-    func animationPause() {
-        for animator in animators {
-            animator.animationPause()
-        }
+    func startTimer() {
+
+        self.beforeSec = NSDate().timeIntervalSince1970
+
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0/60.0, target: self, selector: #selector(AnimationViewController.update), userInfo: nil, repeats: true)
     }
     
-    var animators: [VerticalScrollAnimator] = []
-    func startAnimation() {
-        animators.removeAll()
-        for i in 0 ..< animationLayer.sublayers!.count {
-            let verticalLayer = animationLayer.sublayers![i]
-            let direction = AnimationDirection(rawValue: i % 2)!
-            
-            let animator = VerticalScrollAnimator(
-                itemCount: verticalLayer.sublayers!.count,
-                verticalLayer: verticalLayer,
-                direction: direction
-            )
-            animator.animationStart()
-            animators.append(animator)
-        }
+    func cancelTimer() {
     }
+    
 }
