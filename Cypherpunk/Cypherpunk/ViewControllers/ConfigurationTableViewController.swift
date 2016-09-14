@@ -25,6 +25,7 @@ class ConfigurationTableViewController: UITableViewController {
     @IBOutlet weak var usernameLabelButton: ThemedTintedNavigationButton!
     @IBOutlet weak var mailAddressLabel: UILabel!
     @IBOutlet weak var vpnProtocolDetailLabel: UILabel!
+    @IBOutlet weak var autoConnectSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +43,11 @@ class ConfigurationTableViewController: UITableViewController {
         self.navigationController?.navigationBarHidden = false
         
         let accountState = mainStore.state.accountState
+        let settingsState = mainStore.state.settingsState
         mailAddressLabel.text = accountState.mailAddress
-        vpnProtocolDetailLabel.text = mainStore.state.settingsState.vpnProtocolMode.description
+        vpnProtocolDetailLabel.text = settingsState.vpnProtocolMode.description
         usernameLabelButton.setTitle(accountState.nickName, forState: .Normal)
+        autoConnectSwitch.setOn(settingsState.isAutoReconnect, animated: false)
         self.tableView.reloadData()
         
     }
@@ -201,5 +204,9 @@ class ConfigurationTableViewController: UITableViewController {
         
         return super.tableView(tableView, indentationLevelForRowAtIndexPath: indexPath)
         
+    }
+    
+    @IBAction func changeAutoConnectAction(sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.on))
     }
 }

@@ -8,7 +8,8 @@
 
 import Foundation
 import ReSwift
-
+import NetworkExtension
+ 
 struct SettingsReducer: Reducer {
     func handleAction(action: Action, state: SettingsState?) -> SettingsState {
         var state = state ?? SettingsState()
@@ -20,8 +21,13 @@ struct SettingsReducer: Reducer {
             case .vpnProtocolMode(let value):
                 state.vpnProtocolMode = value
             }
+            let manager = NEVPNManager.sharedManager()
+            let isConnected = manager.connection.status == .Connected
+
             VPNConfigurationCoordinator.start{
-                
+                if state.isAutoReconnect && isConnected {
+                    try! VPNConfigurationCoordinator.connect()
+                }
             }
         }
         return state

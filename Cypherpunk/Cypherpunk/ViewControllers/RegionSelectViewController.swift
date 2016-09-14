@@ -10,6 +10,7 @@ import UIKit
 
 import ReSwift
 import RealmSwift
+import NetworkExtension
 
 class RegionSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -125,8 +126,14 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         }
 
         mainStore.dispatch(RegionAction.ChangeRegion(name: region.name, serverIP: region.ipAddress))
-        VPNConfigurationCoordinator.start { 
-            self.dismissViewControllerAnimated(true, completion: nil)
+        let manager = NEVPNManager.sharedManager()
+        let isConnected = manager.connection.status == .Connected
+        VPNConfigurationCoordinator.start {
+            self.dismissViewControllerAnimated(true, completion: {
+                if mainStore.state.settingsState.isAutoReconnect && isConnected {
+                    try! VPNConfigurationCoordinator.connect()
+                }
+            })
         }
     }
     
