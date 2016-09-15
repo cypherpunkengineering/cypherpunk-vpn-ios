@@ -29,23 +29,23 @@ extension Hardware {
         case .IPHONE_2G, .IPHONE_3G, .IPHONE_3GS, .IPHONE_4, .IPHONE_4_CDMA:
             return "Not Supported"
         case .IPHONE_4S:
-            return "iPhone 4S"
+            return "iPhone4S"
         case .IPHONE_5, .IPHONE_5_CDMA_GSM:
-            return "iPhone 5"
+            return "iPhone5"
         case .IPHONE_5C, .IPHONE_5C_CDMA_GSM:
-            return "iPhone 5c"
+            return "iPhone5c"
         case .IPHONE_5S, .IPHONE_5S_CDMA_GSM:
-            return "iPhone 5s"
+            return "iPhone5s"
         case .IPHONE_6:
-            return "iPhone 6"
+            return "iPhone6"
         case .IPHONE_6_PLUS:
-            return "iPhone 6 Plus"
+            return "iPhone6Plus"
         case .IPHONE_6S:
-            return "iPhone 6S"
+            return "iPhone6S"
         case .IPHONE_6S_PLUS:
-            return "iPhone 6S Plus"
+            return "iPhone6SPlus"
         case .IPHONE_SE:
-            return "iPhone SE"
+            return "iPhoneSE"
         default:
             return "Not Supported"
         }
