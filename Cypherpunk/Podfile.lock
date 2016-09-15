@@ -24,9 +24,9 @@ PODS:
 DEPENDENCIES:
   - APIKit
   - Himotoki
-  - KeychainAccess
+  - KeychainAccess (~> 2.3.6)
   - MZFormSheetPresentationController
-  - R.swift
+  - R.swift (~> 2.5.0)
   - ReachabilitySwift
   - RealmSwift
   - ReSwift
@@ -60,6 +60,6 @@ SPEC CHECKSUMS:
   SwiftyStoreKit: 6df86a58380d591d06f204eaee92bfaf39704627
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 63e7fffcf5ed64a15f98ee658fa89e8024dd0fcb
+PODFILE CHECKSUM: 0f38e5e60bce79db678a87125b80868d20926461
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.0.beta.6

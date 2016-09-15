@@ -26,6 +26,7 @@
 		203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203809961D13DAF3005145CD /* NetworkExtension.framework */; };
 		2038099D1D13EEA9005145CD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099C1D13EEA9005145CD /* AppState.swift */; };
 		2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099E1D13EEEB005145CD /* AppReducer.swift */; };
+		203AE7BD1D8A661900183E7F /* SpecificDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203AE7BC1D8A661900183E7F /* SpecificDataProvider.swift */; };
 		203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203C62EB1D7014B700891F91 /* Upgrade.storyboard */; };
 		203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */; };
 		203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203C62EF1D702CD900891F91 /* FirstOpen.storyboard */; };
@@ -73,6 +74,9 @@
 		20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A451D3780BC00785399 /* SettingsState.swift */; };
 		20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A471D37851200785399 /* SettingsReducer.swift */; };
 		20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A491D378CBC00785399 /* SettingsAction.swift */; };
+		20F15CED1D8A755C0000DAA7 /* DeviceGuru.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F15CEA1D8A755C0000DAA7 /* DeviceGuru.swift */; };
+		20F15CEE1D8A755C0000DAA7 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */; };
+		20F15CEF1D8A755C0000DAA7 /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F15CEC1D8A755C0000DAA7 /* Hardware.swift */; };
 		20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F850901D3DF40A009079A0 /* LoginAPI.swift */; };
 		2B06416E1D6D73E5009475F4 /* StatusState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B06416D1D6D73E5009475F4 /* StatusState.swift */; };
 		2B0641701D6D7444009475F4 /* StatusAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B06416F1D6D7444009475F4 /* StatusAction.swift */; };
@@ -158,6 +162,7 @@
 		203809981D13DAF3005145CD /* Cypherpunk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cypherpunk.entitlements; sourceTree = "<group>"; };
 		2038099C1D13EEA9005145CD /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		2038099E1D13EEEB005145CD /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		203AE7BC1D8A661900183E7F /* SpecificDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificDataProvider.swift; sourceTree = "<group>"; };
 		203C62EB1D7014B700891F91 /* Upgrade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Upgrade.storyboard; sourceTree = "<group>"; };
 		203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeSelectTableViewController.swift; sourceTree = "<group>"; };
 		203C62EF1D702CD900891F91 /* FirstOpen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstOpen.storyboard; sourceTree = "<group>"; };
@@ -205,6 +210,9 @@
 		20EC4A451D3780BC00785399 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		20EC4A471D37851200785399 /* SettingsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		20EC4A491D378CBC00785399 /* SettingsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
+		20F15CEA1D8A755C0000DAA7 /* DeviceGuru.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceGuru.swift; sourceTree = "<group>"; };
+		20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceList.plist; sourceTree = "<group>"; };
+		20F15CEC1D8A755C0000DAA7 /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
 		20F850901D3DF40A009079A0 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		2B06416D1D6D73E5009475F4 /* StatusState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusState.swift; sourceTree = "<group>"; };
 		2B06416F1D6D7444009475F4 /* StatusAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusAction.swift; sourceTree = "<group>"; };
@@ -439,6 +447,7 @@
 		20D895E81D1D0C17002B9F9D /* External */ = {
 			isa = PBXGroup;
 			children = (
+				20F15CE91D8A75520000DAA7 /* DeviceGuru */,
 				20D895F41D1D1C6F002B9F9D /* IPAddress.swift */,
 				2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */,
 				203C62F11D7035D800891F91 /* TwoColorGradientButton.swift */,
@@ -481,6 +490,16 @@
 				20D896041D23AEA0002B9F9D /* MailAddressValidator.swift */,
 			);
 			path = Validator;
+			sourceTree = "<group>";
+		};
+		20F15CE91D8A75520000DAA7 /* DeviceGuru */ = {
+			isa = PBXGroup;
+			children = (
+				20F15CEA1D8A755C0000DAA7 /* DeviceGuru.swift */,
+				20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */,
+				20F15CEC1D8A755C0000DAA7 /* Hardware.swift */,
+			);
+			name = DeviceGuru;
 			sourceTree = "<group>";
 		};
 		20F8508E1D3DF2F2009079A0 /* Storyboard */ = {
@@ -546,6 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */,
+				203AE7BC1D8A661900183E7F /* SpecificDataProvider.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -691,6 +711,7 @@
 				203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */,
 				2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
+				20F15CEE1D8A755C0000DAA7 /* DeviceList.plist in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
@@ -870,6 +891,7 @@
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
 				2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */,
 				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
+				20F15CED1D8A755C0000DAA7 /* DeviceGuru.swift in Sources */,
 				206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */,
 				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
 				2B06416E1D6D73E5009475F4 /* StatusState.swift in Sources */,
@@ -919,8 +941,10 @@
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
+				20F15CEF1D8A755C0000DAA7 /* Hardware.swift in Sources */,
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */,
+				203AE7BD1D8A661900183E7F /* SpecificDataProvider.swift in Sources */,
 				2085F33D1D6C4A76002D35C2 /* JSONIP.swift in Sources */,
 				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,

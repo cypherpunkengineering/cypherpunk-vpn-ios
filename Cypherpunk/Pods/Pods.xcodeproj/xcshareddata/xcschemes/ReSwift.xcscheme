@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "400279FD3E7A0EE79EADED4DD087EF2F"
+               BlueprintIdentifier = "8E4739896C027A4164B4898A6CD74D0F"
                BuildableName = "ReSwift.framework"
                BlueprintName = "ReSwift"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "400279FD3E7A0EE79EADED4DD087EF2F"
+            BlueprintIdentifier = "8E4739896C027A4164B4898A6CD74D0F"
             BuildableName = "ReSwift.framework"
             BlueprintName = "ReSwift"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "400279FD3E7A0EE79EADED4DD087EF2F"
+            BlueprintIdentifier = "8E4739896C027A4164B4898A6CD74D0F"
             BuildableName = "ReSwift.framework"
             BlueprintName = "ReSwift"
             ReferencedContainer = "container:Pods.xcodeproj">

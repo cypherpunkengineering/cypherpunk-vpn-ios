@@ -8,9 +8,9 @@ target 'Cypherpunk' do
        pod 'SwiftyStoreKit'
        pod 'APIKit'
        pod 'Himotoki'
-       pod 'R.swift'
+       pod 'R.swift', '~> 2.5.0'
        pod 'ReachabilitySwift'
-       pod 'KeychainAccess'
+       pod 'KeychainAccess', '~> 2.3.6'
        pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
        pod 'RealmSwift'
        pod 'UITextView+Placeholder', '~> 1.2'
@@ -21,14 +21,14 @@ target 'CypherpunkTests' do
        pod 'ReSwift'
        pod 'APIKit'
        pod 'Himotoki'
-       pod 'R.swift'
+       pod 'R.swift', '~> 2.5.0'
 end
 
 target 'CypherpunkUITests' do
        pod 'ReSwift'
        pod 'APIKit'
        pod 'Himotoki'
-       pod 'R.swift'
+       pod 'R.swift', '~> 2.5.0'
        pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
 end
 

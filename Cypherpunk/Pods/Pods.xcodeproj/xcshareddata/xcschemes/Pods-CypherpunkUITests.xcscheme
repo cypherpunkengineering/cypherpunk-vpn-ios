@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "84206ABEDE6964B2ED17A763C0CCBA67"
+               BlueprintIdentifier = "576244C88B0089C7CD34B9E53B0A2AA2"
                BuildableName = "Pods_CypherpunkUITests.framework"
                BlueprintName = "Pods-CypherpunkUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84206ABEDE6964B2ED17A763C0CCBA67"
+            BlueprintIdentifier = "576244C88B0089C7CD34B9E53B0A2AA2"
             BuildableName = "Pods_CypherpunkUITests.framework"
             BlueprintName = "Pods-CypherpunkUITests"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84206ABEDE6964B2ED17A763C0CCBA67"
+            BlueprintIdentifier = "576244C88B0089C7CD34B9E53B0A2AA2"
             BuildableName = "Pods_CypherpunkUITests.framework"
             BlueprintName = "Pods-CypherpunkUITests"
             ReferencedContainer = "container:Pods.xcodeproj">
