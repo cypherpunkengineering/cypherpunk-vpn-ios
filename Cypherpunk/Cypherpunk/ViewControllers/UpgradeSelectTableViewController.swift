@@ -73,4 +73,19 @@ extension UpgradeSelectTableViewController {
             fatalError()
         }
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let accountState = mainStore.state.accountState
+        
+        switch accountState.subscriptionType {
+        case .Free, .FreePremium:
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        case .OneMonth:
+            return super.tableView(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 1))
+        case .HalfYear:
+            return super.tableView(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 2))
+        case .Year:
+            fatalError()
+        }
+    }
 }
