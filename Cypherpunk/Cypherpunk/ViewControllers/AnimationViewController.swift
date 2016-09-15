@@ -66,7 +66,7 @@ class AnimationViewController: UIViewController {
                     for textLayer in row.sublayers! {
                         if let textLayer = textLayer as? CATextLayer {
                             if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
-                                let baseColor = UIColor(red: 175.0 / 255.0, green: 240.0 / 255.0, blue: 103.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.6)
+                                let baseColor = UIColor(red: 175.0 / 255.0, green: 240.0 / 255.0, blue: 103.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
                                 textLayer.foregroundColor = baseColor.CGColor
                             }
                         }
@@ -80,7 +80,7 @@ class AnimationViewController: UIViewController {
                     for textLayer in row.sublayers! {
                         if let textLayer = textLayer as? CATextLayer {
                             if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
-                                let baseColor = UIColor(red: 255.0 / 255.0, green: 120.0 / 255.0, blue: 27.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.6)
+                                let baseColor = UIColor(red: 255.0 / 255.0, green: 120.0 / 255.0, blue: 27.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
                                 textLayer.foregroundColor = baseColor.CGColor
                             }
                         }
@@ -94,7 +94,7 @@ class AnimationViewController: UIViewController {
                     for textLayer in row.sublayers! {
                         if let textLayer = textLayer as? CATextLayer {
                             if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
-                                let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.6)
+                                let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
                                 textLayer.foregroundColor = baseColor.CGColor
                             }
                         }
@@ -108,7 +108,7 @@ class AnimationViewController: UIViewController {
                     for textLayer in row.sublayers! {
                         if let textLayer = textLayer as? CATextLayer {
                             if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
-                                let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.6)
+                                let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
                                 textLayer.foregroundColor = baseColor.CGColor
                             }
                         }
