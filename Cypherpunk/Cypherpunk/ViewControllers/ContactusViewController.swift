@@ -9,24 +9,41 @@
 import UIKit
 
 class ContactusViewController: UIViewController {
-
-    @IBOutlet weak var textView: UITextView!
+    
+    @IBOutlet weak var textViewContainerView: UIView!
+    weak var textView: UITextView!
     @IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         let button = UIBarButtonItem(title: "Submit", style: .Done, target: self, action: #selector(ContactusViewController.submitAction))
         self.navigationItem.setRightBarButtonItem(button, animated: false)
         
         registerKeyboardNotification()
-        
-        self.automaticallyAdjustsScrollViewInsets = false
-        textView.placeholder = "Please describe the issues you are having…"
-    }
 
+        self.automaticallyAdjustsScrollViewInsets = false
+
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let textView = UITextView(frame: CGRect(x: 3, y: 0, width: self.view.frame.size.width - 3, height: self.textViewContainerView.frame.size.height))
+        self.textView = textView
+        textView.backgroundColor = UIColor.clearColor()
+        textView.font = R.font.dosisMedium(size: 16.0)
+        textView.textColor = UIColor.whiteColor()
+        UIView.animateWithDuration(0.3, animations: {
+            textView.delegate = self
+            textView.placeholder = "Please describe the issues you are having…"
+            self.textViewContainerView.addSubview(textView)
+            }) { (finished) in
+                if finished {
+                    textView.becomeFirstResponder()
+                }
+        }
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -34,8 +51,6 @@ class ContactusViewController: UIViewController {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        textView.becomeFirstResponder()
     }
     deinit{
         removeKeyboardNotification()
@@ -45,25 +60,25 @@ class ContactusViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func submitAction() {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
-extension ContactusViewController {
+extension ContactusViewController: UITextViewDelegate {
     
     func keyboardWillShow(sender: NSNotification) {
         if let userInfo = sender.userInfo {
