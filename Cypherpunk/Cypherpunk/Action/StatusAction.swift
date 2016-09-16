@@ -12,5 +12,8 @@ import ReSwift
 enum StatusAction: Action {
     case GetOriginalIPAddress(address: String)
     case GetNewIPAddress(address: String)
+    case GetOriginalGeoLocation(response: GeoLocationResponse)
+    case GetNewGeoLocation(response: GeoLocationResponse)
+
     case SetConnectedDate(date: NSDate?)
 }

@@ -125,7 +125,7 @@ class TopViewController: UIViewController, StoreSubscriber {
             connectingBorderImageView.hidden = true
             outsideCircleView.hidden = false
             
-            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC / 2))
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * NSEC_PER_SEC / 2))
             dispatch_after(time, dispatch_get_main_queue(), { 
                 let IPRequest = JSONIPRequest()
                 Session.sendRequest(IPRequest) {
@@ -133,7 +133,21 @@ class TopViewController: UIViewController, StoreSubscriber {
                     switch result {
                     case .Success(let response):
                         let IPAddress = response.IPAddress
-                        mainStore.dispatch(StatusAction.GetNewIPAddress(address: IPAddress))
+                        if NEVPNManager.sharedManager().connection.status == .Connected {
+                            mainStore.dispatch(StatusAction.GetNewIPAddress(address: IPAddress))
+                            let request = GeoLocationRequest(IPAddress: IPAddress)
+                            Session.sendRequest(request) {
+                                (result) in
+                                switch result {
+                                case .Success(let response):
+                                    if response.isSuccess {
+                                        mainStore.dispatch(StatusAction.GetNewGeoLocation(response: response))
+                                    }
+                                default:
+                                    break
+                                }
+                            }
+                        }
                     default:
                         break
                     }
@@ -166,7 +180,22 @@ class TopViewController: UIViewController, StoreSubscriber {
                 switch result {
                 case .Success(let response):
                     let IPAddress = response.IPAddress
-                    mainStore.dispatch(StatusAction.GetOriginalIPAddress(address: IPAddress))
+                    if NEVPNManager.sharedManager().connection.status == .Disconnected {
+                        mainStore.dispatch(StatusAction.GetOriginalIPAddress(address: IPAddress))
+                        let request = GeoLocationRequest(IPAddress: IPAddress)
+                        Session.sendRequest(request) {
+                            (result) in
+                            switch result {
+                            case .Success(let response):
+                                if response.isSuccess {
+                                    mainStore.dispatch(StatusAction.GetOriginalGeoLocation(response: response))
+                                }
+                            default:
+                                break
+                            }
+                        }
+
+                    }
                 default:
                     break
                 }

@@ -21,6 +21,15 @@ class ConnectionStatusViewController: UITableViewController {
     @IBOutlet weak var newIPAddressLabel: UILabel!
     @IBOutlet weak var newLocalLabelButton: UIButton!
     
+    @IBOutlet weak var originalPointCircleView: UIView!
+    @IBOutlet weak var newPointCircleView: UIView!
+    
+    @IBOutlet weak var newPointCircleCenterXConstraint: NSLayoutConstraint!
+    @IBOutlet weak var newPointCircleCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var originalPointCircleCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var originalPointCircleCenterXConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var linePathView: LinePathView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +46,9 @@ class ConnectionStatusViewController: UITableViewController {
             name: NEVPNStatusDidChangeNotification,
             object: nil
         )
+        
+        originalPointCircleCenterXConstraint.constant = -27
+        originalPointCircleCenterYConstraint.constant = 18
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -52,6 +64,13 @@ class ConnectionStatusViewController: UITableViewController {
             connectedTimeView.hidden = true
             disconnectedLabel.hidden = false
         }
+        let statusState = mainStore.state.statusState
+        self.originalIPAddressLabel.text = statusState.originalIPAddress ?? "---.---.---.---"
+        self.newIPAddressLabel.text = statusState.newIPAddress ?? "---.---.---.---"
+        
+        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", forState: .Normal)
+        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", forState: .Normal)
+        
         startTimer()
         mainStore.subscribe(self)
     }
@@ -139,5 +158,40 @@ extension ConnectionStatusViewController: StoreSubscriber {
         let statusState = state.statusState
         self.originalIPAddressLabel.text = statusState.originalIPAddress ?? "---.---.---.---"
         self.newIPAddressLabel.text = statusState.newIPAddress ?? "---.---.---.---"
+        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", forState: .Normal)
+        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", forState: .Normal)
+        
+        if statusState.originalLatitude != nil && statusState.originalLongitude != nil {
+            let pointX = statusState.originalLongitude! * 172 / 180
+            originalPointCircleCenterXConstraint.constant = CGFloat(pointX)
+            
+            let pointY = statusState.originalLatitude! * 360 / 360 * -1
+            originalPointCircleCenterYConstraint.constant = CGFloat(pointY)
+
+            if statusState.newLatitude != nil && statusState.newLongitude != nil {
+                let pointX = statusState.newLongitude! * 172 / 180
+                newPointCircleCenterXConstraint.constant = CGFloat(pointX)
+                
+                let pointY = statusState.newLatitude! * 360 / 360 * -1
+                newPointCircleCenterYConstraint.constant = CGFloat(pointY)
+                let centerPoint = CGPoint(
+                    x: (originalPointCircleView.center.x + newPointCircleView.center.x) / 2 ,
+                    y: (originalPointCircleView.center.y + newPointCircleView.center.y) / 2
+                )
+                
+                let controlPoint = CGPoint(
+                    x: centerPoint.x + (newPointCircleView.center.y - originalPointCircleView.center.y) / 4,
+                    y: centerPoint.y + (newPointCircleView.center.x - originalPointCircleView.center.x) / 4
+                )
+                
+                self.linePathView.startPoint = originalPointCircleView.center
+                self.linePathView.endPoint = newPointCircleView.center
+                self.linePathView.controlPoint = controlPoint
+                self.linePathView.setNeedsDisplay()
+            }
+
+        }
+
+
     }
 }

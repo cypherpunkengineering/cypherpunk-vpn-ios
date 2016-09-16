@@ -50,12 +50,108 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_wh" translatesAutoresizingMaskIntoConstraints="NO" id="8L8-fs-rLW" customClass="ThemedMapImageView" customModule="Cypherpunk" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="172"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLo-mJ-xao" customClass="LinePathView" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="172"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBt-rW-kd4">
+                                                    <rect key="frame" x="291" y="77" width="18" height="18"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pj-nj-8jC">
+                                                            <rect key="frame" x="6" y="6" width="6" height="6"/>
+                                                            <color key="backgroundColor" red="0.88235294117647056" green="0.31372549019607843" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="6" id="LZd-Zv-lXE"/>
+                                                                <constraint firstAttribute="height" constant="6" id="t6U-kP-ak5"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.88235294117647056" green="0.31372549019607843" blue="0.11372549019607843" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="2pj-nj-8jC" firstAttribute="centerY" secondItem="tBt-rW-kd4" secondAttribute="centerY" id="VrD-Kd-Qxy"/>
+                                                        <constraint firstAttribute="height" constant="18" id="d61-mo-Haa"/>
+                                                        <constraint firstAttribute="width" constant="18" id="egI-QZ-ne0"/>
+                                                        <constraint firstItem="2pj-nj-8jC" firstAttribute="centerX" secondItem="tBt-rW-kd4" secondAttribute="centerX" id="sg9-Gc-sj7"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r13-kz-IaT">
+                                                    <rect key="frame" x="280" y="66" width="41" height="41"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zI0-OI-sc7">
+                                                            <rect key="frame" x="9" y="9" width="22" height="22"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VP2-vy-Zkn">
+                                                                    <rect key="frame" x="3" y="3" width="16" height="16"/>
+                                                                    <color key="backgroundColor" red="0.65490196079999996" green="0.83137254900000002" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="16" id="OkJ-e1-waF"/>
+                                                                        <constraint firstAttribute="width" constant="16" id="p5f-fb-jTE"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="8"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="22" id="Kln-m7-nsO"/>
+                                                                <constraint firstItem="VP2-vy-Zkn" firstAttribute="centerY" secondItem="zI0-OI-sc7" secondAttribute="centerY" id="LyH-Vh-P4F"/>
+                                                                <constraint firstAttribute="height" constant="22" id="d9n-Lv-npx"/>
+                                                                <constraint firstItem="VP2-vy-Zkn" firstAttribute="centerX" secondItem="zI0-OI-sc7" secondAttribute="centerX" id="pjx-o5-sad"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="11"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.65490196078431373" green="0.83137254901960778" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.65490196078431373" green="0.83137254901960778" blue="0.039215686274509803" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="zI0-OI-sc7" firstAttribute="centerX" secondItem="r13-kz-IaT" secondAttribute="centerX" id="DYc-RQ-PNQ"/>
+                                                        <constraint firstItem="zI0-OI-sc7" firstAttribute="centerY" secondItem="r13-kz-IaT" secondAttribute="centerY" id="hlU-0H-lq1"/>
+                                                        <constraint firstAttribute="width" constant="41" id="kth-Lu-b0L"/>
+                                                        <constraint firstAttribute="height" constant="41" id="vWK-ep-TyB"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="20.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8L8-fs-rLW" firstAttribute="leading" secondItem="YU6-79-6IQ" secondAttribute="leading" id="2vg-cb-ULS"/>
+                                                <constraint firstItem="r13-kz-IaT" firstAttribute="centerY" secondItem="YU6-79-6IQ" secondAttribute="centerY" id="4ai-ly-Kuu"/>
                                                 <constraint firstItem="8L8-fs-rLW" firstAttribute="top" secondItem="YU6-79-6IQ" secondAttribute="top" id="JgO-Zg-Y6g"/>
                                                 <constraint firstAttribute="trailing" secondItem="8L8-fs-rLW" secondAttribute="trailing" id="KJz-ig-Lyj"/>
+                                                <constraint firstAttribute="bottom" secondItem="OLo-mJ-xao" secondAttribute="bottom" id="MXp-gm-bO5"/>
+                                                <constraint firstItem="8L8-fs-rLW" firstAttribute="centerY" secondItem="YU6-79-6IQ" secondAttribute="centerY" id="SZy-9g-fwP"/>
+                                                <constraint firstAttribute="trailing" secondItem="OLo-mJ-xao" secondAttribute="trailing" id="Shv-bt-9B5"/>
+                                                <constraint firstItem="tBt-rW-kd4" firstAttribute="centerY" secondItem="YU6-79-6IQ" secondAttribute="centerY" id="aWQ-aw-wzJ"/>
+                                                <constraint firstItem="OLo-mJ-xao" firstAttribute="top" secondItem="YU6-79-6IQ" secondAttribute="top" id="dEy-01-OAe"/>
+                                                <constraint firstItem="OLo-mJ-xao" firstAttribute="leading" secondItem="YU6-79-6IQ" secondAttribute="leading" id="eLf-zf-6Zg"/>
+                                                <constraint firstItem="r13-kz-IaT" firstAttribute="centerX" secondItem="YU6-79-6IQ" secondAttribute="centerX" id="gkM-0a-Yjq"/>
                                                 <constraint firstAttribute="bottom" secondItem="8L8-fs-rLW" secondAttribute="bottom" id="jEe-lP-dcl"/>
+                                                <constraint firstItem="tBt-rW-kd4" firstAttribute="centerX" secondItem="YU6-79-6IQ" secondAttribute="centerX" id="sM5-1b-ksg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -333,10 +429,17 @@
                         <outlet property="connectedTimeView" destination="tDj-sh-DeO" id="XGQ-Bm-tU0"/>
                         <outlet property="connectionTimeLabelButton" destination="NUA-At-SXU" id="gM6-oG-4sL"/>
                         <outlet property="disconnectedLabel" destination="nHd-GQ-s3I" id="fqd-6E-S6Y"/>
+                        <outlet property="linePathView" destination="OLo-mJ-xao" id="fLS-7y-h5Z"/>
                         <outlet property="newIPAddressLabel" destination="4rr-kH-l4K" id="w1v-P2-cAR"/>
                         <outlet property="newLocalLabelButton" destination="OQI-ZQ-Eue" id="K4Q-jK-CdA"/>
+                        <outlet property="newPointCircleCenterXConstraint" destination="gkM-0a-Yjq" id="8e3-8O-I4W"/>
+                        <outlet property="newPointCircleCenterYConstraint" destination="4ai-ly-Kuu" id="9Il-Kg-Tsd"/>
+                        <outlet property="newPointCircleView" destination="r13-kz-IaT" id="DEN-Ie-FxG"/>
                         <outlet property="originalIPAddressLabel" destination="f5n-TQ-hIV" id="Yur-zs-rv0"/>
                         <outlet property="originalLocaleLabelButton" destination="IQu-Z7-rHd" id="4PJ-nS-zgX"/>
+                        <outlet property="originalPointCircleCenterXConstraint" destination="sM5-1b-ksg" id="sXr-No-C86"/>
+                        <outlet property="originalPointCircleCenterYConstraint" destination="aWQ-aw-wzJ" id="wdt-Mu-beq"/>
+                        <outlet property="originalPointCircleView" destination="tBt-rW-kd4" id="drq-o7-zKw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ez0-r1-hVv" userLabel="First Responder" sceneMemberID="firstResponder"/>

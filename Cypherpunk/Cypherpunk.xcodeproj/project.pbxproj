@@ -53,6 +53,8 @@
 		2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */; };
 		2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */; };
 		2085F33D1D6C4A76002D35C2 /* JSONIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33C1D6C4A76002D35C2 /* JSONIP.swift */; };
+		20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */; };
+		20AC7C4E1D8BFACC00760BF0 /* LinePathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC7C4D1D8BFACC00760BF0 /* LinePathView.swift */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
@@ -189,6 +191,8 @@
 		2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCharacterGenerator.swift; sourceTree = "<group>"; };
 		2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentContainerViewController.swift; sourceTree = "<group>"; };
 		2085F33C1D6C4A76002D35C2 /* JSONIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONIP.swift; sourceTree = "<group>"; };
+		20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
+		20AC7C4D1D8BFACC00760BF0 /* LinePathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinePathView.swift; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		20D895ED1D1D16FB002B9F9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -335,7 +339,6 @@
 				2B45C16F1D21072500D4326C /* Extension */,
 				20D895E81D1D0C17002B9F9D /* External */,
 				2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */,
-				2B73C7121D5CDBCD0090FF8B /* Animation */,
 				20F8508F1D3DF3D9009079A0 /* API */,
 				20D896031D23AE83002B9F9D /* Validator */,
 				203F4EF31D5AFC8200EA2536 /* View */,
@@ -440,6 +443,7 @@
 				2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */,
 				2061342C1D8296AC00480621 /* BlurredIndicatorView.xib */,
 				206D4D6F1D82BDF300853B47 /* IndicatorView.swift */,
+				20AC7C4D1D8BFACC00760BF0 /* LinePathView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -526,6 +530,7 @@
 				20F850901D3DF40A009079A0 /* LoginAPI.swift */,
 				2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */,
 				2085F33C1D6C4A76002D35C2 /* JSONIP.swift */,
+				20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 		2B45C1601D20D61B00D4326C /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				2B73C7121D5CDBCD0090FF8B /* Animation */,
 				2B45C1611D20D64600D4326C /* Dosis-Bold.otf */,
 				2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */,
 				2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */,
@@ -567,7 +573,8 @@
 				2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */,
 				203AE7BC1D8A661900183E7F /* SpecificDataProvider.swift */,
 			);
-			path = Animation;
+			name = Animation;
+			path = ../Animation;
 			sourceTree = "<group>";
 		};
 		BCFC6193A7F401D78A06D6FE /* Frameworks */ = {
@@ -890,6 +897,7 @@
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
 				2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */,
+				20AC7C4E1D8BFACC00760BF0 /* LinePathView.swift in Sources */,
 				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
 				20F15CED1D8A755C0000DAA7 /* DeviceGuru.swift in Sources */,
 				206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */,
@@ -917,6 +925,7 @@
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
 				201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */,
 				204BE9101D5B30AA003D7CB5 /* ThemedUpgradeButton.swift in Sources */,
+				20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */,
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
 				201809F81D5B503200730FA4 /* ThemedMapImageView.swift in Sources */,
