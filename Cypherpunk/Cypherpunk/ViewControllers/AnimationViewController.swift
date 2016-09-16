@@ -13,6 +13,9 @@ import NetworkExtension
 class AnimationViewController: UIViewController {
     
     let itemSize = CGSizeMake(14,22)
+    
+    let scrollDistancePerSec = 5.25
+    
     var animationLayer: CALayer!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -207,6 +210,7 @@ class AnimationViewController: UIViewController {
     }
     
     var beforeSec: NSTimeInterval = 0
+    
     var timer: NSTimer!
     func update() {
         let now = NSDate().timeIntervalSince1970
@@ -218,14 +222,14 @@ class AnimationViewController: UIViewController {
             for textLayer in sub.sublayers! {
                 switch index % 2 {
                 case 0:
-                    var yPosition = textLayer.position.y + CGFloat(10.5 * Double(now - self.beforeSec) * speed)
+                    var yPosition = textLayer.position.y + CGFloat(scrollDistancePerSec * Double(now - self.beforeSec) * speed)
                     if yPosition >= sub.frame.size.height {
                         yPosition = yPosition - (sub.frame.size.height + itemSize.height)
                     }
                     textLayer.position = CGPoint(x: textLayer.position.x, y: yPosition)
                     
                 case 1:
-                    var yPosition = textLayer.position.y - CGFloat(10.5 * Double(now - self.beforeSec) * speed)
+                    var yPosition = textLayer.position.y - CGFloat(scrollDistancePerSec * Double(now - self.beforeSec) * speed)
                     if yPosition <= -itemSize.height {
                         yPosition = yPosition + sub.frame.size.height + itemSize.height
                     }
