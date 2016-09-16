@@ -68,6 +68,10 @@ class AnimationViewController: UIViewController {
                             if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
                                 let baseColor = UIColor(red: 175.0 / 255.0, green: 240.0 / 255.0, blue: 103.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
                                 textLayer.foregroundColor = baseColor.CGColor
+                            } else {
+                                if let string = textLayer.string as? String where string == "0" || string == "1" {
+                                    textLayer.string = String(RandomCharacterGenerator.generate())
+                                }
                             }
                         }
                     }
@@ -110,6 +114,12 @@ class AnimationViewController: UIViewController {
                             if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
                                 let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
                                 textLayer.foregroundColor = baseColor.CGColor
+                            } else {
+                                if let string = textLayer.string as? String where string != "0" && string != "1" {
+                                    let number: Int = random() % 2
+                                    textLayer.string = String(number)
+                                }
+                                
                             }
                         }
                     }
