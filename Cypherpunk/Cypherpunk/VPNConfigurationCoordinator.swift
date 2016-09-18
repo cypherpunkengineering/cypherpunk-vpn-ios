@@ -30,7 +30,7 @@ public class VPNConfigurationCoordinator {
                 newIPSec.authenticationMethod = .None
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP
                 
-                newIPSec.username = "testuser"
+                newIPSec.username = mainStore.state.accountState.mailAddress ?? "testuser"
                 let password = "testpassword"
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
                 

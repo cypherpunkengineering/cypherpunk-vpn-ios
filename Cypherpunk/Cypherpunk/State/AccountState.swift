@@ -38,10 +38,10 @@ enum SubscriptionType: Int {
 
 struct AccountState: StateType {
     var isLoggedIn: Bool
-    var mailAddress: String
-    var password: String
-    var secret: String
-    var nickName: String
+    var mailAddress: String?
+    var password: String?
+    var secret: String?
+    var nickName: String?
     
     var subscriptionType: SubscriptionType
     var expiredDate: NSDate?

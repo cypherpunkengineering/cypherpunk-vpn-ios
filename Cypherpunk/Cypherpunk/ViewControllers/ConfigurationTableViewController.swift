@@ -44,7 +44,7 @@ class ConfigurationTableViewController: UITableViewController {
         
         let accountState = mainStore.state.accountState
         let settingsState = mainStore.state.settingsState
-        mailAddressLabel.text = accountState.mailAddress
+        mailAddressLabel.text = accountState.mailAddress ?? ""
         vpnProtocolDetailLabel.text = settingsState.vpnProtocolMode.description
         usernameLabelButton.setTitle(accountState.nickName, forState: .Normal)
         autoConnectSwitch.setOn(settingsState.isAutoReconnect, animated: false)
