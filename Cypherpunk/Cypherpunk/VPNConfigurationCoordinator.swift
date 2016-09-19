@@ -72,6 +72,7 @@ public class VPNConfigurationCoordinator {
             let onDemandRule = NEOnDemandRuleEvaluateConnection()
             let evaluateRule = NEEvaluateConnectionRule(matchDomains: [ "*" ], andAction: .ConnectIfNeeded)
             evaluateRule.probeURL = NSURL(string: "https://255.255.255.255")
+            evaluateRule.useDNSServers = ["255.255.255.255"]
 
             onDemandRule.connectionRules = [evaluateRule]
 
