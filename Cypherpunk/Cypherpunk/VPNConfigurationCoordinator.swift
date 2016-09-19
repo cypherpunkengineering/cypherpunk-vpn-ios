@@ -54,7 +54,7 @@ public class VPNConfigurationCoordinator {
 
                 newIPSec.useExtendedAuthentication = true
 
-                newIPSec.localIdentifier = String.randomStringForLocalIdentifier()
+                newIPSec.localIdentifier = ""
                 newIPSec.remoteIdentifier = "vpn.cypherpunk.com"
             }
 
