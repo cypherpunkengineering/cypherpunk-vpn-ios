@@ -94,6 +94,11 @@ open class VPNConfigurationCoordinator {
 			{
                 manager.isEnabled = true
 			}
+			else
+			{
+                manager.isOnDemandEnabled = false
+                manager.isEnabled = false
+			}
 
             manager.saveToPreferences(completionHandler: { (error) in
                 if error != nil {
