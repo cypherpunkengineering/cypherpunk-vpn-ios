@@ -36,7 +36,7 @@ open class VPNConfigurationCoordinator {
                 //newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
 
                 newIPSec.localIdentifier = "test.test.test"
-                newIPSec.remoteIdentifier = "ipsec.cypherpunk.network"
+                newIPSec.remoteIdentifier = "vpn.cypherpunk.network"
 
                 let p12path = Bundle.main.path(forResource: "test", ofType: "p12")!
                 let p12data = try! Data(contentsOf: URL(fileURLWithPath: p12path))
