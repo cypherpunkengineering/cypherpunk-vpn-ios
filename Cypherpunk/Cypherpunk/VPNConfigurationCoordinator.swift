@@ -24,22 +24,29 @@ open class VPNConfigurationCoordinator {
         manager.loadFromPreferences { (error) in
 
             let newIPSec : NEVPNProtocolIPSec
-            if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
+            if mainStore.state.settingsState.vpnProtocolMode == .IKEv2
+            {
                 newIPSec = NEVPNProtocolIKEv2()
 
-                newIPSec.authenticationMethod = .none
+                newIPSec.authenticationMethod = .certificate
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP
 
-                newIPSec.username = mainStore.state.accountState.mailAddress ?? "testuser"
-                let password = "testpassword"
-                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
+                //newIPSec.username = mainStore.state.accountState.mailAddress ?? "testuser"
+                //let password = "testpassword"
+                //newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
 
-                newIPSec.localIdentifier = ""
-                newIPSec.remoteIdentifier = "d06f348c.wiz.network"
+                newIPSec.localIdentifier = "test.test.test"
+                newIPSec.remoteIdentifier = "ipsec.cypherpunk.network"
 
-                newIPSec.useExtendedAuthentication = true
+                let p12path = Bundle.main.path(forResource: "test", ofType: "p12")!
+                let p12data = try! Data(contentsOf: URL(fileURLWithPath: p12path))
 
-            } else {
+                newIPSec.identityData = p12data
+                newIPSec.identityDataPassword = ""
+                newIPSec.useExtendedAuthentication = false
+            }
+            else
+            {
                 newIPSec = NEVPNProtocolIPSec()
 
                 newIPSec.authenticationMethod = .sharedSecret
