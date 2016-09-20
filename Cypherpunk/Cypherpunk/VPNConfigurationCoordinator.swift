@@ -76,18 +76,24 @@ open class VPNConfigurationCoordinator {
 
             manager.localizedDescription = "Cyperpunk VPN"
 
-            let onDemandRule = NEOnDemandRuleEvaluateConnection()
-            let evaluateRule = NEEvaluateConnectionRule(matchDomains: [ "*" ], andAction: .connectIfNeeded)
-            evaluateRule.probeURL = URL(string: "https://255.255.255.255")
-            evaluateRule.useDNSServers = ["255.255.255.255"]
+            if mainStore.state.settingsState.isAutoReconnect == true
+            {
+                //let evaluateRule = NEEvaluateConnectionRule(matchDomains: [ "*" ], andAction: .connectIfNeeded)
+                //onDemandRule.connectionRules = [evaluateRule]
 
-            onDemandRule.connectionRules = [evaluateRule]
+                let onDemandRule = NEOnDemandRuleConnect()
+                manager.onDemandRules = [onDemandRule]
+                manager.isOnDemandEnabled = true
+            }
+            else
+            {
+                manager.isOnDemandEnabled = false
+            }
 
-            manager.onDemandRules = [onDemandRule]
-
-            manager.isOnDemandEnabled = true
-
-            manager.isEnabled = true
+			if newIPSec.serverAddress != ""
+			{
+                manager.isEnabled = true
+			}
 
             manager.saveToPreferences(completionHandler: { (error) in
                 if error != nil {
