@@ -4,31 +4,32 @@ use_frameworks!
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Cypherpunk' do
-       pod 'ReSwift'
-       pod 'SwiftyStoreKit'
-       pod 'APIKit'
-       pod 'Himotoki'
-       pod 'R.swift', '~> 2.5.0'
-       pod 'ReachabilitySwift'
-       pod 'KeychainAccess', '~> 2.3.6'
+       pod 'ReSwift', :git => 'https://github.com/ReSwift/ReSwift.git'
+       pod 'Result', :git => 'https://github.com/antitypical/Result.git'
+       pod 'SwiftyStoreKit', :git => 'https://github.com/bizz84/SwiftyStoreKit.git'
+       pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit.git'
+       pod 'Himotoki', :git => 'https://github.com/ikesyo/Himotoki.git'
+       pod 'R.swift', :git => 'https://github.com/mac-cain13/R.swift.git'
+       pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git'
+       pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git'
        pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
-       pod 'RealmSwift'
+       pod 'RealmSwift', :git => 'https://github.com/realm/realm-cocoa.git', :submodules => true
        pod 'UITextView+Placeholder', '~> 1.2'
        pod 'MZFormSheetPresentationController'
 end
 
 target 'CypherpunkTests' do
-       pod 'ReSwift'
-       pod 'APIKit'
-       pod 'Himotoki'
-       pod 'R.swift', '~> 2.5.0'
+       pod 'ReSwift', :git => 'https://github.com/ReSwift/ReSwift.git'
+       pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit.git'
+       pod 'Himotoki', :git => 'https://github.com/ikesyo/Himotoki.git'
+       pod 'R.swift', :git => 'https://github.com/mac-cain13/R.swift.git'
 end
 
 target 'CypherpunkUITests' do
-       pod 'ReSwift'
-       pod 'APIKit'
-       pod 'Himotoki'
-       pod 'R.swift', '~> 2.5.0'
+       pod 'ReSwift', :git => 'https://github.com/ReSwift/ReSwift.git'
+       pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit.git'
+       pod 'Himotoki', :git => 'https://github.com/ikesyo/Himotoki.git'
+       pod 'R.swift', :git => 'https://github.com/mac-cain13/R.swift.git'
        pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
 end
 

@@ -1,65 +1,113 @@
 PODS:
-  - APIKit (2.0.5):
-    - Result (~> 2.1.1)
-  - Himotoki (2.1.1)
-  - KeychainAccess (2.3.6)
+  - APIKit (3.0.0-beta.1):
+    - Result (~> 3.0)
+  - Himotoki (3.0.0)
+  - KeychainAccess (3.0.0)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
-  - R.swift (2.5.0):
-    - R.swift.Library (~> 2.3.0)
-  - R.swift.Library (2.3.0)
-  - ReachabilitySwift (2.3.3)
-  - Realm (1.0.2):
-    - Realm/Headers (= 1.0.2)
-  - Realm/Headers (1.0.2)
-  - RealmSwift (1.0.2):
-    - Realm (= 1.0.2)
-  - Result (2.1.3)
-  - ReSwift (2.0.0)
+  - R.swift (3.0.0):
+    - R.swift.Library (~> 3.0.0)
+  - R.swift.Library (3.0.0)
+  - ReachabilitySwift (3)
+  - Realm (1.1.0):
+    - Realm/Headers (= 1.1.0)
+  - Realm/Headers (1.1.0)
+  - RealmSwift (1.1.0):
+    - Realm (= 1.1.0)
+  - Result (3.0.0)
+  - ReSwift (2.1.0)
   - SVProgressHUD (2.0.3)
-  - SwiftyStoreKit (0.3.0)
+  - SwiftyStoreKit (0.5.1)
   - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
-  - APIKit
-  - Himotoki
-  - KeychainAccess (~> 2.3.6)
+  - APIKit (from `https://github.com/ishkawa/APIKit.git`)
+  - Himotoki (from `https://github.com/ikesyo/Himotoki.git`)
+  - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
   - MZFormSheetPresentationController
-  - R.swift (~> 2.5.0)
-  - ReachabilitySwift
-  - RealmSwift
-  - ReSwift
+  - R.swift (from `https://github.com/mac-cain13/R.swift.git`)
+  - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift.git`)
+  - RealmSwift (from `https://github.com/realm/realm-cocoa.git`)
+  - Result (from `https://github.com/antitypical/Result.git`)
+  - ReSwift (from `https://github.com/ReSwift/ReSwift.git`)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
-  - SwiftyStoreKit
+  - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`)
   - UITextView+Placeholder (~> 1.2)
 
 EXTERNAL SOURCES:
+  APIKit:
+    :git: https://github.com/ishkawa/APIKit.git
+  Himotoki:
+    :git: https://github.com/ikesyo/Himotoki.git
+  KeychainAccess:
+    :git: https://github.com/kishikawakatsumi/KeychainAccess.git
+  R.swift:
+    :git: https://github.com/mac-cain13/R.swift.git
+  ReachabilitySwift:
+    :git: https://github.com/ashleymills/Reachability.swift.git
+  RealmSwift:
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
+  Result:
+    :git: https://github.com/antitypical/Result.git
+  ReSwift:
+    :git: https://github.com/ReSwift/ReSwift.git
   SVProgressHUD:
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+  SwiftyStoreKit:
+    :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 CHECKOUT OPTIONS:
+  APIKit:
+    :commit: d1f56c9ae3dddda7bc4e89056bf44a5e4dfa4292
+    :git: https://github.com/ishkawa/APIKit.git
+  Himotoki:
+    :commit: 01bd3706b13e971c3062123404160312b55a895b
+    :git: https://github.com/ikesyo/Himotoki.git
+  KeychainAccess:
+    :commit: 6574871f9597ff7219ea4686f2da2c85fac4b2c1
+    :git: https://github.com/kishikawakatsumi/KeychainAccess.git
+  R.swift:
+    :commit: a53c6b1cab054f8b4a962a1623d062745047cb1e
+    :git: https://github.com/mac-cain13/R.swift.git
+  ReachabilitySwift:
+    :commit: 610027bd13fe1b832eea98025658ead5ddf112ae
+    :git: https://github.com/ashleymills/Reachability.swift.git
+  RealmSwift:
+    :commit: 3d69adaaaadc185ea35e32727852f541923145ca
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
+  Result:
+    :commit: 36393ea4ebeb56bdb2e6c6502d79905f255391a4
+    :git: https://github.com/antitypical/Result.git
+  ReSwift:
+    :commit: 4784e3a97adab12c9eff9b412f1ad36bde7d9765
+    :git: https://github.com/ReSwift/ReSwift.git
   SVProgressHUD:
     :commit: cc5f7d68fe76afdb79e215b8ff00133575fafacc
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+  SwiftyStoreKit:
+    :commit: b1259d0c9570c8dbe88767b7b5ffd9fec6af2fc2
+    :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 SPEC CHECKSUMS:
-  APIKit: c78ad25192db1a2b0703d888c0a7cbb8127102f8
-  Himotoki: 0e539e721830384e128b0c0c94cbd9693ca30761
-  KeychainAccess: 7f10e2ef998ddf954a64d5d608be08677774684d
+  APIKit: 27c8c16fe41d8159c5a3f362130f2592647a300d
+  Himotoki: df74b01035e86e021b7b04a15b033a7fd189b84f
+  KeychainAccess: 412bf2650d9aebfc8135a58103b90ec38caad7f8
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
-  R.swift: 01b9966e8dbe587a11ca2f65a1834dac2fa7b247
-  R.swift.Library: 75df6abfd22492c852136c4d7b6a9ca21664772a
-  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
-  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
-  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
-  Result: 18e1a7597fbcca5923c565b40a25a98afafdee02
-  ReSwift: 7abc536a87955c34bf60de3fd32ce9a02ee3ad87
+  R.swift: 5a8b4a4ea565b0f20c39d8ce1445f3d3a9064768
+  R.swift.Library: fed723da260519abed60044de7aaf19494cc4e1f
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
+  RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
+  Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
+  ReSwift: c13b76cb963c5ab2a137c9c6e74823cef4b81588
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
-  SwiftyStoreKit: 6df86a58380d591d06f204eaee92bfaf39704627
+  SwiftyStoreKit: 53c63f91545a3778dc108f860a7414905ce40a63
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 0f38e5e60bce79db678a87125b80868d20926461
+PODFILE CHECKSUM: 6ac8dc90e7441303d31d6b4e9ee9ca9cdc3ce82f
 
-COCOAPODS: 1.0.0.beta.6
+COCOAPODS: 1.1.0.rc.2
