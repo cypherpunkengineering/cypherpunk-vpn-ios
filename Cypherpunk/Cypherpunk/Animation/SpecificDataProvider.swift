@@ -24,27 +24,27 @@ struct SpecificDataProvider {
 extension Hardware {
     var name: String {
         switch self {
-        case .NOT_AVAILABLE:
+        case .not_AVAILABLE:
             return "Not Available"
-        case .IPHONE_2G, .IPHONE_3G, .IPHONE_3GS, .IPHONE_4, .IPHONE_4_CDMA:
+        case .iphone_2G, .iphone_3G, .iphone_3GS, .iphone_4, .iphone_4_CDMA:
             return "Not Supported"
-        case .IPHONE_4S:
+        case .iphone_4S:
             return "iPhone4S"
-        case .IPHONE_5, .IPHONE_5_CDMA_GSM:
+        case .iphone_5, .iphone_5_CDMA_GSM:
             return "iPhone5"
-        case .IPHONE_5C, .IPHONE_5C_CDMA_GSM:
+        case .iphone_5C, .iphone_5C_CDMA_GSM:
             return "iPhone5c"
-        case .IPHONE_5S, .IPHONE_5S_CDMA_GSM:
+        case .iphone_5S, .iphone_5S_CDMA_GSM:
             return "iPhone5s"
-        case .IPHONE_6:
+        case .iphone_6:
             return "iPhone6"
-        case .IPHONE_6_PLUS:
+        case .iphone_6_PLUS:
             return "iPhone6Plus"
-        case .IPHONE_6S:
+        case .iphone_6S:
             return "iPhone6S"
-        case .IPHONE_6S_PLUS:
+        case .iphone_6S_PLUS:
             return "iPhone6SPlus"
-        case .IPHONE_SE:
+        case .iphone_SE:
             return "iPhoneSE"
         default:
             return "Not Supported"

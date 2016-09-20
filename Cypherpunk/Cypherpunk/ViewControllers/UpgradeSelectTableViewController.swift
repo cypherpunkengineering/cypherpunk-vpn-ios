@@ -26,23 +26,23 @@ class UpgradeSelectTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func upgradeToPerMonthlySubscriptionAction(sender: AnyObject) {
-        mainStore.dispatch(AccountAction.Upgrade(subscription: .OneMonth, expiredDate: NSDate()))
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func upgradeToPerMonthlySubscriptionAction(_ sender: AnyObject) {
+        mainStore.dispatch(AccountAction.Upgrade(subscription: .OneMonth, expiredDate: Date()))
+        self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func upgradeTo6MonthSubscriptionAction(sender: AnyObject) {
-        mainStore.dispatch(AccountAction.Upgrade(subscription: .HalfYear, expiredDate: NSDate()))
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func upgradeTo6MonthSubscriptionAction(_ sender: AnyObject) {
+        mainStore.dispatch(AccountAction.Upgrade(subscription: .HalfYear, expiredDate: Date()))
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func upgradeTo12MonthSubscriptionAction(sender: AnyObject) {
-        mainStore.dispatch(AccountAction.Upgrade(subscription: .Year, expiredDate: NSDate()))
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func upgradeTo12MonthSubscriptionAction(_ sender: AnyObject) {
+        mainStore.dispatch(AccountAction.Upgrade(subscription: .Year, expiredDate: Date()))
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
 extension UpgradeSelectTableViewController {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         let accountState = mainStore.state.accountState
         
         switch accountState.subscriptionType {
@@ -59,31 +59,31 @@ extension UpgradeSelectTableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let accountState = mainStore.state.accountState
         
         switch accountState.subscriptionType {
         case .Free, .FreePremium:
-            return super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, cellForRowAt: indexPath)
         case .OneMonth:
-            return super.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 1))
+            return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
         case .HalfYear:
-            return super.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 2))
+            return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 2))
         case .Year:
             fatalError()
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let accountState = mainStore.state.accountState
         
         switch accountState.subscriptionType {
         case .Free, .FreePremium:
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath)
         case .OneMonth:
-            return super.tableView(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 1))
+            return super.tableView(tableView, heightForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
         case .HalfYear:
-            return super.tableView(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 2))
+            return super.tableView(tableView, heightForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 2))
         case .Year:
             fatalError()
         }

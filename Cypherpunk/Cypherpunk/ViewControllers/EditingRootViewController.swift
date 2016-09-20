@@ -14,8 +14,8 @@ class EditingRootViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let button = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(EditingRootViewController.doneAction))
-        self.navigationItem.setRightBarButtonItem(button, animated: true)
+        let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(EditingRootViewController.doneAction))
+        self.navigationItem.setRightBarButton(button, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +35,7 @@ class EditingRootViewController: UIViewController {
     */
 
     func doneAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

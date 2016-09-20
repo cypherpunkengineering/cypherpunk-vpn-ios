@@ -18,10 +18,10 @@ struct AppReducer: Reducer {
     let themeReducer = ThemeReducer()
     let statusReducer = StatusReducer()
     
-    func handleAction(action: Action, state: AppState?) -> AppState {
+    func handleAction(_ action: Action, state: AppState?) -> AppState {
         
         if let action = action as? AccountAction {
-            if case AccountAction.Logout = action {
+            if case AccountAction.logout = action {
                 return AppState(
                     accountState: accountReducer.handleAction(action, state: nil),
                     regionState:  regionReducer.handleAction(action, state: nil),

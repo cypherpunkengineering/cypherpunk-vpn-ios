@@ -10,9 +10,9 @@ import Foundation
 import ReSwift
 
 enum AccountAction: Action {
-    case SignUp(mailAddress: String)
-    case Activate(mailAddress: String, password: String)
-    case Login(response: LoginResponse)
-    case Upgrade(subscription: SubscriptionType, expiredDate: NSDate?)
-    case Logout
+    case signUp(mailAddress: String)
+    case activate(mailAddress: String, password: String)
+    case login(response: LoginResponse)
+    case upgrade(subscription: SubscriptionType, expiredDate: Date?)
+    case logout
 }

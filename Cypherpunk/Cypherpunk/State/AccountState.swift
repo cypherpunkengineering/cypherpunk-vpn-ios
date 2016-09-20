@@ -11,26 +11,26 @@ import Foundation
 import ReSwift
 
 enum SubscriptionType: Int {
-    case Free
-    case FreePremium
-    case OneMonth
-    case HalfYear
-    case Year
+    case free
+    case freePremium
+    case oneMonth
+    case halfYear
+    case year
     
     var title: String {
         switch self {
-        case .Free: return "Free"
-        case .FreePremium: return "Free Premium"
-        case .OneMonth: return "Monthly Premium"
-        case .HalfYear: return "6 Monthly Premium"
-        case .Year: return "Yearly Premium"
+        case .free: return "Free"
+        case .freePremium: return "Free Premium"
+        case .oneMonth: return "Monthly Premium"
+        case .halfYear: return "6 Monthly Premium"
+        case .year: return "Yearly Premium"
         }
     }
     
     var detailMessage: String {
         switch self {
-        case .Free: return ""
-        case .FreePremium: return "Expired At"
+        case .free: return ""
+        case .freePremium: return "Expired At"
         default: return "Renews On"
         }
     }
@@ -44,5 +44,5 @@ struct AccountState: StateType {
     var nickName: String?
     
     var subscriptionType: SubscriptionType
-    var expiredDate: NSDate?
+    var expiredDate: Date?
 }

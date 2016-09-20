@@ -15,8 +15,8 @@ struct JSONIPRequest: RequestType {
     
     typealias Response = JSONIPResponse
     
-    var baseURL: NSURL {
-        return NSURL(string: "https://jsonip.com")!
+    var baseURL: URL {
+        return URL(string: "https://jsonip.com")!
     }
     
     var method: HTTPMethod {
@@ -27,7 +27,7 @@ struct JSONIPRequest: RequestType {
         return ""
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Response {
+    func responseFromObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> Response {
         let response: Response = try decodeValue(object)
         
         return response
@@ -40,7 +40,7 @@ struct JSONIPRequest: RequestType {
 
 struct JSONIPResponse: Decodable {
     let IPAddress: String
-    static func decode(e: Extractor) throws -> JSONIPResponse {
+    static func decode(_ e: Extractor) throws -> JSONIPResponse {
         return try JSONIPResponse(
             IPAddress: e.value("ip")
         )

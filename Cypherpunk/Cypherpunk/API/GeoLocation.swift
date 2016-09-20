@@ -16,8 +16,8 @@ struct GeoLocationRequest: RequestType {
     
     let IPAddress: String
     
-    var baseURL: NSURL {
-        return NSURL(string: "http://ip-api.com/json/")!
+    var baseURL: URL {
+        return URL(string: "http://ip-api.com/json/")!
     }
     
     var method: HTTPMethod {
@@ -28,7 +28,7 @@ struct GeoLocationRequest: RequestType {
         return IPAddress
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Response {
+    func responseFromObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> Response {
         let response: Response = try decodeValue(object)
         
         return response
@@ -45,7 +45,7 @@ struct GeoLocationResponse: Decodable {
     let lat: Double
     let lon: Double
     let query: String
-    static func decode(e: Extractor) throws -> GeoLocationResponse {
+    static func decode(_ e: Extractor) throws -> GeoLocationResponse {
         return try GeoLocationResponse(
             status: e.value("status"),
             country: e.value("country"),

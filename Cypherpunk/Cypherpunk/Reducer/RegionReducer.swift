@@ -11,7 +11,7 @@ import Foundation
 import ReSwift
 
 struct RegionReducer: Reducer {
-    func handleAction(action: Action, state: RegionState?) -> RegionState {
+    func handleAction(_ action: Action, state: RegionState?) -> RegionState {
         
         var regionState = state ?? RegionState(
             name:  "",
@@ -26,15 +26,15 @@ struct RegionReducer: Reducer {
             case .Connect:
                 let history = RegionHistory(state: regionState)
                 
-                if let index = regionState.recentryConnected.indexOf(history) {
-                    regionState.recentryConnected.removeAtIndex(index)
+                if let index = regionState.recentryConnected.index(of: history) {
+                    regionState.recentryConnected.remove(at: index)
                 }
                 
                 if regionState.recentryConnected.count >= 3 {
                     regionState.recentryConnected.removeLast()
                 }
                 
-                regionState.recentryConnected.insert(history, atIndex: 0)
+                regionState.recentryConnected.insert(history, at: 0)
             }
         }
         

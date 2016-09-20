@@ -20,7 +20,7 @@ class ThemedLabel: UILabel {
         case .White:
             self.textColor = UIColor.whiteThemeTextColor()
         case .Black:
-            self.textColor = UIColor.whiteColor()
+            self.textColor = UIColor.white
         case .Indigo:
             self.textColor = UIColor.blackThemeTextColor()
         }

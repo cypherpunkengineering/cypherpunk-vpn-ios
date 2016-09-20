@@ -22,15 +22,15 @@ class SignUpViewController: UIViewController, StoreSubscriber {
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         self.registerKeyboardNotification()
         mainStore.subscribe(self, selector: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.removeKeyboardNotification()
         mainStore.unsubscribe(self)
@@ -47,46 +47,46 @@ class SignUpViewController: UIViewController, StoreSubscriber {
     }
     
     func signUp() {
-        if let address = mailAddressField.text where isValidMailAddress(address) {
+        if let address = mailAddressField.text , isValidMailAddress(address) {
             mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
         }
     }
     
     func registerKeyboardNotification() {
-        let defaultCenter = NSNotificationCenter.defaultCenter()
+        let defaultCenter = NotificationCenter.default
         
-        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillShow(_:)) , name: UIKeyboardWillShowNotification, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillShow(_:)) , name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
-    func keyboardWillShow(sender: NSNotification) {
-        if let userInfo = sender.userInfo {
-            if let keyboardHeight = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size.height {
+    func keyboardWillShow(_ sender: Notification) {
+        if let userInfo = (sender as NSNotification).userInfo {
+            if let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).CGRectValue.size.height {
                 bottomSpaceConstraint.constant = keyboardHeight
-                UIView.animateWithDuration(0.25, animations: { () -> Void in
+                UIView.animate(withDuration: 0.25, animations: { () -> Void in
                     self.view.layoutIfNeeded()
                 })
             }
         }
     }
     
-    func keyboardWillHide(sender: NSNotification) {
+    func keyboardWillHide(_ sender: Notification) {
         bottomSpaceConstraint.constant = 0.0
-        UIView.animateWithDuration(0.25, animations: { () -> Void in self.view.layoutIfNeeded() })
+        UIView.animate(withDuration: 0.25, animations: { () -> Void in self.view.layoutIfNeeded() })
     }
 
     func removeKeyboardNotification() {
-        let defaultCenter = NSNotificationCenter.defaultCenter()
+        let defaultCenter = NotificationCenter.default
         
-        defaultCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        defaultCenter.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        defaultCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        defaultCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
-    func newState(state: AppState)
+    func newState(_ state: AppState)
     {
         if state.accountState.isLoggedIn == true {
             // TODO: transition to send email screen
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 
@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController, StoreSubscriber {
 
 
 extension SignUpViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         
         if textField == mailAddressField {

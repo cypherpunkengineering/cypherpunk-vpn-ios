@@ -13,14 +13,14 @@ import KeychainAccess
 import NetworkExtension
 
 enum VPNProtocolMode: Int {
-    case IPSec = 1
-    case IKEv2 = 2
+    case ipSec = 1
+    case ikEv2 = 2
     
     var description: String {
         switch self {
-        case .IPSec:
+        case .ipSec:
             return "IPSec"
-        case .IKEv2:
+        case .ikEv2:
             return "IKEv2"
         }
     }
@@ -28,7 +28,7 @@ enum VPNProtocolMode: Int {
 }
 
 struct SettingsState: StateType {
-    private let keychain = Keychain(service: "com.cyperpunk.ios.vpn.Settings")
+    fileprivate let keychain = Keychain(service: "com.cyperpunk.ios.vpn.Settings")
 
     
     var isAutoReconnect: Bool {
@@ -45,14 +45,14 @@ struct SettingsState: StateType {
     var vpnProtocolMode: VPNProtocolMode {
         get {
             let value: Int = NSString(string: keychain[SettingsStateKey.vpnProtocolMode] ?? "2").integerValue
-            return VPNProtocolMode(rawValue: value) ?? .IKEv2
+            return VPNProtocolMode(rawValue: value) ?? .ikEv2
         }
         set(newValue) {
             keychain[SettingsStateKey.vpnProtocolMode] = String(newValue.rawValue)
         }
     }
 
-    private struct SettingsStateKey {
+    fileprivate struct SettingsStateKey {
         static let isAutoReconnect = "isAutoReconnect"
         static let vpnProtocolMode = "vpnProtocolMode"
     }

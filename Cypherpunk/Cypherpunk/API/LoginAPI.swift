@@ -18,8 +18,8 @@ struct LoginRequest: RequestType {
     let login: String
     let password: String
     
-    var baseURL: NSURL {
-        return NSURL(string: "https://cypherpunk.engineering")!
+    var baseURL: URL {
+        return URL(string: "https://cypherpunk.engineering")!
     }
 
     var method: HTTPMethod {
@@ -37,11 +37,11 @@ struct LoginRequest: RequestType {
         ]
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Response {
+    func responseFromObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> Response {
         var response: Response = try decodeValue(object)
 
         if let cookie = URLResponse.allHeaderFields["Set-Cookie"] as? String {
-            let separetedField = cookie.componentsSeparatedByString(";")
+            let separetedField = cookie.components(separatedBy: ";")
             if let session = separetedField.first {
                 response.session = session
             }
@@ -60,7 +60,7 @@ struct LoginResponse: Decodable {
     let account: Account
     var session: String
     
-    static func decode(e: Extractor) throws -> LoginResponse {
+    static func decode(_ e: Extractor) throws -> LoginResponse {
         return try LoginResponse(
             secret: e.value("secret"),
             account: e.value("acct"),
@@ -73,7 +73,7 @@ struct Account: Decodable {
     let email: String
     let powerLevel: Int
 
-    static func decode(e: Extractor) throws -> Account {
+    static func decode(_ e: Extractor) throws -> Account {
         return try Account(
             email: e.value("email"),
             powerLevel: e.value("powerLevel")

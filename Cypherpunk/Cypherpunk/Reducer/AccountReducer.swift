@@ -11,9 +11,9 @@ import Foundation
 import ReSwift
 
 struct AccountReducer: Reducer {
-    func handleAction(action: Action, state: AccountState?) -> AccountState {
+    func handleAction(_ action: Action, state: AccountState?) -> AccountState {
         
-        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, password: nil, secret: nil, nickName: nil, subscriptionType: .Free, expiredDate: nil)
+        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, password: nil, secret: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
         
         guard let accountAction = action as? AccountAction else {
             return accountState

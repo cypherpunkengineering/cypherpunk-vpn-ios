@@ -14,7 +14,7 @@ class ThemedNavigationViewController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear
     }
 
     override func didReceiveMemoryWarning() {

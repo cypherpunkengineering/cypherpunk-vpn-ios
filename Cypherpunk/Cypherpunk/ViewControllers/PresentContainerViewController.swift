@@ -31,8 +31,8 @@ class PresentContainerViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func closeAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeAction(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

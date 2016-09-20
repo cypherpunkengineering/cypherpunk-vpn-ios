@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 
 struct StatusReducer: Reducer {
-    func handleAction(action: Action, state: StatusState?) -> StatusState {
+    func handleAction(_ action: Action, state: StatusState?) -> StatusState {
         var state: StatusState = state ?? StatusState(
             originalIPAddress: nil,
             newIPAddress: nil,

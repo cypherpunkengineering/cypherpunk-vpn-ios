@@ -22,15 +22,15 @@ class ThemedTimeLabelButton: UIButton {
         switch themeState.themeType {
         case .White:
             self.tintColor = UIColor.whiteThemeTextColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: UIControlState())
             self.borderColor = UIColor.whiteThemeTextColor()
         case .Black:
             self.tintColor = UIColor.blackThemeTextColor()
-            self.setTitleColor(UIColor.blackThemeTextColor(), forState: .Normal)
+            self.setTitleColor(UIColor.blackThemeTextColor(), for: UIControlState())
             self.borderColor = UIColor.blackThemeTextColor()
         case .Indigo:
             self.tintColor = UIColor.blackThemeTextColor()
-            self.setTitleColor(UIColor.blackThemeTextColor(), forState: .Normal)
+            self.setTitleColor(UIColor.blackThemeTextColor(), for: UIControlState())
             self.borderColor = UIColor.blackThemeTextColor()
         }
     }

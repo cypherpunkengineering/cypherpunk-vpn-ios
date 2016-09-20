@@ -22,16 +22,16 @@ class ThemedChangeIPAddressButton: UIButton {
         switch themeState.themeType {
         case .White:
             self.tintColor = UIColor.whiteThemeTextColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: UIControlState())
             self.borderColor = UIColor.whiteThemeTextColor()
         case .Black:
-            self.tintColor = UIColor.whiteColor()
-            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            self.borderColor = UIColor.whiteColor()
+            self.tintColor = UIColor.white
+            self.setTitleColor(UIColor.white, for: UIControlState())
+            self.borderColor = UIColor.white
         case .Indigo:
-            self.tintColor = UIColor.whiteColor()
-            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            self.borderColor = UIColor.whiteColor()            
+            self.tintColor = UIColor.white
+            self.setTitleColor(UIColor.white, for: UIControlState())
+            self.borderColor = UIColor.white            
         }
     }
 

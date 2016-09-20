@@ -22,22 +22,22 @@ class ThemedLogoView: UIButton {
             self.setImage(image, forState: .Normal)
             self.setImage(image, forState: .Disabled)
             self.tintColor = UIColor.whiteThemeTextColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
-            self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Disabled)
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: UIControlState())
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .disabled)
         case .Black:
             let image = UIImage(resource: R.image.logoGray_small)
             self.setImage(image, forState: .Normal)
             self.setImage(image, forState: .Disabled)
-            self.tintColor = UIColor.lightGrayColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
-            self.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
+            self.tintColor = UIColor.lightGray
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: UIControlState())
+            self.setTitleColor(UIColor.white, for: .disabled)
         case .Indigo:
             let image = UIImage(resource: R.image.logoGray_small)
             self.setImage(image, forState: .Normal)
             self.setImage(image, forState: .Disabled)
-            self.tintColor = UIColor.whiteColor()
-            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            self.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
+            self.tintColor = UIColor.white
+            self.setTitleColor(UIColor.white, for: UIControlState())
+            self.setTitleColor(UIColor.white, for: .disabled)
         }
     }
 }

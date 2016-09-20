@@ -22,13 +22,13 @@ class HasSwitchThemedTableViewCell: UITableViewCell {
         switch themeState.themeType {
         case .White:
             self.titleLabel?.textColor = UIColor.whiteThemeTextColor()
-            self.backgroundColor = UIColor.whiteColor()
+            self.backgroundColor = UIColor.white
         case .Black:
-            self.titleLabel?.textColor = UIColor.whiteColor()
+            self.titleLabel?.textColor = UIColor.white
             self.backgroundColor = UIColor.blackThemeCellBackgroundColor()
         case .Indigo:
-            self.titleLabel?.textColor = UIColor.whiteColor()
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.16)
+            self.titleLabel?.textColor = UIColor.white
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
         }
     }
 }

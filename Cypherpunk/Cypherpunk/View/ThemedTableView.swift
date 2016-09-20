@@ -30,11 +30,11 @@ extension UITableView {
             self.separatorColor = UIColor.whiteThemeSeparatorColor()
             self.tintColor = UIColor.whiteThemeIndicatorColor()
         case .Black:
-            self.backgroundColor = UIColor.blackColor()
+            self.backgroundColor = UIColor.black
             self.separatorColor = UIColor.whiteThemeTextColor()
         case .Indigo:
-            self.backgroundColor = UIColor.clearColor()
-            self.separatorColor = UIColor.whiteColor().colorWithAlphaComponent(0.30)
+            self.backgroundColor = UIColor.clear
+            self.separatorColor = UIColor.white.withAlphaComponent(0.30)
         }
     }
 }

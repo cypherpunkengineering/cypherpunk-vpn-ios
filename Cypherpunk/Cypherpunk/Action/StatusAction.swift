@@ -10,10 +10,10 @@ import Foundation
 import ReSwift
 
 enum StatusAction: Action {
-    case GetOriginalIPAddress(address: String)
-    case GetNewIPAddress(address: String)
-    case GetOriginalGeoLocation(response: GeoLocationResponse)
-    case GetNewGeoLocation(response: GeoLocationResponse)
+    case getOriginalIPAddress(address: String)
+    case getNewIPAddress(address: String)
+    case getOriginalGeoLocation(response: GeoLocationResponse)
+    case getNewGeoLocation(response: GeoLocationResponse)
 
-    case SetConnectedDate(date: NSDate?)
+    case setConnectedDate(date: Date?)
 }

@@ -27,7 +27,7 @@ class ThemedTextField: UITextField {
                                                                         attributes:[NSForegroundColorAttributeName: UIColor(red: 130.0/255.0, green: 130.0/255.0, blue: 130.0/255.0, alpha: 1.0)])
         case .Indigo:
             self.attributedPlaceholder = NSAttributedString(string:self.placeholder ?? "",
-                                                                        attributes:[NSForegroundColorAttributeName: UIColor.whiteColor().colorWithAlphaComponent(0.5)])
+                                                                        attributes:[NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.5)])
         }
     }
 

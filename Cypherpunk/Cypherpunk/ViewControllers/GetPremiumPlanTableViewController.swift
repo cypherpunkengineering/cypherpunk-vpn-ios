@@ -15,7 +15,7 @@ class GetPremiumPlanTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
@@ -28,50 +28,50 @@ class GetPremiumPlanTableViewController: UITableViewController {
 
 extension GetPremiumPlanTableViewController {
     
-    @IBAction func oneMonthUpgradeAction(sender: AnyObject) {
+    @IBAction func oneMonthUpgradeAction(_ sender: AnyObject) {
 
         mailAddressField.resignFirstResponder()
         
-        if let address = mailAddressField.text where isValidMailAddress(address) {
+        if let address = mailAddressField.text , isValidMailAddress(address) {
             mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.Upgrade(subscription: .OneMonth, expiredDate: NSDate()))
+            mainStore.dispatch(AccountAction.Upgrade(subscription: .OneMonth, expiredDate: Date()))
             
             if isModal() {
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             }
         }
         
     }
     
     
-    @IBAction func halfYearUpgradeAction(sender: AnyObject) {
+    @IBAction func halfYearUpgradeAction(_ sender: AnyObject) {
 
         mailAddressField.resignFirstResponder()
         
-        if let address = mailAddressField.text where isValidMailAddress(address) {
+        if let address = mailAddressField.text , isValidMailAddress(address) {
             mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.Upgrade(subscription: .HalfYear, expiredDate: NSDate()))
+            mainStore.dispatch(AccountAction.Upgrade(subscription: .HalfYear, expiredDate: Date()))
             if isModal() {
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
     
-    @IBAction func yearUpgradeAction(sender: AnyObject) {
+    @IBAction func yearUpgradeAction(_ sender: AnyObject) {
 
         mailAddressField.resignFirstResponder()
 
-        if let address = mailAddressField.text where isValidMailAddress(address) {
+        if let address = mailAddressField.text , isValidMailAddress(address) {
             mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.Upgrade(subscription: .Year, expiredDate: NSDate()))
+            mainStore.dispatch(AccountAction.Upgrade(subscription: .Year, expiredDate: Date()))
             if isModal() {
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -98,7 +98,7 @@ extension GetPremiumPlanTableViewController {
 }
 
 extension GetPremiumPlanTableViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

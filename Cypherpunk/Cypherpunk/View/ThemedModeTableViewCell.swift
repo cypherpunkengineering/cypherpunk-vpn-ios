@@ -26,21 +26,21 @@ class ThemedModeTableViewCell: UITableViewCell {
         case .White:
             self.titleLabel?.textColor = UIColor.whiteThemeTextColor()
             self.descriptionView?.textColor = UIColor.whiteThemeTextColor()
-            privacyModeView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
-            speedModeView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
-            self.backgroundColor = UIColor.whiteColor()
+            privacyModeView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+            speedModeView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+            self.backgroundColor = UIColor.white
         case .Black:
-            self.titleLabel?.textColor = UIColor.whiteColor()
-            self.descriptionView?.textColor = UIColor.whiteColor()
-            privacyModeView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
-            speedModeView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
+            self.titleLabel?.textColor = UIColor.white
+            self.descriptionView?.textColor = UIColor.white
+            privacyModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+            speedModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
             self.backgroundColor = UIColor.blackThemeCellBackgroundColor()
         case .Indigo:
-            self.titleLabel?.textColor = UIColor.whiteColor()
-            self.descriptionView?.textColor = UIColor.whiteColor()
-            privacyModeView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
-            speedModeView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.16)
+            self.titleLabel?.textColor = UIColor.white
+            self.descriptionView?.textColor = UIColor.white
+            privacyModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+            speedModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
         }
     }
 
