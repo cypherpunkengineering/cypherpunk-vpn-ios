@@ -33,13 +33,13 @@ extension GetPremiumPlanTableViewController {
         mailAddressField.resignFirstResponder()
         
         if let address = mailAddressField.text , isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.Upgrade(subscription: .OneMonth, expiredDate: Date()))
+            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
+            mainStore.dispatch(AccountAction.upgrade(subscription: .oneMonth, expiredDate: Date()))
             
             if isModal() {
                 self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
         
@@ -51,12 +51,12 @@ extension GetPremiumPlanTableViewController {
         mailAddressField.resignFirstResponder()
         
         if let address = mailAddressField.text , isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.Upgrade(subscription: .HalfYear, expiredDate: Date()))
+            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
+            mainStore.dispatch(AccountAction.upgrade(subscription: .halfYear, expiredDate: Date()))
             if isModal() {
                 self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -66,12 +66,12 @@ extension GetPremiumPlanTableViewController {
         mailAddressField.resignFirstResponder()
 
         if let address = mailAddressField.text , isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.Upgrade(subscription: .Year, expiredDate: Date()))
+            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
+            mainStore.dispatch(AccountAction.upgrade(subscription: .year, expiredDate: Date()))
             if isModal() {
                 self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
     }

@@ -31,27 +31,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().titleTextAttributes = [
             NSFontAttributeName: R.font.dosisSemiBold(size: 18.0)!,
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSForegroundColorAttributeName: UIColor.white,
         ]
         
         UINavigationBar.appearance().shadowImage = R.image.lineColor()
         
         UIBarButtonItem.appearance().setTitleTextAttributes([
             NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
-            NSForegroundColorAttributeName: UIColor.whiteColor()
-            ], for: .Normal)
+            NSForegroundColorAttributeName: UIColor.white
+            ], for: .normal)
         
-        mainStore.dispatch(ThemeAction.ChangeToIndigo)
+        mainStore.dispatch(ThemeAction.changeToIndigo)
         VPNConfigurationCoordinator.start {
         }
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         
         DispatchQueue.main.async { [unowned self] in
-            let firstOpen = R.storyboard.firstOpen.initialViewController()
+            let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
             
             if mainStore.state.accountState.isLoggedIn == false {
-                self.window?.rootViewController!.presentViewController(firstOpen!, animated: false, completion: nil)
+                self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
             }
         }
         
@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let realm = try! Realm()
         try! realm.write {
-            if realm.objects(Region).count == 0 {
+            if realm.objects(Region.self).count == 0 {
                 realm.add(Region(name: "Tokyo1", ipAddress: "208.111.52.1"))
                 realm.add(Region(name: "Tokyo2", ipAddress: "208.111.52.2"))
                 realm.add(Region(name: "Honolulu", ipAddress: "199.68.252.203"))

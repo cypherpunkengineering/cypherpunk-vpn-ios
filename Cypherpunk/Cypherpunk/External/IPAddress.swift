@@ -63,31 +63,6 @@ enum NetworkInterface {
         print("IPAddress: \(address)")
         return address
     }
-    
-    var SSID: String {
-        var currentSSID: String = ""
-        if #available(iOS 9.0, *) {
-            for network in NEHotspotHelper.supportedNetworkInterfaces() {
-                guard let network = network as? NEHotspotNetwork else {
-                    continue
-                }
-                print(network.ssid)
-            }
-        } else {
-            if let interfaces:CFArray? = CNCopySupportedInterfaces() {
-                for i in 0..<CFArrayGetCount(interfaces){
-                    let interfaceName: UnsafeRawPointer = CFArrayGetValueAtIndex(interfaces, i)
-                    let rec = unsafeBitCast(interfaceName, to: AnyObject.self)
-                    let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)" as CFString)
-                    if unsafeInterfaceData != nil {
-                        let interfaceData = unsafeInterfaceData! as Dictionary!
-                        currentSSID = interfaceData["SSID"] as! String
-                    }
-                }
-            }
-        }
-        return currentSSID
-    }
-    
+        
 }
 

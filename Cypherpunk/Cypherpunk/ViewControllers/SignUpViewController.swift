@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController, StoreSubscriber {
     
     func signUp() {
         if let address = mailAddressField.text , isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
+            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
         }
     }
     
@@ -60,8 +60,9 @@ class SignUpViewController: UIViewController, StoreSubscriber {
     }
 
     func keyboardWillShow(_ sender: Notification) {
-        if let userInfo = (sender as NSNotification).userInfo {
-            if let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).CGRectValue.size.height {
+        if let userInfo = sender.userInfo {
+            if let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+                let keyboardHeight = keyboardFrame.size.height
                 bottomSpaceConstraint.constant = keyboardHeight
                 UIView.animate(withDuration: 0.25, animations: { () -> Void in
                     self.view.layoutIfNeeded()
@@ -82,10 +83,9 @@ class SignUpViewController: UIViewController, StoreSubscriber {
         defaultCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
-    func newState(_ state: AppState)
+    func newState(state: AppState)
     {
         if state.accountState.isLoggedIn == true {
-            // TODO: transition to send email screen
             self.dismiss(animated: true, completion: nil)
         }
     }

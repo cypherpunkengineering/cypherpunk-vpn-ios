@@ -31,9 +31,9 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
 
         // Do any additional setup after loading the view.
         let realm = try! Realm()
-        favoriteResults = realm.objects(Region).filter("isFavorite = true")
-        recommendedResults = realm.objects(Region).filter("isFavorite = false AND isRecommended = true")
-        otherResults = realm.objects(Region).filter("isFavorite = false AND isRecommended = false")
+        favoriteResults = realm.objects(Region.self).filter("isFavorite = true")
+        recommendedResults = realm.objects(Region.self).filter("isFavorite = false AND isRecommended = true")
+        otherResults = realm.objects(Region.self).filter("isFavorite = false AND isRecommended = false")
         
     }
 
@@ -60,11 +60,11 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         
         let theme = mainStore.state.themeState.themeType
         switch theme {
-        case .White:
+        case .white:
             titleLabel.textColor = UIColor.whiteThemeTextColor()
-        case .Black:
+        case .black:
             titleLabel.textColor = UIColor.whiteThemeIndicatorColor()
-        case .Indigo:
+        case .indigo:
             titleLabel.textColor = UIColor.white
         }
         
@@ -93,18 +93,18 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let section = Section(rawValue: (indexPath as NSIndexPath).section)!
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
         
         switch section {
         case .favorite:
             cell?.titleLabel.text = favoriteResults[indexPath.row].name
-            cell?.starButton.setImage(R.image.iconStarOn(), forState: .Normal)
+            cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
         case .recommended:
             cell?.titleLabel.text = recommendedResults[indexPath.row].name
-            cell?.starButton.setImage(R.image.iconStar(), forState: .Normal)
+            cell?.starButton.setImage(R.image.iconStar(), for: .normal)
         case .allLocation:
             cell?.titleLabel.text = otherResults[indexPath.row].name
-            cell?.starButton.setImage(R.image.iconStar(), forState: .Normal)
+            cell?.starButton.setImage(R.image.iconStar(), for: .normal)
         }
         
         cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
@@ -125,7 +125,7 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
             region = otherResults[indexPath.row]
         }
 
-        mainStore.dispatch(RegionAction.ChangeRegion(name: region.name, serverIP: region.ipAddress))
+        mainStore.dispatch(RegionAction.changeRegion(name: region.name, serverIP: region.ipAddress))
         let manager = NEVPNManager.shared()
         let isConnected = manager.connection.status == .connected
         VPNConfigurationCoordinator.start {

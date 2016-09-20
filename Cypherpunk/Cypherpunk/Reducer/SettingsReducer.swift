@@ -11,7 +11,9 @@ import ReSwift
 import NetworkExtension
  
 struct SettingsReducer: Reducer {
-    func handleAction(_ action: Action, state: SettingsState?) -> SettingsState {
+    typealias ReducerStateType = SettingsState
+    
+    func handleAction(action: Action, state: SettingsState?) -> SettingsState {
         var state = state ?? SettingsState()
         
         if let action = action as? SettingsAction {

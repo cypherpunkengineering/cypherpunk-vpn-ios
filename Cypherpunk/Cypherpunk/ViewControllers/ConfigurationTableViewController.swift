@@ -46,7 +46,7 @@ class ConfigurationTableViewController: UITableViewController {
         let settingsState = mainStore.state.settingsState
         mailAddressLabel.text = accountState.mailAddress ?? ""
         vpnProtocolDetailLabel.text = settingsState.vpnProtocolMode.description
-        usernameLabelButton.setTitle(accountState.nickName, forState: .Normal)
+        usernameLabelButton.setTitle(accountState.nickName, for: .normal)
         autoConnectSwitch.setOn(settingsState.isAutoReconnect, animated: false)
         self.tableView.reloadData()
         
@@ -79,7 +79,7 @@ class ConfigurationTableViewController: UITableViewController {
             // AccountType
             let accountState = mainStore.state.accountState
             switch accountState.subscriptionType {
-            case .Year:
+            case .year:
                 return 1
             default:
                 return 2
@@ -108,7 +108,7 @@ class ConfigurationTableViewController: UITableViewController {
             
             let dateString: String
             if let d = accountState.expiredDate {
-                dateString = dateFormatter.stringFromDate(d)
+                dateString = dateFormatter.string(from: d)
             } else {
                 dateString = ""
             }
@@ -149,11 +149,11 @@ class ConfigurationTableViewController: UITableViewController {
         
         let theme = mainStore.state.themeState.themeType
         switch theme {
-        case .White:
+        case .white:
             titleLabel.textColor = UIColor.whiteThemeTextColor()
-        case .Black:
+        case .black:
             titleLabel.textColor = UIColor.whiteThemeIndicatorColor()
-        case .Indigo:
+        case .indigo:
             titleLabel.textColor = UIColor.white
         }
         
@@ -173,10 +173,10 @@ class ConfigurationTableViewController: UITableViewController {
         if let row = Rows(rawValue: (indexPath as NSIndexPath).section * 10 + (indexPath as NSIndexPath).row) {
             switch row {
             case .signOut:
-                let vc = R.storyboard.firstOpen.initialViewController()
-                mainStore.dispatch(AccountAction.Logout)
-                self.navigationController?.presentViewController(vc!, animated: true, completion: {
-                    self.navigationController?.popViewControllerAnimated(false)
+                let vc = R.storyboard.firstOpen.instantiateInitialViewController()
+                mainStore.dispatch(AccountAction.logout)
+                self.navigationController?.present(vc!, animated: true, completion: {
+                    let _ = self.navigationController?.popViewController(animated: false)
                 })
             default:
                 break
@@ -207,6 +207,6 @@ class ConfigurationTableViewController: UITableViewController {
     }
     
     @IBAction func changeAutoConnectAction(_ sender: UISwitch) {
-        mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.on))
+        mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.isOn))
     }
 }

@@ -11,8 +11,8 @@ import UIKit
 extension VPNProtocolMode {
     static var arrayDescription: [VPNProtocolMode] {
         return [
-            .ipSec,
-            .ikEv2
+            .IPSec,
+            .IKEv2
         ]
     }
     
@@ -67,7 +67,7 @@ class VPNProtocolSelectViewController: UITableViewController {
         let value = VPNProtocolMode.arrayDescription[(indexPath as NSIndexPath).row]
         mainStore.dispatch(SettingsAction.vpnProtocolMode(value: value))
         
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 
 }

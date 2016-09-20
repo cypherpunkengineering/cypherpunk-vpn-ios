@@ -13,14 +13,14 @@ import KeychainAccess
 import NetworkExtension
 
 enum VPNProtocolMode: Int {
-    case ipSec = 1
-    case ikEv2 = 2
+    case IPSec = 1
+    case IKEv2 = 2
     
     var description: String {
         switch self {
-        case .ipSec:
+        case .IPSec:
             return "IPSec"
-        case .ikEv2:
+        case .IKEv2:
             return "IKEv2"
         }
     }
@@ -45,7 +45,7 @@ struct SettingsState: StateType {
     var vpnProtocolMode: VPNProtocolMode {
         get {
             let value: Int = NSString(string: keychain[SettingsStateKey.vpnProtocolMode] ?? "2").integerValue
-            return VPNProtocolMode(rawValue: value) ?? .ikEv2
+            return VPNProtocolMode(rawValue: value) ?? .IKEv2
         }
         set(newValue) {
             keychain[SettingsStateKey.vpnProtocolMode] = String(newValue.rawValue)

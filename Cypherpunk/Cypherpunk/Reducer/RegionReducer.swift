@@ -11,7 +11,10 @@ import Foundation
 import ReSwift
 
 struct RegionReducer: Reducer {
-    func handleAction(_ action: Action, state: RegionState?) -> RegionState {
+
+    typealias ReducerStateType = RegionState
+    
+    func handleAction(action: Action, state: RegionState?) -> RegionState {
         
         var regionState = state ?? RegionState(
             name:  "",
@@ -20,10 +23,10 @@ struct RegionReducer: Reducer {
         
         if let action = action as? RegionAction {
             switch action {
-            case .ChangeRegion(let name, let serverIP):
+            case .changeRegion(let name, let serverIP):
                 regionState.name = name
                 regionState.serverIP = serverIP
-            case .Connect:
+            case .connect:
                 let history = RegionHistory(state: regionState)
                 
                 if let index = regionState.recentryConnected.index(of: history) {

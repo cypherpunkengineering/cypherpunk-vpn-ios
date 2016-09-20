@@ -17,11 +17,11 @@ class ThemedSubTitleLabel: UILabel {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.textColor = UIColor.whiteThemeNavigationColor()
-        case .Black:
+        case .black:
             self.textColor = UIColor.lightGray
-        case .Indigo:
+        case .indigo:
             self.textColor = UIColor.white
         }
     }

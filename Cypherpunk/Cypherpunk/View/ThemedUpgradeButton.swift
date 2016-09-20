@@ -11,8 +11,8 @@ import UIKit
 class ThemedUpgradeButton: UIButton {
     
     override func awakeFromNib() {
-        let image = UIImage(resource: R.image.iconUpgrade)?.imageWithRenderingMode(.AlwaysTemplate)
-        self.setImage(image, forState: .Normal)
+        let image = UIImage(resource: R.image.iconUpgrade)?.withRenderingMode(.alwaysTemplate)
+        self.setImage(image, for: .normal)
 
         configureView()
     }
@@ -20,17 +20,17 @@ class ThemedUpgradeButton: UIButton {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.tintColor = UIColor.whiteThemeTextColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), for: UIControlState())
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
             self.borderColor = UIColor.whiteThemeTextColor()
-        case .Black:
+        case .black:
             self.tintColor = UIColor.white
-            self.setTitleColor(UIColor.white, for: UIControlState())
+            self.setTitleColor(UIColor.white, for: .normal)
             self.borderColor = UIColor.white
-        case .Indigo:
+        case .indigo:
             self.tintColor = UIColor.white
-            self.setTitleColor(UIColor.white, for: UIControlState())
+            self.setTitleColor(UIColor.white, for: .normal)
             self.borderColor = UIColor.white
         }
     }

@@ -62,7 +62,7 @@ class ContactusViewController: UIViewController {
     }
     
     func submitAction() {
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -81,10 +81,13 @@ class ContactusViewController: UIViewController {
 extension ContactusViewController: UITextViewDelegate {
     
     func keyboardWillShow(_ sender: Notification) {
-        if let userInfo = (sender as NSNotification).userInfo {
-            if let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).CGRectValue.size.height {
+        if let userInfo = sender.userInfo {
+            if let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+                let keyboardHeight = keyboardFrame.size.height
                 bottomSpaceConstraint?.constant = keyboardHeight + 44
-                UIView.animate(withDuration: 0.25, animations:self.view.layoutIfNeeded)
+                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                    self.view.layoutIfNeeded()
+                })
             }
         }
     }

@@ -11,24 +11,24 @@ import UIKit
 class ThemedTintedNavigationButton: UIButton {
 
     override func awakeFromNib() {
-        self.setImage(self.imageView?.image, for: UIControlState())
+        self.setImage(self.imageView?.image, for: .normal)
         configureView()
     }
     
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.tintColor = UIColor.whiteThemeNavigationButtonColor()
-            self.setTitleColor(UIColor.whiteThemeNavigationColor(), for: UIControlState())
+            self.setTitleColor(UIColor.whiteThemeNavigationColor(), for: .normal)
             self.setTitleColor(UIColor.whiteThemeTextColor(), for: .highlighted)
             self.setTitleColor(UIColor.whiteThemeTextColor(), for: .selected)
-        case .Black:
+        case .black:
             self.tintColor = UIColor.lightGray
-            self.setTitleColor(UIColor.lightGray, for: UIControlState())
-        case .Indigo:
+            self.setTitleColor(UIColor.lightGray, for: .normal)
+        case .indigo:
             self.tintColor = UIColor.white
-            self.setTitleColor(UIColor.white, for: UIControlState())
+            self.setTitleColor(UIColor.white, for: .normal)
         }
     }
     

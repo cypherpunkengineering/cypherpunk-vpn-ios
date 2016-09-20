@@ -22,15 +22,15 @@ class ThemedTableViewCell: UITableViewCell {
         self.detailTextLabel?.font = R.font.dosisMedium(size: 16.0)
 
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.textLabel?.textColor = UIColor.whiteThemeTextColor()
             self.detailTextLabel?.textColor = UIColor.whiteThemeNavigationColor()
             self.backgroundColor = UIColor.white
-        case .Black:
+        case .black:
             self.textLabel?.textColor = UIColor.white
             self.detailTextLabel?.textColor = UIColor.whiteThemeIndicatorColor()
             self.backgroundColor = UIColor.blackThemeCellBackgroundColor()
-        case .Indigo:
+        case .indigo:
             self.textLabel?.textColor = UIColor.white
             self.detailTextLabel?.textColor = UIColor(white: 227.0 / 255.0, alpha: 1.0)
             self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
@@ -43,8 +43,8 @@ class ThemedTableViewCell: UITableViewCell {
 extension ThemedTableViewCell {
     func prepareDisclosureIndicator() {
         for case let button as UIButton in subviews {
-            let image = button.backgroundImage(for: UIControlState())?.withRenderingMode(.alwaysTemplate)
-            button.setBackgroundImage(image, for: UIControlState())
+            let image = button.backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
+            button.setBackgroundImage(image, for: .normal)
         }
     }
 }

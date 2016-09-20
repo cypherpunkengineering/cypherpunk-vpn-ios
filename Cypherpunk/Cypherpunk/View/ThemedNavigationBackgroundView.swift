@@ -18,11 +18,11 @@ class ThemedNavigationBackgroundView: UIView {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.isHidden = true
-        case .Black:
+        case .black:
             self.isHidden = true
-        case .Indigo:
+        case .indigo:
             self.isHidden = false
             
             DispatchQueue.main.async(execute: {

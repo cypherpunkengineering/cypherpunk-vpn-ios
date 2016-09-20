@@ -15,7 +15,7 @@ import ReSwift
 import SVProgressHUD
 
 class SignInViewController: UIViewController, StoreSubscriber {
-
+    
     @IBOutlet weak var mailAddressField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
@@ -29,7 +29,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
         passwordField.text = "test123"
         
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -46,47 +46,47 @@ class SignInViewController: UIViewController, StoreSubscriber {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     @IBAction func signInAction() {
         signIn()
     }
-
+    
     func signIn() {
         if let address = mailAddressField.text, let password = passwordField.text , isValidMailAddress(address) && password != "" {
-
+            
             IndicatorView.show()
             
             let request = LoginRequest(login: address, password: password)
-            Session.sendRequest(request) { result in
-                
+            Session.send(request, callbackQueue: nil, handler: { (result) in
                 switch result {
-                case .Success(let response):
-                    mainStore.dispatch(AccountAction.Login(response: response))
-                case .Failure(let error):
-                    SVProgressHUD.showErrorWithStatus("\((error as NSError).localizedDescription)")
+                case .success(let response):
+                    mainStore.dispatch(AccountAction.login(response: response))
+                case .failure(let error):
+                    SVProgressHUD.showError(withStatus: "\((error as NSError).localizedDescription)")
                 }
                 
                 IndicatorView.dismiss()
-            }
-
+            })
+            
         }
     }
     
-    func newState(_ state: AppState)
+    func newState(state: AppState)
     {
         if state.accountState.isLoggedIn {
             // TODO: transition to send email screen
             self.dismiss(animated: true, completion: nil)
         }
     }
-
+    
 }
 
 extension SignInViewController {
     
     func keyboardWillShow(_ sender: Notification) {
-        if let userInfo = (sender as NSNotification).userInfo {
-            if let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).CGRectValue.size.height {
+        if let userInfo = sender.userInfo {
+            if let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+                let keyboardHeight = keyboardFrame.size.height
                 bottomSpaceConstraint.constant = keyboardHeight
                 UIView.animate(withDuration: 0.25, animations: { () -> Void in
                     self.view.layoutIfNeeded()
@@ -94,7 +94,6 @@ extension SignInViewController {
             }
         }
     }
-    
     func keyboardWillHide(_ sender: Notification) {
         bottomSpaceConstraint.constant = 0.0
         UIView.animate(withDuration: 0.25, animations: { () -> Void in self.view.layoutIfNeeded() })
@@ -113,7 +112,7 @@ extension SignInViewController {
         defaultCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         defaultCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-
+    
 }
 
 extension SignInViewController: UITextFieldDelegate {

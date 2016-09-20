@@ -62,8 +62,8 @@ class TopViewController: UIViewController, StoreSubscriber {
             NSForegroundColorAttributeName: UIColor.white
         ]
         let cancelAttributed = NSAttributedString(string: "Cancel", attributes: attributes)
-        cancelButton.setAttributedTitle(cancelAttributed, for: UIControlState())
-        regionButton.setTitle(mainStore.state.regionState.title, forState: .Normal)
+        cancelButton.setAttributedTitle(cancelAttributed, for: .normal)
+        regionButton.setTitle(mainStore.state.regionState.title, for: .normal)
         
 
     }
@@ -86,7 +86,7 @@ class TopViewController: UIViewController, StoreSubscriber {
             self.updateViewWithVPNStatus(status)
         }
         
-        mainStore.subscribe(self)
+        mainStore.subscribe(self, selector: nil)
         
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0
@@ -128,20 +128,20 @@ class TopViewController: UIViewController, StoreSubscriber {
             let time = DispatchTime.now() + Double(Int64(3 * NSEC_PER_SEC / 2)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: time, execute: { 
                 let IPRequest = JSONIPRequest()
-                Session.sendRequest(IPRequest) {
+                Session.send(IPRequest) {
                     (result) in
                     switch result {
-                    case .Success(let response):
+                    case .success(let response):
                         let IPAddress = response.IPAddress
-                        if NEVPNManager.sharedManager().connection.status == .Connected {
-                            mainStore.dispatch(StatusAction.GetNewIPAddress(address: IPAddress))
+                        if NEVPNManager.shared().connection.status == .connected {
+                            mainStore.dispatch(StatusAction.getNewIPAddress(address: IPAddress))
                             let request = GeoLocationRequest(IPAddress: IPAddress)
-                            Session.sendRequest(request) {
+                            Session.send(request) {
                                 (result) in
                                 switch result {
-                                case .Success(let response):
+                                case .success(let response):
                                     if response.isSuccess {
-                                        mainStore.dispatch(StatusAction.GetNewGeoLocation(response: response))
+                                        mainStore.dispatch(StatusAction.getNewGeoLocation(response: response))
                                     }
                                 default:
                                     break
@@ -175,20 +175,20 @@ class TopViewController: UIViewController, StoreSubscriber {
             outsideCircleView.isHidden = false
             
             let IPRequest = JSONIPRequest()
-            Session.sendRequest(IPRequest) {
+            Session.send(IPRequest) {
                 (result) in
                 switch result {
-                case .Success(let response):
+                case .success(let response):
                     let IPAddress = response.IPAddress
-                    if NEVPNManager.sharedManager().connection.status == .Disconnected {
-                        mainStore.dispatch(StatusAction.GetOriginalIPAddress(address: IPAddress))
+                    if NEVPNManager.shared().connection.status == .disconnected {
+                        mainStore.dispatch(StatusAction.getOriginalIPAddress(address: IPAddress))
                         let request = GeoLocationRequest(IPAddress: IPAddress)
-                        Session.sendRequest(request) {
+                        Session.send(request) {
                             (result) in
                             switch result {
-                            case .Success(let response):
+                            case .success(let response):
                                 if response.isSuccess {
-                                    mainStore.dispatch(StatusAction.GetOriginalGeoLocation(response: response))
+                                    mainStore.dispatch(StatusAction.getOriginalGeoLocation(response: response))
                                 }
                             default:
                                 break
@@ -235,10 +235,10 @@ class TopViewController: UIViewController, StoreSubscriber {
         let status = connection.status
         
         if status == .connected {
-            mainStore.dispatch(RegionAction.Connect)
-            mainStore.dispatch(StatusAction.SetConnectedDate(date: Date()))
+            mainStore.dispatch(RegionAction.connect)
+            mainStore.dispatch(StatusAction.setConnectedDate(date: Date()))
         } else if status == .disconnected {
-            mainStore.dispatch(StatusAction.SetConnectedDate(date: nil))
+            mainStore.dispatch(StatusAction.setConnectedDate(date: nil))
         }
 
         self.updateViewWithVPNStatus(status)
@@ -260,8 +260,8 @@ class TopViewController: UIViewController, StoreSubscriber {
         VPNConfigurationCoordinator.disconnect()
     }
     
-    func newState(_ state: AppState) {
-        regionButton.setTitle(state.regionState.title, for: UIControlState())
+    func newState(state: AppState) {
+        regionButton.setTitle(state.regionState.title, for: .normal)
     }
 
     @IBAction func transitionToConfigurationAction(_ sender: AnyObject) {

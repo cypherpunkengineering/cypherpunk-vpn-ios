@@ -19,13 +19,13 @@ class ThemedTextField: UITextField {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.attributedPlaceholder = NSAttributedString(string:self.placeholder ?? "",
                                                                         attributes:[NSForegroundColorAttributeName: UIColor(red: 130.0/255.0, green: 130.0/255.0, blue: 130.0/255.0, alpha: 1.0)])
-        case .Black:
+        case .black:
             self.attributedPlaceholder = NSAttributedString(string:self.placeholder ?? "",
                                                                         attributes:[NSForegroundColorAttributeName: UIColor(red: 130.0/255.0, green: 130.0/255.0, blue: 130.0/255.0, alpha: 1.0)])
-        case .Indigo:
+        case .indigo:
             self.attributedPlaceholder = NSAttributedString(string:self.placeholder ?? "",
                                                                         attributes:[NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.5)])
         }

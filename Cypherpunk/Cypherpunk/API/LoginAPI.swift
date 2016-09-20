@@ -11,7 +11,7 @@ import Foundation
 import APIKit
 import Himotoki
 
-struct LoginRequest: RequestType {
+struct LoginRequest: Request {
     
     typealias Response = LoginResponse
     
@@ -23,24 +23,24 @@ struct LoginRequest: RequestType {
     }
 
     var method: HTTPMethod {
-        return .POST
+        return .post
     }
     
     var path: String {
         return "/account/authenticate/userpasswd"
     }
     
-    var parameters: AnyObject? {
+    var parameters: Any? {
         return [
             "login": login,
             "password": password,
         ]
     }
-    
-    func responseFromObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> Response {
-        var response: Response = try decodeValue(object)
 
-        if let cookie = URLResponse.allHeaderFields["Set-Cookie"] as? String {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> LoginResponse {
+        var response: Response = try decodeValue(object)
+        
+        if let cookie = urlResponse.allHeaderFields["Set-Cookie"] as? String {
             let separetedField = cookie.components(separatedBy: ";")
             if let session = separetedField.first {
                 response.session = session
@@ -48,10 +48,11 @@ struct LoginRequest: RequestType {
         }
         
         return response
+        
     }
     
-    var dataParser: DataParserType {
-        return JSONDataParser(readingOptions: .AllowFragments)
+    var dataParser: DataParser {
+        return JSONDataParser(readingOptions: .allowFragments)
     }
 }
 

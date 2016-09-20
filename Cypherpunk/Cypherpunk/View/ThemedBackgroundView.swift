@@ -17,11 +17,11 @@ class ThemedBackgroundView: UIView {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.backgroundColor = UIColor(red: 242.0 / 255.0, green: 242.0 / 255.0 , blue: 242.0 / 255.0 , alpha: 1.0)
-        case .Black:
+        case .black:
             self.backgroundColor = UIColor.black
-        case .Indigo:
+        case .indigo:
             DispatchQueue.main.async(execute: { 
                 let topColor = UIColor(red: 118.0 / 255.0, green: 168.0 / 255.0 , blue: 231.0 / 255.0 , alpha: 1.0)
                 let bottomColor = UIColor(red: 3.0 / 255.0, green: 70.0 / 255.0 , blue: 152.0 / 255.0 , alpha: 1.0)

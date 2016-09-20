@@ -17,26 +17,26 @@ class ThemedLogoView: UIButton {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
-            let image = UIImage(resource: R.image.logoGray_small)?.imageWithRenderingMode(.AlwaysTemplate)
-            self.setImage(image, forState: .Normal)
-            self.setImage(image, forState: .Disabled)
+        case .white:
+            let image = UIImage(resource: R.image.logoGray_small)?.withRenderingMode(.alwaysTemplate)
+            self.setImage(image, for: .normal)
+            self.setImage(image, for: .disabled)
             self.tintColor = UIColor.whiteThemeTextColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), for: UIControlState())
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
             self.setTitleColor(UIColor.whiteThemeTextColor(), for: .disabled)
-        case .Black:
+        case .black:
             let image = UIImage(resource: R.image.logoGray_small)
-            self.setImage(image, forState: .Normal)
-            self.setImage(image, forState: .Disabled)
+            self.setImage(image, for: .normal)
+            self.setImage(image, for: .disabled)
             self.tintColor = UIColor.lightGray
-            self.setTitleColor(UIColor.whiteThemeTextColor(), for: UIControlState())
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
             self.setTitleColor(UIColor.white, for: .disabled)
-        case .Indigo:
+        case .indigo:
             let image = UIImage(resource: R.image.logoGray_small)
-            self.setImage(image, forState: .Normal)
-            self.setImage(image, forState: .Disabled)
+            self.setImage(image, for: .normal)
+            self.setImage(image, for: .disabled)
             self.tintColor = UIColor.white
-            self.setTitleColor(UIColor.white, for: UIControlState())
+            self.setTitleColor(UIColor.white, for: .normal)
             self.setTitleColor(UIColor.white, for: .disabled)
         }
     }

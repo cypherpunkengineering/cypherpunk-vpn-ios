@@ -10,7 +10,7 @@ import Foundation
 import Himotoki
 import APIKit
 
-struct GeoLocationRequest: RequestType {
+struct GeoLocationRequest: Request {
     
     typealias Response = GeoLocationResponse
     
@@ -21,21 +21,21 @@ struct GeoLocationRequest: RequestType {
     }
     
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
     
     var path: String {
         return IPAddress
     }
     
-    func responseFromObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> Response {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> GeoLocationResponse {
         let response: Response = try decodeValue(object)
         
         return response
     }
     
-    var dataParser: DataParserType {
-        return JSONDataParser(readingOptions: .AllowFragments)
+    var dataParser: DataParser {
+        return JSONDataParser(readingOptions: .allowFragments)
     }
 }
 

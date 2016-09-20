@@ -18,11 +18,11 @@ class ThemedMapImageView: UIImageView {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.image = UIImage(resource: R.image.map_bk)
-        case .Black:
+        case .black:
             self.image = UIImage(resource: R.image.map_wh)
-        case .Indigo:
+        case .indigo:
             self.image = UIImage(resource: R.image.map_bk)
         }
     }

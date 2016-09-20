@@ -68,11 +68,11 @@ class ConnectionStatusViewController: UITableViewController {
         self.originalIPAddressLabel.text = statusState.originalIPAddress ?? "---.---.---.---"
         self.newIPAddressLabel.text = statusState.newIPAddress ?? "---.---.---.---"
         
-        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", forState: .Normal)
-        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", forState: .Normal)
+        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", for: .normal)
+        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", for: .normal)
         
         startTimer()
-        mainStore.subscribe(self)
+        mainStore.subscribe(self, selector: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -90,28 +90,27 @@ class ConnectionStatusViewController: UITableViewController {
         notificationCenter.removeObserver(self)
     }
 
-    var timerSource: DispatchSource!
+    var timerSource: DispatchSourceTimer!
     func startTimer() {
         let source = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: DispatchQueue.main)
         
-        if source != nil {
-            let secondsToFire: Double = 0.1
-            let now = DispatchTime.now() + Double(Int64(secondsToFire * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            let interval = UInt64(secondsToFire * Double(NSEC_PER_SEC))
-            source.setTimer(start: now, interval: interval, leeway: (1 * NSEC_PER_SEC) / 10)
-            source.setEventHandler(handler: {
-                let statusState = mainStore.state.statusState
-                if let date = statusState.connectedDate {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "HH:mm:ss"
-                    formatter.timeZone = TimeZone(secondsFromGMT: 0)
-                    let difference = Date(timeIntervalSince1970: Date().timeIntervalSinceDate(date))
-                    
-                    self.connectionTimeLabelButton.setTitle(formatter.stringFromDate(difference), forState: .Normal)
-                }
-            })
-            source.resume()
-        }
+        let secondsToFire: Double = 0.1
+        let now = DispatchTime.now() + Double(Int64(secondsToFire * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let interval = Double(secondsToFire * Double(NSEC_PER_SEC))
+        
+        source.scheduleRepeating(deadline: now, interval: interval)
+        source.setEventHandler(handler: {
+            let statusState = mainStore.state.statusState
+            if let date = statusState.connectedDate {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH:mm:ss"
+                formatter.timeZone = TimeZone(secondsFromGMT: 0)
+                let difference = Date(timeIntervalSince1970: Date().timeIntervalSince(date))
+                
+                self.connectionTimeLabelButton.setTitle(formatter.string(from: difference), for: .normal)
+            }
+        })
+        source.resume()
         timerSource = source
     }
 
@@ -154,12 +153,13 @@ class ConnectionStatusViewController: UITableViewController {
 
 import ReSwift
 extension ConnectionStatusViewController: StoreSubscriber {
-    func newState(_ state: AppState) {
+
+    func newState(state: AppState) {
         let statusState = state.statusState
         self.originalIPAddressLabel.text = statusState.originalIPAddress ?? "---.---.---.---"
         self.newIPAddressLabel.text = statusState.newIPAddress ?? "---.---.---.---"
-        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", for: UIControlState())
-        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", for: UIControlState())
+        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", for: .normal)
+        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", for: .normal)
         
         if statusState.originalLatitude != nil && statusState.originalLongitude != nil {
             let pointX = statusState.originalLongitude! * 172 / 180

@@ -12,7 +12,7 @@ import APIKit
 import Himotoki
 import RealmSwift
 
-struct RegionListRequest: RequestType {
+struct RegionListRequest: Request {
     
     typealias Response = ()
     
@@ -23,7 +23,7 @@ struct RegionListRequest: RequestType {
     }
     
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
     
     
@@ -36,11 +36,11 @@ struct RegionListRequest: RequestType {
         return ["Cookie": session]
     }
     
-    func responseFromObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> Response {
+    func response(from object: Any, urlResponse URLResponse: HTTPURLResponse) throws -> Response {
         
         if let areaDictionary = object as? Dictionary<String, AnyObject> {
             
-            let realm = try! Realm
+            let realm = try! Realm()
             try! realm.write({
                 realm.deleteAll()
                 for (_, list) in areaDictionary {
@@ -61,12 +61,12 @@ struct RegionListRequest: RequestType {
             })
             
         } else {
-            throw ResponseError.UnexpectedObject(object)
+            throw ResponseError.unexpectedObject(object)
         }
     }
     
-    var dataParser: DataParserType {
-        return JSONDataParser(readingOptions: .AllowFragments)
+    var dataParser: DataParser {
+        return JSONDataParser(readingOptions: .allowFragments)
     }
 }
 
@@ -94,7 +94,7 @@ class Region: Object {
         super.init()
     }
     
-    required init(value: AnyObject, schema: RLMSchema) {
+    required init(value: Any, schema: RLMSchema) {
         super.init(value: value, schema: schema)
     }
 

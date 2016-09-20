@@ -20,13 +20,13 @@ class HasSwitchThemedTableViewCell: UITableViewCell {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.titleLabel?.textColor = UIColor.whiteThemeTextColor()
             self.backgroundColor = UIColor.white
-        case .Black:
+        case .black:
             self.titleLabel?.textColor = UIColor.white
             self.backgroundColor = UIColor.blackThemeCellBackgroundColor()
-        case .Indigo:
+        case .indigo:
             self.titleLabel?.textColor = UIColor.white
             self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
         }

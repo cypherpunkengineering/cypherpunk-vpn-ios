@@ -35,7 +35,7 @@ class EditingRootViewController: UIViewController {
     */
 
     func doneAction() {
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
 }

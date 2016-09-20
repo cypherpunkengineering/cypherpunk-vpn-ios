@@ -11,7 +11,7 @@ import Foundation
 import APIKit
 import Himotoki
 
-struct JSONIPRequest: RequestType {
+struct JSONIPRequest: Request {
     
     typealias Response = JSONIPResponse
     
@@ -20,21 +20,21 @@ struct JSONIPRequest: RequestType {
     }
     
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
     
     var path: String {
         return ""
     }
     
-    func responseFromObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> Response {
+    func response(from object: Any, urlResponse URLResponse: HTTPURLResponse) throws -> Response {
         let response: Response = try decodeValue(object)
         
         return response
     }
     
-    var dataParser: DataParserType {
-        return JSONDataParser(readingOptions: .AllowFragments)
+    var dataParser: DataParser {
+        return JSONDataParser(readingOptions: .allowFragments)
     }
 }
 
