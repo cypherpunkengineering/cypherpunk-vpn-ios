@@ -16,12 +16,12 @@ class LinePathView: UIView {
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        if let startPoint = startPoint, endPoint = endPoint, controlPoint = controlPoint {
+    override func draw(_ rect: CGRect) {
+        if let startPoint = startPoint, let endPoint = endPoint, let controlPoint = controlPoint {
             
             let path = UIBezierPath()
-            path.moveToPoint(startPoint)
-            path.addQuadCurveToPoint(endPoint, controlPoint: controlPoint)
+            path.move(to: startPoint)
+            path.addQuadCurve(to: endPoint, controlPoint: controlPoint)
             UIColor.goldenYellowColor().setStroke()
             path.lineWidth = 2.0
             path.stroke()

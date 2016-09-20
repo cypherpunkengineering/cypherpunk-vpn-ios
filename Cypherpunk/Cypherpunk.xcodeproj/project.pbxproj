@@ -115,9 +115,9 @@
 		2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */; };
 		2BEC968F1D75FF8900CBBC04 /* RegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */; };
 		2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF33BC41D5314F1003FCFF3 /* test.p12 */; };
-		40D56BF49E63C019A46839C7 /* Pods_CypherpunkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7BA02BCC3C2DBACF87A027 /* Pods_CypherpunkUITests.framework */; };
-		46608F04506E5B087F2FB8C7 /* Pods_Cypherpunk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF74B2C8826884133507A33 /* Pods_Cypherpunk.framework */; };
-		67EAD3423BEDD3AA0A7ED1AC /* Pods_CypherpunkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3ED4EE5A25CC00172322E3 /* Pods_CypherpunkTests.framework */; };
+		65E8655B735CD72FFD168153 /* Pods_CypherpunkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B135541BB3B63138BFBB92D6 /* Pods_CypherpunkUITests.framework */; };
+		7DE528ADF6E5D381A02FC441 /* Pods_Cypherpunk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0613D733DE238733B8E2E2 /* Pods_Cypherpunk.framework */; };
+		984218A7F44AE5020466E7A1 /* Pods_CypherpunkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36169EA8A575594574AEA8F /* Pods_CypherpunkTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +138,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
 		2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTableViewCell.swift; sourceTree = "<group>"; };
 		201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTableView.swift; sourceTree = "<group>"; };
@@ -255,15 +256,14 @@
 		2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactusViewController.swift; sourceTree = "<group>"; };
 		2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionTableViewCell.swift; sourceTree = "<group>"; };
 		2BF33BC41D5314F1003FCFF3 /* test.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.p12; sourceTree = "<group>"; };
-		2FDB752259C501D90C4A7A8D /* Pods-CypherpunkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3A532A863B7DD850AE5424D3 /* Pods-CypherpunkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.release.xcconfig"; sourceTree = "<group>"; };
-		5C3ED4EE5A25CC00172322E3 /* Pods_CypherpunkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CypherpunkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BAE61501A55634E516F4B70 /* Pods-CypherpunkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		88B6DC4891195CA0F2085F3A /* Pods-CypherpunkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.release.xcconfig"; sourceTree = "<group>"; };
-		8DF74B2C8826884133507A33 /* Pods_Cypherpunk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cypherpunk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC7BA02BCC3C2DBACF87A027 /* Pods_CypherpunkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CypherpunkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C37F83A55E55E31BF0EBC742 /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
-		F3AA8665ABF47B4D3331E286 /* Pods-Cypherpunk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.release.xcconfig"; sourceTree = "<group>"; };
+		61957ECB916B393DEC478AC6 /* Pods-CypherpunkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.release.xcconfig"; sourceTree = "<group>"; };
+		701FBD2F0F3DFE0B9F730149 /* Pods-Cypherpunk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.release.xcconfig"; sourceTree = "<group>"; };
+		78A4790C347114D4441661DF /* Pods-CypherpunkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A1F3564B52120BA9095291F /* Pods-CypherpunkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE0613D733DE238733B8E2E2 /* Pods_Cypherpunk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cypherpunk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B135541BB3B63138BFBB92D6 /* Pods_CypherpunkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CypherpunkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D36169EA8A575594574AEA8F /* Pods_CypherpunkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CypherpunkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECE809AD63DA53C33D151155 /* Pods-CypherpunkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CypherpunkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,7 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */,
-				46608F04506E5B087F2FB8C7 /* Pods_Cypherpunk.framework in Frameworks */,
+				7DE528ADF6E5D381A02FC441 /* Pods_Cypherpunk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +280,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67EAD3423BEDD3AA0A7ED1AC /* Pods_CypherpunkTests.framework in Frameworks */,
+				984218A7F44AE5020466E7A1 /* Pods_CypherpunkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,26 +288,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40D56BF49E63C019A46839C7 /* Pods_CypherpunkUITests.framework in Frameworks */,
+				65E8655B735CD72FFD168153 /* Pods_CypherpunkUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E7B828B580702FADF507CEC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C37F83A55E55E31BF0EBC742 /* Pods-Cypherpunk.debug.xcconfig */,
-				F3AA8665ABF47B4D3331E286 /* Pods-Cypherpunk.release.xcconfig */,
-				2FDB752259C501D90C4A7A8D /* Pods-CypherpunkTests.debug.xcconfig */,
-				88B6DC4891195CA0F2085F3A /* Pods-CypherpunkTests.release.xcconfig */,
-				7BAE61501A55634E516F4B70 /* Pods-CypherpunkUITests.debug.xcconfig */,
-				3A532A863B7DD850AE5424D3 /* Pods-CypherpunkUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		2038095C1D13D89D005145CD = {
 			isa = PBXGroup;
 			children = (
@@ -315,8 +302,8 @@
 				2038097C1D13D89D005145CD /* CypherpunkTests */,
 				203809871D13D89D005145CD /* CypherpunkUITests */,
 				203809661D13D89D005145CD /* Products */,
-				0E7B828B580702FADF507CEC /* Pods */,
 				BCFC6193A7F401D78A06D6FE /* Frameworks */,
+				93CF8E3D286597EA41958780 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -577,13 +564,26 @@
 			path = ../Animation;
 			sourceTree = "<group>";
 		};
+		93CF8E3D286597EA41958780 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */,
+				701FBD2F0F3DFE0B9F730149 /* Pods-Cypherpunk.release.xcconfig */,
+				7A1F3564B52120BA9095291F /* Pods-CypherpunkTests.debug.xcconfig */,
+				61957ECB916B393DEC478AC6 /* Pods-CypherpunkTests.release.xcconfig */,
+				78A4790C347114D4441661DF /* Pods-CypherpunkUITests.debug.xcconfig */,
+				ECE809AD63DA53C33D151155 /* Pods-CypherpunkUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BCFC6193A7F401D78A06D6FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				203809961D13DAF3005145CD /* NetworkExtension.framework */,
-				8DF74B2C8826884133507A33 /* Pods_Cypherpunk.framework */,
-				5C3ED4EE5A25CC00172322E3 /* Pods_CypherpunkTests.framework */,
-				BC7BA02BCC3C2DBACF87A027 /* Pods_CypherpunkUITests.framework */,
+				AE0613D733DE238733B8E2E2 /* Pods_Cypherpunk.framework */,
+				D36169EA8A575594574AEA8F /* Pods_CypherpunkTests.framework */,
+				B135541BB3B63138BFBB92D6 /* Pods_CypherpunkUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -595,13 +595,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2038098D1D13D89D005145CD /* Build configuration list for PBXNativeTarget "Cypherpunk" */;
 			buildPhases = (
-				AD57511EA56D5C40F2045039 /* 📦 Check Pods Manifest.lock */,
+				0C5E5822B4FB27C8B40C1C69 /* [CP] Check Pods Manifest.lock */,
 				206D93F21D1D03D8002B6913 /* ShellScript */,
 				203809611D13D89D005145CD /* Sources */,
 				203809621D13D89D005145CD /* Frameworks */,
 				203809631D13D89D005145CD /* Resources */,
-				F333DA7090707E1C4092C890 /* 📦 Embed Pods Frameworks */,
-				00142303E1E66C55EE7C3C18 /* 📦 Copy Pods Resources */,
+				EE8F4EB58231568EB43BDFCD /* [CP] Embed Pods Frameworks */,
+				7BFE11C30D4472B39D22C3F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -616,12 +616,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 203809901D13D89D005145CD /* Build configuration list for PBXNativeTarget "CypherpunkTests" */;
 			buildPhases = (
-				4BF2CA5C18CB8F2EBE04BF34 /* 📦 Check Pods Manifest.lock */,
+				F6B448FA0F5026E538E8B882 /* [CP] Check Pods Manifest.lock */,
 				203809751D13D89D005145CD /* Sources */,
 				203809761D13D89D005145CD /* Frameworks */,
 				203809771D13D89D005145CD /* Resources */,
-				FE01B0A727E08F525FF047A2 /* 📦 Embed Pods Frameworks */,
-				6F6EFCB92C44B0A77649EC3F /* 📦 Copy Pods Resources */,
+				AE2456D5EABD9B017444B0B2 /* [CP] Embed Pods Frameworks */,
+				001F8CFFE28B1FF3D5333799 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -637,11 +637,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 203809931D13D89E005145CD /* Build configuration list for PBXNativeTarget "CypherpunkUITests" */;
 			buildPhases = (
-				7A2A8051123D0C6A802545A4 /* 📦 Check Pods Manifest.lock */,
+				1C1D68D17E80F6DD9AA6AD1F /* [CP] Check Pods Manifest.lock */,
 				203809801D13D89D005145CD /* Sources */,
 				203809811D13D89D005145CD /* Frameworks */,
 				203809821D13D89D005145CD /* Resources */,
-				7EE80C949810A2B22AEB1E68 /* 📦 Copy Pods Resources */,
+				D819FDA30D4C51FDDC097A8F /* [CP] Embed Pods Frameworks */,
+				3B0FC06EA5027A484B38113D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -660,12 +661,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Cypherpunk;
 				TargetAttributes = {
 					203809641D13D89D005145CD = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = EHYVN7A599;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 1;
@@ -677,10 +679,12 @@
 					};
 					203809781D13D89D005145CD = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 203809641D13D89D005145CD;
 					};
 					203809831D13D89D005145CD = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 203809641D13D89D005145CD;
 					};
 				};
@@ -752,19 +756,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00142303E1E66C55EE7C3C18 /* 📦 Copy Pods Resources */ = {
+		001F8CFFE28B1FF3D5333799 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0C5E5822B4FB27C8B40C1C69 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1C1D68D17E80F6DD9AA6AD1F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		206D93F21D1D03D8002B6913 /* ShellScript */ = {
@@ -778,61 +812,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+			shellScript = "\"$SRCROOT/rswift\" \"$SRCROOT\"";
 		};
-		4BF2CA5C18CB8F2EBE04BF34 /* 📦 Check Pods Manifest.lock */ = {
+		3B0FC06EA5027A484B38113D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6F6EFCB92C44B0A77649EC3F /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7A2A8051123D0C6A802545A4 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		7EE80C949810A2B22AEB1E68 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -840,29 +829,59 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AD57511EA56D5C40F2045039 /* 📦 Check Pods Manifest.lock */ = {
+		7BFE11C30D4472B39D22C3F0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F333DA7090707E1C4092C890 /* 📦 Embed Pods Frameworks */ = {
+		AE2456D5EABD9B017444B0B2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D819FDA30D4C51FDDC097A8F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CypherpunkUITests/Pods-CypherpunkUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE8F4EB58231568EB43BDFCD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -870,19 +889,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FE01B0A727E08F525FF047A2 /* 📦 Embed Pods Frameworks */ = {
+		F6B448FA0F5026E538E8B882 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CypherpunkTests/Pods-CypherpunkTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1035,8 +1054,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1080,8 +1101,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1100,14 +1123,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		2038098E1D13D89D005145CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C37F83A55E55E31BF0EBC742 /* Pods-Cypherpunk.debug.xcconfig */;
+			baseConfigurationReference = 1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
@@ -1119,14 +1144,16 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		2038098F1D13D89D005145CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3AA8665ABF47B4D3331E286 /* Pods-Cypherpunk.release.xcconfig */;
+			baseConfigurationReference = 701FBD2F0F3DFE0B9F730149 /* Pods-Cypherpunk.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
@@ -1138,56 +1165,65 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		203809911D13D89D005145CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FDB752259C501D90C4A7A8D /* Pods-CypherpunkTests.debug.xcconfig */;
+			baseConfigurationReference = 7A1F3564B52120BA9095291F /* Pods-CypherpunkTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CypherpunkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.CypherpunkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cypherpunk.app/Cypherpunk";
 			};
 			name = Debug;
 		};
 		203809921D13D89D005145CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88B6DC4891195CA0F2085F3A /* Pods-CypherpunkTests.release.xcconfig */;
+			baseConfigurationReference = 61957ECB916B393DEC478AC6 /* Pods-CypherpunkTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CypherpunkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.CypherpunkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cypherpunk.app/Cypherpunk";
 			};
 			name = Release;
 		};
 		203809941D13D89E005145CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BAE61501A55634E516F4B70 /* Pods-CypherpunkUITests.debug.xcconfig */;
+			baseConfigurationReference = 78A4790C347114D4441661DF /* Pods-CypherpunkUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CypherpunkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.CypherpunkUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Cypherpunk;
 			};
 			name = Debug;
 		};
 		203809951D13D89E005145CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A532A863B7DD850AE5424D3 /* Pods-CypherpunkUITests.release.xcconfig */;
+			baseConfigurationReference = ECE809AD63DA53C33D151155 /* Pods-CypherpunkUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CypherpunkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.CypherpunkUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Cypherpunk;
 			};
 			name = Release;

@@ -12,7 +12,7 @@ private let characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+`-=[]\\{}|;':
 struct RandomCharacterGenerator {
     
     static func generate() -> Character {
-        let index = characterSet.startIndex.advancedBy(Int(arc4random_uniform(UInt32(characterSet.unicodeScalars.count - 1))))
+        let index = characterSet.characters.index(characterSet.startIndex, offsetBy: Int(arc4random_uniform(UInt32(characterSet.unicodeScalars.count - 1))))
         return characterSet[index]
     }
 }

@@ -10,16 +10,16 @@ import UIKit
 
 class ConfigurationTableViewController: UITableViewController {
     
-    private enum Rows: Int {
-        case Account = 00
-        case PaymentDetail = 10
-        case PaymentUpgrade = 11
-        case AccountEmailDetail = 20
-        case AccountPasswordDetail = 21
-        case AutoReconnect = 30
-        case VPNProtocol = 31
-        case Contactus = 40
-        case SignOut = 41
+    fileprivate enum Rows: Int {
+        case account = 00
+        case paymentDetail = 10
+        case paymentUpgrade = 11
+        case accountEmailDetail = 20
+        case accountPasswordDetail = 21
+        case autoReconnect = 30
+        case vpnProtocol = 31
+        case contactus = 40
+        case signOut = 41
     }
     
     @IBOutlet weak var usernameLabelButton: ThemedTintedNavigationButton!
@@ -37,22 +37,22 @@ class ConfigurationTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         
         let accountState = mainStore.state.accountState
         let settingsState = mainStore.state.settingsState
         mailAddressLabel.text = accountState.mailAddress ?? ""
         vpnProtocolDetailLabel.text = settingsState.vpnProtocolMode.description
-        usernameLabelButton.setTitle(accountState.nickName, forState: .Normal)
+        usernameLabelButton.setTitle(accountState.nickName, for: .normal)
         autoConnectSwitch.setOn(settingsState.isAutoReconnect, animated: false)
         self.tableView.reloadData()
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
@@ -62,14 +62,14 @@ class ConfigurationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if mainStore.state.accountState.isLoggedIn {
-            return super.numberOfSectionsInTableView(tableView)
+            return super.numberOfSections(in: tableView)
         }
-        return super.numberOfSectionsInTableView(tableView) - 1
+        return super.numberOfSections(in: tableView) - 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var section = section
         if mainStore.state.accountState.isLoggedIn == false {
             section = section + 1
@@ -79,7 +79,7 @@ class ConfigurationTableViewController: UITableViewController {
             // AccountType
             let accountState = mainStore.state.accountState
             switch accountState.subscriptionType {
-            case .Year:
+            case .year:
                 return 1
             default:
                 return 2
@@ -88,48 +88,48 @@ class ConfigurationTableViewController: UITableViewController {
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var indexPath = indexPath
         if mainStore.state.accountState.isLoggedIn == false {
-            indexPath = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 1)
+            indexPath = IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1)
         }
         
-        let row = Rows(rawValue: indexPath.section * 10 + indexPath.row)!
+        let row = Rows(rawValue: (indexPath as NSIndexPath).section * 10 + (indexPath as NSIndexPath).row)!
         let cell: UITableViewCell
         switch row {
-        case .PaymentDetail:
-            cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        case .paymentDetail:
+            cell = super.tableView(tableView, cellForRowAt: indexPath)
             
             let accountState = mainStore.state.accountState
             let subscription = accountState.subscriptionType
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
             
             let dateString: String
             if let d = accountState.expiredDate {
-                dateString = dateFormatter.stringFromDate(d)
+                dateString = dateFormatter.string(from: d)
             } else {
                 dateString = ""
             }
             
             cell.textLabel?.text = subscription.title
             cell.detailTextLabel?.text = subscription.detailMessage + " " + dateString
-        case .PaymentUpgrade:
+        case .paymentUpgrade:
             let accountState = mainStore.state.accountState
             
             if accountState.isLoggedIn {
-                cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+                cell = super.tableView(tableView, cellForRowAt: indexPath)
             } else {
-                cell = super.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section))
+                cell = super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row + 1, section: (indexPath as NSIndexPath).section))
             }
         default:
-            cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+            cell = super.tableView(tableView, cellForRowAt: indexPath)
         }
         return cell
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
         let titleLabel: UILabel
@@ -149,12 +149,12 @@ class ConfigurationTableViewController: UITableViewController {
         
         let theme = mainStore.state.themeState.themeType
         switch theme {
-        case .White:
+        case .white:
             titleLabel.textColor = UIColor.whiteThemeTextColor()
-        case .Black:
+        case .black:
             titleLabel.textColor = UIColor.whiteThemeIndicatorColor()
-        case .Indigo:
-            titleLabel.textColor = UIColor.whiteColor()
+        case .indigo:
+            titleLabel.textColor = UIColor.white
         }
         
         view.addSubview(titleLabel)
@@ -162,21 +162,21 @@ class ConfigurationTableViewController: UITableViewController {
         return view
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         var indexPath = indexPath
         if mainStore.state.accountState.isLoggedIn == false {
-            indexPath = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 1)
+            indexPath = IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1)
         }
 
-        if let row = Rows(rawValue: indexPath.section * 10 + indexPath.row) {
+        if let row = Rows(rawValue: (indexPath as NSIndexPath).section * 10 + (indexPath as NSIndexPath).row) {
             switch row {
-            case .SignOut:
-                let vc = R.storyboard.firstOpen.initialViewController()
-                mainStore.dispatch(AccountAction.Logout)
-                self.navigationController?.presentViewController(vc!, animated: true, completion: {
-                    self.navigationController?.popViewControllerAnimated(false)
+            case .signOut:
+                let vc = R.storyboard.firstOpen.instantiateInitialViewController()
+                mainStore.dispatch(AccountAction.logout)
+                self.navigationController?.present(vc!, animated: true, completion: {
+                    let _ = self.navigationController?.popViewController(animated: false)
                 })
             default:
                 break
@@ -187,26 +187,26 @@ class ConfigurationTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var indexPath = indexPath
         if mainStore.state.accountState.isLoggedIn == false {
-            indexPath = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 1)
+            indexPath = IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1)
         }
         
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
-    override func tableView(tableView: UITableView, indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -> Int {
+    override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
         var indexPath = indexPath
         if mainStore.state.accountState.isLoggedIn == false {
-            indexPath = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section + 1)
+            indexPath = IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1)
         }
         
-        return super.tableView(tableView, indentationLevelForRowAtIndexPath: indexPath)
+        return super.tableView(tableView, indentationLevelForRowAt: indexPath)
         
     }
     
-    @IBAction func changeAutoConnectAction(sender: UISwitch) {
-        mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.on))
+    @IBAction func changeAutoConnectAction(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.isOn))
     }
 }

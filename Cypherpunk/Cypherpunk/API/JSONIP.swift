@@ -11,36 +11,36 @@ import Foundation
 import APIKit
 import Himotoki
 
-struct JSONIPRequest: RequestType {
+struct JSONIPRequest: Request {
     
     typealias Response = JSONIPResponse
     
-    var baseURL: NSURL {
-        return NSURL(string: "https://jsonip.com")!
+    var baseURL: URL {
+        return URL(string: "https://jsonip.com")!
     }
     
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
     
     var path: String {
         return ""
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Response {
+    func response(from object: Any, urlResponse URLResponse: HTTPURLResponse) throws -> Response {
         let response: Response = try decodeValue(object)
         
         return response
     }
     
-    var dataParser: DataParserType {
-        return JSONDataParser(readingOptions: .AllowFragments)
+    var dataParser: DataParser {
+        return JSONDataParser(readingOptions: .allowFragments)
     }
 }
 
 struct JSONIPResponse: Decodable {
     let IPAddress: String
-    static func decode(e: Extractor) throws -> JSONIPResponse {
+    static func decode(_ e: Extractor) throws -> JSONIPResponse {
         return try JSONIPResponse(
             IPAddress: e.value("ip")
         )

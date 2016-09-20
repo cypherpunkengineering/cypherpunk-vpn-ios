@@ -21,5 +21,5 @@ struct StatusState: StateType {
     var originalCountry: String? = nil
     var newCountry: String? = nil
     
-    var connectedDate: NSDate?
+    var connectedDate: Date?
 }

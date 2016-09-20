@@ -8,9 +8,9 @@
 
 import Foundation
 
-func isValidMailAddress(mailAddress: String) -> Bool {
+func isValidMailAddress(_ mailAddress: String) -> Bool {
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     
     let validatePredicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-    return validatePredicate.evaluateWithObject(mailAddress)
+    return validatePredicate.evaluate(with: mailAddress)
 }

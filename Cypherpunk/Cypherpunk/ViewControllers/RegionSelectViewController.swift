@@ -14,7 +14,7 @@ import NetworkExtension
 
 class RegionSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    private enum Section: Int {
+    fileprivate enum Section: Int {
         case favorite
         case recommended
         case allLocation
@@ -31,9 +31,9 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
 
         // Do any additional setup after loading the view.
         let realm = try! Realm()
-        favoriteResults = realm.objects(Region).filter("isFavorite = true")
-        recommendedResults = realm.objects(Region).filter("isFavorite = false AND isRecommended = true")
-        otherResults = realm.objects(Region).filter("isFavorite = false AND isRecommended = false")
+        favoriteResults = realm.objects(Region.self).filter("isFavorite = true")
+        recommendedResults = realm.objects(Region.self).filter("isFavorite = false AND isRecommended = true")
+        otherResults = realm.objects(Region.self).filter("isFavorite = false AND isRecommended = false")
         
     }
 
@@ -42,11 +42,11 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
         let titleLabel: UILabel
         if section == 0 {
@@ -60,12 +60,12 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         
         let theme = mainStore.state.themeState.themeType
         switch theme {
-        case .White:
+        case .white:
             titleLabel.textColor = UIColor.whiteThemeTextColor()
-        case .Black:
+        case .black:
             titleLabel.textColor = UIColor.whiteThemeIndicatorColor()
-        case .Indigo:
-            titleLabel.textColor = UIColor.whiteColor()
+        case .indigo:
+            titleLabel.textColor = UIColor.white
         }
         
         view.addSubview(titleLabel)
@@ -73,11 +73,11 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         return view
     }
 
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ["Favorite","Recommended","All Locations"][section]
     }
         
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = Section(rawValue: section)!
 
         switch section {
@@ -90,21 +90,21 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let section = Section(rawValue: indexPath.section)!
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.regionBasic, forIndexPath: indexPath)
+        let section = Section(rawValue: (indexPath as NSIndexPath).section)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
         
         switch section {
         case .favorite:
             cell?.titleLabel.text = favoriteResults[indexPath.row].name
-            cell?.starButton.setImage(R.image.iconStarOn(), forState: .Normal)
+            cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
         case .recommended:
             cell?.titleLabel.text = recommendedResults[indexPath.row].name
-            cell?.starButton.setImage(R.image.iconStar(), forState: .Normal)
+            cell?.starButton.setImage(R.image.iconStar(), for: .normal)
         case .allLocation:
             cell?.titleLabel.text = otherResults[indexPath.row].name
-            cell?.starButton.setImage(R.image.iconStar(), forState: .Normal)
+            cell?.starButton.setImage(R.image.iconStar(), for: .normal)
         }
         
         cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
@@ -112,8 +112,8 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let section = Section(rawValue: indexPath.section)!
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = Section(rawValue: (indexPath as NSIndexPath).section)!
         
         let region: Region
         switch section {
@@ -125,11 +125,11 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
             region = otherResults[indexPath.row]
         }
 
-        mainStore.dispatch(RegionAction.ChangeRegion(name: region.name, serverIP: region.ipAddress))
-        let manager = NEVPNManager.sharedManager()
-        let isConnected = manager.connection.status == .Connected
+        mainStore.dispatch(RegionAction.changeRegion(name: region.name, serverIP: region.ipAddress))
+        let manager = NEVPNManager.shared()
+        let isConnected = manager.connection.status == .connected
         VPNConfigurationCoordinator.start {
-            self.dismissViewControllerAnimated(true, completion: {
+            self.dismiss(animated: true, completion: {
                 if mainStore.state.settingsState.isAutoReconnect && isConnected {
                     try! VPNConfigurationCoordinator.connect()
                 }
@@ -137,7 +137,7 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    @IBAction func didSelectFavoriteAction(sender: UIButton) {
+    @IBAction func didSelectFavoriteAction(_ sender: UIButton) {
         let row = sender.tag % 10000
         let section = Section(rawValue: sender.tag / 100000)!
 
@@ -156,8 +156,8 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
             realm.add(target, update: true)
         }
         self.tableView.beginUpdates()
-        let set = NSIndexSet(indexesInRange: NSRange(location: 0, length: 3))
-        self.tableView.reloadSections(set, withRowAnimation: .Automatic)
+        let set = IndexSet(integersIn: NSRange(location: 0, length: 3).toRange() ?? 0..<0)
+        self.tableView.reloadSections(set, with: .automatic)
         self.tableView.endUpdates()
     }
 }

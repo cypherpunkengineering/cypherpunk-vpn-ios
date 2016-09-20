@@ -12,7 +12,7 @@ import NetworkExtension
 
 class AnimationViewController: UIViewController {
     
-    let itemSize = CGSizeMake(14,22)
+    let itemSize = CGSize(width: 14,height: 22)
     
     let scrollDistancePerSec = 5.25
     
@@ -20,16 +20,16 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(
             self,
             selector: #selector(didChangeVPNStatus),
-            name: NEVPNStatusDidChangeNotification,
+            name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
@@ -37,12 +37,12 @@ class AnimationViewController: UIViewController {
         super.viewDidLayoutSubviews()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         if animationLayer == nil {
             animationLayer = instanceAnimationLayer()
-            self.view.layer.insertSublayer(animationLayer, atIndex: 0)
+            self.view.layer.insertSublayer(animationLayer, at: 0)
             startTimer()
         }
         //    startAnimation()
@@ -54,7 +54,7 @@ class AnimationViewController: UIViewController {
     }
     
     var speed = 1.0
-    func didChangeVPNStatus(notification: NSNotification) {
+    func didChangeVPNStatus(_ notification: Notification) {
         guard let connection = notification.object as? NEVPNConnection else {
             return
         }
@@ -62,17 +62,17 @@ class AnimationViewController: UIViewController {
         let status = connection.status
         
         switch status {
-        case .Connected:
+        case .connected:
             speed = 2.0
             if animationLayer != nil && animationLayer.sublayers != nil {
                 for row in animationLayer.sublayers! {
                     for textLayer in row.sublayers! {
                         if let textLayer = textLayer as? CATextLayer {
-                            if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
-                                let baseColor = UIColor(red: 175.0 / 255.0, green: 240.0 / 255.0, blue: 103.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
-                                textLayer.foregroundColor = baseColor.CGColor
+                            if textLayer.foregroundColor != UIColor.white.withAlphaComponent(0.15).cgColor {
+                                let baseColor = UIColor(red: 175.0 / 255.0, green: 240.0 / 255.0, blue: 103.0/255.0, alpha: 1.0).withAlphaComponent(0.5)
+                                textLayer.foregroundColor = baseColor.cgColor
                             } else {
-                                if let string = textLayer.string as? String where string == "0" || string == "1" {
+                                if let string = textLayer.string as? String , string == "0" || string == "1" {
                                     textLayer.string = String(RandomCharacterGenerator.generate())
                                 }
                             }
@@ -80,46 +80,46 @@ class AnimationViewController: UIViewController {
                     }
                 }
             }
-        case .Connecting:
+        case .connecting:
             speed = 1.5
             if animationLayer != nil && animationLayer.sublayers != nil {
                 for row in animationLayer.sublayers! {
                     for textLayer in row.sublayers! {
                         if let textLayer = textLayer as? CATextLayer {
-                            if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
-                                let baseColor = UIColor(red: 255.0 / 255.0, green: 120.0 / 255.0, blue: 27.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
-                                textLayer.foregroundColor = baseColor.CGColor
+                            if textLayer.foregroundColor != UIColor.white.withAlphaComponent(0.15).cgColor {
+                                let baseColor = UIColor(red: 255.0 / 255.0, green: 120.0 / 255.0, blue: 27.0/255.0, alpha: 1.0).withAlphaComponent(0.5)
+                                textLayer.foregroundColor = baseColor.cgColor
                             }
                         }
                     }
                 }
             }
-        case .Disconnected:
+        case .disconnected:
             speed = 1.0
             if animationLayer != nil && animationLayer.sublayers != nil {
                 for row in animationLayer.sublayers! {
                     for textLayer in row.sublayers! {
                         if let textLayer = textLayer as? CATextLayer {
-                            if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
-                                let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
-                                textLayer.foregroundColor = baseColor.CGColor
+                            if textLayer.foregroundColor != UIColor.white.withAlphaComponent(0.15).cgColor {
+                                let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).withAlphaComponent(0.5)
+                                textLayer.foregroundColor = baseColor.cgColor
                             }
                         }
                     }
                 }
             }
-        case .Disconnecting:
+        case .disconnecting:
             speed = 1.5
             if animationLayer != nil && animationLayer.sublayers != nil {
                 for row in animationLayer.sublayers! {
                     for textLayer in row.sublayers! {
                         if let textLayer = textLayer as? CATextLayer {
-                            if CGColorEqualToColor(textLayer.foregroundColor,UIColor.whiteColor().colorWithAlphaComponent(0.15).CGColor) == false {
-                                let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).colorWithAlphaComponent(0.5)
-                                textLayer.foregroundColor = baseColor.CGColor
+                            if textLayer.foregroundColor != UIColor.white.withAlphaComponent(0.15).cgColor {
+                                let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).withAlphaComponent(0.5)
+                                textLayer.foregroundColor = baseColor.cgColor
                             } else {
-                                if let string = textLayer.string as? String where string != "0" && string != "1" {
-                                    let number: Int = random() % 2
+                                if let string = textLayer.string as? String , string != "0" && string != "1" {
+                                    let number =  Int(arc4random()) % 2
                                     textLayer.string = String(number)
                                 }
                                 
@@ -144,12 +144,12 @@ class AnimationViewController: UIViewController {
         let font = UIFont(name: "Menlo-Regular", size: 21)
         print(horizontalItemsCount)
         let deviceNameColumn = horizontalItemsCount - 2
-        let deviceName = SpecificDataProvider.deviceName().uppercaseString
+        let deviceName = SpecificDataProvider.deviceName().uppercased()
         let deviceNameStartIndex = 5
         let deviceNameEndIndex = deviceNameStartIndex + deviceName.characters.count
         
         let carrierNameColumn = horizontalItemsCount - 5
-        let carrierName = SpecificDataProvider.carrierName()?.uppercaseString
+        let carrierName = SpecificDataProvider.carrierName()?.uppercased()
         let carrierNameStartIndex = 2
         let carrierNameEndIndex: Int
         if let carrierName = carrierName {
@@ -165,42 +165,42 @@ class AnimationViewController: UIViewController {
             verticalLayer.frame = CGRect(origin: CGPoint(x: CGFloat(x) * itemSize.width + CGFloat(x) * 3.0 , y: 0), size: size)
             
             for y in 0...verticalItemsCount {
-                let number: Int = random() % 2
+                let number = Int(arc4random()) % 2
                 let layoutPoint = CGPoint(x: 0 , y: CGFloat(y) * itemSize.height)
                 let frame = CGRect(origin: layoutPoint, size: itemSize)
                 
                 let textLayer = CATextLayer()
                 
                 if x == deviceNameColumn && deviceNameStartIndex <= y && y < deviceNameEndIndex {
-                    let index = deviceName.startIndex.advancedBy(y - deviceNameStartIndex)
+                    let index = deviceName.characters.index(deviceName.startIndex, offsetBy: y - deviceNameStartIndex)
                     let text = deviceName[index]
                     textLayer.string = String(text)
                     textLayer.font = font
                     textLayer.fontSize = 21
                     let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
-                    textLayer.foregroundColor = baseColor.CGColor
-                }else if let carrierName = carrierName where x == carrierNameColumn && carrierNameStartIndex <= y && y < carrierNameEndIndex {
+                    textLayer.foregroundColor = baseColor.cgColor
+                }else if let carrierName = carrierName , x == carrierNameColumn && carrierNameStartIndex <= y && y < carrierNameEndIndex {
                     print(y)
-                    let index = carrierName.startIndex.advancedBy(y - carrierNameStartIndex)
+                    let index = carrierName.characters.index(carrierName.startIndex, offsetBy: y - carrierNameStartIndex)
                     let text = carrierName.characters[index]
                     textLayer.string = String(text)
                     textLayer.font = font
                     textLayer.fontSize = 21
                     let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
-                    textLayer.foregroundColor = baseColor.CGColor
+                    textLayer.foregroundColor = baseColor.cgColor
                 } else {
                     textLayer.string = String(number)
                     textLayer.font = font
                     textLayer.fontSize = 21
                     
-                    let baseColor = UIColor.whiteColor()
-                    textLayer.foregroundColor = baseColor.colorWithAlphaComponent(0.15).CGColor
+                    let baseColor = UIColor.white
+                    textLayer.foregroundColor = baseColor.withAlphaComponent(0.15).cgColor
                 }
                 
                 textLayer.frame = frame
                 
                 textLayer.alignmentMode = kCAAlignmentCenter
-                textLayer.contentsScale = UIScreen.mainScreen().scale
+                textLayer.contentsScale = UIScreen.main.scale
                 
                 verticalLayer.addSublayer(textLayer)
             }
@@ -209,11 +209,11 @@ class AnimationViewController: UIViewController {
         return layer
     }
     
-    var beforeSec: NSTimeInterval = 0
+    var beforeSec: TimeInterval = 0
     
-    var timer: NSTimer!
+    var timer: Timer!
     func update() {
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         
         CATransaction.begin()
         CATransaction.setDisableActions(true)
@@ -246,9 +246,9 @@ class AnimationViewController: UIViewController {
     
     func startTimer() {
         
-        self.beforeSec = NSDate().timeIntervalSince1970
+        self.beforeSec = Date().timeIntervalSince1970
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0/60.0, target: self, selector: #selector(AnimationViewController.update), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0/60.0, target: self, selector: #selector(AnimationViewController.update), userInfo: nil, repeats: true)
     }
     
     func cancelTimer() {

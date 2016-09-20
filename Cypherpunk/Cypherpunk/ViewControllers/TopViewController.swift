@@ -16,12 +16,12 @@ import APIKit
 extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .Connected: return "You are now protected"
-        case .Connecting: return "Connecting..."
-        case .Disconnected: return "Tap to protect"
-        case .Disconnecting: return "Disconnecting..."
-        case .Invalid: return "invalid"
-        case .Reasserting: return "reasserting"
+        case .connected: return "You are now protected"
+        case .connecting: return "Connecting..."
+        case .disconnected: return "Tap to protect"
+        case .disconnecting: return "Disconnecting..."
+        case .invalid: return "invalid"
+        case .reasserting: return "reasserting"
         }
     }
 }
@@ -41,7 +41,7 @@ class TopViewController: UIViewController, StoreSubscriber {
     
     internal var connectionObserver: NSObjectProtocol!
     
-    private var circleAnimationDuration: CFTimeInterval = 2
+    fileprivate var circleAnimationDuration: CFTimeInterval = 2
     @IBOutlet weak var getPremiumHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var getPremiumView: UIView!
 
@@ -49,58 +49,58 @@ class TopViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(
             self,
             selector: #selector(didChangeVPNStatus),
-            name: NEVPNStatusDidChangeNotification,
+            name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
     
         let attributes: [String: AnyObject] = [
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
-            NSForegroundColorAttributeName: UIColor.whiteColor()
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue as AnyObject,
+            NSForegroundColorAttributeName: UIColor.white
         ]
         let cancelAttributed = NSAttributedString(string: "Cancel", attributes: attributes)
-        cancelButton.setAttributedTitle(cancelAttributed, forState: .Normal)
-        regionButton.setTitle(mainStore.state.regionState.title, forState: .Normal)
+        cancelButton.setAttributedTitle(cancelAttributed, for: .normal)
+        regionButton.setTitle(mainStore.state.regionState.title, for: .normal)
         
 
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
 
         if mainStore.state.accountState.isLoggedIn == false {
             getPremiumHeightConstraint.constant = 50.0
-            getPremiumView.hidden = false
+            getPremiumView.isHidden = false
         } else {
             getPremiumHeightConstraint.constant = 0.0
-            getPremiumView.hidden = true
+            getPremiumView.isHidden = true
         }
         self.view.setNeedsLayout()
         
         VPNConfigurationCoordinator.load {
-            let status = NEVPNManager.sharedManager().connection.status
+            let status = NEVPNManager.shared().connection.status
             self.updateViewWithVPNStatus(status)
         }
         
-        mainStore.subscribe(self)
+        mainStore.subscribe(self, selector: nil)
         
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0
         animation.toValue = M_PI * 2.0
         animation.duration = circleAnimationDuration
         animation.repeatCount = HUGE
-        connectingBorderImageView.layer.addAnimation(animation, forKey: "rotation")
+        connectingBorderImageView.layer.add(animation, forKey: "rotation")
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         mainStore.unsubscribe(self)
-        connectingBorderImageView.layer.removeAnimationForKey("rotation")
+        connectingBorderImageView.layer.removeAnimation(forKey: "rotation")
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,39 +109,39 @@ class TopViewController: UIViewController, StoreSubscriber {
     }
     
     deinit{
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
     
-    func updateViewWithVPNStatus(status: NEVPNStatus) {
+    func updateViewWithVPNStatus(_ status: NEVPNStatus) {
         switch status {
-        case .Connected:
+        case .connected:
             outsideCircleView.backgroundColor = UIColor(red: 110.0 / 255.0 , green: 201.0 / 255.0 , blue: 9.0 / 255.0 , alpha: 0.60)
-            connectedButton.hidden = false
-            connectingButton.hidden = true
-            disconnectedButton.hidden = true
-            disconnectedButton.enabled = true
-            cancelEmbededView.hidden = true
-            connectingBorderImageView.hidden = true
-            outsideCircleView.hidden = false
+            connectedButton.isHidden = false
+            connectingButton.isHidden = true
+            disconnectedButton.isHidden = true
+            disconnectedButton.isEnabled = true
+            cancelEmbededView.isHidden = true
+            connectingBorderImageView.isHidden = true
+            outsideCircleView.isHidden = false
             
-            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * NSEC_PER_SEC / 2))
-            dispatch_after(time, dispatch_get_main_queue(), { 
+            let time = DispatchTime.now() + Double(Int64(3 * NSEC_PER_SEC / 2)) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: time, execute: { 
                 let IPRequest = JSONIPRequest()
-                Session.sendRequest(IPRequest) {
+                Session.send(IPRequest) {
                     (result) in
                     switch result {
-                    case .Success(let response):
+                    case .success(let response):
                         let IPAddress = response.IPAddress
-                        if NEVPNManager.sharedManager().connection.status == .Connected {
-                            mainStore.dispatch(StatusAction.GetNewIPAddress(address: IPAddress))
+                        if NEVPNManager.shared().connection.status == .connected {
+                            mainStore.dispatch(StatusAction.getNewIPAddress(address: IPAddress))
                             let request = GeoLocationRequest(IPAddress: IPAddress)
-                            Session.sendRequest(request) {
+                            Session.send(request) {
                                 (result) in
                                 switch result {
-                                case .Success(let response):
+                                case .success(let response):
                                     if response.isSuccess {
-                                        mainStore.dispatch(StatusAction.GetNewGeoLocation(response: response))
+                                        mainStore.dispatch(StatusAction.getNewGeoLocation(response: response))
                                     }
                                 default:
                                     break
@@ -154,41 +154,41 @@ class TopViewController: UIViewController, StoreSubscriber {
                 }    
             })
             
-        case .Connecting:
+        case .connecting:
             outsideCircleView.backgroundColor = UIColor(red: 255.0 / 255.0 , green: 120.0 / 255.0 , blue: 27.0 / 255.0 , alpha: 0.60)
-            connectedButton.hidden = true
-            connectingButton.hidden = false
-            disconnectedButton.hidden = true
-            disconnectedButton.enabled = true
-            cancelEmbededView.hidden = false
-            connectingBorderImageView.hidden = false
-            outsideCircleView.hidden = true
-        case .Disconnected:
+            connectedButton.isHidden = true
+            connectingButton.isHidden = false
+            disconnectedButton.isHidden = true
+            disconnectedButton.isEnabled = true
+            cancelEmbededView.isHidden = false
+            connectingBorderImageView.isHidden = false
+            outsideCircleView.isHidden = true
+        case .disconnected:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
-            connectedButton.hidden = true
-            connectingButton.hidden = true
-            disconnectedButton.hidden = false
-            disconnectedButton.enabled = true
-            cancelEmbededView.hidden = true
-            connectingBorderImageView.hidden = true
+            connectedButton.isHidden = true
+            connectingButton.isHidden = true
+            disconnectedButton.isHidden = false
+            disconnectedButton.isEnabled = true
+            cancelEmbededView.isHidden = true
+            connectingBorderImageView.isHidden = true
 
-            outsideCircleView.hidden = false
+            outsideCircleView.isHidden = false
             
             let IPRequest = JSONIPRequest()
-            Session.sendRequest(IPRequest) {
+            Session.send(IPRequest) {
                 (result) in
                 switch result {
-                case .Success(let response):
+                case .success(let response):
                     let IPAddress = response.IPAddress
-                    if NEVPNManager.sharedManager().connection.status == .Disconnected {
-                        mainStore.dispatch(StatusAction.GetOriginalIPAddress(address: IPAddress))
+                    if NEVPNManager.shared().connection.status == .disconnected {
+                        mainStore.dispatch(StatusAction.getOriginalIPAddress(address: IPAddress))
                         let request = GeoLocationRequest(IPAddress: IPAddress)
-                        Session.sendRequest(request) {
+                        Session.send(request) {
                             (result) in
                             switch result {
-                            case .Success(let response):
+                            case .success(let response):
                                 if response.isSuccess {
-                                    mainStore.dispatch(StatusAction.GetOriginalGeoLocation(response: response))
+                                    mainStore.dispatch(StatusAction.getOriginalGeoLocation(response: response))
                                 }
                             default:
                                 break
@@ -201,50 +201,50 @@ class TopViewController: UIViewController, StoreSubscriber {
                 }
             }
             
-        case .Invalid, .Reasserting:
+        case .invalid, .reasserting:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
-            connectedButton.hidden = true
-            connectingButton.hidden = true
-            disconnectedButton.hidden = false
-            disconnectedButton.enabled = false
-            cancelEmbededView.hidden = true
-            connectingBorderImageView.hidden = true
+            connectedButton.isHidden = true
+            connectingButton.isHidden = true
+            disconnectedButton.isHidden = false
+            disconnectedButton.isEnabled = false
+            cancelEmbededView.isHidden = true
+            connectingBorderImageView.isHidden = true
 
-            outsideCircleView.hidden = false
+            outsideCircleView.isHidden = false
 
-        case .Disconnecting:
+        case .disconnecting:
             outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
-            connectedButton.hidden = true
-            connectingButton.hidden = true
-            disconnectedButton.hidden = false
-            disconnectedButton.enabled = false
-            cancelEmbededView.hidden = true
-            connectingBorderImageView.hidden = true
+            connectedButton.isHidden = true
+            connectingButton.isHidden = true
+            disconnectedButton.isHidden = false
+            disconnectedButton.isEnabled = false
+            cancelEmbededView.isHidden = true
+            connectingBorderImageView.isHidden = true
 
-            outsideCircleView.hidden = false
+            outsideCircleView.isHidden = false
         }
 
-        connectionStateLabel.text = String(status)
+        connectionStateLabel.text = String(describing: status)
     }
     
-    func didChangeVPNStatus(notification: NSNotification) {
+    func didChangeVPNStatus(_ notification: Notification) {
         guard let connection = notification.object as? NEVPNConnection else {
             return
         }
 
         let status = connection.status
         
-        if status == .Connected {
-            mainStore.dispatch(RegionAction.Connect)
-            mainStore.dispatch(StatusAction.SetConnectedDate(date: NSDate()))
-        } else if status == .Disconnected {
-            mainStore.dispatch(StatusAction.SetConnectedDate(date: nil))
+        if status == .connected {
+            mainStore.dispatch(RegionAction.connect)
+            mainStore.dispatch(StatusAction.setConnectedDate(date: Date()))
+        } else if status == .disconnected {
+            mainStore.dispatch(StatusAction.setConnectedDate(date: nil))
         }
 
         self.updateViewWithVPNStatus(status)
     }
 
-    @IBAction func connectAction(sender: UIButton) {
+    @IBAction func connectAction(_ sender: UIButton) {
         if sender == self.disconnectedButton {
             do{
                 try VPNConfigurationCoordinator.connect()
@@ -256,19 +256,19 @@ class TopViewController: UIViewController, StoreSubscriber {
         }
     }
 
-    @IBAction func cancelAction(sender: AnyObject) {
+    @IBAction func cancelAction(_ sender: AnyObject) {
         VPNConfigurationCoordinator.disconnect()
     }
     
     func newState(state: AppState) {
-        regionButton.setTitle(state.regionState.title, forState: .Normal)
+        regionButton.setTitle(state.regionState.title, for: .normal)
     }
 
-    @IBAction func transitionToConfigurationAction(sender: AnyObject) {
+    @IBAction func transitionToConfigurationAction(_ sender: AnyObject) {
         let vc = R.storyboard.configuration.configuration()
         self.navigationController?.pushViewController(vc!, animated: true)
     }
-    @IBAction func transitionToConnectionStatusAction(sender: AnyObject) {
+    @IBAction func transitionToConnectionStatusAction(_ sender: AnyObject) {
         let vc = R.storyboard.configuration.connectionStatus()
         self.navigationController?.pushViewController(vc!, animated: true)
     }

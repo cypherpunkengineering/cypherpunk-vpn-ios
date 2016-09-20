@@ -10,29 +10,29 @@ import Foundation
 import NetworkExtension
 import KeychainAccess
 
-public class VPNConfigurationCoordinator {
+open class VPNConfigurationCoordinator {
 
-    class func load(completion: () -> ()) {
-        let manager = NEVPNManager.sharedManager()
-        manager.loadFromPreferencesWithCompletionHandler { (error) in
+    class func load(_ completion: @escaping () -> ()) {
+        let manager = NEVPNManager.shared()
+        manager.loadFromPreferences { (error) in
             completion()
         }
     }
 
-    class func start(completion: () -> ()) {
-        let manager = NEVPNManager.sharedManager()
-        manager.loadFromPreferencesWithCompletionHandler { (error) in
+    class func start(_ completion: @escaping () -> ()) {
+        let manager = NEVPNManager.shared()
+        manager.loadFromPreferences { (error) in
 
             let newIPSec : NEVPNProtocolIPSec
             if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
                 newIPSec = NEVPNProtocolIKEv2()
 
-                newIPSec.authenticationMethod = .None
+                newIPSec.authenticationMethod = .none
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP
 
                 newIPSec.username = mainStore.state.accountState.mailAddress ?? "testuser"
                 let password = "testpassword"
-                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
+                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
                 newIPSec.localIdentifier = ""
                 newIPSec.remoteIdentifier = "d06f348c.wiz.network"
@@ -42,15 +42,15 @@ public class VPNConfigurationCoordinator {
             } else {
                 newIPSec = NEVPNProtocolIPSec()
 
-                newIPSec.authenticationMethod = .SharedSecret
+                newIPSec.authenticationMethod = .sharedSecret
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP
 
                 let pskString = "presharedsecretkey"
-                newIPSec.sharedSecretReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(pskString, forKey: "psk")
+                newIPSec.sharedSecretReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: pskString, forKey: "psk")
 
                 newIPSec.username = "testuser"
                 let password = "testpassword"
-                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
+                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
                 newIPSec.useExtendedAuthentication = true
 
@@ -70,19 +70,19 @@ public class VPNConfigurationCoordinator {
             manager.localizedDescription = "Cyperpunk VPN"
 
             let onDemandRule = NEOnDemandRuleEvaluateConnection()
-            let evaluateRule = NEEvaluateConnectionRule(matchDomains: [ "*" ], andAction: .ConnectIfNeeded)
-            evaluateRule.probeURL = NSURL(string: "https://255.255.255.255")
+            let evaluateRule = NEEvaluateConnectionRule(matchDomains: [ "*" ], andAction: .connectIfNeeded)
+            evaluateRule.probeURL = URL(string: "https://255.255.255.255")
             evaluateRule.useDNSServers = ["255.255.255.255"]
 
             onDemandRule.connectionRules = [evaluateRule]
 
             manager.onDemandRules = [onDemandRule]
 
-            manager.onDemandEnabled = true
+            manager.isOnDemandEnabled = true
 
-            manager.enabled = true
+            manager.isEnabled = true
 
-            manager.saveToPreferencesWithCompletionHandler({ (error) in
+            manager.saveToPreferences(completionHandler: { (error) in
                 if error != nil {
                     print(error)
                 }
@@ -92,7 +92,7 @@ public class VPNConfigurationCoordinator {
     }
 
     class func connect() throws {
-        let manager = NEVPNManager.sharedManager()
+        let manager = NEVPNManager.shared()
         if #available(iOS 9.0, *) {
 
             if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
@@ -107,7 +107,7 @@ public class VPNConfigurationCoordinator {
     }
 
     class func disconnect() {
-        let manager = NEVPNManager.sharedManager()
+        let manager = NEVPNManager.shared()
         manager.connection.stopVPNTunnel()
     }
 }
@@ -125,7 +125,7 @@ private extension String {
             let upperBound = UInt32(alphabet.characters.count)
 
             let localIdentifier =  String((0..<10).map { _ -> Character in
-                return alphabet[alphabet.startIndex.advancedBy(Int(arc4random_uniform(upperBound)))]
+                return alphabet[alphabet.characters.index(alphabet.startIndex, offsetBy: Int(arc4random_uniform(upperBound)))]
                 })
 
             try! keychain.set(localIdentifier, key: accessKey)

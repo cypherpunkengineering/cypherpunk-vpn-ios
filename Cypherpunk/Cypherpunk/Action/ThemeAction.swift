@@ -12,7 +12,7 @@ import ReSwift
 let KeyChangeThemeNotification = "KeyChangeThemeNotification"
 
 enum ThemeAction: Action {
-    case ChangeToWhite
-    case ChangeToBlack
-    case ChangeToIndigo
+    case changeToWhite
+    case changeToBlack
+    case changeToIndigo
 }

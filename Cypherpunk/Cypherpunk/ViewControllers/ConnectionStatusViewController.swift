@@ -39,11 +39,11 @@ class ConnectionStatusViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(
             self,
             selector: #selector(didChangeVPNStatus),
-            name: NEVPNStatusDidChangeNotification,
+            name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
         
@@ -51,31 +51,31 @@ class ConnectionStatusViewController: UITableViewController {
         originalPointCircleCenterYConstraint.constant = 18
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         self.title = "Connection Status"
 
-        let status = NEVPNManager.sharedManager().connection.status
-        if status == .Connected {
-            connectedTimeView.hidden = false
-            disconnectedLabel.hidden = true
+        let status = NEVPNManager.shared().connection.status
+        if status == .connected {
+            connectedTimeView.isHidden = false
+            disconnectedLabel.isHidden = true
         } else {
-            connectedTimeView.hidden = true
-            disconnectedLabel.hidden = false
+            connectedTimeView.isHidden = true
+            disconnectedLabel.isHidden = false
         }
         let statusState = mainStore.state.statusState
         self.originalIPAddressLabel.text = statusState.originalIPAddress ?? "---.---.---.---"
         self.newIPAddressLabel.text = statusState.newIPAddress ?? "---.---.---.---"
         
-        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", forState: .Normal)
-        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", forState: .Normal)
+        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", for: .normal)
+        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", for: .normal)
         
         startTimer()
-        mainStore.subscribe(self)
+        mainStore.subscribe(self, selector: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         cancelTimer()
         mainStore.unsubscribe(self)
@@ -86,67 +86,66 @@ class ConnectionStatusViewController: UITableViewController {
     }
     
     deinit{
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
 
-    var timerSource: dispatch_source_t!
+    var timerSource: DispatchSourceTimer!
     func startTimer() {
-        let source = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue())
+        let source = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: DispatchQueue.main)
         
-        if source != nil {
-            let secondsToFire: Double = 0.1
-            let now = dispatch_time(DISPATCH_TIME_NOW, Int64(secondsToFire * Double(NSEC_PER_SEC)))
-            let interval = UInt64(secondsToFire * Double(NSEC_PER_SEC))
-            dispatch_source_set_timer(source, now, interval, (1 * NSEC_PER_SEC) / 10)
-            dispatch_source_set_event_handler(source, {
-                let statusState = mainStore.state.statusState
-                if let date = statusState.connectedDate {
-                    let formatter = NSDateFormatter()
-                    formatter.dateFormat = "HH:mm:ss"
-                    formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
-                    let difference = NSDate(timeIntervalSince1970: NSDate().timeIntervalSinceDate(date))
-                    
-                    self.connectionTimeLabelButton.setTitle(formatter.stringFromDate(difference), forState: .Normal)
-                }
-            })
-            dispatch_resume(source)
-        }
+        let secondsToFire: Double = 0.1
+        let now = DispatchTime.now() + Double(Int64(secondsToFire * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let interval = Double(secondsToFire * Double(NSEC_PER_SEC))
+        
+        source.scheduleRepeating(deadline: now, interval: interval)
+        source.setEventHandler(handler: {
+            let statusState = mainStore.state.statusState
+            if let date = statusState.connectedDate {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH:mm:ss"
+                formatter.timeZone = TimeZone(secondsFromGMT: 0)
+                let difference = Date(timeIntervalSince1970: Date().timeIntervalSince(date))
+                
+                self.connectionTimeLabelButton.setTitle(formatter.string(from: difference), for: .normal)
+            }
+        })
+        source.resume()
         timerSource = source
     }
 
     func cancelTimer() {
         if (timerSource != nil) {
-            dispatch_source_cancel(timerSource)
+            timerSource.cancel()
             timerSource = nil
         }
     }
     
-    func didChangeVPNStatus(notification: NSNotification) {
+    func didChangeVPNStatus(_ notification: Notification) {
         guard let connection = notification.object as? NEVPNConnection else {
             return
         }
         
         let status = connection.status
         
-        if status == .Connected || status == .Disconnected {
+        if status == .connected || status == .disconnected {
             self.tableView.reloadData()
         }
     }
 
     
-    @IBAction func changeIPAddressAction(sender: AnyObject) {
+    @IBAction func changeIPAddressAction(_ sender: AnyObject) {
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let status = NEVPNManager.sharedManager().connection.status
-        if status == .Connected {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let status = NEVPNManager.shared().connection.status
+        if status == .connected {
             return super.tableView(tableView, numberOfRowsInSection: section)
         } else {
             return 4
         }
     }
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return nil
     }
 
@@ -154,12 +153,13 @@ class ConnectionStatusViewController: UITableViewController {
 
 import ReSwift
 extension ConnectionStatusViewController: StoreSubscriber {
+
     func newState(state: AppState) {
         let statusState = state.statusState
         self.originalIPAddressLabel.text = statusState.originalIPAddress ?? "---.---.---.---"
         self.newIPAddressLabel.text = statusState.newIPAddress ?? "---.---.---.---"
-        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", forState: .Normal)
-        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", forState: .Normal)
+        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", for: .normal)
+        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", for: .normal)
         
         if statusState.originalLatitude != nil && statusState.originalLongitude != nil {
             let pointX = statusState.originalLongitude! * 172 / 180

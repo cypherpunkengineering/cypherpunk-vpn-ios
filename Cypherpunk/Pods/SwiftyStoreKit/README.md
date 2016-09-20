@@ -1,17 +1,18 @@
 # SwiftyStoreKit
-SwiftyStoreKit is a lightweight In App Purchases framework for iOS 8.0+, tvOS 9.0+ and OS X 10.9+, written in Swift.
+SwiftyStoreKit is a lightweight In App Purchases framework for iOS 8.0+, tvOS 9.0+ and OS X 10.10+, written in Swift.
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat
-            )](http://mit-license.org)
-[![Platform](http://img.shields.io/badge/platform-ios%20%7C%20osx-lightgrey.svg?style=flat
-             )](https://developer.apple.com/resources/)
-[![Language](http://img.shields.io/badge/language-swift-orange.svg?style=flat
-             )](https://developer.apple.com/swift)
-[![Issues](https://img.shields.io/github/issues/bizz84/SwiftyStoreKit.svg?style=flat
-           )](https://github.com/bizz84/SwiftyStoreKit/issues)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://mit-license.org)
+[![Platform](http://img.shields.io/badge/platform-ios%20%7C%20macos%20%7C%20tvos-lightgrey.svg?style=flat)](https://developer.apple.com/resources/)
+[![Language](https://img.shields.io/badge/swift-3.0-orange.svg)](https://developer.apple.com/swift)
+[![Build](https://img.shields.io/travis/bizz84/SwiftyStoreKit.svg?style=flat)](https://travis-ci.org/bizz84/SwiftyStoreKit)
+[![Issues](https://img.shields.io/github/issues/bizz84/SwiftyStoreKit.svg?style=flat)](https://github.com/bizz84/SwiftyStoreKit/issues)
 [![Cocoapod](http://img.shields.io/cocoapods/v/SwiftyStoreKit.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyStoreKit/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Twitter](https://img.shields.io/badge/twitter-@biz84-blue.svg?maxAge=2592000)](http://twitter.com/biz84)
 
+#### NOTE: Master branch now compiles with Swift 3.0 under Xcode 8.
+
+#### Swift 2.2 / Xcode 7 compatibility is supported in the [swift-2.2 branch](https://github.com/bizz84/SwiftyStoreKit/tree/swift-2.2).
 
 ### Preview
 
@@ -38,6 +39,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	        }
 	    }
 	}
+  return true
 }
 ```
 
@@ -47,7 +49,10 @@ If there are any pending transactions at this point, these will be reported by t
 ```swift
 SwiftyStoreKit.retrieveProductsInfo(["com.musevisions.SwiftyStoreKit.Purchase1"]) { result in
     if let product = result.retrievedProducts.first {
-        let priceString = NSNumberFormatter.localizedStringFromNumber(product.price ?? 0, numberStyle: .CurrencyStyle)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = product.priceLocale
+        numberFormatter.numberStyle = .currency
+        let priceString = numberFormatter.string(from: product.price)
         print("Product: \(product.localizedDescription), price: \(priceString)")
     }
     else if let invalidProductId = result.invalidProductIDs.first {
@@ -63,9 +68,9 @@ SwiftyStoreKit.retrieveProductsInfo(["com.musevisions.SwiftyStoreKit.Purchase1"]
 ```swift
 SwiftyStoreKit.purchaseProduct("com.musevisions.SwiftyStoreKit.Purchase1") { result in
     switch result {
-    case .Success(let productId):
+    case .success(let productId):
         print("Purchase Success: \(productId)")
-    case .Error(let error):
+    case .error(let error):
         print("Purchase Failed: \(error)")
     }
 }
@@ -91,8 +96,8 @@ SwiftyStoreKit.restorePurchases() { results in
 
 ```swift
 SwiftyStoreKit.verifyReceipt() { result in
-    if case .Error(let error) = result {
-        if case .NoReceiptData = error {
+    if case .error(let error) = result {
+        if case .noReceiptData = error {
             self.refreshReceipt()
         }
     }
@@ -101,9 +106,9 @@ SwiftyStoreKit.verifyReceipt() { result in
 func refreshReceipt() {
     SwiftyStoreKit.refreshReceipt { result in
         switch result {
-        case .Success:
+        case .success:
             print("Receipt refresh success")
-        case .Error(let error):
+        case .error(let error):
             print("Receipt refresh failed: \(error)")
         }
     }
@@ -121,16 +126,16 @@ SwiftyStoreKit.verifyReceipt(password: "your_shared_secret")
 ```swift
 SwiftyStoreKit.verifyReceipt() { result in
     switch result {
-    case .Success(let receipt):
+    case .success(let receipt):
         // Verify the purchase of Consumable or NonConsumable
         let purchaseResult = SwiftyStoreKit.verifyPurchase(
             productId: "com.musevisions.SwiftyStoreKit.Purchase1",
             inReceipt: receipt
         )
         switch purchaseResult {
-        case .Purchased(let expiresDate):
+        case .purchased(let expiresDate):
             print("Product is purchased.")
-        case .NotPurchased:
+        case .notPurchased:
             print("The user has never purchased this product")
         }
     case .Error(let error):
@@ -146,7 +151,7 @@ Note that for consumable products, the receipt will only include the information
 ```swift
 SwiftyStoreKit.verifyReceipt() { result in
     switch result {
-    case .Success(let receipt):
+    case .success(let receipt):
         // Verify the purchase of a Subscription
         let purchaseResult = SwiftyStoreKit.verifySubscription(
             productId: "com.musevisions.SwiftyStoreKit.Subscription",
@@ -155,15 +160,15 @@ SwiftyStoreKit.verifyReceipt() { result in
             validDuration: 3600 * 24 * 30, // Non Renewing Subscription only
         )
         switch purchaseResult {
-        case .Purchased(let expiresDate):
+        case .purchased(let expiresDate):
             print("Product is valid until \(expiresDate)")
-        case .Expired(let expiresDate):
+        case .expired(let expiresDate):
             print("Product is expired since \(expiresDate)")
-        case .NotPurchased:
+        case .notPurchased:
             print("The user has never purchased this product")
         }
 
-    case .Error(let error):
+    case .error(let error):
         print("Receipt verification failed: \(error)")
     }
 }
@@ -200,6 +205,17 @@ github "bizz84/SwiftyStoreKit"
 
 **NOTE**: Please ensure that you have the [latest](https://github.com/Carthage/Carthage/releases) Carthage installed.
 
+## Swift 2.x / 3.x
+
+Following the release of Xcode 8 GM: 
+
+* The old Swift 2.2 code has been moved to the `swift-2.2` branch
+* The `swift-3.0` branch has been merged into `master`
+
+As for versioning:
+
+* Swift 3.0 work will be tagged as version `0.5.x`
+* Swift 2.2 work will be tagged as version `0.3.x`
 
 ## Sample Code
 The project includes demo apps [for iOS](https://github.com/bizz84/SwiftyStoreKit/blob/master/SwiftyStoreDemo/ViewController.swift) [and OSX](https://github.com/bizz84/SwiftyStoreKit/blob/master/SwiftyStoreOSXDemo/ViewController.swift) showing how to use SwiftyStoreKit.
@@ -237,7 +253,11 @@ The user can background the hosting application and change the Apple ID used wit
 
 ## Changelog
 
-#### Version 0.3.0
+#### Version 0.5.0 (swift-3.0)
+* Port SwiftyStoreKit to Swift 3.0, compiles under Xcode 8 GM
+* Increased minimum deployment target for OS X to version 10.10
+
+#### Version 0.3.0 (swift-2.2)
 
 * Fixed the `verifyReceipt()` method to use production environment by default. This falls back to the test environment if the receipt is a sandbox receipt.
 
@@ -308,9 +328,9 @@ The class conforms to the `SKPaymentTransactionObserver` protocol in order to re
 
 ```swift
 enum TransactionResult {
-    case Purchased(productId: String)
-    case Restored(productId: String)
-    case Failed(error: NSError)
+    case purchased(productId: String)
+    case restored(productId: String)
+    case failed(error: NSError)
 }
 ```
 Depending on the operation, the completion closure for `InAppProductPurchaseRequest` is then mapped to either a `PurchaseResult` or a `RestoreResults` value and returned to the caller.

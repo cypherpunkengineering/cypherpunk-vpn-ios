@@ -12,18 +12,18 @@ import APIKit
 import Himotoki
 import RealmSwift
 
-struct RegionListRequest: RequestType {
+struct RegionListRequest: Request {
     
     typealias Response = ()
     
     let session: String
     
-    var baseURL: NSURL {
-        return NSURL(string: "https://cypherpunk.engineering")!
+    var baseURL: URL {
+        return URL(string: "https://cypherpunk.engineering")!
     }
     
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
     
     
@@ -36,7 +36,7 @@ struct RegionListRequest: RequestType {
         return ["Cookie": session]
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Response {
+    func response(from object: Any, urlResponse URLResponse: HTTPURLResponse) throws -> Response {
         
         if let areaDictionary = object as? Dictionary<String, AnyObject> {
             
@@ -61,12 +61,12 @@ struct RegionListRequest: RequestType {
             })
             
         } else {
-            throw ResponseError.UnexpectedObject(object)
+            throw ResponseError.unexpectedObject(object)
         }
     }
     
-    var dataParser: DataParserType {
-        return JSONDataParser(readingOptions: .AllowFragments)
+    var dataParser: DataParser {
+        return JSONDataParser(readingOptions: .allowFragments)
     }
 }
 
@@ -94,7 +94,7 @@ class Region: Object {
         super.init()
     }
     
-    required init(value: AnyObject, schema: RLMSchema) {
+    required init(value: Any, schema: RLMSchema) {
         super.init(value: value, schema: schema)
     }
 
@@ -118,10 +118,10 @@ private extension String {
         return self.digest(CC_SHA256_DIGEST_LENGTH, gen: {(data, len, md) in CC_SHA256(data,len,md)})
     }
     
-    private func digest(length:Int32, gen:(data: UnsafePointer<Void>, len: CC_LONG, md: UnsafeMutablePointer<UInt8>) -> UnsafeMutablePointer<UInt8>) -> String {
+    func digest(_ length:Int32, gen:(_ data: UnsafeRawPointer, _ len: CC_LONG, _ md: UnsafeMutablePointer<UInt8>) -> UnsafeMutablePointer<UInt8>) -> String {
         var cStr = [UInt8](self.utf8)
-        var result = [UInt8](count:Int(length), repeatedValue:0)
-        gen(data: &cStr, len: CC_LONG(cStr.count), md: &result)
+        var result = [UInt8](repeating: 0, count: Int(length))
+        gen(&cStr, CC_LONG(cStr.count), &result)
         
         let output = NSMutableString(capacity:Int(length))
         

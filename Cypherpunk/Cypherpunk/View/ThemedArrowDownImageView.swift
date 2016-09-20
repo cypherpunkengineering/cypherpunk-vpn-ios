@@ -17,18 +17,18 @@ class ThemedArrowDownImageView: UIImageView {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
-            let image = UIImage(resource: R.image.arrow_down)?.imageWithRenderingMode(.AlwaysTemplate)
+        case .white:
+            let image = UIImage(resource: R.image.arrow_down)?.withRenderingMode(.alwaysTemplate)
             self.image = image
             self.tintColor = UIColor.whiteThemeNavigationColor()
-        case .Black:
+        case .black:
             let image = UIImage(resource: R.image.arrow_down)
             self.image = image
-            self.tintColor = UIColor.lightGrayColor()
-        case .Indigo:
+            self.tintColor = UIColor.lightGray
+        case .indigo:
             let image = UIImage(resource: R.image.arrow_down)
             self.image = image
-            self.tintColor = UIColor.whiteColor()
+            self.tintColor = UIColor.white
         }
     }
 }

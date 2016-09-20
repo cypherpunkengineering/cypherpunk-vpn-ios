@@ -20,18 +20,18 @@ class ThemedIPAddressPanelView: UIView {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
-            self.titleLabel.textColor = UIColor.blackColor()
-            self.regionLabelButton.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
+        case .white:
+            self.titleLabel.textColor = UIColor.black
+            self.regionLabelButton.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
             self.backgroundColor = UIColor.whiteThemeAccountCellColor()
-        case .Black:
-            self.titleLabel.textColor = UIColor.whiteColor()
-            self.regionLabelButton.setTitleColor(UIColor.whiteThemeSeparatorColor(), forState: .Normal)
+        case .black:
+            self.titleLabel.textColor = UIColor.white
+            self.regionLabelButton.setTitleColor(UIColor.whiteThemeSeparatorColor(), for: .normal)
             self.backgroundColor = UIColor.whiteThemeTextColor()
-        case .Indigo:
-            self.titleLabel.textColor = UIColor.whiteColor()
-            self.regionLabelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            self.backgroundColor = UIColor.whiteThemeAccountCellColor().colorWithAlphaComponent(0.16)
+        case .indigo:
+            self.titleLabel.textColor = UIColor.white
+            self.regionLabelButton.setTitleColor(UIColor.white, for: .normal)
+            self.backgroundColor = UIColor.whiteThemeAccountCellColor().withAlphaComponent(0.16)
         }
     }
 }

@@ -17,12 +17,12 @@ class ThemedSettingsTabButton: UIButton {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
-            self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
-        case .Black:
-            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        case .Indigo:
-            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        case .white:
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
+        case .black:
+            self.setTitleColor(UIColor.white, for: .normal)
+        case .indigo:
+            self.setTitleColor(UIColor.white, for: .normal)
         }
     }
     

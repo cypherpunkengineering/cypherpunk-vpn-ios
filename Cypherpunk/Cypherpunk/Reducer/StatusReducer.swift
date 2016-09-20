@@ -10,6 +10,9 @@ import Foundation
 import ReSwift
 
 struct StatusReducer: Reducer {
+
+    typealias ReducerStateType = StatusState
+   
     func handleAction(action: Action, state: StatusState?) -> StatusState {
         var state: StatusState = state ?? StatusState(
             originalIPAddress: nil,
@@ -24,29 +27,29 @@ struct StatusReducer: Reducer {
         
         if let action = action as? StatusAction {
             switch action {
-            case .GetOriginalIPAddress(let address):
+            case .getOriginalIPAddress(let address):
                 state.originalIPAddress = address
                 state.newIPAddress = nil
                 state.newLatitude = nil
                 state.newLongitude = nil
                 state.newCountry = nil
-            case .GetNewIPAddress(let address):
+            case .getNewIPAddress(let address):
                 if state.originalIPAddress != address {
                     state.newIPAddress = address                    
                 }
-            case .GetOriginalGeoLocation(let response):
+            case .getOriginalGeoLocation(let response):
                 if state.originalIPAddress == response.query {
                     state.originalLatitude = response.lat
                     state.originalLongitude = response.lon
                     state.originalCountry = response.country
                 }
-            case .GetNewGeoLocation(let response):
+            case .getNewGeoLocation(let response):
                 if state.newIPAddress == response.query {
                     state.newLatitude = response.lat
                     state.newLongitude = response.lon
                     state.newCountry = response.country
                 }
-            case .SetConnectedDate(let date):
+            case .setConnectedDate(let date):
                 state.connectedDate = date
             }
         }

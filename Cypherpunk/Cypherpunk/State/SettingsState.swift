@@ -28,7 +28,7 @@ enum VPNProtocolMode: Int {
 }
 
 struct SettingsState: StateType {
-    private let keychain = Keychain(service: "com.cyperpunk.ios.vpn.Settings")
+    fileprivate let keychain = Keychain(service: "com.cyperpunk.ios.vpn.Settings")
 
     
     var isAutoReconnect: Bool {
@@ -52,7 +52,7 @@ struct SettingsState: StateType {
         }
     }
 
-    private struct SettingsStateKey {
+    fileprivate struct SettingsStateKey {
         static let isAutoReconnect = "isAutoReconnect"
         static let vpnProtocolMode = "vpnProtocolMode"
     }

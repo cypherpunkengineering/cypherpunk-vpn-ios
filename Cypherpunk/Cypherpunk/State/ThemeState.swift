@@ -10,11 +10,11 @@ import Foundation
 import ReSwift
 
 enum ThemeType: Int {
-    case White
-    case Black
-    case Indigo
+    case white
+    case black
+    case indigo
 }
 
 struct ThemeState: StateType {
-    var themeType: ThemeType = .Indigo
+    var themeType: ThemeType = .indigo
 }

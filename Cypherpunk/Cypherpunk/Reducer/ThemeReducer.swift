@@ -10,20 +10,23 @@ import Foundation
 import ReSwift
 
 struct ThemeReducer: Reducer {
+    
+    typealias ReducerStateType = ThemeState
+    
     func handleAction(action: Action, state: ThemeState?) -> ThemeState {
         var state = state ?? ThemeState()
         
         if let action = action as? ThemeAction {
             switch action {
-            case .ChangeToWhite:
-                state.themeType = .White
-                UIApplication.sharedApplication().changeStatusBarStyleToDefault()
-            case .ChangeToBlack:
-                state.themeType = .Black
-                UIApplication.sharedApplication().changeStatusBarStyleToLightContent()
-            case .ChangeToIndigo:
-                state.themeType = .Indigo
-                UIApplication.sharedApplication().changeStatusBarStyleToLightContent()
+            case .changeToWhite:
+                state.themeType = .white
+                UIApplication.shared.changeStatusBarStyleToDefault()
+            case .changeToBlack:
+                state.themeType = .black
+                UIApplication.shared.changeStatusBarStyleToLightContent()
+            case .changeToIndigo:
+                state.themeType = .indigo
+                UIApplication.shared.changeStatusBarStyleToLightContent()
             }
         }
         return state

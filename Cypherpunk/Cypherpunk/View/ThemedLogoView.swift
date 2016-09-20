@@ -17,27 +17,27 @@ class ThemedLogoView: UIButton {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
-            let image = UIImage(resource: R.image.logoGray_small)?.imageWithRenderingMode(.AlwaysTemplate)
-            self.setImage(image, forState: .Normal)
-            self.setImage(image, forState: .Disabled)
+        case .white:
+            let image = UIImage(resource: R.image.logoGray_small)?.withRenderingMode(.alwaysTemplate)
+            self.setImage(image, for: .normal)
+            self.setImage(image, for: .disabled)
             self.tintColor = UIColor.whiteThemeTextColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
-            self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Disabled)
-        case .Black:
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .disabled)
+        case .black:
             let image = UIImage(resource: R.image.logoGray_small)
-            self.setImage(image, forState: .Normal)
-            self.setImage(image, forState: .Disabled)
-            self.tintColor = UIColor.lightGrayColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), forState: .Normal)
-            self.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
-        case .Indigo:
+            self.setImage(image, for: .normal)
+            self.setImage(image, for: .disabled)
+            self.tintColor = UIColor.lightGray
+            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
+            self.setTitleColor(UIColor.white, for: .disabled)
+        case .indigo:
             let image = UIImage(resource: R.image.logoGray_small)
-            self.setImage(image, forState: .Normal)
-            self.setImage(image, forState: .Disabled)
-            self.tintColor = UIColor.whiteColor()
-            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            self.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
+            self.setImage(image, for: .normal)
+            self.setImage(image, for: .disabled)
+            self.tintColor = UIColor.white
+            self.setTitleColor(UIColor.white, for: .normal)
+            self.setTitleColor(UIColor.white, for: .disabled)
         }
     }
 }

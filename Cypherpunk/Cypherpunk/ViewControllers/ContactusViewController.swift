@@ -17,8 +17,8 @@ class ContactusViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let button = UIBarButtonItem(title: "Submit", style: .Done, target: self, action: #selector(ContactusViewController.submitAction))
-        self.navigationItem.setRightBarButtonItem(button, animated: false)
+        let button = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(ContactusViewController.submitAction))
+        self.navigationItem.setRightBarButton(button, animated: false)
         
         registerKeyboardNotification()
 
@@ -26,30 +26,30 @@ class ContactusViewController: UIViewController {
 
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let textView = UITextView(frame: CGRect(x: 3, y: 0, width: self.view.frame.size.width - 3, height: self.textViewContainerView.frame.size.height))
         self.textView = textView
-        textView.backgroundColor = UIColor.clearColor()
+        textView.backgroundColor = UIColor.clear
         textView.font = R.font.dosisMedium(size: 16.0)
-        textView.textColor = UIColor.whiteColor()
-        UIView.animateWithDuration(0.3, animations: {
+        textView.textColor = UIColor.white
+        UIView.animate(withDuration: 0.3, animations: {
             textView.delegate = self
             textView.placeholder = "Please describe the issues you are having…"
             self.textViewContainerView.addSubview(textView)
-            }) { (finished) in
+            }, completion: { (finished) in
                 if finished {
                     textView.becomeFirstResponder()
                 }
-        }
+        }) 
 
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     deinit{
@@ -62,7 +62,7 @@ class ContactusViewController: UIViewController {
     }
     
     func submitAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -80,32 +80,35 @@ class ContactusViewController: UIViewController {
 
 extension ContactusViewController: UITextViewDelegate {
     
-    func keyboardWillShow(sender: NSNotification) {
+    func keyboardWillShow(_ sender: Notification) {
         if let userInfo = sender.userInfo {
-            if let keyboardHeight = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size.height {
+            if let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+                let keyboardHeight = keyboardFrame.size.height
                 bottomSpaceConstraint?.constant = keyboardHeight + 44
-                UIView.animateWithDuration(0.25, animations:self.view.layoutIfNeeded)
+                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                    self.view.layoutIfNeeded()
+                })
             }
         }
     }
     
-    func keyboardWillHide(sender: NSNotification) {
+    func keyboardWillHide(_ sender: Notification) {
         bottomSpaceConstraint?.constant = 0.0
-        UIView.animateWithDuration(0.25, animations: self.view.layoutIfNeeded)
+        UIView.animate(withDuration: 0.25, animations: self.view.layoutIfNeeded)
     }
     
     func registerKeyboardNotification() {
-        let defaultCenter = NSNotificationCenter.defaultCenter()
+        let defaultCenter = NotificationCenter.default
         
-        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillShow(_:)) , name: UIKeyboardWillShowNotification, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillShow(_:)) , name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func removeKeyboardNotification() {
-        let defaultCenter = NSNotificationCenter.defaultCenter()
+        let defaultCenter = NotificationCenter.default
         
-        defaultCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        defaultCenter.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        defaultCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        defaultCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
 }

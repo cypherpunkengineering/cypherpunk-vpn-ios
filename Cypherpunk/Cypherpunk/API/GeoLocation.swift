@@ -10,32 +10,32 @@ import Foundation
 import Himotoki
 import APIKit
 
-struct GeoLocationRequest: RequestType {
+struct GeoLocationRequest: Request {
     
     typealias Response = GeoLocationResponse
     
     let IPAddress: String
     
-    var baseURL: NSURL {
-        return NSURL(string: "http://ip-api.com/json/")!
+    var baseURL: URL {
+        return URL(string: "http://ip-api.com/json/")!
     }
     
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
     
     var path: String {
         return IPAddress
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Response {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> GeoLocationResponse {
         let response: Response = try decodeValue(object)
         
         return response
     }
     
-    var dataParser: DataParserType {
-        return JSONDataParser(readingOptions: .AllowFragments)
+    var dataParser: DataParser {
+        return JSONDataParser(readingOptions: .allowFragments)
     }
 }
 
@@ -45,7 +45,7 @@ struct GeoLocationResponse: Decodable {
     let lat: Double
     let lon: Double
     let query: String
-    static func decode(e: Extractor) throws -> GeoLocationResponse {
+    static func decode(_ e: Extractor) throws -> GeoLocationResponse {
         return try GeoLocationResponse(
             status: e.value("status"),
             country: e.value("country"),

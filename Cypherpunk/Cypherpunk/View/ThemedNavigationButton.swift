@@ -24,29 +24,29 @@ class ThemedNavigationButton: UIButton {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
-            self.setImage(self.imageView?.image, forState: .Normal)
+        case .white:
+            self.setImage(self.imageView?.image, for: .normal)
             self.tintColor = UIColor.whiteThemeNavigationButtonColor()
-            self.setTitleColor(UIColor.whiteThemeNavigationColor(), forState: .Normal)
-            self.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
-            self.setTitleColor(UIColor.lightGrayColor(), forState: .Selected)
-        case .Black:
-            self.setImage(self.imageView?.image, forState: .Normal)
-            self.tintColor = UIColor.lightGrayColor()
-            self.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
-        case .Indigo:
-            self.setImage(self.imageView?.image, forState: .Normal)
-            self.tintColor = UIColor.whiteColor()
-            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            self.setTitleColor(UIColor.whiteThemeNavigationColor(), for: .normal)
+            self.setTitleColor(UIColor.lightGray, for: .highlighted)
+            self.setTitleColor(UIColor.lightGray, for: .selected)
+        case .black:
+            self.setImage(self.imageView?.image, for: .normal)
+            self.tintColor = UIColor.lightGray
+            self.setTitleColor(UIColor.lightGray, for: .normal)
+        case .indigo:
+            self.setImage(self.imageView?.image, for: .normal)
+            self.tintColor = UIColor.white
+            self.setTitleColor(UIColor.white, for: .normal)
         }
     }
 
-    override func setImage(image: UIImage?, forState state: UIControlState) {
+    override func setImage(_ image: UIImage?, for state: UIControlState) {
         if let image = image {
-            let tintedImage = image.imageWithRenderingMode(.AlwaysTemplate)
-            super.setImage(tintedImage, forState: state)
+            let tintedImage = image.withRenderingMode(.alwaysTemplate)
+            super.setImage(tintedImage, for: state)
         } else {
-            super.setImage(image, forState: state)
+            super.setImage(image, for: state)
         }
     }
 }

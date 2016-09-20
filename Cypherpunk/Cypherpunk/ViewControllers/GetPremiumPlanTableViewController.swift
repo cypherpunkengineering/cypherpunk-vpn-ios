@@ -15,7 +15,7 @@ class GetPremiumPlanTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
@@ -28,50 +28,50 @@ class GetPremiumPlanTableViewController: UITableViewController {
 
 extension GetPremiumPlanTableViewController {
     
-    @IBAction func oneMonthUpgradeAction(sender: AnyObject) {
+    @IBAction func oneMonthUpgradeAction(_ sender: AnyObject) {
 
         mailAddressField.resignFirstResponder()
         
-        if let address = mailAddressField.text where isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.Upgrade(subscription: .OneMonth, expiredDate: NSDate()))
+        if let address = mailAddressField.text , isValidMailAddress(address) {
+            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
+            mainStore.dispatch(AccountAction.upgrade(subscription: .oneMonth, expiredDate: Date()))
             
             if isModal() {
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                self.navigationController?.popViewControllerAnimated(true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
         
     }
     
     
-    @IBAction func halfYearUpgradeAction(sender: AnyObject) {
+    @IBAction func halfYearUpgradeAction(_ sender: AnyObject) {
 
         mailAddressField.resignFirstResponder()
         
-        if let address = mailAddressField.text where isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.Upgrade(subscription: .HalfYear, expiredDate: NSDate()))
+        if let address = mailAddressField.text , isValidMailAddress(address) {
+            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
+            mainStore.dispatch(AccountAction.upgrade(subscription: .halfYear, expiredDate: Date()))
             if isModal() {
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                self.navigationController?.popViewControllerAnimated(true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
     }
     
-    @IBAction func yearUpgradeAction(sender: AnyObject) {
+    @IBAction func yearUpgradeAction(_ sender: AnyObject) {
 
         mailAddressField.resignFirstResponder()
 
-        if let address = mailAddressField.text where isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.SignUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.Upgrade(subscription: .Year, expiredDate: NSDate()))
+        if let address = mailAddressField.text , isValidMailAddress(address) {
+            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
+            mainStore.dispatch(AccountAction.upgrade(subscription: .year, expiredDate: Date()))
             if isModal() {
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                self.navigationController?.popViewControllerAnimated(true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -98,7 +98,7 @@ extension GetPremiumPlanTableViewController {
 }
 
 extension GetPremiumPlanTableViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

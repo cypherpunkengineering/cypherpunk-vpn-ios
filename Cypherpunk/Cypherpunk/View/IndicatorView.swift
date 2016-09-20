@@ -16,14 +16,14 @@ class IndicatorView: UIView {
     static func show() {
         
         if __indicatorView == nil {
-                let views = NSBundle.mainBundle().loadNibNamed("BlurredIndicatorView", owner: nil, options: nil)
-                let retView = views[0] as! UIView
-                retView.frame = (UIApplication.sharedApplication().keyWindow?.frame)!
-                __indicatorView = views[0] as! IndicatorView
+                let views = Bundle.main.loadNibNamed("BlurredIndicatorView", owner: nil, options: nil)
+                let retView = views?[0] as! UIView
+                retView.frame = (UIApplication.shared.keyWindow?.frame)!
+                __indicatorView = views?[0] as! IndicatorView
         }
         
-        UIView.animateWithDuration(0.3, animations: {
-            UIApplication.sharedApplication().keyWindow?.addSubview(__indicatorView)
+        UIView.animate(withDuration: 0.3, animations: {
+            UIApplication.shared.keyWindow?.addSubview(__indicatorView)
             }, completion: { (finished) in
                 if finished {
                     __indicatorView.startAnimation()
@@ -32,24 +32,24 @@ class IndicatorView: UIView {
     }
     
     static func dismiss() {
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             __indicatorView.removeFromSuperview()
         })
     }
     
-    private func startAnimation() {
+    fileprivate func startAnimation() {
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0.0
         animation.toValue = M_PI * 2
         animation.duration = 2
-        animation.cumulative = true
+        animation.isCumulative = true
         animation.repeatCount = Float.infinity
         
-        indicatorImageView.layer.addAnimation(animation, forKey: "rorationAnimation")
+        indicatorImageView.layer.add(animation, forKey: "rorationAnimation")
     }
     
-    private func stopAnimation() {
-        indicatorImageView.layer.removeAnimationForKey("rotationAnimation")
+    fileprivate func stopAnimation() {
+        indicatorImageView.layer.removeAnimation(forKey: "rotationAnimation")
     }
     
 }

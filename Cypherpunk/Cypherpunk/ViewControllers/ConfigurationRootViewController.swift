@@ -14,7 +14,7 @@ class ConfigurationRootViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let item = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        let item = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = item
         self.automaticallyAdjustsScrollViewInsets = false
     }

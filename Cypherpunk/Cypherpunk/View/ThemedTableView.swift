@@ -25,16 +25,16 @@ extension UITableView {
     func configureView() {
         let themeState = mainStore.state.themeState
         switch themeState.themeType {
-        case .White:
+        case .white:
             self.backgroundColor = UIColor.whiteThemeTableViewBackgroundColor()
             self.separatorColor = UIColor.whiteThemeSeparatorColor()
             self.tintColor = UIColor.whiteThemeIndicatorColor()
-        case .Black:
-            self.backgroundColor = UIColor.blackColor()
+        case .black:
+            self.backgroundColor = UIColor.black
             self.separatorColor = UIColor.whiteThemeTextColor()
-        case .Indigo:
-            self.backgroundColor = UIColor.clearColor()
-            self.separatorColor = UIColor.whiteColor().colorWithAlphaComponent(0.30)
+        case .indigo:
+            self.backgroundColor = UIColor.clear
+            self.separatorColor = UIColor.white.withAlphaComponent(0.30)
         }
     }
 }

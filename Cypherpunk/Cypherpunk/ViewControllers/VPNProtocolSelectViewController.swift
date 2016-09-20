@@ -38,36 +38,36 @@ class VPNProtocolSelectViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return VPNProtocolMode.count
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = ThemedTableViewCell(style: .Default, reuseIdentifier: "Cell")
-        let value = VPNProtocolMode.arrayDescription[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = ThemedTableViewCell(style: .default, reuseIdentifier: "Cell")
+        let value = VPNProtocolMode.arrayDescription[(indexPath as NSIndexPath).row]
         
         cell.prepareDisclosureIndicator()
         cell.configureView()
         
         cell.textLabel?.text = value.description
         if value == selectedValue {
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
         } else {
-            cell.accessoryType = .None
+            cell.accessoryType = .none
         }
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let value = VPNProtocolMode.arrayDescription[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let value = VPNProtocolMode.arrayDescription[(indexPath as NSIndexPath).row]
         mainStore.dispatch(SettingsAction.vpnProtocolMode(value: value))
         
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 
 }
