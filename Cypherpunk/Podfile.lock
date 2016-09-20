@@ -26,7 +26,7 @@ DEPENDENCIES:
   - Himotoki (from `https://github.com/ikesyo/Himotoki.git`)
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
   - MZFormSheetPresentationController
-  - R.swift (from `https://github.com/mac-cain13/R.swift.git`)
+  - R.swift
   - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift.git`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`)
   - Result (from `https://github.com/antitypical/Result.git`)
@@ -42,8 +42,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/ikesyo/Himotoki.git
   KeychainAccess:
     :git: https://github.com/kishikawakatsumi/KeychainAccess.git
-  R.swift:
-    :git: https://github.com/mac-cain13/R.swift.git
   ReachabilitySwift:
     :git: https://github.com/ashleymills/Reachability.swift.git
   RealmSwift:
@@ -68,9 +66,6 @@ CHECKOUT OPTIONS:
   KeychainAccess:
     :commit: 6574871f9597ff7219ea4686f2da2c85fac4b2c1
     :git: https://github.com/kishikawakatsumi/KeychainAccess.git
-  R.swift:
-    :commit: a53c6b1cab054f8b4a962a1623d062745047cb1e
-    :git: https://github.com/mac-cain13/R.swift.git
   ReachabilitySwift:
     :commit: 610027bd13fe1b832eea98025658ead5ddf112ae
     :git: https://github.com/ashleymills/Reachability.swift.git
@@ -108,6 +103,6 @@ SPEC CHECKSUMS:
   SwiftyStoreKit: 53c63f91545a3778dc108f860a7414905ce40a63
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 6ac8dc90e7441303d31d6b4e9ee9ca9cdc3ce82f
+PODFILE CHECKSUM: 1a13f439514d30fc97bc350aa8b5eef62e8394f9
 
 COCOAPODS: 1.1.0.rc.2

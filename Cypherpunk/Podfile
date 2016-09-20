@@ -9,7 +9,7 @@ target 'Cypherpunk' do
        pod 'SwiftyStoreKit', :git => 'https://github.com/bizz84/SwiftyStoreKit.git'
        pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit.git'
        pod 'Himotoki', :git => 'https://github.com/ikesyo/Himotoki.git'
-       pod 'R.swift', :git => 'https://github.com/mac-cain13/R.swift.git'
+       pod 'R.swift'
        pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git'
        pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git'
        pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
@@ -22,14 +22,14 @@ target 'CypherpunkTests' do
        pod 'ReSwift', :git => 'https://github.com/ReSwift/ReSwift.git'
        pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit.git'
        pod 'Himotoki', :git => 'https://github.com/ikesyo/Himotoki.git'
-       pod 'R.swift', :git => 'https://github.com/mac-cain13/R.swift.git'
+       pod 'R.swift'
 end
 
 target 'CypherpunkUITests' do
        pod 'ReSwift', :git => 'https://github.com/ReSwift/ReSwift.git'
        pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit.git'
        pod 'Himotoki', :git => 'https://github.com/ikesyo/Himotoki.git'
-       pod 'R.swift', :git => 'https://github.com/mac-cain13/R.swift.git'
+       pod 'R.swift'
        pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
 end
 
