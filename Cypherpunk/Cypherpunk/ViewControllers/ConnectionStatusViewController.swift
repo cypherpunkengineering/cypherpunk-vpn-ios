@@ -94,11 +94,7 @@ class ConnectionStatusViewController: UITableViewController {
     func startTimer() {
         let source = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: DispatchQueue.main)
         
-        let secondsToFire: Double = 0.1
-        let now = DispatchTime.now() + Double(Int64(secondsToFire * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        let interval = Double(secondsToFire * Double(NSEC_PER_SEC))
-        
-        source.scheduleRepeating(deadline: now, interval: interval)
+        source.scheduleRepeating(deadline: DispatchTime.now(), interval: DispatchTimeInterval.nanoseconds(100))
         source.setEventHandler(handler: {
             let statusState = mainStore.state.statusState
             if let date = statusState.connectedDate {
