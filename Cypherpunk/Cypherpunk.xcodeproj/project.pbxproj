@@ -1143,7 +1143,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.Cypherpunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
