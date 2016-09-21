@@ -33,19 +33,18 @@ class AnimationViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if animationLayer == nil {
             animationLayer = instanceAnimationLayer()
             self.view.layer.insertSublayer(animationLayer, at: 0)
             startTimer()
         }
-        //    startAnimation()
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     override func didReceiveMemoryWarning() {
