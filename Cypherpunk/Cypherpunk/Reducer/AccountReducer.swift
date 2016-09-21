@@ -26,17 +26,25 @@ struct AccountReducer: Reducer {
             accountState.isLoggedIn = true
             accountState.mailAddress = mailAddress
             accountState.password = nil
+            
+            accountState.save()
         case .activate(let mailAddress, let password):
             accountState.isLoggedIn = true
             accountState.mailAddress = mailAddress
             accountState.password = password
+            
+            accountState.save()
         case .login(let response):
             accountState.isLoggedIn = true
             accountState.mailAddress = response.account.email
             accountState.secret = response.secret
+            
+            accountState.save()
         case .logout:
             accountState.isLoggedIn = false
             VPNConfigurationCoordinator.disconnect()
+            
+            AccountState.removeLastLoggedInService()
         case .upgrade(let subscription, let expiredDate):
             switch subscription {
             case .free:
@@ -45,6 +53,8 @@ struct AccountReducer: Reducer {
                 accountState.subscriptionType = subscription
                 accountState.expiredDate = expiredDate
             }
+            
+            accountState.save()
         }
         
         return accountState

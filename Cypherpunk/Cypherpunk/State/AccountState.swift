@@ -36,7 +36,18 @@ enum SubscriptionType: Int {
     }
 }
 
+import KeychainAccess
 struct AccountState: StateType {
+    fileprivate struct AccountStateKey {
+        static let isLoggedIn = "isLoggedIn"
+        static let mailAddress = "mailAddress"
+        static let password = "password"
+        static let secret = "secret"
+        static let nickName = "nickName"
+        static let rawSubscriptionType = "rawSubscriptionType"
+        static let expiredDate = "expiredDate"
+    }
+
     var isLoggedIn: Bool
     var mailAddress: String?
     var password: String?
@@ -45,4 +56,49 @@ struct AccountState: StateType {
     
     var subscriptionType: SubscriptionType
     var expiredDate: Date?
+    
+    func save() {
+        let keychain = Keychain(service: mailAddress!)
+        keychain[AccountStateKey.isLoggedIn] = String(isLoggedIn)
+        keychain[AccountStateKey.mailAddress] = mailAddress
+        keychain[AccountStateKey.password] = password
+        keychain[AccountStateKey.secret] = secret
+        keychain[AccountStateKey.nickName] = nickName
+        keychain[AccountStateKey.rawSubscriptionType] = String(subscriptionType.rawValue)
+        keychain[AccountStateKey.expiredDate] = String(describing: expiredDate)
+        
+        let inAppKeychain = Keychain.inAppKeychain()
+        inAppKeychain[AccountStateKey.mailAddress] = mailAddress
+        
+        print(Bool(keychain[AccountStateKey.isLoggedIn] ?? "false")!)
+        print(keychain[AccountStateKey.mailAddress])
+        print(keychain[AccountStateKey.password])
+        print(keychain[AccountStateKey.secret])
+        print(keychain[AccountStateKey.nickName])
+        print(SubscriptionType(rawValue: Int(keychain[AccountStateKey.rawSubscriptionType] ?? "\( SubscriptionType.free.rawValue)")!))
+    }
+    
+    static func restore() -> AccountState {
+        var state = AccountState(isLoggedIn: false, mailAddress: nil, password: nil, secret: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
+        let inAppKeychain = Keychain.inAppKeychain()
+        if let service = inAppKeychain[AccountStateKey.mailAddress] {
+            let keychain = Keychain(service: service)
+            state.isLoggedIn = Bool(keychain[AccountStateKey.isLoggedIn] ?? "false")!
+            state.mailAddress = keychain[AccountStateKey.mailAddress]
+            state.password = keychain[AccountStateKey.password]
+            state.secret = keychain[AccountStateKey.secret]
+            state.nickName = keychain[AccountStateKey.nickName]
+            state.subscriptionType = SubscriptionType(rawValue: Int(keychain[AccountStateKey.rawSubscriptionType] ?? "\( SubscriptionType.free.rawValue)")!)!
+            let dateFormatter = DateFormatter()
+            if let dateString = keychain[AccountStateKey.expiredDate] {
+                state.expiredDate = dateFormatter.date(from: dateString)
+            }
+        }
+        return state
+    }
+ 
+    static func removeLastLoggedInService() {
+        let keychain = Keychain.inAppKeychain()
+        keychain[AccountStateKey.mailAddress] = nil
+    }
 }

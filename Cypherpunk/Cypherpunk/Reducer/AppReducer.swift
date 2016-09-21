@@ -33,7 +33,7 @@ struct AppReducer: Reducer {
             }
         }
         return AppState(
-            accountState: accountReducer.handleAction(action: action, state: state?.accountState),
+            accountState: accountReducer.handleAction(action: action, state: state?.accountState ?? AccountState.restore()),
             regionState:  regionReducer.handleAction(action: action, state: state?.regionState),
             settingsState: settingsReducer.handleAction(action: action, state: state?.settingsState),
             themeState: themeReducer.handleAction(action: action, state: state?.themeState),

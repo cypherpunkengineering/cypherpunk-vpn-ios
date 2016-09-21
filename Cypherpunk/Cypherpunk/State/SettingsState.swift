@@ -27,15 +27,24 @@ enum VPNProtocolMode: Int {
 
 }
 
-struct SettingsState: StateType {
-    fileprivate let keychain = Keychain(service: "com.cyperpunk.ios.vpn.Settings")
+extension Keychain {
+    static func userKeychain() -> Keychain {
+        return Keychain(service: mainStore.state.accountState.mailAddress ?? "com.cyperpunk.ios.vpn.Settings")
+    }
+    static func inAppKeychain() -> Keychain {
+        return Keychain(service: "com.cyperpunk.ios.vpn.keychain")
+    }
+}
 
+struct SettingsState: StateType {
     
     var isAutoReconnect: Bool {
         get{
+            let keychain = Keychain.userKeychain()
             return NSString(string: keychain[SettingsStateKey.isAutoReconnect] ?? "true").boolValue
         }
         set(newValue) {
+            let keychain = Keychain.userKeychain()
             keychain[SettingsStateKey.isAutoReconnect] = String(newValue)
         }
     }
@@ -44,10 +53,12 @@ struct SettingsState: StateType {
     /* VPN Settings */
     var vpnProtocolMode: VPNProtocolMode {
         get {
+            let keychain = Keychain.userKeychain()
             let value: Int = NSString(string: keychain[SettingsStateKey.vpnProtocolMode] ?? "2").integerValue
             return VPNProtocolMode(rawValue: value) ?? .IKEv2
         }
         set(newValue) {
+            let keychain = Keychain.userKeychain()
             keychain[SettingsStateKey.vpnProtocolMode] = String(newValue.rawValue)
         }
     }
