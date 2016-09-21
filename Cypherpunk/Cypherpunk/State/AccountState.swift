@@ -69,13 +69,6 @@ struct AccountState: StateType {
         
         let inAppKeychain = Keychain.inAppKeychain()
         inAppKeychain[AccountStateKey.mailAddress] = mailAddress
-        
-        print(Bool(keychain[AccountStateKey.isLoggedIn] ?? "false")!)
-        print(keychain[AccountStateKey.mailAddress])
-        print(keychain[AccountStateKey.password])
-        print(keychain[AccountStateKey.secret])
-        print(keychain[AccountStateKey.nickName])
-        print(SubscriptionType(rawValue: Int(keychain[AccountStateKey.rawSubscriptionType] ?? "\( SubscriptionType.free.rawValue)")!))
     }
     
     static func restore() -> AccountState {
