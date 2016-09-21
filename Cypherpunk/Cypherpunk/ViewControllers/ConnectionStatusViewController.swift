@@ -47,6 +47,8 @@ class ConnectionStatusViewController: UITableViewController {
             object: nil
         )
         
+        mainStore.subscribe(self, selector: nil)
+
         originalPointCircleCenterXConstraint.constant = -27
         originalPointCircleCenterYConstraint.constant = 18
     }
@@ -64,21 +66,14 @@ class ConnectionStatusViewController: UITableViewController {
             connectedTimeView.isHidden = true
             disconnectedLabel.isHidden = false
         }
-        let statusState = mainStore.state.statusState
-        self.originalIPAddressLabel.text = statusState.originalIPAddress ?? "---.---.---.---"
-        self.newIPAddressLabel.text = statusState.newIPAddress ?? "---.---.---.---"
-        
-        self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", for: .normal)
-        self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", for: .normal)
+        self.newState(state: mainStore.state)
         
         startTimer()
-        mainStore.subscribe(self, selector: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         cancelTimer()
-        mainStore.unsubscribe(self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -86,6 +81,7 @@ class ConnectionStatusViewController: UITableViewController {
     }
     
     deinit{
+        mainStore.unsubscribe(self)
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
@@ -157,12 +153,18 @@ extension ConnectionStatusViewController: StoreSubscriber {
         self.originalLocaleLabelButton.setTitle(statusState.originalCountry ?? "", for: .normal)
         self.newLocalLabelButton.setTitle(statusState.newCountry ?? "", for: .normal)
         
+        originalPointCircleView.isHidden = true
+        newPointCircleView.isHidden = true
+        self.linePathView.isHidden = true
+
         if statusState.originalLatitude != nil && statusState.originalLongitude != nil {
             let pointX = statusState.originalLongitude! * 172 / 180
             originalPointCircleCenterXConstraint.constant = CGFloat(pointX)
             
             let pointY = statusState.originalLatitude! * 360 / 360 * -1
             originalPointCircleCenterYConstraint.constant = CGFloat(pointY)
+
+            originalPointCircleView.isHidden = false
 
             if statusState.newLatitude != nil && statusState.newLongitude != nil {
                 let pointX = statusState.newLongitude! * 172 / 180
@@ -175,19 +177,25 @@ extension ConnectionStatusViewController: StoreSubscriber {
                     y: (originalPointCircleView.center.y + newPointCircleView.center.y) / 2
                 )
                 
+                newPointCircleView.isHidden = false
+                
                 let controlPoint = CGPoint(
                     x: centerPoint.x + (newPointCircleView.center.y - originalPointCircleView.center.y) / 4,
                     y: centerPoint.y + (newPointCircleView.center.x - originalPointCircleView.center.x) / 4
                 )
                 
-                self.linePathView.startPoint = originalPointCircleView.center
-                self.linePathView.endPoint = newPointCircleView.center
-                self.linePathView.controlPoint = controlPoint
-                self.linePathView.setNeedsDisplay()
+                self.view.setNeedsDisplay()
+                
+                DispatchQueue.main.async {
+                    self.linePathView.startPoint = self.originalPointCircleView.center
+                    self.linePathView.endPoint = self.newPointCircleView.center
+                    self.linePathView.controlPoint = controlPoint
+                    self.linePathView.setNeedsDisplay()
+                    
+                    self.linePathView.isHidden = false
+                }
             }
 
         }
-
-
     }
 }

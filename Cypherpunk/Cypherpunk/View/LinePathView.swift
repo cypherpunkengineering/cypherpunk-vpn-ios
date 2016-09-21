@@ -21,7 +21,7 @@ class LinePathView: UIView {
             
             let path = UIBezierPath()
             path.move(to: startPoint)
-            path.addQuadCurve(to: endPoint, controlPoint: controlPoint)
+            path.addLine(to: endPoint)
             UIColor.goldenYellowColor().setStroke()
             path.lineWidth = 2.0
             path.stroke()
