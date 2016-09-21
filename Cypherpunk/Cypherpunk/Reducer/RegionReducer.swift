@@ -18,8 +18,7 @@ struct RegionReducer: Reducer {
         
         var regionState = state ?? RegionState(
             name:  "",
-            serverIP: "",
-            recentryConnected: [])
+            serverIP: "")
         
         if let action = action as? RegionAction {
             switch action {
@@ -27,17 +26,7 @@ struct RegionReducer: Reducer {
                 regionState.name = name
                 regionState.serverIP = serverIP
             case .connect:
-                let history = RegionHistory(state: regionState)
-                
-                if let index = regionState.recentryConnected.index(of: history) {
-                    regionState.recentryConnected.remove(at: index)
-                }
-                
-                if regionState.recentryConnected.count >= 3 {
-                    regionState.recentryConnected.removeLast()
-                }
-                
-                regionState.recentryConnected.insert(history, at: 0)
+                break
             }
         }
         
