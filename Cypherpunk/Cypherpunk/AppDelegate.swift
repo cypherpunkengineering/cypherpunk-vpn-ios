@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if realm.objects(Region.self).count == 0 {
                 realm.add(Region(name: "Tokyo1", ipAddress: "208.111.52.1"))
                 realm.add(Region(name: "Tokyo2", ipAddress: "208.111.52.2"))
+                realm.add(Region(name: "Tokyo-DNS-RR", ipAddress: "tokyo.cypherpunk.network"))
                 realm.add(Region(name: "Honolulu", ipAddress: "199.68.252.203"))
             }
             
