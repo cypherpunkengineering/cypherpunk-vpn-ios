@@ -26,9 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         
-        print("carrier: \(SpecificDataProvider.carrierName())")
-        print("device name: \(SpecificDataProvider.deviceName())")
-        
         UINavigationBar.appearance().titleTextAttributes = [
             NSFontAttributeName: R.font.dosisSemiBold(size: 18.0)!,
             NSForegroundColorAttributeName: UIColor.white,
@@ -42,8 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ], for: .normal)
         
         mainStore.dispatch(ThemeAction.changeToIndigo)
-        VPNConfigurationCoordinator.start {
-        }
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         

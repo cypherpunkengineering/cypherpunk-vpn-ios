@@ -12,10 +12,10 @@ import KeychainAccess
 
 open class VPNConfigurationCoordinator {
 
-    class func load(_ completion: @escaping () -> ()) {
+    class func load(_ completion: @escaping (Bool) -> ()) {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
-            completion()
+            completion(error != nil)
         }
     }
 

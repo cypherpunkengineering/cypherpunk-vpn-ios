@@ -31,13 +31,18 @@ class TopViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var connectedButton: UIButton!
     @IBOutlet weak var connectingButton: UIButton!
     @IBOutlet weak var disconnectedButton: UIButton!
-    @IBOutlet weak var outsideCircleView: UIView!
-    @IBOutlet weak var connectingBorderImageView: UIImageView!
     @IBOutlet weak var connectionStateLabel: UILabel!
     
     @IBOutlet weak var cancelEmbededView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var regionButton: UIButton!
+    @IBOutlet weak var configurationButton: UIButton!
+    @IBOutlet weak var connectionStatusButton: UIButton!
+    
+    @IBOutlet weak var installPreferencesView: UIView!
+    @IBOutlet weak var animationContainerView: UIView!
+    @IBOutlet weak var connectionActionView: UIView!
+    @IBOutlet weak var regionButtonView: UIView!
     
     internal var connectionObserver: NSObjectProtocol!
     
@@ -54,6 +59,12 @@ class TopViewController: UIViewController, StoreSubscriber {
             self,
             selector: #selector(didChangeVPNStatus),
             name: NSNotification.Name.NEVPNStatusDidChange,
+            object: nil
+        )
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(applicationDidBecomeActive(_:)),
+            name: NSNotification.Name.UIApplicationDidBecomeActive,
             object: nil
         )
     
@@ -81,26 +92,25 @@ class TopViewController: UIViewController, StoreSubscriber {
         }
         self.view.setNeedsLayout()
         
-        VPNConfigurationCoordinator.load {
+        VPNConfigurationCoordinator.load {_ in 
             let status = NEVPNManager.shared().connection.status
             self.updateViewWithVPNStatus(status)
         }
-        
-        mainStore.subscribe(self, selector: nil)
         
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0
         animation.toValue = M_PI * 2.0
         animation.duration = circleAnimationDuration
         animation.repeatCount = HUGE
-        connectingBorderImageView.layer.add(animation, forKey: "rotation")
+        connectingButton.layer.add(animation, forKey: "rotation")
+        
+        mainStore.subscribe(self, selector: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        connectingButton.layer.removeAnimation(forKey: "rotation")
         mainStore.unsubscribe(self)
-        connectingBorderImageView.layer.removeAnimation(forKey: "rotation")
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,16 +124,21 @@ class TopViewController: UIViewController, StoreSubscriber {
     }
     
     func updateViewWithVPNStatus(_ status: NEVPNStatus) {
+        
+        animationContainerView.isHidden = false
+        connectionActionView.isHidden = false
+        regionButtonView.isHidden = false
+        connectionStatusButton.isHidden = false
+        configurationButton.isHidden = false
+        installPreferencesView.isHidden = true
+
         switch status {
         case .connected:
-            outsideCircleView.backgroundColor = UIColor(red: 110.0 / 255.0 , green: 201.0 / 255.0 , blue: 9.0 / 255.0 , alpha: 0.60)
             connectedButton.isHidden = false
             connectingButton.isHidden = true
             disconnectedButton.isHidden = true
             disconnectedButton.isEnabled = true
             cancelEmbededView.isHidden = true
-            connectingBorderImageView.isHidden = true
-            outsideCircleView.isHidden = false
             
             let time = DispatchTime.now() + Double(Int64(3 * NSEC_PER_SEC / 2)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: time, execute: { 
@@ -154,25 +169,18 @@ class TopViewController: UIViewController, StoreSubscriber {
                 }    
             })
             
-        case .connecting:
-            outsideCircleView.backgroundColor = UIColor(red: 255.0 / 255.0 , green: 120.0 / 255.0 , blue: 27.0 / 255.0 , alpha: 0.60)
+        case .connecting, .reasserting:
             connectedButton.isHidden = true
             connectingButton.isHidden = false
             disconnectedButton.isHidden = true
             disconnectedButton.isEnabled = true
             cancelEmbededView.isHidden = false
-            connectingBorderImageView.isHidden = false
-            outsideCircleView.isHidden = true
         case .disconnected:
-            outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.isHidden = true
             connectingButton.isHidden = true
             disconnectedButton.isHidden = false
             disconnectedButton.isEnabled = true
             cancelEmbededView.isHidden = true
-            connectingBorderImageView.isHidden = true
-
-            outsideCircleView.isHidden = false
             
             let IPRequest = JSONIPRequest()
             Session.send(IPRequest) {
@@ -201,30 +209,29 @@ class TopViewController: UIViewController, StoreSubscriber {
                 }
             }
             
-        case .invalid, .reasserting:
-            outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
-            connectedButton.isHidden = true
-            connectingButton.isHidden = true
-            disconnectedButton.isHidden = false
-            disconnectedButton.isEnabled = false
-            cancelEmbededView.isHidden = true
-            connectingBorderImageView.isHidden = true
-
-            outsideCircleView.isHidden = false
+        case .invalid:
+            animationContainerView.isHidden = true
+            connectionActionView.isHidden = true
+            regionButtonView.isHidden = true
+            connectionStatusButton.isHidden = true
+            configurationButton.isHidden = true
+            installPreferencesView.isHidden = false
 
         case .disconnecting:
-            outsideCircleView.backgroundColor = UIColor(red: 241.0 / 255.0 , green: 26.0 / 255.0 , blue: 53.0 / 255.0 , alpha: 0.60)
             connectedButton.isHidden = true
             connectingButton.isHidden = true
             disconnectedButton.isHidden = false
             disconnectedButton.isEnabled = false
             cancelEmbededView.isHidden = true
-            connectingBorderImageView.isHidden = true
-
-            outsideCircleView.isHidden = false
         }
 
         connectionStateLabel.text = String(describing: status)
+    }
+    func applicationDidBecomeActive(_ notification: Notification) {
+        VPNConfigurationCoordinator.load {_ in
+            let status = NEVPNManager.shared().connection.status
+            self.updateViewWithVPNStatus(status)
+        }
     }
     
     func didChangeVPNStatus(_ notification: Notification) {

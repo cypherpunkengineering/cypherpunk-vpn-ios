@@ -10,10 +10,13 @@ import UIKit
 
 class InstallPreferencesViewController: UIViewController {
 
+    @IBOutlet weak var ioButtonImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        ioButtonImageView.image = ioButtonImageView.image!.withRenderingMode(.alwaysTemplate)
+        ioButtonImageView.tintColor = UIColor.whiteThemeIndicatorColor()
     }
 
     override func didReceiveMemoryWarning() {

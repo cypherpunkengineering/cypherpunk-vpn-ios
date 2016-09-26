@@ -101,6 +101,7 @@
 		2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B73C70E1D5C7F670090FF8B /* Animation.storyboard */; };
 		2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */; };
 		2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */; };
+		2BC7D6651D95153400AE1F1C /* InstallPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */; };
 		2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */; };
 		2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */; };
 		2BDBD0C21D64FBED00080E67 /* ThemedNavigationBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C11D64FBED00080E67 /* ThemedNavigationBackgroundView.swift */; };
@@ -242,6 +243,7 @@
 		2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNPersistentDataGenerator.m; sourceTree = "<group>"; };
 		2B75524B1D6AE9CA00E07A4B /* VPNPersistentDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNPersistentDataGenerator.h; sourceTree = "<group>"; };
+		2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallPreferencesViewController.swift; sourceTree = "<group>"; };
 		2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordTableViewController.swift; sourceTree = "<group>"; };
 		2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationViewController.swift; sourceTree = "<group>"; };
 		2BDBD0C11D64FBED00080E67 /* ThemedNavigationBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationBackgroundView.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */,
 				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
 				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
+				2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */,
 				20EBFD3F1D5485D8008B9F14 /* ConnectionStatusViewController.swift */,
 				203C62F31D7036C900891F91 /* FirstOpenViewController.swift */,
 				203C62F71D703A7B00891F91 /* GetPremiumPlanRootViewController.swift */,
@@ -966,6 +969,7 @@
 				203F4F051D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift in Sources */,
 				2BDBD0D01D65286D00080E67 /* EditingRootViewController.swift in Sources */,
 				201809F01D5B49E200730FA4 /* ThemedSettingsTabButton.swift in Sources */,
+				2BC7D6651D95153400AE1F1C /* InstallPreferencesViewController.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
