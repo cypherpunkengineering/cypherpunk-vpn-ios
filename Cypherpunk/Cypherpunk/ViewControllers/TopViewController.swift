@@ -97,19 +97,11 @@ class TopViewController: UIViewController, StoreSubscriber {
             self.updateViewWithVPNStatus(status)
         }
         
-        let animation = CABasicAnimation(keyPath: "transform.rotation")
-        animation.fromValue = 0
-        animation.toValue = M_PI * 2.0
-        animation.duration = circleAnimationDuration
-        animation.repeatCount = HUGE
-        connectingButton.layer.add(animation, forKey: "rotation")
-        
         mainStore.subscribe(self, selector: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        connectingButton.layer.removeAnimation(forKey: "rotation")
         mainStore.unsubscribe(self)
     }
     
@@ -131,6 +123,7 @@ class TopViewController: UIViewController, StoreSubscriber {
         connectionStatusButton.isHidden = false
         configurationButton.isHidden = false
         installPreferencesView.isHidden = true
+        connectingButton.layer.removeAnimation(forKey: "rotation")
 
         switch status {
         case .connected:
@@ -170,6 +163,14 @@ class TopViewController: UIViewController, StoreSubscriber {
             })
             
         case .connecting, .reasserting:
+            
+            let animation = CABasicAnimation(keyPath: "transform.rotation")
+            animation.fromValue = 0
+            animation.toValue = M_PI * 2.0
+            animation.duration = circleAnimationDuration
+            animation.repeatCount = HUGE
+            connectingButton.layer.add(animation, forKey: "rotation")
+
             connectedButton.isHidden = true
             connectingButton.isHidden = false
             disconnectedButton.isHidden = true
