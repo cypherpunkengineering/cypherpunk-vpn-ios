@@ -22,7 +22,7 @@
         <scene sceneID="md1-T3-gjZ">
             <objects>
                 <navigationController navigationBarHidden="YES" id="9Wa-Pa-3en" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CHk-p9-fsV" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CHk-p9-fsV" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -137,16 +137,16 @@
                                         <subviews>
                                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEW-sm-d7L">
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0I-hE-T0M">
+                                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0I-hE-T0M">
                                                         <state key="normal" image="ioBtnRed"/>
                                                         <connections>
                                                             <action selector="connectAction:" destination="hpk-pp-vby" eventType="touchUpInside" id="kCP-DA-Nfm"/>
                                                         </connections>
                                                     </button>
-                                                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5d-qp-wAE">
+                                                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5d-qp-wAE">
                                                         <state key="normal" image="ioBtnOrange"/>
                                                     </button>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryj-jn-dAH">
+                                                    <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryj-jn-dAH">
                                                         <state key="normal" image="ioBtnGreen"/>
                                                         <connections>
                                                             <action selector="cancelAction:" destination="hpk-pp-vby" eventType="touchUpInside" id="d2G-J8-IFE"/>
@@ -379,7 +379,7 @@
         <scene sceneID="PpI-Vv-Bkg">
             <objects>
                 <navigationController id="dll-uD-T10" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="SFq-tT-l0l" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="SFq-tT-l0l" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -487,7 +487,7 @@ your preferences.</string>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u3O-aL-lCx">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ioBtnRed" translatesAutoresizingMaskIntoConstraints="NO" id="uTX-7f-WUK"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ioBtnGray" translatesAutoresizingMaskIntoConstraints="NO" id="uTX-7f-WUK"/>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -525,8 +525,9 @@ your preferences.</string>
         <image name="ic_close_white" width="24" height="24"/>
         <image name="iconInfo" width="22" height="22"/>
         <image name="iconSettings" width="22" height="22"/>
+        <image name="ioBtnGray" width="140" height="152"/>
         <image name="ioBtnGreen" width="140" height="190"/>
-        <image name="ioBtnOrange" width="140" height="124"/>
+        <image name="ioBtnOrange" width="140" height="140"/>
         <image name="ioBtnRed" width="140" height="152"/>
         <image name="logoGray_small" width="19" height="36"/>
         <image name="map_wh" width="360" height="173"/>

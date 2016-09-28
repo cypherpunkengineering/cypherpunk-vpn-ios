@@ -133,7 +133,7 @@ class TopViewController: UIViewController, StoreSubscriber {
             disconnectedButton.isEnabled = true
             cancelEmbededView.isHidden = true
             
-            let time = DispatchTime.now() + Double(Int64(3 * NSEC_PER_SEC / 2)) / Double(NSEC_PER_SEC)
+            let time = DispatchTime.now() + Double(Int64(3 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: time, execute: { 
                 let IPRequest = JSONIPRequest()
                 Session.send(IPRequest) {
