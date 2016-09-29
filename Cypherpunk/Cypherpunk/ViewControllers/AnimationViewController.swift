@@ -118,8 +118,8 @@ class AnimationViewController: UIViewController {
                                 textLayer.foregroundColor = baseColor.cgColor
                             } else {
                                 if let string = textLayer.string as? String , string != "0" && string != "1" {
-                                    let number =  Int(arc4random()) % 2
-                                    textLayer.string = String(number)
+                                    let number =  arc4random_uniform(2)
+                                    textLayer.string = String(UInt(number))
                                 }
                                 
                             }
@@ -164,7 +164,8 @@ class AnimationViewController: UIViewController {
             verticalLayer.frame = CGRect(origin: CGPoint(x: CGFloat(x) * itemSize.width + CGFloat(x) * 3.0 , y: 0), size: size)
             
             for y in 0...verticalItemsCount {
-                let number = Int(arc4random()) % 2
+                
+                let number = Int(arc4random_uniform(2))
                 let layoutPoint = CGPoint(x: 0 , y: CGFloat(y) * itemSize.height)
                 let frame = CGRect(origin: layoutPoint, size: itemSize)
                 
