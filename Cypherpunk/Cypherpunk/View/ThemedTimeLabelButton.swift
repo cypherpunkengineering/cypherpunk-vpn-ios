@@ -18,21 +18,9 @@ class ThemedTimeLabelButton: UIButton {
     }
     
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            self.tintColor = UIColor.whiteThemeTextColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
-            self.borderColor = UIColor.whiteThemeTextColor()
-        case .black:
-            self.tintColor = UIColor.blackThemeTextColor()
-            self.setTitleColor(UIColor.blackThemeTextColor(), for: .normal)
-            self.borderColor = UIColor.blackThemeTextColor()
-        case .indigo:
-            self.tintColor = UIColor.blackThemeTextColor()
-            self.setTitleColor(UIColor.blackThemeTextColor(), for: .normal)
-            self.borderColor = UIColor.blackThemeTextColor()
-        }
+        self.tintColor = UIColor.blackThemeTextColor()
+        self.setTitleColor(UIColor.blackThemeTextColor(), for: .normal)
+        self.borderColor = UIColor.blackThemeTextColor()
     }
-
+    
 }

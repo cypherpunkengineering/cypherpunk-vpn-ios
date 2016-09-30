@@ -22,19 +22,9 @@ class RegionTableViewCell: UITableViewCell {
     }
     
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            self.titleLabel?.textColor = UIColor.whiteThemeTextColor()
-            self.backgroundColor = UIColor.white
-        case .black:
-            self.titleLabel?.textColor = UIColor.white
-            self.backgroundColor = UIColor.blackThemeCellBackgroundColor()
-        case .indigo:
-            self.titleLabel?.textColor = UIColor.white
-            self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
-            self.tintColor = UIColor.white
-        }
+        self.titleLabel?.textColor = UIColor.white
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
+        self.tintColor = UIColor.white
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

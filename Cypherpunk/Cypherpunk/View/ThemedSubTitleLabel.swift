@@ -15,15 +15,7 @@ class ThemedSubTitleLabel: UILabel {
     }
     
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            self.textColor = UIColor.whiteThemeNavigationColor()
-        case .black:
-            self.textColor = UIColor.lightGray
-        case .indigo:
-            self.textColor = UIColor.white
-        }
+        self.textColor = UIColor.white
     }
-
+    
 }

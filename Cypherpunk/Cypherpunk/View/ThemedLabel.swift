@@ -15,15 +15,7 @@ class ThemedLabel: UILabel {
     }
     
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            self.textColor = UIColor.whiteThemeTextColor()
-        case .black:
-            self.textColor = UIColor.white
-        case .indigo:
-            self.textColor = UIColor.blackThemeTextColor()
-        }
+        self.textColor = UIColor.blackThemeTextColor()
     }
     
 }

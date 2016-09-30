@@ -15,14 +15,6 @@ class ThemedSeparatorView: UIView {
     }
     
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            self.backgroundColor = UIColor.whiteThemeSeparatorColor()
-        case .black:
-            self.backgroundColor = UIColor.whiteThemeTextColor()
-        case .indigo:
-            self.backgroundColor = UIColor.white.withAlphaComponent(0.30)
-        }
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.30)
     }
 }

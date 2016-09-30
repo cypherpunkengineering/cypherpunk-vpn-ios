@@ -99,8 +99,6 @@ class TopViewController: UIViewController, StoreSubscriber {
         }
         
         mainStore.subscribe(self, selector: nil)
-        
-        showRateAppScreen()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

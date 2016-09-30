@@ -18,21 +18,9 @@ class ThemedChangeIPAddressButton: UIButton {
     }
     
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            self.tintColor = UIColor.whiteThemeTextColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
-            self.borderColor = UIColor.whiteThemeTextColor()
-        case .black:
-            self.tintColor = UIColor.white
-            self.setTitleColor(UIColor.white, for: .normal)
-            self.borderColor = UIColor.white
-        case .indigo:
-            self.tintColor = UIColor.white
-            self.setTitleColor(UIColor.white, for: .normal)
-            self.borderColor = UIColor.white
-        }
+        self.tintColor = UIColor.white
+        self.setTitleColor(UIColor.white, for: .normal)
+        self.borderColor = UIColor.white
     }
 
 }

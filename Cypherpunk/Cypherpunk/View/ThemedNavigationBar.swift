@@ -15,22 +15,10 @@ class ThemedNavigationBar: UINavigationBar {
     }
     
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            self.tintColor = UIColor.whiteThemeNavigationColor()
-            self.barTintColor = UIColor.whiteThemeTableViewBackgroundColor()
-            self.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteThemeTextColor()]
-        case .black:
-            self.barTintColor = UIColor.white
-            self.tintColor = UIColor.black
-            self.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        case .indigo:
-            self.isTranslucent = true
-            self.setBackgroundImage(UIImage(), for: .default)
-            self.barTintColor = UIColor.clear
-            self.tintColor = UIColor.white
-            self.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        }
+        self.isTranslucent = true
+        self.setBackgroundImage(UIImage(), for: .default)
+        self.barTintColor = UIColor.clear
+        self.tintColor = UIColor.white
+        self.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
 }

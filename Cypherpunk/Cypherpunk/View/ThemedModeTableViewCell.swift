@@ -21,27 +21,11 @@ class ThemedModeTableViewCell: UITableViewCell {
         configureView()
     }
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            self.titleLabel?.textColor = UIColor.whiteThemeTextColor()
-            self.descriptionView?.textColor = UIColor.whiteThemeTextColor()
-            privacyModeView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-            speedModeView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-            self.backgroundColor = UIColor.white
-        case .black:
-            self.titleLabel?.textColor = UIColor.white
-            self.descriptionView?.textColor = UIColor.white
-            privacyModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
-            speedModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
-            self.backgroundColor = UIColor.blackThemeCellBackgroundColor()
-        case .indigo:
-            self.titleLabel?.textColor = UIColor.white
-            self.descriptionView?.textColor = UIColor.white
-            privacyModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
-            speedModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
-            self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
-        }
+        self.titleLabel?.textColor = UIColor.white
+        self.descriptionView?.textColor = UIColor.white
+        privacyModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        speedModeView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
     }
 
 }

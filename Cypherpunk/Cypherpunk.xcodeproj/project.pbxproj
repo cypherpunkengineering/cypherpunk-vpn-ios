@@ -37,9 +37,6 @@
 		203C62F61D7038E400891F91 /* GetPremiumPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62F51D7038E400891F91 /* GetPremiumPlanTableViewController.swift */; };
 		203C62F81D703A7B00891F91 /* GetPremiumPlanRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62F71D703A7B00891F91 /* GetPremiumPlanRootViewController.swift */; };
 		203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF41D5AFC9B00EA2536 /* ThemedBackgroundView.swift */; };
-		203F4EF71D5AFCDA00EA2536 /* ThemeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */; };
-		203F4EF91D5AFD1700EA2536 /* ThemeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */; };
-		203F4EFB1D5AFD5100EA2536 /* ThemeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EFA1D5AFD5100EA2536 /* ThemeAction.swift */; };
 		203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */; };
 		203F4EFF1D5B079D00EA2536 /* UIColor+CIAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */; };
 		203F4F051D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4F041D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift */; };
@@ -179,9 +176,6 @@
 		203C62F51D7038E400891F91 /* GetPremiumPlanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPremiumPlanTableViewController.swift; sourceTree = "<group>"; };
 		203C62F71D703A7B00891F91 /* GetPremiumPlanRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPremiumPlanRootViewController.swift; sourceTree = "<group>"; };
 		203F4EF41D5AFC9B00EA2536 /* ThemedBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedBackgroundView.swift; sourceTree = "<group>"; };
-		203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeState.swift; sourceTree = "<group>"; };
-		203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeReducer.swift; sourceTree = "<group>"; };
-		203F4EFA1D5AFD5100EA2536 /* ThemeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeAction.swift; sourceTree = "<group>"; };
 		203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
 		203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+CIAdditions.swift"; sourceTree = "<group>"; };
 		203F4F041D5B0B9A00EA2536 /* ThemedSubTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSubTitleLabel.swift; sourceTree = "<group>"; };
@@ -377,7 +371,6 @@
 				20D895FB1D23A1E7002B9F9D /* AccountState.swift */,
 				20EC4A371D2F7BAE00785399 /* RegionState.swift */,
 				20EC4A451D3780BC00785399 /* SettingsState.swift */,
-				203F4EF61D5AFCDA00EA2536 /* ThemeState.swift */,
 				2B06416D1D6D73E5009475F4 /* StatusState.swift */,
 			);
 			path = State;
@@ -389,7 +382,6 @@
 				20D895FF1D23A84D002B9F9D /* AccountAction.swift */,
 				20EC4A491D378CBC00785399 /* SettingsAction.swift */,
 				2B2B59E41D3F98D0003FA705 /* RegionAction.swift */,
-				203F4EFA1D5AFD5100EA2536 /* ThemeAction.swift */,
 				2B06416F1D6D7444009475F4 /* StatusAction.swift */,
 			);
 			path = Action;
@@ -402,7 +394,6 @@
 				20D895FD1D23A637002B9F9D /* AccountReducer.swift */,
 				20EC4A391D2F82CC00785399 /* RegionReducer.swift */,
 				20EC4A471D37851200785399 /* SettingsReducer.swift */,
-				203F4EF81D5AFD1700EA2536 /* ThemeReducer.swift */,
 				2B0641711D6D7546009475F4 /* StatusReducer.swift */,
 			);
 			path = Reducer;
@@ -940,7 +931,6 @@
 				201809EC1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift in Sources */,
 				204BE90E1D5B28B7003D7CB5 /* ThemedSeparatorView.swift in Sources */,
 				2B0641701D6D7444009475F4 /* StatusAction.swift in Sources */,
-				203F4EFB1D5AFD5100EA2536 /* ThemeAction.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* AccountReducer.swift in Sources */,
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
@@ -957,7 +947,6 @@
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
 				201809F81D5B503200730FA4 /* ThemedMapImageView.swift in Sources */,
-				203F4EF71D5AFCDA00EA2536 /* ThemeState.swift in Sources */,
 				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
 				201809E61D5B394900730FA4 /* ThemedTableViewCell.swift in Sources */,
 				2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */,
@@ -995,7 +984,6 @@
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 				203F4EFF1D5B079D00EA2536 /* UIColor+CIAdditions.swift in Sources */,
-				203F4EF91D5AFD1700EA2536 /* ThemeReducer.swift in Sources */,
 				2BDBD0C61D6514AB00080E67 /* ConfigurationTableViewController.swift in Sources */,
 				203F4F071D5B188200EA2536 /* ThemedNavigationButton.swift in Sources */,
 				201809F21D5B4C0500730FA4 /* ThemedChangeIPAddressButton.swift in Sources */,

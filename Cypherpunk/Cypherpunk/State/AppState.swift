@@ -14,7 +14,6 @@ struct AppState: StateType {
     let accountState: AccountState
     let regionState: RegionState
     let settingsState: SettingsState
-    let themeState: ThemeState
     let statusState: StatusState
         
     static func getSharedState() -> AppState {

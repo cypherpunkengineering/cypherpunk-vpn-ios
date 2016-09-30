@@ -147,15 +147,7 @@ class ConfigurationTableViewController: UITableViewController {
         titleLabel.font = R.font.dosisMedium(size: 14)
         titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
         
-        let theme = mainStore.state.themeState.themeType
-        switch theme {
-        case .white:
-            titleLabel.textColor = UIColor.whiteThemeTextColor()
-        case .black:
-            titleLabel.textColor = UIColor.whiteThemeIndicatorColor()
-        case .indigo:
-            titleLabel.textColor = UIColor.white
-        }
+        titleLabel.textColor = UIColor.white
         
         view.addSubview(titleLabel)
         

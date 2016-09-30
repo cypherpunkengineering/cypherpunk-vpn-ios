@@ -15,29 +15,11 @@ class ThemedLogoView: UIButton {
     }
     
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            let image = UIImage(resource: R.image.logoGray_small)?.withRenderingMode(.alwaysTemplate)
-            self.setImage(image, for: .normal)
-            self.setImage(image, for: .disabled)
-            self.tintColor = UIColor.whiteThemeTextColor()
-            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
-            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .disabled)
-        case .black:
-            let image = UIImage(resource: R.image.logoGray_small)
-            self.setImage(image, for: .normal)
-            self.setImage(image, for: .disabled)
-            self.tintColor = UIColor.lightGray
-            self.setTitleColor(UIColor.whiteThemeTextColor(), for: .normal)
-            self.setTitleColor(UIColor.white, for: .disabled)
-        case .indigo:
-            let image = UIImage(resource: R.image.logoGray_small)
-            self.setImage(image, for: .normal)
-            self.setImage(image, for: .disabled)
-            self.tintColor = UIColor.white
-            self.setTitleColor(UIColor.white, for: .normal)
-            self.setTitleColor(UIColor.white, for: .disabled)
-        }
+        let image = UIImage(resource: R.image.logoGray_small)
+        self.setImage(image, for: .normal)
+        self.setImage(image, for: .disabled)
+        self.tintColor = UIColor.white
+        self.setTitleColor(UIColor.white, for: .normal)
+        self.setTitleColor(UIColor.white, for: .disabled)
     }
 }

@@ -16,29 +16,21 @@ class ThemedStatusBarBackgroundView: UIView {
     }
     
     func configureView() {
-        let themeState = mainStore.state.themeState
-        switch themeState.themeType {
-        case .white:
-            self.isHidden = true
-        case .black:
-            self.isHidden = true
-        case .indigo:
-            self.isHidden = false
+        self.isHidden = false
+        
+        DispatchQueue.main.async(execute: {
             
-            DispatchQueue.main.async(execute: {
-                
-                let topColor = UIColor(red: 118.0 / 255.0, green: 168.0 / 255.0 , blue: 231.0 / 255.0 , alpha: 1.0)
-                let bottomColor = UIColor(red: 112 / 255.0, green: 164 / 255.0 , blue: 231 / 255.0 , alpha: 1.0)
-                let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
-                
-                let gradientLayer: CAGradientLayer = CAGradientLayer()
-                gradientLayer.colors = gradientColors
-                gradientLayer.frame = self.layer.frame
-                
-                self.layer.insertSublayer(gradientLayer, at: 0)
-            })
+            let topColor = UIColor(red: 118.0 / 255.0, green: 168.0 / 255.0 , blue: 231.0 / 255.0 , alpha: 1.0)
+            let bottomColor = UIColor(red: 112 / 255.0, green: 164 / 255.0 , blue: 231 / 255.0 , alpha: 1.0)
+            let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
             
-        }
+            let gradientLayer: CAGradientLayer = CAGradientLayer()
+            gradientLayer.colors = gradientColors
+            gradientLayer.frame = self.layer.frame
+            
+            self.layer.insertSublayer(gradientLayer, at: 0)
+        })
+        
     }
     
 }

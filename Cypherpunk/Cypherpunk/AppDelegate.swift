@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSForegroundColorAttributeName: UIColor.white
             ], for: .normal)
         
-        mainStore.dispatch(ThemeAction.changeToIndigo)
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         
