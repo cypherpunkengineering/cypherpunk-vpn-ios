@@ -141,7 +141,7 @@ class AnimationViewController: UIViewController {
         let horizontalItemsCount = Int(ceil(view.frame.width / (itemSize.width + 3.0)))
         let verticalItemsCount = Int(ceil(view.frame.height / itemSize.height)) + 4
         let font = UIFont(name: "Menlo-Regular", size: 21)
-        print(horizontalItemsCount)
+
         let deviceNameColumn = horizontalItemsCount - 2
         let deviceName = SpecificDataProvider.deviceName().uppercased()
         let deviceNameStartIndex = 5
@@ -176,22 +176,30 @@ class AnimationViewController: UIViewController {
                     let text = deviceName[index]
                     textLayer.string = String(text)
                     textLayer.font = font
-                    textLayer.fontSize = 21
+                    
+                    if String(text).canBeConverted(to: .ascii) == false {
+                        textLayer.fontSize = 17
+                    } else {
+                        textLayer.fontSize = 20
+                    }
                     let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
                     textLayer.foregroundColor = baseColor.cgColor
                 }else if let carrierName = carrierName , x == carrierNameColumn && carrierNameStartIndex <= y && y < carrierNameEndIndex {
-                    print(y)
                     let index = carrierName.characters.index(carrierName.startIndex, offsetBy: y - carrierNameStartIndex)
                     let text = carrierName.characters[index]
                     textLayer.string = String(text)
                     textLayer.font = font
-                    textLayer.fontSize = 21
+                    if String(text).canBeConverted(to: .ascii) == false {
+                        textLayer.fontSize = 17
+                    } else {
+                        textLayer.fontSize = 20
+                    }
                     let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
                     textLayer.foregroundColor = baseColor.cgColor
                 } else {
                     textLayer.string = String(number)
                     textLayer.font = font
-                    textLayer.fontSize = 21
+                    textLayer.fontSize = 20
                     
                     let baseColor = UIColor.white
                     textLayer.foregroundColor = baseColor.withAlphaComponent(0.15).cgColor
