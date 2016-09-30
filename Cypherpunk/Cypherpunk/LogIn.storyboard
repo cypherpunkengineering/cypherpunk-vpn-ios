@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nwz-Kb-17F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nwz-Kb-17F">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Dosis-Medium.otf">
+        <array key="Dosis-Medium.otf">
             <string>Dosis-Medium</string>
-            <string>Dosis-Medium</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Log In-->
@@ -20,20 +20,17 @@
                         <viewControllerLayoutGuide type="bottom" id="ohM-SA-4UR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Yen-cJ-5LN" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmh-5r-RxF">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0C-oH-jeW">
-                                        <rect key="frame" x="40" y="29" width="520" height="48"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username/Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bDU-gV-ac6" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                                <rect key="frame" x="13" y="0.0" width="494" height="48"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                 <connections>
@@ -41,7 +38,7 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="bDU-gV-ac6" firstAttribute="leading" secondItem="C0C-oH-jeW" secondAttribute="leading" constant="13" id="7MJ-nY-wX4"/>
                                             <constraint firstItem="bDU-gV-ac6" firstAttribute="top" secondItem="C0C-oH-jeW" secondAttribute="top" id="GKd-4m-gpJ"/>
@@ -56,13 +53,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGd-5B-lqG">
-                                        <rect key="frame" x="40" y="97" width="520" height="48"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BfM-hQ-pe9" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                                <rect key="frame" x="13" y="0.0" width="494" height="48"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
                                                 <connections>
@@ -70,7 +65,7 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="BfM-hQ-pe9" secondAttribute="trailing" constant="13" id="8Rf-2o-ESr"/>
                                             <constraint firstAttribute="bottom" secondItem="BfM-hQ-pe9" secondAttribute="bottom" id="dY1-WF-fyT"/>
@@ -88,36 +83,33 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account yet?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9st-Z8-vTb" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="497" width="144" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="eJZ-9A-49F"/>
                                             <constraint firstAttribute="width" constant="144" id="yzM-d9-Jy1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-s2-kNj">
-                                        <rect key="frame" x="532" y="499" width="53" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="o0b-kY-EgL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                         <state key="normal" title="Sign Up">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="NZK-DU-nsM" kind="show" id="VPP-y4-E8U"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-QR-9oM" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="165" width="520" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="pkq-QZ-iXf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Log In">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -127,13 +119,13 @@
                                                 <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="aColor">
-                                                <color key="value" red="1" green="0.78823529411764703" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="1" green="0.78823529411764703" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="bColor">
-                                                <color key="value" red="0.81960784313725488" green="0.61960784313725492" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="0.81960784313725488" green="0.61960784313725492" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -141,7 +133,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="UGd-5B-lqG" firstAttribute="top" secondItem="C0C-oH-jeW" secondAttribute="bottom" constant="20" id="15c-mz-gj9"/>
                                     <constraint firstAttribute="bottom" secondItem="9st-Z8-vTb" secondAttribute="bottom" constant="18" id="3KO-LO-oBJ"/>
@@ -162,7 +154,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ohM-SA-4UR" firstAttribute="top" secondItem="Rmh-5r-RxF" secondAttribute="bottom" id="IeT-f2-7iM"/>
                             <constraint firstItem="Rmh-5r-RxF" firstAttribute="leading" secondItem="Yen-cJ-5LN" secondAttribute="leading" id="PWY-nZ-nss"/>
