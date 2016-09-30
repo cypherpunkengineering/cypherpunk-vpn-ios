@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20073E0C1D9E387400BCD690 /* RateAppViewController.swift */; };
+		200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200A0B011D9E29BB00D59249 /* RateApp.storyboard */; };
 		2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */; };
 		201809E61D5B394900730FA4 /* ThemedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */; };
 		201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */; };
@@ -140,6 +142,8 @@
 
 /* Begin PBXFileReference section */
 		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
+		20073E0C1D9E387400BCD690 /* RateAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateAppViewController.swift; sourceTree = "<group>"; };
+		200A0B011D9E29BB00D59249 /* RateApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RateApp.storyboard; sourceTree = "<group>"; };
 		2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTableViewCell.swift; sourceTree = "<group>"; };
 		201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTableView.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 		203809671D13D89D005145CD /* Cypherpunk */ = {
 			isa = PBXGroup;
 			children = (
+				2B73C7121D5CDBCD0090FF8B /* Animation */,
 				2B45C1601D20D61B00D4326C /* Font */,
 				203809981D13DAF3005145CD /* Cypherpunk.entitlements */,
 				2B4489241D2A623A00D202F9 /* Protocol */,
@@ -474,6 +479,7 @@
 				2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */,
 				2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */,
 				2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */,
+				20073E0C1D9E387400BCD690 /* RateAppViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -506,6 +512,7 @@
 				203C62EF1D702CD900891F91 /* FirstOpen.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20EC4A3F1D376C5200785399 /* Configuration.storyboard */,
+				200A0B011D9E29BB00D59249 /* RateApp.storyboard */,
 				203C62EB1D7014B700891F91 /* Upgrade.storyboard */,
 				2BDBD0C71D65191400080E67 /* Email.storyboard */,
 				2BDBD0D11D65295F00080E67 /* Password.storyboard */,
@@ -535,7 +542,6 @@
 		2B45C1601D20D61B00D4326C /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				2B73C7121D5CDBCD0090FF8B /* Animation */,
 				2B45C1611D20D64600D4326C /* Dosis-Bold.otf */,
 				2B45C1621D20D64600D4326C /* Dosis-ExtraBold.otf */,
 				2B45C1631D20D64600D4326C /* Dosis-ExtraLight.otf */,
@@ -563,8 +569,7 @@
 				2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */,
 				203AE7BC1D8A661900183E7F /* SpecificDataProvider.swift */,
 			);
-			name = Animation;
-			path = ../Animation;
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		93CF8E3D286597EA41958780 /* Pods */ = {
@@ -731,6 +736,7 @@
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
 				2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */,
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
+				200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
 				20EC4A401D376C5200785399 /* Configuration.storyboard in Resources */,
@@ -962,6 +968,7 @@
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
 				201809F61D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift in Sources */,
 				2B0641721D6D7546009475F4 /* StatusReducer.swift in Sources */,
+				20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */,
 				203C62F61D7038E400891F91 /* GetPremiumPlanTableViewController.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
@@ -1144,6 +1151,40 @@
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"APIKit\"",
+					"-framework",
+					"\"Himotoki\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"MZAppearance\"",
+					"-framework",
+					"\"MZFormSheetPresentationController\"",
+					"-framework",
+					"\"ReSwift\"",
+					"-framework",
+					"\"ReachabilitySwift\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Result\"",
+					"-framework",
+					"\"Rswift\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"SwiftyStoreKit\"",
+					"-framework",
+					"\"UITextView_Placeholder\"",
+					"-all_load",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.Cypherpunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
@@ -1165,6 +1206,40 @@
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"APIKit\"",
+					"-framework",
+					"\"Himotoki\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"MZAppearance\"",
+					"-framework",
+					"\"MZFormSheetPresentationController\"",
+					"-framework",
+					"\"ReSwift\"",
+					"-framework",
+					"\"ReachabilitySwift\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Result\"",
+					"-framework",
+					"\"Rswift\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"SwiftyStoreKit\"",
+					"-framework",
+					"\"UITextView_Placeholder\"",
+					"-all_load",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.Cypherpunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";

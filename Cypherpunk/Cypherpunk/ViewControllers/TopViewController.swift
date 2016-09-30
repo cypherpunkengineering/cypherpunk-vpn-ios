@@ -9,6 +9,7 @@
 import UIKit
 import ReachabilitySwift
 import NetworkExtension
+import MZFormSheetPresentationController
 
 import ReSwift
 import APIKit
@@ -98,6 +99,8 @@ class TopViewController: UIViewController, StoreSubscriber {
         }
         
         mainStore.subscribe(self, selector: nil)
+        
+        showRateAppScreen()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -272,6 +275,21 @@ class TopViewController: UIViewController, StoreSubscriber {
         regionButton.setTitle(state.regionState.title, for: .normal)
     }
 
+    var isFirst: Bool = false
+    func showRateAppScreen() {
+        if isFirst == false {
+            let content = R.storyboard.rateApp.instantiateInitialViewController()
+            let formSheet = MZFormSheetPresentationViewController(contentViewController: content!)
+            formSheet.presentationController?.contentViewSize = CGSize(width: 296.0, height: 341.0)
+            formSheet.presentationController?.isTransparentTouchEnabled = false
+            formSheet.presentationController?.shouldCenterVertically = true
+            formSheet.presentationController?.shouldCenterHorizontally = true
+            self.present(formSheet, animated: true, completion: nil)
+
+            isFirst = true
+        }
+    }
+    
     @IBAction func transitionToConfigurationAction(_ sender: AnyObject) {
         let vc = R.storyboard.configuration.configuration()
         self.navigationController?.pushViewController(vc!, animated: true)
