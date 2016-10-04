@@ -128,6 +128,11 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.connection.stopVPNTunnel()
     }
+    
+    class func removeFromPreferences() {
+        let manager = NEVPNManager.shared()
+        manager.removeFromPreferences(completionHandler: nil)
+    }
 }
 
 
