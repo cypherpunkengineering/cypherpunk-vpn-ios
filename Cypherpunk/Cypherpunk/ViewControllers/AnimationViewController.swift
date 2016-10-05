@@ -14,7 +14,7 @@ class AnimationViewController: UIViewController {
     
     let itemSize = CGSize(width: 14,height: 22)
     
-    let scrollDistancePerSec = 5.25
+    let scrollDistancePerSec = 2.625
     
     var animationLayer: CALayer!
     override func viewDidLoad() {
@@ -59,7 +59,11 @@ class AnimationViewController: UIViewController {
         }
         
         let status = connection.status
-        
+     
+        self.updateAnimationState(status: status)
+    }
+    
+    func updateAnimationState(status: NEVPNStatus) {
         switch status {
         case .connected:
             speed = 2.0
@@ -102,6 +106,12 @@ class AnimationViewController: UIViewController {
                             if textLayer.foregroundColor != UIColor.white.withAlphaComponent(0.15).cgColor {
                                 let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue: 53.0/255.0, alpha: 1.0).withAlphaComponent(0.5)
                                 textLayer.foregroundColor = baseColor.cgColor
+                            } else {
+                                if let string = textLayer.string as? String , string != "0" && string != "1" {
+                                    let number =  arc4random_uniform(2)
+                                    textLayer.string = String(UInt(number))
+                                }
+                                
                             }
                         }
                     }
@@ -130,7 +140,6 @@ class AnimationViewController: UIViewController {
         default:
             speed = 0
         }
-        
     }
     
     func instanceAnimationLayer() -> CALayer {
