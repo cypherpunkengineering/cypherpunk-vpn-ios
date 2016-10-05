@@ -122,7 +122,7 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         let isConnected = manager.connection.status == .connected
         VPNConfigurationCoordinator.start {
             self.dismiss(animated: true, completion: {
-                if mainStore.state.settingsState.isAutoReconnect && isConnected {
+                if isConnected {
                     try! VPNConfigurationCoordinator.connect()
                 }
             })

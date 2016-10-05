@@ -27,7 +27,7 @@ struct SettingsReducer: Reducer {
             let isConnected = manager.connection.status == .connected
 
             VPNConfigurationCoordinator.start{
-                if state.isAutoReconnect && isConnected {
+                if isConnected {
                     try! VPNConfigurationCoordinator.connect()
                 }
             }
