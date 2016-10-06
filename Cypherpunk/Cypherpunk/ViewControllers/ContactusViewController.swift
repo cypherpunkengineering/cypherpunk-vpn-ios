@@ -40,7 +40,6 @@ class ContactusViewController: UIViewController {
             self.textViewContainerView.addSubview(textView)
             }, completion: { (finished) in
                 if finished {
-                    textView.becomeFirstResponder()
                 }
         }) 
 
@@ -51,6 +50,7 @@ class ContactusViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        textView.becomeFirstResponder()
     }
     deinit{
         removeKeyboardNotification()

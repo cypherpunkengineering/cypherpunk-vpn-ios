@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.backgroundColor = UIColor.white
+
         UINavigationBar.appearance().titleTextAttributes = [
             NSFontAttributeName: R.font.dosisSemiBold(size: 18.0)!,
             NSForegroundColorAttributeName: UIColor.white,
@@ -40,14 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
-        
-        DispatchQueue.main.async { [unowned self] in
-            let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
-            
-            if mainStore.state.accountState.isLoggedIn == false {
-                self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
-            }
-        }
         
         let config = Realm.Configuration(schemaVersion: 4, migrationBlock: {
             (migration, oldSchemaVersion) in
@@ -67,6 +62,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }
+
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+            
+            self.window?.rootViewController = R.storyboard.top_iPad.instantiateInitialViewController()
+            
+            let splitviewController = self.window?.rootViewController as! UISplitViewController
+            splitviewController.preferredDisplayMode = .allVisible
+            splitviewController.preferredPrimaryColumnWidthFraction = 250.0
+            splitviewController.minimumPrimaryColumnWidth = 0.0
+            splitviewController.maximumPrimaryColumnWidth = 250.0
+
+            DispatchQueue.main.async { [unowned self] in
+                let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
+                
+                if mainStore.state.accountState.isLoggedIn == false {
+                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
+                }
+            }
+
+        } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
+            self.window?.rootViewController = R.storyboard.top.instantiateInitialViewController()
+
+            DispatchQueue.main.async { [unowned self] in
+                let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
+                
+                if mainStore.state.accountState.isLoggedIn == false {
+                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
+                }
+            }
+        }
+        
+        
+        self.window?.makeKeyAndVisible()
         
         return true
     }

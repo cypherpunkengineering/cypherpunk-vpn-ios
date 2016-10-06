@@ -85,6 +85,11 @@
 		2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */; };
 		2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */; };
 		2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E41D3F98D0003FA705 /* RegionAction.swift */; };
+		2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */; };
+		2B2DE27F1DA4F33600C22098 /* LocationNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2DE27E1DA4F33600C22098 /* LocationNavigationBar.swift */; };
+		2B2DE2811DA6398700C22098 /* PadTopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2DE2801DA6398700C22098 /* PadTopTableViewController.swift */; };
+		2B2DE2831DA652F400C22098 /* ContactUs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2DE2821DA652F400C22098 /* ContactUs.storyboard */; };
+		2B2DE2851DA6530800C22098 /* VPNProtocol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */; };
 		2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4489201D2A53A700D202F9 /* SignUp.storyboard */; };
 		2B4489231D2A59F500D202F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489221D2A59F500D202F9 /* SignUpViewController.swift */; };
 		2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */; };
@@ -224,6 +229,11 @@
 		2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNProtocolSelectViewController.swift; sourceTree = "<group>"; };
 		2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAPI.swift; sourceTree = "<group>"; };
 		2B2B59E41D3F98D0003FA705 /* RegionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionAction.swift; sourceTree = "<group>"; };
+		2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top_iPad.storyboard; sourceTree = "<group>"; };
+		2B2DE27E1DA4F33600C22098 /* LocationNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNavigationBar.swift; sourceTree = "<group>"; };
+		2B2DE2801DA6398700C22098 /* PadTopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadTopTableViewController.swift; sourceTree = "<group>"; };
+		2B2DE2821DA652F400C22098 /* ContactUs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ContactUs.storyboard; sourceTree = "<group>"; };
+		2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VPNProtocol.storyboard; sourceTree = "<group>"; };
 		2B4489201D2A53A700D202F9 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		2B4489221D2A59F500D202F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorGradientView.swift; sourceTree = "<group>"; };
@@ -428,6 +438,7 @@
 				2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */,
 				2061342C1D8296AC00480621 /* BlurredIndicatorView.xib */,
 				206D4D6F1D82BDF300853B47 /* IndicatorView.swift */,
+				2B2DE27E1DA4F33600C22098 /* LocationNavigationBar.swift */,
 				20AC7C4D1D8BFACC00760BF0 /* LinePathView.swift */,
 			);
 			path = View;
@@ -471,6 +482,7 @@
 				2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */,
 				2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */,
 				20073E0C1D9E387400BCD690 /* RateAppViewController.swift */,
+				2B2DE2801DA6398700C22098 /* PadTopTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -503,11 +515,14 @@
 				203C62EF1D702CD900891F91 /* FirstOpen.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20EC4A3F1D376C5200785399 /* Configuration.storyboard */,
+				2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */,
+				2B2DE2821DA652F400C22098 /* ContactUs.storyboard */,
 				200A0B011D9E29BB00D59249 /* RateApp.storyboard */,
 				203C62EB1D7014B700891F91 /* Upgrade.storyboard */,
 				2BDBD0C71D65191400080E67 /* Email.storyboard */,
 				2BDBD0D11D65295F00080E67 /* Password.storyboard */,
 				2B73C70E1D5C7F670090FF8B /* Animation.storyboard */,
+				2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -723,6 +738,8 @@
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				20F15CEE1D8A755C0000DAA7 /* DeviceList.plist in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
+				2B2DE2831DA652F400C22098 /* ContactUs.storyboard in Resources */,
+				2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
 				2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */,
@@ -730,6 +747,7 @@
 				200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
+				2B2DE2851DA6530800C22098 /* VPNProtocol.storyboard in Resources */,
 				20EC4A401D376C5200785399 /* Configuration.storyboard in Resources */,
 				2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
@@ -920,6 +938,7 @@
 				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
 				20F15CED1D8A755C0000DAA7 /* DeviceGuru.swift in Sources */,
 				206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */,
+				2B2DE2811DA6398700C22098 /* PadTopTableViewController.swift in Sources */,
 				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
 				2B06416E1D6D73E5009475F4 /* StatusState.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
@@ -980,6 +999,7 @@
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
 				203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */,
+				2B2DE27F1DA4F33600C22098 /* LocationNavigationBar.swift in Sources */,
 				2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,

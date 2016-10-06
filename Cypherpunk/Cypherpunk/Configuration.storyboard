@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -510,7 +510,7 @@
         <scene sceneID="MTo-CB-NCr">
             <objects>
                 <tableViewController title="Configuration" id="Rsw-pb-lZT" customClass="ConfigurationTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ido-Iu-NI1" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ido-Iu-NI1" customClass="ThemedTableView" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -740,7 +740,7 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="fIc-jn-Dr8" kind="show" id="2lU-1t-inS"/>
+                                            <segue destination="QZA-CT-cfs" kind="showDetail" id="eaG-Kg-d6X"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -767,7 +767,7 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="55R-z4-6om" kind="show" id="F9W-x4-jLd"/>
+                                            <segue destination="ZRY-tB-pof" kind="showDetail" id="3Wb-O3-csW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" textLabel="ma1-K1-Ylq" style="IBUITableViewCellStyleDefault" id="5Hd-4p-JSt" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
@@ -815,7 +815,7 @@
                 <viewControllerPlaceholder storyboardName="Email" id="jwW-RQ-KGN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDe-6J-Z0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352.5" y="363"/>
+            <point key="canvasLocation" x="1380" y="317"/>
         </scene>
         <!--Password-->
         <scene sceneID="xnL-tX-bCg">
@@ -823,7 +823,23 @@
                 <viewControllerPlaceholder storyboardName="Password" id="a12-nZ-Hkx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yg0-dP-vvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1277.5" y="486"/>
+            <point key="canvasLocation" x="1401" y="364"/>
+        </scene>
+        <!--VPNProtocol-->
+        <scene sceneID="nF4-78-HQ3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VPNProtocol" id="QZA-CT-cfs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e6A-5c-GwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1415" y="411"/>
+        </scene>
+        <!--ContactUs-->
+        <scene sceneID="ajQ-jY-9XA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ContactUs" id="ZRY-tB-pof" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1s-jK-Rfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1405" y="458"/>
         </scene>
         <!--Get Cypherpunk Premium-->
         <scene sceneID="DwY-7W-vHu">
@@ -866,7 +882,7 @@
                 <viewControllerPlaceholder storyboardName="Upgrade" id="Lb1-5i-ElB" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kx9-Mw-Ee2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295.5" y="228"/>
+            <point key="canvasLocation" x="1395" y="268"/>
         </scene>
         <!--GetPremium-->
         <scene sceneID="jWW-Id-iNJ">
@@ -875,124 +891,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YDG-Ok-hfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2210.5" y="-335"/>
-        </scene>
-        <!--VPN Protocol-->
-        <scene sceneID="Pcd-fj-xhj">
-            <objects>
-                <viewController title="VPN Protocol" id="fIc-jn-Dr8" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qot-pc-CjU"/>
-                        <viewControllerLayoutGuide type="bottom" id="vih-Rt-N28"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8Au-f5-9Y1" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbA-7s-DQH">
-                                <connections>
-                                    <segue destination="ujY-xo-Dbd" kind="embed" id="8bp-l5-tZL"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="vih-Rt-N28" firstAttribute="top" secondItem="nbA-7s-DQH" secondAttribute="bottom" id="IqT-pm-xio"/>
-                            <constraint firstItem="nbA-7s-DQH" firstAttribute="leading" secondItem="8Au-f5-9Y1" secondAttribute="leading" id="MlI-aS-ate"/>
-                            <constraint firstItem="nbA-7s-DQH" firstAttribute="leading" secondItem="8Au-f5-9Y1" secondAttribute="leadingMargin" id="WlD-Tz-WPx"/>
-                            <constraint firstAttribute="trailing" secondItem="nbA-7s-DQH" secondAttribute="trailing" id="hPa-XN-zKJ"/>
-                            <constraint firstItem="nbA-7s-DQH" firstAttribute="top" secondItem="qot-pc-CjU" secondAttribute="bottom" id="rbg-H3-bk0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nbA-7s-DQH" secondAttribute="trailing" id="t0m-YP-obj"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="WlD-Tz-WPx"/>
-                                <exclude reference="t0m-YP-obj"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="automaticallyAdjustsScrollViewInsets" value="NO"/>
-                    </userDefinedRuntimeAttributes>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hIX-Tt-DtQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1554" y="1087"/>
-        </scene>
-        <!--Protocol Select View Controller-->
-        <scene sceneID="f5g-ad-wOU">
-            <objects>
-                <tableViewController id="ujY-xo-Dbd" customClass="VPNProtocolSelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="wVL-Il-pGC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="ujY-xo-Dbd" id="3KQ-Sw-ark"/>
-                            <outlet property="delegate" destination="ujY-xo-Dbd" id="0Mf-lb-jhX"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYa-Jh-eyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2021" y="1731"/>
-        </scene>
-        <!--Contact us-->
-        <scene sceneID="dgm-fG-8V7">
-            <objects>
-                <viewController storyboardIdentifier="Contactus" title="Contact us" extendedLayoutIncludesOpaqueBars="YES" id="55R-z4-6om" customClass="ContactusViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0Wu-na-kKp"/>
-                        <viewControllerLayoutGuide type="bottom" id="q2z-WY-MEV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HmN-bW-H1p">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKW-HU-pB1" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nW7-4b-2cW">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="236" id="dLB-x1-HsK"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="nW7-4b-2cW" firstAttribute="top" secondItem="HmN-bW-H1p" secondAttribute="top" constant="63" id="2Fb-B4-TQH"/>
-                            <constraint firstItem="nW7-4b-2cW" firstAttribute="leading" secondItem="HmN-bW-H1p" secondAttribute="leading" constant="-3" id="85r-6d-ct7"/>
-                            <constraint firstItem="SKW-HU-pB1" firstAttribute="leading" secondItem="HmN-bW-H1p" secondAttribute="leading" id="JGK-O2-Quy"/>
-                            <constraint firstAttribute="trailing" secondItem="nW7-4b-2cW" secondAttribute="trailing" constant="-3" id="biJ-5V-pUf"/>
-                            <constraint firstItem="SKW-HU-pB1" firstAttribute="top" secondItem="0Wu-na-kKp" secondAttribute="bottom" constant="-64" id="hf8-M1-w7P"/>
-                            <constraint firstAttribute="trailing" secondItem="SKW-HU-pB1" secondAttribute="trailing" id="m1e-I6-eTx"/>
-                            <constraint firstItem="q2z-WY-MEV" firstAttribute="top" secondItem="SKW-HU-pB1" secondAttribute="bottom" id="nqY-1g-gSq"/>
-                            <constraint firstAttribute="bottom" secondItem="nW7-4b-2cW" secondAttribute="bottom" constant="40" id="uht-Rp-Hxw"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="uht-Rp-Hxw"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <connections>
-                        <outlet property="textViewContainerView" destination="nW7-4b-2cW" id="Yk7-1i-pYf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Km5-Fw-Igx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1757" y="344"/>
         </scene>
     </scenes>
     <resources>

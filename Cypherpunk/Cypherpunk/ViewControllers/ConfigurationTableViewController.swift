@@ -27,6 +27,8 @@ class ConfigurationTableViewController: UITableViewController {
     @IBOutlet weak var vpnProtocolDetailLabel: UILabel!
     @IBOutlet weak var autoConnectSwitch: UISwitch!
     
+    @IBOutlet weak var doneButton: UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,10 +52,13 @@ class ConfigurationTableViewController: UITableViewController {
         autoConnectSwitch.setOn(settingsState.isAutoReconnect, animated: false)
         self.tableView.reloadData()
         
+        doneButton?.tintColor = UIColor.goldenYellowColor()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        doneButton?.tintColor = UIColor.goldenYellowColor()
     }
     
     
@@ -167,9 +172,18 @@ class ConfigurationTableViewController: UITableViewController {
             case .signOut:
                 let vc = R.storyboard.firstOpen.instantiateInitialViewController()
                 mainStore.dispatch(AccountAction.logout)
-                self.navigationController?.present(vc!, animated: true, completion: {
-                    let _ = self.navigationController?.popViewController(animated: false)
-                })
+
+                if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
+                    UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
+                        let _ = self.navigationController?.popViewController(animated: false)
+                    }
+
+                } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+                    self.navigationController?.dismiss(animated: false) {
+                        UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true, completion: nil)
+                    }
+                }
+
             default:
                 break
             }
@@ -200,5 +214,11 @@ class ConfigurationTableViewController: UITableViewController {
     
     @IBAction func changeAutoConnectAction(_ sender: UISwitch) {
         mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.isOn))
+    }
+}
+
+extension ConfigurationTableViewController {
+    @IBAction func doneAction() {
+        self.navigationController?.dismiss(animated: false)
     }
 }

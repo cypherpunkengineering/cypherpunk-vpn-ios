@@ -120,12 +120,21 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         mainStore.dispatch(RegionAction.changeRegion(name: region.name, serverIP: region.ipAddress))
         let manager = NEVPNManager.shared()
         let isConnected = manager.connection.status == .connected
-        VPNConfigurationCoordinator.start {
-            self.dismiss(animated: true, completion: {
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
+            VPNConfigurationCoordinator.start {
+                self.dismiss(animated: true, completion: {
+                    if isConnected {
+                        try! VPNConfigurationCoordinator.connect()
+                    }
+                })
+            }
+        } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+            VPNConfigurationCoordinator.start {
                 if isConnected {
                     try! VPNConfigurationCoordinator.connect()
                 }
-            })
+            }
+            
         }
     }
     

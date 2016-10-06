@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Wa-Pa-3en">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JcQ-do-E5e">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -19,20 +19,20 @@
     </customFonts>
     <scenes>
         <!--Navigation Controller-->
-        <scene sceneID="md1-T3-gjZ">
+        <scene sceneID="5a0-Ti-oxw">
             <objects>
-                <navigationController navigationBarHidden="YES" id="9Wa-Pa-3en" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CHk-p9-fsV" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <navigationController navigationBarHidden="YES" id="JcQ-do-E5e" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="hpk-pp-vby" kind="relationship" relationship="rootViewController" id="weg-Oh-qUA"/>
+                        <segue destination="hpk-pp-vby" kind="relationship" relationship="rootViewController" id="0XB-cK-L5r"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g3t-9h-Pl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3u1-Wr-QbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-336" y="510"/>
+            <point key="canvasLocation" x="-324" y="509"/>
         </scene>
         <!--Top View Controller-->
         <scene sceneID="A5G-vj-E8W">
@@ -43,7 +43,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HCL-0z-ECj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DTT-hx-SdO" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCb-Y6-Wo2">
@@ -281,7 +281,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="dll-uD-T10" kind="showDetail" id="Oi0-Q2-vaz"/>
+                                            <segue destination="6Uw-dQ-k4x" kind="showDetail" id="AmH-MN-Lq3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -376,22 +376,20 @@
             <point key="canvasLocation" x="696" y="970"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="PpI-Vv-Bkg">
+        <scene sceneID="ifr-t2-xqN">
             <objects>
-                <navigationController id="dll-uD-T10" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="SFq-tT-l0l" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <navigationController id="6Uw-dQ-k4x" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="84x-7b-1Of" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="paA-t1-5Vp" kind="relationship" relationship="rootViewController" id="7ff-OK-Z0h"/>
+                        <segue destination="paA-t1-5Vp" kind="relationship" relationship="rootViewController" id="YsX-a5-hvm"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4ah-J6-W4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jaZ-NY-6C4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="1358"/>
+            <point key="canvasLocation" x="380" y="1348"/>
         </scene>
         <!--Get Premium-->
         <scene sceneID="lGj-7f-yyy">
@@ -402,7 +400,7 @@
                         <viewControllerLayoutGuide type="bottom" id="1IG-BD-Thd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zQg-aT-zga" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Da5-5S-eZl">
@@ -449,7 +447,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cLH-Li-APN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7bA-bg-cRX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="552"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="909"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtS-U3-Em6">

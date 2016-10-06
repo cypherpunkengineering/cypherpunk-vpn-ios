@@ -106,6 +106,22 @@ class TopViewController: UIViewController, StoreSubscriber {
         mainStore.unsubscribe(self)
     }
     
+    private weak var animationController: AnimationViewController!
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let vcs = self.childViewControllers.filter { (vc) -> Bool in
+            if vc is AnimationViewController {
+                return true
+            }
+            return false
+        }
+        
+        if vcs.count > 0 {
+            animationController = vcs[0] as! AnimationViewController
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -212,13 +228,14 @@ class TopViewController: UIViewController, StoreSubscriber {
             }
             
         case .invalid:
-            animationContainerView.isHidden = true
-            connectionActionView.isHidden = true
-            regionButtonView.isHidden = true
-            connectionStatusButton.isHidden = true
-            configurationButton.isHidden = true
-            installPreferencesView.isHidden = false
-
+            if TARGET_OS_SIMULATOR == 0 {
+                animationContainerView.isHidden = true
+                connectionActionView.isHidden = true
+                regionButtonView.isHidden = true
+                connectionStatusButton.isHidden = true
+                configurationButton.isHidden = true
+                installPreferencesView.isHidden = false
+            }
         case .disconnecting:
             connectedButton.isHidden = true
             connectingButton.isHidden = true
@@ -254,18 +271,32 @@ class TopViewController: UIViewController, StoreSubscriber {
     }
 
     @IBAction func connectAction(_ sender: UIButton) {
-        if sender == self.disconnectedButton {
-            do{
-                try VPNConfigurationCoordinator.connect()
-            }catch (let error) {
-                print(error)
+        
+        if TARGET_OS_SIMULATOR != 0 {
+            mainStore.dispatch(RegionAction.connect)
+            mainStore.dispatch(StatusAction.setConnectedDate(date: Date()))
+            self.updateViewWithVPNStatus(.connected)
+            self.animationController.updateAnimationState(status: .connected)
+        } else {
+            if sender == self.disconnectedButton {
+                do{
+                    try VPNConfigurationCoordinator.connect()
+                }catch (let error) {
+                    print(error)
+                }
+            } else if sender == self.connectedButton {
+                VPNConfigurationCoordinator.disconnect()
             }
-        } else if sender == self.connectedButton {
-            VPNConfigurationCoordinator.disconnect()
         }
     }
 
     @IBAction func cancelAction(_ sender: AnyObject) {
+        if TARGET_OS_SIMULATOR != 0 {
+            mainStore.dispatch(StatusAction.setConnectedDate(date: nil))
+            self.updateViewWithVPNStatus(.disconnected)
+            self.animationController.updateAnimationState(status: .disconnected)
+        }
+
         VPNConfigurationCoordinator.disconnect()
     }
     
