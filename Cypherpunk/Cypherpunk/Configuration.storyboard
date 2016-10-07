@@ -520,7 +520,7 @@
                             <tableViewSection headerTitle=" " id="S9Y-ht-VaQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" rowHeight="59" id="4sM-cX-0le" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="59"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4sM-cX-0le" id="yGN-sa-kjs">
                                             <frame key="frameInset" width="375" height="58"/>
@@ -548,7 +548,7 @@
                             <tableViewSection headerTitle="Account Type" id="PgR-MV-z7t">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" textLabel="Uc8-ZR-gjy" detailTextLabel="wV9-LC-xOH" rowHeight="44" style="IBUITableViewCellStyleValue1" id="lLf-s8-JwD" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="172" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="170.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lLf-s8-JwD" id="ip6-Nf-2ne">
                                             <frame key="frameInset" width="375" height="43"/>
@@ -575,7 +575,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="PUm-60-g4x" rowHeight="44" style="IBUITableViewCellStyleDefault" id="Q0b-yZ-cbd" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="216" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="214.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q0b-yZ-cbd" id="tiL-k2-hoK">
                                             <frame key="frameInset" width="342" height="43"/>
@@ -598,7 +598,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="Ine-7A-Ex4" rowHeight="44" style="IBUITableViewCellStyleDefault" id="uwz-ZG-Ias" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="260" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="258.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uwz-ZG-Ias" id="XqD-0j-PHq">
                                             <frame key="frameInset" width="342" height="43"/>
@@ -625,7 +625,7 @@
                             <tableViewSection headerTitle="Account Details" id="iLG-W3-nBz">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="R2l-EF-hrt" detailTextLabel="FpT-Lh-UF4" rowHeight="44" style="IBUITableViewCellStyleValue1" id="Eby-VJ-1hP" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="361" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="358.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eby-VJ-1hP" id="3yA-Hr-KLx">
                                             <frame key="frameInset" width="342" height="43"/>
@@ -655,7 +655,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="I3g-a2-Xcg" rowHeight="44" style="IBUITableViewCellStyleDefault" id="cx5-B2-qpt" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="405" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="402.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cx5-B2-qpt" id="Pnx-rQ-pLd">
                                             <frame key="frameInset" width="342" height="43"/>
@@ -682,7 +682,7 @@
                             <tableViewSection headerTitle="Settings" id="32v-b1-IfQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" rowHeight="44" id="m2N-3o-PJa" customClass="HasSwitchThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="506" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="502.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m2N-3o-PJa" id="mxg-HW-EQg">
                                             <frame key="frameInset" width="375" height="43"/>
@@ -714,7 +714,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="pmo-f7-tii" detailTextLabel="vHP-t8-nhp" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="ISn-UM-ESH" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="550" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="546.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ISn-UM-ESH" id="zi6-eL-8Az">
                                             <frame key="frameInset" width="342" height="43"/>
@@ -740,7 +740,7 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="QZA-CT-cfs" kind="showDetail" id="eaG-Kg-d6X"/>
+                                            <segue destination="9qh-x8-4pA" kind="show" id="Zhj-Ip-WWL"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -748,7 +748,7 @@
                             <tableViewSection headerTitle="More" id="TRa-hs-l0p">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="RkW-rW-wSz" style="IBUITableViewCellStyleDefault" id="RMk-E2-ije" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="651" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="646.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RMk-E2-ije" id="H4B-mU-KCi">
                                             <frame key="frameInset" width="342" height="43"/>
@@ -767,11 +767,11 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="ZRY-tB-pof" kind="showDetail" id="3Wb-O3-csW"/>
+                                            <segue destination="K1y-De-C2d" kind="show" id="SMp-V1-xPS"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" textLabel="ma1-K1-Ylq" style="IBUITableViewCellStyleDefault" id="5Hd-4p-JSt" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="695" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="690.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Hd-4p-JSt" id="Sp9-Ie-ehs">
                                             <frame key="frameInset" width="375" height="43"/>
@@ -826,20 +826,20 @@
             <point key="canvasLocation" x="1401" y="364"/>
         </scene>
         <!--VPNProtocol-->
-        <scene sceneID="nF4-78-HQ3">
+        <scene sceneID="Z3R-vm-ksR">
             <objects>
-                <viewControllerPlaceholder storyboardName="VPNProtocol" id="QZA-CT-cfs" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e6A-5c-GwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="VPNProtocol" id="9qh-x8-4pA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RlG-pg-kd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1415" y="411"/>
+            <point key="canvasLocation" x="1493" y="430"/>
         </scene>
         <!--ContactUs-->
-        <scene sceneID="ajQ-jY-9XA">
+        <scene sceneID="n1m-ka-KMt">
             <objects>
-                <viewControllerPlaceholder storyboardName="ContactUs" id="ZRY-tB-pof" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1s-jK-Rfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ContactUs" id="K1y-De-C2d" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4c1-4R-EdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1405" y="458"/>
+            <point key="canvasLocation" x="1468" y="557"/>
         </scene>
         <!--Get Cypherpunk Premium-->
         <scene sceneID="DwY-7W-vHu">
