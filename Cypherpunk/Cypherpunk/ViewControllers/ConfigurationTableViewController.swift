@@ -37,6 +37,14 @@ class ConfigurationTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let barbutton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeAction))
+        barbutton.setTitleTextAttributes([
+            NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
+            NSForegroundColorAttributeName: UIColor.goldenYellowColor()
+            ], for: .normal)
+        self.navigationItem.rightBarButtonItem = barbutton
+        self.closeButton = barbutton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,16 +59,7 @@ class ConfigurationTableViewController: UITableViewController {
         usernameLabelButton.setTitle(accountState.nickName, for: .normal)
         autoConnectSwitch.setOn(settingsState.isAutoReconnect, animated: false)
         self.tableView.reloadData()
-        
-        closeButton?.tintColor = UIColor.goldenYellowColor()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        closeButton?.tintColor = UIColor.goldenYellowColor()
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

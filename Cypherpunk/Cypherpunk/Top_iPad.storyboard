@@ -53,7 +53,7 @@
         <scene sceneID="q29-oO-DEh">
             <objects>
                 <navigationController id="cVP-0K-Ofi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kgw-Rx-IUm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kgw-Rx-IUm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,7 +74,7 @@
         <scene sceneID="cRv-vS-caq">
             <objects>
                 <navigationController id="t8E-0d-eHG" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3E2-XB-hmN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3E2-XB-hmN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -90,7 +90,7 @@
         <scene sceneID="k4g-m0-4Do">
             <objects>
                 <navigationController id="KQv-Bu-AGx" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="F8X-kO-sMC" customClass="LocationNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="F8X-kO-sMC" customClass="LocationNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -543,16 +543,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Configuration" id="gau-FC-PFh">
                         <barButtonItem key="backBarButtonItem" title=" " id="SMz-RC-USl"/>
-                        <barButtonItem key="rightBarButtonItem" title="Close" id="OiC-eL-KNM">
-                            <color key="tintColor" red="0.97254901960784312" green="0.81176470588235294" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="closeAction" destination="bMP-2x-2J1" id="DTz-14-TKR"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="autoConnectSwitch" destination="nbb-mX-vSN" id="KHj-iQ-G4y"/>
-                        <outlet property="closeButton" destination="OiC-eL-KNM" id="MfK-x4-31W"/>
                         <outlet property="mailAddressLabel" destination="9ur-l0-4UD" id="TNd-ZZ-7Yh"/>
                         <outlet property="usernameLabelButton" destination="BDL-na-egZ" id="cCG-pY-Qs8"/>
                         <outlet property="vpnProtocolDetailLabel" destination="TxQ-qD-Ej6" id="n4e-nY-Xsg"/>
