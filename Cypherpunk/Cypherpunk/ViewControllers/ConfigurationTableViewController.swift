@@ -27,7 +27,7 @@ class ConfigurationTableViewController: UITableViewController {
     @IBOutlet weak var vpnProtocolDetailLabel: UILabel!
     @IBOutlet weak var autoConnectSwitch: UISwitch!
     
-    @IBOutlet weak var doneButton: UIBarButtonItem?
+    @IBOutlet weak var closeButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,13 +52,13 @@ class ConfigurationTableViewController: UITableViewController {
         autoConnectSwitch.setOn(settingsState.isAutoReconnect, animated: false)
         self.tableView.reloadData()
         
-        doneButton?.tintColor = UIColor.goldenYellowColor()
+        closeButton?.tintColor = UIColor.goldenYellowColor()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        doneButton?.tintColor = UIColor.goldenYellowColor()
+        closeButton?.tintColor = UIColor.goldenYellowColor()
     }
     
     
@@ -218,7 +218,7 @@ class ConfigurationTableViewController: UITableViewController {
 }
 
 extension ConfigurationTableViewController {
-    @IBAction func doneAction() {
-        self.navigationController?.dismiss(animated: false)
+    @IBAction func closeAction() {
+        self.navigationController?.dismiss(animated: true)
     }
 }
