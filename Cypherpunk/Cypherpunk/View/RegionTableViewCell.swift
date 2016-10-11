@@ -23,7 +23,7 @@ class RegionTableViewCell: UITableViewCell {
     
     func configureView() {
         self.titleLabel?.textColor = UIColor.white
-        self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
+        self.titleLabel.font = R.font.dosisMedium(size: 18.0)
         self.tintColor = UIColor.white
     }
 

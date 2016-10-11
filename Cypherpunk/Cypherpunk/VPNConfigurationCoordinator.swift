@@ -80,7 +80,7 @@ open class VPNConfigurationCoordinator {
             {
                 //let evaluateRule = NEEvaluateConnectionRule(matchDomains: [ "*" ], andAction: .connectIfNeeded)
                 //onDemandRule.connectionRules = [evaluateRule]
-
+                
                 let onDemandRule = NEOnDemandRuleConnect()
                 manager.onDemandRules = [onDemandRule]
                 manager.isOnDemandEnabled = true
@@ -89,6 +89,7 @@ open class VPNConfigurationCoordinator {
             {
                 manager.isOnDemandEnabled = false
             }
+            
 
 			if newIPSec.serverAddress != ""
 			{

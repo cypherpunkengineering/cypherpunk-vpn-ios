@@ -12,7 +12,8 @@ import ReSwift
 struct RegionState: StateType {
     var name: String
     var serverIP: String
-    
+    var countryCode: String
+
     var title: String {
         return name
     }

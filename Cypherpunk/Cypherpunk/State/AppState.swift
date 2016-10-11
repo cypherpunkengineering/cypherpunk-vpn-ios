@@ -15,7 +15,18 @@ struct AppState: StateType {
     let regionState: RegionState
     let settingsState: SettingsState
     let statusState: StatusState
-        
+    
+    var isInstalledPreferences: Bool {
+        get {
+            let standard = UserDefaults.standard
+            return standard.bool(forKey: "isInstalledPreferences")
+        }
+        set(value) {
+            let standard = UserDefaults.standard
+            standard.set(value, forKey: "isInstalledPreferences")
+        }
+    }
+
     static func getSharedState() -> AppState {
         return mainStore.state
     }

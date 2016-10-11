@@ -13,6 +13,18 @@ import UIKit
     @IBInspectable var aColor: UIColor!
     @IBInspectable var bColor: UIColor!
     
+    var gradientLayer: CAGradientLayer! = nil
+    override var frame: CGRect {
+        didSet {
+            if self.gradientLayer != nil {
+                self.gradientLayer.removeFromSuperlayer()
+                self.gradientLayer = nil
+            }
+            
+            self.setNeedsDisplay()
+        }
+    }
+    
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
@@ -28,7 +40,13 @@ import UIKit
         ]
         
         self.layer.insertSublayer(gradient, at: 0)
+        
+        if self.gradientLayer != nil {
+            self.gradientLayer.removeFromSuperlayer()
+            self.gradientLayer = nil
+        }
+        
+        self.gradientLayer = gradient
     }
-    
     
 }

@@ -12,15 +12,14 @@ import ReSwift
 import RealmSwift
 import NetworkExtension
 
-class RegionSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class RegionSelectViewController: UITableViewController {
+    
     fileprivate enum Section: Int {
+        case fastestLocation
         case favorite
         case recommended
         case allLocation
     }
-    
-    @IBOutlet weak var tableView: ThemedTableView!
     
     var favoriteResults: Results<Region>!
     var recommendedResults: Results<Region>!
@@ -28,7 +27,7 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         let realm = try! Realm()
         favoriteResults = realm.objects(Region.self).filter("isFavorite = true")
@@ -36,43 +35,22 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         otherResults = realm.objects(Region.self).filter("isFavorite = false AND isRecommended = false")
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
-        let titleLabel: UILabel
-        if section == 0 {
-            titleLabel = UILabel(frame: CGRect(x: 20, y: 26, width: 300, height: 17))
-        } else {
-            titleLabel = UILabel(frame: CGRect(x: 20, y: 9, width: 300, height: 17))
-        }
-        
-        titleLabel.font = R.font.dosisMedium(size: 14)
-        titleLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-        
-        titleLabel.textColor = UIColor.white
-        
-        view.addSubview(titleLabel)
-        
-        return view
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ["Favorite","Recommended","All Locations"][section]
-    }
-        
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = Section(rawValue: section)!
-
+        
         switch section {
+        case .fastestLocation:
+            return 1
         case .favorite:
             return favoriteResults.count
         case .recommended:
@@ -82,21 +60,30 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let section = Section(rawValue: (indexPath as NSIndexPath).section)!
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
+        cell?.starButton.isHidden = false
+        cell?.flagImageView.image = nil
         
         switch section {
+        case .fastestLocation:
+            cell?.titleLabel.text = "Fastest Location"
+            cell?.starButton.isHidden = true
+            cell?.flagImageView.image = R.image.icon_account()
         case .favorite:
             cell?.titleLabel.text = favoriteResults[indexPath.row].name
             cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
+            cell?.flagImageView.image = UIImage(named: favoriteResults[indexPath.row].countryCode!)
         case .recommended:
             cell?.titleLabel.text = recommendedResults[indexPath.row].name
             cell?.starButton.setImage(R.image.iconStar(), for: .normal)
+            cell?.flagImageView.image = UIImage(named: recommendedResults[indexPath.row].countryCode!)
         case .allLocation:
             cell?.titleLabel.text = otherResults[indexPath.row].name
             cell?.starButton.setImage(R.image.iconStar(), for: .normal)
+            cell?.flagImageView.image = UIImage(named: otherResults[indexPath.row].countryCode!)
         }
         
         cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
@@ -104,11 +91,19 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = Section(rawValue: (indexPath as NSIndexPath).section)!
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let region: Region
         switch section {
+        case .fastestLocation:
+            if favoriteResults.count > 0 {
+                region = favoriteResults[0]
+            } else {
+                region = otherResults[0]
+            }
         case .favorite:
             region = favoriteResults[indexPath.row]
         case .recommended:
@@ -116,8 +111,8 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
         case .allLocation:
             region = otherResults[indexPath.row]
         }
-
-        mainStore.dispatch(RegionAction.changeRegion(name: region.name, serverIP: region.ipAddress))
+        
+        mainStore.dispatch(RegionAction.changeRegion(name: region.name, serverIP: region.ipAddress, countryCode: region.countryCode!))
         let manager = NEVPNManager.shared()
         let isConnected = manager.connection.status == .connected
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
@@ -141,9 +136,11 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func didSelectFavoriteAction(_ sender: UIButton) {
         let row = sender.tag % 10000
         let section = Section(rawValue: sender.tag / 100000)!
-
+        
         let target: Region
         switch section {
+        case .fastestLocation:
+            return
         case .favorite:
             target = favoriteResults[row]
         case .recommended:
@@ -157,7 +154,7 @@ class RegionSelectViewController: UIViewController, UITableViewDelegate, UITable
             realm.add(target, update: true)
         }
         self.tableView.beginUpdates()
-        let set = IndexSet(integersIn: NSRange(location: 0, length: 3).toRange() ?? 0..<0)
+        let set = IndexSet(integersIn: NSRange(location: 0, length: 4).toRange() ?? 0..<0)
         self.tableView.reloadSections(set, with: .automatic)
         self.tableView.endUpdates()
     }

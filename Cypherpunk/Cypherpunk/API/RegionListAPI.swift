@@ -51,7 +51,7 @@ struct RegionListRequest: Request {
                                     let cityname = city["city"]
                                     let ip = city["ip"]
                                     
-                                    let region = Region(name: cityname!, ipAddress: ip!)
+                                    let region = Region(name: cityname!, ipAddress: ip!, countryCode: nil)
                                     realm.add(region, update: true)
                                 }
                             }
@@ -76,14 +76,16 @@ import Realm
 class Region: Object {
     dynamic var name: String = ""
     dynamic var ipAddress: String = ""
+    dynamic var countryCode: String? = nil
     dynamic var isFavorite: Bool = false
     dynamic var isRecommended: Bool = false
     
-    init(name: String, ipAddress: String) {
+    init(name: String, ipAddress: String, countryCode: String?) {
         super.init()
 
         self.name = name
         self.ipAddress = ipAddress
+        self.countryCode = countryCode
     }
     
     required init(realm: RLMRealm, schema: RLMObjectSchema) {

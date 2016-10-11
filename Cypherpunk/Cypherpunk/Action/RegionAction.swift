@@ -11,6 +11,6 @@ import Foundation
 import ReSwift
 
 enum RegionAction: Action {
-    case changeRegion(name: String, serverIP: String)
+    case changeRegion(name: String, serverIP: String, countryCode: String)
     case connect
 }

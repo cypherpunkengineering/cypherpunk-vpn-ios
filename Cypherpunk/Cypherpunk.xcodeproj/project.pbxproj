@@ -52,6 +52,7 @@
 		2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */; };
 		2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */; };
 		2085F33D1D6C4A76002D35C2 /* JSONIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33C1D6C4A76002D35C2 /* JSONIP.swift */; };
+		2092AF801DACC2B400F77031 /* ConnectionButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */; };
 		20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */; };
 		20AC7C4E1D8BFACC00760BF0 /* LinePathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC7C4D1D8BFACC00760BF0 /* LinePathView.swift */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
@@ -87,7 +88,6 @@
 		2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E41D3F98D0003FA705 /* RegionAction.swift */; };
 		2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */; };
 		2B2DE27F1DA4F33600C22098 /* LocationNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2DE27E1DA4F33600C22098 /* LocationNavigationBar.swift */; };
-		2B2DE2811DA6398700C22098 /* PadTopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2DE2801DA6398700C22098 /* PadTopTableViewController.swift */; };
 		2B2DE2831DA652F400C22098 /* ContactUs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2DE2821DA652F400C22098 /* ContactUs.storyboard */; };
 		2B2DE2851DA6530800C22098 /* VPNProtocol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */; };
 		2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4489201D2A53A700D202F9 /* SignUp.storyboard */; };
@@ -102,6 +102,10 @@
 		2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1671D20D64600D4326C /* Dosis-SemiBold.otf */; };
 		2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B45C1731D21076000D4326C /* UINavigationController+StatusBar.m */; };
 		2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */; };
+		2B6798E21DA7885F00099064 /* ClearBackgroundSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6798E11DA7885F00099064 /* ClearBackgroundSplitViewController.swift */; };
+		2B6798E51DAC0FB600099064 /* FirstOpen_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6798E41DAC0FB600099064 /* FirstOpen_iPad.storyboard */; };
+		2B6798E71DAC179500099064 /* AccountConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6798E61DAC179500099064 /* AccountConfigurationTableViewController.swift */; };
+		2B6798E91DAC979F00099064 /* PadTopRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6798E81DAC979F00099064 /* PadTopRootViewController.swift */; };
 		2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B73C70E1D5C7F670090FF8B /* Animation.storyboard */; };
 		2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */; };
 		2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */; };
@@ -196,6 +200,7 @@
 		2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCharacterGenerator.swift; sourceTree = "<group>"; };
 		2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentContainerViewController.swift; sourceTree = "<group>"; };
 		2085F33C1D6C4A76002D35C2 /* JSONIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONIP.swift; sourceTree = "<group>"; };
+		2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionButtonsViewController.swift; sourceTree = "<group>"; };
 		20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
 		20AC7C4D1D8BFACC00760BF0 /* LinePathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinePathView.swift; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
@@ -231,7 +236,6 @@
 		2B2B59E41D3F98D0003FA705 /* RegionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionAction.swift; sourceTree = "<group>"; };
 		2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top_iPad.storyboard; sourceTree = "<group>"; };
 		2B2DE27E1DA4F33600C22098 /* LocationNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNavigationBar.swift; sourceTree = "<group>"; };
-		2B2DE2801DA6398700C22098 /* PadTopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadTopTableViewController.swift; sourceTree = "<group>"; };
 		2B2DE2821DA652F400C22098 /* ContactUs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ContactUs.storyboard; sourceTree = "<group>"; };
 		2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VPNProtocol.storyboard; sourceTree = "<group>"; };
 		2B4489201D2A53A700D202F9 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -247,6 +251,10 @@
 		2B45C1721D21076000D4326C /* UINavigationController+StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StatusBar.h"; sourceTree = "<group>"; };
 		2B45C1731D21076000D4326C /* UINavigationController+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBar.m"; sourceTree = "<group>"; };
 		2B45C1771D21321100D4326C /* VPNConfigurationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNConfigurationCoordinator.swift; sourceTree = "<group>"; };
+		2B6798E11DA7885F00099064 /* ClearBackgroundSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearBackgroundSplitViewController.swift; sourceTree = "<group>"; };
+		2B6798E41DAC0FB600099064 /* FirstOpen_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstOpen_iPad.storyboard; sourceTree = "<group>"; };
+		2B6798E61DAC179500099064 /* AccountConfigurationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountConfigurationTableViewController.swift; sourceTree = "<group>"; };
+		2B6798E81DAC979F00099064 /* PadTopRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadTopRootViewController.swift; sourceTree = "<group>"; };
 		2B73C70E1D5C7F670090FF8B /* Animation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Animation.storyboard; sourceTree = "<group>"; };
 		2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNPersistentDataGenerator.m; sourceTree = "<group>"; };
@@ -440,6 +448,7 @@
 				206D4D6F1D82BDF300853B47 /* IndicatorView.swift */,
 				2B2DE27E1DA4F33600C22098 /* LocationNavigationBar.swift */,
 				20AC7C4D1D8BFACC00760BF0 /* LinePathView.swift */,
+				2B6798E11DA7885F00099064 /* ClearBackgroundSplitViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -473,6 +482,7 @@
 				203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */,
 				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
 				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
+				2B6798E61DAC179500099064 /* AccountConfigurationTableViewController.swift */,
 				2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */,
 				20EBFD3F1D5485D8008B9F14 /* ConnectionStatusViewController.swift */,
 				203C62F31D7036C900891F91 /* FirstOpenViewController.swift */,
@@ -482,7 +492,8 @@
 				2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */,
 				2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */,
 				20073E0C1D9E387400BCD690 /* RateAppViewController.swift */,
-				2B2DE2801DA6398700C22098 /* PadTopTableViewController.swift */,
+				2B6798E81DAC979F00099064 /* PadTopRootViewController.swift */,
+				2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -523,6 +534,7 @@
 				2BDBD0D11D65295F00080E67 /* Password.storyboard */,
 				2B73C70E1D5C7F670090FF8B /* Animation.storyboard */,
 				2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */,
+				2B6798E41DAC0FB600099064 /* FirstOpen_iPad.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -741,6 +753,7 @@
 				2B2DE2831DA652F400C22098 /* ContactUs.storyboard in Resources */,
 				2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
+				2B6798E51DAC0FB600099064 /* FirstOpen_iPad.storyboard in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
 				2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */,
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
@@ -938,7 +951,6 @@
 				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
 				20F15CED1D8A755C0000DAA7 /* DeviceGuru.swift in Sources */,
 				206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */,
-				2B2DE2811DA6398700C22098 /* PadTopTableViewController.swift in Sources */,
 				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
 				2B06416E1D6D73E5009475F4 /* StatusState.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
@@ -952,6 +964,7 @@
 				2B0641701D6D7444009475F4 /* StatusAction.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* AccountReducer.swift in Sources */,
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
+				2092AF801DACC2B400F77031 /* ConnectionButtonsViewController.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				201809EE1D5B47BC00730FA4 /* ThemedModeTableViewCell.swift in Sources */,
 				2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */,
@@ -975,8 +988,10 @@
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
 				201809F61D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift in Sources */,
+				2B6798E21DA7885F00099064 /* ClearBackgroundSplitViewController.swift in Sources */,
 				2B0641721D6D7546009475F4 /* StatusReducer.swift in Sources */,
 				20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */,
+				2B6798E91DAC979F00099064 /* PadTopRootViewController.swift in Sources */,
 				203C62F61D7038E400891F91 /* GetPremiumPlanTableViewController.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
@@ -1008,6 +1023,7 @@
 				203F4F071D5B188200EA2536 /* ThemedNavigationButton.swift in Sources */,
 				201809F21D5B4C0500730FA4 /* ThemedChangeIPAddressButton.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,
+				2B6798E71DAC179500099064 /* AccountConfigurationTableViewController.swift in Sources */,
 				20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */,
 				2BEC968F1D75FF8900CBBC04 /* RegionTableViewCell.swift in Sources */,
 				20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */,

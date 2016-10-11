@@ -18,13 +18,16 @@ struct RegionReducer: Reducer {
         
         var regionState = state ?? RegionState(
             name:  "",
-            serverIP: "")
+            serverIP: "",
+            countryCode: ""
+        )
         
         if let action = action as? RegionAction {
             switch action {
-            case .changeRegion(let name, let serverIP):
+            case .changeRegion(let name, let serverIP, let countryCode):
                 regionState.name = name
                 regionState.serverIP = serverIP
+                regionState.countryCode = countryCode
             case .connect:
                 break
             }

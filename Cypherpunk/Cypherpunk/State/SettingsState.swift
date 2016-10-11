@@ -41,7 +41,11 @@ struct SettingsState: StateType {
     var isAutoReconnect: Bool {
         get{
             let keychain = Keychain.userKeychain()
-            return NSString(string: keychain[SettingsStateKey.isAutoReconnect] ?? "true").boolValue
+            if #available(iOS 9.0, *) {
+                return NSString(string: keychain[SettingsStateKey.isAutoReconnect] ?? "true").boolValue
+            } else {
+                return NSString(string: keychain[SettingsStateKey.isAutoReconnect] ?? "false").boolValue
+            }
         }
         set(newValue) {
             let keychain = Keychain.userKeychain()

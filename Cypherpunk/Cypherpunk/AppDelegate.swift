@@ -55,10 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let realm = try! Realm()
         try! realm.write {
             if realm.objects(Region.self).count == 0 {
-                realm.add(Region(name: "Tokyo1", ipAddress: "208.111.52.1"))
-                realm.add(Region(name: "Tokyo2", ipAddress: "208.111.52.2"))
-                realm.add(Region(name: "Tokyo-DNS-RR", ipAddress: "tokyo.cypherpunk.network"))
-                realm.add(Region(name: "Honolulu", ipAddress: "199.68.252.203"))
+                realm.add(Region(name: "Tokyo1", ipAddress: "208.111.52.1", countryCode: "jp"))
+                realm.add(Region(name: "Tokyo2", ipAddress: "208.111.52.2",countryCode: "jp"))
+                realm.add(Region(name: "Tokyo-DNS-RR", ipAddress: "tokyo.cypherpunk.network",countryCode: "jp"))
+                realm.add(Region(name: "Honolulu", ipAddress: "199.68.252.203", countryCode: "us"))
             }
             
         }
@@ -67,14 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window?.rootViewController = R.storyboard.top_iPad.instantiateInitialViewController()
             
-            let splitviewController = self.window?.rootViewController as! UISplitViewController
-            splitviewController.preferredDisplayMode = .allVisible
-            splitviewController.preferredPrimaryColumnWidthFraction = 250.0
-            splitviewController.minimumPrimaryColumnWidth = 0.0
-            splitviewController.maximumPrimaryColumnWidth = 250.0
 
             DispatchQueue.main.async { [unowned self] in
-                let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
+                let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
                 
                 if mainStore.state.accountState.isLoggedIn == false {
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)

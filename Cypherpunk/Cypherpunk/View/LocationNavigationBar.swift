@@ -15,7 +15,7 @@ class LocationNavigationBar: UINavigationBar {
     
     func configureView() {
         self.isTranslucent = false
-        self.setBackgroundImage(R.image.locationBackgroung(), for: .default)
+//        self.setBackgroundImage(R.image.locationBackgroung(), for: .default)
         self.barTintColor = UIColor.clear
         self.tintColor = UIColor.white
         self.titleTextAttributes = [
