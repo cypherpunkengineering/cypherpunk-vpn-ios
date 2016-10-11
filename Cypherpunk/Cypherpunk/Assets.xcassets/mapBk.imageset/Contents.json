@@ -1,9 +1,6 @@
 {
   "images" : [
-    {
-      "idiom" : "universal",
-      "filename" : "mapBk.pdf"
-    }
+
   ],
   "info" : {
     "author" : "zeplin",
