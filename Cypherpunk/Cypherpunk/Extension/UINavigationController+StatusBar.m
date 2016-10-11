@@ -16,6 +16,12 @@ UIStatusBarStyle currentStatusBarStyle = UIStatusBarStyleLightContent;
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return currentStatusBarStyle;
 }
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    return UIInterfaceOrientationMaskAll;
+}
 
 @end
 
@@ -25,6 +31,13 @@ UIStatusBarStyle currentStatusBarStyle = UIStatusBarStyleLightContent;
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return currentStatusBarStyle;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    return UIInterfaceOrientationMaskAll;
 }
 #pragma clang diagnostic pop
 @end
