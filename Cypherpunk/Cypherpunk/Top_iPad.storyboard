@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t8E-0d-eHG">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t8E-0d-eHG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -65,7 +65,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KJN-iJ-OYp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ntq-hq-IK8">
-                        <rect key="frame" x="0.0" y="64" width="1024" height="1302"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcW-v4-z29" customClass="TwoColorGradientView" customModule="Cypherpunk" customModuleProvider="target">
@@ -79,6 +79,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vOF-NQ-NxU">
+                                <connections>
+                                    <segue destination="smR-Hu-w1a" kind="embed" id="HA2-zW-W0O"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHh-Bm-INH">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -116,6 +121,7 @@
                             <constraint firstItem="NHh-Bm-INH" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leading" id="79m-uh-F2R"/>
                             <constraint firstAttribute="trailing" secondItem="S8w-76-peP" secondAttribute="trailing" id="9Xj-0N-e4L"/>
                             <constraint firstItem="S8w-76-peP" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leading" id="Go1-Fo-hgG"/>
+                            <constraint firstItem="vOF-NQ-NxU" firstAttribute="top" secondItem="S8w-76-peP" secondAttribute="bottom" id="GoO-UB-i2F"/>
                             <constraint firstAttribute="bottom" secondItem="NHh-Bm-INH" secondAttribute="bottom" id="Kyv-M1-9hW"/>
                             <constraint firstItem="KJN-iJ-OYp" firstAttribute="top" secondItem="hcW-v4-z29" secondAttribute="bottom" id="LIt-EI-cPg"/>
                             <constraint firstAttribute="bottom" secondItem="KuI-Eg-TtN" secondAttribute="bottom" id="LP2-9v-K5Y"/>
@@ -127,9 +133,12 @@
                             <constraint firstItem="EXU-JE-Og2" firstAttribute="top" secondItem="S8w-76-peP" secondAttribute="bottom" constant="7" id="Vds-Oq-YoY"/>
                             <constraint firstItem="KJN-iJ-OYp" firstAttribute="top" secondItem="kNB-Mt-7k6" secondAttribute="bottom" constant="24" id="VmF-CP-bB6"/>
                             <constraint firstItem="hcW-v4-z29" firstAttribute="top" secondItem="2fB-go-XnJ" secondAttribute="bottom" constant="-64" id="XK2-EV-1FI"/>
+                            <constraint firstAttribute="trailing" secondItem="vOF-NQ-NxU" secondAttribute="trailing" id="c6G-e5-1GV"/>
                             <constraint firstAttribute="trailing" secondItem="kNB-Mt-7k6" secondAttribute="trailing" constant="12" id="d1R-OM-umL"/>
                             <constraint firstAttribute="trailing" secondItem="EXU-JE-Og2" secondAttribute="trailing" constant="12" id="dLE-OG-yIV"/>
                             <constraint firstItem="KuI-Eg-TtN" firstAttribute="top" secondItem="S8w-76-peP" secondAttribute="bottom" id="dl0-Op-Kib"/>
+                            <constraint firstItem="vOF-NQ-NxU" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leadingMargin" id="dlL-Rn-ljM"/>
+                            <constraint firstItem="KJN-iJ-OYp" firstAttribute="top" secondItem="vOF-NQ-NxU" secondAttribute="bottom" id="hrZ-Na-snU"/>
                             <constraint firstItem="kNB-Mt-7k6" firstAttribute="top" secondItem="S8w-76-peP" secondAttribute="bottom" constant="8" id="jF4-IF-gnj"/>
                             <constraint firstItem="KuI-Eg-TtN" firstAttribute="leading" secondItem="NHh-Bm-INH" secondAttribute="trailing" id="jWr-d1-Mnz"/>
                             <constraint firstAttribute="trailing" secondItem="hcW-v4-z29" secondAttribute="trailing" id="r3W-yt-RHc"/>
@@ -148,6 +157,13 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="animationContainerView" destination="kNB-Mt-7k6" id="rGk-NS-RtU"/>
+                        <outlet property="connectionActionView" destination="EXU-JE-Og2" id="uXx-CX-Vuw"/>
+                        <outlet property="contentsSeparatorView" destination="KuI-Eg-TtN" id="Wgs-UF-6ff"/>
+                        <outlet property="installPreferencesView" destination="vOF-NQ-NxU" id="h5U-PE-RTb"/>
+                        <outlet property="locationActionView" destination="NHh-Bm-INH" id="874-zx-u6R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNT-qa-Bh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -178,7 +194,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jI1-QF-CGJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ilk-gV-bU1">
-                        <rect key="frame" x="0.0" y="0.0" width="749" height="1270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="493" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIW-er-wUs">
@@ -628,11 +644,91 @@
             </objects>
             <point key="canvasLocation" x="-698" y="867"/>
         </scene>
+        <!--Install Preferences View Controller-->
+        <scene sceneID="5DH-do-J4Y">
+            <objects>
+                <viewController id="smR-Hu-w1a" customClass="InstallPreferencesViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RT0-WW-e7P"/>
+                        <viewControllerLayoutGuide type="bottom" id="8a4-AD-xs4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bi-9I-g6L">
+                        <rect key="frame" x="0.0" y="0.0" width="748" height="959"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnN-89-7vf">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="194" id="MMm-PG-zcG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <state key="normal" title="Install Preferences">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="install" destination="smR-Hu-w1a" eventType="touchUpInside" id="vdh-SV-q1q"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juP-wl-okb">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="b7N-dI-QdT"/>
+                                </constraints>
+                                <string key="text">Cypherpunk needs to install
+your preferences.</string>
+                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="18"/>
+                                <color key="textColor" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSM-xk-n7k">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ioBtnGray" translatesAutoresizingMaskIntoConstraints="NO" id="DEv-9B-T0z"/>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="DEv-9B-T0z" firstAttribute="top" secondItem="rSM-xk-n7k" secondAttribute="top" constant="-12" id="0Xb-eo-71e"/>
+                                    <constraint firstAttribute="trailing" secondItem="DEv-9B-T0z" secondAttribute="trailing" id="F1I-jE-vO9"/>
+                                    <constraint firstAttribute="height" constant="140" id="KCG-2Y-WLc"/>
+                                    <constraint firstAttribute="bottom" secondItem="DEv-9B-T0z" secondAttribute="bottom" id="Qqw-b6-0Mp"/>
+                                    <constraint firstAttribute="width" constant="140" id="tXv-4H-n6g"/>
+                                    <constraint firstItem="DEv-9B-T0z" firstAttribute="leading" secondItem="rSM-xk-n7k" secondAttribute="leading" id="yru-hH-Gxh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rSM-xk-n7k" firstAttribute="centerX" secondItem="8bi-9I-g6L" secondAttribute="centerX" id="0M6-pw-cXt"/>
+                            <constraint firstItem="juP-wl-okb" firstAttribute="top" secondItem="DEv-9B-T0z" secondAttribute="bottom" constant="26" id="ImQ-F8-MYH"/>
+                            <constraint firstItem="RnN-89-7vf" firstAttribute="top" secondItem="juP-wl-okb" secondAttribute="bottom" constant="26" id="TCy-iH-ed6"/>
+                            <constraint firstItem="rSM-xk-n7k" firstAttribute="centerY" secondItem="8bi-9I-g6L" secondAttribute="centerY" constant="-70" id="bth-iB-LPp"/>
+                            <constraint firstItem="juP-wl-okb" firstAttribute="leading" secondItem="8bi-9I-g6L" secondAttribute="leadingMargin" constant="15" id="dVr-9j-9Lk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="juP-wl-okb" secondAttribute="trailing" constant="15" id="gKF-EP-2Ba"/>
+                            <constraint firstItem="RnN-89-7vf" firstAttribute="centerX" secondItem="8bi-9I-g6L" secondAttribute="centerX" id="y6w-3b-c7v"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ioButtonImageView" destination="DEv-9B-T0z" id="f0A-HS-jWn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hk7-Yv-iJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1691" y="-849"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_settings" width="24" height="24"/>
         <image name="iconAccount" width="14" height="22"/>
         <image name="icon_account" width="16" height="25"/>
+        <image name="ioBtnGray" width="140" height="152"/>
         <image name="ioBtnGreen" width="140" height="190"/>
         <image name="ioBtnOrange" width="140" height="140"/>
         <image name="ioBtnRed" width="140" height="152"/>
