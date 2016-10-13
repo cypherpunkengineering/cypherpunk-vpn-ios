@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t8E-0d-eHG">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t8E-0d-eHG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -22,7 +22,7 @@
         <scene sceneID="q29-oO-DEh">
             <objects>
                 <navigationController id="cVP-0K-Ofi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kgw-Rx-IUm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kgw-Rx-IUm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,7 +43,7 @@
         <scene sceneID="cRv-vS-caq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t8E-0d-eHG" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="3E2-XB-hmN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="3E2-XB-hmN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.21176470588235294" green="0.40000000000000002" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,7 +65,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KJN-iJ-OYp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ntq-hq-IK8">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="1024" height="1302"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcW-v4-z29" customClass="TwoColorGradientView" customModule="Cypherpunk" customModuleProvider="target">
@@ -79,7 +79,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vOF-NQ-NxU">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vOF-NQ-NxU">
                                 <connections>
                                     <segue destination="smR-Hu-w1a" kind="embed" id="HA2-zW-W0O"/>
                                 </connections>
@@ -147,7 +147,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="tk0-IW-gud">
                         <barButtonItem key="backBarButtonItem" id="KaO-Sm-mWt"/>
-                        <barButtonItem key="leftBarButtonItem" image="icon_account" id="XT7-Oc-lDr">
+                        <barButtonItem key="leftBarButtonItem" image="iconAccountBig" id="XT7-Oc-lDr">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="cVP-0K-Ofi" kind="presentation" modalPresentationStyle="formSheet" id="QPP-ui-QyN"/>
@@ -155,6 +155,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="ic_settings" id="SE0-UB-8gc">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="ICK-2P-0XI" kind="presentation" modalPresentationStyle="formSheet" id="UK9-H3-VBn"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -168,6 +171,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNT-qa-Bh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1691.015625" y="-191.06881405563689"/>
+        </scene>
+        <!--NewConfiguration-->
+        <scene sceneID="eiZ-fj-o52">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewConfiguration" id="f9P-5a-HTO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wkA-Ij-jbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-418" y="-849"/>
+        </scene>
+        <!--Configuration-->
+        <scene sceneID="Min-SL-cZl">
+            <objects>
+                <viewController id="uwa-jd-gt1" customClass="ConfigurationRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1yY-LQ-Vja"/>
+                        <viewControllerLayoutGuide type="bottom" id="TXv-hg-QBm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IOi-yq-JUr">
+                        <rect key="frame" x="0.0" y="64" width="540" height="556"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzh-sl-51g">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="f9P-5a-HTO" kind="embed" id="LzD-mb-qfo"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGn-kk-ZlX">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="bZI-ic-PTc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.01176470588" green="0.27450980390000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tzh-sl-51g" firstAttribute="top" secondItem="1yY-LQ-Vja" secondAttribute="bottom" id="2fE-D5-eTZ"/>
+                            <constraint firstItem="TXv-hg-QBm" firstAttribute="top" secondItem="tzh-sl-51g" secondAttribute="bottom" id="6tg-hD-5Kw"/>
+                            <constraint firstItem="HGn-kk-ZlX" firstAttribute="leading" secondItem="IOi-yq-JUr" secondAttribute="leading" id="oIk-jD-yGz"/>
+                            <constraint firstItem="HGn-kk-ZlX" firstAttribute="top" secondItem="1yY-LQ-Vja" secondAttribute="bottom" id="rL0-CH-8sD"/>
+                            <constraint firstItem="tzh-sl-51g" firstAttribute="leading" secondItem="IOi-yq-JUr" secondAttribute="leading" id="y4e-iX-ChK"/>
+                            <constraint firstAttribute="trailing" secondItem="tzh-sl-51g" secondAttribute="trailing" id="zST-YN-yB0"/>
+                            <constraint firstAttribute="trailing" secondItem="HGn-kk-ZlX" secondAttribute="trailing" id="zve-iT-LTm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Configuration" id="Bm8-ur-3I2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7jj-8f-8L5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-677" y="-849"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="d74-gC-XzJ">
+            <objects>
+                <navigationController id="ICK-2P-0XI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="myW-vD-VeI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.01176470588" green="0.27450980390000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uwa-jd-gt1" kind="relationship" relationship="rootViewController" id="ZDg-xS-iJd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94e-E8-t3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1129" y="-849"/>
         </scene>
         <!--Content-->
         <scene sceneID="fL9-Ml-mQl">
@@ -194,7 +267,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jI1-QF-CGJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ilk-gV-bU1">
-                        <rect key="frame" x="0.0" y="0.0" width="493" height="928"/>
+                        <rect key="frame" x="0.0" y="0.0" width="749" height="1270"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIW-er-wUs">
@@ -387,7 +460,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Renews On 02/02/2016" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LeA-Gs-R3H">
-                                                    <frame key="frameInset" minX="376" minY="11" width="149" height="21"/>
+                                                    <frame key="frameInset" minX="356" minY="12" width="169" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -399,7 +472,7 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="nKI-1Z-rTN" rowHeight="44" style="IBUITableViewCellStyleDefault" id="IeI-la-fZb" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="nKI-1Z-rTN" rowHeight="44" style="IBUITableViewCellStyleDefault" id="IeI-la-fZb" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="280" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IeI-la-fZb" id="oIs-P2-2Ju">
@@ -422,7 +495,7 @@
                                             <segue destination="5RE-8N-gQS" kind="show" id="Rzb-mz-J8z"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="E1q-93-YZw" rowHeight="44" style="IBUITableViewCellStyleDefault" id="MzJ-xk-5qR" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="E1q-93-YZw" rowHeight="44" style="IBUITableViewCellStyleDefault" id="MzJ-xk-5qR" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="324" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MzJ-xk-5qR" id="Uc7-7X-Yv3">
@@ -449,7 +522,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Account Details" id="DmA-4v-Dkj">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="wjj-9e-dlG" detailTextLabel="9ur-l0-4UD" rowHeight="44" style="IBUITableViewCellStyleValue1" id="Ht7-Po-Yk2" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="wjj-9e-dlG" detailTextLabel="9ur-l0-4UD" rowHeight="44" style="IBUITableViewCellStyleValue1" id="Ht7-Po-Yk2" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="425" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ht7-Po-Yk2" id="nKS-pK-Eok">
@@ -464,7 +537,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9ur-l0-4UD">
-                                                    <frame key="frameInset" minX="469" minY="11" width="36" height="21"/>
+                                                    <frame key="frameInset" minX="464" minY="12" width="41" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -479,7 +552,7 @@
                                             <segue destination="DjC-tb-ag7" kind="show" id="1nX-Cm-nbe"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="li2-WF-TKr" rowHeight="44" style="IBUITableViewCellStyleDefault" id="lgg-Nc-UH5" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="li2-WF-TKr" rowHeight="44" style="IBUITableViewCellStyleDefault" id="lgg-Nc-UH5" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="469" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lgg-Nc-UH5" id="BWT-0k-9sp">
@@ -506,7 +579,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="More" id="fBh-qE-4tP">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="CNr-2o-ESG" style="IBUITableViewCellStyleDefault" id="RhI-H5-bz7" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="CNr-2o-ESG" style="IBUITableViewCellStyleDefault" id="RhI-H5-bz7" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="570" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RhI-H5-bz7" id="lmY-T5-33d">
@@ -529,7 +602,7 @@
                                             <segue destination="EW1-6g-OeS" kind="show" id="sYF-QX-mCn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" textLabel="MDX-0R-xsW" style="IBUITableViewCellStyleDefault" id="th2-iH-AkT" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="0.0" textLabel="MDX-0R-xsW" style="IBUITableViewCellStyleDefault" id="th2-iH-AkT" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="614" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="th2-iH-AkT" id="0nv-ts-Xv3">
@@ -653,7 +726,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8a4-AD-xs4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bi-9I-g6L">
-                        <rect key="frame" x="0.0" y="0.0" width="748" height="959"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1004" height="1301"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnN-89-7vf">
@@ -726,8 +799,8 @@ your preferences.</string>
     </scenes>
     <resources>
         <image name="ic_settings" width="24" height="24"/>
-        <image name="iconAccount" width="14" height="22"/>
-        <image name="icon_account" width="16" height="25"/>
+        <image name="iconAccount" width="18" height="24"/>
+        <image name="iconAccountBig" width="22" height="30"/>
         <image name="ioBtnGray" width="140" height="152"/>
         <image name="ioBtnGreen" width="140" height="190"/>
         <image name="ioBtnOrange" width="140" height="140"/>

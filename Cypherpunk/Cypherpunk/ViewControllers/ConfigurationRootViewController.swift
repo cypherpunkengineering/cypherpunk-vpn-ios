@@ -17,6 +17,13 @@ class ConfigurationRootViewController: UIViewController {
         let item = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = item
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        let barbutton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeAction))
+        barbutton.setTitleTextAttributes([
+            NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
+            NSForegroundColorAttributeName: UIColor.goldenYellowColor()
+            ], for: .normal)
+        self.navigationItem.rightBarButtonItem = barbutton
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,4 +42,10 @@ class ConfigurationRootViewController: UIViewController {
     }
     */
 
+}
+
+extension ConfigurationRootViewController {
+    @IBAction func closeAction() {
+        self.navigationController?.dismiss(animated: true)
+    }
 }
