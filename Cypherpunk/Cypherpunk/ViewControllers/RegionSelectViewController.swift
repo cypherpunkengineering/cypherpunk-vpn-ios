@@ -71,7 +71,7 @@ class RegionSelectViewController: UITableViewController {
         case .fastestLocation:
             cell?.titleLabel.text = "Fastest Location"
             cell?.starButton.isHidden = true
-            cell?.flagImageView.image = R.image.icon_account()
+            cell?.flagImageView.image = R.image.iconAccount()
         case .favorite:
             cell?.titleLabel.text = favoriteResults[indexPath.row].name
             cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
