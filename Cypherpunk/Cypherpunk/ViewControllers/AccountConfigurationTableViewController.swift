@@ -143,10 +143,9 @@ class AccountConfigurationTableViewController: UITableViewController {
         }
         
         titleLabel.font = R.font.dosisMedium(size: 14)
+        titleLabel.textColor = UIColor.goldenYellowColor()
         titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
-        
-        titleLabel.textColor = UIColor.white
-        
+                
         view.addSubview(titleLabel)
         
         return view
