@@ -35,16 +35,24 @@ class AnimationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if animationLayer != nil {
+            cancelTimer()
+            animationLayer.removeFromSuperlayer()
+            animationLayer = nil
+        }
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         if animationLayer == nil {
             animationLayer = instanceAnimationLayer()
             self.view.layer.insertSublayer(animationLayer, at: 0)
             startTimer()
         }
 
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
     }
     
     override func didReceiveMemoryWarning() {
@@ -263,12 +271,18 @@ class AnimationViewController: UIViewController {
     
     func startTimer() {
         
-        self.beforeSec = Date().timeIntervalSince1970
-        
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0/60.0, target: self, selector: #selector(AnimationViewController.update), userInfo: nil, repeats: true)
+        if timer == nil {
+            self.beforeSec = Date().timeIntervalSince1970
+            
+            self.timer = Timer.scheduledTimer(timeInterval: 1.0/60.0, target: self, selector: #selector(AnimationViewController.update), userInfo: nil, repeats: true)
+        }
     }
     
     func cancelTimer() {
+        if timer != nil {
+            timer.invalidate()
+            timer = nil
+        }
     }
     
 }
