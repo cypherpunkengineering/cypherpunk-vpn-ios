@@ -698,7 +698,7 @@
 				TargetAttributes = {
 					203809641D13D89D005145CD = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = EHYVN7A599;
+						DevelopmentTeam = S353YJSBDX;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
@@ -1180,6 +1180,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = S353YJSBDX;
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1217,7 +1218,7 @@
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.Cypherpunk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.Cypherpunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1235,6 +1236,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = S353YJSBDX;
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1272,7 +1274,7 @@
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.Cypherpunk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.Cypherpunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
