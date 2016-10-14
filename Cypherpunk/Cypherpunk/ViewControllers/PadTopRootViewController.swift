@@ -60,11 +60,13 @@ class PadTopRootViewController: UIViewController {
 
     func updateView(withVPNStatus status: NEVPNStatus) {
         if status == .invalid {
-            installPreferencesView.isHidden = false
-            connectionActionView.isHidden = true
-            locationActionView.isHidden = true
-            animationContainerView.isHidden = true
-            contentsSeparatorView.isHidden = true
+            if TARGET_OS_SIMULATOR == 0 {
+                installPreferencesView.isHidden = false
+                connectionActionView.isHidden = true
+                locationActionView.isHidden = true
+                animationContainerView.isHidden = true
+                contentsSeparatorView.isHidden = true                
+            }
         } else {
             installPreferencesView.isHidden = true
             connectionActionView.isHidden = false
