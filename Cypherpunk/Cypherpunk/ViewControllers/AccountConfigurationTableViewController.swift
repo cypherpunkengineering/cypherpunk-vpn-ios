@@ -9,7 +9,7 @@
 import UIKit
 
 class AccountConfigurationTableViewController: UITableViewController {
-
+    
     fileprivate enum Rows: Int {
         case account = 00
         case paymentDetail = 10
@@ -19,7 +19,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         case contactus = 30
         case signOut = 31
     }
-
+    
     @IBOutlet weak var usernameLabelButton: ThemedTintedNavigationButton!
     @IBOutlet weak var mailAddressLabel: UILabel!
     
@@ -33,13 +33,15 @@ class AccountConfigurationTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        let barbutton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeAction))
-        barbutton.setTitleTextAttributes([
-            NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
-            NSForegroundColorAttributeName: UIColor.goldenYellowColor()
-            ], for: .normal)
-        self.navigationItem.rightBarButtonItem = barbutton
-        self.closeButton = barbutton
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+            let barbutton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeAction))
+            barbutton.setTitleTextAttributes([
+                NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
+                NSForegroundColorAttributeName: UIColor.goldenYellowColor()
+                ], for: .normal)
+            self.navigationItem.rightBarButtonItem = barbutton
+            self.closeButton = barbutton
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,9 +59,9 @@ class AccountConfigurationTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         if mainStore.state.accountState.isLoggedIn {
             return super.numberOfSections(in: tableView)
@@ -145,7 +147,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         titleLabel.font = R.font.dosisMedium(size: 14)
         titleLabel.textColor = UIColor.goldenYellowColor()
         titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
-                
+        
         view.addSubview(titleLabel)
         
         return view

@@ -324,7 +324,7 @@ class TopViewController: UIViewController, StoreSubscriber {
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     @IBAction func transitionToConnectionStatusAction(_ sender: AnyObject) {
-        let vc = R.storyboard.configuration.connectionStatus()
+        let vc = R.storyboard.top_iPad.account()
         self.navigationController?.pushViewController(vc!, animated: true)
     }
 }
