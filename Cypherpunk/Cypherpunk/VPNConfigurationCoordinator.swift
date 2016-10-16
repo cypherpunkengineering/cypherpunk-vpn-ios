@@ -116,6 +116,11 @@ open class VPNConfigurationCoordinator {
 
             manager.isOnDemandEnabled = true
             manager.isEnabled = true
+            manager.saveToPreferences(completionHandler: { (error) in
+                if error != nil {
+                    print(error)
+                }
+            })
 
             if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
                 try manager.connection.startVPNTunnel()
@@ -132,6 +137,11 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.isOnDemandEnabled = false
         manager.isEnabled = false
+        manager.saveToPreferences(completionHandler: { (error) in
+            if error != nil {
+                print(error)
+            }
+        })
         manager.connection.stopVPNTunnel()
     }
     
