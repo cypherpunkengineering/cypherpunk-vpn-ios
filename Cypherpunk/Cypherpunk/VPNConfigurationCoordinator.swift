@@ -114,6 +114,9 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         if #available(iOS 9.0, *) {
 
+            manager.isOnDemandEnabled = true
+            manager.isEnabled = true
+
             if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
                 try manager.connection.startVPNTunnel()
             } else {
@@ -127,6 +130,8 @@ open class VPNConfigurationCoordinator {
 
     class func disconnect() {
         let manager = NEVPNManager.shared()
+        manager.isOnDemandEnabled = false
+        manager.isEnabled = false
         manager.connection.stopVPNTunnel()
     }
     
