@@ -51,7 +51,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         
         let accountState = mainStore.state.accountState
         mailAddressLabel.text = accountState.mailAddress ?? ""
-        usernameLabelButton.setTitle(accountState.nickName, for: .normal)
+        usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
         self.tableView.reloadData()
     }
     
