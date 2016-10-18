@@ -14,7 +14,7 @@ class AnimationViewController: UIViewController {
     
     let itemSize = CGSize(width: 14,height: 22)
     
-    let scrollDistancePerSec = 2.625
+    let scrollDistancePerSec = 6.0
     
     var animationLayer: CALayer!
     override func viewDidLoad() {
@@ -74,7 +74,7 @@ class AnimationViewController: UIViewController {
     func updateAnimationState(status: NEVPNStatus) {
         switch status {
         case .connected:
-            speed = 2.0
+            speed = 1.0
             if animationLayer != nil && animationLayer.sublayers != nil {
                 for row in animationLayer.sublayers! {
                     for textLayer in row.sublayers! {
@@ -92,7 +92,7 @@ class AnimationViewController: UIViewController {
                 }
             }
         case .connecting:
-            speed = 1.5
+            speed = 1.0
             if animationLayer != nil && animationLayer.sublayers != nil {
                 for row in animationLayer.sublayers! {
                     for textLayer in row.sublayers! {
@@ -150,6 +150,9 @@ class AnimationViewController: UIViewController {
         }
     }
     
+    private let normalFontSize: CGFloat = 24.0
+    private let multibyteCharacterFontSize: CGFloat = 18.0
+    
     func instanceAnimationLayer() -> CALayer {
         
         let layer = CALayer()
@@ -157,7 +160,13 @@ class AnimationViewController: UIViewController {
         
         let horizontalItemsCount = Int(ceil(view.frame.width / (itemSize.width + 3.0)))
         let verticalItemsCount = Int(ceil(view.frame.height / itemSize.height)) + 4
-        let font = UIFont(name: "Menlo-Regular", size: 21)
+        let font = R.font.inconsolataRegular(size: normalFontSize)
+        let menlo = UIFont(name: "Menlo-Regular", size: 20)
+        print("inconsolata 23: \(font!.ascender - font!.descender)")
+        print("Menlo 20: \(menlo!.ascender - menlo!.descender)")
+        print("Hiragino 17: \(UIFont.systemFont(ofSize: multibyteCharacterFontSize).ascender - UIFont.systemFont(ofSize: multibyteCharacterFontSize).descender)")
+
+        print(UIFont.familyNames)//            R.font.inconsolataRegular(size: 21)
 
         let deviceNameColumn = horizontalItemsCount - 2
         let deviceName = SpecificDataProvider.deviceName().uppercased()
@@ -185,19 +194,24 @@ class AnimationViewController: UIViewController {
                 let number = Int(arc4random_uniform(2))
                 let layoutPoint = CGPoint(x: 0 , y: CGFloat(y) * itemSize.height)
                 let frame = CGRect(origin: layoutPoint, size: itemSize)
-                
+                let multibyteSize = CGSize(width: 16.0, height: 22.0)
                 let textLayer = CATextLayer()
-                
+                textLayer.frame = frame
+
                 if x == deviceNameColumn && deviceNameStartIndex <= y && y < deviceNameEndIndex {
                     let index = deviceName.characters.index(deviceName.startIndex, offsetBy: y - deviceNameStartIndex)
                     let text = deviceName[index]
                     textLayer.string = String(text)
-                    textLayer.font = font
                     
                     if String(text).canBeConverted(to: .ascii) == false {
-                        textLayer.fontSize = 17
+                        textLayer.fontSize = multibyteCharacterFontSize
+                        let layoutPoint = CGPoint(x: -2 , y: CGFloat(y) * itemSize.height + 2)
+                        
+                        textLayer.frame = CGRect(origin: layoutPoint, size: multibyteSize)
+                        textLayer.font = UIFont.systemFont(ofSize: multibyteCharacterFontSize)
                     } else {
-                        textLayer.fontSize = 20
+                        textLayer.fontSize = normalFontSize
+                        textLayer.font = font
                     }
                     let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
                     textLayer.foregroundColor = baseColor.cgColor
@@ -205,24 +219,26 @@ class AnimationViewController: UIViewController {
                     let index = carrierName.characters.index(carrierName.startIndex, offsetBy: y - carrierNameStartIndex)
                     let text = carrierName.characters[index]
                     textLayer.string = String(text)
-                    textLayer.font = font
                     if String(text).canBeConverted(to: .ascii) == false {
-                        textLayer.fontSize = 17
+                        textLayer.fontSize = multibyteCharacterFontSize
+                        let layoutPoint = CGPoint(x: -2 , y: CGFloat(y) * itemSize.height + 2)
+
+                        textLayer.frame = CGRect(origin: layoutPoint, size: multibyteSize)
+                        textLayer.font = UIFont.systemFont(ofSize: multibyteCharacterFontSize)
                     } else {
-                        textLayer.fontSize = 20
+                        textLayer.fontSize = normalFontSize
+                        textLayer.font = font
                     }
                     let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
                     textLayer.foregroundColor = baseColor.cgColor
                 } else {
                     textLayer.string = String(number)
                     textLayer.font = font
-                    textLayer.fontSize = 20
+                    textLayer.fontSize = normalFontSize
                     
                     let baseColor = UIColor.white
                     textLayer.foregroundColor = baseColor.withAlphaComponent(0.15).cgColor
                 }
-                
-                textLayer.frame = frame
                 
                 textLayer.alignmentMode = kCAAlignmentCenter
                 textLayer.contentsScale = UIScreen.main.scale
