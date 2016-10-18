@@ -106,7 +106,7 @@ class RegionSelectViewController: UITableViewController {
             region = otherResults[indexPath.row]
         }
         
-        mainStore.dispatch(RegionAction.changeRegion(name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode))
+        mainStore.dispatch(RegionAction.changeRegion(name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
         let manager = NEVPNManager.shared()
         let isConnected = manager.connection.status == .connected
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {

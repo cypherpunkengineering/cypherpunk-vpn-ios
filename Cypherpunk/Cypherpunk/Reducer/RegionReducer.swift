@@ -19,15 +19,17 @@ struct RegionReducer: Reducer {
         var regionState = state ?? RegionState(
             name:  "",
             serverIP: "",
-            countryCode: ""
+            countryCode: "",
+            remoteIdentifier: ""
         )
         
         if let action = action as? RegionAction {
             switch action {
-            case .changeRegion(let name, let serverIP, let countryCode):
+            case .changeRegion(let name, let serverIP, let countryCode, let remoteidentifier):
                 regionState.name = name
                 regionState.serverIP = serverIP
                 regionState.countryCode = countryCode
+                regionState.remoteIdentifier = remoteidentifier
             case .connect:
                 break
             }

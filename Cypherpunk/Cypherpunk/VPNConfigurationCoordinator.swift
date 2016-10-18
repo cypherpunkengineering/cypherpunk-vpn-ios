@@ -29,39 +29,32 @@ open class VPNConfigurationCoordinator {
                 newIPSec = NEVPNProtocolIKEv2()
 
                 newIPSec.authenticationMethod = .none
-                newIPSec.serverAddress = mainStore.state.regionState.serverIP
+                newIPSec.serverAddress = mainStore.state.regionState.serverIP // IPSecDefault
 
                 newIPSec.useExtendedAuthentication = true
                 newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
-                let password = "test123"
+                let password = mainStore.state.accountState.password ?? "test123"
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
-                newIPSec.localIdentifier = "cypherpunk-vpn-ios" // String.randomStringForLocalIdentifier() // "test.test.test"
-                newIPSec.remoteIdentifier = "tokyo.vpn.cypherpunk.network"
-
-                //let p12path = Bundle.main.path(forResource: "test", ofType: "p12")!
-                //let p12data = try! Data(contentsOf: URL(fileURLWithPath: p12path))
-                //newIPSec.identityData = p12data
-                //newIPSec.identityDataPassword = ""
+                newIPSec.localIdentifier = "cypherpunk-vpn-ios"
+                newIPSec.remoteIdentifier = mainStore.state.regionState.remoteIdentifier // IPSecHostname
             }
             else
             {
                 newIPSec = NEVPNProtocolIPSec()
 
                 newIPSec.authenticationMethod = .none
-                newIPSec.serverAddress = mainStore.state.regionState.serverIP
+                newIPSec.serverAddress = mainStore.state.regionState.serverIP // IPSecDefault
 
                 newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
-                //let pskString = "presharedsecretkey"
-                //newIPSec.sharedSecretReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: pskString, forKey: "psk")
 
                 newIPSec.useExtendedAuthentication = true
                 newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
-                let password = "test123"
+                let password = mainStore.state.accountState.password ?? "test123"
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
-                newIPSec.localIdentifier = "cypherpunk-vpn-ios" // String.randomStringForLocalIdentifier()
-                newIPSec.remoteIdentifier = "tokyo.vpn.cypherpunk.network"
+                newIPSec.localIdentifier = "cypherpunk-vpn-ios"
+                newIPSec.remoteIdentifier = mainStore.state.regionState.remoteIdentifier // IPSecHostname
             }
 
 
@@ -77,9 +70,6 @@ open class VPNConfigurationCoordinator {
 
             if mainStore.state.settingsState.isAutoReconnect == true
             {
-                //let evaluateRule = NEEvaluateConnectionRule(matchDomains: [ "*" ], andAction: .connectIfNeeded)
-                //onDemandRule.connectionRules = [evaluateRule]
-                
                 let onDemandRule = NEOnDemandRuleConnect()
                 manager.onDemandRules = [onDemandRule]
                 manager.isOnDemandEnabled = true
