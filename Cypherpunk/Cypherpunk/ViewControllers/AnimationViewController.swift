@@ -161,12 +161,6 @@ class AnimationViewController: UIViewController {
         let horizontalItemsCount = Int(ceil(view.frame.width / (itemSize.width + 3.0)))
         let verticalItemsCount = Int(ceil(view.frame.height / itemSize.height)) + 4
         let font = R.font.inconsolataRegular(size: normalFontSize)
-        let menlo = UIFont(name: "Menlo-Regular", size: 20)
-        print("inconsolata 23: \(font!.ascender - font!.descender)")
-        print("Menlo 20: \(menlo!.ascender - menlo!.descender)")
-        print("Hiragino 17: \(UIFont.systemFont(ofSize: multibyteCharacterFontSize).ascender - UIFont.systemFont(ofSize: multibyteCharacterFontSize).descender)")
-
-        print(UIFont.familyNames)//            R.font.inconsolataRegular(size: 21)
 
         let deviceNameColumn = horizontalItemsCount - 2
         let deviceName = SpecificDataProvider.deviceName().uppercased()
