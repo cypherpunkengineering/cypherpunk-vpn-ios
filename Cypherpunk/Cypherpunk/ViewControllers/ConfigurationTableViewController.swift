@@ -12,6 +12,7 @@ class ConfigurationTableViewController: UITableViewController {
     
     @IBOutlet weak var vpnAlwaysOnSwitch: UISwitch!
     @IBOutlet weak var autoConnectOnBootSwitch: UISwitch!
+    @IBOutlet weak var vpnProtocolValueLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -22,7 +23,7 @@ class ConfigurationTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.isNavigationBarHidden = false
-        
+        vpnProtocolValueLabel.text = mainStore.state.settingsState.vpnProtocolMode.description
         self.tableView.reloadData()
     }
     
