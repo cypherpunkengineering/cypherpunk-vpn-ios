@@ -22,8 +22,10 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var cancelEmbededView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var regionButton: UIButton!
+    @IBOutlet weak var regionButton: UIButton?
 
+    @IBOutlet weak var connectingStateLabel: UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,9 +48,9 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             NSForegroundColorAttributeName: UIColor.white
         ]
         let cancelAttributed = NSAttributedString(string: "Cancel", attributes: attributes)
-        cancelButton.setAttributedTitle(cancelAttributed, for: .normal)
-        regionButton.setTitle(mainStore.state.regionState.title, for: .normal)
-        regionButton.setImage(UIImage(named: mainStore.state.regionState.countryCode), for: .normal)
+        cancelButton?.setAttributedTitle(cancelAttributed, for: .normal)
+        regionButton?.setTitle(mainStore.state.regionState.title, for: .normal)
+        regionButton?.setImage(UIImage(named: mainStore.state.regionState.countryCode), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +106,8 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
         
         connectingButton.layer.removeAnimation(forKey: "rotation")
         cancelEmbededView.isHidden = true
-
+        connectionStateLabel.isHidden = false
+        
         switch status {
         case .connected:
             connectedButton.isHidden = false
@@ -125,6 +128,11 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             disconnectedButton.isHidden = true
             disconnectedButton.isEnabled = true
             cancelEmbededView.isHidden = false
+            
+            if connectingStateLabel != nil {
+                connectionStateLabel.isHidden = true
+            }
+            
         case .disconnected:
             connectedButton.isHidden = true
             connectingButton.isHidden = true
@@ -171,8 +179,8 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
     }
 
     func newState(state: AppState) {
-        regionButton.setTitle(state.regionState.title, for: .normal)
-        regionButton.setImage(UIImage(named: state.regionState.countryCode)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        regionButton?.setTitle(state.regionState.title, for: .normal)
+        regionButton?.setImage(UIImage(named: state.regionState.countryCode)?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
 }

@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t8E-0d-eHG">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t8E-0d-eHG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +23,7 @@
         <scene sceneID="q29-oO-DEh">
             <objects>
                 <navigationController id="cVP-0K-Ofi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kgw-Rx-IUm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kgw-Rx-IUm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,7 +66,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KJN-iJ-OYp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ntq-hq-IK8">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcW-v4-z29" customClass="TwoColorGradientView" customModule="Cypherpunk" customModuleProvider="target">
@@ -89,6 +90,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" priority="250" constant="250" id="RWS-nM-PUJ"/>
                                 </constraints>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="RWS-nM-PUJ"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="7mB-VQ-fb5" kind="embed" id="Nkf-cj-hP6"/>
                                 </connections>
@@ -132,6 +138,27 @@
                                     <segue destination="DOb-wr-lDz" kind="embed" id="l6Y-MV-Bt4"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xz-Gx-FOW">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="K4R-92-yOR">
+                                        <variation key="widthClass=compact" constant="48"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <state key="normal" title="Japan">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="K4R-92-yOR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="K4R-92-yOR"/>
+                                    </mask>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -141,6 +168,7 @@
                             <constraint firstItem="NHh-Bm-INH" firstAttribute="top" secondItem="EXU-JE-Og2" secondAttribute="bottom" constant="-647" id="DyB-gI-wp4">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
+                            <constraint firstAttribute="trailing" secondItem="9Xz-Gx-FOW" secondAttribute="trailing" id="FkH-40-467"/>
                             <constraint firstItem="S8w-76-peP" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leading" id="Go1-Fo-hgG"/>
                             <constraint firstItem="vOF-NQ-NxU" firstAttribute="top" secondItem="S8w-76-peP" secondAttribute="bottom" id="GoO-UB-i2F"/>
                             <constraint firstAttribute="bottom" secondItem="NHh-Bm-INH" secondAttribute="bottom" id="Kyv-M1-9hW"/>
@@ -149,11 +177,15 @@
                             <constraint firstItem="S8w-76-peP" firstAttribute="top" secondItem="2fB-go-XnJ" secondAttribute="bottom" id="Ovw-VF-Brg"/>
                             <constraint firstItem="KJN-iJ-OYp" firstAttribute="top" secondItem="EXU-JE-Og2" secondAttribute="bottom" constant="24" id="PSx-lI-TDD"/>
                             <constraint firstItem="hcW-v4-z29" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leading" id="TOa-54-74Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9Xz-Gx-FOW" secondAttribute="trailing" constant="164" id="TWJ-uq-KmS">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="EXU-JE-Og2" firstAttribute="leading" secondItem="KuI-Eg-TtN" secondAttribute="trailing" constant="12" id="VN0-eu-gZw"/>
                             <constraint firstItem="EXU-JE-Og2" firstAttribute="top" secondItem="S8w-76-peP" secondAttribute="bottom" constant="7" id="Vds-Oq-YoY">
                                 <variation key="widthClass=compact" constant="8"/>
                             </constraint>
                             <constraint firstItem="hcW-v4-z29" firstAttribute="top" secondItem="2fB-go-XnJ" secondAttribute="bottom" constant="-64" id="XK2-EV-1FI"/>
+                            <constraint firstItem="9Xz-Gx-FOW" firstAttribute="leading" secondItem="KuI-Eg-TtN" secondAttribute="trailing" id="Ygq-NC-1Z6"/>
                             <constraint firstItem="kNB-Mt-7k6" firstAttribute="bottom" secondItem="EXU-JE-Og2" secondAttribute="bottom" id="bbi-7F-UGS"/>
                             <constraint firstAttribute="trailing" secondItem="vOF-NQ-NxU" secondAttribute="trailing" id="c6G-e5-1GV"/>
                             <constraint firstAttribute="trailing" secondItem="EXU-JE-Og2" secondAttribute="trailing" constant="12" id="dLE-OG-yIV"/>
@@ -161,6 +193,9 @@
                             <constraint firstItem="vOF-NQ-NxU" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leadingMargin" id="dlL-Rn-ljM"/>
                             <constraint firstItem="NHh-Bm-INH" firstAttribute="width" secondItem="ntq-hq-IK8" secondAttribute="width" id="dmg-zn-fi7"/>
                             <constraint firstItem="kNB-Mt-7k6" firstAttribute="top" secondItem="EXU-JE-Og2" secondAttribute="top" id="eF0-s3-j0O"/>
+                            <constraint firstItem="9Xz-Gx-FOW" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leadingMargin" constant="164" id="f2e-ua-R4o">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="KJN-iJ-OYp" firstAttribute="top" secondItem="vOF-NQ-NxU" secondAttribute="bottom" id="hrZ-Na-snU"/>
                             <constraint firstItem="KuI-Eg-TtN" firstAttribute="leading" secondItem="NHh-Bm-INH" secondAttribute="trailing" id="jWr-d1-Mnz"/>
                             <constraint firstItem="KuI-Eg-TtN" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leading" id="kAy-Ag-Vch"/>
@@ -169,24 +204,43 @@
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="hcW-v4-z29" secondAttribute="trailing" id="r3W-yt-RHc"/>
                             <constraint firstItem="NHh-Bm-INH" firstAttribute="top" secondItem="S8w-76-peP" secondAttribute="bottom" id="tnA-FK-4W1"/>
+                            <constraint firstItem="9Xz-Gx-FOW" firstAttribute="top" secondItem="EXU-JE-Og2" secondAttribute="bottom" constant="-327" id="xRr-rY-eKI">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="kNB-Mt-7k6" firstAttribute="leading" secondItem="EXU-JE-Og2" secondAttribute="leading" id="zV0-g8-W4Q"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="9Xz-Gx-FOW"/>
+                            </mask>
                             <mask key="constraints">
+                                <exclude reference="lcA-Bq-a1Z"/>
                                 <exclude reference="kAy-Ag-Vch"/>
                                 <exclude reference="DyB-gI-wp4"/>
                                 <exclude reference="dmg-zn-fi7"/>
-                                <exclude reference="lcA-Bq-a1Z"/>
+                                <exclude reference="FkH-40-467"/>
+                                <exclude reference="TWJ-uq-KmS"/>
+                                <exclude reference="Ygq-NC-1Z6"/>
+                                <exclude reference="f2e-ua-R4o"/>
+                                <exclude reference="xRr-rY-eKI"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="9Xz-Gx-FOW"/>
+                            </mask>
                             <mask key="constraints">
+                                <exclude reference="VN0-eu-gZw"/>
+                                <include reference="lcA-Bq-a1Z"/>
                                 <include reference="kAy-Ag-Vch"/>
                                 <include reference="DyB-gI-wp4"/>
                                 <include reference="dmg-zn-fi7"/>
                                 <exclude reference="tnA-FK-4W1"/>
-                                <exclude reference="VN0-eu-gZw"/>
-                                <include reference="lcA-Bq-a1Z"/>
+                                <include reference="FkH-40-467"/>
+                                <exclude reference="TWJ-uq-KmS"/>
+                                <include reference="Ygq-NC-1Z6"/>
+                                <exclude reference="f2e-ua-R4o"/>
+                                <include reference="xRr-rY-eKI"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -244,7 +298,7 @@
                         <viewControllerLayoutGuide type="bottom" id="TXv-hg-QBm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IOi-yq-JUr">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="540" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzh-sl-51g">
@@ -275,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jj-8f-8L5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-258" y="-857"/>
+            <point key="canvasLocation" x="-23" y="-858"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d74-gC-XzJ">
@@ -317,13 +371,13 @@
         <!--Connection Buttons View Controller-->
         <scene sceneID="o7i-3h-Ywb">
             <objects>
-                <viewController id="DOb-wr-lDz" customClass="ConnectionButtonsViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectionButtons" id="DOb-wr-lDz" customClass="ConnectionButtonsViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ekT-jK-8lA"/>
                         <viewControllerLayoutGuide type="bottom" id="jI1-QF-CGJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ilk-gV-bU1">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="639"/>
+                        <rect key="frame" x="0.0" y="0.0" width="493" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIW-er-wUs">
@@ -465,7 +519,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="Account" title="Configuration" id="bMP-2x-2J1" customClass="AccountConfigurationTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="8LF-Lg-CGM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
@@ -474,10 +528,10 @@
                             <tableViewSection headerTitle=" " id="8fc-Pz-auZ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" rowHeight="59" id="qVV-tZ-yWs" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="119.33333333333334" width="414" height="59"/>
+                                        <rect key="frame" x="0.0" y="120" width="540" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qVV-tZ-yWs" id="JZd-65-kRw">
-                                            <frame key="frameInset" width="414" height="58.666666666666664"/>
+                                            <frame key="frameInset" width="540" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDL-na-egZ" customClass="ThemedTintedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
@@ -502,21 +556,21 @@
                             <tableViewSection headerTitle="Account Type" id="R1Z-YO-jy1">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" textLabel="6H5-JA-iGW" detailTextLabel="LeA-Gs-R3H" rowHeight="44" style="IBUITableViewCellStyleValue1" id="ebF-yF-Jvz" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="234.33333333333334" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="236" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ebF-yF-Jvz" id="1NO-iO-fH4">
-                                            <frame key="frameInset" width="414" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="540" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Montyly Premium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6H5-JA-iGW">
-                                                    <frame key="frameInset" minX="14.999999999999993" minY="12.999999999999998" width="126.33333333333333" height="19.333333333333332"/>
+                                                    <frame key="frameInset" minX="15" minY="12" width="127" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Renews On 02/02/2016" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LeA-Gs-R3H">
-                                                    <frame key="frameInset" minX="250.66666666666663" minY="11.999999999999998" width="148.33333333333334" height="20.333333333333332"/>
+                                                    <frame key="frameInset" minX="376" minY="11" width="149" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -529,14 +583,14 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="nKI-1Z-rTN" rowHeight="44" style="IBUITableViewCellStyleDefault" id="IeI-la-fZb" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="278.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="280" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IeI-la-fZb" id="oIs-P2-2Ju">
-                                            <frame key="frameInset" width="381" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="507" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Upgrade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nKI-1Z-rTN">
-                                                    <frame key="frameInset" minX="15" width="364" height="43.666666666666664"/>
+                                                    <frame key="frameInset" minX="15" width="490" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -552,14 +606,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="E1q-93-YZw" rowHeight="44" style="IBUITableViewCellStyleDefault" id="MzJ-xk-5qR" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="322.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="324" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MzJ-xk-5qR" id="Uc7-7X-Yv3">
-                                            <frame key="frameInset" width="381" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="507" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Get Premium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E1q-93-YZw">
-                                                    <frame key="frameInset" minX="15" width="364" height="43.666666666666664"/>
+                                                    <frame key="frameInset" minX="15" width="490" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -579,21 +633,21 @@
                             <tableViewSection headerTitle="Account Details" id="DmA-4v-Dkj">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="wjj-9e-dlG" detailTextLabel="9ur-l0-4UD" rowHeight="44" style="IBUITableViewCellStyleValue1" id="Ht7-Po-Yk2" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="422.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="425" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ht7-Po-Yk2" id="nKS-pK-Eok">
-                                            <frame key="frameInset" width="381" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="507" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wjj-9e-dlG">
-                                                    <frame key="frameInset" minX="15" minY="12.999999999999998" width="39" height="19.333333333333332"/>
+                                                    <frame key="frameInset" minX="15" minY="12" width="39" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9ur-l0-4UD">
-                                                    <frame key="frameInset" minX="343.33333333333331" minY="11.999999999999998" width="35.666666666666664" height="20.333333333333332"/>
+                                                    <frame key="frameInset" minX="469" minY="11" width="36" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -609,14 +663,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="li2-WF-TKr" rowHeight="44" style="IBUITableViewCellStyleDefault" id="lgg-Nc-UH5" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="466.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="469" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lgg-Nc-UH5" id="BWT-0k-9sp">
-                                            <frame key="frameInset" width="381" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="507" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="li2-WF-TKr">
-                                                    <frame key="frameInset" minX="15" width="364" height="43.666666666666664"/>
+                                                    <frame key="frameInset" minX="15" width="490" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -636,14 +690,14 @@
                             <tableViewSection headerTitle="More" id="fBh-qE-4tP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="CNr-2o-ESG" style="IBUITableViewCellStyleDefault" id="RhI-H5-bz7" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="566.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="570" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RhI-H5-bz7" id="lmY-T5-33d">
-                                            <frame key="frameInset" width="381" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="507" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Contact us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CNr-2o-ESG">
-                                                    <frame key="frameInset" minX="15" width="364" height="43.666666666666664"/>
+                                                    <frame key="frameInset" minX="15" width="490" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -659,14 +713,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="0.0" textLabel="MDX-0R-xsW" style="IBUITableViewCellStyleDefault" id="th2-iH-AkT" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="610.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="614" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="th2-iH-AkT" id="0nv-ts-Xv3">
-                                            <frame key="frameInset" width="414" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="540" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Log out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MDX-0R-xsW">
-                                                    <frame key="frameInset" minX="15" width="384" height="43.666666666666664"/>
+                                                    <frame key="frameInset" minX="15" width="510" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -739,7 +793,7 @@
                         <viewControllerLayoutGuide type="bottom" id="a4M-Ef-1C4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ljJ-gM-DA3" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMt-J4-d9z">
@@ -782,7 +836,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8a4-AD-xs4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bi-9I-g6L">
-                        <rect key="frame" x="0.0" y="0.0" width="394" height="671"/>
+                        <rect key="frame" x="0.0" y="0.0" width="748" height="959"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnN-89-7vf">

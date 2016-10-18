@@ -9,14 +9,21 @@
 import UIKit
 import NetworkExtension
 
-class PadTopRootViewController: UIViewController {
+import ReSwift
 
-    @IBOutlet weak var installPreferencesView: UIView!
+class PadTopRootViewController: UIViewController, StoreSubscriber {
+
+    @IBOutlet weak var installPreferencesView: UIView?
     @IBOutlet weak var animationContainerView: UIView!
     @IBOutlet weak var connectionActionView: UIView!
     @IBOutlet weak var locationActionView: UIView!
-    @IBOutlet weak var contentsSeparatorView: UIView!
+    @IBOutlet weak var contentsSeparatorView: UIView?
 
+    @IBOutlet weak var regionButton: UIButton?
+    @IBOutlet weak var expandArrowImageView: UIImageView!
+    
+    var isExpand: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,11 +45,28 @@ class PadTopRootViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.isNavigationBarHidden = true
         VPNConfigurationCoordinator.load {_ in
             let status = NEVPNManager.shared().connection.status
             self.updateView(withVPNStatus: status)
         }
+        
+        if isExpand {
+            let angle = M_PI_2
+            expandArrowImageView.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
+        } else {
+            let angle = -M_PI_2
+            expandArrowImageView.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
+        }
+        
+        mainStore.subscribe(self)
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        mainStore.unsubscribe(self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,28 +85,34 @@ class PadTopRootViewController: UIViewController {
     func updateView(withVPNStatus status: NEVPNStatus) {
         if status == .invalid {
             if TARGET_OS_SIMULATOR == 0 {
-                installPreferencesView.isHidden = false
+                installPreferencesView?.isHidden = false
                 connectionActionView.isHidden = true
                 locationActionView.isHidden = true
                 animationContainerView.isHidden = true
-                contentsSeparatorView.isHidden = true                
+                contentsSeparatorView?.isHidden = true
             }
         } else {
-            installPreferencesView.isHidden = true
+            installPreferencesView?.isHidden = true
             connectionActionView.isHidden = false
             locationActionView.isHidden = false
             animationContainerView.isHidden = false
-            contentsSeparatorView.isHidden = false
+            contentsSeparatorView?.isHidden = false
         }
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func newState(state: AppState) {
+        regionButton?.setTitle(state.regionState.title, for: .normal)
+        regionButton?.setImage(UIImage(named: state.regionState.countryCode)?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
-    */
+    
+    @IBAction func transitionToConfigurationAction(_ sender: AnyObject) {
+        let vc = R.storyboard.configuration.configuration()
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    @IBAction func transitionToAccountAction(_ sender: AnyObject) {
+        let vc = R.storyboard.top_iPad.account()
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+
 
 }
