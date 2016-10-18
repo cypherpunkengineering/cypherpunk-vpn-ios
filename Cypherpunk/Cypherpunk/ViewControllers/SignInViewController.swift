@@ -60,12 +60,21 @@ class SignInViewController: UIViewController, StoreSubscriber {
             Session.send(request, callbackQueue: nil, handler: { (result) in
                 switch result {
                 case .success(let response):
-                    mainStore.dispatch(AccountAction.login(response: response))
+                    let regionRequest = RegionListRequest(session: response.session)
+                    Session.send(regionRequest) { (result) in
+                        switch result {
+                        case .success(_):
+                            mainStore.dispatch(AccountAction.login(response: response))
+                        case .failure(let error):
+                            SVProgressHUD.showError(withStatus: "\((error as NSError).localizedDescription)")
+                        }
+                        IndicatorView.dismiss()
+                    }
                 case .failure(let error):
                     SVProgressHUD.showError(withStatus: "\((error as NSError).localizedDescription)")
+                    IndicatorView.dismiss()
                 }
                 
-                IndicatorView.dismiss()
             })
             
         }

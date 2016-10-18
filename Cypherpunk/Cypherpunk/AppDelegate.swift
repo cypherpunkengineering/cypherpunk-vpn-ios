@@ -52,22 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Realm.Configuration.defaultConfiguration = config
         
-        let realm = try! Realm()
-        try! realm.write {
-            if realm.objects(Region.self).count == 0 {
-                realm.add(Region(name: "Tokyo-Dev", ipAddress: "208.111.52.33",countryCode: "jp"))
-                realm.add(Region(name: "Tokyo1", ipAddress: "208.111.52.1", countryCode: "jp"))
-                realm.add(Region(name: "Tokyo2", ipAddress: "208.111.52.42",countryCode: "jp"))
-                //realm.add(Region(name: "Tokyo-DNS-RR", ipAddress: "tokyo.cypherpunk.network",countryCode: "jp"))
-                realm.add(Region(name: "Honolulu", ipAddress: "199.68.252.203", countryCode: "us"))
-            }
-            
-        }
-
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             
             self.window?.rootViewController = R.storyboard.top_iPad.instantiateInitialViewController()
-            
 
             DispatchQueue.main.async { [unowned self] in
                 let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()

@@ -42,7 +42,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         
         if let state = mainStore.state {
             regionButton?.setTitle(state.regionState.title, for: .normal)
-            regionButton?.setImage(UIImage(named: state.regionState.countryCode)?.withRenderingMode(.alwaysOriginal), for: .normal)
+            regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
     }
     
@@ -116,7 +116,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     
     func newState(state: AppState) {
         regionButton?.setTitle(state.regionState.title, for: .normal)
-        regionButton?.setImage(UIImage(named: state.regionState.countryCode)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
     @IBAction func transitionToConfigurationAction(_ sender: AnyObject) {

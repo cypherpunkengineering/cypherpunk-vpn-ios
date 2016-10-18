@@ -45,14 +45,40 @@ struct RegionListRequest: Request {
                 realm.deleteAll()
                 for (_, list) in areaDictionary {
                     if let countriesDictionary = list as? Dictionary<String, AnyObject> {
-                        for (_, list) in countriesDictionary {
-                            if let cityList = list as? Array<Dictionary<String, String>> {
-                                for city in cityList {
-                                    let cityname = city["city"]
-                                    let ip = city["ip"]
-                                    
-                                    let region = Region(name: cityname!, ipAddress: ip!, countryCode: nil)
-                                    realm.add(region, update: true)
+                        for (country, list) in countriesDictionary {
+                            if let serverList = list as? Array<Dictionary<String, String>> {
+                                for server in serverList {
+                                    let id = server["id"]
+                                    if let region = realm.object(ofType: Region.self, forPrimaryKey: id) {
+                                        region.regionName = server["regionName"]!
+                                        region.ovHostname = server["ovHostname"]!
+                                        region.ovDefault = server["ovDefault"]!
+                                        region.ovNone = server["ovNone"]!
+                                        region.ovStrong = server["ovStrong"]!
+                                        region.ovStealth = server["ovStealth"]!
+                                        region.ipsecHostname = server["ipsecHostname"]!
+                                        region.ipsecDefault = server["ipsecDefault"]!
+                                        region.httpDefault = server["httpDefault"]!
+                                        region.socksDefault = server["socksDefault"]!
+                                        region.countryCode = country
+                                        
+                                    } else {
+                                        let region = Region(
+                                            id: id!,
+                                            regionName: server["regionName"]!,
+                                            ovHostname: server["ovHostname"]!,
+                                            ovDefault: server["ovDefault"]!,
+                                            ovNone: server["ovNone"]!,
+                                            ovStrong: server["ovStrong"]!,
+                                            ovStealth: server["ovStealth"]!,
+                                            ipsecHostname: server["ipsecHostname"]!,
+                                            ipsecDefault: server["ipsecDefault"]!,
+                                            httpDefault: server["httpDefault"]!,
+                                            socksDefault: server["socksDefault"]!,
+                                            countryCode: country
+                                        )
+                                        realm.add(region, update: true)
+                                    }
                                 }
                             }
                         }
@@ -66,7 +92,7 @@ struct RegionListRequest: Request {
     }
     
     var dataParser: DataParser {
-        return JSONDataParser(readingOptions: .allowFragments)
+        return JSONDataParser(readingOptions: [])
     }
 }
 
@@ -74,20 +100,39 @@ struct RegionListRequest: Request {
 import Realm
 
 class Region: Object {
-    dynamic var name: String = ""
-    dynamic var ipAddress: String = ""
-    dynamic var countryCode: String? = nil
+    dynamic var id: String = ""
+    dynamic var regionName: String = ""
+    dynamic var ovHostname: String = ""
+    dynamic var ovDefault: String = ""
+    dynamic var ovNone: String = ""
+    dynamic var ovStrong: String = ""
+    dynamic var ovStealth: String = ""
+    dynamic var ipsecHostname: String = ""
+    dynamic var ipsecDefault: String = ""
+    dynamic var httpDefault: String = ""
+    dynamic var socksDefault: String = ""
+    dynamic var countryCode: String = ""
     dynamic var isFavorite: Bool = false
-    dynamic var isRecommended: Bool = false
+    dynamic var lastConnectedDate: Date = Date(timeIntervalSince1970: 1)
     
-    init(name: String, ipAddress: String, countryCode: String?) {
-        super.init()
+    init(id: String, regionName: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, countryCode: String) {
 
-        self.name = name
-        self.ipAddress = ipAddress
+        super.init()
+        
+        self.id = id
+        self.regionName = regionName
+        self.ovHostname = ovHostname
+        self.ovDefault = ovDefault
+        self.ovNone = ovNone
+        self.ovStrong = ovStrong
+        self.ovStealth = ovStealth
+        self.ipsecDefault = ipsecDefault
+        self.ipsecHostname = ipsecHostname
+        self.httpDefault = httpDefault
+        self.socksDefault = socksDefault
         self.countryCode = countryCode
+        self.isFavorite = false
     }
-    
     required init(realm: RLMRealm, schema: RLMObjectSchema) {
         super.init(realm: realm, schema: schema)
     }
@@ -101,37 +146,15 @@ class Region: Object {
     }
 
     override static func primaryKey() -> String? {
-        return "name"
+        return "id"
     }
     
     override var hashValue: Int {
-        return name != "" ? name.hashValue : 0
+        return id != "" ? id.hashValue : 0
     }
 
 }
 
 func ==(lhs: Region, rhs:Region) -> Bool {
     return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
-}
-
-private extension String {
-    
-    var sha256String: String {
-        return self.digest(CC_SHA256_DIGEST_LENGTH, gen: {(data, len, md) in CC_SHA256(data,len,md)})
-    }
-    
-    func digest(_ length:Int32, gen:(_ data: UnsafeRawPointer, _ len: CC_LONG, _ md: UnsafeMutablePointer<UInt8>) -> UnsafeMutablePointer<UInt8>) -> String {
-        var cStr = [UInt8](self.utf8)
-        var result = [UInt8](repeating: 0, count: Int(length))
-        gen(&cStr, CC_LONG(cStr.count), &result)
-        
-        let output = NSMutableString(capacity:Int(length))
-        
-        for r in result {
-            output.appendFormat("%02x", r)
-        }
-        
-        return String(output)
-    }
-    
 }
