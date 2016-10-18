@@ -28,41 +28,40 @@ open class VPNConfigurationCoordinator {
             {
                 newIPSec = NEVPNProtocolIKEv2()
 
-                newIPSec.authenticationMethod = .certificate
+                newIPSec.authenticationMethod = .none
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP
 
-                //newIPSec.username = mainStore.state.accountState.mailAddress ?? "testuser"
-                //let password = "testpassword"
-                //newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReferenceForSavedPassword(password, forKey: "password")
+                newIPSec.useExtendedAuthentication = true
+                newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
+                let password = "test123"
+                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
-                newIPSec.localIdentifier = "test.test.test"
-                newIPSec.remoteIdentifier = "vpn.cypherpunk.network"
+                newIPSec.localIdentifier = "cypherpunk-vpn-ios" // String.randomStringForLocalIdentifier() // "test.test.test"
+                newIPSec.remoteIdentifier = "tokyo.vpn.cypherpunk.network"
 
-                let p12path = Bundle.main.path(forResource: "test", ofType: "p12")!
-                let p12data = try! Data(contentsOf: URL(fileURLWithPath: p12path))
-
-                newIPSec.identityData = p12data
-                newIPSec.identityDataPassword = ""
-                newIPSec.useExtendedAuthentication = false
+                //let p12path = Bundle.main.path(forResource: "test", ofType: "p12")!
+                //let p12data = try! Data(contentsOf: URL(fileURLWithPath: p12path))
+                //newIPSec.identityData = p12data
+                //newIPSec.identityDataPassword = ""
             }
             else
             {
                 newIPSec = NEVPNProtocolIPSec()
 
-                newIPSec.authenticationMethod = .sharedSecret
+                newIPSec.authenticationMethod = .none
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP
 
-                let pskString = "presharedsecretkey"
-                newIPSec.sharedSecretReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: pskString, forKey: "psk")
-
-                newIPSec.username = "testuser"
-                let password = "testpassword"
-                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
+                newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
+                //let pskString = "presharedsecretkey"
+                //newIPSec.sharedSecretReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: pskString, forKey: "psk")
 
                 newIPSec.useExtendedAuthentication = true
+                newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
+                let password = "test123"
+                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
-                newIPSec.localIdentifier = ""
-                newIPSec.remoteIdentifier = "vpn.cypherpunk.com"
+                newIPSec.localIdentifier = "cypherpunk-vpn-ios" // String.randomStringForLocalIdentifier()
+                newIPSec.remoteIdentifier = "tokyo.vpn.cypherpunk.network"
             }
 
 
