@@ -20,7 +20,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var contentsSeparatorView: UIView?
 
     @IBOutlet weak var regionButton: UIButton?
-    @IBOutlet weak var expandArrowImageView: UIImageView!
+    @IBOutlet weak var expandArrowImageView: UIImageView?
     
     var isExpand: Bool = false
     
@@ -53,10 +53,10 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         
         if isExpand {
             let angle = M_PI_2
-            expandArrowImageView.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
+            expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
         } else {
             let angle = -M_PI_2
-            expandArrowImageView.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
+            expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
         }
         
         mainStore.subscribe(self)
