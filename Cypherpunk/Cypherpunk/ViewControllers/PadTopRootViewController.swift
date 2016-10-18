@@ -45,7 +45,9 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.isNavigationBarHidden = true
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
+            self.navigationController?.isNavigationBarHidden = true
+        }
         VPNConfigurationCoordinator.load {_ in
             let status = NEVPNManager.shared().connection.status
             self.updateView(withVPNStatus: status)
