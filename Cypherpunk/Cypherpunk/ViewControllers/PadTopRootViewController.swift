@@ -12,13 +12,13 @@ import NetworkExtension
 import ReSwift
 
 class PadTopRootViewController: UIViewController, StoreSubscriber {
-
+    
     @IBOutlet weak var installPreferencesView: UIView?
     @IBOutlet weak var animationContainerView: UIView!
     @IBOutlet weak var connectionActionView: UIView!
     @IBOutlet weak var locationActionView: UIView!
     @IBOutlet weak var contentsSeparatorView: UIView?
-
+    
     @IBOutlet weak var regionButton: UIButton?
     @IBOutlet weak var expandArrowImageView: UIImageView?
     
@@ -26,7 +26,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         let logoView = UIImageView(image: R.image.headerLogo())
         self.navigationItem.titleView = logoView
@@ -39,9 +39,13 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
-
+        
+        if let state = mainStore.state {
+            regionButton?.setTitle(state.regionState.title, for: .normal)
+            regionButton?.setImage(UIImage(named: state.regionState.countryCode)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -54,15 +58,15 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         }
         
         if isExpand {
-            let angle = M_PI_2
+            let angle = -M_PI_2
             expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
         } else {
-            let angle = -M_PI_2
+            let angle = M_PI_2
             expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
         }
         
         mainStore.subscribe(self)
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,15 +87,23 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         let status = connection.status
         updateView(withVPNStatus: status)
     }
-
+    
     func updateView(withVPNStatus status: NEVPNStatus) {
-        if status == .invalid {
-            if TARGET_OS_SIMULATOR == 0 {
-                installPreferencesView?.isHidden = false
-                connectionActionView.isHidden = true
-                locationActionView.isHidden = true
-                animationContainerView.isHidden = true
-                contentsSeparatorView?.isHidden = true
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+            if status == .invalid {
+                if TARGET_OS_SIMULATOR == 0 {
+                    installPreferencesView?.isHidden = false
+                    connectionActionView.isHidden = true
+                    locationActionView.isHidden = true
+                    animationContainerView.isHidden = true
+                    contentsSeparatorView?.isHidden = true
+                }
+            } else {
+                installPreferencesView?.isHidden = true
+                connectionActionView.isHidden = false
+                locationActionView.isHidden = false
+                animationContainerView.isHidden = false
+                contentsSeparatorView?.isHidden = false
             }
         } else {
             installPreferencesView?.isHidden = true
@@ -101,7 +113,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
             contentsSeparatorView?.isHidden = false
         }
     }
-
+    
     func newState(state: AppState) {
         regionButton?.setTitle(state.regionState.title, for: .normal)
         regionButton?.setImage(UIImage(named: state.regionState.countryCode)?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -115,6 +127,6 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         let vc = R.storyboard.top_iPad.account()
         self.navigationController?.pushViewController(vc!, animated: true)
     }
-
-
+    
+    
 }
