@@ -5,6 +5,13 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Inconsolata-Regular.ttf</string>
+		<string>Dosis-Bold.otf</string>
+		<string>Dosis-ExtraBold.otf</string>
+		<string>Dosis-ExtraLight.otf</string>
+		<string>Dosis-Light.otf</string>
+		<string>Dosis-Medium.otf</string>
+		<string>Dosis-Regular.otf</string>
+		<string>Dosis-SemiBold.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
