@@ -69,7 +69,6 @@
 		20D896081D23B0F4002B9F9D /* ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D896071D23B0F4002B9F9D /* ValidationTests.swift */; };
 		20D8960A1D23B764002B9F9D /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D896091D23B764002B9F9D /* LogIn.storyboard */; };
 		20DA369B1DB5E6C1003F4999 /* Inconsolata-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20DA369A1DB5E6C1003F4999 /* Inconsolata-Regular.ttf */; };
-		20EBFD401D5485D8008B9F14 /* ConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EBFD3F1D5485D8008B9F14 /* ConnectionStatusViewController.swift */; };
 		20EC4A321D2F702100785399 /* Region.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20EC4A311D2F702100785399 /* Region.storyboard */; };
 		20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A331D2F785600785399 /* RegionSelectViewController.swift */; };
 		20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A371D2F7BAE00785399 /* RegionState.swift */; };
@@ -82,9 +81,6 @@
 		20F15CEE1D8A755C0000DAA7 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */; };
 		20F15CEF1D8A755C0000DAA7 /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F15CEC1D8A755C0000DAA7 /* Hardware.swift */; };
 		20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F850901D3DF40A009079A0 /* LoginAPI.swift */; };
-		2B06416E1D6D73E5009475F4 /* StatusState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B06416D1D6D73E5009475F4 /* StatusState.swift */; };
-		2B0641701D6D7444009475F4 /* StatusAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B06416F1D6D7444009475F4 /* StatusAction.swift */; };
-		2B0641721D6D7546009475F4 /* StatusReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0641711D6D7546009475F4 /* StatusReducer.swift */; };
 		2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */; };
 		2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */; };
 		2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E41D3F98D0003FA705 /* RegionAction.swift */; };
@@ -220,7 +216,6 @@
 		20D896071D23B0F4002B9F9D /* ValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTests.swift; sourceTree = "<group>"; };
 		20D896091D23B764002B9F9D /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LogIn.storyboard; path = Cypherpunk/LogIn.storyboard; sourceTree = SOURCE_ROOT; };
 		20DA369A1DB5E6C1003F4999 /* Inconsolata-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inconsolata-Regular.ttf"; sourceTree = "<group>"; };
-		20EBFD3F1D5485D8008B9F14 /* ConnectionStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionStatusViewController.swift; sourceTree = "<group>"; };
 		20EC4A311D2F702100785399 /* Region.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Region.storyboard; sourceTree = "<group>"; };
 		20EC4A331D2F785600785399 /* RegionSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionSelectViewController.swift; sourceTree = "<group>"; };
 		20EC4A371D2F7BAE00785399 /* RegionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionState.swift; sourceTree = "<group>"; };
@@ -233,9 +228,6 @@
 		20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceList.plist; sourceTree = "<group>"; };
 		20F15CEC1D8A755C0000DAA7 /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
 		20F850901D3DF40A009079A0 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		2B06416D1D6D73E5009475F4 /* StatusState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusState.swift; sourceTree = "<group>"; };
-		2B06416F1D6D7444009475F4 /* StatusAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusAction.swift; sourceTree = "<group>"; };
-		2B0641711D6D7546009475F4 /* StatusReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusReducer.swift; sourceTree = "<group>"; };
 		2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNProtocolSelectViewController.swift; sourceTree = "<group>"; };
 		2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAPI.swift; sourceTree = "<group>"; };
 		2B2B59E41D3F98D0003FA705 /* RegionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionAction.swift; sourceTree = "<group>"; };
@@ -395,7 +387,6 @@
 				20D895FB1D23A1E7002B9F9D /* AccountState.swift */,
 				20EC4A371D2F7BAE00785399 /* RegionState.swift */,
 				20EC4A451D3780BC00785399 /* SettingsState.swift */,
-				2B06416D1D6D73E5009475F4 /* StatusState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -406,7 +397,6 @@
 				20D895FF1D23A84D002B9F9D /* AccountAction.swift */,
 				20EC4A491D378CBC00785399 /* SettingsAction.swift */,
 				2B2B59E41D3F98D0003FA705 /* RegionAction.swift */,
-				2B06416F1D6D7444009475F4 /* StatusAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -418,7 +408,6 @@
 				20D895FD1D23A637002B9F9D /* AccountReducer.swift */,
 				20EC4A391D2F82CC00785399 /* RegionReducer.swift */,
 				20EC4A471D37851200785399 /* SettingsReducer.swift */,
-				2B0641711D6D7546009475F4 /* StatusReducer.swift */,
 			);
 			path = Reducer;
 			sourceTree = "<group>";
@@ -490,7 +479,6 @@
 				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
 				2B6798E61DAC179500099064 /* AccountConfigurationTableViewController.swift */,
 				2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */,
-				20EBFD3F1D5485D8008B9F14 /* ConnectionStatusViewController.swift */,
 				203C62F31D7036C900891F91 /* FirstOpenViewController.swift */,
 				203C62F71D703A7B00891F91 /* GetPremiumPlanRootViewController.swift */,
 				203C62F51D7038E400891F91 /* GetPremiumPlanTableViewController.swift */,
@@ -963,16 +951,13 @@
 				20F15CED1D8A755C0000DAA7 /* DeviceGuru.swift in Sources */,
 				206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */,
 				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
-				2B06416E1D6D73E5009475F4 /* StatusState.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
-				20EBFD401D5485D8008B9F14 /* ConnectionStatusViewController.swift in Sources */,
 				203F4F0B1D5B1BAA00EA2536 /* ThemedLogoView.swift in Sources */,
 				203C62F81D703A7B00891F91 /* GetPremiumPlanRootViewController.swift in Sources */,
 				2BDBD0CC1D651D6700080E67 /* UpdateEmailTableViewController.swift in Sources */,
 				201809EC1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift in Sources */,
 				204BE90E1D5B28B7003D7CB5 /* ThemedSeparatorView.swift in Sources */,
-				2B0641701D6D7444009475F4 /* StatusAction.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* AccountReducer.swift in Sources */,
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
 				2092AF801DACC2B400F77031 /* ConnectionButtonsViewController.swift in Sources */,
@@ -1000,7 +985,6 @@
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
 				201809F61D5B4E8C00730FA4 /* ThemedIPAddressPanelView.swift in Sources */,
 				2B6798E21DA7885F00099064 /* ClearBackgroundSplitViewController.swift in Sources */,
-				2B0641721D6D7546009475F4 /* StatusReducer.swift in Sources */,
 				20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */,
 				2B6798E91DAC979F00099064 /* PadTopRootViewController.swift in Sources */,
 				203C62F61D7038E400891F91 /* GetPremiumPlanTableViewController.swift in Sources */,

@@ -154,7 +154,6 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
         
         if TARGET_OS_SIMULATOR != 0 {
             mainStore.dispatch(RegionAction.connect)
-            mainStore.dispatch(StatusAction.setConnectedDate(date: Date()))
             self.updateViewWithVPNStatus(.connected)
         } else {
             if sender == self.disconnectedButton {
@@ -171,7 +170,6 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
     
     @IBAction func cancelAction(_ sender: AnyObject) {
         if TARGET_OS_SIMULATOR != 0 {
-            mainStore.dispatch(StatusAction.setConnectedDate(date: nil))
             self.updateViewWithVPNStatus(.disconnected)
         }
         

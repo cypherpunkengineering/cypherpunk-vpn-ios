@@ -150,35 +150,6 @@ class TopViewController: UIViewController, StoreSubscriber {
             disconnectedButton.isEnabled = true
             cancelEmbededView.isHidden = true
             
-            let time = DispatchTime.now() + Double(Int64(3 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: time, execute: { 
-                let IPRequest = JSONIPRequest()
-                Session.send(IPRequest) {
-                    (result) in
-                    switch result {
-                    case .success(let response):
-                        let IPAddress = response.IPAddress
-                        if NEVPNManager.shared().connection.status == .connected {
-                            mainStore.dispatch(StatusAction.getNewIPAddress(address: IPAddress))
-                            let request = GeoLocationRequest(IPAddress: IPAddress)
-                            Session.send(request) {
-                                (result) in
-                                switch result {
-                                case .success(let response):
-                                    if response.isSuccess {
-                                        mainStore.dispatch(StatusAction.getNewGeoLocation(response: response))
-                                    }
-                                default:
-                                    break
-                                }
-                            }
-                        }
-                    default:
-                        break
-                    }
-                }    
-            })
-            
         case .connecting, .reasserting:
             
             let animation = CABasicAnimation(keyPath: "transform.rotation")
@@ -199,33 +170,6 @@ class TopViewController: UIViewController, StoreSubscriber {
             disconnectedButton.isHidden = false
             disconnectedButton.isEnabled = true
             cancelEmbededView.isHidden = true
-            
-            let IPRequest = JSONIPRequest()
-            Session.send(IPRequest) {
-                (result) in
-                switch result {
-                case .success(let response):
-                    let IPAddress = response.IPAddress
-                    if NEVPNManager.shared().connection.status == .disconnected {
-                        mainStore.dispatch(StatusAction.getOriginalIPAddress(address: IPAddress))
-                        let request = GeoLocationRequest(IPAddress: IPAddress)
-                        Session.send(request) {
-                            (result) in
-                            switch result {
-                            case .success(let response):
-                                if response.isSuccess {
-                                    mainStore.dispatch(StatusAction.getOriginalGeoLocation(response: response))
-                                }
-                            default:
-                                break
-                            }
-                        }
-
-                    }
-                default:
-                    break
-                }
-            }
             
         case .invalid:
             if TARGET_OS_SIMULATOR == 0 {
@@ -262,9 +206,6 @@ class TopViewController: UIViewController, StoreSubscriber {
         
         if status == .connected {
             mainStore.dispatch(RegionAction.connect)
-            mainStore.dispatch(StatusAction.setConnectedDate(date: Date()))
-        } else if status == .disconnected {
-            mainStore.dispatch(StatusAction.setConnectedDate(date: nil))
         }
 
         self.updateViewWithVPNStatus(status)
@@ -274,7 +215,6 @@ class TopViewController: UIViewController, StoreSubscriber {
         
         if TARGET_OS_SIMULATOR != 0 {
             mainStore.dispatch(RegionAction.connect)
-            mainStore.dispatch(StatusAction.setConnectedDate(date: Date()))
             self.updateViewWithVPNStatus(.connected)
             self.animationController.updateAnimationState(status: .connected)
         } else {
@@ -292,7 +232,6 @@ class TopViewController: UIViewController, StoreSubscriber {
 
     @IBAction func cancelAction(_ sender: AnyObject) {
         if TARGET_OS_SIMULATOR != 0 {
-            mainStore.dispatch(StatusAction.setConnectedDate(date: nil))
             self.updateViewWithVPNStatus(.disconnected)
             self.animationController.updateAnimationState(status: .disconnected)
         }

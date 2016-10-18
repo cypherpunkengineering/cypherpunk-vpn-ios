@@ -14,7 +14,6 @@ struct AppState: StateType {
     let accountState: AccountState
     let regionState: RegionState
     let settingsState: SettingsState
-    let statusState: StatusState
     
     var isInstalledPreferences: Bool {
         get {
