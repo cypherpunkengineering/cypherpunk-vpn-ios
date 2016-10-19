@@ -9,6 +9,8 @@
 import Foundation
 
 import ReSwift
+import RealmSwift
+
 
 struct RegionReducer: Reducer {
 
@@ -17,6 +19,7 @@ struct RegionReducer: Reducer {
     func handleAction(action: Action, state: RegionState?) -> RegionState {
         
         var regionState = state ?? RegionState(
+            regionId: "",
             name:  "",
             serverIP: "",
             countryCode: "",
@@ -25,12 +28,20 @@ struct RegionReducer: Reducer {
         
         if let action = action as? RegionAction {
             switch action {
-            case .changeRegion(let name, let serverIP, let countryCode, let remoteidentifier):
+            case .changeRegion(let regionId, let name, let serverIP, let countryCode, let remoteidentifier):
+                regionState.regionId = regionId
                 regionState.name = name
                 regionState.serverIP = serverIP
                 regionState.countryCode = countryCode
                 regionState.remoteIdentifier = remoteidentifier
+                regionState.lastSelectedRegionId = regionId
             case .connect:
+                let realm = try! Realm()
+                if let region = realm.object(ofType: Region.self, forPrimaryKey: regionState.regionId) {
+                    try! realm.write {
+                        region.lastConnectedDate = Date()
+                    }
+                }
                 break
             }
         }

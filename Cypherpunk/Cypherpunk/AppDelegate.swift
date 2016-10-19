@@ -62,6 +62,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
                 } else {
+                    let realm = try! Realm()
+                    if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
+                        
+                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+                    }
+
                     // Region Update
                     let request = RegionListRequest(session: mainStore.state.accountState.session!)
                     Session.send(request)
@@ -76,6 +82,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
                 } else {
+                    let realm = try! Realm()
+                    if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
+                        
+                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+                    }
+
                     // Region Update
                     let request = RegionListRequest(session: mainStore.state.accountState.session!)
                     Session.send(request)

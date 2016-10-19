@@ -27,9 +27,18 @@ class RegionSelectViewController: UITableViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(didChangeVPNStatus),
+            name: NSNotification.Name.NEVPNStatusDidChange,
+            object: nil
+        )
+
+        // Do any additional setup after loading the view.
         let realm = try! Realm()
         favoriteResults = realm.objects(Region.self).filter("isFavorite = true")
-        otherResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate")
+        otherResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
         
     }
     
@@ -47,6 +56,22 @@ class RegionSelectViewController: UITableViewController {
         return 3
     }
     
+    func didChangeVPNStatus(_ notification: Notification) {
+        guard let connection = notification.object as? NEVPNConnection else {
+            return
+        }
+        
+        let status = connection.status
+        
+        if status == .connected {
+            mainStore.dispatch(RegionAction.connect)
+            self.tableView.beginUpdates()
+            let set = IndexSet(integersIn: NSRange(location: 0, length: 3).toRange() ?? 0..<0)
+            self.tableView.reloadSections(set, with: .automatic)
+            self.tableView.endUpdates()
+        }
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = Section(rawValue: section)!
         
@@ -106,7 +131,7 @@ class RegionSelectViewController: UITableViewController {
             region = otherResults[indexPath.row]
         }
         
-        mainStore.dispatch(RegionAction.changeRegion(name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
         let manager = NEVPNManager.shared()
         let isConnected = manager.connection.status == .connected
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
