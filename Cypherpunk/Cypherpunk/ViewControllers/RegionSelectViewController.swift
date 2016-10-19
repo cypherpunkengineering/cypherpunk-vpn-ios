@@ -146,7 +146,7 @@ class RegionSelectViewController: UITableViewController {
             realm.add(target, update: true)
         }
         self.tableView.beginUpdates()
-        let set = IndexSet(integersIn: NSRange(location: 0, length: 4).toRange() ?? 0..<0)
+        let set = IndexSet(integersIn: NSRange(location: 0, length: 3).toRange() ?? 0..<0)
         self.tableView.reloadSections(set, with: .automatic)
         self.tableView.endUpdates()
     }
