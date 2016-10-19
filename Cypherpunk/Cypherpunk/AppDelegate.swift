@@ -58,9 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = R.storyboard.top_iPad.instantiateInitialViewController()
 
             DispatchQueue.main.async { [unowned self] in
-                let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
-                
                 if mainStore.state.accountState.isLoggedIn == false {
+                    let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
                 } else {
                     // Region Update
@@ -73,9 +72,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = R.storyboard.top.instantiateInitialViewController()
 
             DispatchQueue.main.async { [unowned self] in
-                let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
-                
                 if mainStore.state.accountState.isLoggedIn == false {
+                    let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
                 } else {
                     // Region Update
