@@ -42,14 +42,13 @@ struct RegionListRequest: Request {
             
             let realm = try! Realm()
             try! realm.write({
-                realm.deleteAll()
                 for (_, list) in areaDictionary {
                     if let countriesDictionary = list as? Dictionary<String, AnyObject> {
                         for (country, list) in countriesDictionary {
                             if let serverList = list as? Array<Dictionary<String, String>> {
                                 for server in serverList {
                                     let id = server["id"]
-                                    if let region = realm.object(ofType: Region.self, forPrimaryKey: id) {
+                                    if let region = realm.object(ofType: Region.self, forPrimaryKey: id!) {
                                         region.regionName = server["regionName"]!
                                         region.ovHostname = server["ovHostname"]!
                                         region.ovDefault = server["ovDefault"]!
