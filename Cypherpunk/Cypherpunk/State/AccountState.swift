@@ -69,14 +69,14 @@ struct AccountState: StateType {
         keychain[AccountStateKey.rawSubscriptionType] = String(subscriptionType.rawValue)
         keychain[AccountStateKey.expiredDate] = String(describing: expiredDate)
         
-        let inAppKeychain = Keychain.inAppKeychain()
-        inAppKeychain[AccountStateKey.mailAddress] = mailAddress
+        let defaults = UserDefaults.standard
+        defaults.set(mailAddress, forKey: AccountStateKey.mailAddress)
     }
     
     static func restore() -> AccountState {
         var state = AccountState(isLoggedIn: false, mailAddress: nil, password: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
-        let inAppKeychain = Keychain.inAppKeychain()
-        if let service = inAppKeychain[AccountStateKey.mailAddress] {
+        let defaults = UserDefaults.standard
+        if let service = defaults.string(forKey: AccountStateKey.mailAddress) {
             let keychain = Keychain(service: service)
             state.isLoggedIn = Bool(keychain[AccountStateKey.isLoggedIn] ?? "false")!
             state.mailAddress = keychain[AccountStateKey.mailAddress]
@@ -94,7 +94,7 @@ struct AccountState: StateType {
     }
  
     static func removeLastLoggedInService() {
-        let keychain = Keychain.inAppKeychain()
-        keychain[AccountStateKey.mailAddress] = nil
+        let defaults = UserDefaults.standard
+        defaults.set(nil, forKey: AccountStateKey.mailAddress)
     }
 }
