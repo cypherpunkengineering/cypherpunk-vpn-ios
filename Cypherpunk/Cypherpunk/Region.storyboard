@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o75-Wg-EJ9">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o75-Wg-EJ9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -69,7 +69,7 @@
         <scene sceneID="uDO-Se-wCl">
             <objects>
                 <navigationController id="o75-Wg-EJ9" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="epN-UT-1Ic" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="epN-UT-1Ic" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -97,11 +97,11 @@
                                     <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U6w-4U-O6d">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U6w-4U-O6d">
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="HUe-Ne-4jW"/>
-                                                <constraint firstAttribute="width" constant="29" id="Ku4-IR-cgT"/>
+                                                <constraint firstAttribute="height" constant="24" id="HUe-Ne-4jW"/>
+                                                <constraint firstAttribute="width" constant="24" id="Ku4-IR-cgT"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kka-7q-zdp">
@@ -124,7 +124,7 @@
                                         <constraint firstItem="Kka-7q-zdp" firstAttribute="leading" secondItem="U6w-4U-O6d" secondAttribute="trailing" constant="19" id="CpZ-cV-cXa"/>
                                         <constraint firstItem="U6w-4U-O6d" firstAttribute="leading" secondItem="cii-mf-4iU" secondAttribute="leading" constant="21" id="Dwg-kT-Oox"/>
                                         <constraint firstItem="Kka-7q-zdp" firstAttribute="top" secondItem="cii-mf-4iU" secondAttribute="top" id="Lkw-kM-LwU"/>
-                                        <constraint firstItem="U6w-4U-O6d" firstAttribute="top" secondItem="cii-mf-4iU" secondAttribute="top" constant="14" id="YBn-lA-wnU"/>
+                                        <constraint firstItem="U6w-4U-O6d" firstAttribute="centerY" secondItem="cii-mf-4iU" secondAttribute="centerY" id="Zz7-qW-BlT"/>
                                         <constraint firstAttribute="bottom" secondItem="Kka-7q-zdp" secondAttribute="bottom" id="gZd-eu-oxX"/>
                                         <constraint firstAttribute="trailing" secondItem="Ca9-Ji-i42" secondAttribute="trailing" id="weB-pb-MfA"/>
                                         <constraint firstItem="Ca9-Ji-i42" firstAttribute="centerY" secondItem="cii-mf-4iU" secondAttribute="centerY" id="yAc-sc-JWd"/>
