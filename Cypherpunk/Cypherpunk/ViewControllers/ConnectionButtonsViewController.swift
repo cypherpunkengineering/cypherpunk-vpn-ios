@@ -152,6 +152,9 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             })
 
         case .invalid:
+            self.connectedButton.alpha = 0.0
+            self.connectingButton.alpha = 0.0
+            self.disconnectedButton.alpha = 1.0
             break
         case .disconnecting:
             self.connectingButton.alpha = 0.0
