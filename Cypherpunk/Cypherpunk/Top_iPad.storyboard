@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t8E-0d-eHG">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t8E-0d-eHG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -23,7 +23,7 @@
         <scene sceneID="q29-oO-DEh">
             <objects>
                 <navigationController id="cVP-0K-Ofi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kgw-Rx-IUm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kgw-Rx-IUm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,7 +44,7 @@
         <scene sceneID="cRv-vS-caq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t8E-0d-eHG" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="3E2-XB-hmN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="3E2-XB-hmN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.21176470588235294" green="0.40000000000000002" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,7 +66,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KJN-iJ-OYp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ntq-hq-IK8">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="1024" height="1302"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcW-v4-z29" customClass="TwoColorGradientView" customModule="Cypherpunk" customModuleProvider="target">
@@ -214,15 +214,15 @@
                                 <exclude reference="9Xz-Gx-FOW"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="lcA-Bq-a1Z"/>
-                                <exclude reference="kAy-Ag-Vch"/>
-                                <exclude reference="DyB-gI-wp4"/>
-                                <exclude reference="dmg-zn-fi7"/>
                                 <exclude reference="FkH-40-467"/>
                                 <exclude reference="TWJ-uq-KmS"/>
                                 <exclude reference="Ygq-NC-1Z6"/>
                                 <exclude reference="f2e-ua-R4o"/>
                                 <exclude reference="xRr-rY-eKI"/>
+                                <exclude reference="lcA-Bq-a1Z"/>
+                                <exclude reference="kAy-Ag-Vch"/>
+                                <exclude reference="DyB-gI-wp4"/>
+                                <exclude reference="dmg-zn-fi7"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -230,17 +230,17 @@
                                 <include reference="9Xz-Gx-FOW"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="FkH-40-467"/>
+                                <exclude reference="TWJ-uq-KmS"/>
+                                <include reference="Ygq-NC-1Z6"/>
+                                <exclude reference="f2e-ua-R4o"/>
+                                <include reference="xRr-rY-eKI"/>
                                 <exclude reference="VN0-eu-gZw"/>
                                 <include reference="lcA-Bq-a1Z"/>
                                 <include reference="kAy-Ag-Vch"/>
                                 <include reference="DyB-gI-wp4"/>
                                 <include reference="dmg-zn-fi7"/>
                                 <exclude reference="tnA-FK-4W1"/>
-                                <include reference="FkH-40-467"/>
-                                <exclude reference="TWJ-uq-KmS"/>
-                                <include reference="Ygq-NC-1Z6"/>
-                                <exclude reference="f2e-ua-R4o"/>
-                                <include reference="xRr-rY-eKI"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -287,7 +287,7 @@
                 <viewControllerPlaceholder storyboardName="NewConfiguration" id="f9P-5a-HTO" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkA-Ij-jbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1" y="-857"/>
+            <point key="canvasLocation" x="221" y="-852"/>
         </scene>
         <!--Configuration-->
         <scene sceneID="Min-SL-cZl">
@@ -335,7 +335,7 @@
         <scene sceneID="d74-gC-XzJ">
             <objects>
                 <navigationController id="ICK-2P-0XI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="myW-vD-VeI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="myW-vD-VeI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -377,7 +377,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jI1-QF-CGJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ilk-gV-bU1">
-                        <rect key="frame" x="0.0" y="0.0" width="493" height="928"/>
+                        <rect key="frame" x="0.0" y="0.0" width="749" height="1270"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIW-er-wUs">
@@ -570,7 +570,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Renews On 02/02/2016" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LeA-Gs-R3H">
-                                                    <frame key="frameInset" minX="376" minY="11" width="149" height="21"/>
+                                                    <frame key="frameInset" minX="356" minY="12" width="169" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -647,7 +647,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9ur-l0-4UD">
-                                                    <frame key="frameInset" minX="469" minY="11" width="36" height="21"/>
+                                                    <frame key="frameInset" minX="464" minY="12" width="41" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -836,7 +836,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8a4-AD-xs4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bi-9I-g6L">
-                        <rect key="frame" x="0.0" y="0.0" width="748" height="959"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1004" height="1301"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnN-89-7vf">

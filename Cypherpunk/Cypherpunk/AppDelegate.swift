@@ -11,6 +11,7 @@ import UIKit
 import ReSwift
 import SVProgressHUD
 import RealmSwift
+import APIKit
 
 let mainStore = Store<AppState>(
     reducer: AppReducer(),
@@ -61,6 +62,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if mainStore.state.accountState.isLoggedIn == false {
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
+                } else {
+                    // Region Update
+                    let request = RegionListRequest(session: mainStore.state.accountState.session!)
+                    Session.send(request)
                 }
             }
 
@@ -72,6 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if mainStore.state.accountState.isLoggedIn == false {
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
+                } else {
+                    // Region Update
+                    let request = RegionListRequest(session: mainStore.state.accountState.session!)
+                    Session.send(request)
                 }
             }
         }
