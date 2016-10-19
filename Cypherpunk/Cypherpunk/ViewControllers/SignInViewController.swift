@@ -11,7 +11,7 @@ import SafariServices
 
 import APIKit
 import ReSwift
-
+import RealmSwift
 import SVProgressHUD
 
 class SignInViewController: UIViewController, StoreSubscriber {
@@ -64,6 +64,10 @@ class SignInViewController: UIViewController, StoreSubscriber {
                     Session.send(regionRequest) { (result) in
                         switch result {
                         case .success(_):
+                            let realm = try! Realm()
+                            if let region = realm.objects(Region.self).first {
+                                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+                            }
                             mainStore.dispatch(AccountAction.login(response: response))
                         case .failure(let error):
                             SVProgressHUD.showError(withStatus: "\((error as NSError).localizedDescription)")
