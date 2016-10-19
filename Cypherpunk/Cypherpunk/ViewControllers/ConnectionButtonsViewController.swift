@@ -107,13 +107,18 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
         connectingButton.layer.removeAnimation(forKey: "rotation")
         cancelEmbededView.isHidden = true
         connectionStateLabel.isHidden = false
+        connectingButton.isHidden = false
+        connectedButton.isHidden = false
         
         switch status {
         case .connected:
-            connectedButton.isHidden = false
-            connectingButton.isHidden = true
-            disconnectedButton.isHidden = true
+            disconnectedButton.alpha = 0.0
             disconnectedButton.isEnabled = true
+            
+            UIView.animate(withDuration: 0.3, animations: { 
+                self.connectedButton.alpha = 1.0
+                self.connectingButton.alpha = 0.0
+            })
         case .connecting, .reasserting:
             
             let animation = CABasicAnimation(keyPath: "transform.rotation")
@@ -122,28 +127,40 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             animation.duration = circleAnimationDuration
             animation.repeatCount = HUGE
             connectingButton.layer.add(animation, forKey: "rotation")
-            
-            connectedButton.isHidden = true
-            connectingButton.isHidden = false
-            disconnectedButton.isHidden = true
+
             disconnectedButton.isEnabled = true
             cancelEmbededView.isHidden = false
+
+            UIView.animate(withDuration: 0.3, animations: {
+                self.connectedButton.alpha = 0.0
+                self.connectingButton.alpha = 1.0
+                self.disconnectedButton.alpha = 0.0
+            })
+
             
             if connectingStateLabel != nil {
                 connectionStateLabel.isHidden = true
             }
             
         case .disconnected:
-            connectedButton.isHidden = true
-            connectingButton.isHidden = true
-            disconnectedButton.isHidden = false
-            disconnectedButton.isEnabled = true
+            self.connectedButton.alpha = 0.0
+            self.connectingButton.alpha = 0.0
+            self.disconnectedButton.alpha = 1.0
+
+            UIView.animate(withDuration: 0.3, animations: {
+                self.disconnectedButton.isEnabled = true
+            })
+
         case .invalid:
             break
         case .disconnecting:
-            connectedButton.isHidden = true
-            connectingButton.isHidden = true
-            disconnectedButton.isHidden = false
+            self.connectingButton.alpha = 0.0
+
+            UIView.animate(withDuration: 0.3, animations: {
+                self.connectedButton.alpha = 0.0
+                self.disconnectedButton.alpha = 1.0
+            })
+
             disconnectedButton.isEnabled = false
         }
         
