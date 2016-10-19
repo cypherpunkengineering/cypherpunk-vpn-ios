@@ -37,7 +37,7 @@ class RegionSelectViewController: UITableViewController {
 
         // Do any additional setup after loading the view.
         let realm = try! Realm()
-        favoriteResults = realm.objects(Region.self).filter("isFavorite = true")
+        favoriteResults = realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
         otherResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
         
     }
