@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6jZ-nz-mBW">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="37O-y4-8Ms">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,6 +21,350 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="YlT-Gp-oWm">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="37O-y4-8Ms" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NdI-vH-ygT" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rah-Zv-HVw" kind="relationship" relationship="rootViewController" id="xxR-SF-PeR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ht1-eb-D2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-618" y="-591"/>
+        </scene>
+        <!--Welcome To Cypherpunk View Controller-->
+        <scene sceneID="HBD-Pd-2Ls">
+            <objects>
+                <viewController id="rah-Zv-HVw" customClass="WelcomeToCypherpunkViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A1N-sG-hSC"/>
+                        <viewControllerLayoutGuide type="bottom" id="PdL-ZB-Ytk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cK6-8c-cze" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="colorHelmetBig" translatesAutoresizingMaskIntoConstraints="NO" id="i8D-EZ-W4K"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="fDR-pb-P2H"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="FfU-Tv-Qkt" customClass="LoadingAnimationView" customModule="Cypherpunk" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="161" id="JIJ-Nb-vSo"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Cypherpunk" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-7x-T35">
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUg-J8-dle">
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-wa-el4" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="rah-Zv-HVw" id="jhs-9i-AF2"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="pHg-wa-el4" firstAttribute="leading" secondItem="gUg-J8-dle" secondAttribute="leading" constant="13" id="9mk-cK-X0U"/>
+                                    <constraint firstAttribute="trailing" secondItem="pHg-wa-el4" secondAttribute="trailing" constant="13" id="HF3-oT-d7l"/>
+                                    <constraint firstAttribute="bottom" secondItem="pHg-wa-el4" secondAttribute="bottom" id="PHw-3F-val"/>
+                                    <constraint firstAttribute="height" constant="48" id="WjA-Bj-zI8"/>
+                                    <constraint firstItem="pHg-wa-el4" firstAttribute="top" secondItem="gUg-J8-dle" secondAttribute="top" id="nHm-B3-UvH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCz-mW-Egf" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="bfj-Ks-rg8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <state key="normal" title="Get Started">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="aColor">
+                                        <color key="value" red="1" green="0.78823529410000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bColor">
+                                        <color key="value" red="0.81960784310000001" green="0.61960784310000006" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startAction" destination="rah-Zv-HVw" eventType="touchUpInside" id="ZEb-ZL-VpY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-ue-9dj">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="TsE-JK-zwn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
+                                <state key="normal" title="Forgot password?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fpp-gQ-V9A" kind="show" id="P4u-6t-6aW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Quh-4L-vOV">
+                                <state key="normal" image="iconBack"/>
+                                <connections>
+                                    <action selector="backAction:" destination="rah-Zv-HVw" eventType="touchUpInside" id="RoV-Cm-Nfb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vIy-7x-T35" firstAttribute="centerX" secondItem="fDR-pb-P2H" secondAttribute="centerX" id="2DP-nK-2XZ"/>
+                            <constraint firstItem="FfU-Tv-Qkt" firstAttribute="trailing" secondItem="gUg-J8-dle" secondAttribute="trailing" id="4hv-nr-O7r"/>
+                            <constraint firstItem="i8D-EZ-W4K" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="51Y-uS-iz5"/>
+                            <constraint firstItem="NCz-mW-Egf" firstAttribute="leading" secondItem="gUg-J8-dle" secondAttribute="leading" id="FCL-Dp-QEL"/>
+                            <constraint firstItem="gUg-J8-dle" firstAttribute="top" secondItem="vIy-7x-T35" secondAttribute="bottom" constant="22" id="GbC-n2-fAu"/>
+                            <constraint firstItem="FfU-Tv-Qkt" firstAttribute="centerY" secondItem="gUg-J8-dle" secondAttribute="centerY" id="Ha7-gD-jKn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gUg-J8-dle" secondAttribute="trailing" constant="36" id="J8f-Rz-hVu"/>
+                            <constraint firstItem="Quh-4L-vOV" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leading" constant="10" id="Lxs-P9-hXQ"/>
+                            <constraint firstItem="6zJ-ue-9dj" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="23" id="PgV-au-LVi"/>
+                            <constraint firstItem="fDR-pb-P2H" firstAttribute="top" secondItem="i8D-EZ-W4K" secondAttribute="bottom" constant="8" id="Ypd-p2-Nge"/>
+                            <constraint firstItem="fDR-pb-P2H" firstAttribute="centerX" secondItem="i8D-EZ-W4K" secondAttribute="centerX" id="b1a-1b-FhX"/>
+                            <constraint firstItem="FfU-Tv-Qkt" firstAttribute="leading" secondItem="gUg-J8-dle" secondAttribute="leading" id="ce6-tx-4c7"/>
+                            <constraint firstItem="NCz-mW-Egf" firstAttribute="top" secondItem="gUg-J8-dle" secondAttribute="bottom" constant="20" id="ewY-6L-1cG"/>
+                            <constraint firstItem="6zJ-ue-9dj" firstAttribute="centerX" secondItem="NCz-mW-Egf" secondAttribute="centerX" id="i1E-GQ-cwW"/>
+                            <constraint firstItem="i8D-EZ-W4K" firstAttribute="top" secondItem="A1N-sG-hSC" secondAttribute="bottom" constant="28" id="mUT-Qj-Doq"/>
+                            <constraint firstItem="gUg-J8-dle" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leadingMargin" constant="39" id="qrN-Zb-vXG"/>
+                            <constraint firstItem="Quh-4L-vOV" firstAttribute="top" secondItem="A1N-sG-hSC" secondAttribute="bottom" constant="23" id="riQ-31-ZKX"/>
+                            <constraint firstItem="vIy-7x-T35" firstAttribute="top" secondItem="fDR-pb-P2H" secondAttribute="bottom" constant="35" id="sSf-uY-GBd"/>
+                            <constraint firstItem="NCz-mW-Egf" firstAttribute="trailing" secondItem="gUg-J8-dle" secondAttribute="trailing" id="yej-a2-Ga7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mnH-s3-3Eh">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Uc5-PR-cz8"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="actionButton" destination="NCz-mW-Egf" id="jws-jg-AXP"/>
+                        <outlet property="backButton" destination="Quh-4L-vOV" id="FHk-y0-QLD"/>
+                        <outlet property="forgotPasswordButton" destination="6zJ-ue-9dj" id="E6G-5b-moq"/>
+                        <outlet property="inputContainerView" destination="gUg-J8-dle" id="bW9-3w-v6D"/>
+                        <outlet property="inputField" destination="pHg-wa-el4" id="LYz-dc-m7x"/>
+                        <outlet property="loadingAnimationView" destination="FfU-Tv-Qkt" id="7hM-La-484"/>
+                        <outlet property="topSpaceConstraint" destination="mUT-Qj-Doq" id="oft-8M-dbH"/>
+                        <outlet property="welcomeLabel" destination="vIy-7x-T35" id="D7p-yK-czG"/>
+                        <segue destination="mR6-J3-kHM" kind="show" identifier="SignUp" id="Ph6-C7-gkw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vFh-7G-fYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="-591.45427286356824"/>
+        </scene>
+        <!--Email Confirmation View Controller-->
+        <scene sceneID="Oe5-vp-gfY">
+            <objects>
+                <viewController id="mR6-J3-kHM" customClass="EmailConfirmationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="75w-Eh-KNw"/>
+                        <viewControllerLayoutGuide type="bottom" id="ygU-hS-aiM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sWd-9b-dYD" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent you confirmation via Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-HY-MRX">
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="illustMailConfirm" translatesAutoresizingMaskIntoConstraints="NO" id="R2C-A1-EUr"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPN-7y-nl4">
+                                <string key="text">Please check your Email App and
+do something….</string>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DIz-Gg-2QJ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="A0k-1c-WVc"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="icon_mail">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Resend Email">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="Dosis-Medium"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-hB-YoU">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="l0e-hV-VAD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Back to Log In" image="iconBack">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="mR6-J3-kHM" eventType="touchUpInside" id="uEK-Iz-L4e"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jPN-7y-nl4" firstAttribute="centerX" secondItem="R2C-A1-EUr" secondAttribute="centerX" id="LmA-OK-cAv"/>
+                            <constraint firstItem="R2C-A1-EUr" firstAttribute="top" secondItem="sNz-HY-MRX" secondAttribute="bottom" constant="25" id="W1V-Ha-mMO"/>
+                            <constraint firstItem="sNz-HY-MRX" firstAttribute="top" secondItem="75w-Eh-KNw" secondAttribute="bottom" constant="68" id="izz-Zd-lLX"/>
+                            <constraint firstItem="sNz-HY-MRX" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="o9q-B0-zew"/>
+                            <constraint firstItem="ygU-hS-aiM" firstAttribute="top" secondItem="t7N-hB-YoU" secondAttribute="bottom" constant="38" id="pN0-cz-W7H"/>
+                            <constraint firstItem="jPN-7y-nl4" firstAttribute="top" secondItem="R2C-A1-EUr" secondAttribute="bottom" constant="28" id="pj9-T5-zWt"/>
+                            <constraint firstItem="t7N-hB-YoU" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="q5o-FJ-3PM"/>
+                            <constraint firstItem="t7N-hB-YoU" firstAttribute="top" secondItem="DIz-Gg-2QJ" secondAttribute="bottom" constant="30" id="qLL-Gy-pBB"/>
+                            <constraint firstItem="R2C-A1-EUr" firstAttribute="centerX" secondItem="sNz-HY-MRX" secondAttribute="centerX" id="r1T-LX-vz1"/>
+                            <constraint firstItem="DIz-Gg-2QJ" firstAttribute="centerX" secondItem="t7N-hB-YoU" secondAttribute="centerX" id="vbs-Q7-RzZ"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="resendEmailButton" destination="DIz-Gg-2QJ" id="Sk2-UI-xyk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1aB-lp-eqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="969" y="-569"/>
+        </scene>
+        <!--Rest your password-->
+        <scene sceneID="Vai-rE-MGH">
+            <objects>
+                <viewController id="fpp-gQ-V9A" customClass="RestYourPasswordViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IO3-bG-DXT"/>
+                        <viewControllerLayoutGuide type="bottom" id="I50-Qe-Yvr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vaD-93-reH" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgi-2t-cZ9">
+                                <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ilT-N4-3y6"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iaf-R4-QSn">
+                                <string key="text">Enter your email address
+to reset your password.</string>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eX-lR-lht">
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ng4-xY-a6k" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ng4-xY-a6k" firstAttribute="top" secondItem="5eX-lR-lht" secondAttribute="top" id="28I-0R-FlA"/>
+                                    <constraint firstAttribute="height" constant="48" id="62i-LK-C58"/>
+                                    <constraint firstAttribute="trailing" secondItem="ng4-xY-a6k" secondAttribute="trailing" constant="13" id="T0X-Ge-yKw"/>
+                                    <constraint firstItem="ng4-xY-a6k" firstAttribute="leading" secondItem="5eX-lR-lht" secondAttribute="leading" constant="13" id="f9E-3P-RMF"/>
+                                    <constraint firstAttribute="bottom" secondItem="ng4-xY-a6k" secondAttribute="bottom" id="gPA-Zo-n22"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXg-Yg-llr" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="jgX-YF-BPu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="aColor">
+                                        <color key="value" red="1" green="0.78823529410000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bColor">
+                                        <color key="value" red="0.81960784310000001" green="0.61960784310000006" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitAction:" destination="fpp-gQ-V9A" eventType="touchUpInside" id="b5S-xM-Npr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Iaf-R4-QSn" firstAttribute="top" secondItem="IO3-bG-DXT" secondAttribute="bottom" constant="47" id="0sX-Rp-ifx"/>
+                            <constraint firstItem="5eX-lR-lht" firstAttribute="top" secondItem="Iaf-R4-QSn" secondAttribute="bottom" constant="24" id="6Vg-cn-9jt"/>
+                            <constraint firstItem="Iaf-R4-QSn" firstAttribute="centerX" secondItem="vaD-93-reH" secondAttribute="centerX" id="Jlm-rp-7fY"/>
+                            <constraint firstItem="5eX-lR-lht" firstAttribute="leading" secondItem="vaD-93-reH" secondAttribute="leading" constant="39" id="Qq1-0I-n05"/>
+                            <constraint firstItem="HXg-Yg-llr" firstAttribute="trailing" secondItem="5eX-lR-lht" secondAttribute="trailing" id="R6w-MQ-p1C"/>
+                            <constraint firstItem="HXg-Yg-llr" firstAttribute="leading" secondItem="5eX-lR-lht" secondAttribute="leading" id="XJP-A6-Sme"/>
+                            <constraint firstAttribute="trailing" secondItem="Cgi-2t-cZ9" secondAttribute="trailing" id="dpn-cI-vLa"/>
+                            <constraint firstItem="HXg-Yg-llr" firstAttribute="top" secondItem="5eX-lR-lht" secondAttribute="bottom" constant="20" id="j0A-lO-iDv"/>
+                            <constraint firstItem="Cgi-2t-cZ9" firstAttribute="top" secondItem="IO3-bG-DXT" secondAttribute="bottom" id="pRJ-dz-yv7"/>
+                            <constraint firstItem="Cgi-2t-cZ9" firstAttribute="leading" secondItem="vaD-93-reH" secondAttribute="leading" id="seb-DV-4Er"/>
+                            <constraint firstAttribute="trailing" secondItem="5eX-lR-lht" secondAttribute="trailing" constant="36" id="wDu-2j-Evw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Rest your password" id="zyL-EE-Zoz"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="inputField" destination="ng4-xY-a6k" id="WJM-91-ae4"/>
+                        <segue destination="mR6-J3-kHM" kind="show" identifier="Submit" id="MvA-bR-f9Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u1S-ab-ssF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="970" y="-1269"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="nzU-0o-xPN">
             <objects>
@@ -45,7 +390,7 @@
                         <viewControllerLayoutGuide type="bottom" id="NeF-CT-Kpx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="puE-ok-iuP" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzF-07-P2r" customClass="ThemedLogoView" customModule="Cypherpunk" customModuleProvider="target">
@@ -217,7 +562,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cR6-oZ-w1p"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pag-yd-OBs" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h40-ms-CB2">
@@ -245,17 +590,17 @@
             <objects>
                 <tableViewController storyboardIdentifier="GetPremium" automaticallyAdjustsScrollViewInsets="NO" id="6zm-cN-xjx" customClass="GetPremiumPlanTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cqh-Ds-ewv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="iDu-SE-tQJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="a7M-Sd-zl7">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a7M-Sd-zl7" id="xAm-ez-REl">
-                                            <frame key="frameInset" width="320" height="66"/>
+                                            <frame key="frameInset" width="375" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtS-Ao-fKp">
@@ -273,10 +618,10 @@
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="48" id="SYn-ej-n8R">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="48"/>
+                                        <rect key="frame" x="0.0" y="66" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SYn-ej-n8R" id="Izh-VC-p4L">
-                                            <frame key="frameInset" width="320" height="48"/>
+                                            <frame key="frameInset" width="375" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uLF-hA-4Kg">
@@ -308,19 +653,19 @@
                             <tableViewSection id="F0H-Hd-J83">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="43" id="nBS-y1-skx">
-                                        <rect key="frame" x="0.0" y="114" width="320" height="43"/>
+                                        <rect key="frame" x="0.0" y="114" width="375" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nBS-y1-skx" id="y8N-jr-ady">
-                                            <frame key="frameInset" width="320" height="43"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="22" id="csg-bQ-sWP">
-                                        <rect key="frame" x="0.0" y="157" width="320" height="22"/>
+                                        <rect key="frame" x="0.0" y="157" width="375" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="csg-bQ-sWP" id="Njc-Ib-1if">
-                                            <frame key="frameInset" width="320" height="22"/>
+                                            <frame key="frameInset" width="375" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your plan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bq-2h-G9D">
@@ -343,19 +688,19 @@
                             <tableViewSection id="aaQ-7W-gYW">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="20" id="STs-Ip-y8T">
-                                        <rect key="frame" x="0.0" y="179" width="320" height="20"/>
+                                        <rect key="frame" x="0.0" y="179" width="375" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="STs-Ip-y8T" id="EYF-Nh-tOt">
-                                            <frame key="frameInset" width="320" height="20"/>
+                                            <frame key="frameInset" width="375" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="76" id="Tme-o9-57F">
-                                        <rect key="frame" x="0.0" y="199" width="320" height="76"/>
+                                        <rect key="frame" x="0.0" y="199" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tme-o9-57F" id="5XL-HS-aDi">
-                                            <frame key="frameInset" width="320" height="76"/>
+                                            <frame key="frameInset" width="375" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xL-7a-Kph">
@@ -434,19 +779,19 @@
                             <tableViewSection id="WbL-CY-SY0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="20" id="wjg-in-qFa">
-                                        <rect key="frame" x="0.0" y="275" width="320" height="20"/>
+                                        <rect key="frame" x="0.0" y="275" width="375" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wjg-in-qFa" id="nS6-sp-ifW">
-                                            <frame key="frameInset" width="320" height="20"/>
+                                            <frame key="frameInset" width="375" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="76" id="xy9-ln-vKP">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="76"/>
+                                        <rect key="frame" x="0.0" y="295" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xy9-ln-vKP" id="ZaR-V0-9Hh">
-                                            <frame key="frameInset" width="320" height="76"/>
+                                            <frame key="frameInset" width="375" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gd4-Mx-gFP">
@@ -525,19 +870,19 @@
                             <tableViewSection id="gOE-1x-GHR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="20" id="jWa-MI-06g">
-                                        <rect key="frame" x="0.0" y="371" width="320" height="20"/>
+                                        <rect key="frame" x="0.0" y="371" width="375" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jWa-MI-06g" id="h43-oZ-6ib">
-                                            <frame key="frameInset" width="320" height="20"/>
+                                            <frame key="frameInset" width="375" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="85" id="rek-0c-XpI">
-                                        <rect key="frame" x="0.0" y="391" width="320" height="85"/>
+                                        <rect key="frame" x="0.0" y="391" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rek-0c-XpI" id="BaT-eC-8Yf">
-                                            <frame key="frameInset" width="320" height="85"/>
+                                            <frame key="frameInset" width="375" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UpY-SW-6Hz">
@@ -666,7 +1011,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="colorHelmetBig" width="54" height="77"/>
+        <image name="headerLogo" width="153" height="32"/>
+        <image name="iconBack" width="12" height="18"/>
+        <image name="icon_mail" width="15" height="13"/>
+        <image name="illustMailConfirm" width="162" height="221"/>
+        <image name="loading" width="72" height="72"/>
         <image name="logoGray_small" width="19" height="36"/>
         <image name="map_wh" width="360" height="173"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ph6-C7-gkw"/>
+    </inferredMetricsTieBreakers>
 </document>
