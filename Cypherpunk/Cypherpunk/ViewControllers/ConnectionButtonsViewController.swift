@@ -198,7 +198,7 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
 
     func newState(state: AppState) {
         regionButton?.setTitle(state.regionState.title, for: .normal)
-        regionButton?.setImage(UIImage(named: state.regionState.countryCode)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
 }
