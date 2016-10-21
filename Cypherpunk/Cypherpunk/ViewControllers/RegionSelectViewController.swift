@@ -17,10 +17,12 @@ class RegionSelectViewController: UITableViewController {
     fileprivate enum Section: Int {
         case fastestLocation
         case favorite
+        case recentryConnected
         case allLocation
     }
     
     var favoriteResults: Results<Region>!
+    var recentryConnectedResults: Results<Region>!
     var otherResults: Results<Region>!
     
     override func viewDidLoad() {
@@ -34,11 +36,12 @@ class RegionSelectViewController: UITableViewController {
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
-
+        
         // Do any additional setup after loading the view.
         let realm = try! Realm()
         favoriteResults = realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
-        otherResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
+        recentryConnectedResults = realm.objects(Region.self).filter("isFavorite = false AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
+        otherResults = realm.objects(Region.self).filter("isFavorite = false AND lastConnectedDate = %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
         
     }
     
@@ -53,7 +56,7 @@ class RegionSelectViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func didChangeVPNStatus(_ notification: Notification) {
@@ -66,12 +69,12 @@ class RegionSelectViewController: UITableViewController {
         if status == .connected {
             mainStore.dispatch(RegionAction.connect)
             self.tableView.beginUpdates()
-            let set = IndexSet(integersIn: NSRange(location: 0, length: 3).toRange() ?? 0..<0)
+            let set = IndexSet(integersIn: NSRange(location: 0, length: 4).toRange() ?? 0..<0)
             self.tableView.reloadSections(set, with: .automatic)
             self.tableView.endUpdates()
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = Section(rawValue: section)!
         
@@ -80,6 +83,8 @@ class RegionSelectViewController: UITableViewController {
             return 1
         case .favorite:
             return favoriteResults.count
+        case .recentryConnected:
+            return recentryConnectedResults.count
         case .allLocation:
             return otherResults.count
         }
@@ -101,6 +106,10 @@ class RegionSelectViewController: UITableViewController {
             cell?.titleLabel.text = favoriteResults[indexPath.row].regionName
             cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
             cell?.flagImageView.image = UIImage(named: favoriteResults[indexPath.row].countryCode.lowercased())
+        case .recentryConnected:
+            cell?.titleLabel.text = recentryConnectedResults[indexPath.row].regionName
+            cell?.starButton.setImage(R.image.iconStar(), for: .normal)
+            cell?.flagImageView.image = UIImage(named: recentryConnectedResults[indexPath.row].countryCode.lowercased())
         case .allLocation:
             cell?.titleLabel.text = otherResults[indexPath.row].regionName
             cell?.starButton.setImage(R.image.iconStar(), for: .normal)
@@ -127,6 +136,8 @@ class RegionSelectViewController: UITableViewController {
             }
         case .favorite:
             region = favoriteResults[indexPath.row]
+        case .recentryConnected:
+            region = recentryConnectedResults[indexPath.row]
         case .allLocation:
             region = otherResults[indexPath.row]
         }
@@ -152,6 +163,48 @@ class RegionSelectViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
+            let titleLabel: UILabel
+            
+            titleLabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 17))
+            
+            titleLabel.font = R.font.dosisMedium(size: 14)
+            titleLabel.textColor = UIColor.goldenYellowColor()
+            titleLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+            
+            view.addSubview(titleLabel)
+            
+            return view
+        }
+        return nil
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            switch Section(rawValue: section)! {
+            case .fastestLocation:
+                return nil
+            case .favorite:
+                return "Favorite"
+            case .recentryConnected:
+                return "Recentry Connected"
+            case .allLocation:
+                return "All Location"
+            }
+        }
+        return nil
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            return 17
+        }
+        return 0.0
+    }
+    
     @IBAction func didSelectFavoriteAction(_ sender: UIButton) {
         let row = sender.tag % 10000
         let section = Section(rawValue: sender.tag / 100000)!
@@ -162,6 +215,8 @@ class RegionSelectViewController: UITableViewController {
             return
         case .favorite:
             target = favoriteResults[row]
+        case .recentryConnected:
+            target = recentryConnectedResults[row]
         case .allLocation:
             target = otherResults[row]
         }
@@ -171,7 +226,7 @@ class RegionSelectViewController: UITableViewController {
             realm.add(target, update: true)
         }
         self.tableView.beginUpdates()
-        let set = IndexSet(integersIn: NSRange(location: 0, length: 3).toRange() ?? 0..<0)
+        let set = IndexSet(integersIn: NSRange(location: 0, length: 4).toRange() ?? 0..<0)
         self.tableView.reloadSections(set, with: .automatic)
         self.tableView.endUpdates()
     }
