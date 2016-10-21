@@ -24,6 +24,7 @@ class ConfigurationTableViewController: UITableViewController {
         
         self.navigationController?.isNavigationBarHidden = false
         vpnProtocolValueLabel.text = mainStore.state.settingsState.vpnProtocolMode.description
+        vpnAlwaysOnSwitch.isOn = mainStore.state.settingsState.isAutoReconnect
         self.tableView.reloadData()
     }
     
@@ -52,10 +53,9 @@ class ConfigurationTableViewController: UITableViewController {
     }
     
     @IBAction func changeValueOfAutoConnectOnBootAction(_ sender: UISwitch) {
-        print("autoConnectOnBootSwitch is \(sender.isOn)")
     }
     @IBAction func changeValueOfAlwaysOnAction(_ sender: UISwitch) {
-        print("vpnAlwaysOnSwitch is \(sender.isOn)")
+        mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.isOn))
     }
 
 }
