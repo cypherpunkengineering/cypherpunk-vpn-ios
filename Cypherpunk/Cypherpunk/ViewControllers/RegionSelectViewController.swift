@@ -41,7 +41,7 @@ class RegionSelectViewController: UITableViewController {
         let realm = try! Realm()
         favoriteResults = realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
         recentryConnectedResults = realm.objects(Region.self).filter("isFavorite = false AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
-        otherResults = realm.objects(Region.self).filter("isFavorite = false AND lastConnectedDate = %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
+        otherResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
         
     }
     
@@ -75,6 +75,13 @@ class RegionSelectViewController: UITableViewController {
         }
     }
     
+    func numberOfRowsInRecentryConnectedSection() -> Int {
+        if recentryConnectedResults.count < 3 {
+            return recentryConnectedResults.count
+        }
+        return 3
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = Section(rawValue: section)!
         
@@ -84,9 +91,9 @@ class RegionSelectViewController: UITableViewController {
         case .favorite:
             return favoriteResults.count
         case .recentryConnected:
-            return recentryConnectedResults.count
+            return numberOfRowsInRecentryConnectedSection()
         case .allLocation:
-            return otherResults.count
+            return otherResults.count - numberOfRowsInRecentryConnectedSection()
         }
     }
     
@@ -111,9 +118,9 @@ class RegionSelectViewController: UITableViewController {
             cell?.starButton.setImage(R.image.iconStar(), for: .normal)
             cell?.flagImageView.image = UIImage(named: recentryConnectedResults[indexPath.row].countryCode.lowercased())
         case .allLocation:
-            cell?.titleLabel.text = otherResults[indexPath.row].regionName
+            cell?.titleLabel.text = otherResults[indexPath.row + numberOfRowsInRecentryConnectedSection()].regionName
             cell?.starButton.setImage(R.image.iconStar(), for: .normal)
-            cell?.flagImageView.image = UIImage(named: otherResults[indexPath.row].countryCode.lowercased())
+            cell?.flagImageView.image = UIImage(named: otherResults[indexPath.row + numberOfRowsInRecentryConnectedSection()].countryCode.lowercased())
         }
         
         cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
@@ -139,7 +146,7 @@ class RegionSelectViewController: UITableViewController {
         case .recentryConnected:
             region = recentryConnectedResults[indexPath.row]
         case .allLocation:
-            region = otherResults[indexPath.row]
+            region = otherResults[indexPath.row + numberOfRowsInRecentryConnectedSection()]
         }
         
         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
@@ -219,7 +226,7 @@ class RegionSelectViewController: UITableViewController {
         case .recentryConnected:
             target = recentryConnectedResults[row]
         case .allLocation:
-            target = otherResults[row]
+            target = otherResults[row + numberOfRowsInRecentryConnectedSection()]
         }
         let realm = try! Realm()
         try! realm.write {
