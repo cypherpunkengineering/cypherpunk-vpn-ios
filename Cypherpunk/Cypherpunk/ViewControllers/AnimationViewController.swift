@@ -285,6 +285,7 @@ class AnimationViewController: UIViewController {
             self.beforeSec = Date().timeIntervalSince1970
             
             self.timer = Timer.scheduledTimer(timeInterval: 1.0/60.0, target: self, selector: #selector(AnimationViewController.update), userInfo: nil, repeats: true)
+            RunLoop.current.add(timer, forMode: .commonModes)
         }
     }
     
