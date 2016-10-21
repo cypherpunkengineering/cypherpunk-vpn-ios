@@ -192,47 +192,47 @@ class AnimationViewController: UIViewController {
                 let textLayer = CATextLayer()
                 textLayer.frame = frame
 
-                if x == deviceNameColumn && deviceNameStartIndex <= y && y < deviceNameEndIndex {
-                    let index = deviceName.characters.index(deviceName.startIndex, offsetBy: y - deviceNameStartIndex)
-                    let text = deviceName[index]
-                    textLayer.string = String(text)
-                    
-                    if String(text).canBeConverted(to: .ascii) == false {
-                        textLayer.fontSize = multibyteCharacterFontSize
-                        let layoutPoint = CGPoint(x: -2 , y: CGFloat(y) * itemSize.height + 2)
-                        
-                        textLayer.frame = CGRect(origin: layoutPoint, size: multibyteSize)
-                        textLayer.font = UIFont.systemFont(ofSize: multibyteCharacterFontSize)
-                    } else {
-                        textLayer.fontSize = normalFontSize
-                        textLayer.font = font
-                    }
-                    let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
-                    textLayer.foregroundColor = baseColor.cgColor
-                }else if let carrierName = carrierName , x == carrierNameColumn && carrierNameStartIndex <= y && y < carrierNameEndIndex {
-                    let index = carrierName.characters.index(carrierName.startIndex, offsetBy: y - carrierNameStartIndex)
-                    let text = carrierName.characters[index]
-                    textLayer.string = String(text)
-                    if String(text).canBeConverted(to: .ascii) == false {
-                        textLayer.fontSize = multibyteCharacterFontSize
-                        let layoutPoint = CGPoint(x: -2 , y: CGFloat(y) * itemSize.height + 2)
-
-                        textLayer.frame = CGRect(origin: layoutPoint, size: multibyteSize)
-                        textLayer.font = UIFont.systemFont(ofSize: multibyteCharacterFontSize)
-                    } else {
-                        textLayer.fontSize = normalFontSize
-                        textLayer.font = font
-                    }
-                    let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
-                    textLayer.foregroundColor = baseColor.cgColor
-                } else {
+//                if x == deviceNameColumn && deviceNameStartIndex <= y && y < deviceNameEndIndex {
+//                    let index = deviceName.characters.index(deviceName.startIndex, offsetBy: y - deviceNameStartIndex)
+//                    let text = deviceName[index]
+//                    textLayer.string = String(text)
+//                    
+//                    if String(text).canBeConverted(to: .ascii) == false {
+//                        textLayer.fontSize = multibyteCharacterFontSize
+//                        let layoutPoint = CGPoint(x: -2 , y: CGFloat(y) * itemSize.height + 2)
+//                        
+//                        textLayer.frame = CGRect(origin: layoutPoint, size: multibyteSize)
+//                        textLayer.font = UIFont.systemFont(ofSize: multibyteCharacterFontSize)
+//                    } else {
+//                        textLayer.fontSize = normalFontSize
+//                        textLayer.font = font
+//                    }
+//                    let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
+//                    textLayer.foregroundColor = baseColor.cgColor
+//                }else if let carrierName = carrierName , x == carrierNameColumn && carrierNameStartIndex <= y && y < carrierNameEndIndex {
+//                    let index = carrierName.characters.index(carrierName.startIndex, offsetBy: y - carrierNameStartIndex)
+//                    let text = carrierName.characters[index]
+//                    textLayer.string = String(text)
+//                    if String(text).canBeConverted(to: .ascii) == false {
+//                        textLayer.fontSize = multibyteCharacterFontSize
+//                        let layoutPoint = CGPoint(x: -2 , y: CGFloat(y) * itemSize.height + 2)
+//
+//                        textLayer.frame = CGRect(origin: layoutPoint, size: multibyteSize)
+//                        textLayer.font = UIFont.systemFont(ofSize: multibyteCharacterFontSize)
+//                    } else {
+//                        textLayer.fontSize = normalFontSize
+//                        textLayer.font = font
+//                    }
+//                    let baseColor = UIColor(red: 241.0 / 255.0, green: 27.0 / 255.0, blue:53.0/255.0, alpha: 1.0)
+//                    textLayer.foregroundColor = baseColor.cgColor
+//                } else {
                     textLayer.string = String(number)
                     textLayer.font = font
                     textLayer.fontSize = normalFontSize
                     
                     let baseColor = UIColor.white
                     textLayer.foregroundColor = baseColor.withAlphaComponent(0.15).cgColor
-                }
+//                }
                 
                 textLayer.alignmentMode = kCAAlignmentCenter
                 textLayer.contentsScale = UIScreen.main.scale
