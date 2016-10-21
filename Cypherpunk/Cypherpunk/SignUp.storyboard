@@ -11,10 +11,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Log In-->
+        <!--Sign Up-->
         <scene sceneID="gMI-c1-TZQ">
             <objects>
-                <viewController title="Log In" id="dpr-h1-vos" customClass="SignUpViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign Up" id="dpr-h1-vos" customClass="SignUpViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="scD-1H-7Jp"/>
                         <viewControllerLayoutGuide type="bottom" id="kaK-xu-Seo"/>
@@ -110,6 +110,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signUpAction" destination="dpr-h1-vos" eventType="touchUpInside" id="cQl-Pa-HqH"/>
+                                            <segue destination="9wM-9s-zJv" kind="show" id="Ujh-Hr-0C5"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up and start your 7 day Free Premium Trial now!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jom-bE-68o">
@@ -173,10 +174,89 @@
             </objects>
             <point key="canvasLocation" x="1420" y="593"/>
         </scene>
+        <!--Email Confirmation View Controller-->
+        <scene sceneID="AhE-SQ-klj">
+            <objects>
+                <viewController id="9wM-9s-zJv" customClass="EmailConfirmationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vEA-VO-H5T"/>
+                        <viewControllerLayoutGuide type="bottom" id="XVJ-jw-TAT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6q5-0j-ZvQ" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent you confirmation via Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0l-PA-hrk">
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="illustMailConfirm" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-Jg-hw9"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqG-kP-4b1">
+                                <string key="text">Please check your Email App and
+do something….</string>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yzH-rK-yP3">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="pi1-7R-Kea"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="icon_mail">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Resend Email">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="Dosis-Medium"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fy-Ym-2GR">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="98f-jf-ENM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Back to Log In" image="iconBack">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="9wM-9s-zJv" eventType="touchUpInside" id="1CD-wb-BLk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yzH-rK-yP3" firstAttribute="centerX" secondItem="4fy-Ym-2GR" secondAttribute="centerX" id="KRM-8p-dHG"/>
+                            <constraint firstItem="4fy-Ym-2GR" firstAttribute="top" secondItem="yzH-rK-yP3" secondAttribute="bottom" constant="30" id="L8R-7f-euH"/>
+                            <constraint firstItem="bEV-Jg-hw9" firstAttribute="top" secondItem="a0l-PA-hrk" secondAttribute="bottom" constant="25" id="MLM-BA-gJK"/>
+                            <constraint firstItem="a0l-PA-hrk" firstAttribute="centerX" secondItem="6q5-0j-ZvQ" secondAttribute="centerX" id="TPu-jY-fn0"/>
+                            <constraint firstItem="a0l-PA-hrk" firstAttribute="top" secondItem="vEA-VO-H5T" secondAttribute="bottom" constant="88" id="Xa1-Ze-XYU"/>
+                            <constraint firstItem="bEV-Jg-hw9" firstAttribute="centerX" secondItem="a0l-PA-hrk" secondAttribute="centerX" id="Zi5-K1-xC4"/>
+                            <constraint firstItem="kqG-kP-4b1" firstAttribute="centerX" secondItem="bEV-Jg-hw9" secondAttribute="centerX" id="ikp-62-ryg"/>
+                            <constraint firstItem="kqG-kP-4b1" firstAttribute="top" secondItem="bEV-Jg-hw9" secondAttribute="bottom" constant="28" id="qeq-mf-fIP"/>
+                            <constraint firstItem="XVJ-jw-TAT" firstAttribute="top" secondItem="4fy-Ym-2GR" secondAttribute="bottom" constant="139" id="qzC-bQ-Qka"/>
+                            <constraint firstItem="4fy-Ym-2GR" firstAttribute="centerX" secondItem="6q5-0j-ZvQ" secondAttribute="centerX" id="uDQ-qb-Dvh"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="resendEmailButton" destination="yzH-rK-yP3" id="uAr-Ba-w2p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vpw-8O-0tI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2352" y="593"/>
+        </scene>
     </scenes>
     <resources>
         <image name="colorHelmetBig" width="54" height="77"/>
         <image name="headerLogo" width="153" height="32"/>
         <image name="iconBack" width="12" height="18"/>
+        <image name="icon_mail" width="15" height="13"/>
+        <image name="illustMailConfirm" width="162" height="221"/>
     </resources>
 </document>
