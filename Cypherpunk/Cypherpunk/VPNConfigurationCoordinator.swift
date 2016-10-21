@@ -11,63 +11,98 @@ import NetworkExtension
 import KeychainAccess
 
 open class VPNConfigurationCoordinator {
-
+    
     class func load(_ completion: @escaping (Bool) -> ()) {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
             completion(error != nil)
         }
     }
+    
+    class func install() {
+        let manager = NEVPNManager.shared()
+        let newIPSec : NEVPNProtocolIPSec
+        newIPSec = NEVPNProtocolIKEv2()
+        
+        newIPSec.authenticationMethod = .none
+        newIPSec.serverAddress = mainStore.state.regionState.serverIP // IPSecDefault
+        
+        newIPSec.useExtendedAuthentication = true
+        newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
+        let password = mainStore.state.accountState.password ?? "test123"
+        newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
+        
+        newIPSec.localIdentifier = "cypherpunk-vpn-ios"
+        newIPSec.remoteIdentifier = mainStore.state.regionState.remoteIdentifier // IPSecHostname
+        newIPSec.disconnectOnSleep = false
+        
+        if #available(iOS 9.0, *) {
+            manager.protocolConfiguration = newIPSec
+        } else {
+            manager.`protocol` = newIPSec
+        }
+        
+        manager.localizedDescription = "Cyperpunk VPN"
+        
+        manager.isOnDemandEnabled = false
+        manager.isEnabled = false
 
+        manager.saveToPreferences(completionHandler: { (error) in
+            if error != nil {
+            }
+        })
+        
+    }
+    
     class func start(_ completion: @escaping () -> ()) {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
-
+            
             let newIPSec : NEVPNProtocolIPSec
             if mainStore.state.settingsState.vpnProtocolMode == .IKEv2
             {
                 newIPSec = NEVPNProtocolIKEv2()
-
+                
                 newIPSec.authenticationMethod = .none
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP // IPSecDefault
-
+                
                 newIPSec.useExtendedAuthentication = true
                 newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
                 let password = mainStore.state.accountState.password ?? "test123"
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
-
+                
                 newIPSec.localIdentifier = "cypherpunk-vpn-ios"
                 newIPSec.remoteIdentifier = mainStore.state.regionState.remoteIdentifier // IPSecHostname
             }
             else
             {
                 newIPSec = NEVPNProtocolIPSec()
-
+                
                 newIPSec.authenticationMethod = .none
                 newIPSec.serverAddress = mainStore.state.regionState.serverIP // IPSecDefault
-
+                
                 newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
-
+                
                 newIPSec.useExtendedAuthentication = true
                 newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
                 let password = mainStore.state.accountState.password ?? "test123"
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
-
+                
                 newIPSec.localIdentifier = "cypherpunk-vpn-ios"
                 newIPSec.remoteIdentifier = mainStore.state.regionState.remoteIdentifier // IPSecHostname
             }
-
-
+            
+            
             newIPSec.disconnectOnSleep = false
-
+            
             if #available(iOS 9.0, *) {
                 manager.protocolConfiguration = newIPSec
             } else {
                 manager.`protocol` = newIPSec
             }
-
+            
             manager.localizedDescription = "Cyperpunk VPN"
-
+            
             if mainStore.state.settingsState.isAutoReconnect == true
             {
                 let onDemandRule = NEOnDemandRuleConnect()
@@ -79,17 +114,17 @@ open class VPNConfigurationCoordinator {
                 manager.isOnDemandEnabled = false
             }
             
-
-			if newIPSec.serverAddress != ""
-			{
+            
+            if newIPSec.serverAddress != ""
+            {
                 manager.isEnabled = true
-			}
-			else
-			{
+            }
+            else
+            {
                 manager.isOnDemandEnabled = false
                 manager.isEnabled = false
-			}
-
+            }
+            
             manager.saveToPreferences(completionHandler: { (error) in
                 if error != nil {
                     print(error)
@@ -98,11 +133,11 @@ open class VPNConfigurationCoordinator {
             })
         }
     }
-
+    
     class func connect() throws {
         let manager = NEVPNManager.shared()
         if #available(iOS 9.0, *) {
-
+            
             manager.isOnDemandEnabled = true
             manager.isEnabled = true
             manager.saveToPreferences(completionHandler: { (error) in
@@ -110,18 +145,18 @@ open class VPNConfigurationCoordinator {
                     print(error)
                 }
             })
-
+            
             if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
                 try manager.connection.startVPNTunnel()
             } else {
                 try manager.connection.startVPNTunnel()
-
+                
             }
         } else {
             try manager.connection.startVPNTunnel()
         }
     }
-
+    
     class func disconnect() {
         let manager = NEVPNManager.shared()
         manager.isOnDemandEnabled = false
@@ -143,7 +178,7 @@ open class VPNConfigurationCoordinator {
 
 private extension String {
     static func randomStringForLocalIdentifier() -> String {
-
+        
         let keychain = Keychain()
         let accessKey = "com.cypherpunk.data.localIdentifier.key"
         if let wrappedIdentifier = try? keychain.getString(accessKey), let unwrapped = wrappedIdentifier {
@@ -151,14 +186,14 @@ private extension String {
         } else {
             let alphabet = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             let upperBound = UInt32(alphabet.characters.count)
-
+            
             let localIdentifier =  String((0..<10).map { _ -> Character in
                 return alphabet[alphabet.characters.index(alphabet.startIndex, offsetBy: Int(arc4random_uniform(upperBound)))]
-                })
-
+            })
+            
             try! keychain.set(localIdentifier, key: accessKey)
             return localIdentifier
         }
-
+        
     }
 }
