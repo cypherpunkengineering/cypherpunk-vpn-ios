@@ -22,7 +22,7 @@
         <scene sceneID="5a0-Ti-oxw">
             <objects>
                 <navigationController navigationBarHidden="YES" id="JcQ-do-E5e" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -465,8 +465,7 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="transitionToAccountAction:" destination="wv7-yt-POp" eventType="touchUpInside" id="9Am-KO-lyz"/>
-                                                    <action selector="transitionToConnectionStatusAction:" destination="hpk-pp-vby" eventType="touchUpInside" id="KqH-Z9-YMB"/>
+                                                    <segue destination="G2a-WP-fnt" kind="show" id="Arb-ck-GlO"/>
                                                 </connections>
                                             </button>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-XV-Nmr"/>
@@ -513,7 +512,9 @@
                             <constraint firstAttribute="trailing" secondItem="vHJ-HJ-e0z" secondAttribute="trailing" id="yyh-iU-MBu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4ev-kt-lIK"/>
+                    <navigationItem key="navigationItem" id="4ev-kt-lIK">
+                        <barButtonItem key="backBarButtonItem" title=" " id="hnb-0o-Isx"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="animationContainerView" destination="ojk-gi-tU7" id="zn2-TO-j2L"/>
                         <outlet property="connectionActionView" destination="V6e-jm-mZJ" id="Va4-ws-DRT"/>
@@ -562,7 +563,7 @@
         <scene sceneID="ifr-t2-xqN">
             <objects>
                 <navigationController id="6Uw-dQ-k4x" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="84x-7b-1Of" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="84x-7b-1Of" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -841,6 +842,49 @@ your preferences.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzG-3V-ELr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-630" y="-163"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="ZGP-OQ-bMT">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="G2a-WP-fnt" customClass="ConfigurationRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L8l-ic-yfH"/>
+                        <viewControllerLayoutGuide type="bottom" id="cmH-s5-faR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4op-0o-mLx" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZd-6c-y6G">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="pZw-xC-drC" kind="embed" id="msn-KC-lzS"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LZd-6c-y6G" firstAttribute="top" secondItem="L8l-ic-yfH" secondAttribute="bottom" id="Kbg-hx-cd0"/>
+                            <constraint firstAttribute="trailing" secondItem="LZd-6c-y6G" secondAttribute="trailing" id="XES-R4-Og3"/>
+                            <constraint firstItem="LZd-6c-y6G" firstAttribute="leading" secondItem="4op-0o-mLx" secondAttribute="leading" id="hCJ-3Q-GeI"/>
+                            <constraint firstItem="cmH-s5-faR" firstAttribute="top" secondItem="LZd-6c-y6G" secondAttribute="bottom" id="xGS-He-2sQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Account" id="B9p-sc-pDN">
+                        <barButtonItem key="backBarButtonItem" title=" " id="ZgM-DK-3IG"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mbs-q6-5la" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1558" y="-347"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="K6U-hY-mdP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Account" id="pZw-xC-drC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bFK-wI-bDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2187" y="-361"/>
         </scene>
     </scenes>
     <resources>

@@ -117,6 +117,7 @@
 		2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B73C70E1D5C7F670090FF8B /* Animation.storyboard */; };
 		2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */; };
 		2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */; };
+		2B8D3F401DBA965A0096EEF7 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */; };
 		2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */; };
 		2BC7D6651D95153400AE1F1C /* InstallPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */; };
 		2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */; };
@@ -276,6 +277,7 @@
 		2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNPersistentDataGenerator.m; sourceTree = "<group>"; };
 		2B75524B1D6AE9CA00E07A4B /* VPNPersistentDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNPersistentDataGenerator.h; sourceTree = "<group>"; };
+		2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewConfiguration.storyboard; sourceTree = "<group>"; };
 		2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallPreferencesViewController.swift; sourceTree = "<group>"; };
 		2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordTableViewController.swift; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 				2BDBD0D11D65295F00080E67 /* Password.storyboard */,
 				2B73C70E1D5C7F670090FF8B /* Animation.storyboard */,
 				2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */,
+				2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */,
 				2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */,
 				2B6798E41DAC0FB600099064 /* FirstOpen_iPad.storyboard */,
 			);
@@ -768,6 +771,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B45C1691D20D64600D4326C /* Dosis-ExtraBold.otf in Resources */,
+				2B8D3F401DBA965A0096EEF7 /* Account.storyboard in Resources */,
 				2B45C16C1D20D64600D4326C /* Dosis-Medium.otf in Resources */,
 				2061342D1D8296AC00480621 /* BlurredIndicatorView.xib in Resources */,
 				2B45C16B1D20D64600D4326C /* Dosis-Light.otf in Resources */,
