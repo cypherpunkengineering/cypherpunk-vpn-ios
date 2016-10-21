@@ -42,7 +42,6 @@ struct RegionListRequest: Request {
             
             let realm = try! Realm()
             try! realm.write({
-                print(areaDictionary)
                 for (_, list) in areaDictionary {
                     if let countriesDictionary = list as? Dictionary<String, AnyObject> {
                         for (country, list) in countriesDictionary {
@@ -61,7 +60,6 @@ struct RegionListRequest: Request {
                                         region.httpDefault = server["httpDefault"] as! String
                                         region.socksDefault = server["socksDefault"] as! String
                                         region.countryCode = country
-                                        print(region)
                                     } else {
                                         let region = Region(
                                             id: id as! String,
@@ -77,7 +75,6 @@ struct RegionListRequest: Request {
                                             socksDefault: server["socksDefault"] as! String,
                                             countryCode: country
                                         )
-                                        print(region)
                                         realm.add(region, update: true)
                                     }
                                 }
