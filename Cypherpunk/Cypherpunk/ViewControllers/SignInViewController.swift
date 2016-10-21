@@ -32,7 +32,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = true
         mainStore.subscribe(self, selector: nil)
         registerKeyboardNotification()
     }
@@ -90,6 +90,10 @@ class SignInViewController: UIViewController, StoreSubscriber {
             // TODO: transition to send email screen
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func backAction() {
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
 }

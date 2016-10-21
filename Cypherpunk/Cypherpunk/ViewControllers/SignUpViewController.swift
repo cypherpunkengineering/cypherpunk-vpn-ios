@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController, StoreSubscriber {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = true
         self.registerKeyboardNotification()
         mainStore.subscribe(self, selector: nil)
     }
@@ -88,6 +88,10 @@ class SignUpViewController: UIViewController, StoreSubscriber {
         if state.accountState.isLoggedIn == true {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+
+    @IBAction func backAction() {
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
 }
