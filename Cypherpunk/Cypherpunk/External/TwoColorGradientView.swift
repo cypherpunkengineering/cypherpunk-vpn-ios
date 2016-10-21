@@ -25,6 +25,17 @@ import UIKit
         }
     }
 
+    override var frame: CGRect {
+        didSet {
+            if self.gradientLayer != nil {
+                self.gradientLayer.removeFromSuperlayer()
+                self.gradientLayer = nil
+            }
+            
+            self.setNeedsDisplay()
+        }
+    }
+
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
