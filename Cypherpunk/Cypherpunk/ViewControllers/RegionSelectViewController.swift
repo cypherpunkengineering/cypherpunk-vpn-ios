@@ -164,7 +164,9 @@ class RegionSelectViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
+        view.backgroundColor = UIColor.clear
         if UI_USER_INTERFACE_IDIOM() == .pad {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
             let titleLabel: UILabel
@@ -177,9 +179,8 @@ class RegionSelectViewController: UITableViewController {
             
             view.addSubview(titleLabel)
             
-            return view
         }
-        return nil
+        return view
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -202,7 +203,7 @@ class RegionSelectViewController: UITableViewController {
         if UI_USER_INTERFACE_IDIOM() == .pad {
             return 17
         }
-        return 0.0
+        return 10
     }
     
     @IBAction func didSelectFavoriteAction(_ sender: UIButton) {
