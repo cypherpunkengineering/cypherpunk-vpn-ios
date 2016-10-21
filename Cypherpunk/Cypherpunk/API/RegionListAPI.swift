@@ -42,40 +42,42 @@ struct RegionListRequest: Request {
             
             let realm = try! Realm()
             try! realm.write({
+                print(areaDictionary)
                 for (_, list) in areaDictionary {
                     if let countriesDictionary = list as? Dictionary<String, AnyObject> {
                         for (country, list) in countriesDictionary {
-                            if let serverList = list as? Array<Dictionary<String, String>> {
+                            if let serverList = list as? Array<Dictionary<String, Any>> {
                                 for server in serverList {
                                     let id = server["id"]
                                     if let region = realm.object(ofType: Region.self, forPrimaryKey: id!) {
-                                        region.regionName = server["regionName"]!
-                                        region.ovHostname = server["ovHostname"]!
-                                        region.ovDefault = server["ovDefault"]!
-                                        region.ovNone = server["ovNone"]!
-                                        region.ovStrong = server["ovStrong"]!
-                                        region.ovStealth = server["ovStealth"]!
-                                        region.ipsecHostname = server["ipsecHostname"]!
-                                        region.ipsecDefault = server["ipsecDefault"]!
-                                        region.httpDefault = server["httpDefault"]!
-                                        region.socksDefault = server["socksDefault"]!
+                                        region.regionName = server["regionName"] as! String
+                                        region.ovHostname = server["ovHostname"] as! String
+                                        region.ovDefault = server["ovDefault"] as! String
+                                        region.ovNone = server["ovNone"] as! String
+                                        region.ovStrong = server["ovStrong"] as! String
+                                        region.ovStealth = server["ovStealth"] as! String
+                                        region.ipsecHostname = server["ipsecHostname"] as! String
+                                        region.ipsecDefault = server["ipsecDefault"] as! String
+                                        region.httpDefault = server["httpDefault"] as! String
+                                        region.socksDefault = server["socksDefault"] as! String
                                         region.countryCode = country
-                                        
+                                        print(region)
                                     } else {
                                         let region = Region(
-                                            id: id!,
-                                            regionName: server["regionName"]!,
-                                            ovHostname: server["ovHostname"]!,
-                                            ovDefault: server["ovDefault"]!,
-                                            ovNone: server["ovNone"]!,
-                                            ovStrong: server["ovStrong"]!,
-                                            ovStealth: server["ovStealth"]!,
-                                            ipsecHostname: server["ipsecHostname"]!,
-                                            ipsecDefault: server["ipsecDefault"]!,
-                                            httpDefault: server["httpDefault"]!,
-                                            socksDefault: server["socksDefault"]!,
+                                            id: id as! String,
+                                            regionName: server["regionName"] as! String,
+                                            ovHostname: server["ovHostname"] as! String,
+                                            ovDefault: server["ovDefault"] as! String,
+                                            ovNone: server["ovNone"] as! String,
+                                            ovStrong: server["ovStrong"] as! String,
+                                            ovStealth: server["ovStealth"] as! String,
+                                            ipsecHostname: server["ipsecHostname"] as! String,
+                                            ipsecDefault: server["ipsecDefault"] as! String,
+                                            httpDefault: server["httpDefault"] as! String,
+                                            socksDefault: server["socksDefault"] as! String,
                                             countryCode: country
                                         )
+                                        print(region)
                                         realm.add(region, update: true)
                                     }
                                 }
