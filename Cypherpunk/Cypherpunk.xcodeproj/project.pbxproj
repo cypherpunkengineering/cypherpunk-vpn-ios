@@ -22,6 +22,7 @@
 		201809F81D5B503200730FA4 /* ThemedMapImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809F71D5B503200730FA4 /* ThemedMapImageView.swift */; };
 		2018AB081DB8ADD200649D03 /* RestYourPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2018AB071DB8ADD200649D03 /* RestYourPasswordViewController.swift */; };
 		2018AB0A1DB8AF0E00649D03 /* EmailConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2018AB091DB8AF0E00649D03 /* EmailConfirmationViewController.swift */; };
+		2025DE291DBA07C200EC47AC /* FormSheetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2025DE281DBA07C200EC47AC /* FormSheetNavigationController.swift */; };
 		2033FB451DB89E4D004D14B7 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2033FB441DB89E4D004D14B7 /* LoadingAnimationView.swift */; };
 		203809691D13D89D005145CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203809681D13D89D005145CD /* AppDelegate.swift */; };
 		203809701D13D89D005145CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2038096F1D13D89D005145CD /* Assets.xcassets */; };
@@ -52,6 +53,9 @@
 		204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BE9111D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift */; };
 		205EE3241DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */; };
 		2061342D1D8296AC00480621 /* BlurredIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2061342C1D8296AC00480621 /* BlurredIndicatorView.xib */; };
+		2065DD071DB8D82100D0F446 /* TutorialRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2065DD061DB8D82100D0F446 /* TutorialRootViewController.swift */; };
+		2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2065DD081DB8D98100D0F446 /* OneFinalStepViewController.swift */; };
+		2065DD0B1DB8D9A500D0F446 /* CongraturationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2065DD0A1DB8D9A500D0F446 /* CongraturationsViewController.swift */; };
 		206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4D6F1D82BDF300853B47 /* IndicatorView.swift */; };
 		2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */; };
 		2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */; };
@@ -60,6 +64,8 @@
 		2092AF801DACC2B400F77031 /* ConnectionButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */; };
 		20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */; };
 		20AC7C4E1D8BFACC00760BF0 /* LinePathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC7C4D1D8BFACC00760BF0 /* LinePathView.swift */; };
+		20BF04D31DB8B8E30007B633 /* SettingUpYourVPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */; };
+		20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
@@ -166,6 +172,7 @@
 		201809F71D5B503200730FA4 /* ThemedMapImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedMapImageView.swift; sourceTree = "<group>"; };
 		2018AB071DB8ADD200649D03 /* RestYourPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestYourPasswordViewController.swift; sourceTree = "<group>"; };
 		2018AB091DB8AF0E00649D03 /* EmailConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailConfirmationViewController.swift; sourceTree = "<group>"; };
+		2025DE281DBA07C200EC47AC /* FormSheetNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSheetNavigationController.swift; sourceTree = "<group>"; };
 		2033FB441DB89E4D004D14B7 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		203809651D13D89D005145CD /* Cypherpunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cypherpunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		203809681D13D89D005145CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +210,9 @@
 		204BE9111D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedAccountBackgroundView.swift; sourceTree = "<group>"; };
 		205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageTrustedNetworksTableViewController.swift; sourceTree = "<group>"; };
 		2061342C1D8296AC00480621 /* BlurredIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlurredIndicatorView.xib; sourceTree = "<group>"; };
+		2065DD061DB8D82100D0F446 /* TutorialRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialRootViewController.swift; sourceTree = "<group>"; };
+		2065DD081DB8D98100D0F446 /* OneFinalStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneFinalStepViewController.swift; sourceTree = "<group>"; };
+		2065DD0A1DB8D9A500D0F446 /* CongraturationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongraturationsViewController.swift; sourceTree = "<group>"; };
 		206D4D6F1D82BDF300853B47 /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCharacterGenerator.swift; sourceTree = "<group>"; };
 		2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentContainerViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +221,8 @@
 		2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionButtonsViewController.swift; sourceTree = "<group>"; };
 		20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
 		20AC7C4D1D8BFACC00760BF0 /* LinePathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinePathView.swift; sourceTree = "<group>"; };
+		20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingUpYourVPNViewController.swift; sourceTree = "<group>"; };
+		20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		20D895ED1D1D16FB002B9F9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -501,6 +513,11 @@
 				208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */,
 				2018AB071DB8ADD200649D03 /* RestYourPasswordViewController.swift */,
 				2018AB091DB8AF0E00649D03 /* EmailConfirmationViewController.swift */,
+				20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */,
+				2065DD081DB8D98100D0F446 /* OneFinalStepViewController.swift */,
+				2065DD0A1DB8D9A500D0F446 /* CongraturationsViewController.swift */,
+				2065DD061DB8D82100D0F446 /* TutorialRootViewController.swift */,
+				2025DE281DBA07C200EC47AC /* FormSheetNavigationController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -531,6 +548,7 @@
 				20D896091D23B764002B9F9D /* LogIn.storyboard */,
 				2B4489201D2A53A700D202F9 /* SignUp.storyboard */,
 				203C62EF1D702CD900891F91 /* FirstOpen.storyboard */,
+				20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
 				20EC4A3F1D376C5200785399 /* Configuration.storyboard */,
 				2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */,
@@ -776,6 +794,7 @@
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
 				2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */,
 				20DA369B1DB5E6C1003F4999 /* Inconsolata-Regular.ttf in Resources */,
+				20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */,
 				2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */,
 				20D8960A1D23B764002B9F9D /* LogIn.storyboard in Resources */,
 			);
@@ -965,10 +984,13 @@
 				201809F41D5B4DBF00730FA4 /* ThemedTimeLabelButton.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
+				2065DD0B1DB8D9A500D0F446 /* CongraturationsViewController.swift in Sources */,
 				203F4F0B1D5B1BAA00EA2536 /* ThemedLogoView.swift in Sources */,
+				20BF04D31DB8B8E30007B633 /* SettingUpYourVPNViewController.swift in Sources */,
 				203C62F81D703A7B00891F91 /* GetPremiumPlanRootViewController.swift in Sources */,
 				2BDBD0CC1D651D6700080E67 /* UpdateEmailTableViewController.swift in Sources */,
 				201809EC1D5B468F00730FA4 /* HasSwitchThemedTableViewCell.swift in Sources */,
+				2025DE291DBA07C200EC47AC /* FormSheetNavigationController.swift in Sources */,
 				204BE90E1D5B28B7003D7CB5 /* ThemedSeparatorView.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* AccountReducer.swift in Sources */,
 				2018AB0A1DB8AF0E00649D03 /* EmailConfirmationViewController.swift in Sources */,
@@ -988,6 +1010,7 @@
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
 				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
 				201809F81D5B503200730FA4 /* ThemedMapImageView.swift in Sources */,
+				2065DD071DB8D82100D0F446 /* TutorialRootViewController.swift in Sources */,
 				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
 				201809E61D5B394900730FA4 /* ThemedTableViewCell.swift in Sources */,
 				2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */,
@@ -1021,6 +1044,7 @@
 				2085F33D1D6C4A76002D35C2 /* JSONIP.swift in Sources */,
 				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
 				208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */,
+				2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				204BE9121D5B37D4003D7CB5 /* ThemedAccountBackgroundView.swift in Sources */,
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,

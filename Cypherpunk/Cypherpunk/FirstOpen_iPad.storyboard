@@ -173,7 +173,7 @@
                 <viewControllerPlaceholder storyboardName="LogIn" id="EYt-wi-ICJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YBu-jO-XKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299.5" y="249"/>
+            <point key="canvasLocation" x="1453" y="85"/>
         </scene>
         <!--SignUp-->
         <scene sceneID="QCd-IH-u3l">
@@ -181,7 +181,7 @@
                 <viewControllerPlaceholder storyboardName="SignUp" id="T8g-Sy-d4v" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fkr-IA-zQk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1323.5" y="358"/>
+            <point key="canvasLocation" x="1461" y="128"/>
         </scene>
         <!--Get Cypherpunk Premium-->
         <scene sceneID="40W-oB-sxY">
@@ -641,6 +641,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="headerLogo" width="166" height="18"/>
+        <image name="headerLogo" width="153" height="32"/>
     </resources>
 </document>
