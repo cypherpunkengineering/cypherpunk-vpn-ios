@@ -17,12 +17,12 @@ class RegionSelectViewController: UITableViewController {
     fileprivate enum Section: Int {
         case fastestLocation
         case favorite
-        case recentryConnected
+        case recentlyConnected
         case allLocation
     }
     
     var favoriteResults: Results<Region>!
-    var recentryConnectedResults: Results<Region>!
+    var recentlyConnectedResults: Results<Region>!
     var otherResults: Results<Region>!
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class RegionSelectViewController: UITableViewController {
         // Do any additional setup after loading the view.
         let realm = try! Realm()
         favoriteResults = realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
-        recentryConnectedResults = realm.objects(Region.self).filter("isFavorite = false AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
+        recentlyConnectedResults = realm.objects(Region.self).filter("isFavorite = false AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
         otherResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
         
     }
@@ -75,9 +75,9 @@ class RegionSelectViewController: UITableViewController {
         }
     }
     
-    func numberOfRowsInRecentryConnectedSection() -> Int {
-        if recentryConnectedResults.count < 3 {
-            return recentryConnectedResults.count
+    func numberOfRowsInrecentlyConnectedSection() -> Int {
+        if recentlyConnectedResults.count < 3 {
+            return recentlyConnectedResults.count
         }
         return 3
     }
@@ -90,10 +90,10 @@ class RegionSelectViewController: UITableViewController {
             return 1
         case .favorite:
             return favoriteResults.count
-        case .recentryConnected:
-            return numberOfRowsInRecentryConnectedSection()
+        case .recentlyConnected:
+            return numberOfRowsInrecentlyConnectedSection()
         case .allLocation:
-            return otherResults.count - numberOfRowsInRecentryConnectedSection()
+            return otherResults.count - numberOfRowsInrecentlyConnectedSection()
         }
     }
     
@@ -113,14 +113,14 @@ class RegionSelectViewController: UITableViewController {
             cell?.titleLabel.text = favoriteResults[indexPath.row].regionName
             cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
             cell?.flagImageView.image = UIImage(named: favoriteResults[indexPath.row].countryCode.lowercased())
-        case .recentryConnected:
-            cell?.titleLabel.text = recentryConnectedResults[indexPath.row].regionName
+        case .recentlyConnected:
+            cell?.titleLabel.text = recentlyConnectedResults[indexPath.row].regionName
             cell?.starButton.setImage(R.image.iconStar(), for: .normal)
-            cell?.flagImageView.image = UIImage(named: recentryConnectedResults[indexPath.row].countryCode.lowercased())
+            cell?.flagImageView.image = UIImage(named: recentlyConnectedResults[indexPath.row].countryCode.lowercased())
         case .allLocation:
-            cell?.titleLabel.text = otherResults[indexPath.row + numberOfRowsInRecentryConnectedSection()].regionName
+            cell?.titleLabel.text = otherResults[indexPath.row + numberOfRowsInrecentlyConnectedSection()].regionName
             cell?.starButton.setImage(R.image.iconStar(), for: .normal)
-            cell?.flagImageView.image = UIImage(named: otherResults[indexPath.row + numberOfRowsInRecentryConnectedSection()].countryCode.lowercased())
+            cell?.flagImageView.image = UIImage(named: otherResults[indexPath.row + numberOfRowsInrecentlyConnectedSection()].countryCode.lowercased())
         }
         
         cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
@@ -143,10 +143,10 @@ class RegionSelectViewController: UITableViewController {
             }
         case .favorite:
             region = favoriteResults[indexPath.row]
-        case .recentryConnected:
-            region = recentryConnectedResults[indexPath.row]
+        case .recentlyConnected:
+            region = recentlyConnectedResults[indexPath.row]
         case .allLocation:
-            region = otherResults[indexPath.row + numberOfRowsInRecentryConnectedSection()]
+            region = otherResults[indexPath.row + numberOfRowsInrecentlyConnectedSection()]
         }
         
         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
@@ -175,7 +175,6 @@ class RegionSelectViewController: UITableViewController {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
         view.backgroundColor = UIColor.clear
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
             let titleLabel: UILabel
             
             titleLabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 17))
@@ -197,8 +196,8 @@ class RegionSelectViewController: UITableViewController {
                 return nil
             case .favorite:
                 return "Favorite"
-            case .recentryConnected:
-                return "Recentry Connected"
+            case .recentlyConnected:
+                return "recently Connected"
             case .allLocation:
                 return "All Location"
             }
@@ -223,10 +222,10 @@ class RegionSelectViewController: UITableViewController {
             return
         case .favorite:
             target = favoriteResults[row]
-        case .recentryConnected:
-            target = recentryConnectedResults[row]
+        case .recentlyConnected:
+            target = recentlyConnectedResults[row]
         case .allLocation:
-            target = otherResults[row + numberOfRowsInRecentryConnectedSection()]
+            target = otherResults[row + numberOfRowsInrecentlyConnectedSection()]
         }
         let realm = try! Realm()
         try! realm.write {
