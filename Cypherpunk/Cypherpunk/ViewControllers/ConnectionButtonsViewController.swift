@@ -24,6 +24,7 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var regionButton: UIButton?
 
+    @IBOutlet weak var regionWidthConstraint: NSLayoutConstraint?
     @IBOutlet weak var connectingStateLabel: UILabel?
     
     override func viewDidLoad() {
@@ -198,6 +199,13 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
 
     func newState(state: AppState) {
         regionButton?.setTitle(state.regionState.title, for: .normal)
+        if let font = regionButton?.titleLabel?.font {
+            let size = (state.regionState.title as NSString).size(attributes: [
+                NSFontAttributeName: font,
+            ])
+            regionWidthConstraint?.constant = size.width + 54
+        }
+        
         regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
