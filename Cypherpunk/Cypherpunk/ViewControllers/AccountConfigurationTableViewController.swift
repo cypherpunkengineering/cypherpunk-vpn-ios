@@ -16,8 +16,11 @@ class AccountConfigurationTableViewController: UITableViewController {
         case paymentUpgrade = 11
         case accountEmailDetail = 20
         case accountPasswordDetail = 21
-        case contactus = 30
-        case signOut = 31
+        case get30daysPremiumFree = 30
+        case rateOurService = 31
+        case contactus = 32
+        case help
+        case signOut = 34
     }
     
     @IBOutlet weak var usernameLabelButton: ThemedTintedNavigationButton!
@@ -163,6 +166,10 @@ class AccountConfigurationTableViewController: UITableViewController {
         
         if let row = Rows(rawValue: (indexPath as NSIndexPath).section * 10 + (indexPath as NSIndexPath).row) {
             switch row {
+            case .rateOurService:
+                if let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(appID)") {
+                    UIApplication.shared.openURL(url)
+                }
             case .signOut:
                 mainStore.dispatch(AccountAction.logout)
                 

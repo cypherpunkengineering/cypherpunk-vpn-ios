@@ -31,6 +31,11 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         let logoView = UIImageView(image: R.image.headerLogo())
         self.navigationItem.titleView = logoView
         
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSFontAttributeName: R.font.dosisSemiBold(size: 18.0)!,
+            NSForegroundColorAttributeName: UIColor.white,
+        ]
+
         // Do any additional setup after loading the view.
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(

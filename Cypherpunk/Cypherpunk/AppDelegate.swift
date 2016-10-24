@@ -18,6 +18,8 @@ let mainStore = Store<AppState>(
     state: nil
 )
 
+let appID = "XXXXX"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -29,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
-
+        
         UINavigationBar.appearance().titleTextAttributes = [
             NSFontAttributeName: R.font.dosisSemiBold(size: 18.0)!,
             NSForegroundColorAttributeName: UIColor.white,
@@ -117,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
