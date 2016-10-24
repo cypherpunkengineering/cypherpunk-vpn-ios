@@ -15,7 +15,7 @@ class ThemedArrowDownImageView: UIImageView {
     }
     
     func configureView() {
-        let image = UIImage(resource: R.image.arrow_down)
+        let image = UIImage(resource: R.image.arrowDown)
         self.image = image
         self.tintColor = UIColor.white
     }

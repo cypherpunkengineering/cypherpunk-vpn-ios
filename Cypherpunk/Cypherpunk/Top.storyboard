@@ -22,7 +22,7 @@
         <scene sceneID="5a0-Ti-oxw">
             <objects>
                 <navigationController navigationBarHidden="YES" id="JcQ-do-E5e" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -226,7 +226,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zH-e6-wqt">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="6J9-p3-Drr" customClass="ThemedArrowDownImageView" customModule="Cypherpunk" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="6J9-p3-Drr" customClass="ThemedArrowDownImageView" customModule="Cypherpunk" customModuleProvider="target">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="3gP-b0-XJ2"/>
                                             <constraint firstAttribute="width" constant="7" id="TVM-7D-Y0c"/>
@@ -563,7 +563,7 @@
         <scene sceneID="ifr-t2-xqN">
             <objects>
                 <navigationController id="6Uw-dQ-k4x" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="84x-7b-1Of" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="84x-7b-1Of" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -888,7 +888,7 @@ your preferences.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="arrow_down" width="12" height="8"/>
+        <image name="arrowDown" width="12" height="8"/>
         <image name="headerLogo" width="153" height="32"/>
         <image name="ic_close_white" width="24" height="24"/>
         <image name="iconAccount" width="18" height="24"/>
