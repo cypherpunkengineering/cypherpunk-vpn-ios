@@ -161,21 +161,6 @@ class AnimationViewController: UIViewController {
         let horizontalItemsCount = Int(ceil(view.frame.width / (itemSize.width + 3.0)))
         let verticalItemsCount = Int(ceil(view.frame.height / itemSize.height)) + 4
         let font = R.font.inconsolataRegular(size: normalFontSize)
-
-        let deviceNameColumn = horizontalItemsCount - 2
-        let deviceName = SpecificDataProvider.deviceName().uppercased()
-        let deviceNameStartIndex = 5
-        let deviceNameEndIndex = deviceNameStartIndex + deviceName.characters.count
-        
-        let carrierNameColumn = horizontalItemsCount - 5
-        let carrierName = SpecificDataProvider.carrierName()?.uppercased()
-        let carrierNameStartIndex = 2
-        let carrierNameEndIndex: Int
-        if let carrierName = carrierName {
-            carrierNameEndIndex = carrierNameStartIndex + carrierName.characters.count
-        } else {
-            carrierNameEndIndex = 0
-        }
         
         for x in 0...horizontalItemsCount {
             let verticalLayer = CALayer()
