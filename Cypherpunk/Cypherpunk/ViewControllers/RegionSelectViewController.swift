@@ -197,7 +197,7 @@ class RegionSelectViewController: UITableViewController {
             case .favorite:
                 return "Favorite"
             case .recentlyConnected:
-                return "recently Connected"
+                return "Recently Connected"
             case .allLocation:
                 return "All Location"
             }
