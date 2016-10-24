@@ -166,6 +166,10 @@ class AccountConfigurationTableViewController: UITableViewController {
         
         if let row = Rows(rawValue: (indexPath as NSIndexPath).section * 10 + (indexPath as NSIndexPath).row) {
             switch row {
+            case .rateOurService:
+                if let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(appID)") {
+                    UIApplication.shared.openURL(url)
+                }
             case .signOut:
                 mainStore.dispatch(AccountAction.logout)
                 
