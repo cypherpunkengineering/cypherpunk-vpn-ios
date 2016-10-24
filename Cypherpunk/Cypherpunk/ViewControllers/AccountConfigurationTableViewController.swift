@@ -16,8 +16,11 @@ class AccountConfigurationTableViewController: UITableViewController {
         case paymentUpgrade = 11
         case accountEmailDetail = 20
         case accountPasswordDetail = 21
-        case contactus = 30
-        case signOut = 31
+        case get30daysPremiumFree = 30
+        case rateOurService = 31
+        case contactus = 32
+        case help
+        case signOut = 34
     }
     
     @IBOutlet weak var usernameLabelButton: ThemedTintedNavigationButton!
