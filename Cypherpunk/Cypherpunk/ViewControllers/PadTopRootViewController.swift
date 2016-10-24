@@ -10,6 +10,7 @@ import UIKit
 import NetworkExtension
 
 import ReSwift
+import ECSlidingViewController
 
 class PadTopRootViewController: UIViewController, StoreSubscriber {
     
@@ -44,7 +45,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
-        
+                
         if let state = mainStore.state {
             regionButton?.setTitle(state.regionState.title, for: .normal)
             regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -70,6 +71,9 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
             expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
         }
         
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+            self.view.addGestureRecognizer(self.slidingViewController().panGesture)
+        }
         mainStore.subscribe(self)
         
     }

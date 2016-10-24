@@ -17,6 +17,11 @@ class ConfigurationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            self.tableView.isScrollEnabled = false
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +36,10 @@ class ConfigurationTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

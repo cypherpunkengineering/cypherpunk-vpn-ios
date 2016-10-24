@@ -18,14 +18,6 @@ class ConfigurationRootViewController: UIViewController {
         self.navigationItem.backBarButtonItem = item
         self.automaticallyAdjustsScrollViewInsets = false
         
-        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-            let barbutton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeAction))
-            barbutton.setTitleTextAttributes([
-                NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
-                NSForegroundColorAttributeName: UIColor.goldenYellowColor()
-                ], for: .normal)
-            self.navigationItem.rightBarButtonItem = barbutton
-        }
     }
 
     override func didReceiveMemoryWarning() {

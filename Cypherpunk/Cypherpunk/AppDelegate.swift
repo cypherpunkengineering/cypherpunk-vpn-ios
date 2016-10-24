@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSForegroundColorAttributeName: UIColor.white,
         ]
         
-        UINavigationBar.appearance().shadowImage = R.image.lineColor()
+//        UINavigationBar.appearance().shadowImage = R.image.lineColor()
         
         UIBarButtonItem.appearance().setTitleTextAttributes([
             NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,

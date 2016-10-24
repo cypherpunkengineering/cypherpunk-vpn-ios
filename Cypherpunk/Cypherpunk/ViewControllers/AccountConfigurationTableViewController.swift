@@ -26,7 +26,6 @@ class AccountConfigurationTableViewController: UITableViewController {
     @IBOutlet weak var usernameLabelButton: ThemedTintedNavigationButton!
     @IBOutlet weak var mailAddressLabel: UILabel!
     
-    @IBOutlet weak var closeButton: UIBarButtonItem?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,14 +35,8 @@ class AccountConfigurationTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-            let barbutton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeAction))
-            barbutton.setTitleTextAttributes([
-                NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
-                NSForegroundColorAttributeName: UIColor.goldenYellowColor()
-                ], for: .normal)
-            self.navigationItem.rightBarButtonItem = barbutton
-            self.closeButton = barbutton
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            self.tableView.isScrollEnabled = false
         }
     }
     
@@ -181,8 +174,8 @@ class AccountConfigurationTableViewController: UITableViewController {
                     
                 } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
                     let vc = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
-                    self.navigationController?.dismiss(animated: false) {
-                        UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true, completion: nil)
+                    UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
+                        self.slidingViewController().resetTopView(animated: false)
                     }
                 }
                 
@@ -212,12 +205,6 @@ class AccountConfigurationTableViewController: UITableViewController {
         
         return super.tableView(tableView, indentationLevelForRowAt: indexPath)
         
-    }
-}
-
-extension AccountConfigurationTableViewController {
-    @IBAction func closeAction() {
-        self.navigationController?.dismiss(animated: true)
     }
 }
 

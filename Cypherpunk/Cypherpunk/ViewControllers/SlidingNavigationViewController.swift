@@ -7,10 +7,23 @@
 //
 
 import UIKit
+import ECSlidingViewController
 
 class SlidingNavigationViewController: ECSlidingViewController {
 
+    override func awakeFromNib() {
+        self.topViewController = R.storyboard.top_iPad.topRootNavigation()
+        let right = R.storyboard.top_iPad.slidingContent()
+        right?.edgesForExtendedLayout = [UIRectEdge.top , UIRectEdge.bottom, UIRectEdge.right]
+
+        self.underRightViewController = right
+        
+        self.anchorLeftRevealAmount = 276
+
+
+    }
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -33,3 +46,15 @@ class SlidingNavigationViewController: ECSlidingViewController {
     */
 
 }
+//
+//extension SlidingNavigationViewController: ECSlidingViewControllerLayout, ECSlidingViewControllerDelegate {
+// 
+//    func slidingViewController(_ slidingViewController: ECSlidingViewController!, frameFor viewController: UIViewController!, topViewPosition: ECSlidingViewControllerTopViewPosition) -> CGRect {
+//        return CGRect(x: 0, y: 0, width: 1024, height: self.view.frame.height)
+//    }
+//
+//    func slidingViewController(_ slidingViewController: ECSlidingViewController!, layoutControllerFor topViewPosition: ECSlidingViewControllerTopViewPosition) -> ECSlidingViewControllerLayout! {
+//        return self
+//    }
+//
+//}
