@@ -44,7 +44,7 @@ If you use Swift 2.2 or 2.3, try [APIKit 2.0.5](https://github.com/ishkawa/APIKi
 
 - Insert `github "ishkawa/APIKit" ~> 3.0` to your Cartfile.
 - Run `carthage update`.
-- Link your app with `APIKit.framework` and `Result.framework` in `Carthage/Checkouts`.
+- Link your app with `APIKit.framework` and `Result.framework` in `Carthage/Build`.
 
 #### [CocoaPods](https://github.com/cocoapods/cocoapods)
 
@@ -65,4 +65,5 @@ Note: CocoaPods 1.1.0 is required to install APIKit 3.
 
 ### Migration Guides
 
+- [APIKit 3 Migration Guide](Documentation/APIKit3MigrationGuide.md)
 - [APIKit 2 Migration Guide](Documentation/APIKit2MigrationGuide.md)

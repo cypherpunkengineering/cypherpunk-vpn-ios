@@ -1,6 +1,6 @@
 {
   "name": "SwiftyStoreKit",
-  "version": "0.5.1",
+  "version": "0.5.3",
   "summary": "Lightweight In App Purchases Swift framework for iOS 8.0+, tvOS 9.0+ and OSX 10.10+",
   "license": "MIT",
   "homepage": "https://github.com/bizz84/SwiftyStoreKit",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/bizz84/SwiftyStoreKit.git",
-    "tag": "0.5.1"
+    "tag": "0.5.3"
   },
   "source_files": "SwiftyStoreKit/*.{swift}",
   "screenshots": [

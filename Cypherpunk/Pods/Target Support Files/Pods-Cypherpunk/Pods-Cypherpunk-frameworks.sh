@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/APIKit/APIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ECSlidingViewController/ECSlidingViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Himotoki/Himotoki.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZAppearance/MZAppearance.framework"
@@ -101,6 +102,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/APIKit/APIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ECSlidingViewController/ECSlidingViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Himotoki/Himotoki.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZAppearance/MZAppearance.framework"

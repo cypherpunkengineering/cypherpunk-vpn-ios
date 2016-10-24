@@ -1,5 +1,4 @@
-# SwiftyStoreKit
-SwiftyStoreKit is a lightweight In App Purchases framework for iOS 8.0+, tvOS 9.0+ and OS X 10.10+, written in Swift.
+![](https://github.com/bizz84/SwiftyStoreKit/raw/master/SwiftyStoreKit-logo.png)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://mit-license.org)
 [![Platform](http://img.shields.io/badge/platform-ios%20%7C%20macos%20%7C%20tvos-lightgrey.svg?style=flat)](https://developer.apple.com/resources/)
@@ -10,9 +9,14 @@ SwiftyStoreKit is a lightweight In App Purchases framework for iOS 8.0+, tvOS 9.
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Twitter](https://img.shields.io/badge/twitter-@biz84-blue.svg?maxAge=2592000)](http://twitter.com/biz84)
 
-#### NOTE: Master branch now compiles with Swift 3.0 under Xcode 8.
+SwiftyStoreKit is a lightweight In App Purchases framework for iOS 8.0+, tvOS 9.0+ and OS X 10.10+.
 
-#### Swift 2.2 / Xcode 7 compatibility is supported in the [swift-2.2 branch](https://github.com/bizz84/SwiftyStoreKit/tree/swift-2.2).
+| Language  | Branch | Pod version | Xcode version |
+| --------- | ------ | ----------- | ------------- |
+| Swift 3.0 | [master](https://github.com/bizz84/SwiftyStoreKit/tree/master) | >= 0.5.x | Xcode 8 or greater|
+| Swift 2.3 | [swift-2.3](https://github.com/bizz84/SwiftyStoreKit/tree/swift-2.3) | 0.4.x | Xcode 8, Xcode 7.3.x |
+| Swift 2.2 | [swift-2.2](https://github.com/bizz84/SwiftyStoreKit/tree/swift-2.2) | 0.3.x | Xcode 7.3.x |
+
 
 ### Preview
 
@@ -33,7 +37,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	
 	    for completedTransaction in completedTransactions {
 	
-	        if completedTransaction.transactionState == .Purchased || completedTransaction.transactionState == .Restored {
+	        if completedTransaction.transactionState == .purchased || completedTransaction.transactionState == .restored {
 	
 	            print("purchased: \(completedTransaction.productId)")
 	        }
@@ -49,10 +53,7 @@ If there are any pending transactions at this point, these will be reported by t
 ```swift
 SwiftyStoreKit.retrieveProductsInfo(["com.musevisions.SwiftyStoreKit.Purchase1"]) { result in
     if let product = result.retrievedProducts.first {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.locale = product.priceLocale
-        numberFormatter.numberStyle = .currency
-        let priceString = numberFormatter.string(from: product.price)
+        let priceString = product.localizedPrice!
         print("Product: \(product.localizedDescription), price: \(priceString)")
     }
     else if let invalidProductId = result.invalidProductIDs.first {
@@ -95,7 +96,7 @@ SwiftyStoreKit.restorePurchases() { results in
 ### Verify Receipt
 
 ```swift
-SwiftyStoreKit.verifyReceipt() { result in
+SwiftyStoreKit.verifyReceipt(password: "your-shared-secret") { result in
     if case .error(let error) = result {
         if case .noReceiptData = error {
             self.refreshReceipt()
@@ -115,16 +116,10 @@ func refreshReceipt() {
 }
 ```
 
-When using auto-renewable subscriptions, the shared secret can be specified like so:
-
-```
-SwiftyStoreKit.verifyReceipt(password: "your_shared_secret")
-```
-
 ### Verify Purchase
 
 ```swift
-SwiftyStoreKit.verifyReceipt() { result in
+SwiftyStoreKit.verifyReceipt(password: "your-shared-secret") { result in
     switch result {
     case .success(let receipt):
         // Verify the purchase of Consumable or NonConsumable
@@ -149,15 +144,15 @@ Note that for consumable products, the receipt will only include the information
 ### Verify Subscription
 
 ```swift
-SwiftyStoreKit.verifyReceipt() { result in
+SwiftyStoreKit.verifyReceipt(password: "your-shared-secret") { result in
     switch result {
     case .success(let receipt):
         // Verify the purchase of a Subscription
         let purchaseResult = SwiftyStoreKit.verifySubscription(
             productId: "com.musevisions.SwiftyStoreKit.Subscription",
             inReceipt: receipt,
-            validUntil: NSDate()
-            validDuration: 3600 * 24 * 30, // Non Renewing Subscription only
+            validUntil: NSDate(),
+            validDuration: 3600 * 24 * 30 // Non Renewing Subscription only
         )
         switch purchaseResult {
         case .purchased(let expiresDate):
@@ -205,17 +200,17 @@ github "bizz84/SwiftyStoreKit"
 
 **NOTE**: Please ensure that you have the [latest](https://github.com/Carthage/Carthage/releases) Carthage installed.
 
-## Swift 2.x / 3.x
+## Swift 2.2 / 2.3 / 3.0
 
-Following the release of Xcode 8 GM: 
+| Language  | Branch | Pod version | Xcode version |
+| --------- | ------ | ----------- | ------------- |
+| Swift 3.0 | [master](https://github.com/bizz84/SwiftyStoreKit/tree/master) | >= 0.5.x | Xcode 8 or greater|
+| Swift 2.3 | [swift-2.3](https://github.com/bizz84/SwiftyStoreKit/tree/swift-2.3) | 0.4.x | Xcode 8, Xcode 7.3.x |
+| Swift 2.2 | [swift-2.2](https://github.com/bizz84/SwiftyStoreKit/tree/swift-2.2) | 0.3.x | Xcode 7.3.x |
 
-* The old Swift 2.2 code has been moved to the `swift-2.2` branch
-* The `swift-3.0` branch has been merged into `master`
+## Change Log
 
-As for versioning:
-
-* Swift 3.0 work will be tagged as version `0.5.x`
-* Swift 2.2 work will be tagged as version `0.3.x`
+See the [Releases Page](https://github.com/bizz84/SwiftyStoreKit/releases)
 
 ## Sample Code
 The project includes demo apps [for iOS](https://github.com/bizz84/SwiftyStoreKit/blob/master/SwiftyStoreDemo/ViewController.swift) [and OSX](https://github.com/bizz84/SwiftyStoreKit/blob/master/SwiftyStoreOSXDemo/ViewController.swift) showing how to use SwiftyStoreKit.
@@ -250,54 +245,13 @@ To prevent situations like this from happening, a `completeTransactions()` metho
 
 The user can background the hosting application and change the Apple ID used with the App Store, then foreground the app. This has been observed to cause problems with SwiftyStoreKit - other IAP implementations may suffer from this as well.
 
+## Essential Reading
+* [Apple - WWDC16, Session 702: Using Store Kit for In-app Purchases with Swift 3](https://developer.apple.com/videos/play/wwdc2016/702/)
+* [Apple - TN2387: In-App Purchase Best Practices](https://developer.apple.com/library/content/technotes/tn2387/_index.html)
+* [Apple - About Receipt Validation](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html)
+* [Apple - Receipt Validation Programming Guide](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html#//apple_ref/doc/uid/TP40010573-CH106-SW1)
+* [Apple - Offering Subscriptions](https://developer.apple.com/app-store/subscriptions/)
 
-## Changelog
-
-#### Version 0.5.0 (swift-3.0)
-* Port SwiftyStoreKit to Swift 3.0, compiles under Xcode 8 GM
-* Increased minimum deployment target for OS X to version 10.10
-
-#### Version 0.3.0 (swift-2.2)
-
-* Fixed the `verifyReceipt()` method to use production environment by default. This falls back to the test environment if the receipt is a sandbox receipt.
-
-#### Version 0.2.10
-
-* Added **tvOS** support
-* Faster compilation time for `verifySubscription()` implementation
-
-#### Version 0.2.9
-
-* Added support for verifying purchases and subscriptions. This includes consumable and non consumable purchases, auto-renewing, free and non-renewing subscriptions.
-* The `purchaseProduct()` now takes an optional `applicationUsername` string which can be used to help detect irregular activity on transactions. Read more about this on the [Apple docs](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/RequestPayment.html).
-* Updated `verifyReceipt()` so that the completion block is called on the main thread.
-
-
-#### Version 0.2.8
-
-* Added `completeTransactions()` method to clear payment queue and return information about payments that have completed / failed.
-
-#### Version 0.2.7
-
-* Fixed **critical issue** that was causing the callbacks for `purchaseProduct()` and `restorePurchases()` to get mixed up when multiple requests were running concurrently. Related issues: [#3](https://github.com/bizz84/SwiftyStoreKit/issues/3), [#22](https://github.com/bizz84/SwiftyStoreKit/issues/22), [#26](https://github.com/bizz84/SwiftyStoreKit/issues/26). _Note that while code analysis and various testing scenarios indicate that this is now resolved, this has not yet been confirmed by the reporters of the issues._
-
-#### Version 0.2.6
-
-* Retrieve multiple products info at once. Introduces the new `retrieveProductsInfo()` API call, which takes a set of product IDs and returns a struct with information about the corresponding SKProducts. [Related issue #21](https://github.com/bizz84/SwiftyStoreKit/issues/21)
-
-#### Version 0.2.5
-
-* The `restorePurchases()` completion closure has been changed to return all restored purchases in one call. [Related issue #18](https://github.com/bizz84/SwiftyStoreKit/issues/18)
-
-#### Version 0.2.4
-
-* Carthage compatible
-* Fixed Swift 2.2 warnings
-
-#### Previous versions
-
-* Receipt verification
-* OS X support
 
 ## Implementation Details
 In order to make a purchase, two operations are needed:
@@ -347,6 +301,7 @@ It would be great to showcase apps using SwiftyStoreKit here. Pull requests welc
 * [KType](https://itunes.apple.com/app/id1037000234) - Space shooter game
 * [iPic](https://itunes.apple.com/app/id1101244278?ls=1&mt=12) - Automatically upload images and save Markdown links
 * [iHosts](https://itunes.apple.com/app/id1102004240?ls=1&mt=12) - Perfect for editing /etc/hosts
+* [Arise](http://www.abnehm-app.de/) - Calorie counter
 
 
 ## License

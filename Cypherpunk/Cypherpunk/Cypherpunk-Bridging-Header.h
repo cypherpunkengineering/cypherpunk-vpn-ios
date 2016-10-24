@@ -22,6 +22,6 @@
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewControllerInteractiveAnimator.h>
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewControllerInteractiveTransitioning.h>
 
-
+#import <ECSlidingViewController/ECSlidingViewController.h>
 
 @import UITextView_Placeholder;

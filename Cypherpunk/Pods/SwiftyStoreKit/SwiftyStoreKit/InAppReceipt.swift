@@ -149,9 +149,9 @@ public enum ReceiptInfoField: String {
 internal class InAppReceipt {
 
     // URL used to verify remotely receipt
-    enum ReceiptVerifyURL: String {
-        case Production = "https://buy.itunes.apple.com/verifyReceipt"
-        case Test = "https://sandbox.itunes.apple.com/verifyReceipt"
+    enum VerifyReceiptURLType: String {
+        case production = "https://buy.itunes.apple.com/verifyReceipt"
+        case sandbox = "https://sandbox.itunes.apple.com/verifyReceipt"
     }
 
     static var URL: Foundation.URL? {
@@ -179,7 +179,7 @@ internal class InAppReceipt {
     *  - Parameter completion: handler for result
     */
     class func verify(
-        receiptVerifyURL url: ReceiptVerifyURL = .Production,
+        urlType: VerifyReceiptURLType = .production,
         password autoRenewPassword: String? = nil,
         session: URLSession = URLSession.shared,
         completion: @escaping (SwiftyStoreKit.VerifyReceiptResult) -> ()) {
@@ -191,7 +191,7 @@ internal class InAppReceipt {
             }
 
             // Create request
-            let storeURL = Foundation.URL(string: url.rawValue)! // safe (until no more)
+            let storeURL = Foundation.URL(string: urlType.rawValue)! // safe (until no more)
             let storeRequest = NSMutableURLRequest(url: storeURL)
             storeRequest.httpMethod = "POST"
 
@@ -248,7 +248,7 @@ internal class InAppReceipt {
                      */
                     let receiptStatus = ReceiptStatus(rawValue: status) ?? ReceiptStatus.unknown
                     if case .testReceipt = receiptStatus {
-                        verify(receiptVerifyURL: .Test, password: autoRenewPassword, session: session, completion: completion)
+                        verify(urlType: .sandbox, password: autoRenewPassword, session: session, completion: completion)
                     }
                     else {
                         if receiptStatus.isValid {
@@ -305,6 +305,8 @@ internal class InAppReceipt {
             return .notPurchased
         }
     
+        let receiptDate = getReceiptRequestDate(inReceipt: receipt) ?? date
+        
         // Return the expires dates sorted desc
         let expiryDateValues = receiptsInfo
             .flatMap { (receipt) -> String? in
@@ -328,7 +330,7 @@ internal class InAppReceipt {
         }
       
         // Check if at least 1 receipt is valid
-        if firstExpiryDate.compare(date) == .orderedDescending {
+        if firstExpiryDate.compare(receiptDate) == .orderedDescending {
             
             // The subscription is valid
             return .purchased(expiryDate: firstExpiryDate)
@@ -339,6 +341,16 @@ internal class InAppReceipt {
         }
     }
   
+    private class func getReceiptRequestDate(inReceipt receipt: ReceiptInfo) -> Date? {
+        
+        guard let receiptInfo = receipt["receipt"] as? ReceiptInfo,
+            let requestDateString = receiptInfo["request_date_ms"] as? String,
+            let requestDateMs = Double(requestDateString) else {
+            return nil
+        }
+        return Date(timeIntervalSince1970: requestDateMs / 1000)
+    }
+    
     /**
      *  Get all the receipts info for a specific product
      *  - Parameter productId: the product id

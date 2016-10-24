@@ -1,7 +1,7 @@
 {
   "name": "APIKit",
-  "version": "3.0.0-beta.1",
-  "summary": "A networking library for building type safe web API client in Swift.",
+  "version": "3.0.0",
+  "summary": "Type-safe networking abstraction layer that associates request type with response type.",
   "homepage": "https://github.com/ishkawa/APIKit",
   "authors": {
     "Yosuke Ishikawa": "y@ishkawa.org"
@@ -15,7 +15,7 @@
   "source_files": "Sources/**/*.{swift,h,m}",
   "source": {
     "git": "https://github.com/ishkawa/APIKit.git",
-    "tag": "3.0.0-beta.1"
+    "tag": "3.0.0"
   },
   "license": {
     "type": "MIT",

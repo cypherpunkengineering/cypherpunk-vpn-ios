@@ -16,6 +16,7 @@ target 'Cypherpunk' do
        pod 'RealmSwift', :git => 'https://github.com/realm/realm-cocoa.git', :submodules => true
        pod 'UITextView+Placeholder', '~> 1.2'
        pod 'MZFormSheetPresentationController'
+       pod 'ECSlidingViewController'
 end
 
 target 'CypherpunkTests' do

@@ -54,7 +54,9 @@ public enum NetworkStatus: CustomStringConvertible {
 }
 ```
 
+## Got a problem?
 
+Please read https://github.com/ashleymills/Reachability.swift/wiki/Raising-an-issue before raising an issue.
 
 ## Supporting **Reachability.swift**
 Keeping **Reachability.swift** up-to-date is a time consuming task. Making updates, reviewing pull requests, responding to issues and answering emails all take time. If you'd like to help keep me motivated, please download my free app, [Foto Flipper] from the App Store. (To really motivate me, pay $0.99 for the IAP!)
@@ -158,7 +160,7 @@ let reachability = Reachability()!
 
 //declare this inside of viewWillAppear
 
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:",name: ReachabilityChangedNotification,object: reachability)
+     NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged),name: ReachabilityChangedNotification,object: reachability)
     do{
       try reachability.startNotifier()
     }catch{
@@ -173,8 +175,8 @@ func reachabilityChanged(note: NSNotification) {
 
   let reachability = note.object as! Reachability
 
-  if reachability.isReachable() {
-    if reachability.isReachableViaWiFi() {
+  if reachability.isReachable {
+    if reachability.isReachableViaWiFi {
       print("Reachable via WiFi")
     } else {
       print("Reachable via Cellular")
@@ -193,10 +195,6 @@ NSNotificationCenter.defaultCenter().removeObserver(self,
                                                     name: ReachabilityChangedNotification,
                                                     object: reachability)
 ```
-
-## Got a problem?
-
-Please read https://github.com/ashleymills/Reachability.swift/wiki/Raising-an-issue before raising an issue.
 
 ## Want to help?
 
