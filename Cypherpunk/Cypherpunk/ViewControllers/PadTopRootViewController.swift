@@ -12,6 +12,19 @@ import NetworkExtension
 import ReSwift
 import ECSlidingViewController
 
+extension NEVPNStatus: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .connected: return "You are now protected"
+        case .connecting: return "Connecting..."
+        case .disconnected: return "Tap to protect"
+        case .disconnecting: return "Disconnecting..."
+        case .invalid: return "invalid"
+        case .reasserting: return "reasserting"
+        }
+    }
+}
+
 class PadTopRootViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var installPreferencesView: UIView?
@@ -128,13 +141,14 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
-    @IBAction func transitionToConfigurationAction(_ sender: AnyObject) {
-        let vc = R.storyboard.configuration.configuration()
-        self.navigationController?.pushViewController(vc!, animated: true)
+    @IBAction func openOrCloseConfigurationAction(_ sender: AnyObject) {
+        if self.slidingViewController().currentTopViewPosition == .centered {
+            self.slidingViewController().anchorTopViewToLeft(animated: true, onComplete: nil)
+        } else {
+            self.slidingViewController().resetTopView(animated: true)
+        }
     }
     @IBAction func transitionToAccountAction(_ sender: AnyObject) {
-        let vc = R.storyboard.account.instantiateInitialViewController()
-        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     

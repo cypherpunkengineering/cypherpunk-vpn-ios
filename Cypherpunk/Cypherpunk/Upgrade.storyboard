@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="644-d0-VJL">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IX6-zl-rXh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,59 +20,12 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Upgrade Account-->
-        <scene sceneID="glf-cj-8wq">
-            <objects>
-                <viewController title="Upgrade Account" id="644-d0-VJL" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0AU-Se-KJy"/>
-                        <viewControllerLayoutGuide type="bottom" id="hSR-gJ-iuJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Lha-tL-bUc" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYq-wZ-4iq">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="ESJ-e3-4aK" kind="embed" id="jkZ-xG-n9n"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="VYq-wZ-4iq" secondAttribute="trailing" id="AM7-lq-T3n"/>
-                            <constraint firstItem="hSR-gJ-iuJ" firstAttribute="top" secondItem="VYq-wZ-4iq" secondAttribute="bottom" id="fVz-qZ-HN8"/>
-                            <constraint firstItem="VYq-wZ-4iq" firstAttribute="leading" secondItem="Lha-tL-bUc" secondAttribute="leading" id="jLw-ke-8QP"/>
-                            <constraint firstItem="VYq-wZ-4iq" firstAttribute="leading" secondItem="Lha-tL-bUc" secondAttribute="leadingMargin" id="uCY-vZ-b0v"/>
-                            <constraint firstItem="VYq-wZ-4iq" firstAttribute="top" secondItem="0AU-Se-KJy" secondAttribute="bottom" id="uFt-gd-bBu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VYq-wZ-4iq" secondAttribute="trailing" id="yYP-rU-1zW"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="uCY-vZ-b0v"/>
-                                <exclude reference="yYP-rU-1zW"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="automaticallyAdjustsScrollViewInsets" value="NO"/>
-                    </userDefinedRuntimeAttributes>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6aL-3V-POf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationItem title="Upgrade Account" id="6qi-Cc-vcf">
-                    <barButtonItem key="backBarButtonItem" title=" " id="mgI-Qi-fJQ"/>
-                </navigationItem>
-            </objects>
-            <point key="canvasLocation" x="174" y="505"/>
-        </scene>
         <!--Upgrade Select Table View Controller-->
         <scene sceneID="hRJ-CP-b4X">
             <objects>
                 <tableViewController id="ESJ-e3-4aK" customClass="UpgradeSelectTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="erD-qn-FA1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="602"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -393,7 +345,66 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8Q-dA-VXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="824" y="505"/>
+            <point key="canvasLocation" x="321" y="503"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iOa-Q4-mCd">
+            <objects>
+                <navigationController id="IX6-zl-rXh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Rqn-RL-0WZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HIP-Le-7sY" kind="relationship" relationship="rootViewController" id="nuS-9z-Ul2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qCs-2f-Quu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1486" y="504"/>
+        </scene>
+        <!--Upgrade Account-->
+        <scene sceneID="LOW-Z1-uHT">
+            <objects>
+                <viewController id="HIP-Le-7sY" customClass="PopoverRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GAa-Sp-H7K"/>
+                        <viewControllerLayoutGuide type="bottom" id="qU2-DN-06o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WAb-Xd-UvS">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6HF-7E-laa">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="ESJ-e3-4aK" kind="embed" id="RiL-W0-cV1"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLb-gg-yJU">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="FpJ-xl-pkZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="cLb-gg-yJU" firstAttribute="top" secondItem="GAa-Sp-H7K" secondAttribute="bottom" id="8sJ-ep-N8k"/>
+                            <constraint firstItem="6HF-7E-laa" firstAttribute="leading" secondItem="WAb-Xd-UvS" secondAttribute="leading" id="B9b-tK-Mx6"/>
+                            <constraint firstAttribute="trailing" secondItem="6HF-7E-laa" secondAttribute="trailing" id="E6T-mG-oUt"/>
+                            <constraint firstAttribute="trailing" secondItem="cLb-gg-yJU" secondAttribute="trailing" id="PMY-3b-Wf5"/>
+                            <constraint firstItem="6HF-7E-laa" firstAttribute="top" secondItem="cLb-gg-yJU" secondAttribute="bottom" id="faW-RA-JSA"/>
+                            <constraint firstItem="qU2-DN-06o" firstAttribute="top" secondItem="6HF-7E-laa" secondAttribute="bottom" id="o2v-7X-mYl"/>
+                            <constraint firstItem="cLb-gg-yJU" firstAttribute="leading" secondItem="WAb-Xd-UvS" secondAttribute="leading" id="zNh-YC-zr5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Upgrade Account" id="1My-aG-eju"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WaO-su-e5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-583" y="504"/>
         </scene>
     </scenes>
 </document>

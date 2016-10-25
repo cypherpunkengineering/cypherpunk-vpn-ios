@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YE0-Dn-P5x">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YE0-Dn-P5x">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -96,8 +96,8 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <segue destination="ayc-eb-YSr" kind="show" id="ils-0s-vk8">
-                                                <nil key="action"/>
+                                            <segue destination="ayc-eb-YSr" kind="popoverPresentation" popoverAnchorView="uDO-Lx-KuG" id="ils-0s-vk8">
+                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
                                     </tableViewCell>
@@ -155,8 +155,8 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <segue destination="A7h-gw-26D" kind="show" id="Ce4-3C-Kfv">
-                                                <nil key="action"/>
+                                            <segue destination="A7h-gw-26D" kind="popoverPresentation" popoverAnchorView="L2m-Lc-1mX" id="Ce4-3C-Kfv">
+                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
                                     </tableViewCell>
@@ -179,8 +179,8 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <segue destination="53n-WT-D5X" kind="show" id="o4G-hJ-lGY">
-                                                <nil key="action"/>
+                                            <segue destination="53n-WT-D5X" kind="popoverPresentation" popoverAnchorView="AMY-xh-fi9" id="o4G-hJ-lGY">
+                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
                                     </tableViewCell>
@@ -252,7 +252,9 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <segue destination="7FL-JU-SBf" kind="show" id="Dum-Ii-Ss2"/>
+                                            <segue destination="7FL-JU-SBf" kind="popoverPresentation" popoverAnchorView="t4i-zT-L2e" id="Dum-Ii-Ss2">
+                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="DJl-bX-0yk" style="IBUITableViewCellStyleDefault" id="gUy-xe-Bxs" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
@@ -319,7 +321,7 @@
                 <viewControllerPlaceholder storyboardName="Upgrade" id="ayc-eb-YSr" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0S3-Og-r5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1526" y="680"/>
+            <point key="canvasLocation" x="-1016" y="209"/>
         </scene>
         <!--Password-->
         <scene sceneID="sEe-YX-58g">
@@ -327,7 +329,7 @@
                 <viewControllerPlaceholder storyboardName="Password" id="53n-WT-D5X" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h38-r2-9vs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1518" y="717"/>
+            <point key="canvasLocation" x="-1009" y="246"/>
         </scene>
         <!--ContactUs-->
         <scene sceneID="zrm-Kn-Syn">
@@ -335,7 +337,7 @@
                 <viewControllerPlaceholder storyboardName="ContactUs" id="7FL-JU-SBf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZu-dJ-y7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1519" y="748"/>
+            <point key="canvasLocation" x="-1010" y="277"/>
         </scene>
         <!--Email-->
         <scene sceneID="Igz-5u-ZuM">
@@ -343,7 +345,7 @@
                 <viewControllerPlaceholder storyboardName="Email" id="A7h-gw-26D" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTS-Ur-0F8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1552" y="643"/>
+            <point key="canvasLocation" x="-1042" y="172"/>
         </scene>
         <!--Get Cypherpunk Premium-->
         <scene sceneID="u7E-KU-TfB">

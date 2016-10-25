@@ -1,50 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VyY-D3-iCW">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rtd-Ia-i01">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--VPN Protocol-->
-        <scene sceneID="kRd-cV-PjX">
-            <objects>
-                <viewController title="VPN Protocol" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="VyY-D3-iCW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y6S-kp-r7m"/>
-                        <viewControllerLayoutGuide type="bottom" id="BKA-YD-rG7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zJJ-t2-ftU" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUY-fx-ONk">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="awU-oz-G45" kind="embed" id="Qe2-Jt-WKU"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="AUY-fx-ONk" secondAttribute="trailing" id="Hhk-Jo-Kjd"/>
-                            <constraint firstItem="AUY-fx-ONk" firstAttribute="top" secondItem="y6S-kp-r7m" secondAttribute="bottom" id="If6-2I-bSa"/>
-                            <constraint firstItem="BKA-YD-rG7" firstAttribute="top" secondItem="AUY-fx-ONk" secondAttribute="bottom" id="QJm-2n-voD"/>
-                            <constraint firstItem="AUY-fx-ONk" firstAttribute="leading" secondItem="zJJ-t2-ftU" secondAttribute="leading" id="bze-1U-0D8"/>
-                        </constraints>
-                    </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TB6-Nm-ykg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1552.8" y="1086.2068965517242"/>
-        </scene>
         <!--Protocol Select View Controller-->
         <scene sceneID="URN-Yd-VOg">
             <objects>
                 <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="awU-oz-G45" customClass="VPNProtocolSelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="qHV-gr-TUK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="602"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.01176470588" green="0.27450980390000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -55,7 +22,66 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lv4-Ph-8Eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2310" y="1086"/>
+            <point key="canvasLocation" x="1654" y="1181"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4DC-Lf-NTa">
+            <objects>
+                <navigationController id="rtd-Ia-i01" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="dnc-S2-hWT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Vhb-W0-cjy" kind="relationship" relationship="rootViewController" id="cL7-3V-Ccz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GCs-SG-lgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1654" y="-260"/>
+        </scene>
+        <!--VPN Protocol-->
+        <scene sceneID="S4y-oq-RqW">
+            <objects>
+                <viewController id="Vhb-W0-cjy" customClass="PopoverRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y9P-ow-mIZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="eX1-a5-DTL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6GX-7A-VE9">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ro6-LC-jvG">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="awU-oz-G45" kind="embed" id="XR1-rw-JLA"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XxJ-bD-pLc">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Zmj-Cl-SV5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ro6-LC-jvG" secondAttribute="trailing" id="3cv-fF-K1P"/>
+                            <constraint firstAttribute="trailing" secondItem="XxJ-bD-pLc" secondAttribute="trailing" id="8WV-d7-Ub1"/>
+                            <constraint firstItem="XxJ-bD-pLc" firstAttribute="top" secondItem="Y9P-ow-mIZ" secondAttribute="bottom" id="Mrq-WT-snO"/>
+                            <constraint firstItem="Ro6-LC-jvG" firstAttribute="top" secondItem="XxJ-bD-pLc" secondAttribute="bottom" id="PZj-aX-UHR"/>
+                            <constraint firstItem="Ro6-LC-jvG" firstAttribute="leading" secondItem="6GX-7A-VE9" secondAttribute="leading" id="S5r-Oi-3xu"/>
+                            <constraint firstItem="XxJ-bD-pLc" firstAttribute="leading" secondItem="6GX-7A-VE9" secondAttribute="leading" id="gpS-WI-Axw"/>
+                            <constraint firstItem="eX1-a5-DTL" firstAttribute="top" secondItem="Ro6-LC-jvG" secondAttribute="bottom" id="rD3-cc-TXL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="VPN Protocol" id="HEh-I5-Gyz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0nJ-or-KYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1654" y="448"/>
         </scene>
     </scenes>
 </document>

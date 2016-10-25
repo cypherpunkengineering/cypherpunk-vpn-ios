@@ -64,7 +64,6 @@
 		20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
-		20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F21D1D1970002B9F9D /* TopViewController.swift */; };
 		20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F41D1D1C6F002B9F9D /* IPAddress.swift */; };
 		20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FB1D23A1E7002B9F9D /* AccountState.swift */; };
 		20D895FE1D23A637002B9F9D /* AccountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FD1D23A637002B9F9D /* AccountReducer.swift */; };
@@ -79,7 +78,6 @@
 		20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A331D2F785600785399 /* RegionSelectViewController.swift */; };
 		20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A371D2F7BAE00785399 /* RegionState.swift */; };
 		20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A391D2F82CC00785399 /* RegionReducer.swift */; };
-		20EC4A401D376C5200785399 /* Configuration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20EC4A3F1D376C5200785399 /* Configuration.storyboard */; };
 		20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A451D3780BC00785399 /* SettingsState.swift */; };
 		20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A471D37851200785399 /* SettingsReducer.swift */; };
 		20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A491D378CBC00785399 /* SettingsAction.swift */; };
@@ -219,7 +217,6 @@
 		20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		20D895ED1D1D16FB002B9F9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		20D895F21D1D1970002B9F9D /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		20D895F41D1D1C6F002B9F9D /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		20D895F61D1D1CC1002B9F9D /* Cypherpunk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cypherpunk-Bridging-Header.h"; sourceTree = "<group>"; };
 		20D895FB1D23A1E7002B9F9D /* AccountState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountState.swift; sourceTree = "<group>"; };
@@ -234,7 +231,6 @@
 		20EC4A331D2F785600785399 /* RegionSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionSelectViewController.swift; sourceTree = "<group>"; };
 		20EC4A371D2F7BAE00785399 /* RegionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionState.swift; sourceTree = "<group>"; };
 		20EC4A391D2F82CC00785399 /* RegionReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionReducer.swift; sourceTree = "<group>"; };
-		20EC4A3F1D376C5200785399 /* Configuration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Configuration.storyboard; sourceTree = "<group>"; };
 		20EC4A451D3780BC00785399 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		20EC4A471D37851200785399 /* SettingsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		20EC4A491D378CBC00785399 /* SettingsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
@@ -476,7 +472,6 @@
 		20D895F11D1D1954002B9F9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				20D895F21D1D1970002B9F9D /* TopViewController.swift */,
 				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
 				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
@@ -543,7 +538,6 @@
 				203C62EF1D702CD900891F91 /* FirstOpen.storyboard */,
 				20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
-				20EC4A3F1D376C5200785399 /* Configuration.storyboard */,
 				2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */,
 				2B2DE2821DA652F400C22098 /* ContactUs.storyboard */,
 				200A0B011D9E29BB00D59249 /* RateApp.storyboard */,
@@ -784,7 +778,6 @@
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
 				2B2DE2851DA6530800C22098 /* VPNProtocol.storyboard in Resources */,
-				20EC4A401D376C5200785399 /* Configuration.storyboard in Resources */,
 				2B4489211D2A53A700D202F9 /* SignUp.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
 				2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */,
@@ -1001,7 +994,6 @@
 				201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */,
 				20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */,
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
-				20D895F31D1D1970002B9F9D /* TopViewController.swift in Sources */,
 				2065DD071DB8D82100D0F446 /* TutorialRootViewController.swift in Sources */,
 				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
 				201809E61D5B394900730FA4 /* ThemedTableViewCell.swift in Sources */,

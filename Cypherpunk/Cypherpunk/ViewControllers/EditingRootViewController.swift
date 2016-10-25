@@ -8,13 +8,18 @@
 
 import UIKit
 
-class EditingRootViewController: UIViewController {
+class EditingRootViewController: PopoverRootViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(EditingRootViewController.doneAction))
+        button.setTitleTextAttributes([
+            NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
+            NSForegroundColorAttributeName: UIColor.goldenYellowColor()
+            ], for: .normal)
+
         self.navigationItem.setRightBarButton(button, animated: true)
     }
 
