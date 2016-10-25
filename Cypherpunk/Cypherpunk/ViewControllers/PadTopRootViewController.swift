@@ -10,7 +10,6 @@ import UIKit
 import NetworkExtension
 
 import ReSwift
-import ECSlidingViewController
 
 extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
@@ -85,7 +84,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         }
         
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-            self.view.addGestureRecognizer(self.slidingViewController().panGesture)
+//            self.view.addGestureRecognizer(self.slidingViewController().panGesture)
         }
         mainStore.subscribe(self)
         
@@ -142,11 +141,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func openOrCloseConfigurationAction(_ sender: AnyObject) {
-        if self.slidingViewController().currentTopViewPosition == .centered {
-            self.slidingViewController().anchorTopViewToLeft(animated: true, onComplete: nil)
-        } else {
-            self.slidingViewController().resetTopView(animated: true)
-        }
+        NotificationCenter.default.post(name: kOpenOrCloseConfigurationNotification, object: nil)
     }
     @IBAction func transitionToAccountAction(_ sender: AnyObject) {
     }

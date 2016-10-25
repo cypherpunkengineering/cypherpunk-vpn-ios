@@ -7,26 +7,26 @@
 //
 
 import UIKit
-import ECSlidingViewController
 
-class SlidingNavigationViewController: ECSlidingViewController {
+let kOpenOrCloseConfigurationNotification = Notification.Name(rawValue: "kOpenOrCloseConfigurationNotification")
 
-    override func awakeFromNib() {
-        self.topViewController = R.storyboard.top_iPad.topRootNavigation()
-        let right = R.storyboard.top_iPad.slidingContent()
-        right?.edgesForExtendedLayout = [UIRectEdge.top , UIRectEdge.bottom, UIRectEdge.right]
+class SlidingNavigationViewController: UIViewController {
 
-        self.underRightViewController = right
-        
-        self.anchorLeftRevealAmount = 276
-
-
+    enum SlideState {
+        case left
+        case center
+        case right
     }
+    
+    private let state = SlideState.center
+    
+    @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseConfiguration), name: kOpenOrCloseConfigurationNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +34,27 @@ class SlidingNavigationViewController: ECSlidingViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func openOrCloseConfiguration() {
+        if self.centerConstraint.constant == 0.0 {
+            self.centerConstraint.constant = -276
+            self.view.setNeedsUpdateConstraints()
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+
+        } else {
+            self.centerConstraint.constant = 0.0
+            self.view.setNeedsUpdateConstraints()
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+
+        }
+    }
+    
+    func openOrCloseAccount() {
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -44,17 +65,51 @@ class SlidingNavigationViewController: ECSlidingViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    private var beganPositionX: CGFloat!
+    private var beganTranslatedPositionX: CGFloat!
+
+    @IBAction func reconizePanGestureAction(_ recognizer: UIPanGestureRecognizer) {
+        let translated = recognizer.translation(in: recognizer.view!)
+        
+        switch (recognizer.state){
+        case .began:
+            beganPositionX = centerConstraint.constant
+            beganTranslatedPositionX = translated.x
+        case .ended, .cancelled:
+            let velocity = recognizer.velocity(in: recognizer.view!)
+            let finalX = translated.x + (0.35 * velocity.x);
+            let moved = beganTranslatedPositionX + finalX
+            let lastConstant = min(max(-274, beganPositionX + moved), 0)
+            
+            if lastConstant <= 0 && lastConstant > -274.0 * 0.5 {
+                self.centerConstraint.constant = 0.0
+                UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                    self.view.layoutIfNeeded()
+                    }, completion: nil)
+            } else if lastConstant <= -274.0 * 0.5 {
+                self.centerConstraint.constant = -276
+                UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                    self.view.layoutIfNeeded()
+                    }, completion: nil)
+//            } else if lastConstant >= 0 && lastConstant < 274.0 * 0.5 {
+//                self.centerConstraint.constant = 0.0
+//                self.view.setNeedsUpdateConstraints()
+//                UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+//                    self.view.layoutIfNeeded()
+//                    }, completion: nil)
+//            } else if lastConstant >= -274.0 * 0.5 {
+//                self.centerConstraint.constant = 276
+//                self.view.setNeedsUpdateConstraints()
+//                UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+//                    self.view.layoutIfNeeded()
+//                    }, completion: nil)
+            }
+            
+        default:
+            let moved = beganTranslatedPositionX + translated.x
+            centerConstraint.constant = min(max(-274, beganPositionX + moved), 0)
+        }
+        
+    }
 
 }
-//
-//extension SlidingNavigationViewController: ECSlidingViewControllerLayout, ECSlidingViewControllerDelegate {
-// 
-//    func slidingViewController(_ slidingViewController: ECSlidingViewController!, frameFor viewController: UIViewController!, topViewPosition: ECSlidingViewControllerTopViewPosition) -> CGRect {
-//        return CGRect(x: 0, y: 0, width: 1024, height: self.view.frame.height)
-//    }
-//
-//    func slidingViewController(_ slidingViewController: ECSlidingViewController!, layoutControllerFor topViewPosition: ECSlidingViewControllerTopViewPosition) -> ECSlidingViewControllerLayout! {
-//        return self
-//    }
-//
-//}
