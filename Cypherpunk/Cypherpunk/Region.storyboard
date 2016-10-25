@@ -69,7 +69,7 @@
         <scene sceneID="uDO-Se-wCl">
             <objects>
                 <navigationController id="o75-Wg-EJ9" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="epN-UT-1Ic" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="epN-UT-1Ic" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -130,7 +130,7 @@
                                         <constraint firstItem="Ca9-Ji-i42" firstAttribute="centerY" secondItem="cii-mf-4iU" secondAttribute="centerY" id="yAc-sc-JWd"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="flagImageView" destination="U6w-4U-O6d" id="rCK-2u-U2S"/>
                                     <outlet property="starButton" destination="Ca9-Ji-i42" id="lmE-n9-h8q"/>

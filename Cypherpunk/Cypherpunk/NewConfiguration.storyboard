@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dVY-5W-C5Z">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dVY-5W-C5Z">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -24,7 +24,7 @@
                         <sections>
                             <tableViewSection headerTitle="Basic Settings" id="7lB-RC-vP6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="fYz-H4-Z2d">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="fYz-H4-Z2d" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fYz-H4-Z2d" id="3ta-lp-gdZ">
@@ -54,7 +54,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="hbe-OB-T0T">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="hbe-OB-T0T" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hbe-OB-T0T" id="BGX-xg-rDj">
@@ -76,7 +76,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="cQp-9p-6lV" kind="popoverPresentation" popoverAnchorView="hbe-OB-T0T" id="m79-w5-90C">
+                                            <segue destination="QSe-Ch-sxD" kind="popoverPresentation" popoverAnchorView="hbe-OB-T0T" id="FAY-ak-aVZ">
                                                 <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
@@ -85,7 +85,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="VPN" id="skh-iY-bG6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Jg5-uE-gBF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Jg5-uE-gBF" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="201" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jg5-uE-gBF" id="3sP-ue-zaJ">
@@ -115,7 +115,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="E2r-ZR-pU2" detailTextLabel="ly0-4D-n7L" style="IBUITableViewCellStyleValue1" id="MV0-jF-THB">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="E2r-ZR-pU2" detailTextLabel="ly0-4D-n7L" style="IBUITableViewCellStyleValue1" id="MV0-jF-THB" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="245" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MV0-jF-THB" id="kaG-OX-x6Y">
@@ -140,7 +140,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="eTC-cg-CjH" kind="show" id="7Ie-2S-3XN"/>
+                                            <segue destination="eTC-cg-CjH" kind="popoverPresentation" popoverAnchorView="MV0-jF-THB" id="1h9-sm-iI7">
+                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -161,12 +163,29 @@
             </objects>
             <point key="canvasLocation" x="-780" y="267.61619190404798"/>
         </scene>
+        <!--Popover Navigation View Controller-->
+        <scene sceneID="fxC-VM-TPr">
+            <objects>
+                <navigationController id="QSe-Ch-sxD" customClass="PopoverNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="hok-B0-1Lw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cQp-9p-6lV" kind="relationship" relationship="rootViewController" id="8w4-al-PLh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ira-IS-9ym" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="406" y="-463"/>
+        </scene>
         <!--Manage Trusted Networks-->
         <scene sceneID="f4S-8C-FOr">
             <objects>
                 <tableViewController title="Manage Trusted Networks" id="sfs-wc-hQD" customClass="ManageTrustedNetworksTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ztM-0c-ypN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="602"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
@@ -295,13 +314,13 @@
         <!--Manage Trusted Networks-->
         <scene sceneID="4gC-UK-myJ">
             <objects>
-                <viewController id="cQp-9p-6lV" sceneMemberID="viewController">
+                <viewController id="cQp-9p-6lV" customClass="PopoverRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GSq-WL-aZ2"/>
                         <viewControllerLayoutGuide type="bottom" id="GL3-jN-vgh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QXE-bd-ctl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cby-I5-6Sd">
@@ -310,13 +329,22 @@
                                     <segue destination="sfs-wc-hQD" kind="embed" id="jVR-Vn-b1Y"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xld-Ka-g1K">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="A5l-KO-8L4"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.01176470588" green="0.27450980390000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Cby-I5-6Sd" secondAttribute="trailing" id="7yc-7J-3v4"/>
                             <constraint firstItem="Cby-I5-6Sd" firstAttribute="leading" secondItem="QXE-bd-ctl" secondAttribute="leading" id="L6K-Uu-eaf"/>
-                            <constraint firstItem="Cby-I5-6Sd" firstAttribute="top" secondItem="GSq-WL-aZ2" secondAttribute="bottom" id="NN8-aL-aEj"/>
+                            <constraint firstItem="Xld-Ka-g1K" firstAttribute="top" secondItem="GSq-WL-aZ2" secondAttribute="bottom" id="So2-Vg-xFg"/>
+                            <constraint firstItem="Cby-I5-6Sd" firstAttribute="top" secondItem="Xld-Ka-g1K" secondAttribute="bottom" id="UGS-C4-Wbc"/>
                             <constraint firstItem="GL3-jN-vgh" firstAttribute="top" secondItem="Cby-I5-6Sd" secondAttribute="bottom" id="nwg-Gf-qFT"/>
+                            <constraint firstItem="Xld-Ka-g1K" firstAttribute="leading" secondItem="QXE-bd-ctl" secondAttribute="leading" id="ttR-T4-cf5"/>
+                            <constraint firstAttribute="trailing" secondItem="Xld-Ka-g1K" secondAttribute="trailing" id="w81-TL-O7c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Manage Trusted Networks" id="MWq-U1-U4i"/>
