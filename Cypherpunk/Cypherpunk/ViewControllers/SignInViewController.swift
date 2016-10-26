@@ -68,7 +68,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
                             if let region = realm.objects(Region.self).first {
                                 mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
                             }
-                            mainStore.dispatch(AccountAction.login(response: response))
+                            mainStore.dispatch(AccountAction.login(response: response, password: password))
                         case .failure(let error):
                             SVProgressHUD.showError(withStatus: "\((error as NSError).localizedDescription)")
                         }

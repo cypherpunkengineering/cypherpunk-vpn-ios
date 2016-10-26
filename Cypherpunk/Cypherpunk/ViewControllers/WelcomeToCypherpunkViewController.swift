@@ -165,6 +165,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                 })
             { (finished) in
                 if finished {
+                    let password = self.inputField.text!
                     let request = LoginRequest(login: self.email, password: self.inputField.text!)
                     Session.send(request, callbackQueue: nil, handler: { (result) in
                         switch result {
@@ -177,7 +178,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                                     if let region = realm.objects(Region.self).first {
                                         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
                                     }
-                                    mainStore.dispatch(AccountAction.login(response: response))
+                                    mainStore.dispatch(AccountAction.login(response: response, password: password))
                                 case .failure:
                                     UIView.animate(withDuration: 0.3, animations: {
                                         self.welcomeLabel.alpha = 1.0

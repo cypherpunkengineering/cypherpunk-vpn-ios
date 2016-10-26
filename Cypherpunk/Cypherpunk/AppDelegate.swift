@@ -69,10 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
                     }
-
-                    // Region Update
-                    let request = RegionListRequest(session: mainStore.state.accountState.session!)
-                    Session.send(request)
                 }
             }
 
@@ -90,9 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
                     }
 
-                    // Region Update
-                    let request = RegionListRequest(session: mainStore.state.accountState.session!)
-                    Session.send(request)
                 }
             }
         }
@@ -119,7 +112,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-
+        if mainStore.state.accountState.isLoggedIn == true, let mailAddress = mainStore.state.accountState.mailAddress, let password = mainStore.state.accountState.password {
+            let login = LoginRequest(login: mailAddress, password: password)
+            Session.send(login, callbackQueue: nil, handler: { (result) in
+                
+                let failureBlock = {
+                    mainStore.dispatch(AccountAction.logout)
+                    let firstOpen: UIViewController!
+                    if UI_USER_INTERFACE_IDIOM() == .pad {
+                        firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
+                    } else {
+                        firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
+                    }
+                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
+                }
+                
+                switch result {
+                case .success:
+                    // Region Update
+                    let region = RegionListRequest(session: mainStore.state.accountState.session!)
+                    Session.send(region) { (result) in
+                        switch result {
+                        case .success:
+                            break
+                        case .failure:
+                            failureBlock()
+                        }
+                    }
+                    
+                    let subscriptionStatus = SubscriptionStatusRequest(session: mainStore.state.accountState.session!)
+                    Session.send(subscriptionStatus) { (result) in
+                        switch result {
+                        case .success:
+                            break
+                        case .failure:
+                            failureBlock()
+                        }
+                    }
+                    
+                case .failure:
+                    failureBlock()
+                }
+            })
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
