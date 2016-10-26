@@ -42,6 +42,7 @@ struct RegionListRequest: Request {
             
             let realm = try! Realm()
             try! realm.write({
+                var regionIds: [String] = []
                 for (_, list) in areaDictionary {
                     if let countriesDictionary = list as? Dictionary<String, AnyObject> {
                         for (country, list) in countriesDictionary {
@@ -77,11 +78,21 @@ struct RegionListRequest: Request {
                                         )
                                         realm.add(region, update: true)
                                     }
+                                    regionIds.append(id as! String)
                                 }
                             }
                         }
                     }
                 }
+                
+                let deleteTargetRegions = realm.objects(Region.self).filter({ (region) -> Bool in
+                    return !(regionIds.contains(region.id))
+                })
+                
+                for region in deleteTargetRegions {
+                    realm.delete(region)
+                }
+                
             })
             
         } else {

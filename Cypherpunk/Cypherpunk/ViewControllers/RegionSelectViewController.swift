@@ -25,6 +25,7 @@ class RegionSelectViewController: UITableViewController {
     var recentlyConnectedResults: Results<Region>!
     var otherResults: Results<Region>!
     
+    var notificationToken: NotificationToken? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +43,29 @@ class RegionSelectViewController: UITableViewController {
         favoriteResults = realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
         recentlyConnectedResults = realm.objects(Region.self).filter("isFavorite = false AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
         otherResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
+     
+        notificationToken = realm.objects(Region.self).addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+                break
+            case .update:
+                tableView.beginUpdates()
+                let set = IndexSet(integersIn: NSRange(location: 0, length: 4).toRange() ?? 0..<0)
+                tableView.reloadSections(set, with: .automatic)
+                tableView.endUpdates()
+                break
+            case .error(let error):
+                fatalError("\(error)")
+                break
+            }
+        })
         
+    }
+    
+    deinit {
+        notificationToken?.stop()
     }
     
     override func viewWillAppear(_ animated: Bool) {
