@@ -9,6 +9,7 @@
 import UIKit
 
 let kOpenOrCloseConfigurationNotification = Notification.Name(rawValue: "kOpenOrCloseConfigurationNotification")
+let kOpenOrCloseAccountNotification = Notification.Name(rawValue: "kOpenOrCloseAccountNotification")
 
 class SlidingNavigationViewController: UIViewController {
 
@@ -18,7 +19,7 @@ class SlidingNavigationViewController: UIViewController {
         case right
     }
     
-    private let state = SlideState.center
+    private var centerState = SlideState.center
     
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
@@ -27,6 +28,8 @@ class SlidingNavigationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseConfiguration), name: kOpenOrCloseConfigurationNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseAccount), name: kOpenOrCloseAccountNotification, object: nil)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +54,22 @@ class SlidingNavigationViewController: UIViewController {
 
         }
     }
-    
+    func openOrCloseAccount() {
+        if self.centerConstraint.constant == 0.0 {
+            self.centerConstraint.constant = 276
+            self.view.setNeedsUpdateConstraints()
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+            
+        } else {
+            self.centerConstraint.constant = 0.0
+            self.view.setNeedsUpdateConstraints()
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -75,15 +93,44 @@ class SlidingNavigationViewController: UIViewController {
             let velocity = recognizer.velocity(in: recognizer.view!)
             let finalX = translated.x + (0.35 * velocity.x);
             let moved = beganTranslatedPositionX + finalX
-            let lastConstant = min(max(-274, beganPositionX + moved), 0)
+            let lastConstant: CGFloat
+            if UI_USER_INTERFACE_IDIOM() == .pad {
+                lastConstant = min(max(-274, beganPositionX + moved), 0)
+            } else {
+                lastConstant = min(max(-274, beganPositionX + moved), 274)
+            }
             
-            if lastConstant <= 0 && lastConstant > -274.0 * 0.5 {
+            if lastConstant <= -274.0 * 0.5 {
+                if self.centerState == .right {
+                    self.centerConstraint.constant = 0
+                    self.centerState = .center
+                    UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                        self.view.layoutIfNeeded()
+                        }, completion: nil)
+                } else {
+                    self.centerConstraint.constant = -276
+                    self.centerState = .left
+                    UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                        self.view.layoutIfNeeded()
+                        }, completion: nil)
+                }
+            } else if lastConstant >= 274.0 * 0.5 {
+                if self.centerState == .left {
+                    self.centerConstraint.constant = 0
+                    self.centerState = .center
+                    UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                        self.view.layoutIfNeeded()
+                        }, completion: nil)
+                } else {
+                    self.centerConstraint.constant = 276
+                    self.centerState = .right
+                    UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                        self.view.layoutIfNeeded()
+                        }, completion: nil)                    
+                }
+            } else  {
                 self.centerConstraint.constant = 0.0
-                UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                    self.view.layoutIfNeeded()
-                    }, completion: nil)
-            } else if lastConstant <= -274.0 * 0.5 {
-                self.centerConstraint.constant = -276
+                self.centerState = .center
                 UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                     self.view.layoutIfNeeded()
                     }, completion: nil)
@@ -91,7 +138,11 @@ class SlidingNavigationViewController: UIViewController {
             
         default:
             let moved = beganTranslatedPositionX + translated.x
-            centerConstraint.constant = min(max(-274, beganPositionX + moved), 0)
+            if UI_USER_INTERFACE_IDIOM() == .pad {
+                centerConstraint.constant = min(max(-274, beganPositionX + moved), 0)
+            } else if UI_USER_INTERFACE_IDIOM() == .phone {
+                centerConstraint.constant = min(max(-274, beganPositionX + moved), 274)
+            }
         }
         
     }

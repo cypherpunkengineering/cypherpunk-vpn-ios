@@ -83,9 +83,6 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
             expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
         }
         
-        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-//            self.view.addGestureRecognizer(self.slidingViewController().panGesture)
-        }
         mainStore.subscribe(self)
         
     }
@@ -143,7 +140,8 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     @IBAction func openOrCloseConfigurationAction(_ sender: AnyObject) {
         NotificationCenter.default.post(name: kOpenOrCloseConfigurationNotification, object: nil)
     }
-    @IBAction func transitionToAccountAction(_ sender: AnyObject) {
+    @IBAction func openOrCloseAccountAction(_ sender: AnyObject) {
+        NotificationCenter.default.post(name: kOpenOrCloseAccountNotification, object: nil)
     }
     
     

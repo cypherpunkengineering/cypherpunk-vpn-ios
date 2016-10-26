@@ -29,17 +29,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2M-wi-84m">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2M-wi-84m" userLabel="Top Container">
                                 <connections>
                                     <segue destination="JcQ-do-E5e" kind="embed" id="juC-gd-AbO"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOO-yj-ai0">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOO-yj-ai0" userLabel="Configuration Container">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="276" id="ckS-VQ-sWM"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="TzT-qx-x3D" kind="embed" id="xjQ-IN-QFa"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4nR-yl-sVp" userLabel="Account Container">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="276" id="A6c-Bf-QGM"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="uXO-7N-wwL" kind="embed" id="zxo-cA-MR3"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -51,7 +59,10 @@
                             <constraint firstItem="JOO-yj-ai0" firstAttribute="bottom" secondItem="f2M-wi-84m" secondAttribute="bottom" id="Mr7-cc-LPr"/>
                             <constraint firstItem="f2M-wi-84m" firstAttribute="height" secondItem="aIK-LW-5SE" secondAttribute="height" id="WEO-Ef-WE1"/>
                             <constraint firstItem="f2M-wi-84m" firstAttribute="width" secondItem="aIK-LW-5SE" secondAttribute="width" id="Xd9-L7-xX3"/>
+                            <constraint firstItem="4nR-yl-sVp" firstAttribute="bottom" secondItem="f2M-wi-84m" secondAttribute="bottom" id="cr9-CG-j05"/>
                             <constraint firstItem="f2M-wi-84m" firstAttribute="centerX" secondItem="aIK-LW-5SE" secondAttribute="centerX" id="eh3-4d-7Kn"/>
+                            <constraint firstItem="f2M-wi-84m" firstAttribute="leading" secondItem="4nR-yl-sVp" secondAttribute="trailing" id="uXJ-XK-zFY"/>
+                            <constraint firstItem="4nR-yl-sVp" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="uwG-GA-K3G"/>
                             <constraint firstItem="xgB-4M-oEN" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="bottom" id="uzk-Vv-U9x"/>
                         </constraints>
                         <connections>
@@ -191,7 +202,7 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="G2a-WP-fnt" kind="show" id="Arb-ck-GlO"/>
+                                                    <action selector="openOrCloseAccountAction:" destination="wv7-yt-POp" eventType="touchUpInside" id="OlH-3v-ckU"/>
                                                 </connections>
                                             </button>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-XV-Nmr"/>
@@ -411,49 +422,6 @@
             </objects>
             <point key="canvasLocation" x="1159" y="-62"/>
         </scene>
-        <!--Account-->
-        <scene sceneID="ZGP-OQ-bMT">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="G2a-WP-fnt" customClass="ConfigurationRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L8l-ic-yfH"/>
-                        <viewControllerLayoutGuide type="bottom" id="cmH-s5-faR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4op-0o-mLx" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZd-6c-y6G">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="pZw-xC-drC" kind="embed" id="msn-KC-lzS"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="LZd-6c-y6G" firstAttribute="top" secondItem="L8l-ic-yfH" secondAttribute="bottom" id="Kbg-hx-cd0"/>
-                            <constraint firstAttribute="trailing" secondItem="LZd-6c-y6G" secondAttribute="trailing" id="XES-R4-Og3"/>
-                            <constraint firstItem="LZd-6c-y6G" firstAttribute="leading" secondItem="4op-0o-mLx" secondAttribute="leading" id="hCJ-3Q-GeI"/>
-                            <constraint firstItem="cmH-s5-faR" firstAttribute="top" secondItem="LZd-6c-y6G" secondAttribute="bottom" id="xGS-He-2sQ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Account" id="B9p-sc-pDN">
-                        <barButtonItem key="backBarButtonItem" title=" " id="ZgM-DK-3IG"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mbs-q6-5la" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1658" y="509"/>
-        </scene>
-        <!--Account-->
-        <scene sceneID="K6U-hY-mdP">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Account" id="pZw-xC-drC" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bFK-wI-bDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2286" y="495"/>
-        </scene>
         <!--NewConfiguration-->
         <scene sceneID="Sfo-hE-UE7">
             <objects>
@@ -524,6 +492,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H16-my-Yus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1263" y="-498"/>
+        </scene>
+        <!--Form Sheet Navigation Controller-->
+        <scene sceneID="B8l-cx-2OE">
+            <objects>
+                <navigationController storyboardIdentifier="AccountNavigation" id="uXO-7N-wwL" customClass="FormSheetNavigationController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="quD-bl-a9g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.12941176469999999" green="0.20392156859999999" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PlI-gL-uhF" kind="relationship" relationship="rootViewController" id="1jl-Ca-iJW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qMd-9F-Ats" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1263" y="1281"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="jIc-OI-htA">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PlI-gL-uhF" customClass="ConfigurationRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vec-bs-PbD"/>
+                        <viewControllerLayoutGuide type="bottom" id="UYn-hv-qev"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1FW-gi-jzL">
+                        <rect key="frame" x="0.0" y="64" width="276" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k78-Yz-yQe">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="plR-pd-hnP" kind="embed" id="I4P-PS-QZ3"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCs-R4-GsG">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="JcS-ch-vzQ"/>
+                                    <constraint firstAttribute="height" constant="1" id="R3N-Xy-Qsl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.01176470588" green="0.27450980390000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZCs-R4-GsG" firstAttribute="top" secondItem="Vec-bs-PbD" secondAttribute="bottom" id="JaM-oq-V3o"/>
+                            <constraint firstItem="ZCs-R4-GsG" firstAttribute="leading" secondItem="1FW-gi-jzL" secondAttribute="leading" id="KJb-PZ-wJb"/>
+                            <constraint firstAttribute="trailing" secondItem="ZCs-R4-GsG" secondAttribute="trailing" id="SGy-DW-76f"/>
+                            <constraint firstItem="UYn-hv-qev" firstAttribute="top" secondItem="k78-Yz-yQe" secondAttribute="bottom" id="SJI-9N-Ak0"/>
+                            <constraint firstItem="k78-Yz-yQe" firstAttribute="leading" secondItem="1FW-gi-jzL" secondAttribute="leading" id="ZO4-UK-TcQ"/>
+                            <constraint firstAttribute="trailing" secondItem="k78-Yz-yQe" secondAttribute="trailing" id="suc-yz-w3h"/>
+                            <constraint firstItem="k78-Yz-yQe" firstAttribute="top" secondItem="Vec-bs-PbD" secondAttribute="bottom" id="usv-a2-vbZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Account" id="WdV-wo-W3C">
+                        <barButtonItem key="backBarButtonItem" title=" " id="chZ-Iy-2hT"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UU8-8v-j6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-591" y="1281"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="kjy-WR-th3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Account" id="plR-pd-hnP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DGe-cl-j0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-151" y="1282"/>
         </scene>
     </scenes>
     <resources>
