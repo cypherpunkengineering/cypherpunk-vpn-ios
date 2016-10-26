@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o75-Wg-EJ9">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1Te-By-WNs">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -11,82 +11,12 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Region Select-->
-        <scene sceneID="c0h-Uv-rrd">
-            <objects>
-                <viewController id="phI-3o-TNp" customClass="PresentContainerViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="phL-LL-8F5"/>
-                        <viewControllerLayoutGuide type="bottom" id="knT-kl-RdT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="X3l-pV-8DQ" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkW-4a-Kws">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="1Te-By-WNs" kind="embed" id="mOa-xJ-mu5"/>
-                                </connections>
-                            </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4h-ne-mCr" customClass="ThemedNavigationBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="LJB-J6-Sqq"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="wkW-4a-Kws" firstAttribute="bottom" secondItem="knT-kl-RdT" secondAttribute="top" id="0qL-54-CQi"/>
-                            <constraint firstItem="d4h-ne-mCr" firstAttribute="top" secondItem="wkW-4a-Kws" secondAttribute="top" id="9cd-fC-9PX"/>
-                            <constraint firstItem="wkW-4a-Kws" firstAttribute="leading" secondItem="X3l-pV-8DQ" secondAttribute="leading" id="P1e-6i-O0e"/>
-                            <constraint firstItem="d4h-ne-mCr" firstAttribute="leading" secondItem="wkW-4a-Kws" secondAttribute="leading" id="WFt-40-Mlr"/>
-                            <constraint firstItem="knT-kl-RdT" firstAttribute="top" secondItem="d4h-ne-mCr" secondAttribute="bottom" constant="532" id="Yqy-wz-Jth"/>
-                            <constraint firstItem="wkW-4a-Kws" firstAttribute="top" secondItem="X3l-pV-8DQ" secondAttribute="top" id="cyW-u3-wNi"/>
-                            <constraint firstAttribute="trailing" secondItem="wkW-4a-Kws" secondAttribute="trailing" id="mA7-dq-zBi"/>
-                            <constraint firstItem="d4h-ne-mCr" firstAttribute="trailing" secondItem="wkW-4a-Kws" secondAttribute="trailing" id="yT5-SP-7rP"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Yqy-wz-Jth"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" title="Region Select" id="WyB-SC-K3S">
-                        <barButtonItem key="leftBarButtonItem" image="ic_close_white" style="done" id="9Rr-4y-Htv">
-                            <connections>
-                                <action selector="closeAction:" destination="phI-3o-TNp" id="XvI-t0-7Mj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VMz-Nn-DdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-489" y="447"/>
-        </scene>
-        <!--Themed Navigation View Controller-->
-        <scene sceneID="uDO-Se-wCl">
-            <objects>
-                <navigationController id="o75-Wg-EJ9" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="epN-UT-1Ic" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="phI-3o-TNp" kind="relationship" relationship="rootViewController" id="3WM-VZ-gEd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DK5-J6-4FQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1157" y="447"/>
-        </scene>
         <!--Region Select View Controller-->
         <scene sceneID="wCZ-rT-xsf">
             <objects>
                 <tableViewController storyboardIdentifier="Content" id="1Te-By-WNs" customClass="RegionSelectViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bDG-RD-DfL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -150,7 +80,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_close_white" width="24" height="24"/>
         <image name="iconStar" width="20" height="19"/>
     </resources>
 </document>
