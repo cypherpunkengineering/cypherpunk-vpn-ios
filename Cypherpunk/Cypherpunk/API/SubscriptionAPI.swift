@@ -42,7 +42,7 @@ struct SubscriptionStatusRequest: Request {
 
 struct SubscriptionStatus: Decodable {
     let confirmed: Bool
-    let expiration: Int
+    let expiration: String
     let renewal: String
     let type: String
     
