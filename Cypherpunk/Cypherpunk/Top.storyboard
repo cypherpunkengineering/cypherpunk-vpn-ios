@@ -153,6 +153,9 @@
                                         <state key="normal" title="Japan">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="openOrCloseRegionAction:" destination="wv7-yt-POp" eventType="touchUpInside" id="zyu-ts-FfX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
@@ -255,6 +258,7 @@
                     <connections>
                         <outlet property="animationContainerView" destination="ojk-gi-tU7" id="zn2-TO-j2L"/>
                         <outlet property="connectionActionView" destination="V6e-jm-mZJ" id="Va4-ws-DRT"/>
+                        <outlet property="connectionButtonsConstraint" destination="nsJ-mm-oLD" id="BOj-Zd-sti"/>
                         <outlet property="expandArrowImageView" destination="fRu-H5-S8B" id="9XY-kf-LD9"/>
                         <outlet property="locationActionView" destination="zKJ-OA-8R8" id="OlD-dl-99x"/>
                         <outlet property="regionButton" destination="dQD-yt-6aL" id="ROK-Xn-LdK"/>

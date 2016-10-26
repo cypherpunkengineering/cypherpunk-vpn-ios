@@ -35,6 +35,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var regionButton: UIButton?
     @IBOutlet weak var expandArrowImageView: UIImageView?
     
+    @IBOutlet weak var connectionButtonsConstraint: NSLayoutConstraint?
     var isExpand: Bool = false
     
     override func viewDidLoad() {
@@ -144,5 +145,23 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         NotificationCenter.default.post(name: kOpenOrCloseAccountNotification, object: nil)
     }
     
+    @IBAction func openOrCloseRegionAction(_ sender: AnyObject) {
+        let angle: Double
+        if connectionButtonsConstraint?.constant == 260.0 {
+            connectionButtonsConstraint?.constant = 0.0
+            isExpand = false
+            angle = M_PI_2 + M_PI
+            expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
+        } else {
+            connectionButtonsConstraint?.constant = 260.0
+            angle = M_PI_2
+
+            isExpand = true
+        }
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+            self.expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
+            }, completion: nil)
+    }
     
 }
