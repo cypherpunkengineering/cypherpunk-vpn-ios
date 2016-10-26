@@ -35,7 +35,7 @@
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5h1-NF-FPO">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="800" id="07G-Ns-flR"/>
+                                            <constraint firstAttribute="height" constant="860" id="07G-Ns-flR"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="cVP-0K-Ofi" kind="embed" id="Qsw-cK-aK3"/>
@@ -106,7 +106,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cEV-qy-MfT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zfv-ep-rDe">
-                        <rect key="frame" x="0.0" y="64" width="276" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="276" height="796"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTO-ya-qvn">
