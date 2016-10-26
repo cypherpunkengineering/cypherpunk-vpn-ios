@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gC2-Rj-MC7">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Dosis-Medium.otf">
+            <string>Dosis-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="HKA-Y1-MVf">
+            <objects>
+                <navigationController id="gC2-Rj-MC7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="keS-WQ-5Hg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iOe-W2-mTu" kind="relationship" relationship="rootViewController" id="Bhb-wh-u7G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cdb-XE-gNO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-954" y="365"/>
+        </scene>
+        <!--Get 30 Days Premium Free-->
+        <scene sceneID="d90-K7-p7o">
+            <objects>
+                <viewController id="iOe-W2-mTu" customClass="PopoverRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LxT-Wc-co3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Awk-OO-8sI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2p4-EB-zam">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fkY-z0-uGG">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="DEq-at-p2O" kind="embed" id="jAB-cD-be6"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nah-UF-l37">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="gNi-gu-978"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nah-UF-l37" secondAttribute="trailing" id="19r-zQ-eGd"/>
+                            <constraint firstItem="fkY-z0-uGG" firstAttribute="leading" secondItem="2p4-EB-zam" secondAttribute="leading" id="Ciw-3h-YKG"/>
+                            <constraint firstItem="nah-UF-l37" firstAttribute="leading" secondItem="2p4-EB-zam" secondAttribute="leading" id="DhX-Uj-090"/>
+                            <constraint firstItem="Awk-OO-8sI" firstAttribute="top" secondItem="fkY-z0-uGG" secondAttribute="bottom" id="WKC-g4-hek"/>
+                            <constraint firstItem="nah-UF-l37" firstAttribute="top" secondItem="LxT-Wc-co3" secondAttribute="bottom" id="fuQ-IX-g9Z"/>
+                            <constraint firstItem="fkY-z0-uGG" firstAttribute="top" secondItem="nah-UF-l37" secondAttribute="bottom" id="kae-B9-I0v"/>
+                            <constraint firstAttribute="trailing" secondItem="fkY-z0-uGG" secondAttribute="trailing" id="uJb-ym-Pif"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Get 30 Days Premium Free" id="jNX-rJ-eJY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JGq-sm-DIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-52" y="365"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Cyb-tn-sXK">
+            <objects>
+                <viewController id="DEq-at-p2O" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jda-Di-wI6"/>
+                        <viewControllerLayoutGuide type="bottom" id="FNY-2I-DNP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ynl-EQ-kp2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="forEveryFriendWho" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-OL-Vki">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="qrC-fm-0YM"/>
+                                </constraints>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="illustGift" translatesAutoresizingMaskIntoConstraints="NO" id="Gh2-m2-OtI"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bna-Gq-wLZ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="KzN-2A-oey"/>
+                                    <constraint firstAttribute="width" constant="300" id="sXv-wx-ndM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <state key="normal" title="Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MlM-PN-gRY">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="0xi-YM-reU"/>
+                                    <constraint firstAttribute="width" constant="300" id="eLt-1F-2Q5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <state key="normal" title="Twitter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7n-dF-95m">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Ml6-Ko-Ufk"/>
+                                    <constraint firstAttribute="width" constant="300" id="rnC-Fh-OSy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <state key="normal" title="Email">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x7n-dF-95m" firstAttribute="top" secondItem="MlM-PN-gRY" secondAttribute="bottom" constant="15" id="8Up-rv-2I2"/>
+                            <constraint firstItem="x7n-dF-95m" firstAttribute="centerX" secondItem="ynl-EQ-kp2" secondAttribute="centerX" id="BrV-OO-SFr"/>
+                            <constraint firstItem="bna-Gq-wLZ" firstAttribute="centerX" secondItem="ynl-EQ-kp2" secondAttribute="centerX" id="IST-0i-xf2"/>
+                            <constraint firstItem="J2J-OL-Vki" firstAttribute="top" secondItem="Jda-Di-wI6" secondAttribute="bottom" constant="16" id="IpM-HI-16l"/>
+                            <constraint firstItem="J2J-OL-Vki" firstAttribute="centerX" secondItem="ynl-EQ-kp2" secondAttribute="centerX" id="L4i-4w-Iid"/>
+                            <constraint firstItem="bna-Gq-wLZ" firstAttribute="top" secondItem="Gh2-m2-OtI" secondAttribute="bottom" constant="22" id="P3G-jd-rAd"/>
+                            <constraint firstItem="MlM-PN-gRY" firstAttribute="top" secondItem="bna-Gq-wLZ" secondAttribute="bottom" constant="15" id="QtY-12-0AV"/>
+                            <constraint firstItem="Gh2-m2-OtI" firstAttribute="centerX" secondItem="ynl-EQ-kp2" secondAttribute="centerX" id="TJT-r4-y6r"/>
+                            <constraint firstItem="MlM-PN-gRY" firstAttribute="centerX" secondItem="ynl-EQ-kp2" secondAttribute="centerX" id="dHl-DI-W5J"/>
+                            <constraint firstItem="FNY-2I-DNP" firstAttribute="top" secondItem="x7n-dF-95m" secondAttribute="bottom" constant="15" id="pil-Fq-rVa"/>
+                            <constraint firstItem="Gh2-m2-OtI" firstAttribute="top" secondItem="J2J-OL-Vki" secondAttribute="bottom" constant="18" id="qLx-wK-EKK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Rg-I0-vg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="670" y="365"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="forEveryFriendWho" width="220" height="47"/>
+        <image name="illustGift" width="232" height="180"/>
+    </resources>
+</document>

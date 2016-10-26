@@ -206,6 +206,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <connections>
+                                            <segue destination="SsI-nX-FBa" kind="popoverPresentation" popoverAnchorView="bmt-ON-Flz" id="yD4-Qg-Zwp">
+                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="O0u-Ye-ecR" style="IBUITableViewCellStyleDefault" id="m7r-MG-5Vq" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="570.5" width="375" height="48"/>
@@ -338,6 +343,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZu-dJ-y7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1010" y="277"/>
+        </scene>
+        <!--Share-->
+        <scene sceneID="P0a-7L-DGa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Share" id="SsI-nX-FBa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GmK-7g-PmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-956" y="332"/>
         </scene>
         <!--Email-->
         <scene sceneID="Igz-5u-ZuM">

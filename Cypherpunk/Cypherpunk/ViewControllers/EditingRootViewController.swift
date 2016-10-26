@@ -40,7 +40,7 @@ class EditingRootViewController: PopoverRootViewController {
     */
 
     func doneAction() {
-        _ = self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
