@@ -52,10 +52,6 @@ class SlidingNavigationViewController: UIViewController {
         }
     }
     
-    func openOrCloseAccount() {
-        
-    }
-
     /*
     // MARK: - Navigation
 
@@ -91,18 +87,6 @@ class SlidingNavigationViewController: UIViewController {
                 UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                     self.view.layoutIfNeeded()
                     }, completion: nil)
-//            } else if lastConstant >= 0 && lastConstant < 274.0 * 0.5 {
-//                self.centerConstraint.constant = 0.0
-//                self.view.setNeedsUpdateConstraints()
-//                UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-//                    self.view.layoutIfNeeded()
-//                    }, completion: nil)
-//            } else if lastConstant >= -274.0 * 0.5 {
-//                self.centerConstraint.constant = 276
-//                self.view.setNeedsUpdateConstraints()
-//                UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-//                    self.view.layoutIfNeeded()
-//                    }, completion: nil)
             }
             
         default:
