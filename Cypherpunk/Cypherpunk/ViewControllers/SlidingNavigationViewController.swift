@@ -41,6 +41,7 @@ class SlidingNavigationViewController: UIViewController {
         if self.centerConstraint.constant == 0.0 {
             self.centerConstraint.constant = -276
             self.view.setNeedsUpdateConstraints()
+            self.centerState = .left
             UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
@@ -48,6 +49,7 @@ class SlidingNavigationViewController: UIViewController {
         } else {
             self.centerConstraint.constant = 0.0
             self.view.setNeedsUpdateConstraints()
+            self.centerState = .center
             UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
@@ -57,6 +59,7 @@ class SlidingNavigationViewController: UIViewController {
     func openOrCloseAccount() {
         if self.centerConstraint.constant == 0.0 {
             self.centerConstraint.constant = 276
+            self.centerState = .right
             self.view.setNeedsUpdateConstraints()
             UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
@@ -65,6 +68,7 @@ class SlidingNavigationViewController: UIViewController {
         } else {
             self.centerConstraint.constant = 0.0
             self.view.setNeedsUpdateConstraints()
+            self.centerState = .center
             UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
