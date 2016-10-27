@@ -86,7 +86,7 @@
         <scene sceneID="5a0-Ti-oxw">
             <objects>
                 <navigationController navigationBarHidden="YES" id="JcQ-do-E5e" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -181,6 +181,12 @@
                                     <segue destination="7i2-HP-Zr4" kind="embed" id="Way-Zi-BOK"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnv-BC-g4G">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="zTE-vY-Qkl"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUr-oP-HAM">
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRi-aA-Xi6">
@@ -234,13 +240,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zKJ-OA-8R8" firstAttribute="leading" secondItem="W9A-s7-yTw" secondAttribute="leading" id="ITV-Zy-kl9"/>
-                            <constraint firstItem="V6e-jm-mZJ" firstAttribute="top" secondItem="gUr-oP-HAM" secondAttribute="bottom" id="Jwy-c2-snw"/>
+                            <constraint firstAttribute="trailing" secondItem="tnv-BC-g4G" secondAttribute="trailing" id="JbN-bv-SLE"/>
+                            <constraint firstItem="V6e-jm-mZJ" firstAttribute="top" secondItem="tnv-BC-g4G" secondAttribute="bottom" id="NsI-o8-Fwf"/>
                             <constraint firstItem="ojk-gi-tU7" firstAttribute="leading" secondItem="V6e-jm-mZJ" secondAttribute="leading" id="Oqk-My-aBX"/>
                             <constraint firstAttribute="trailing" secondItem="zKJ-OA-8R8" secondAttribute="trailing" id="S3N-mL-VAx"/>
+                            <constraint firstItem="tnv-BC-g4G" firstAttribute="leading" secondItem="W9A-s7-yTw" secondAttribute="leading" id="TM2-8I-SXU"/>
                             <constraint firstItem="ojk-gi-tU7" firstAttribute="trailing" secondItem="V6e-jm-mZJ" secondAttribute="trailing" id="VT8-T2-4Vm"/>
                             <constraint firstItem="zKJ-OA-8R8" firstAttribute="top" secondItem="vHJ-HJ-e0z" secondAttribute="bottom" id="XJf-gp-9CV"/>
                             <constraint firstItem="vHJ-HJ-e0z" firstAttribute="leading" secondItem="W9A-s7-yTw" secondAttribute="leading" id="YNG-pK-1py"/>
                             <constraint firstItem="vHJ-HJ-e0z" firstAttribute="top" secondItem="V6e-jm-mZJ" secondAttribute="bottom" id="dBh-m2-3kb"/>
+                            <constraint firstItem="tnv-BC-g4G" firstAttribute="top" secondItem="gUr-oP-HAM" secondAttribute="bottom" id="eVE-8m-buC"/>
                             <constraint firstAttribute="trailing" secondItem="V6e-jm-mZJ" secondAttribute="trailing" id="kZY-re-mUQ"/>
                             <constraint firstItem="ojk-gi-tU7" firstAttribute="bottom" secondItem="V6e-jm-mZJ" secondAttribute="bottom" id="mSU-8a-dWs"/>
                             <constraint firstItem="gUr-oP-HAM" firstAttribute="top" secondItem="20c-xy-76D" secondAttribute="bottom" constant="-20" id="n9Z-ov-Isk"/>
@@ -293,7 +302,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GdZ-TQ-1Nw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sGw-kG-W6d">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="260"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7R-qo-ata">
