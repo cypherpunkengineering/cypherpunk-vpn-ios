@@ -75,11 +75,11 @@
             </objects>
             <point key="canvasLocation" x="-1691" y="-864"/>
         </scene>
-        <!--Form Sheet Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="q29-oO-DEh">
             <objects>
-                <navigationController storyboardIdentifier="AccountNavigation" id="cVP-0K-Ofi" customClass="FormSheetNavigationController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="kgw-Rx-IUm">
+                <navigationController storyboardIdentifier="AccountNavigation" id="cVP-0K-Ofi" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="kgw-Rx-IUm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -487,11 +487,11 @@
             </objects>
             <point key="canvasLocation" x="-23" y="-858"/>
         </scene>
-        <!--Form Sheet Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="d74-gC-XzJ">
             <objects>
-                <navigationController id="ICK-2P-0XI" customClass="FormSheetNavigationController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="myW-vD-VeI">
+                <navigationController id="ICK-2P-0XI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="myW-vD-VeI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
