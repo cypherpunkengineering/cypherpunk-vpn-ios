@@ -112,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if mainStore.state.accountState.isLoggedIn == true, let mailAddress = mainStore.state.accountState.mailAddress, let password = mainStore.state.accountState.password {
+        if let mailAddress = mainStore.state.accountState.mailAddress, let password = mainStore.state.accountState.password {
             let login = LoginRequest(login: mailAddress, password: password)
             Session.send(login, callbackQueue: nil, handler: { (result) in
                 
@@ -128,9 +128,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 switch result {
-                case .success:
+                case .success(let response):
+                    
+                    mainStore.dispatch(AccountAction.login(response: response, password: password))
+
                     // Region Update
-                    let region = RegionListRequest(session: mainStore.state.accountState.session!)
+                    let region = RegionListRequest(session: response.session)
                     Session.send(region) { (result) in
                         switch result {
                         case .success:
@@ -140,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                     }
                     
-                    let subscriptionStatus = SubscriptionStatusRequest(session: mainStore.state.accountState.session!)
+                    let subscriptionStatus = SubscriptionStatusRequest(session: response.session)
                     Session.send(subscriptionStatus) { (result) in
                         switch result {
                         case .success:
