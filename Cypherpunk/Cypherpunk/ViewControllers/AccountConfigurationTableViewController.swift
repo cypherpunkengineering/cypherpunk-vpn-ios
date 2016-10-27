@@ -12,28 +12,24 @@ class AccountConfigurationTableViewController: UITableViewController {
     
     fileprivate enum Rows: Int {
         case account = 00
-        case paymentDetail = 10
-        case paymentUpgrade = 11
-        case accountEmailDetail = 20
-        case accountPasswordDetail = 21
-        case get30daysPremiumFree = 30
-        case rateOurService = 31
-        case contactus = 32
-        case help
-        case signOut = 34
+        case paymentUpgrade = 01
+        case accountEmailDetail = 10
+        case accountPasswordDetail = 11
+        case get30daysPremiumFree = 20
+        case rateOurService = 21
+        case contactus = 22
+        case help = 23
+        case signOut = 24
     }
     
-    @IBOutlet weak var usernameLabelButton: ThemedTintedNavigationButton!
+    @IBOutlet weak var usernameLabelButton: UIButton!
     @IBOutlet weak var mailAddressLabel: UILabel!
-    
+
+    @IBOutlet weak var subscriptionTypeLabel: UILabel!
+    @IBOutlet weak var expirationLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         if UI_USER_INTERFACE_IDIOM() == .pad {
             self.tableView.isScrollEnabled = false
@@ -48,6 +44,20 @@ class AccountConfigurationTableViewController: UITableViewController {
         let accountState = mainStore.state.accountState
         mailAddressLabel.text = accountState.mailAddress ?? ""
         usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
+        let subscription = accountState.subscriptionType
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy"
+        
+        let dateString: String
+        if let d = accountState.expiredDate {
+            dateString = dateFormatter.string(from: d)
+        } else {
+            dateString = ""
+        }
+        
+        subscriptionTypeLabel.text = subscription.title
+        expirationLabel.text = subscription.detailMessage + " " + dateString
+
         self.tableView.reloadData()
     }
     
@@ -59,20 +69,11 @@ class AccountConfigurationTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if mainStore.state.accountState.isLoggedIn {
-            return super.numberOfSections(in: tableView)
-        }
-        return super.numberOfSections(in: tableView) - 1
+        return super.numberOfSections(in: tableView)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var section = section
-        if mainStore.state.accountState.isLoggedIn == false {
-            section = section + 1
-        }
-        
-        if section == 1 {
-            // AccountType
+        if section == 0 {
             let accountState = mainStore.state.accountState
             switch accountState.subscriptionType {
             case .year:
@@ -86,42 +87,9 @@ class AccountConfigurationTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var indexPath = indexPath
-        if mainStore.state.accountState.isLoggedIn == false {
-            indexPath = IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1)
-        }
-        
         let row = Rows(rawValue: (indexPath as NSIndexPath).section * 10 + (indexPath as NSIndexPath).row)!
         let cell: UITableViewCell
-        switch row {
-        case .paymentDetail:
-            cell = super.tableView(tableView, cellForRowAt: indexPath)
-            
-            let accountState = mainStore.state.accountState
-            let subscription = accountState.subscriptionType
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yy"
-            
-            let dateString: String
-            if let d = accountState.expiredDate {
-                dateString = dateFormatter.string(from: d)
-            } else {
-                dateString = ""
-            }
-            
-            cell.textLabel?.text = subscription.title
-            cell.detailTextLabel?.text = subscription.detailMessage + " " + dateString
-        case .paymentUpgrade:
-            let accountState = mainStore.state.accountState
-            
-            if accountState.isLoggedIn {
-                cell = super.tableView(tableView, cellForRowAt: indexPath)
-            } else {
-                cell = super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row + 1, section: (indexPath as NSIndexPath).section))
-            }
-        default:
-            cell = super.tableView(tableView, cellForRowAt: indexPath)
-        }
+        cell = super.tableView(tableView, cellForRowAt: indexPath)
         return cell
     }
     
@@ -135,11 +103,6 @@ class AccountConfigurationTableViewController: UITableViewController {
             titleLabel = UILabel(frame: CGRect(x: 15, y: 9, width: 300, height: 17))
         }
         
-        var section = section
-        if mainStore.state.accountState.isLoggedIn == false {
-            section = section + 1
-        }
-        
         titleLabel.font = R.font.dosisMedium(size: 14)
         titleLabel.textColor = UIColor.goldenYellowColor()
         titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
@@ -151,11 +114,6 @@ class AccountConfigurationTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        var indexPath = indexPath
-        if mainStore.state.accountState.isLoggedIn == false {
-            indexPath = IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1)
-        }
         
         if let row = Rows(rawValue: (indexPath as NSIndexPath).section * 10 + (indexPath as NSIndexPath).row) {
             switch row {
@@ -185,25 +143,6 @@ class AccountConfigurationTableViewController: UITableViewController {
         } else {
             fatalError()
         }
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var indexPath = indexPath
-        if mainStore.state.accountState.isLoggedIn == false {
-            indexPath = IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1)
-        }
-        
-        return super.tableView(tableView, heightForRowAt: indexPath)
-    }
-    
-    override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
-        var indexPath = indexPath
-        if mainStore.state.accountState.isLoggedIn == false {
-            indexPath = IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1)
-        }
-        
-        return super.tableView(tableView, indentationLevelForRowAt: indexPath)
         
     }
 }

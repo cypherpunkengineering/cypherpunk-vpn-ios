@@ -67,7 +67,7 @@ class VPNProtocolSelectViewController: UITableViewController {
         let value = VPNProtocolMode.arrayDescription[(indexPath as NSIndexPath).row]
         mainStore.dispatch(SettingsAction.vpnProtocolMode(value: value))
         
-        _ = self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

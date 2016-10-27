@@ -67,7 +67,15 @@ struct AccountState: StateType {
         keychain[AccountStateKey.session] = session
         keychain[AccountStateKey.nickName] = nickName
         keychain[AccountStateKey.rawSubscriptionType] = String(subscriptionType.rawValue)
-        keychain[AccountStateKey.expiredDate] = String(describing: expiredDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy"
+        if let date = expiredDate {
+            let dateString = dateFormatter.string(from: date)
+            keychain[AccountStateKey.expiredDate] = dateString
+        } else {
+            keychain[AccountStateKey.expiredDate] = nil
+        }
+
         
         let defaults = UserDefaults.standard
         defaults.set(mailAddress, forKey: AccountStateKey.mailAddress)
@@ -86,6 +94,7 @@ struct AccountState: StateType {
             state.nickName = keychain[AccountStateKey.nickName]
             state.subscriptionType = SubscriptionType(rawValue: Int(keychain[AccountStateKey.rawSubscriptionType] ?? "\( SubscriptionType.free.rawValue)")!)!
             let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
             if let dateString = keychain[AccountStateKey.expiredDate] {
                 state.expiredDate = dateFormatter.date(from: dateString)
             }

@@ -16,10 +16,7 @@ class ContactusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        let button = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(ContactusViewController.submitAction))
-        self.navigationItem.setRightBarButton(button, animated: false)
-        
+        // Do any additional setup after loading the view.        
         registerKeyboardNotification()
 
         self.automaticallyAdjustsScrollViewInsets = false
@@ -59,10 +56,6 @@ class ContactusViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func submitAction() {
-        _ = self.navigationController?.popViewController(animated: true)
     }
     
     
