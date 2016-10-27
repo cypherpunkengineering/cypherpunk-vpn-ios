@@ -15,10 +15,10 @@
         <scene sceneID="HKA-Y1-MVf">
             <objects>
                 <navigationController id="gC2-Rj-MC7" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="keS-WQ-5Hg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="keS-WQ-5Hg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="iOe-W2-mTu" kind="relationship" relationship="rootViewController" id="Bhb-wh-u7G"/>
@@ -53,7 +53,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nah-UF-l37" secondAttribute="trailing" id="19r-zQ-eGd"/>
                             <constraint firstItem="fkY-z0-uGG" firstAttribute="leading" secondItem="2p4-EB-zam" secondAttribute="leading" id="Ciw-3h-YKG"/>

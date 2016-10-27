@@ -116,7 +116,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.011764705882352941" green="0.27450980392156865" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.011764705882352941" green="0.27450980392156865" blue="0.59607843137254901" alpha="1" colorSpace="deviceRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="YKm-ba-2tA" secondAttribute="trailing" id="1re-BW-G3s"/>
                                                         <constraint firstAttribute="height" constant="21" id="KqJ-ca-fWY"/>
@@ -227,7 +227,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.01176470588" green="0.27450980390000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.01176470588" green="0.27450980390000002" blue="0.59607843140000005" alpha="1" colorSpace="deviceRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="85" id="641-m7-gF8"/>
                                                         <constraint firstAttribute="height" constant="21" id="MG2-rN-SqB"/>
@@ -400,7 +400,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Rqn-RL-0WZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="HIP-Le-7sY" kind="relationship" relationship="rootViewController" id="nuS-9z-Ul2"/>
@@ -435,7 +435,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="cLb-gg-yJU" firstAttribute="top" secondItem="GAa-Sp-H7K" secondAttribute="bottom" id="8sJ-ep-N8k"/>
                             <constraint firstItem="6HF-7E-laa" firstAttribute="leading" secondItem="WAb-Xd-UvS" secondAttribute="leading" id="B9b-tK-Mx6"/>

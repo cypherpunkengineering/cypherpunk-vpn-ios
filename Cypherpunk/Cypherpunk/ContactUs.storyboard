@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="top" id="qDf-gj-g56"/>
                         <viewControllerLayoutGuide type="bottom" id="Cwz-b2-cPf"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Wbf-hl-DAE" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Wbf-hl-DAE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="602"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -33,7 +33,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2H2-wI-OAA" firstAttribute="top" secondItem="Wbf-hl-DAE" secondAttribute="top" id="1n1-CC-74B"/>
                             <constraint firstItem="2H2-wI-OAA" firstAttribute="leading" secondItem="Wbf-hl-DAE" secondAttribute="leading" constant="-3" id="WGG-cT-Av5"/>
@@ -60,10 +60,10 @@
         <scene sceneID="cdk-qE-VYk">
             <objects>
                 <navigationController id="uhz-Hr-jOu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="5q3-LC-3Kn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="5q3-LC-3Kn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="pF8-Oj-A60" kind="relationship" relationship="rootViewController" id="Z9c-hx-GA2"/>
@@ -98,7 +98,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="db3-DI-lq0" firstAttribute="leading" secondItem="3FB-1e-yvJ" secondAttribute="leading" id="57L-Zz-DXh"/>
                             <constraint firstAttribute="trailing" secondItem="db3-DI-lq0" secondAttribute="trailing" id="AEz-Ev-wga"/>

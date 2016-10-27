@@ -19,7 +19,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="18" sectionFooterHeight="18" id="dIa-BD-jJV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.12941176469999999" green="0.20392156859999999" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.058823529409999999" green="0.23529411759999999" blue="0.45882352939999999" alpha="1" colorSpace="deviceRGB"/>
                         <color key="separatorColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection headerTitle="Basic Settings" id="7lB-RC-vP6">
@@ -76,7 +76,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="QSe-Ch-sxD" kind="presentation" id="FAY-ak-aVZ"/>
+                                            <segue destination="QSe-Ch-sxD" kind="presentation" modalPresentationStyle="formSheet" id="FAY-ak-aVZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -138,7 +138,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="eTC-cg-CjH" kind="presentation" id="1h9-sm-iI7"/>
+                                            <segue destination="eTC-cg-CjH" kind="presentation" modalPresentationStyle="formSheet" id="1h9-sm-iI7"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -163,10 +163,10 @@
         <scene sceneID="fxC-VM-TPr">
             <objects>
                 <navigationController id="QSe-Ch-sxD" customClass="PopoverNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="hok-B0-1Lw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="hok-B0-1Lw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="cQp-9p-6lV" kind="relationship" relationship="rootViewController" id="8w4-al-PLh"/>
@@ -332,7 +332,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Cby-I5-6Sd" secondAttribute="trailing" id="7yc-7J-3v4"/>
                             <constraint firstItem="Cby-I5-6Sd" firstAttribute="leading" secondItem="QXE-bd-ctl" secondAttribute="leading" id="L6K-Uu-eaf"/>
