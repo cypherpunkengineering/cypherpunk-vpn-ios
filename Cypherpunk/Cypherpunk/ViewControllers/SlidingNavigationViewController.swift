@@ -21,12 +21,15 @@ class SlidingNavigationViewController: UIViewController {
     }
     
     private var centerState = SlideState.center
-    
+    var slideWidth: CGFloat = 274
+
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            slideWidth = 300
+        }
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseConfiguration), name: kOpenOrCloseConfigurationNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseAccount), name: kOpenOrCloseAccountNotification, object: nil)
@@ -41,7 +44,8 @@ class SlidingNavigationViewController: UIViewController {
     
     func openOrCloseConfiguration() {
         if self.centerConstraint.constant == 0.0 {
-            self.centerConstraint.constant = -276
+
+            self.centerConstraint.constant = -slideWidth
             self.view.setNeedsUpdateConstraints()
             self.centerState = .left
             UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
@@ -60,7 +64,7 @@ class SlidingNavigationViewController: UIViewController {
     }
     func openOrCloseAccount() {
         if self.centerConstraint.constant == 0.0 {
-            self.centerConstraint.constant = 276
+            self.centerConstraint.constant = slideWidth
             self.centerState = .right
             self.view.setNeedsUpdateConstraints()
             UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
@@ -112,12 +116,13 @@ class SlidingNavigationViewController: UIViewController {
             let moved = beganTranslatedPositionX + finalX
             let lastConstant: CGFloat
             if UI_USER_INTERFACE_IDIOM() == .pad {
-                lastConstant = min(max(-274, beganPositionX + moved), 0)
+                lastConstant = min(max(-slideWidth, beganPositionX + moved), 0)
             } else {
-                lastConstant = min(max(-274, beganPositionX + moved), 274)
+                lastConstant = min(max(-slideWidth, beganPositionX + moved), slideWidth)
             }
             
-            if lastConstant <= -274.0 * 0.5 {
+            
+            if lastConstant <= slideWidth * 0.5 {
                 if self.centerState == .right {
                     self.centerConstraint.constant = 0
                     self.centerState = .center
@@ -125,13 +130,13 @@ class SlidingNavigationViewController: UIViewController {
                         self.view.layoutIfNeeded()
                         }, completion: nil)
                 } else {
-                    self.centerConstraint.constant = -276
+                    self.centerConstraint.constant = -slideWidth
                     self.centerState = .left
                     UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                         self.view.layoutIfNeeded()
                         }, completion: nil)
                 }
-            } else if lastConstant >= 274.0 * 0.5 {
+            } else if lastConstant >= slideWidth * 0.5 {
                 if self.centerState == .left {
                     self.centerConstraint.constant = 0
                     self.centerState = .center
@@ -139,7 +144,7 @@ class SlidingNavigationViewController: UIViewController {
                         self.view.layoutIfNeeded()
                         }, completion: nil)
                 } else {
-                    self.centerConstraint.constant = 276
+                    self.centerConstraint.constant = slideWidth
                     self.centerState = .right
                     UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                         self.view.layoutIfNeeded()
@@ -156,9 +161,9 @@ class SlidingNavigationViewController: UIViewController {
         default:
             let moved = beganTranslatedPositionX + translated.x
             if UI_USER_INTERFACE_IDIOM() == .pad {
-                centerConstraint.constant = min(max(-274, beganPositionX + moved), 0)
+                centerConstraint.constant = min(max(-slideWidth, beganPositionX + moved), 0)
             } else if UI_USER_INTERFACE_IDIOM() == .phone {
-                centerConstraint.constant = min(max(-274, beganPositionX + moved), 274)
+                centerConstraint.constant = min(max(-slideWidth, beganPositionX + moved), slideWidth)
             }
         }
         

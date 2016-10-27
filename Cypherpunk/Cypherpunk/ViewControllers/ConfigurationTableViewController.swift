@@ -17,7 +17,7 @@ class ConfigurationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableView.tableFooterView = UIView()
         if UI_USER_INTERFACE_IDIOM() == .pad {
             self.tableView.isScrollEnabled = false
         }
