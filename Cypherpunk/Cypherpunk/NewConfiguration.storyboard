@@ -76,9 +76,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="QSe-Ch-sxD" kind="popoverPresentation" popoverAnchorView="hbe-OB-T0T" id="FAY-ak-aVZ">
-                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="QSe-Ch-sxD" kind="presentation" id="FAY-ak-aVZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -140,9 +138,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="eTC-cg-CjH" kind="popoverPresentation" popoverAnchorView="MV0-jF-THB" id="1h9-sm-iI7">
-                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="eTC-cg-CjH" kind="presentation" id="1h9-sm-iI7"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -167,7 +163,7 @@
         <scene sceneID="fxC-VM-TPr">
             <objects>
                 <navigationController id="QSe-Ch-sxD" customClass="PopoverNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="hok-B0-1Lw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="hok-B0-1Lw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>

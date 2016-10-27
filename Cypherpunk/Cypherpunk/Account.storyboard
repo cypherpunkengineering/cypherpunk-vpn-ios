@@ -83,9 +83,7 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <segue destination="ayc-eb-YSr" kind="popoverPresentation" popoverAnchorView="uDO-Lx-KuG" id="ils-0s-vk8">
-                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="ayc-eb-YSr" kind="presentation" id="ils-0s-vk8"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -118,9 +116,7 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <segue destination="A7h-gw-26D" kind="popoverPresentation" popoverAnchorView="L2m-Lc-1mX" id="Ce4-3C-Kfv">
-                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="A7h-gw-26D" kind="presentation" id="Ce4-3C-Kfv"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="MB7-KR-LkU" style="IBUITableViewCellStyleDefault" id="AMY-xh-fi9" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
@@ -142,9 +138,7 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <segue destination="53n-WT-D5X" kind="popoverPresentation" popoverAnchorView="AMY-xh-fi9" id="o4G-hJ-lGY">
-                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="53n-WT-D5X" kind="presentation" id="o4G-hJ-lGY"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -170,9 +164,7 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <segue destination="SsI-nX-FBa" kind="popoverPresentation" popoverAnchorView="bmt-ON-Flz" id="yD4-Qg-Zwp">
-                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="SsI-nX-FBa" kind="presentation" id="yD4-Qg-Zwp"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="O0u-Ye-ecR" style="IBUITableViewCellStyleDefault" id="m7r-MG-5Vq" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
@@ -220,9 +212,7 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <segue destination="7FL-JU-SBf" kind="popoverPresentation" popoverAnchorView="t4i-zT-L2e" id="Dum-Ii-Ss2">
-                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="7FL-JU-SBf" kind="presentation" id="Dum-Ii-Ss2"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="0.0" textLabel="DJl-bX-0yk" style="IBUITableViewCellStyleDefault" id="gUy-xe-Bxs" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
