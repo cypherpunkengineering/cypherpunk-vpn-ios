@@ -13,13 +13,15 @@ class AccountConfigurationTableViewController: UITableViewController {
     fileprivate enum Rows: Int {
         case account = 00
         case paymentUpgrade = 01
-        case accountEmailDetail = 10
-        case accountPasswordDetail = 11
-        case get30daysPremiumFree = 20
-        case rateOurService = 21
-        case contactus = 22
-        case help = 23
-        case signOut = 24
+        case accountHeader = 10
+        case accountEmailDetail = 11
+        case accountPasswordDetail = 12
+        case moreHeader = 20
+        case get30daysPremiumFree = 21
+        case rateOurService = 22
+        case contactus = 23
+        case help = 24
+        case signOut = 25
     }
     
     @IBOutlet weak var usernameLabelButton: UIButton!
@@ -30,6 +32,8 @@ class AccountConfigurationTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         if UI_USER_INTERFACE_IDIOM() == .pad {
             self.tableView.isScrollEnabled = false
@@ -84,24 +88,9 @@ class AccountConfigurationTableViewController: UITableViewController {
         }
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
-        
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
-        let titleLabel: UILabel
-        if section == 0 {
-            titleLabel = UILabel(frame: CGRect(x: 15, y: 26, width: 300, height: 17))
-        } else {
-            titleLabel = UILabel(frame: CGRect(x: 15, y: 9, width: 300, height: 17))
-        }
-        
-        titleLabel.font = R.font.dosisMedium(size: 14)
-        titleLabel.textColor = UIColor.goldenYellowColor()
-        titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
-        
-        view.addSubview(titleLabel)
-        
-        return view
+        return nil
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

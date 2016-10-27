@@ -293,7 +293,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GdZ-TQ-1Nw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sGw-kG-W6d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7R-qo-ata">
@@ -476,11 +476,11 @@
             </objects>
             <point key="canvasLocation" x="-449" y="-498"/>
         </scene>
-        <!--Form Sheet Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="wDI-YT-LlJ">
             <objects>
-                <navigationController id="TzT-qx-x3D" customClass="FormSheetNavigationController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Vid-Qw-1d6">
+                <navigationController id="TzT-qx-x3D" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Vid-Qw-1d6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -497,11 +497,11 @@
             </objects>
             <point key="canvasLocation" x="-1263" y="-498"/>
         </scene>
-        <!--Form Sheet Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="B8l-cx-2OE">
             <objects>
-                <navigationController storyboardIdentifier="AccountNavigation" id="uXO-7N-wwL" customClass="FormSheetNavigationController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="quD-bl-a9g">
+                <navigationController storyboardIdentifier="AccountNavigation" id="uXO-7N-wwL" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="quD-bl-a9g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

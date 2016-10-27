@@ -15,7 +15,6 @@
 		201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809E91D5B3BF100730FA4 /* ThemedNavigationBar.swift */; };
 		2018AB081DB8ADD200649D03 /* RestYourPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2018AB071DB8ADD200649D03 /* RestYourPasswordViewController.swift */; };
 		2018AB0A1DB8AF0E00649D03 /* EmailConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2018AB091DB8AF0E00649D03 /* EmailConfirmationViewController.swift */; };
-		2025DE291DBA07C200EC47AC /* FormSheetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2025DE281DBA07C200EC47AC /* FormSheetNavigationController.swift */; };
 		2033FB451DB89E4D004D14B7 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2033FB441DB89E4D004D14B7 /* LoadingAnimationView.swift */; };
 		203809691D13D89D005145CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203809681D13D89D005145CD /* AppDelegate.swift */; };
 		203809701D13D89D005145CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2038096F1D13D89D005145CD /* Assets.xcassets */; };
@@ -151,7 +150,6 @@
 		201809E91D5B3BF100730FA4 /* ThemedNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationBar.swift; sourceTree = "<group>"; };
 		2018AB071DB8ADD200649D03 /* RestYourPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestYourPasswordViewController.swift; sourceTree = "<group>"; };
 		2018AB091DB8AF0E00649D03 /* EmailConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailConfirmationViewController.swift; sourceTree = "<group>"; };
-		2025DE281DBA07C200EC47AC /* FormSheetNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSheetNavigationController.swift; sourceTree = "<group>"; };
 		2033FB441DB89E4D004D14B7 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		203809651D13D89D005145CD /* Cypherpunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cypherpunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		203809681D13D89D005145CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -470,7 +468,6 @@
 				2065DD081DB8D98100D0F446 /* OneFinalStepViewController.swift */,
 				2065DD0A1DB8D9A500D0F446 /* CongraturationsViewController.swift */,
 				2065DD061DB8D82100D0F446 /* TutorialRootViewController.swift */,
-				2025DE281DBA07C200EC47AC /* FormSheetNavigationController.swift */,
 				2B3455791DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift */,
 				2064B3A31DBF38BD00F85148 /* PopoverRootViewController.swift */,
 				2064B3A51DBF426700F85148 /* PopoverNavigationViewController.swift */,
@@ -946,7 +943,6 @@
 				20BF04D31DB8B8E30007B633 /* SettingUpYourVPNViewController.swift in Sources */,
 				203C62F81D703A7B00891F91 /* GetPremiumPlanRootViewController.swift in Sources */,
 				2BDBD0CC1D651D6700080E67 /* UpdateEmailTableViewController.swift in Sources */,
-				2025DE291DBA07C200EC47AC /* FormSheetNavigationController.swift in Sources */,
 				20D895FE1D23A637002B9F9D /* AccountReducer.swift in Sources */,
 				2018AB0A1DB8AF0E00649D03 /* EmailConfirmationViewController.swift in Sources */,
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
