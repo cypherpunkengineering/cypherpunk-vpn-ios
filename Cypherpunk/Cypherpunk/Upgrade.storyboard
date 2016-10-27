@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IX6-zl-rXh">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IX6-zl-rXh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -108,10 +108,30 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6C-6X-HU9">
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Plan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKm-ba-2tA">
+                                                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.011764705882352941" green="0.27450980392156865" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="YKm-ba-2tA" secondAttribute="trailing" id="1re-BW-G3s"/>
+                                                        <constraint firstAttribute="height" constant="21" id="KqJ-ca-fWY"/>
+                                                        <constraint firstAttribute="width" constant="85" id="NmV-ll-P0c"/>
+                                                        <constraint firstItem="YKm-ba-2tA" firstAttribute="top" secondItem="j6C-6X-HU9" secondAttribute="top" id="cqN-A0-MSm"/>
+                                                        <constraint firstAttribute="bottom" secondItem="YKm-ba-2tA" secondAttribute="bottom" id="heu-pb-Op0"/>
+                                                        <constraint firstItem="YKm-ba-2tA" firstAttribute="leading" secondItem="j6C-6X-HU9" secondAttribute="leading" id="l4p-iC-SDl"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="rF1-Lh-8el" secondAttribute="bottom" id="CnW-S3-NGI"/>
+                                                <constraint firstItem="j6C-6X-HU9" firstAttribute="top" secondItem="rF1-Lh-8el" secondAttribute="top" id="IF8-S8-pW4"/>
                                                 <constraint firstItem="rF1-Lh-8el" firstAttribute="leading" secondItem="PFS-mu-aP6" secondAttribute="leading" constant="25" id="STt-5H-nNl"/>
+                                                <constraint firstItem="j6C-6X-HU9" firstAttribute="leading" secondItem="rF1-Lh-8el" secondAttribute="leading" id="bR2-45-F9n"/>
                                                 <constraint firstItem="rF1-Lh-8el" firstAttribute="top" secondItem="PFS-mu-aP6" secondAttribute="top" id="e4U-yb-nYg"/>
                                                 <constraint firstAttribute="trailing" secondItem="rF1-Lh-8el" secondAttribute="trailing" constant="24" id="snU-VA-fnY"/>
                                             </constraints>
@@ -199,11 +219,31 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPJ-xn-56b">
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Plan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5f-Pc-iPC">
+                                                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.01176470588" green="0.27450980390000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="85" id="641-m7-gF8"/>
+                                                        <constraint firstAttribute="height" constant="21" id="MG2-rN-SqB"/>
+                                                        <constraint firstAttribute="trailing" secondItem="o5f-Pc-iPC" secondAttribute="trailing" id="bIq-iA-ZOi"/>
+                                                        <constraint firstItem="o5f-Pc-iPC" firstAttribute="leading" secondItem="GPJ-xn-56b" secondAttribute="leading" id="duN-vV-4aa"/>
+                                                        <constraint firstAttribute="bottom" secondItem="o5f-Pc-iPC" secondAttribute="bottom" id="eLy-rI-xfb"/>
+                                                        <constraint firstItem="o5f-Pc-iPC" firstAttribute="top" secondItem="GPJ-xn-56b" secondAttribute="top" id="ugU-i5-P04"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="8Mb-BE-qur" secondAttribute="trailing" constant="24" id="4aB-4T-Th1"/>
                                                 <constraint firstItem="8Mb-BE-qur" firstAttribute="leading" secondItem="nlW-Cd-t30" secondAttribute="leading" constant="25" id="9IQ-nD-Pfs"/>
                                                 <constraint firstItem="8Mb-BE-qur" firstAttribute="top" secondItem="nlW-Cd-t30" secondAttribute="top" id="AWW-nx-CI2"/>
+                                                <constraint firstItem="GPJ-xn-56b" firstAttribute="top" secondItem="8Mb-BE-qur" secondAttribute="top" id="D7r-UH-Qrg"/>
+                                                <constraint firstItem="GPJ-xn-56b" firstAttribute="leading" secondItem="8Mb-BE-qur" secondAttribute="leading" id="Mgj-RX-oIr"/>
                                                 <constraint firstAttribute="bottom" secondItem="8Mb-BE-qur" secondAttribute="bottom" id="j9P-lv-hm8"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -342,6 +382,12 @@
                             <outlet property="delegate" destination="ESJ-e3-4aK" id="1D4-ju-0cY"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="halfYearCellContentView" destination="8Mb-BE-qur" id="zYi-WS-r6P"/>
+                        <outlet property="halfYearCurrentPlanLabelView" destination="GPJ-xn-56b" id="9FA-qG-1tI"/>
+                        <outlet property="oneMonthCellContentView" destination="rF1-Lh-8el" id="GkR-lD-1Zn"/>
+                        <outlet property="oneMonthCurrentPlanLabelView" destination="j6C-6X-HU9" id="ha7-6X-gO0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8Q-dA-VXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -351,7 +397,7 @@
         <scene sceneID="iOa-Q4-mCd">
             <objects>
                 <navigationController id="IX6-zl-rXh" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Rqn-RL-0WZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Rqn-RL-0WZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>

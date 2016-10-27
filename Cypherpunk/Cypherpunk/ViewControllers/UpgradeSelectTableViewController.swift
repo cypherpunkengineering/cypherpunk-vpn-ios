@@ -10,6 +10,11 @@ import UIKit
 
 class UpgradeSelectTableViewController: UITableViewController {
 
+    @IBOutlet weak var oneMonthCellContentView: UIView!
+    @IBOutlet weak var oneMonthCurrentPlanLabelView: UIView!
+    
+    @IBOutlet weak var halfYearCellContentView: UIView!
+    @IBOutlet weak var halfYearCurrentPlanLabelView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +24,20 @@ class UpgradeSelectTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        switch mainStore.state.accountState.subscriptionType {
+        case .oneMonth:
+            oneMonthCellContentView.alpha = 0.5
+            oneMonthCellContentView.isUserInteractionEnabled = false
+            oneMonthCurrentPlanLabelView.isHidden = false
+        case .halfYear:
+            halfYearCellContentView.alpha = 0.5
+            halfYearCellContentView.isUserInteractionEnabled = false
+            halfYearCurrentPlanLabelView.isHidden = false
+        default:
+            break
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,16 +47,16 @@ class UpgradeSelectTableViewController: UITableViewController {
     
     @IBAction func upgradeToPerMonthlySubscriptionAction(_ sender: AnyObject) {
         mainStore.dispatch(AccountAction.upgrade(subscription: .oneMonth, expiredDate: Date()))
-        _ = self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func upgradeTo6MonthSubscriptionAction(_ sender: AnyObject) {
         mainStore.dispatch(AccountAction.upgrade(subscription: .halfYear, expiredDate: Date()))
-        _ = self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func upgradeTo12MonthSubscriptionAction(_ sender: AnyObject) {
         mainStore.dispatch(AccountAction.upgrade(subscription: .year, expiredDate: Date()))
-        _ = self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -51,9 +70,9 @@ extension UpgradeSelectTableViewController {
         case .freePremium:
             return 3
         case .oneMonth:
-            return 2
+            return 3
         case .halfYear:
-            return 1
+            return 2
         case .year:
             fatalError()
         }
@@ -63,12 +82,10 @@ extension UpgradeSelectTableViewController {
         let accountState = mainStore.state.accountState
         
         switch accountState.subscriptionType {
-        case .free, .freePremium:
+        case .free, .freePremium, .oneMonth:
             return super.tableView(tableView, cellForRowAt: indexPath)
-        case .oneMonth:
-            return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
         case .halfYear:
-            return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 2))
+            return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
         case .year:
             fatalError()
         }
@@ -78,12 +95,10 @@ extension UpgradeSelectTableViewController {
         let accountState = mainStore.state.accountState
         
         switch accountState.subscriptionType {
-        case .free, .freePremium:
+        case .free, .freePremium, .oneMonth:
             return super.tableView(tableView, heightForRowAt: indexPath)
-        case .oneMonth:
-            return super.tableView(tableView, heightForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
         case .halfYear:
-            return super.tableView(tableView, heightForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 2))
+            return super.tableView(tableView, heightForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
         case .year:
             fatalError()
         }
