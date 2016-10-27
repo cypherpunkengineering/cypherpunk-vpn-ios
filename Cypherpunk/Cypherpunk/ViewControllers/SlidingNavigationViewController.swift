@@ -10,6 +10,7 @@ import UIKit
 
 let kOpenOrCloseConfigurationNotification = Notification.Name(rawValue: "kOpenOrCloseConfigurationNotification")
 let kOpenOrCloseAccountNotification = Notification.Name(rawValue: "kOpenOrCloseAccountNotification")
+let kResetCenterViewNotification = Notification.Name(rawValue: "kResetCenterViewNotification")
 
 class SlidingNavigationViewController: UIViewController {
 
@@ -29,6 +30,7 @@ class SlidingNavigationViewController: UIViewController {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseConfiguration), name: kOpenOrCloseConfigurationNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseAccount), name: kOpenOrCloseAccountNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resetCenterView), name: kResetCenterViewNotification, object: nil)
 
     }
 
@@ -74,6 +76,17 @@ class SlidingNavigationViewController: UIViewController {
                 }, completion: nil)
         }
     }
+    
+    func resetCenterView() {
+        self.centerState = .center
+        self.centerConstraint.constant = 0.0
+        self.view.setNeedsUpdateConstraints()
+        self.centerState = .center
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

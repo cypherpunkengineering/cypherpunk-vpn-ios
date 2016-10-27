@@ -84,15 +84,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         }
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let row = Rows(rawValue: (indexPath as NSIndexPath).section * 10 + (indexPath as NSIndexPath).row)!
-        let cell: UITableViewCell
-        cell = super.tableView(tableView, cellForRowAt: indexPath)
-        return cell
-    }
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
@@ -127,13 +119,13 @@ class AccountConfigurationTableViewController: UITableViewController {
                 if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
                     let vc = R.storyboard.firstOpen.instantiateInitialViewController()
                     UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
-                        let _ = self.navigationController?.popViewController(animated: false)
+                        NotificationCenter.default.post(name: kResetCenterViewNotification, object: nil)
                     }
                     
                 } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
                     let vc = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
                     UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
-                        self.slidingViewController().resetTopView(animated: false)
+                        NotificationCenter.default.post(name: kResetCenterViewNotification, object: nil)
                     }
                 }
                 
