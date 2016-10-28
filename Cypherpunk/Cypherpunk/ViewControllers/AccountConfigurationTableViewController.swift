@@ -13,15 +13,13 @@ class AccountConfigurationTableViewController: UITableViewController {
     fileprivate enum Rows: Int {
         case account = 00
         case paymentUpgrade = 01
-        case accountHeader = 10
-        case accountEmailDetail = 11
-        case accountPasswordDetail = 12
-        case moreHeader = 20
-        case get30daysPremiumFree = 21
-        case rateOurService = 22
-        case contactus = 23
-        case help = 24
-        case signOut = 25
+        case accountEmailDetail = 10
+        case accountPasswordDetail = 11
+        case get30daysPremiumFree = 20
+        case rateOurService = 21
+        case contactus = 22
+        case help = 23
+        case signOut = 24
     }
     
     @IBOutlet weak var usernameLabelButton: UIButton!
@@ -89,8 +87,26 @@ class AccountConfigurationTableViewController: UITableViewController {
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
+    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 36))
+        let titleLabel: UILabel
+        titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 304, height: 36))
+        titleLabel.font = R.font.dosisMedium(size: 14)
+        titleLabel.textColor = UIColor.goldenYellowColor()
+        titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
+        
+        view.addSubview(titleLabel)
+        
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.0
+        }
+        return 36
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

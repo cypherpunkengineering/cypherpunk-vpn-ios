@@ -48,7 +48,7 @@ struct SubscriptionStatus: Decodable {
     
     static func decode(_ e: Extractor) throws -> SubscriptionStatus {
         return try SubscriptionStatus(
-            confirmed: e.value("confirmed") == 1,
+            confirmed: e.value("confirmed"),
             expiration: e.value("expiration"),
             renewal: e.value("renewal"),
             type: e.value("type")

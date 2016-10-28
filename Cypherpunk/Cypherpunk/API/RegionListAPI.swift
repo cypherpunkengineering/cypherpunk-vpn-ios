@@ -84,14 +84,8 @@ struct RegionListRequest: Request {
                         }
                     }
                 }
-                
-                let deleteTargetRegions = realm.objects(Region.self).filter({ (region) -> Bool in
-                    return !(regionIds.contains(region.id))
-                })
-                
-                for region in deleteTargetRegions {
-                    realm.delete(region)
-                }
+                let oldRegions = realm.objects(Region.self).filter("NOT (id IN %@)", regionIds)
+                realm.delete(oldRegions)
                 
             })
             

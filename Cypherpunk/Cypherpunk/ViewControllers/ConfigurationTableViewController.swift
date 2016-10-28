@@ -38,6 +38,25 @@ class ConfigurationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 36))
+        let titleLabel: UILabel
+        titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 304, height: 36))
+        titleLabel.font = R.font.dosisMedium(size: 14)
+        titleLabel.textColor = UIColor.goldenYellowColor()
+        titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
+        
+        view.addSubview(titleLabel)
+        
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

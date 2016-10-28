@@ -122,7 +122,7 @@ class SlidingNavigationViewController: UIViewController {
             }
             
             
-            if lastConstant <= slideWidth * 0.5 {
+            if lastConstant <= -slideWidth * 0.5 {
                 if self.centerState == .right {
                     self.centerConstraint.constant = 0
                     self.centerState = .center

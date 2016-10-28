@@ -23,7 +23,7 @@ class RegionSelectViewController: UITableViewController {
     
     var favoriteResults: Results<Region>!
     var recentlyConnectedResults: Results<Region>!
-    var otherResults: Results<Region>!
+    var nonFavoriteResults: Results<Region>!
     
     var notificationToken: NotificationToken? = nil
     override func viewDidLoad() {
@@ -41,8 +41,8 @@ class RegionSelectViewController: UITableViewController {
         // Do any additional setup after loading the view.
         let realm = try! Realm()
         favoriteResults = realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
-        recentlyConnectedResults = realm.objects(Region.self).filter("isFavorite = false AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
-        otherResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
+        nonFavoriteResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
+        recentlyConnectedResults = nonFavoriteResults.filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1))
      
         notificationToken = realm.objects(Region.self).addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.tableView else { return }
@@ -98,7 +98,7 @@ class RegionSelectViewController: UITableViewController {
         }
     }
     
-    func numberOfRowsInrecentlyConnectedSection() -> Int {
+    func numberOfRowsInRecentlyConnectedSection() -> Int {
         if recentlyConnectedResults.count < 3 {
             return recentlyConnectedResults.count
         }
@@ -114,9 +114,9 @@ class RegionSelectViewController: UITableViewController {
         case .favorite:
             return favoriteResults.count
         case .recentlyConnected:
-            return numberOfRowsInrecentlyConnectedSection()
+            return numberOfRowsInRecentlyConnectedSection()
         case .allLocation:
-            return otherResults.count - numberOfRowsInrecentlyConnectedSection()
+            return nonFavoriteResults.count - numberOfRowsInRecentlyConnectedSection()
         }
     }
     
@@ -141,9 +141,9 @@ class RegionSelectViewController: UITableViewController {
             cell?.starButton.setImage(R.image.iconStar(), for: .normal)
             cell?.flagImageView.image = UIImage(named: recentlyConnectedResults[indexPath.row].countryCode.lowercased())
         case .allLocation:
-            cell?.titleLabel.text = otherResults[indexPath.row + numberOfRowsInrecentlyConnectedSection()].regionName
+            cell?.titleLabel.text = nonFavoriteResults[indexPath.row + numberOfRowsInRecentlyConnectedSection()].regionName
             cell?.starButton.setImage(R.image.iconStar(), for: .normal)
-            cell?.flagImageView.image = UIImage(named: otherResults[indexPath.row + numberOfRowsInrecentlyConnectedSection()].countryCode.lowercased())
+            cell?.flagImageView.image = UIImage(named: nonFavoriteResults[indexPath.row + numberOfRowsInRecentlyConnectedSection()].countryCode.lowercased())
         }
         
         cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
@@ -162,14 +162,14 @@ class RegionSelectViewController: UITableViewController {
             if favoriteResults.count > 0 {
                 region = favoriteResults[0]
             } else {
-                region = otherResults[0]
+                region = nonFavoriteResults[0]
             }
         case .favorite:
             region = favoriteResults[indexPath.row]
         case .recentlyConnected:
             region = recentlyConnectedResults[indexPath.row]
         case .allLocation:
-            region = otherResults[indexPath.row + numberOfRowsInrecentlyConnectedSection()]
+            region = nonFavoriteResults[indexPath.row + numberOfRowsInRecentlyConnectedSection()]
         }
         
         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
@@ -248,7 +248,7 @@ class RegionSelectViewController: UITableViewController {
         case .recentlyConnected:
             target = recentlyConnectedResults[row]
         case .allLocation:
-            target = otherResults[row + numberOfRowsInrecentlyConnectedSection()]
+            target = nonFavoriteResults[row + numberOfRowsInRecentlyConnectedSection()]
         }
         let realm = try! Realm()
         try! realm.write {
