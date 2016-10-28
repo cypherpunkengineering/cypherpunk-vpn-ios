@@ -43,7 +43,7 @@ class RegionSelectViewController: UITableViewController {
         favoriteResults = realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
         nonFavoriteResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
         recentlyConnectedResults = nonFavoriteResults.filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1))
-     
+        
         notificationToken = realm.objects(Region.self).addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.tableView else { return }
             switch changes {
@@ -177,13 +177,27 @@ class RegionSelectViewController: UITableViewController {
         let isConnected = manager.connection.status == .connected
         VPNConfigurationCoordinator.start {
             if isConnected {
-                try! VPNConfigurationCoordinator.connect()
+                do {
+                    try VPNConfigurationCoordinator.connect()
+                }catch NEVPNError.configurationInvalid {
+                    print("NEVPNError.configurationInvalid")
+                }catch NEVPNError.configurationInvalid {
+                    print("NEVPNError.configurationInvalid")
+                }catch {
+                    print("Unknown Error")
+                }
             }
         }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
+        
+        if UI_USER_INTERFACE_IDIOM() == .phone {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
+            view.backgroundColor = .clear
+            return view
+        }
+        
         switch Section(rawValue: section)! {
         case .fastestLocation:
             return nil
@@ -198,7 +212,7 @@ class RegionSelectViewController: UITableViewController {
         case .allLocation:
             break
         }
-
+        
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
         view.backgroundColor = UIColor.clear
         if UI_USER_INTERFACE_IDIOM() == .pad {
@@ -239,25 +253,43 @@ class RegionSelectViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch Section(rawValue: section)! {
-        case .fastestLocation:
-            return 0.1
-        case .favorite:
-            if favoriteResults.count == 0 {
-                return 0.1
-            }
-        case .recentlyConnected:
-            if recentlyConnectedResults.count == 0 {
-                return 0.1
-            }
-        case .allLocation:
-            break
-        }
         
-        if UI_USER_INTERFACE_IDIOM() == .pad {
+        if UI_USER_INTERFACE_IDIOM() == .phone {
+            switch Section(rawValue: section)! {
+                
+            case .fastestLocation:
+                return 0.0
+            case .favorite:
+                if favoriteResults.count == 0 {
+                    return 0.0
+                }
+            case .recentlyConnected:
+                if recentlyConnectedResults.count == 0 {
+                    return 0.0
+                }
+            case .allLocation:
+                break
+            }
+            return 10
+            
+        } else {
+            switch Section(rawValue: section)! {
+            case .fastestLocation:
+                return 0.1
+            case .favorite:
+                if favoriteResults.count == 0 {
+                    return 0.1
+                }
+            case .recentlyConnected:
+                if recentlyConnectedResults.count == 0 {
+                    return 0.1
+                }
+            case .allLocation:
+                break
+            }
             return 17
+            
         }
-        return 10
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
