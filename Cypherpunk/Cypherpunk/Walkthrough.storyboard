@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vaI-Uv-laT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vaI-Uv-laT">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,10 +25,11 @@
                         <viewControllerLayoutGuide type="bottom" id="N12-Lf-qVf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sbR-hb-e6F" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hyz-Hd-baH">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="SRd-FW-953" kind="embed" id="KZW-DM-8mm"/>
@@ -62,15 +66,17 @@
                         <viewControllerLayoutGuide type="bottom" id="DOj-9f-n6B"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="T9j-Td-zgW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting Up Your VPN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnn-tA-GwA">
+                                <rect key="frame" x="0.0" y="144.5" width="768" height="34.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZ3-k4-hO8">
+                                <rect key="frame" x="242" y="242" width="284" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="9KQ-Ja-PcJ"/>
                                     <constraint firstAttribute="width" constant="284" id="k7k-Cm-3io"/>
@@ -82,6 +88,7 @@ passcode or use Touch ID to complete the configuration.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLH-m3-ZuL" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="274" y="650" width="220" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="Zb2-cn-IAT"/>
                                     <constraint firstAttribute="height" constant="48" id="jVA-DK-xch"/>
@@ -112,20 +119,25 @@ passcode or use Touch ID to complete the configuration.</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRh-vd-Qa1">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="144.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ZI-Qs-JfC">
+                                <rect key="frame" x="0.0" y="179" width="768" height="63"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWY-RA-lVn">
+                                <rect key="frame" x="0.0" y="311" width="768" height="73.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZJJ-6w-TJ4">
+                                <rect key="frame" x="58" y="384.5" width="653" height="164"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="164.09999999999999" id="ZVb-5G-iOM"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6Q-6F-zaF">
+                                <rect key="frame" x="0.0" y="548.5" width="768" height="101.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -173,15 +185,17 @@ passcode or use Touch ID to complete the configuration.</string>
                         <viewControllerLayoutGuide type="bottom" id="WQn-Re-yZn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Y0e-rk-ChY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One Final Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QT-eu-bYW">
+                                <rect key="frame" x="0.0" y="144.5" width="768" height="34.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share anonymized analytics about your VPN connections to help make Cypherpunk Privacy faster and more reliable." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLB-52-hoD">
+                                <rect key="frame" x="242" y="242" width="284" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="284" id="5aE-da-zpE"/>
                                     <constraint firstAttribute="height" constant="69" id="jxy-vR-gJH"/>
@@ -191,6 +205,7 @@ passcode or use Touch ID to complete the configuration.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkZ-bU-j5m" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="274" y="650" width="220" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="GCP-gx-w3q"/>
                                     <constraint firstAttribute="width" constant="220" id="K9W-dC-Hal"/>
@@ -221,23 +236,29 @@ passcode or use Touch ID to complete the configuration.</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bng-Rc-SSa">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="144.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcG-qY-HBp">
+                                <rect key="frame" x="0.0" y="179" width="768" height="63"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOQ-SZ-FPW">
+                                <rect key="frame" x="0.0" y="311" width="768" height="73.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jy4-pG-iev">
+                                <rect key="frame" x="58" y="384.5" width="653" height="164"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="164.09999999999999" id="6V8-BZ-Uol"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MT6-Im-Idt">
+                                <rect key="frame" x="0.0" y="548.5" width="768" height="101.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oN-I3-JmV">
+                                <rect key="frame" x="350" y="715" width="68" height="33"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                 <state key="normal" title="Don't allow">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -293,15 +314,17 @@ passcode or use Touch ID to complete the configuration.</string>
                         <viewControllerLayoutGuide type="bottom" id="FkQ-YO-pdb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OCC-2f-9sP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conguraturations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arO-qH-Kk6">
+                                <rect key="frame" x="0.0" y="144.5" width="768" height="34.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osT-2b-5ei">
+                                <rect key="frame" x="242" y="242" width="284" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="F0e-KG-GIi"/>
                                     <constraint firstAttribute="width" constant="284" id="nyS-1F-Zaz"/>
@@ -313,6 +336,7 @@ Please enjoy Cypherpunk Privacy!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5K-tm-5pA" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="274" y="650" width="220" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="H5u-Lq-378"/>
                                     <constraint firstAttribute="height" constant="48" id="UoW-lh-Zbj"/>
@@ -338,22 +362,30 @@ Please enjoy Cypherpunk Privacy!</string>
                                         <color key="value" red="0.81960784310000001" green="0.61960784310000006" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startCypherpunkAction:" destination="tzb-Yf-ixh" eventType="touchUpInside" id="evN-nx-gOE"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEH-yG-n4t">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="144.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPV-UM-xL2">
+                                <rect key="frame" x="0.0" y="179" width="768" height="63"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEZ-ZB-Ckj">
+                                <rect key="frame" x="0.0" y="311" width="768" height="73.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-Z2-aRL">
+                                <rect key="frame" x="58" y="384.5" width="653" height="164"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="164.09999999999999" id="XwC-bL-5O7"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULz-TD-AQc">
+                                <rect key="frame" x="0.0" y="548.5" width="768" height="101.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>

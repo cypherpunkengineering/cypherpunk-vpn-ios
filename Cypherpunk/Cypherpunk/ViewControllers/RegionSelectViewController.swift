@@ -261,7 +261,10 @@ class RegionSelectViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.1
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            return 0.001
+        }
+        return 0.0001
     }
     
     @IBAction func didSelectFavoriteAction(_ sender: UIButton) {

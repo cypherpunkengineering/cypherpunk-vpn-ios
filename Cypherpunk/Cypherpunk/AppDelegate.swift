@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = R.storyboard.top_iPad.instantiateInitialViewController()
 
             DispatchQueue.main.async { [unowned self] in
-                if mainStore.state.accountState.isLoggedIn == false {
+                if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
                     let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
                 } else {
@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = R.storyboard.top.instantiateInitialViewController()
 
             DispatchQueue.main.async { [unowned self] in
-                if mainStore.state.accountState.isLoggedIn == false {
+                if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
                     let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
                 } else {

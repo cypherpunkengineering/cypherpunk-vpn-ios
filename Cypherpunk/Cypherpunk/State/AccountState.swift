@@ -79,6 +79,7 @@ struct AccountState: StateType {
         
         let defaults = UserDefaults.standard
         defaults.set(mailAddress, forKey: AccountStateKey.mailAddress)
+        defaults.synchronize()
     }
     
     static func restore() -> AccountState {

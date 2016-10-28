@@ -32,4 +32,7 @@ class CongraturationsViewController: UIViewController {
     }
     */
 
+    @IBAction func startCypherpunkAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

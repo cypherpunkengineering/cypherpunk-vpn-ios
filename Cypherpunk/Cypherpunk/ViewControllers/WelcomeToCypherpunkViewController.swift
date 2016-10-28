@@ -221,7 +221,9 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
     {
         if state.accountState.isLoggedIn {
             // TODO: transition to send email screen
-            self.dismiss(animated: true, completion: nil)
+            
+            let destination = R.storyboard.walkthrough.instantiateInitialViewController()
+            self.navigationController?.pushViewController(destination!, animated: true)
         }
     }
     

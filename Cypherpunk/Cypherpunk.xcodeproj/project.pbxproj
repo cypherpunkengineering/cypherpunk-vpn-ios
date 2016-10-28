@@ -51,6 +51,7 @@
 		208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */; };
 		2092AF801DACC2B400F77031 /* ConnectionButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */; };
 		20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */; };
+		20B634B61DC3591B0036169D /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B634B51DC3591B0036169D /* AppAction.swift */; };
 		20BF04D31DB8B8E30007B633 /* SettingUpYourVPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */; };
 		20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
@@ -193,6 +194,7 @@
 		208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeToCypherpunkViewController.swift; sourceTree = "<group>"; };
 		2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionButtonsViewController.swift; sourceTree = "<group>"; };
 		20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
+		20B634B51DC3591B0036169D /* AppAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingUpYourVPNViewController.swift; sourceTree = "<group>"; };
 		20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				20D895FF1D23A84D002B9F9D /* AccountAction.swift */,
 				20EC4A491D378CBC00785399 /* SettingsAction.swift */,
 				2B2B59E41D3F98D0003FA705 /* RegionAction.swift */,
+				20B634B51DC3591B0036169D /* AppAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -669,7 +672,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Cypherpunk;
 				TargetAttributes = {
 					203809641D13D89D005145CD = {
@@ -985,6 +988,7 @@
 				2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */,
 				2064B3A41DBF38BD00F85148 /* PopoverRootViewController.swift in Sources */,
 				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
+				20B634B61DC3591B0036169D /* AppAction.swift in Sources */,
 				208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */,
 				2BE06E4B1DC0BE4200FDC417 /* SubscriptionAPI.swift in Sources */,
 				2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */,

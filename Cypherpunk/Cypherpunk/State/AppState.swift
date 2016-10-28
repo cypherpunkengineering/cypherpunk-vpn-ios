@@ -23,6 +23,7 @@ struct AppState: StateType {
         set(value) {
             let standard = UserDefaults.standard
             standard.set(value, forKey: "isInstalledPreferences")
+            standard.synchronize()
         }
     }
 

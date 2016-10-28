@@ -20,14 +20,30 @@ struct AppReducer: Reducer {
     func handleAction(action: Action, state: AppState?) -> AppState {
         
         if let action = action as? AccountAction {
-            if case AccountAction.logout = action {
+            switch action {
+            case .logout:
+                let standard = UserDefaults.standard
+                standard.set(false, forKey: "isInstalledPreferences")
+                standard.synchronize()
                 return AppState(
                     accountState: accountReducer.handleAction(action: action, state: nil),
                     regionState:  regionReducer.handleAction(action: action, state: nil),
                     settingsState: settingsReducer.handleAction(action: action, state: nil)
                 )
+            default:
+                break
             }
         }
+        
+        if let action = action as? AppAction {
+            switch action {
+            case .VPNInstalled:
+                let standard = UserDefaults.standard
+                standard.set(true, forKey: "isInstalledPreferences")
+                standard.synchronize()
+            }
+        }
+        
         return AppState(
             accountState: accountReducer.handleAction(action: action, state: state?.accountState ?? AccountState.restore()),
             regionState:  regionReducer.handleAction(action: action, state: state?.regionState),

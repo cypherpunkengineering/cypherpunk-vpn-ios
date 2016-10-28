@@ -20,6 +20,7 @@ open class VPNConfigurationCoordinator {
     }
     
     class func install() {
+        
         let manager = NEVPNManager.shared()
         let newIPSec : NEVPNProtocolIPSec
         newIPSec = NEVPNProtocolIKEv2()
@@ -51,7 +52,6 @@ open class VPNConfigurationCoordinator {
             if error != nil {
             }
         })
-        
     }
     
     class func start(_ completion: @escaping () -> ()) {
@@ -136,64 +136,18 @@ open class VPNConfigurationCoordinator {
     
     class func connect() throws {
         let manager = NEVPNManager.shared()
-        if #available(iOS 9.0, *) {
-            
-            manager.isOnDemandEnabled = true
-            manager.isEnabled = true
-            manager.saveToPreferences(completionHandler: { (error) in
-                if error != nil {
-                    print(error)
-                }
-            })
-            
-            if mainStore.state.settingsState.vpnProtocolMode == .IKEv2 {
-                try manager.connection.startVPNTunnel()
-            } else {
-                try manager.connection.startVPNTunnel()
-                
-            }
-        } else {
-            try manager.connection.startVPNTunnel()
-        }
+        try! manager.connection.startVPNTunnel()
     }
-    
+
     class func disconnect() {
         let manager = NEVPNManager.shared()
         manager.isOnDemandEnabled = false
-        manager.isEnabled = false
-        manager.saveToPreferences(completionHandler: { (error) in
-            if error != nil {
-                print(error)
-            }
-        })
+        manager.saveToPreferences(completionHandler: nil)
         manager.connection.stopVPNTunnel()
     }
     
     class func removeFromPreferences() {
         let manager = NEVPNManager.shared()
         manager.removeFromPreferences(completionHandler: nil)
-    }
-}
-
-
-private extension String {
-    static func randomStringForLocalIdentifier() -> String {
-        
-        let keychain = Keychain()
-        let accessKey = "com.cypherpunk.data.localIdentifier.key"
-        if let wrappedIdentifier = try? keychain.getString(accessKey), let unwrapped = wrappedIdentifier {
-            return unwrapped
-        } else {
-            let alphabet = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            let upperBound = UInt32(alphabet.characters.count)
-            
-            let localIdentifier =  String((0..<10).map { _ -> Character in
-                return alphabet[alphabet.characters.index(alphabet.startIndex, offsetBy: Int(arc4random_uniform(upperBound)))]
-            })
-            
-            try! keychain.set(localIdentifier, key: accessKey)
-            return localIdentifier
-        }
-        
     }
 }

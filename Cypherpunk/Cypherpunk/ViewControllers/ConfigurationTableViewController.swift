@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ReSwift
 
-class ConfigurationTableViewController: UITableViewController {
+class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
     
     @IBOutlet weak var vpnAlwaysOnSwitch: UISwitch!
     @IBOutlet weak var autoConnectOnBootSwitch: UISwitch!
@@ -31,6 +32,13 @@ class ConfigurationTableViewController: UITableViewController {
         vpnProtocolValueLabel.text = mainStore.state.settingsState.vpnProtocolMode.description
         vpnAlwaysOnSwitch.isOn = mainStore.state.settingsState.isAutoReconnect
         self.tableView.reloadData()
+        
+        mainStore.subscribe(self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        mainStore.unsubscribe(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,4 +75,8 @@ class ConfigurationTableViewController: UITableViewController {
         mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.isOn))
     }
 
+    func newState(state: AppState) {
+        vpnProtocolValueLabel.text = state.settingsState.vpnProtocolMode.description
+        vpnAlwaysOnSwitch.isOn = state.settingsState.isAutoReconnect
+    }
 }

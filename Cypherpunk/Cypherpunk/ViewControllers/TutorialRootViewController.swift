@@ -31,11 +31,13 @@ class TutorialRootViewController: UIPageViewController {
         }
         
         NotificationCenter.default.addObserver(forName: ScrollToSecondPage, object: nil, queue: OperationQueue.main) { (notification) in
+            self.currentIndex = 1
             self.setViewControllers([
                 R.storyboard.walkthrough.second()!
                 ], direction: .forward, animated: true, completion: nil)
         }
         NotificationCenter.default.addObserver(forName: ScrollToLastPage, object: nil, queue: OperationQueue.main) { (notification) in
+            self.currentIndex = 2
             self.setViewControllers([
                 R.storyboard.walkthrough.last()!
                 ], direction: .forward, animated: true, completion: nil)
@@ -59,15 +61,26 @@ class TutorialRootViewController: UIPageViewController {
     }
     */
 
+    var currentIndex = 0
 }
 
 extension TutorialRootViewController: UIPageViewControllerDataSource {
     
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return 3
+    }
+
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return currentIndex
+    }
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         switch viewController {
         case is CongraturationsViewController:
+            currentIndex = 1
             return R.storyboard.walkthrough.second()
         case is OneFinalStepViewController:
+            currentIndex = 0
             return R.storyboard.walkthrough.first()
         default:
             return nil
@@ -77,8 +90,10 @@ extension TutorialRootViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         switch viewController {
         case is SettingUpYourVPNViewController:
+            currentIndex = 1
             return R.storyboard.walkthrough.second()
         case is OneFinalStepViewController:
+             currentIndex = 2
             return R.storyboard.walkthrough.last()
         default:
             return nil

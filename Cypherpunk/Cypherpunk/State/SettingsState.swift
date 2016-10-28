@@ -40,12 +40,13 @@ struct SettingsState: StateType {
     
     var isAutoReconnect: Bool {
         get{
-            let keychain = Keychain.userKeychain()
-            if #available(iOS 9.0, *) {
-                return NSString(string: keychain[SettingsStateKey.isAutoReconnect] ?? "true").boolValue
-            } else {
-                return NSString(string: keychain[SettingsStateKey.isAutoReconnect] ?? "false").boolValue
+            
+            if mainStore.state.isInstalledPreferences == false {
+                return false
             }
+            
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.isAutoReconnect] ?? "false").boolValue
         }
         set(newValue) {
             let keychain = Keychain.userKeychain()
@@ -57,6 +58,11 @@ struct SettingsState: StateType {
     /* VPN Settings */
     var vpnProtocolMode: VPNProtocolMode {
         get {
+            
+            if mainStore.state.isInstalledPreferences == false {
+                return .IKEv2
+            }
+
             let keychain = Keychain.userKeychain()
             let value: Int = NSString(string: keychain[SettingsStateKey.vpnProtocolMode] ?? "2").integerValue
             return VPNProtocolMode(rawValue: value) ?? .IKEv2

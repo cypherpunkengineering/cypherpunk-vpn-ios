@@ -24,6 +24,16 @@ class SettingUpYourVPNViewController: UIViewController {
             object: nil
         )
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if mainStore.state.isInstalledPreferences {
+            let notification = Notification(name: ScrollToSecondPage)
+            NotificationCenter.default.post(notification)
+            NotificationCenter.default.removeObserver(self)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,6 +48,7 @@ class SettingUpYourVPNViewController: UIViewController {
         let status = connection.status
         if status != .invalid {
             // 次のページ
+            mainStore.dispatch(AppAction.VPNInstalled)
             let notification = Notification(name: ScrollToSecondPage)
             NotificationCenter.default.post(notification)
             NotificationCenter.default.removeObserver(self)
