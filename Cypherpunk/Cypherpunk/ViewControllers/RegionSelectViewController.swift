@@ -175,25 +175,29 @@ class RegionSelectViewController: UITableViewController {
         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
         let manager = NEVPNManager.shared()
         let isConnected = manager.connection.status == .connected
-        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
-            VPNConfigurationCoordinator.start {
-                self.dismiss(animated: true, completion: {
-                    if isConnected {
-                        try! VPNConfigurationCoordinator.connect()
-                    }
-                })
+        VPNConfigurationCoordinator.start {
+            if isConnected {
+                try! VPNConfigurationCoordinator.connect()
             }
-        } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-            VPNConfigurationCoordinator.start {
-                if isConnected {
-                    try! VPNConfigurationCoordinator.connect()
-                }
-            }
-            
         }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        switch Section(rawValue: section)! {
+        case .fastestLocation:
+            return nil
+        case .favorite:
+            if favoriteResults.count == 0 {
+                return nil
+            }
+        case .recentlyConnected:
+            if recentlyConnectedResults.count == 0 {
+                return nil
+            }
+        case .allLocation:
+            break
+        }
 
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
         view.backgroundColor = UIColor.clear
@@ -218,8 +222,14 @@ class RegionSelectViewController: UITableViewController {
             case .fastestLocation:
                 return nil
             case .favorite:
+                if favoriteResults.count == 0 {
+                    return nil
+                }
                 return "Favorite"
             case .recentlyConnected:
+                if recentlyConnectedResults.count == 0 {
+                    return nil
+                }
                 return "Recently Connected"
             case .allLocation:
                 return "All Location"
@@ -229,10 +239,29 @@ class RegionSelectViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch Section(rawValue: section)! {
+        case .fastestLocation:
+            return 0.1
+        case .favorite:
+            if favoriteResults.count == 0 {
+                return 0.1
+            }
+        case .recentlyConnected:
+            if recentlyConnectedResults.count == 0 {
+                return 0.1
+            }
+        case .allLocation:
+            break
+        }
+        
         if UI_USER_INTERFACE_IDIOM() == .pad {
             return 17
         }
         return 10
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
     }
     
     @IBAction func didSelectFavoriteAction(_ sender: UIButton) {
