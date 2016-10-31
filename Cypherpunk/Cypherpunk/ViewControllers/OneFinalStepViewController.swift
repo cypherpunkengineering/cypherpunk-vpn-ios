@@ -33,9 +33,9 @@ class OneFinalStepViewController: UIViewController {
     */
 
     @IBAction func allowAction(_ sender: AnyObject) {
-        NotificationCenter.default.post(Notification(name: ScrollToLastPage))
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func dontAllowAction(_ sender: AnyObject) {
-        NotificationCenter.default.post(Notification(name: ScrollToLastPage))
+        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -67,7 +67,7 @@ class TutorialRootViewController: UIPageViewController {
 extension TutorialRootViewController: UIPageViewControllerDataSource {
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return 3
+        return 2
     }
 
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
