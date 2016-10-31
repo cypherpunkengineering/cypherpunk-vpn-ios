@@ -20,13 +20,26 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(
+        let center = NotificationCenter.default
+        center.addObserver(
             self,
             selector: #selector(didChangeVPNStatus),
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
+        
+        center.addObserver(
+            self,
+            selector: #selector(startTimer),
+            name: Notification.Name.UIApplicationWillEnterForeground,
+            object: nil)
+        center.addObserver(
+            self,
+            selector: #selector(cancelTimer),
+            name: Notification.Name.UIApplicationWillResignActive,
+            object: nil)
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -228,7 +241,6 @@ class AnimationViewController: UIViewController {
     }
     
     func startTimer() {
-        
         if timer == nil {
             self.beforeSec = Date().timeIntervalSince1970
             
