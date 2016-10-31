@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rgN-tT-18u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rgN-tT-18u">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -30,11 +33,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2M-wi-84m" userLabel="Top Container">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6Hj-WP-7Vb" appends="YES" id="Odo-D5-NzM"/>
                                     <segue destination="JcQ-do-E5e" kind="embed" id="juC-gd-AbO"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOO-yj-ai0" userLabel="Configuration Container">
+                                <rect key="frame" x="375" y="0.0" width="276" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="276" id="ckS-VQ-sWM"/>
                                 </constraints>
@@ -43,6 +49,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4nR-yl-sVp" userLabel="Account Container">
+                                <rect key="frame" x="-276" y="0.0" width="276" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="276" id="A6c-Bf-QGM"/>
                                 </constraints>
@@ -71,6 +78,8 @@
                     </view>
                     <connections>
                         <outlet property="centerConstraint" destination="eh3-4d-7Kn" id="hjj-Bk-Bjy"/>
+                        <outlet property="resetTapRecognizer" destination="6Hj-WP-7Vb" id="HTJ-vN-AAz"/>
+                        <outlet property="topContainerView" destination="f2M-wi-84m" id="DXJ-BC-2hI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WS1-CA-Qff" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,6 +88,11 @@
                         <action selector="reconizePanGestureAction:" destination="rgN-tT-18u" id="kFa-DH-Cau"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="6Hj-WP-7Vb">
+                    <connections>
+                        <action selector="recognizeResetTapActionWithRecognizer:" destination="rgN-tT-18u" id="aiX-pE-hbC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1263.2" y="506.89655172413796"/>
         </scene>
@@ -86,7 +100,7 @@
         <scene sceneID="5a0-Ti-oxw">
             <objects>
                 <navigationController navigationBarHidden="YES" id="JcQ-do-E5e" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -111,12 +125,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojk-gi-tU7" userLabel="AnimationView">
+                                <rect key="frame" x="0.0" y="61" width="375" height="260"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="26Y-KX-wZQ" kind="embed" id="f9n-6F-EUv"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6e-jm-mZJ" userLabel="ConnectionButtonsView">
+                                <rect key="frame" x="0.0" y="61" width="375" height="260"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="nsJ-mm-oLD"/>
@@ -126,20 +142,24 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHJ-HJ-e0z" userLabel="Region View">
+                                <rect key="frame" x="0.0" y="321" width="375" height="48"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJF-bm-lL7">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Vf6-ej-tgw"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9k-iB-aN3">
+                                        <rect key="frame" x="0.0" y="47" width="375" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="AGf-TG-Zc4"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBack" translatesAutoresizingMaskIntoConstraints="NO" id="fRu-H5-S8B">
+                                        <rect key="frame" x="331" y="4" width="44" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8H7-PA-eea"/>
@@ -147,6 +167,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQD-yt-6aL">
+                                        <rect key="frame" x="0.0" y="1" width="375" height="46"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                         <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -176,22 +197,27 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKJ-OA-8R8">
+                                <rect key="frame" x="0.0" y="369" width="375" height="298"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="7i2-HP-Zr4" kind="embed" id="Way-Zi-BOK"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnv-BC-g4G">
+                                <rect key="frame" x="0.0" y="60" width="375" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="zTE-vY-Qkl"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUr-oP-HAM">
+                                <rect key="frame" x="0.0" y="-20" width="375" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRi-aA-Xi6">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgW-5Z-Kgz" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
+                                                <rect key="frame" x="326" y="8" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="DSP-az-VDt"/>
                                                     <constraint firstAttribute="height" constant="44" id="JpL-tT-o0e"/>
@@ -202,6 +228,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9s-Xw-Lxz" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
+                                                <rect key="frame" x="5" y="8" width="44" height="44"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="GZK-5m-XKH"/>
@@ -214,7 +241,9 @@
                                                     <action selector="openOrCloseAccountAction:" destination="wv7-yt-POp" eventType="touchUpInside" id="OlH-3v-ckU"/>
                                                 </connections>
                                             </button>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-XV-Nmr"/>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-XV-Nmr">
+                                                <rect key="frame" x="111" y="14" width="153" height="32"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -306,21 +335,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7R-qo-ata">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9o-RS-Qx1">
+                                        <rect key="frame" x="118" y="60" width="140" height="140"/>
                                         <subviews>
                                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXJ-Ms-Ihx">
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9B-AG-1Om">
+                                                        <rect key="frame" x="0.0" y="-12" width="140" height="152"/>
                                                         <state key="normal" image="ioBtnRed"/>
                                                         <connections>
                                                             <action selector="connectAction:" destination="Tzv-dG-faD" eventType="touchUpInside" id="9rq-Vj-9eH"/>
                                                         </connections>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y93-fq-z3h">
+                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                         <state key="normal" image="ioBtnOrange"/>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMF-zr-Rnw">
+                                                        <rect key="frame" x="0.0" y="-50" width="140" height="190"/>
                                                         <state key="normal" image="ioBtnGreen"/>
                                                         <connections>
                                                             <action selector="cancelAction:" destination="Tzv-dG-faD" eventType="touchUpInside" id="ZHC-Lg-IMw"/>
@@ -360,6 +395,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCONNECTED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLk-NI-VPC" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="194" width="375" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="bYt-Aj-EbJ"/>
                                         </constraints>
@@ -368,8 +404,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezt-q9-Ykd">
+                                        <rect key="frame" x="90" y="195" width="195" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufD-qZ-8dw">
+                                                <rect key="frame" x="149" y="0.0" width="46" height="31"/>
                                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -379,6 +417,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNU-Iz-WTY">
+                                                <rect key="frame" x="0.0" y="0.0" width="127" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="ZMf-ab-63S"/>
                                                     <constraint firstAttribute="width" constant="127" id="b97-Rj-gKb"/>
@@ -456,12 +495,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltc-8i-fg9">
+                                <rect key="frame" x="0.0" y="0.0" width="276" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="MdO-ic-h9o" kind="embed" id="Af9-Zd-Eab"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjc-bb-kG5">
+                                <rect key="frame" x="0.0" y="0.0" width="276" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="890-K3-8yn"/>
@@ -489,7 +530,7 @@
         <scene sceneID="wDI-YT-LlJ">
             <objects>
                 <navigationController id="TzT-qx-x3D" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Vid-Qw-1d6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Vid-Qw-1d6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -510,7 +551,7 @@
         <scene sceneID="B8l-cx-2OE">
             <objects>
                 <navigationController storyboardIdentifier="AccountNavigation" id="uXO-7N-wwL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="quD-bl-a9g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="quD-bl-a9g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -540,12 +581,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k78-Yz-yQe">
+                                <rect key="frame" x="0.0" y="0.0" width="276" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="plR-pd-hnP" kind="embed" id="I4P-PS-QZ3"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCs-R4-GsG">
+                                <rect key="frame" x="0.0" y="0.0" width="276" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="JcS-ch-vzQ"/>

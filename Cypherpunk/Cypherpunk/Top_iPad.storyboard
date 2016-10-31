@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D1X-KM-fEG">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D1X-KM-fEG">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -86,7 +86,7 @@
         <scene sceneID="q29-oO-DEh">
             <objects>
                 <navigationController storyboardIdentifier="AccountNavigation" id="cVP-0K-Ofi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="kgw-Rx-IUm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="kgw-Rx-IUm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -162,7 +162,7 @@
         <scene sceneID="cRv-vS-caq">
             <objects>
                 <navigationController storyboardIdentifier="TopRootNavigation" automaticallyAdjustsScrollViewInsets="NO" id="t8E-0d-eHG" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="3E2-XB-hmN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="3E2-XB-hmN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.21176470588235294" green="0.40000000000000002" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
@@ -219,6 +219,8 @@
                     </view>
                     <connections>
                         <outlet property="centerConstraint" destination="lYx-yz-UcG" id="DC2-t8-dVR"/>
+                        <outlet property="resetTapRecognizer" destination="gyy-sJ-N43" id="8fs-13-Hfu"/>
+                        <outlet property="topContainerView" destination="ySx-Sp-kK1" id="tVC-0b-mc2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lit-kv-xEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -227,6 +229,12 @@
                         <action selector="reconizePanGestureAction:" destination="D1X-KM-fEG" id="Gbj-ho-RxC"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="gyy-sJ-N43">
+                    <connections>
+                        <action selector="recognizeResetTapActionWithRecognizer:" destination="D1X-KM-fEG" id="o1G-WB-gAq"/>
+                        <outlet property="delegate" destination="ySx-Sp-kK1" id="jT8-gS-X6x"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-3507" y="-192"/>
         </scene>
@@ -395,15 +403,15 @@
                                 <exclude reference="9Xz-Gx-FOW"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="DyB-gI-wp4"/>
+                                <exclude reference="dmg-zn-fi7"/>
+                                <exclude reference="kAy-Ag-Vch"/>
+                                <exclude reference="lcA-Bq-a1Z"/>
                                 <exclude reference="FkH-40-467"/>
                                 <exclude reference="TWJ-uq-KmS"/>
                                 <exclude reference="Ygq-NC-1Z6"/>
                                 <exclude reference="f2e-ua-R4o"/>
                                 <exclude reference="xRr-rY-eKI"/>
-                                <exclude reference="lcA-Bq-a1Z"/>
-                                <exclude reference="kAy-Ag-Vch"/>
-                                <exclude reference="DyB-gI-wp4"/>
-                                <exclude reference="dmg-zn-fi7"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -411,17 +419,17 @@
                                 <include reference="9Xz-Gx-FOW"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="DyB-gI-wp4"/>
+                                <include reference="dmg-zn-fi7"/>
+                                <exclude reference="tnA-FK-4W1"/>
+                                <include reference="kAy-Ag-Vch"/>
+                                <exclude reference="VN0-eu-gZw"/>
+                                <include reference="lcA-Bq-a1Z"/>
                                 <include reference="FkH-40-467"/>
                                 <exclude reference="TWJ-uq-KmS"/>
                                 <include reference="Ygq-NC-1Z6"/>
                                 <exclude reference="f2e-ua-R4o"/>
                                 <include reference="xRr-rY-eKI"/>
-                                <exclude reference="VN0-eu-gZw"/>
-                                <include reference="lcA-Bq-a1Z"/>
-                                <include reference="kAy-Ag-Vch"/>
-                                <include reference="DyB-gI-wp4"/>
-                                <include reference="dmg-zn-fi7"/>
-                                <exclude reference="tnA-FK-4W1"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -512,7 +520,7 @@
         <scene sceneID="d74-gC-XzJ">
             <objects>
                 <navigationController id="ICK-2P-0XI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="myW-vD-VeI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="myW-vD-VeI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

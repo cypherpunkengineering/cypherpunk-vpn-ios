@@ -20,13 +20,28 @@ class SlidingNavigationViewController: UIViewController {
         case right
     }
     
-    private var centerState = SlideState.center
+    @IBOutlet weak var topContainerView: UIView!
+    @IBOutlet var resetTapRecognizer: UITapGestureRecognizer!
+    
+    private var centerState = SlideState.center {
+        didSet {
+            if centerState == .center {
+                self.topContainerView.removeGestureRecognizer(resetTapRecognizer)
+            } else {
+                self.topContainerView.addGestureRecognizer(resetTapRecognizer)
+            }
+        }
+    }
     var slideWidth: CGFloat = 274
 
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        resetTapRecognizer.numberOfTapsRequired = 1
+        resetTapRecognizer.numberOfTouchesRequired = 1
+        
         if UI_USER_INTERFACE_IDIOM() == .pad {
             slideWidth = 300
         }
@@ -78,6 +93,12 @@ class SlidingNavigationViewController: UIViewController {
             UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
+        }
+    }
+    
+    @IBAction func recognizeResetTapAction(recognizer: UITapGestureRecognizer) {
+        if centerState != .center {
+            resetCenterView()
         }
     }
     
