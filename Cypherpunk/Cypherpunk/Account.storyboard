@@ -21,7 +21,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="h9O-HD-e9e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.058823529409999999" green="0.23529411759999999" blue="0.45882352939999999" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.74117647058823533" alpha="1" colorSpace="deviceRGB"/>
                         <color key="separatorColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="xmF-l4-hFz">
@@ -43,13 +43,13 @@
                                                     <state key="normal" title="vpntestmax@gmail.com" image="iconAccount"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Montyly Premium" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeJ-UV-gqo">
-                                                    <rect key="frame" x="0.0" y="51" width="375" height="23"/>
+                                                    <rect key="frame" x="0.0" y="54.5" width="375" height="21"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Renews On 02/22/2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GU-kp-TRn">
-                                                    <rect key="frame" x="0.0" y="78" width="375" height="18"/>
+                                                    <rect key="frame" x="0.0" y="79.5" width="375" height="16.5"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
                                                     <color key="textColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

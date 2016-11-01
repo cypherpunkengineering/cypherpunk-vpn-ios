@@ -188,6 +188,9 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                             }
                             self.startAnimation()
                         }
+                    }else {
+                        self.state = .getStarted
+                        self.startAnimation()
                     }
                 }
             }
