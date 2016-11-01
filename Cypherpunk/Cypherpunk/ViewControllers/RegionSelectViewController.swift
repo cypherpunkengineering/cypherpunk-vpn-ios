@@ -179,9 +179,9 @@ class RegionSelectViewController: UITableViewController {
             if isConnected {
                 do {
                     try VPNConfigurationCoordinator.connect()
-                }catch NEVPNErrorDomain.configurationInvalid {
+                }catch NEVPNError.configurationInvalid {
                     print("NEVPNError.configurationInvalid")
-                }catch NEVPNErrorDomain.configurationDisabled {
+                }catch NEVPNError.configurationDisabled {
                     print("NEVPNError.configurationInvalid")
                 }catch {
                     print("Unknown Error")

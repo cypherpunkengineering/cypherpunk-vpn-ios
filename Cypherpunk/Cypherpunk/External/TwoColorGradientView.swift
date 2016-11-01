@@ -44,7 +44,9 @@ import UIKit
         
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
-    
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+
         gradient.colors = [
             aColor.cgColor,
             bColor.cgColor

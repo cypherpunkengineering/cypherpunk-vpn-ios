@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +20,21 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="colorHelmetBig" translatesAutoresizingMaskIntoConstraints="NO" id="uTw-AT-deC">
+                                <rect key="frame" x="160" y="219" width="54" height="77"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kUT-ak-Cx0">
+                                <rect key="frame" x="111" y="318" width="153" height="32"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="kUT-ak-Cx0" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="CQz-AB-P8f"/>
+                            <constraint firstItem="uTw-AT-deC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LEV-7J-Ymr"/>
+                            <constraint firstItem="kUT-ak-Cx0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nPF-FL-UfF"/>
+                            <constraint firstItem="kUT-ak-Cx0" firstAttribute="top" secondItem="uTw-AT-deC" secondAttribute="bottom" constant="22" id="u6a-dL-yIv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,4 +42,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="colorHelmetBig" width="54" height="77"/>
+        <image name="headerLogo" width="153" height="32"/>
+    </resources>
 </document>
