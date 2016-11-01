@@ -166,7 +166,7 @@
         <scene sceneID="1RU-4V-ds4">
             <objects>
                 <navigationController id="gAa-JO-6VA" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="SAP-Xi-383" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="SAP-Xi-383" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
@@ -182,7 +182,7 @@
         <!--Update Email-->
         <scene sceneID="Uin-CS-Wka">
             <objects>
-                <viewController id="O0h-UC-81N" customClass="EditingRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="O0h-UC-81N" customClass="EditingRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fi6-FK-Y4z"/>
                         <viewControllerLayoutGuide type="bottom" id="rM5-ce-S48"/>

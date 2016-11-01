@@ -31,7 +31,7 @@
         <scene sceneID="4DC-Lf-NTa">
             <objects>
                 <navigationController id="rtd-Ia-i01" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="dnc-S2-hWT" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dnc-S2-hWT" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
@@ -47,7 +47,7 @@
         <!--VPN Protocol-->
         <scene sceneID="S4y-oq-RqW">
             <objects>
-                <viewController id="Vhb-W0-cjy" customClass="PopoverRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Vhb-W0-cjy" customClass="PopoverRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y9P-ow-mIZ"/>
                         <viewControllerLayoutGuide type="bottom" id="eX1-a5-DTL"/>

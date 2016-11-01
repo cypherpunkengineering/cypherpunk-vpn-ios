@@ -291,7 +291,7 @@ do something….</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iaf-R4-QSn">
-                                <rect key="frame" x="101.5" y="111" width="173.5" height="46"/>
+                                <rect key="frame" x="101" y="111" width="173.5" height="46"/>
                                 <string key="text">Enter your email address
 to reset your password.</string>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
