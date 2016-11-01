@@ -33,6 +33,18 @@ class SettingUpYourVPNViewController: UIViewController {
             NotificationCenter.default.post(notification)
             NotificationCenter.default.removeObserver(self)
         }
+        
+        let connection = NEVPNManager.shared().connection
+        let status = connection.status
+        if status != .invalid {
+            // 次のページ
+            mainStore.dispatch(AppAction.VPNInstalled)
+            let notification = Notification(name: ScrollToSecondPage)
+            NotificationCenter.default.post(notification)
+            NotificationCenter.default.removeObserver(self)
+        }
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +79,13 @@ class SettingUpYourVPNViewController: UIViewController {
     */
 
     @IBAction func allowAction(_ sender: AnyObject) {
-        VPNConfigurationCoordinator.install()
+        if TARGET_OS_SIMULATOR != 0 {
+            mainStore.dispatch(AppAction.VPNInstalled)
+            let notification = Notification(name: ScrollToSecondPage)
+            NotificationCenter.default.post(notification)
+            NotificationCenter.default.removeObserver(self)
+        } else {
+            VPNConfigurationCoordinator.install()
+        }
     }
 }

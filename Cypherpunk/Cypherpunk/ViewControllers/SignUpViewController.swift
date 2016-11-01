@@ -8,6 +8,7 @@
 
 import UIKit
 import ReSwift
+import APIKit
 
 class SignUpViewController: UIViewController, StoreSubscriber {
 
@@ -47,8 +48,19 @@ class SignUpViewController: UIViewController, StoreSubscriber {
     }
     
     func signUp() {
-        if let address = mailAddressField.text , isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
+        if let email = mailAddressField.text , isValidMailAddress(email), let password = passwordField.text {
+            let request = SignUpRequest(email: email, password: password)
+            
+            Session.send(request) {
+                (result) in
+                switch result {
+                case .success:
+                    self.performSegue(withIdentifier: R.segue.signUpViewController.emailConfirmation, sender: nil)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+
         }
     }
     

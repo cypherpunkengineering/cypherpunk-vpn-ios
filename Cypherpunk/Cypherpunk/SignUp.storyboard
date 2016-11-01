@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dpr-h1-vos">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dpr-h1-vos">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,14 +23,17 @@
                         <viewControllerLayoutGuide type="bottom" id="kaK-xu-Seo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TcE-8d-GNG" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRZ-2H-PBx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8Q-js-uSI">
+                                        <rect key="frame" x="7.5" y="189" width="360" height="64"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eyj-bc-P4U" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                                <rect key="frame" x="13" y="0.0" width="334" height="64"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,8 +60,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mk3-Vm-5PZ">
+                                        <rect key="frame" x="7.5" y="273" width="360" height="64"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5at-uc-MbM" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                                <rect key="frame" x="13" y="0.0" width="334" height="64"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,6 +92,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQM-Id-HEM" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="7.5" y="357" width="360" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="jqL-j0-8Z3"/>
                                         </constraints>
@@ -110,17 +119,22 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signUpAction" destination="dpr-h1-vos" eventType="touchUpInside" id="cQl-Pa-HqH"/>
-                                            <segue destination="9wM-9s-zJv" kind="show" id="Ujh-Hr-0C5"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up and start your 7 day Free Premium Trial now!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jom-bE-68o">
+                                        <rect key="frame" x="-46.5" y="468" width="468" height="29.5"/>
                                         <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="colorHelmetBig" translatesAutoresizingMaskIntoConstraints="NO" id="APN-tC-0fa"/>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="zoj-pJ-5iK"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="colorHelmetBig" translatesAutoresizingMaskIntoConstraints="NO" id="APN-tC-0fa">
+                                        <rect key="frame" x="160.5" y="60" width="54" height="77"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="zoj-pJ-5iK">
+                                        <rect key="frame" x="111" y="147" width="153" height="32"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDv-Yf-HK1">
+                                        <rect key="frame" x="0.0" y="25" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="djs-w6-7AU"/>
                                             <constraint firstAttribute="width" constant="44" id="vyp-gB-gtO"/>
@@ -168,6 +182,7 @@
                         <outlet property="bottomSpaceConstraint" destination="Lxn-34-jit" id="MSG-ko-Fxc"/>
                         <outlet property="mailAddressField" destination="eyj-bc-P4U" id="v1T-ZP-RuV"/>
                         <outlet property="passwordField" destination="5at-uc-MbM" id="l18-Bh-OdW"/>
+                        <segue destination="9wM-9s-zJv" kind="show" identifier="EmailConfirmation" id="qFY-jy-fZb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fal-hG-9IT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -183,16 +198,20 @@
                         <viewControllerLayoutGuide type="bottom" id="XVJ-jw-TAT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6q5-0j-ZvQ" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent you confirmation via Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0l-PA-hrk">
+                                <rect key="frame" x="52" y="108" width="271.5" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="illustMailConfirm" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-Jg-hw9"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="illustMailConfirm" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-Jg-hw9">
+                                <rect key="frame" x="106.5" y="158.5" width="162" height="221"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqG-kP-4b1">
+                                <rect key="frame" x="86.5" y="407.5" width="203.5" height="40.5"/>
                                 <string key="text">Please check your Email App and
 do something….</string>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
@@ -200,11 +219,12 @@ do something….</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yzH-rK-yP3">
+                                <rect key="frame" x="126.5" y="457" width="122" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="122" id="pi1-7R-Kea"/>
                                 </constraints>
                                 <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="icon_mail">
+                                <state key="normal" image="iconMail">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Resend Email">
                                             <attributes>
@@ -215,6 +235,7 @@ do something….</string>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fy-Ym-2GR">
+                                <rect key="frame" x="115.5" y="507" width="144" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="144" id="98f-jf-ENM"/>
                                 </constraints>
@@ -256,7 +277,7 @@ do something….</string>
         <image name="colorHelmetBig" width="54" height="77"/>
         <image name="headerLogo" width="153" height="32"/>
         <image name="iconBack" width="12" height="18"/>
-        <image name="icon_mail" width="15" height="13"/>
+        <image name="iconMail" width="18" height="15"/>
         <image name="illustMailConfirm" width="162" height="221"/>
     </resources>
 </document>

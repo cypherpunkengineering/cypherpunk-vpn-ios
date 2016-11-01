@@ -22,7 +22,23 @@ class LoadingAnimationView: UIImageView {
     override func awakeFromNib() {
         super.awakeFromNib()
         startAnimation()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(resetAnimation),
+            name: NSNotification.Name.UIApplicationWillEnterForeground,
+            object: nil)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func resetAnimation() {
+        stopAnimation()
+        startAnimation()
+    }
+    
     
     override open var image: UIImage? {
         get {

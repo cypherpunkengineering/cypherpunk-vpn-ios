@@ -46,7 +46,15 @@ struct AccountReducer: Reducer {
             VPNConfigurationCoordinator.disconnect()
             VPNConfigurationCoordinator.removeFromPreferences()
             AccountState.removeLastLoggedInService()
-        case .getSubscriptionStatus(let _):
+        case .getSubscriptionStatus(let status):
+            if status.type == "Free" {
+                accountState.subscriptionType = .free
+            } else {
+                if status.renewal == "none" {
+                    accountState.subscriptionType = .freePremium
+                }
+                
+            }
             break
         case .upgrade(let subscription, let expiredDate):
             switch subscription {

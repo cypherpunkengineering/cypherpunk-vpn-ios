@@ -146,8 +146,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let subscriptionStatus = SubscriptionStatusRequest(session: response.session)
                     Session.send(subscriptionStatus) { (result) in
                         switch result {
-                        case .success:
-                            break
+                        case .success(let status):
+                            mainStore.dispatch(AccountAction.getSubscriptionStatus(status: status))
                         case .failure:
                             failureBlock()
                         }

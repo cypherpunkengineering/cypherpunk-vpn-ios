@@ -103,6 +103,8 @@
 		2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */; };
 		2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */; };
 		2B8D3F401DBA965A0096EEF7 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */; };
+		2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */; };
+		2B95C9191DC7749900F79A2D /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C9181DC7749800F79A2D /* SignUpAPI.swift */; };
 		2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */; };
 		2BC7D6651D95153400AE1F1C /* InstallPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */; };
 		2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */; };
@@ -248,6 +250,8 @@
 		2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNPersistentDataGenerator.m; sourceTree = "<group>"; };
 		2B75524B1D6AE9CA00E07A4B /* VPNPersistentDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNPersistentDataGenerator.h; sourceTree = "<group>"; };
 		2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyEmailAPI.swift; sourceTree = "<group>"; };
+		2B95C9181DC7749800F79A2D /* SignUpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
 		2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewConfiguration.storyboard; sourceTree = "<group>"; };
 		2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallPreferencesViewController.swift; sourceTree = "<group>"; };
 		2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordTableViewController.swift; sourceTree = "<group>"; };
@@ -526,6 +530,8 @@
 			isa = PBXGroup;
 			children = (
 				20F850901D3DF40A009079A0 /* LoginAPI.swift */,
+				2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */,
+				2B95C9181DC7749800F79A2D /* SignUpAPI.swift */,
 				2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */,
 				2BE06E4A1DC0BE4200FDC417 /* SubscriptionAPI.swift */,
 				2085F33C1D6C4A76002D35C2 /* JSONIP.swift */,
@@ -957,6 +963,7 @@
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
 				201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */,
 				20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */,
+				2B95C9191DC7749900F79A2D /* SignUpAPI.swift in Sources */,
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
 				2065DD071DB8D82100D0F446 /* TutorialRootViewController.swift in Sources */,
 				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
@@ -971,6 +978,7 @@
 				2B6798E91DAC979F00099064 /* PadTopRootViewController.swift in Sources */,
 				203C62F61D7038E400891F91 /* GetPremiumPlanTableViewController.swift in Sources */,
 				2018AB081DB8ADD200649D03 /* RestYourPasswordViewController.swift in Sources */,
+				2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */,

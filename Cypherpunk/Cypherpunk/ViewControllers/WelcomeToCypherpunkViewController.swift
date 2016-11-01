@@ -53,6 +53,19 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         loadingAnimationView.startAnimation()
+        
+        self.state = .getStarted
+        self.welcomeLabel.text = "Welcome to Cypherpunk"
+        self.inputField.placeholder = "Type your email"
+        self.inputField.text = self.email
+        self.actionButton.setTitle("Get Started", for: .normal)
+        self.inputField.isSecureTextEntry = false
+        self.inputField.returnKeyType = UIReturnKeyType.next
+        self.welcomeLabel.alpha = 1.0
+        self.inputContainerView.alpha = 1.0
+        self.actionButton.alpha = 1.0
+        self.loadingAnimationView.alpha = 0.0
+
         mainStore.subscribe(self)
         registerKeyboardNotification()
     }
@@ -147,13 +160,68 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         inputField.resignFirstResponder()
         switch state {
         case .getStarted:
-            if let email = inputField.text, isValidMailAddress(email) {
-                self.email = email
-                self.state = .logIn
-                startAnimation()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.welcomeLabel.alpha = 0.0
+                self.inputContainerView.alpha = 0.0
+                self.actionButton.alpha = 0.0
+                self.loadingAnimationView.alpha = 1.0
+                self.backButton.alpha = 0.0
+                self.forgotPasswordButton.alpha = 0.0
+            })
+            { (finished) in
+                if finished {
+                    if let email = self.inputField.text, isValidMailAddress(email) {
+                        let identifyRequest = IdentifyEmailRequest(email: email)
+                        Session.send(identifyRequest) {
+                            (result) in
+                            switch result {
+                            case .success(let isAlreadyRegistered):
+                                self.email = email
+                                if isAlreadyRegistered {
+                                    self.state = .logIn
+                                } else {
+                                    self.state = .signUp
+                                }
+                            case .failure(let error):
+                                print(error)
+                                self.state = .getStarted
+                            }
+                            self.startAnimation()
+                        }
+                    }
+                }
             }
+
         case .signUp:
-            self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.welcomeLabel.alpha = 0.0
+                self.inputContainerView.alpha = 0.0
+                self.actionButton.alpha = 0.0
+                self.loadingAnimationView.alpha = 1.0
+                self.backButton.alpha = 0.0
+                self.forgotPasswordButton.alpha = 0.0
+            }) {
+                (finished) in
+                if finished == false {
+                    return
+                }
+                
+                let password = self.inputField.text!
+                let request = SignUpRequest(email: self.email, password: password)
+                
+                Session.send(request) {
+                    (result) in
+                    switch result {
+                    case .success:
+                        self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
+                    case .failure(let error):
+                        print(error)
+                        self.startAnimation()
+                    }
+                }
+                
+            }
+
         case .logIn:
             UIView.animate(withDuration: 0.3, animations: {
                 self.welcomeLabel.alpha = 0.0
@@ -174,11 +242,23 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                             Session.send(regionRequest) { (result) in
                                 switch result {
                                 case .success(_):
-                                    let realm = try! Realm()
-                                    if let region = realm.objects(Region.self).first {
-                                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+                                    let subscriptionRequest = SubscriptionStatusRequest(session: response.session)
+                                    Session.send(subscriptionRequest) {
+                                        (result) in
+                                        switch result {
+                                        case .success(let status):
+                                            
+                                            mainStore.dispatch(AccountAction.getSubscriptionStatus(status: status))
+                                            
+                                            let realm = try! Realm()
+                                            if let region = realm.objects(Region.self).first {
+                                                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+                                            }
+                                            mainStore.dispatch(AccountAction.login(response: response, password: password))
+                                        case .failure(let error):
+                                            SVProgressHUD.showError(withStatus: "\((error as NSError).localizedDescription)")
+                                        }
                                     }
-                                    mainStore.dispatch(AccountAction.login(response: response, password: password))
                                 case .failure:
                                     UIView.animate(withDuration: 0.3, animations: {
                                         self.welcomeLabel.alpha = 1.0
