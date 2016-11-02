@@ -49,7 +49,7 @@ class SlidingNavigationViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseConfiguration), name: kOpenOrCloseConfigurationNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseAccount), name: kOpenOrCloseAccountNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resetCenterView), name: kResetCenterViewNotification, object: nil)
-
+        centerState = .center
     }
 
     override func didReceiveMemoryWarning() {
