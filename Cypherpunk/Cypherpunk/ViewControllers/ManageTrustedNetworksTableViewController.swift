@@ -7,18 +7,29 @@
 //
 
 import UIKit
+import NetworkExtension.NEHotspotHelper
+import SystemConfiguration.CaptiveNetwork
+import RealmSwift
+
+class WifiNetworks: Object {
+    dynamic var name: String = ""
+    dynamic var isTrusted: Bool = false
+    
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+}
 
 class ManageTrustedNetworksTableViewController: UITableViewController {
 
     private enum Section: Int {
         case autoSecure
         case otherNetworks
-        case WifiNetworks
+        case wifiNetworks
     }
     
-    @IBOutlet weak var autoSecureSwitch: UISwitch!
-    @IBOutlet weak var otherNetworksAutoSecureSwitch: UISwitch!
-    
+    var notificationToken: NotificationToken!
+    var wifiNetworksResult: Results<WifiNetworks>?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,26 +38,68 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let realm = try! Realm()
+        wifiNetworksResult = realm.objects(WifiNetworks.self)
+        notificationToken = wifiNetworksResult?.addNotificationBlock({ (change) in
+            self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
+        })
     }
 
+    
+    deinit {
+        notificationToken.stop()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if Section(rawValue: section) == Section.WifiNetworks {
-            // return wi-fi networks count
-            return 1
+        guard let section = Section(rawValue: section) else {
+            fatalError()
         }
-        return super.tableView(tableView, numberOfRowsInSection: section)
+
+        switch section {
+        case .autoSecure:
+            return 1
+        case .otherNetworks:
+            return 1
+        case .wifiNetworks:
+            if wifiNetworksResult != nil {
+                return wifiNetworksResult!.count
+            }
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if Section(rawValue: indexPath.section) == Section.WifiNetworks {
-            // return wi-fi networks count
+        guard let section = Section(rawValue: indexPath.section) else {
+            fatalError()
         }
-        return super.tableView(tableView, cellForRowAt: indexPath)
+        
+        switch section {
+        case .autoSecure:
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.autoSecure, for: indexPath)
+            return cell!
+        case .otherNetworks:
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.otherNetworks, for: indexPath)
+            return cell!
+        case .wifiNetworks:
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.wifiNetworks, for: indexPath)
+            
+            let wifiInfo = wifiNetworksResult![indexPath.row]
+            cell?.ssidLabel.text = wifiInfo.name
+            cell?.isTrustedSwitch.isOn = wifiInfo.isTrusted
+            
+            return cell!
+            
+        }
     }
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -58,6 +111,8 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
 
         switch section {
         case .autoSecure:
+            titleLabel.text = "Auto Secure"
+
             let descriptionLabel = UILabel(frame: CGRect(x: 15, y: 31, width: 300, height: 36))
             descriptionLabel.text = "Cypherpunk can automatically secure connections to untrusted networks."
             descriptionLabel.font = R.font.dosisMedium(size: 14)
@@ -65,8 +120,12 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
             descriptionLabel.numberOfLines = 0
             view.addSubview(descriptionLabel)
         case .otherNetworks:
+            titleLabel.text = "Other Networks"
+
             break
-        case .WifiNetworks:
+        case .wifiNetworks:
+            titleLabel.text = "Wifi Networks"
+
             let descriptionLabel = UILabel(frame: CGRect(x: 15, y: 31, width: 300, height: 36))
             descriptionLabel.text = "Add the networks you trust so Cypherpunk will now when connections should be secured."
             descriptionLabel.font = R.font.dosisMedium(size: 14)
@@ -77,7 +136,6 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         
         titleLabel.font = R.font.dosisMedium(size: 14)
         titleLabel.textColor = UIColor.goldenYellowColor()
-        titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section.rawValue)
         
         view.addSubview(titleLabel)
         
@@ -92,7 +150,7 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
             return 80.0
         case .otherNetworks:
             return 40.0
-        case .WifiNetworks:
+        case .wifiNetworks:
             return 80.0
         }
     }

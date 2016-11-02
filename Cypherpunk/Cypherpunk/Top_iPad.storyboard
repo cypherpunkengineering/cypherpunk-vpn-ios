@@ -561,7 +561,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="443" height="959"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7r-Xl-32N">
-                                        <rect key="frame" x="151.5" y="339.5" width="140" height="140"/>
+                                        <rect key="frame" x="152" y="340" width="140" height="140"/>
                                         <subviews>
                                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mt3-Wr-S9l">
                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
@@ -619,7 +619,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCONNECTED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTa-Ua-KXE" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="496.5" width="443" height="32"/>
+                                        <rect key="frame" x="0.0" y="497" width="443" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="XCo-Ef-2zY"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="dii-kz-RLv"/>
@@ -629,7 +629,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTq-Fp-ZB3">
-                                        <rect key="frame" x="200" y="538.5" width="43" height="20"/>
+                                        <rect key="frame" x="200" y="539" width="43" height="20"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwE-1e-RR5">
                                                 <rect key="frame" x="0.0" y="0.0" width="43" height="20"/>
@@ -653,7 +653,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC2-qr-143">
-                                        <rect key="frame" x="71.5" y="568.5" width="300" height="48"/>
+                                        <rect key="frame" x="72" y="569" width="300" height="48"/>
                                         <color key="backgroundColor" red="0.058823529411764705" green="0.31372549019607843" blue="0.62745098039215685" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="dUQ-lZ-X2H"/>
@@ -727,7 +727,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnN-89-7vf">
-                                <rect key="frame" x="277" y="577.5" width="194" height="35"/>
+                                <rect key="frame" x="277" y="578" width="194" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="194" id="MMm-PG-zcG"/>
                                 </constraints>
@@ -751,7 +751,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juP-wl-okb">
-                                <rect key="frame" x="35" y="505.5" width="678" height="46"/>
+                                <rect key="frame" x="35" y="506" width="678" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="b7N-dI-QdT"/>
                                 </constraints>
@@ -762,7 +762,7 @@ your preferences.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSM-xk-n7k">
-                                <rect key="frame" x="304" y="339.5" width="140" height="140"/>
+                                <rect key="frame" x="304" y="340" width="140" height="140"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ioBtnGray" translatesAutoresizingMaskIntoConstraints="NO" id="DEv-9B-T0z">
                                         <rect key="frame" x="0.0" y="-12" width="140" height="152"/>
@@ -823,7 +823,7 @@ your preferences.</string>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvc-tE-Y0e">
-                                            <rect key="frame" x="64" y="0.0" width="44.5" height="44"/>
+                                            <rect key="frame" x="64" y="0.0" width="38" height="44"/>
                                             <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>

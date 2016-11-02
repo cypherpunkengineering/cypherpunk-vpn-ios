@@ -12,6 +12,7 @@ import ReSwift
 import SVProgressHUD
 import RealmSwift
 import APIKit
+import SystemConfiguration.CaptiveNetwork
 
 let mainStore = Store<AppState>(
     reducer: AppReducer(),
@@ -58,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             
             self.window?.rootViewController = R.storyboard.top_iPad.instantiateInitialViewController()
-
+            
             DispatchQueue.main.async { [unowned self] in
                 if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
                     let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
@@ -71,10 +72,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
-
+            
         } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
             self.window?.rootViewController = R.storyboard.top.instantiateInitialViewController()
-
+            
             DispatchQueue.main.async { [unowned self] in
                 if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
                     let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
@@ -85,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
                     }
-
+                    
                 }
             }
         }
@@ -110,8 +111,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
     
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        if let networkInfo = CNCopyCurrentNetworkInfo("en0" as CFString) as? NSDictionary {
+            if let ssid = networkInfo[kCNNetworkInfoKeySSID] {
+                let realm = try! Realm()
+                if realm.object(ofType: WifiNetworks.self, forPrimaryKey: ssid) == nil {
+                    let wifi = WifiNetworks()
+                    wifi.name = ssid as! String
+                    
+                    try! realm.write {
+                        realm.add(wifi, update: false)
+                    }
+                    
+                }
+                
+            }
+        }
+        
         if let mailAddress = mainStore.state.accountState.mailAddress, let password = mainStore.state.accountState.password {
             let login = LoginRequest(login: mailAddress, password: password)
             Session.send(login, callbackQueue: nil, handler: { (result) in
@@ -131,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 case .success(let response):
                     
                     mainStore.dispatch(AccountAction.login(response: response, password: password))
-
+                    
                     // Region Update
                     let region = RegionListRequest(session: response.session)
                     Session.send(region) { (result) in
