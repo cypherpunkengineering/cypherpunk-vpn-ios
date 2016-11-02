@@ -28,13 +28,13 @@ class GetPremiumPlanTableViewController: UITableViewController {
 
 extension GetPremiumPlanTableViewController {
     
-    @IBAction func oneMonthUpgradeAction(_ sender: AnyObject) {
+    @IBAction func monthlyUpgradeAction(_ sender: AnyObject) {
 
         mailAddressField.resignFirstResponder()
         
         if let address = mailAddressField.text , isValidMailAddress(address) {
             mainStore.dispatch(AccountAction.signUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.upgrade(subscription: .oneMonth, expiredDate: Date()))
+            mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
             
             if isModal() {
                 self.navigationController?.dismiss(animated: true, completion: nil)
@@ -46,13 +46,13 @@ extension GetPremiumPlanTableViewController {
     }
     
     
-    @IBAction func halfYearUpgradeAction(_ sender: AnyObject) {
+    @IBAction func semiannuallyUpgradeAction(_ sender: AnyObject) {
 
         mailAddressField.resignFirstResponder()
         
         if let address = mailAddressField.text , isValidMailAddress(address) {
             mainStore.dispatch(AccountAction.signUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.upgrade(subscription: .halfYear, expiredDate: Date()))
+            mainStore.dispatch(AccountAction.upgrade(subscription: .semiannually, expiredDate: Date()))
             if isModal() {
                 self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
@@ -61,13 +61,13 @@ extension GetPremiumPlanTableViewController {
         }
     }
     
-    @IBAction func yearUpgradeAction(_ sender: AnyObject) {
+    @IBAction func annuallyUpgradeAction(_ sender: AnyObject) {
 
         mailAddressField.resignFirstResponder()
 
         if let address = mailAddressField.text , isValidMailAddress(address) {
             mainStore.dispatch(AccountAction.signUp(mailAddress: address))
-            mainStore.dispatch(AccountAction.upgrade(subscription: .year, expiredDate: Date()))
+            mainStore.dispatch(AccountAction.upgrade(subscription: .annually, expiredDate: Date()))
             if isModal() {
                 self.navigationController?.dismiss(animated: true, completion: nil)
             } else {

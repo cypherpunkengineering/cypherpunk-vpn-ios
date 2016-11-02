@@ -58,7 +58,7 @@
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title=" "/>
                                                             <connections>
-                                                                <action selector="upgradeToPerMonthlySubscriptionAction:" destination="ESJ-e3-4aK" eventType="touchUpInside" id="3l0-aY-sUx"/>
+                                                                <action selector="upgradeToMonthlySubscriptionAction:" destination="ESJ-e3-4aK" eventType="touchUpInside" id="3l0-aY-sUx"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 MONTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpW-XL-Tx9">
@@ -71,7 +71,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="$ 9.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uC-Uj-DfO">
-                                                            <rect key="frame" x="113" y="13" width="144" height="48"/>
+                                                            <rect key="frame" x="113" y="13" width="147" height="48"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="LPK-Gh-aW4"/>
                                                             </constraints>
@@ -84,7 +84,7 @@
                                                             </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/month" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEm-lz-Pjp">
-                                                            <rect key="frame" x="258" y="35" width="45" height="16"/>
+                                                            <rect key="frame" x="261" y="35" width="42" height="16"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
                                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -176,7 +176,7 @@
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title=" "/>
                                                             <connections>
-                                                                <action selector="upgradeTo6MonthSubscriptionAction:" destination="ESJ-e3-4aK" eventType="touchUpInside" id="Z8U-6X-YuY"/>
+                                                                <action selector="upgradeToSemiannuallySubscriptionAction:" destination="ESJ-e3-4aK" eventType="touchUpInside" id="Z8U-6X-YuY"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 MONTHS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsu-3c-Wg8">
@@ -189,13 +189,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/month" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtV-IV-rVa">
-                                                            <rect key="frame" x="258" y="35" width="45" height="16"/>
+                                                            <rect key="frame" x="261" y="35" width="42" height="16"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
                                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="$ 8.33" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79j-c1-a1v">
-                                                            <rect key="frame" x="117" y="13" width="140" height="48"/>
+                                                            <rect key="frame" x="117" y="13" width="143" height="48"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="CpF-7b-dcc"/>
                                                             </constraints>
@@ -294,7 +294,7 @@
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title=" "/>
                                                             <connections>
-                                                                <action selector="upgradeTo12MonthSubscriptionAction:" destination="ESJ-e3-4aK" eventType="touchUpInside" id="DT7-d9-P4g"/>
+                                                                <action selector="upgradeToAnnuallySubscriptionAction:" destination="ESJ-e3-4aK" eventType="touchUpInside" id="DT7-d9-P4g"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 MONTHS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEZ-BJ-dyQ">
@@ -407,10 +407,10 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="halfYearCellContentView" destination="8Mb-BE-qur" id="zYi-WS-r6P"/>
-                        <outlet property="halfYearCurrentPlanLabelView" destination="GPJ-xn-56b" id="9FA-qG-1tI"/>
-                        <outlet property="oneMonthCellContentView" destination="rF1-Lh-8el" id="GkR-lD-1Zn"/>
-                        <outlet property="oneMonthCurrentPlanLabelView" destination="j6C-6X-HU9" id="ha7-6X-gO0"/>
+                        <outlet property="monthlyCellContentView" destination="rF1-Lh-8el" id="GkR-lD-1Zn"/>
+                        <outlet property="monthlyCurrentPlanLabelView" destination="j6C-6X-HU9" id="ha7-6X-gO0"/>
+                        <outlet property="semiannuallyCellContentView" destination="8Mb-BE-qur" id="zYi-WS-r6P"/>
+                        <outlet property="semiannuallyCurrentPlanLabelView" destination="GPJ-xn-56b" id="9FA-qG-1tI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8Q-dA-VXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -421,7 +421,7 @@
         <scene sceneID="iOa-Q4-mCd">
             <objects>
                 <navigationController id="IX6-zl-rXh" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Rqn-RL-0WZ" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Rqn-RL-0WZ" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>

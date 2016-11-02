@@ -10,11 +10,11 @@ import UIKit
 
 class UpgradeSelectTableViewController: UITableViewController {
 
-    @IBOutlet weak var oneMonthCellContentView: UIView!
-    @IBOutlet weak var oneMonthCurrentPlanLabelView: UIView!
+    @IBOutlet weak var monthlyCellContentView: UIView!
+    @IBOutlet weak var monthlyCurrentPlanLabelView: UIView!
     
-    @IBOutlet weak var halfYearCellContentView: UIView!
-    @IBOutlet weak var halfYearCurrentPlanLabelView: UIView!
+    @IBOutlet weak var semiannuallyCellContentView: UIView!
+    @IBOutlet weak var semiannuallyCurrentPlanLabelView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +26,14 @@ class UpgradeSelectTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         switch mainStore.state.accountState.subscriptionType {
-        case .oneMonth:
-            oneMonthCellContentView.alpha = 0.5
-            oneMonthCellContentView.isUserInteractionEnabled = false
-            oneMonthCurrentPlanLabelView.isHidden = false
-        case .halfYear:
-            halfYearCellContentView.alpha = 0.5
-            halfYearCellContentView.isUserInteractionEnabled = false
-            halfYearCurrentPlanLabelView.isHidden = false
+        case .monthly:
+            monthlyCellContentView.alpha = 0.5
+            monthlyCellContentView.isUserInteractionEnabled = false
+            monthlyCurrentPlanLabelView.isHidden = false
+        case .semiannually:
+            semiannuallyCellContentView.alpha = 0.5
+            semiannuallyCellContentView.isUserInteractionEnabled = false
+            semiannuallyCurrentPlanLabelView.isHidden = false
         default:
             break
         }
@@ -45,17 +45,17 @@ class UpgradeSelectTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func upgradeToPerMonthlySubscriptionAction(_ sender: AnyObject) {
-        mainStore.dispatch(AccountAction.upgrade(subscription: .oneMonth, expiredDate: Date()))
+    @IBAction func upgradeToMonthlySubscriptionAction(_ sender: AnyObject) {
+        mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func upgradeTo6MonthSubscriptionAction(_ sender: AnyObject) {
-        mainStore.dispatch(AccountAction.upgrade(subscription: .halfYear, expiredDate: Date()))
+    @IBAction func upgradeToSemiannuallySubscriptionAction(_ sender: AnyObject) {
+        mainStore.dispatch(AccountAction.upgrade(subscription: .semiannually, expiredDate: Date()))
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func upgradeTo12MonthSubscriptionAction(_ sender: AnyObject) {
-        mainStore.dispatch(AccountAction.upgrade(subscription: .year, expiredDate: Date()))
+    @IBAction func upgradeToAnnuallySubscriptionAction(_ sender: AnyObject) {
+        mainStore.dispatch(AccountAction.upgrade(subscription: .annually, expiredDate: Date()))
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -69,11 +69,11 @@ extension UpgradeSelectTableViewController {
             return 3
         case .freePremium:
             return 3
-        case .oneMonth:
+        case .monthly:
             return 3
-        case .halfYear:
+        case .semiannually:
             return 2
-        case .year:
+        case .annually:
             fatalError()
         }
     }
@@ -82,11 +82,11 @@ extension UpgradeSelectTableViewController {
         let accountState = mainStore.state.accountState
         
         switch accountState.subscriptionType {
-        case .free, .freePremium, .oneMonth:
+        case .free, .freePremium, .monthly:
             return super.tableView(tableView, cellForRowAt: indexPath)
-        case .halfYear:
+        case .semiannually:
             return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
-        case .year:
+        case .annually:
             fatalError()
         }
     }
@@ -95,11 +95,11 @@ extension UpgradeSelectTableViewController {
         let accountState = mainStore.state.accountState
         
         switch accountState.subscriptionType {
-        case .free, .freePremium, .oneMonth:
+        case .free, .freePremium, .monthly:
             return super.tableView(tableView, heightForRowAt: indexPath)
-        case .halfYear:
+        case .semiannually:
             return super.tableView(tableView, heightForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
-        case .year:
+        case .annually:
             fatalError()
         }
     }
