@@ -135,8 +135,32 @@ open class VPNConfigurationCoordinator {
     }
     
     class func connect() throws {
+        
+        let connectBlock = {
+            let manager = NEVPNManager.shared()
+
+            do {
+                try manager.connection.startVPNTunnel()
+            } catch NEVPNError.configurationInvalid {
+                print("NEVPNError.configurationInvalid")
+            } catch NEVPNError.configurationDisabled {
+                print("NEVPNError.configurationDisabled")
+            } catch {
+                print("Unknown Error")
+            }
+        }
+
         let manager = NEVPNManager.shared()
-        try! manager.connection.startVPNTunnel()
+        if manager.isEnabled == false {
+            manager.isEnabled = true
+            manager.saveToPreferences(completionHandler: { (error) in
+                if error != nil {
+                    connectBlock()
+                }
+            })
+        } else {
+            connectBlock()
+        }
     }
 
     class func disconnect() {
