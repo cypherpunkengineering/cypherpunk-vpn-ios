@@ -9,6 +9,7 @@
 import Foundation
 import NetworkExtension
 import KeychainAccess
+import RealmSwift
 
 open class VPNConfigurationCoordinator {
     
@@ -20,21 +21,25 @@ open class VPNConfigurationCoordinator {
     }
     
     class func install() {
+
+        let regionState = mainStore.state.regionState
+        let accountState = mainStore.state.accountState
         
+
         let manager = NEVPNManager.shared()
         let newIPSec : NEVPNProtocolIPSec
+
         newIPSec = NEVPNProtocolIKEv2()
-        
         newIPSec.authenticationMethod = .none
-        newIPSec.serverAddress = mainStore.state.regionState.serverIP // IPSecDefault
+        newIPSec.serverAddress = regionState.serverIP // IPSecDefault
         
         newIPSec.useExtendedAuthentication = true
-        newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
-        let password = mainStore.state.accountState.password ?? "test123"
+        newIPSec.username = accountState.mailAddress ?? "test@test.test"
+        let password = accountState.password ?? "test123"
         newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
         
         newIPSec.localIdentifier = "cypherpunk-vpn-ios"
-        newIPSec.remoteIdentifier = mainStore.state.regionState.remoteIdentifier // IPSecHostname
+        newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
         newIPSec.disconnectOnSleep = false
         
         if #available(iOS 9.0, *) {
@@ -58,38 +63,42 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
             
+            let settingsState = mainStore.state.settingsState
+            let regionState = mainStore.state.regionState
+            let accountState = mainStore.state.accountState
+            
             let newIPSec : NEVPNProtocolIPSec
-            if mainStore.state.settingsState.vpnProtocolMode == .IKEv2
+            if settingsState.vpnProtocolMode == .IKEv2
             {
                 newIPSec = NEVPNProtocolIKEv2()
                 
                 newIPSec.authenticationMethod = .none
-                newIPSec.serverAddress = mainStore.state.regionState.serverIP // IPSecDefault
+                newIPSec.serverAddress = regionState.serverIP // IPSecDefault
                 
                 newIPSec.useExtendedAuthentication = true
-                newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
-                let password = mainStore.state.accountState.password ?? "test123"
+                newIPSec.username = accountState.mailAddress ?? "test@test.test"
+                let password = accountState.password ?? "test123"
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
                 
                 newIPSec.localIdentifier = "cypherpunk-vpn-ios"
-                newIPSec.remoteIdentifier = mainStore.state.regionState.remoteIdentifier // IPSecHostname
+                newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
             }
             else
             {
                 newIPSec = NEVPNProtocolIPSec()
                 
                 newIPSec.authenticationMethod = .none
-                newIPSec.serverAddress = mainStore.state.regionState.serverIP // IPSecDefault
+                newIPSec.serverAddress = regionState.serverIP // IPSecDefault
                 
-                newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
+                newIPSec.username = accountState.mailAddress ?? "test@test.test"
                 
                 newIPSec.useExtendedAuthentication = true
-                newIPSec.username = mainStore.state.accountState.mailAddress ?? "test@test.test"
-                let password = mainStore.state.accountState.password ?? "test123"
+                newIPSec.username = accountState.mailAddress ?? "test@test.test"
+                let password = accountState.password ?? "test123"
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
                 
                 newIPSec.localIdentifier = "cypherpunk-vpn-ios"
-                newIPSec.remoteIdentifier = mainStore.state.regionState.remoteIdentifier // IPSecHostname
+                newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
             }
             
             
@@ -103,11 +112,47 @@ open class VPNConfigurationCoordinator {
             
             manager.localizedDescription = "Cyperpunk VPN"
             
-            if mainStore.state.settingsState.isAutoReconnect == true
+            if settingsState.isAutoReconnect == true
             {
-                let onDemandRule = NEOnDemandRuleConnect()
-                manager.onDemandRules = [onDemandRule]
-                manager.isOnDemandEnabled = true
+                if settingsState.isAutoSecureConnectionsWhenConnectedOtherNetwork && settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
+                    let wifiConnectRule = NEOnDemandRuleConnect()
+                    wifiConnectRule.interfaceTypeMatch = .wiFi
+                    
+                    let cellularConnectRule = NEOnDemandRuleConnect()
+                    cellularConnectRule.interfaceTypeMatch = .cellular
+
+                    manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
+                    manager.isOnDemandEnabled = true
+                } else if settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
+                    
+                    let realm = try! Realm()
+                    let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
+
+                    var ssidList: [String] = []
+                    for netInfo in whiteList {
+                        ssidList.append(netInfo.name)
+                    }
+
+                    let wifiConnectRule = NEOnDemandRuleConnect()
+                    wifiConnectRule.interfaceTypeMatch = .wiFi
+
+                    let cellularConnectRule = NEOnDemandRuleConnect()
+                    cellularConnectRule.interfaceTypeMatch = .cellular
+
+                    
+                    let wifiDisconnectRule = NEOnDemandRuleDisconnect()
+                    wifiDisconnectRule.interfaceTypeMatch = .wiFi
+                    wifiDisconnectRule.ssidMatch = ssidList
+
+                    let wifiIggnoreRule = NEOnDemandRuleIgnore()
+                    wifiIggnoreRule.interfaceTypeMatch = .wiFi
+                    wifiIggnoreRule.ssidMatch = ssidList
+                    
+                    manager.onDemandRules = [wifiDisconnectRule,wifiIggnoreRule, wifiConnectRule, cellularConnectRule]
+                    manager.isOnDemandEnabled = true
+                } else {
+                    manager.isOnDemandEnabled = false
+                }
             }
             else
             {
@@ -127,14 +172,13 @@ open class VPNConfigurationCoordinator {
             
             manager.saveToPreferences(completionHandler: { (error) in
                 if error != nil {
-                    print(error)
                 }
                 completion()
             })
         }
     }
     
-    class func connect() throws {
+    class func connect() {
         
         let connectBlock = {
             let manager = NEVPNManager.shared()
@@ -174,4 +218,13 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.removeFromPreferences(completionHandler: nil)
     }
+    
+    class var isConnected: Bool {
+        let manager = NEVPNManager.shared()
+        if manager.connection.status == .connected {
+            return true
+        }
+        return false
+    }
+    
 }

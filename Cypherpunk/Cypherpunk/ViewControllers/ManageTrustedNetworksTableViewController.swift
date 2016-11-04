@@ -29,7 +29,7 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
     }
     
     var notificationToken: NotificationToken!
-    var wifiNetworksResult: Results<WifiNetworks>?
+    var wifiNetworksResult: Results<WifiNetworks>!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,9 +39,27 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        if #available(iOS 9.0, *) {
+            let interfaces = NEHotspotHelper.supportedNetworkInterfaces()
+            for interface in interfaces {
+                let realm = try! Realm()
+                try! realm.write {
+                    
+                    if let interface = interface as? NEHotspotNetwork {
+                        if realm.object(ofType: WifiNetworks.self, forPrimaryKey: interface.ssid) == nil {
+                            let wifi = WifiNetworks()
+                            wifi.name = interface.ssid
+                            realm.add(wifi, update: false)
+                        }
+                        
+                    }
+                }
+            }
+        }
+    
         let realm = try! Realm()
         wifiNetworksResult = realm.objects(WifiNetworks.self)
-        notificationToken = wifiNetworksResult?.addNotificationBlock({ (change) in
+        notificationToken = wifiNetworksResult.addNotificationBlock({ (change) in
             self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
         })
     }
@@ -86,17 +104,20 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         switch section {
         case .autoSecure:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.autoSecure, for: indexPath)
+            cell?.isTrustedSwitch.isOn = mainStore.state.settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork
             return cell!
         case .otherNetworks:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.otherNetworks, for: indexPath)
+            cell?.isTrustedSwitch.isOn = mainStore.state.settingsState.isAutoSecureConnectionsWhenConnectedOtherNetwork
             return cell!
         case .wifiNetworks:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.wifiNetworks, for: indexPath)
             
-            let wifiInfo = wifiNetworksResult![indexPath.row]
+            let wifiInfo = wifiNetworksResult[indexPath.row]
             cell?.ssidLabel.text = wifiInfo.name
             cell?.isTrustedSwitch.isOn = wifiInfo.isTrusted
-            
+            cell?.isTrustedSwitch.addTarget(self, action: #selector(valueChangedOfIsTrustedNetworkSwitchAction(_:)), for: .valueChanged)
+            cell?.isTrustedSwitch.tag = indexPath.row
             return cell!
             
         }
@@ -156,12 +177,30 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
     }
     
     @IBAction func valueChangedOfAutoSecureSwitchAction(_ sender: UISwitch) {
-        print("AutoSecureSwitch is \(sender.isOn)")
+        mainStore.dispatch(SettingsAction.isAutoSecureConnectionsWhenConnectedUntrustedNetwork(isOn: sender.isOn))
     }
     
     @IBAction func valueChangedOfOtherNetworksAutoSecureSwitchAction(_ sender: UISwitch) {
-        print("OtherNetworksAutoSecureSwitch is \(sender.isOn)")
+        mainStore.dispatch(SettingsAction.isAutoSecureConnectionsWhenConnectedOtherNetwork(isOn: sender.isOn))
     }
-    
+
+    @IBAction func valueChangedOfIsTrustedNetworkSwitchAction(_ sender: UISwitch) {
+        let realm = try! Realm()
+        
+        let wifiInfo = wifiNetworksResult[sender.tag]
+        try! realm.write {
+            wifiInfo.isTrusted = sender.isOn
+        }
+        
+        let isConnected = VPNConfigurationCoordinator.isConnected
+        VPNConfigurationCoordinator.start {
+            if isConnected {
+                DispatchQueue.main.async {
+                    VPNConfigurationCoordinator.connect()
+                }
+            }
+        }
+    }
+
     
 }

@@ -37,10 +37,24 @@ extension Keychain {
 }
 
 struct SettingsState: StateType {
+
+    var isAutoConnectOnBoot: Bool {
+        get{
+            if mainStore.state.isInstalledPreferences == false {
+                return false
+            }
+            
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.isAutoConnectOnBoot] ?? "false").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.isAutoConnectOnBoot] = String(newValue)
+        }
+    }
     
     var isAutoReconnect: Bool {
         get{
-            
             if mainStore.state.isInstalledPreferences == false {
                 return false
             }
@@ -72,9 +86,38 @@ struct SettingsState: StateType {
             keychain[SettingsStateKey.vpnProtocolMode] = String(newValue.rawValue)
         }
     }
+    
+    var isAutoSecureConnectionsWhenConnectedUntrustedNetwork: Bool {
+        get{
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedUntrustedNetwork] ?? "true").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedUntrustedNetwork] = String(newValue)
+        }
+
+    }
+
+    var isAutoSecureConnectionsWhenConnectedOtherNetwork: Bool {
+        get{
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedOtherNetwork] ?? "true").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedOtherNetwork] = String(newValue)
+        }
+        
+    }
+    
+
 
     fileprivate struct SettingsStateKey {
+        static let isAutoConnectOnBoot = "isAutoConnectOnBoot"
         static let isAutoReconnect = "isAutoReconnect"
         static let vpnProtocolMode = "vpnProtocolMode"
+        static let isAutoSecureConnectionsWhenConnectedUntrustedNetwork = "isAutoSecureConnectionsWhenConnectedUntrustedNetwork"
+        static let isAutoSecureConnectionsWhenConnectedOtherNetwork = "isAutoSecureConnectionsWhenConnectedOtherNetwork"
     }
 }

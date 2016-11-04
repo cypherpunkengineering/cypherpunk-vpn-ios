@@ -82,7 +82,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="QSe-Ch-sxD" kind="presentation" modalPresentationStyle="formSheet" id="FAY-ak-aVZ"/>
+                                            <segue destination="Rz3-Gx-IdV" kind="presentation" modalPresentationStyle="formSheet" id="tho-da-vjN"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -167,140 +167,13 @@
             </objects>
             <point key="canvasLocation" x="-780" y="267.61619190404798"/>
         </scene>
-        <!--Popover Navigation View Controller-->
-        <scene sceneID="fxC-VM-TPr">
+        <!--ManageTrustedNetworks-->
+        <scene sceneID="w6X-NE-Hde">
             <objects>
-                <navigationController id="QSe-Ch-sxD" customClass="PopoverNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="hok-B0-1Lw" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="cQp-9p-6lV" kind="relationship" relationship="rootViewController" id="8w4-al-PLh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ira-IS-9ym" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ManageTrustedNetworks" id="Rz3-Gx-IdV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ae2-zF-LOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="406" y="-463"/>
-        </scene>
-        <!--Manage Trusted Networks-->
-        <scene sceneID="f4S-8C-FOr">
-            <objects>
-                <tableViewController title="Manage Trusted Networks" id="sfs-wc-hQD" customClass="ManageTrustedNetworksTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ztM-0c-ypN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="602"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AutoSecure" id="Kuo-i8-qU4">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kuo-i8-qU4" id="bjA-fp-BCR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto secure connections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5C-wQ-kYT">
-                                            <rect key="frame" x="16" y="0.0" width="290" height="43"/>
-                                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ur6-jT-OFN">
-                                            <rect key="frame" x="306" y="6" width="51" height="31"/>
-                                            <color key="onTintColor" red="0.97254901959999995" green="0.81176470590000005" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="valueChangedOfAutoSecureSwitchAction:" destination="sfs-wc-hQD" eventType="valueChanged" id="Qd6-EN-k7a"/>
-                                            </connections>
-                                        </switch>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Ur6-jT-OFN" secondAttribute="trailing" constant="12" id="DLg-DW-jNf"/>
-                                        <constraint firstItem="v5C-wQ-kYT" firstAttribute="top" secondItem="bjA-fp-BCR" secondAttribute="top" id="N7p-y8-8kN"/>
-                                        <constraint firstItem="Ur6-jT-OFN" firstAttribute="leading" secondItem="v5C-wQ-kYT" secondAttribute="trailing" id="aSO-KE-Dj8"/>
-                                        <constraint firstAttribute="bottom" secondItem="v5C-wQ-kYT" secondAttribute="bottom" id="dr0-NO-TEa"/>
-                                        <constraint firstItem="v5C-wQ-kYT" firstAttribute="leading" secondItem="bjA-fp-BCR" secondAttribute="leading" constant="16" id="moX-EO-hMU"/>
-                                        <constraint firstItem="Ur6-jT-OFN" firstAttribute="centerY" secondItem="bjA-fp-BCR" secondAttribute="centerY" id="oHc-Fa-kmm"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OtherNetworks" id="zUS-x3-mjT">
-                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zUS-x3-mjT" id="jHF-OG-FGI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto secure connections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXP-id-vI0">
-                                            <rect key="frame" x="16" y="0.0" width="290" height="43"/>
-                                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zvy-Yy-6xa">
-                                            <rect key="frame" x="306" y="6" width="51" height="31"/>
-                                            <color key="onTintColor" red="0.97254901959999995" green="0.81176470590000005" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="valueChangedOfOtherNetworksAutoSecureSwitchAction:" destination="sfs-wc-hQD" eventType="valueChanged" id="DbB-D8-x1Q"/>
-                                            </connections>
-                                        </switch>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="zvy-Yy-6xa" secondAttribute="trailing" constant="12" id="Cwv-aw-RFf"/>
-                                        <constraint firstItem="HXP-id-vI0" firstAttribute="top" secondItem="jHF-OG-FGI" secondAttribute="top" id="Ebs-0p-RcF"/>
-                                        <constraint firstItem="zvy-Yy-6xa" firstAttribute="leading" secondItem="HXP-id-vI0" secondAttribute="trailing" id="Eit-7z-k35"/>
-                                        <constraint firstAttribute="bottom" secondItem="HXP-id-vI0" secondAttribute="bottom" id="PhM-IC-v0o"/>
-                                        <constraint firstItem="zvy-Yy-6xa" firstAttribute="centerY" secondItem="jHF-OG-FGI" secondAttribute="centerY" id="ifS-gn-rGW"/>
-                                        <constraint firstItem="HXP-id-vI0" firstAttribute="leading" secondItem="jHF-OG-FGI" secondAttribute="leading" constant="16" id="nBb-5F-S8L"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WifiNetworks" id="npK-Xd-zpR" customClass="WifiNetworksCell" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="144" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="npK-Xd-zpR" id="YH0-Sn-jEC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htX-xI-Khn">
-                                            <rect key="frame" x="16" y="0.0" width="290" height="43"/>
-                                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-G0-etc">
-                                            <rect key="frame" x="306" y="6" width="51" height="31"/>
-                                            <color key="onTintColor" red="0.97254901959999995" green="0.81176470590000005" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </switch>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="htX-xI-Khn" firstAttribute="top" secondItem="YH0-Sn-jEC" secondAttribute="top" id="79g-Aa-RcD"/>
-                                        <constraint firstItem="htX-xI-Khn" firstAttribute="leading" secondItem="YH0-Sn-jEC" secondAttribute="leading" constant="16" id="Hof-me-KhS"/>
-                                        <constraint firstItem="ffU-G0-etc" firstAttribute="centerY" secondItem="YH0-Sn-jEC" secondAttribute="centerY" id="TOP-Ug-agC"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ffU-G0-etc" secondAttribute="trailing" constant="12" id="bpR-qS-gx3"/>
-                                        <constraint firstAttribute="bottom" secondItem="htX-xI-Khn" secondAttribute="bottom" id="s43-Bq-tfA"/>
-                                        <constraint firstItem="ffU-G0-etc" firstAttribute="leading" secondItem="htX-xI-Khn" secondAttribute="trailing" id="wwA-c5-6S0"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="isTrustedSwitch" destination="ffU-G0-etc" id="NxL-tz-8qR"/>
-                                    <outlet property="ssidLabel" destination="htX-xI-Khn" id="TqU-u7-8UO"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="sfs-wc-hQD" id="o9c-qA-HAL"/>
-                            <outlet property="delegate" destination="sfs-wc-hQD" id="dBX-Zl-S3z"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pwn-WN-c1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1183" y="259"/>
+            <point key="canvasLocation" x="-90" y="62"/>
         </scene>
         <!--VPNProtocol-->
         <scene sceneID="T2n-Jb-wJI">
@@ -309,50 +182,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcQ-an-lXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-89" y="291"/>
-        </scene>
-        <!--Manage Trusted Networks-->
-        <scene sceneID="4gC-UK-myJ">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cQp-9p-6lV" customClass="PopoverRootViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GSq-WL-aZ2"/>
-                        <viewControllerLayoutGuide type="bottom" id="GL3-jN-vgh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QXE-bd-ctl" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cby-I5-6Sd">
-                                <rect key="frame" x="0.0" y="1" width="375" height="602"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="sfs-wc-hQD" kind="embed" id="jVR-Vn-b1Y"/>
-                                </connections>
-                            </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xld-Ka-g1K">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="A5l-KO-8L4"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.083409480750000001" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Cby-I5-6Sd" secondAttribute="trailing" id="7yc-7J-3v4"/>
-                            <constraint firstItem="Cby-I5-6Sd" firstAttribute="leading" secondItem="QXE-bd-ctl" secondAttribute="leading" id="L6K-Uu-eaf"/>
-                            <constraint firstItem="Xld-Ka-g1K" firstAttribute="top" secondItem="GSq-WL-aZ2" secondAttribute="bottom" id="So2-Vg-xFg"/>
-                            <constraint firstItem="Cby-I5-6Sd" firstAttribute="top" secondItem="Xld-Ka-g1K" secondAttribute="bottom" id="UGS-C4-Wbc"/>
-                            <constraint firstItem="GL3-jN-vgh" firstAttribute="top" secondItem="Cby-I5-6Sd" secondAttribute="bottom" id="nwg-Gf-qFT"/>
-                            <constraint firstItem="Xld-Ka-g1K" firstAttribute="leading" secondItem="QXE-bd-ctl" secondAttribute="leading" id="ttR-T4-cf5"/>
-                            <constraint firstAttribute="trailing" secondItem="Xld-Ka-g1K" secondAttribute="trailing" id="w81-TL-O7c"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Manage Trusted Networks" id="MWq-U1-U4i"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pGP-dG-99O" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="406" y="268"/>
         </scene>
     </scenes>
 </document>

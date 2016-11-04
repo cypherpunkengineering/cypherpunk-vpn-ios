@@ -78,6 +78,7 @@
 		20F15CEE1D8A755C0000DAA7 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */; };
 		20F15CEF1D8A755C0000DAA7 /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F15CEC1D8A755C0000DAA7 /* Hardware.swift */; };
 		20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F850901D3DF40A009079A0 /* LoginAPI.swift */; };
+		20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */; };
 		2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */; };
 		2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */; };
 		2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E41D3F98D0003FA705 /* RegionAction.swift */; };
@@ -224,6 +225,7 @@
 		20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceList.plist; sourceTree = "<group>"; };
 		20F15CEC1D8A755C0000DAA7 /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
 		20F850901D3DF40A009079A0 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManageTrustedNetworks.storyboard; sourceTree = "<group>"; };
 		2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNProtocolSelectViewController.swift; sourceTree = "<group>"; };
 		2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAPI.swift; sourceTree = "<group>"; };
 		2B2B59E41D3F98D0003FA705 /* RegionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionAction.swift; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 				2BDBD0C71D65191400080E67 /* Email.storyboard */,
 				2BDBD0D11D65295F00080E67 /* Password.storyboard */,
 				2B73C70E1D5C7F670090FF8B /* Animation.storyboard */,
+				20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */,
 				2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */,
 				2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */,
 				2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */,
@@ -759,6 +762,7 @@
 				2B2DE2831DA652F400C22098 /* ContactUs.storyboard in Resources */,
 				2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
+				20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */,
 				2B6798E51DAC0FB600099064 /* FirstOpen_iPad.storyboard in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
 				2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */,

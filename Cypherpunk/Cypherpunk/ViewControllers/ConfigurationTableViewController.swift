@@ -70,6 +70,7 @@ class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
     }
     
     @IBAction func changeValueOfAutoConnectOnBootAction(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.isAutoConnectOnBoot(isOn: sender.isOn))
     }
     @IBAction func changeValueOfAlwaysOnAction(_ sender: UISwitch) {
         mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.isOn))

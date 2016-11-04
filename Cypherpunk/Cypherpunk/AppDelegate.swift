@@ -13,6 +13,7 @@ import SVProgressHUD
 import RealmSwift
 import APIKit
 import SystemConfiguration.CaptiveNetwork
+import ReachabilitySwift
 
 let mainStore = Store<AppState>(
     reducer: AppReducer(),
@@ -25,6 +26,7 @@ let appID = "XXXXX"
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var reachability: Reachability!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -91,7 +93,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        reachability = Reachability()
         
+        reachability.whenReachable = {
+            reachability in
+            if reachability.isReachableViaWiFi {
+                if let networkInfo = CNCopyCurrentNetworkInfo("en0" as CFString) as? NSDictionary {
+                    if let ssid = networkInfo[kCNNetworkInfoKeySSID] {
+                        let realm = try! Realm()
+                        if realm.object(ofType: WifiNetworks.self, forPrimaryKey: ssid) == nil {
+                            let wifi = WifiNetworks()
+                            wifi.name = ssid as! String
+                            
+                            try! realm.write {
+                                realm.add(wifi, update: false)
+                            }
+                            
+                        }
+                        
+                    }
+                }
+            }
+        }
+        
+        try! reachability.startNotifier()
         self.window?.makeKeyAndVisible()
         
         return true
@@ -114,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
+
         if let networkInfo = CNCopyCurrentNetworkInfo("en0" as CFString) as? NSDictionary {
             if let ssid = networkInfo[kCNNetworkInfoKeySSID] {
                 let realm = try! Realm()
