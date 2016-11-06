@@ -27,7 +27,7 @@ struct LoginRequest: Request {
     }
     
     var path: String {
-        return "/account/authenticate/userpasswd"
+        return "/api/v0/account/authenticate/emailpassword"
     }
     
     var parameters: Any? {
@@ -64,7 +64,7 @@ struct LoginResponse: Decodable {
     static func decode(_ e: Extractor) throws -> LoginResponse {
         return try LoginResponse(
             secret: e.value("secret"),
-            account: e.value("acct"),
+            account: e.value("account"),
             session: ""
         )
     }

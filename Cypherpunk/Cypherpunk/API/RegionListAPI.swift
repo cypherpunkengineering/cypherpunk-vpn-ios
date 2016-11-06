@@ -28,7 +28,7 @@ struct RegionListRequest: Request {
     
     
     var path: String {
-        return "/api/vpn/serverList"
+        return "/api/v0/vpn/serverList"
     }
     
     
