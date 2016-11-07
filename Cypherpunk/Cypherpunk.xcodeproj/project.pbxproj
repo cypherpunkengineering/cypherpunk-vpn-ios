@@ -107,6 +107,7 @@
 		2B8D3F401DBA965A0096EEF7 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */; };
 		2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */; };
 		2B95C9191DC7749900F79A2D /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C9181DC7749800F79A2D /* SignUpAPI.swift */; };
+		2BA4E2A41DD06372006ACDC5 /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */; };
 		2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */; };
 		2BC7D6651D95153400AE1F1C /* InstallPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */; };
 		2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */; };
@@ -256,6 +257,7 @@
 		2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyEmailAPI.swift; sourceTree = "<group>"; };
 		2B95C9181DC7749800F79A2D /* SignUpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
+		2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
 		2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewConfiguration.storyboard; sourceTree = "<group>"; };
 		2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallPreferencesViewController.swift; sourceTree = "<group>"; };
 		2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordTableViewController.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */,
 				205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */,
 				208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */,
+				2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */,
 				2018AB071DB8ADD200649D03 /* RestYourPasswordViewController.swift */,
 				2018AB091DB8AF0E00649D03 /* EmailConfirmationViewController.swift */,
 				20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */,
@@ -1099,6 +1102,7 @@
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
 				201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */,
 				20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */,
+				2BA4E2A41DD06372006ACDC5 /* ShareAppViewController.swift in Sources */,
 				2B95C9191DC7749900F79A2D /* SignUpAPI.swift in Sources */,
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
 				2065DD071DB8D82100D0F446 /* TutorialRootViewController.swift in Sources */,
@@ -1329,6 +1333,8 @@
 					"\"SwiftyStoreKit\"",
 					"-framework",
 					"\"UITextView_Placeholder\"",
+					"-framework",
+					"\"FontAwesome_swift\"",
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
@@ -1384,6 +1390,8 @@
 					"\"SwiftyStoreKit\"",
 					"-framework",
 					"\"UITextView_Placeholder\"",
+					"-framework",
+					"\"FontAwesome_swift\"",
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";

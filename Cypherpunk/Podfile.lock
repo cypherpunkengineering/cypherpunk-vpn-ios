@@ -1,6 +1,7 @@
 PODS:
   - APIKit (3.0.0):
     - Result (~> 3.0)
+  - FontAwesome.swift (1.0.0)
   - Himotoki (3.0.0)
   - KeychainAccess (3.0.1)
   - R.swift (3.1.0):
@@ -15,11 +16,12 @@ PODS:
   - Result (3.0.0)
   - ReSwift (2.1.0)
   - SVProgressHUD (2.0.3)
-  - SwiftyStoreKit (0.5.3)
+  - SwiftyStoreKit (0.5.4)
   - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
   - APIKit (from `https://github.com/ishkawa/APIKit.git`)
+  - FontAwesome.swift
   - Himotoki (from `https://github.com/ikesyo/Himotoki.git`)
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
   - R.swift
@@ -79,11 +81,12 @@ CHECKOUT OPTIONS:
     :commit: 1871e8e12740f5fc672cb03f314737ab4ff319bc
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
   SwiftyStoreKit:
-    :commit: ded4da4350a979a5c8f884c98f08d6ebd06c12d4
+    :commit: d18e7d5290b358e2d99cb67e64f77683b41d6dbc
     :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 SPEC CHECKSUMS:
   APIKit: 1e03f13c439fa8b0862ed676948a9f60bb259f75
+  FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
   Himotoki: df74b01035e86e021b7b04a15b033a7fd189b84f
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
@@ -94,9 +97,9 @@ SPEC CHECKSUMS:
   Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
   ReSwift: c13b76cb963c5ab2a137c9c6e74823cef4b81588
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
-  SwiftyStoreKit: 4422976f5ffacc4bd1be04211d0579f85c8c4ee1
+  SwiftyStoreKit: 31ecbc5be1b1c15241392bf6adabdcdd501b6cb5
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: c1c69c1a42214a6522e218b5b798530122afc516
+PODFILE CHECKSUM: 93057e6967c5b4057ad05f12e882c548548c04a1
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.1.0.rc.2

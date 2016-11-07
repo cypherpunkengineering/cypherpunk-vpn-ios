@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gC2-Rj-MC7">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gC2-Rj-MC7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="-52" y="365"/>
         </scene>
-        <!--View Controller-->
+        <!--Share App View Controller-->
         <scene sceneID="Cyb-tn-sXK">
             <objects>
-                <viewController id="DEq-at-p2O" sceneMemberID="viewController">
+                <viewController id="DEq-at-p2O" customClass="ShareAppViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jda-Di-wI6"/>
                         <viewControllerLayoutGuide type="bottom" id="FNY-2I-DNP"/>
@@ -88,21 +88,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="forEveryFriendWho" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-OL-Vki">
-                                <rect key="frame" x="77.5" y="16" width="220" height="54"/>
+                                <rect key="frame" x="78" y="16" width="220" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="qrC-fm-0YM"/>
                                 </constraints>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="illustGift" translatesAutoresizingMaskIntoConstraints="NO" id="Gh2-m2-OtI">
-                                <rect key="frame" x="71.5" y="88" width="232" height="303"/>
+                                <rect key="frame" x="72" y="88" width="232" height="303"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bna-Gq-wLZ">
-                                <rect key="frame" x="37.5" y="413" width="300" height="48"/>
+                                <rect key="frame" x="38" y="413" width="300" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="KzN-2A-oey"/>
                                     <constraint firstAttribute="width" constant="300" id="sXv-wx-ndM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Facebook">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -119,12 +120,13 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MlM-PN-gRY">
-                                <rect key="frame" x="37.5" y="476" width="300" height="48"/>
+                                <rect key="frame" x="38" y="476" width="300" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="0xi-YM-reU"/>
                                     <constraint firstAttribute="width" constant="300" id="eLt-1F-2Q5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Twitter">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -141,12 +143,13 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7n-dF-95m">
-                                <rect key="frame" x="37.5" y="539" width="300" height="48"/>
+                                <rect key="frame" x="38" y="539" width="300" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Ml6-Ko-Ufk"/>
                                     <constraint firstAttribute="width" constant="300" id="rnC-Fh-OSy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Email">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -178,6 +181,11 @@
                             <constraint firstItem="Gh2-m2-OtI" firstAttribute="top" secondItem="J2J-OL-Vki" secondAttribute="bottom" constant="18" id="qLx-wK-EKK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailButton" destination="x7n-dF-95m" id="EX6-pe-hGB"/>
+                        <outlet property="facebookButton" destination="bna-Gq-wLZ" id="VAk-YY-YeB"/>
+                        <outlet property="twitterButton" destination="MlM-PN-gRY" id="TUs-jh-ZZb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Rg-I0-vg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

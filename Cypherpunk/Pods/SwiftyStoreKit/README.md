@@ -9,7 +9,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Twitter](https://img.shields.io/badge/twitter-@biz84-blue.svg?maxAge=2592000)](http://twitter.com/biz84)
 
-SwiftyStoreKit is a lightweight In App Purchases framework for iOS 8.0+, tvOS 9.0+ and OS X 10.10+.
+SwiftyStoreKit is a lightweight In App Purchases framework for iOS 8.0+, tvOS 9.0+ and macOS 10.10+.
 
 | Language  | Branch | Pod version | Xcode version |
 | --------- | ------ | ----------- | ------------- |
@@ -93,6 +93,14 @@ SwiftyStoreKit.restorePurchases() { results in
 }
 ```
 
+### Retrieve local receipt
+
+```swift
+let receiptData = SwiftyStoreKit.localReceiptData
+let receiptString = receiptData.base64EncodedString
+// do your receipt validation here
+```
+
 ### Verify Receipt
 
 ```swift
@@ -107,8 +115,8 @@ SwiftyStoreKit.verifyReceipt(password: "your-shared-secret") { result in
 func refreshReceipt() {
     SwiftyStoreKit.refreshReceipt { result in
         switch result {
-        case .success:
-            print("Receipt refresh success")
+        case .success(let receiptData):
+            print("Receipt refresh success: \(receiptData.base64EncodedString)")
         case .error(let error):
             print("Receipt refresh failed: \(error)")
         }
@@ -213,7 +221,7 @@ github "bizz84/SwiftyStoreKit"
 See the [Releases Page](https://github.com/bizz84/SwiftyStoreKit/releases)
 
 ## Sample Code
-The project includes demo apps [for iOS](https://github.com/bizz84/SwiftyStoreKit/blob/master/SwiftyStoreDemo/ViewController.swift) [and OSX](https://github.com/bizz84/SwiftyStoreKit/blob/master/SwiftyStoreOSXDemo/ViewController.swift) showing how to use SwiftyStoreKit.
+The project includes demo apps [for iOS](https://github.com/bizz84/SwiftyStoreKit/blob/master/SwiftyStoreKit-iOS-Demo/ViewController.swift) [and macOS](https://github.com/bizz84/SwiftyStoreKit/blob/master/SwiftyStoreKit-macOS-Demo/ViewController.swift) showing how to use SwiftyStoreKit.
 Note that the pre-registered in app purchases in the demo apps are for illustration purposes only and may not work as iTunes Connect may invalidate them.
 
 #### Features
@@ -221,7 +229,7 @@ Note that the pre-registered in app purchases in the demo apps are for illustrat
 - Support for consumable, non-consumable in-app purchases
 - Support for free, auto renewable and non renewing subscriptions
 - Receipt verification
-- iOS, tvOS and OS X compatible
+- iOS, tvOS and macOS compatible
 - enum-based error handling
 
 ## Known issues
@@ -250,7 +258,9 @@ The user can background the hosting application and change the Apple ID used wit
 * [Apple - TN2387: In-App Purchase Best Practices](https://developer.apple.com/library/content/technotes/tn2387/_index.html)
 * [Apple - About Receipt Validation](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html)
 * [Apple - Receipt Validation Programming Guide](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html#//apple_ref/doc/uid/TP40010573-CH106-SW1)
+* [Apple - Validating Receipts Locally](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateLocally.html)
 * [Apple - Offering Subscriptions](https://developer.apple.com/app-store/subscriptions/)
+* [objc.io - Receipt Validation](https://www.objc.io/issues/17-security/receipt-validation/)
 
 
 ## Implementation Details
@@ -290,7 +300,7 @@ enum TransactionResult {
 Depending on the operation, the completion closure for `InAppProductPurchaseRequest` is then mapped to either a `PurchaseResult` or a `RestoreResults` value and returned to the caller.
 
 ## Credits
-Many thanks to [phimage](https://github.com/phimage) for adding OSX support and receipt verification.
+Many thanks to [phimage](https://github.com/phimage) for adding macOS support and receipt verification.
 
 ## Apps using SwiftyStoreKit
 
