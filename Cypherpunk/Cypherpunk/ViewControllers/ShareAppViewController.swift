@@ -8,6 +8,8 @@
 
 import UIKit
 import FontAwesome_swift
+import Social
+import MessageUI
 
 class ShareAppViewController: UIViewController {
 
@@ -42,6 +44,56 @@ class ShareAppViewController: UIViewController {
     }
     */
 
+    @IBAction func facebookShareAction(_ sender: Any) {
+        guard let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook) else { return }
+        vc.add(URL(string: "https://www.cypherpunk.com/"))
+        vc.completionHandler = { result in
+            switch result {
+            case .done:
+                // get 30 days?
+                break
+            case .cancelled:
+                break
+            }
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
     
+    @IBAction func twitterShareAction(_ sender: Any) {
+        guard let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter) else { return }
+        vc.setInitialText("Protect yourself with Cypherpunk Privacy")
+        vc.add(URL(string: "https://www.cypherpunk.com/"))
+        vc.completionHandler = { result in
+            switch result {
+            case .done:
+                // get 30 days?
+                break
+            case .cancelled:
+                break
+            }
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
     
+    @IBAction func emailShareAction(_ sender: Any) {
+        let vc = MFMailComposeViewController()
+        vc.setSubject("Cypherpunk Privacy App Invitation")
+        vc.setMessageBody("Protect yourself with Cypherpunk Privacy\nhttps://www.cypherpunk.com/", isHTML: false)
+        vc.mailComposeDelegate = self
+        self.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension ShareAppViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .sent:
+            // get 30 days?
+            break
+        default:
+            break
+        }
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
 }
