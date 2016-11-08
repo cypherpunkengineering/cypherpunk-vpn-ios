@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReSwift
 
 class AccountConfigurationTableViewController: UITableViewController {
     
@@ -61,6 +62,13 @@ class AccountConfigurationTableViewController: UITableViewController {
         expirationLabel.text = subscription.detailMessage + " " + dateString
 
         self.tableView.reloadData()
+        
+        mainStore.subscribe(self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        mainStore.unsubscribe(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -149,3 +157,9 @@ class AccountConfigurationTableViewController: UITableViewController {
     }
 }
 
+extension AccountConfigurationTableViewController: StoreSubscriber {
+    func newState(state: AppState) {
+        self.subscriptionTypeLabel.text = state.accountState.subscriptionType.title
+        self.mailAddressLabel.text = state.accountState.mailAddress
+    }
+}

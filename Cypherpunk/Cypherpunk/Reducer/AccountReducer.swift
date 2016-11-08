@@ -12,7 +12,7 @@ import ReSwift
 
 struct AccountReducer: Reducer {
     typealias ReducerStateType = AccountState
-
+    
     func handleAction(action: Action, state: AccountState?) -> AccountState {
         
         var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, password: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
@@ -50,10 +50,18 @@ struct AccountReducer: Reducer {
             if status.type == "Free" {
                 accountState.subscriptionType = .free
             } else {
-                if status.renewal == "none" {
+                switch status.renewal {
+                case "none":
                     accountState.subscriptionType = .freePremium
+                case "monthly":
+                    accountState.subscriptionType = .monthly
+                case "semiannually":
+                    accountState.subscriptionType = .semiannually
+                case "annually":
+                    accountState.subscriptionType = .annually
+                default:
+                    accountState.subscriptionType = .free
                 }
-                
             }
             break
         case .upgrade(let subscription, let expiredDate):

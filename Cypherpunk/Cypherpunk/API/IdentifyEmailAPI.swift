@@ -28,7 +28,7 @@ struct IdentifyEmailRequest: IdentifyEmailRequestType {
     }
     
     var path: String {
-        return "/account/identify/email"
+        return "/api/v0/account/identify/email"
     }
     
     var parameters: Any? {

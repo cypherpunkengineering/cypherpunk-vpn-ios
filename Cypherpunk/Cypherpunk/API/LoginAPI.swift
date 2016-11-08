@@ -27,7 +27,7 @@ struct LoginRequest: Request {
     }
     
     var path: String {
-        return "/api/v0/account/authenticate/emailpassword"
+        return "/api/v0/account/authenticate/userpasswd"
     }
     
     var parameters: Any? {

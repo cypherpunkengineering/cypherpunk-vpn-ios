@@ -24,7 +24,7 @@ struct SubscriptionStatusRequest: Request {
     }
 
     var path: String {
-        return "/api/subscription/status"
+        return "/api/v0/subscription/status"
     }
     
     var headerFields: [String : String] {
