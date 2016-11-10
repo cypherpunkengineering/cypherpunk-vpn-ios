@@ -52,9 +52,6 @@ class UpgradeSelectTableViewController: UITableViewController {
             print(self.retrievedProducts)
             // dismiss Indicator
         }
-
-        let request = SKProductsRequest(productIdentifiers: [SubscriptionType.monthly.subscriptionProductId])
-        request.
     }
 
     override func didReceiveMemoryWarning() {
