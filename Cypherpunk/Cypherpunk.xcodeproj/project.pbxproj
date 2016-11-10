@@ -740,9 +740,9 @@
 				TargetAttributes = {
 					203809641D13D89D005145CD = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = S353YJSBDX;
+						DevelopmentTeam = 7NZDHD5S7U;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 1;
@@ -1266,7 +1266,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1313,7 +1313,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1343,8 +1343,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = S353YJSBDX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cypherpunk Partners, Inc. (7NZDHD5S7U)";
+				DEVELOPMENT_TEAM = 7NZDHD5S7U;
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1380,10 +1380,10 @@
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy.ios.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "43192613-f690-4f41-b9c7-2ca676e04762";
+				PROVISIONING_PROFILE_SPECIFIER = "Cypherpunk Privacy app store distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1400,8 +1400,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = S353YJSBDX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cypherpunk Partners, Inc. (7NZDHD5S7U)";
+				DEVELOPMENT_TEAM = 7NZDHD5S7U;
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1437,10 +1437,10 @@
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy.ios.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "43192613-f690-4f41-b9c7-2ca676e04762";
+				PROVISIONING_PROFILE_SPECIFIER = "Cypherpunk Privacy app store distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
