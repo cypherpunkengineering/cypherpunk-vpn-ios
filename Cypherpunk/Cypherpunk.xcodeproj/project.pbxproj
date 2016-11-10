@@ -48,10 +48,8 @@
 		206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4D6F1D82BDF300853B47 /* IndicatorView.swift */; };
 		2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */; };
 		2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */; };
-		2085F33D1D6C4A76002D35C2 /* JSONIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33C1D6C4A76002D35C2 /* JSONIP.swift */; };
 		208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */; };
 		2092AF801DACC2B400F77031 /* ConnectionButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */; };
-		20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */; };
 		20B634B61DC3591B0036169D /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B634B51DC3591B0036169D /* AppAction.swift */; };
 		20BF04D31DB8B8E30007B633 /* SettingUpYourVPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */; };
 		20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */; };
@@ -74,6 +72,7 @@
 		20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A451D3780BC00785399 /* SettingsState.swift */; };
 		20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A471D37851200785399 /* SettingsReducer.swift */; };
 		20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A491D378CBC00785399 /* SettingsAction.swift */; };
+		20F07FD91DD47CCD005FC1D6 /* UpgradeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */; };
 		20F15CED1D8A755C0000DAA7 /* DeviceGuru.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F15CEA1D8A755C0000DAA7 /* DeviceGuru.swift */; };
 		20F15CEE1D8A755C0000DAA7 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */; };
 		20F15CEF1D8A755C0000DAA7 /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F15CEC1D8A755C0000DAA7 /* Hardware.swift */; };
@@ -197,10 +196,8 @@
 		206D4D6F1D82BDF300853B47 /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCharacterGenerator.swift; sourceTree = "<group>"; };
 		2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentContainerViewController.swift; sourceTree = "<group>"; };
-		2085F33C1D6C4A76002D35C2 /* JSONIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONIP.swift; sourceTree = "<group>"; };
 		208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeToCypherpunkViewController.swift; sourceTree = "<group>"; };
 		2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionButtonsViewController.swift; sourceTree = "<group>"; };
-		20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
 		20B634B51DC3591B0036169D /* AppAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingUpYourVPNViewController.swift; sourceTree = "<group>"; };
 		20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
@@ -223,6 +220,7 @@
 		20EC4A451D3780BC00785399 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		20EC4A471D37851200785399 /* SettingsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		20EC4A491D378CBC00785399 /* SettingsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
+		20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeAPI.swift; sourceTree = "<group>"; };
 		20F15CEA1D8A755C0000DAA7 /* DeviceGuru.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceGuru.swift; sourceTree = "<group>"; };
 		20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceList.plist; sourceTree = "<group>"; };
 		20F15CEC1D8A755C0000DAA7 /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
@@ -546,8 +544,7 @@
 				2B95C9181DC7749800F79A2D /* SignUpAPI.swift */,
 				2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */,
 				2BE06E4A1DC0BE4200FDC417 /* SubscriptionAPI.swift */,
-				2085F33C1D6C4A76002D35C2 /* JSONIP.swift */,
-				20AC7C4B1D8BD2F500760BF0 /* GeoLocation.swift */,
+				20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1104,7 +1101,6 @@
 				20D896001D23A84D002B9F9D /* AccountAction.swift in Sources */,
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
 				201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */,
-				20AC7C4C1D8BD2F500760BF0 /* GeoLocation.swift in Sources */,
 				2BA4E2A41DD06372006ACDC5 /* ShareAppViewController.swift in Sources */,
 				2B95C9191DC7749900F79A2D /* SignUpAPI.swift in Sources */,
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
@@ -1125,6 +1121,7 @@
 				2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
+				20F07FD91DD47CCD005FC1D6 /* UpgradeAPI.swift in Sources */,
 				201C0F571DC9E60500B5624B /* WifiNetworksCell.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */,
 				2BDBD0D01D65286D00080E67 /* EditingRootViewController.swift in Sources */,
@@ -1137,7 +1134,6 @@
 				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */,
 				203AE7BD1D8A661900183E7F /* SpecificDataProvider.swift in Sources */,
-				2085F33D1D6C4A76002D35C2 /* JSONIP.swift in Sources */,
 				2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */,
 				2064B3A41DBF38BD00F85148 /* PopoverRootViewController.swift in Sources */,
 				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
