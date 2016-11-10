@@ -159,7 +159,27 @@ class AccountConfigurationTableViewController: UITableViewController {
 
 extension AccountConfigurationTableViewController: StoreSubscriber {
     func newState(state: AppState) {
-        self.subscriptionTypeLabel.text = state.accountState.subscriptionType.title
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy"
+        
+        let dateString: String
+        if let d = state.accountState.expiredDate {
+            dateString = dateFormatter.string(from: d)
+        } else {
+            dateString = ""
+        }
+        expirationLabel.text = state.accountState.subscriptionType.detailMessage + " " + dateString
+
+        if self.subscriptionTypeLabel.text != state.accountState.subscriptionType.title {
+
+            if case .annually = state.accountState.subscriptionType {
+                self.tableView.reloadData()
+            }
+            
+            self.subscriptionTypeLabel.text = state.accountState.subscriptionType.title
+        }
+        
         self.mailAddressLabel.text = state.accountState.mailAddress
     }
 }

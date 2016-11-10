@@ -34,6 +34,23 @@ enum SubscriptionType: Int {
         default: return "Renews On"
         }
     }
+    
+    var subscriptionProductId : String! {
+        guard let AppBundleID = Bundle.main.bundleIdentifier else {
+            return nil
+        }
+        
+        switch self {
+        case .monthly:
+            return AppBundleID + "." + "iTunes_monthly899"
+        case .semiannually:
+            return AppBundleID + "." + "iTunes_semiannually4499"
+        case .annually:
+            return AppBundleID + "." + "iTunes_annually5999"
+        default:
+            return nil
+        }
+    }
 }
 
 import KeychainAccess

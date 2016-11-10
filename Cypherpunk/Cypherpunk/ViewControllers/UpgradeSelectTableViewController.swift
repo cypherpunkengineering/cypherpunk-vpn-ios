@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyStoreKit
+import StoreKit
 
 class UpgradeSelectTableViewController: UITableViewController {
 
@@ -16,6 +18,7 @@ class UpgradeSelectTableViewController: UITableViewController {
     @IBOutlet weak var semiannuallyCellContentView: UIView!
     @IBOutlet weak var semiannuallyCurrentPlanLabelView: UIView!
     
+    private var retrievedProducts: [SKProduct] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,7 +40,21 @@ class UpgradeSelectTableViewController: UITableViewController {
         default:
             break
         }
-        
+
+        SwiftyStoreKit.retrieveProductsInfo([
+            SubscriptionType.monthly.subscriptionProductId,
+            SubscriptionType.semiannually.subscriptionProductId,
+            SubscriptionType.annually.subscriptionProductId
+        ]) { result in
+            // show Indicator
+            self.retrievedProducts.removeAll()
+            self.retrievedProducts.append(contentsOf: result.retrievedProducts)
+            print(self.retrievedProducts)
+            // dismiss Indicator
+        }
+
+        let request = SKProductsRequest(productIdentifiers: [SubscriptionType.monthly.subscriptionProductId])
+        request.
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,17 +63,41 @@ class UpgradeSelectTableViewController: UITableViewController {
     }
     
     @IBAction func upgradeToMonthlySubscriptionAction(_ sender: AnyObject) {
-        mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
-        self.dismiss(animated: true, completion: nil)
+        SwiftyStoreKit.purchaseProduct(SubscriptionType.monthly.subscriptionProductId) { result in
+            switch result {
+            case .success(let productId):
+                print("purchased \(productId)!!")
+                mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
+                self.dismiss(animated: true, completion: nil)
+            case .error(let error):
+                print(error)
+            }
+        }
     }
     @IBAction func upgradeToSemiannuallySubscriptionAction(_ sender: AnyObject) {
-        mainStore.dispatch(AccountAction.upgrade(subscription: .semiannually, expiredDate: Date()))
-        self.dismiss(animated: true, completion: nil)
+        SwiftyStoreKit.purchaseProduct(SubscriptionType.semiannually.subscriptionProductId) { result in
+            switch result {
+            case .success(let productId):
+                print("purchased \(productId)!!")
+                mainStore.dispatch(AccountAction.upgrade(subscription: .semiannually, expiredDate: Date()))
+                self.dismiss(animated: true, completion: nil)
+            case .error(let error):
+                print(error)
+            }
+        }
     }
     
     @IBAction func upgradeToAnnuallySubscriptionAction(_ sender: AnyObject) {
-        mainStore.dispatch(AccountAction.upgrade(subscription: .annually, expiredDate: Date()))
-        self.dismiss(animated: true, completion: nil)
+        SwiftyStoreKit.purchaseProduct(SubscriptionType.annually.subscriptionProductId) { result in
+            switch result {
+            case .success(let productId):
+                print("purchased \(productId)!!")
+                mainStore.dispatch(AccountAction.upgrade(subscription: .annually, expiredDate: Date()))
+                self.dismiss(animated: true, completion: nil)
+            case .error(let error):
+                print(error)
+            }
+        }
     }
 }
 
