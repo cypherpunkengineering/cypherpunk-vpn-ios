@@ -14,6 +14,7 @@ import RealmSwift
 import APIKit
 import SystemConfiguration.CaptiveNetwork
 import ReachabilitySwift
+import SwiftyStoreKit
 
 let mainStore = Store<AppState>(
     reducer: AppReducer(),
@@ -34,6 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
+        
+        SwiftyStoreKit.completeTransactions() { completedTransactions in
+            for completedTransaction in completedTransactions {
+                if completedTransaction.transactionState == .purchased || completedTransaction.transactionState == .restored {
+                    
+                    print("purchased: \(completedTransaction.productId)")
+                }
+            }
+        }
         
         UINavigationBar.appearance().titleTextAttributes = [
             NSFontAttributeName: R.font.dosisSemiBold(size: 18.0)!,
@@ -106,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             wifi.name = ssid as! String
                             
                             try! realm.write {
-                                realm.add(wifi, update: false)
+                                realm.add(wifi, update: true)
                             }
                             
                         }
@@ -148,7 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     wifi.name = ssid as! String
                     
                     try! realm.write {
-                        realm.add(wifi, update: false)
+                        realm.add(wifi, update: true)
                     }
                     
                 }
