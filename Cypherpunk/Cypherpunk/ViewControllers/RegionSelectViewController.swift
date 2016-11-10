@@ -177,15 +177,7 @@ class RegionSelectViewController: UITableViewController {
         let isConnected = manager.connection.status == .connected
         VPNConfigurationCoordinator.start {
             if isConnected {
-                do {
-                    try VPNConfigurationCoordinator.connect()
-                }catch NEVPNError.configurationInvalid {
-                    print("NEVPNError.configurationInvalid")
-                }catch NEVPNError.configurationDisabled {
-                    print("NEVPNError.configurationInvalid")
-                }catch {
-                    print("Unknown Error")
-                }
+                VPNConfigurationCoordinator.connect()
             }
         }
     }
