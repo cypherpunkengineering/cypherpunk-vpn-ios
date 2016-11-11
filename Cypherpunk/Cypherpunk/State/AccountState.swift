@@ -41,12 +41,21 @@ enum SubscriptionType: Int {
         }
         
         switch self {
+        case .monthly, .semiannually, .annually:
+            return AppBundleID + "." + "iTunes_" + self.planId
+        default:
+            return nil
+        }
+    }
+    
+    var planId: String! {
+        switch self {
         case .monthly:
-            return AppBundleID + "." + "iTunes_monthly899"
+            return "monthly899"
         case .semiannually:
-            return AppBundleID + "." + "iTunes_semiannually4499"
+            return "semiannually4499"
         case .annually:
-            return AppBundleID + "." + "iTunes_annually5999"
+            return "annually5999"
         default:
             return nil
         }
