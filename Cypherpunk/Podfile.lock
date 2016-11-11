@@ -1,7 +1,26 @@
 PODS:
   - APIKit (3.0.0):
     - Result (~> 3.0)
+  - Firebase/Core (3.9.0):
+    - FirebaseAnalytics (= 3.5.1)
+    - FirebaseCore (= 3.4.4)
+  - FirebaseAnalytics (3.5.1):
+    - FirebaseCore (~> 3.4)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.4.4):
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (1.0.8)
   - FontAwesome.swift (1.0.0)
+  - GoogleInterchangeUtilities (1.2.2):
+    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleSymbolUtilities (1.1.2)
+  - GoogleToolboxForMac/Defines (2.1.0)
+  - GoogleToolboxForMac/NSData+zlib (2.1.0):
+    - GoogleToolboxForMac/Defines (= 2.1.0)
   - Himotoki (3.0.0)
   - KeychainAccess (3.0.1)
   - R.swift (3.1.0):
@@ -21,6 +40,7 @@ PODS:
 
 DEPENDENCIES:
   - APIKit (from `https://github.com/ishkawa/APIKit.git`)
+  - Firebase/Core
   - FontAwesome.swift
   - Himotoki (from `https://github.com/ikesyo/Himotoki.git`)
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
@@ -79,7 +99,14 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   APIKit: 1e03f13c439fa8b0862ed676948a9f60bb259f75
+  Firebase: ff77ffb77b317c3720fef57a60e9335cebf962e6
+  FirebaseAnalytics: 6e58fc9b397664369ac7617fb0ba93fab6ba7b5b
+  FirebaseCore: d0ed25f27b6f9158eccc439f1be6f92e81207e28
+  FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
+  GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
+  GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
+  GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   Himotoki: df74b01035e86e021b7b04a15b033a7fd189b84f
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
@@ -93,6 +120,6 @@ SPEC CHECKSUMS:
   SwiftyStoreKit: 31ecbc5be1b1c15241392bf6adabdcdd501b6cb5
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: acb42a43740c8d6145a72040a8d43b88339bc80e
+PODFILE CHECKSUM: 91506190a3666348bdd773f282b8f186ea3c2e1f
 
 COCOAPODS: 1.1.1

@@ -78,6 +78,7 @@
 		20F15CEF1D8A755C0000DAA7 /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F15CEC1D8A755C0000DAA7 /* Hardware.swift */; };
 		20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F850901D3DF40A009079A0 /* LoginAPI.swift */; };
 		20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */; };
+		2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */; };
 		2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */; };
 		2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */; };
 		2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E41D3F98D0003FA705 /* RegionAction.swift */; };
@@ -226,6 +227,7 @@
 		20F15CEC1D8A755C0000DAA7 /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
 		20F850901D3DF40A009079A0 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManageTrustedNetworks.storyboard; sourceTree = "<group>"; };
+		2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNProtocolSelectViewController.swift; sourceTree = "<group>"; };
 		2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAPI.swift; sourceTree = "<group>"; };
 		2B2B59E41D3F98D0003FA705 /* RegionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionAction.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				2BF33BC41D5314F1003FCFF3 /* test.p12 */,
 				20D895F61D1D1CC1002B9F9D /* Cypherpunk-Bridging-Header.h */,
 				203809741D13D89D005145CD /* Info.plist */,
+				2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */,
 			);
 			path = Cypherpunk;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				2B45C16B1D20D64600D4326C /* Dosis-Light.otf in Resources */,
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
 				203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */,
+				2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */,
 				2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */,

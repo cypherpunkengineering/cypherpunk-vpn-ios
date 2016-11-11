@@ -16,6 +16,7 @@ target 'Cypherpunk' do
        pod 'RealmSwift'
        pod 'UITextView+Placeholder', '~> 1.2'
        pod 'FontAwesome.swift'
+       pod 'Firebase/Core'
 end
 
 target 'CypherpunkTests' do
