@@ -15,6 +15,7 @@ import APIKit
 import SystemConfiguration.CaptiveNetwork
 import ReachabilitySwift
 import SwiftyStoreKit
+import Firebase
 
 let mainStore = Store<AppState>(
     reducer: AppReducer(),
@@ -129,6 +130,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         try! reachability.startNotifier()
         self.window?.makeKeyAndVisible()
         
+        FIRApp.configure()
+
         return true
     }
     
