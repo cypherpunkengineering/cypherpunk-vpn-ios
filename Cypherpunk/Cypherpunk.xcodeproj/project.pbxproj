@@ -25,7 +25,6 @@
 		203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203809961D13DAF3005145CD /* NetworkExtension.framework */; };
 		2038099D1D13EEA9005145CD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099C1D13EEA9005145CD /* AppState.swift */; };
 		2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099E1D13EEEB005145CD /* AppReducer.swift */; };
-		203AE7BD1D8A661900183E7F /* SpecificDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203AE7BC1D8A661900183E7F /* SpecificDataProvider.swift */; };
 		203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203C62EB1D7014B700891F91 /* Upgrade.storyboard */; };
 		203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */; };
 		203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203C62EF1D702CD900891F91 /* FirstOpen.storyboard */; };
@@ -49,13 +48,14 @@
 		2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */; };
 		2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */; };
 		208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */; };
+		2090F7171DD5AC1300BAB626 /* ChangeEmailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2090F7161DD5AC1300BAB626 /* ChangeEmailAPI.swift */; };
+		2090F7191DD5AF8D00BAB626 /* ChangePasswordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2090F7181DD5AF8D00BAB626 /* ChangePasswordAPI.swift */; };
 		2092AF801DACC2B400F77031 /* ConnectionButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */; };
 		20B634B61DC3591B0036169D /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B634B51DC3591B0036169D /* AppAction.swift */; };
 		20BF04D31DB8B8E30007B633 /* SettingUpYourVPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */; };
 		20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
-		20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895F41D1D1C6F002B9F9D /* IPAddress.swift */; };
 		20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FB1D23A1E7002B9F9D /* AccountState.swift */; };
 		20D895FE1D23A637002B9F9D /* AccountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FD1D23A637002B9F9D /* AccountReducer.swift */; };
 		20D896001D23A84D002B9F9D /* AccountAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FF1D23A84D002B9F9D /* AccountAction.swift */; };
@@ -73,9 +73,6 @@
 		20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A471D37851200785399 /* SettingsReducer.swift */; };
 		20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A491D378CBC00785399 /* SettingsAction.swift */; };
 		20F07FD91DD47CCD005FC1D6 /* UpgradeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */; };
-		20F15CED1D8A755C0000DAA7 /* DeviceGuru.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F15CEA1D8A755C0000DAA7 /* DeviceGuru.swift */; };
-		20F15CEE1D8A755C0000DAA7 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */; };
-		20F15CEF1D8A755C0000DAA7 /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F15CEC1D8A755C0000DAA7 /* Hardware.swift */; };
 		20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F850901D3DF40A009079A0 /* LoginAPI.swift */; };
 		20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */; };
 		2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */; };
@@ -174,7 +171,6 @@
 		203809981D13DAF3005145CD /* Cypherpunk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cypherpunk.entitlements; sourceTree = "<group>"; };
 		2038099C1D13EEA9005145CD /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		2038099E1D13EEEB005145CD /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
-		203AE7BC1D8A661900183E7F /* SpecificDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificDataProvider.swift; sourceTree = "<group>"; };
 		203C62EB1D7014B700891F91 /* Upgrade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Upgrade.storyboard; sourceTree = "<group>"; };
 		203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeSelectTableViewController.swift; sourceTree = "<group>"; };
 		203C62EF1D702CD900891F91 /* FirstOpen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstOpen.storyboard; sourceTree = "<group>"; };
@@ -198,13 +194,14 @@
 		2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCharacterGenerator.swift; sourceTree = "<group>"; };
 		2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentContainerViewController.swift; sourceTree = "<group>"; };
 		208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeToCypherpunkViewController.swift; sourceTree = "<group>"; };
+		2090F7161DD5AC1300BAB626 /* ChangeEmailAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeEmailAPI.swift; sourceTree = "<group>"; };
+		2090F7181DD5AF8D00BAB626 /* ChangePasswordAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordAPI.swift; sourceTree = "<group>"; };
 		2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionButtonsViewController.swift; sourceTree = "<group>"; };
 		20B634B51DC3591B0036169D /* AppAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingUpYourVPNViewController.swift; sourceTree = "<group>"; };
 		20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		20D895ED1D1D16FB002B9F9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		20D895F41D1D1C6F002B9F9D /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		20D895F61D1D1CC1002B9F9D /* Cypherpunk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cypherpunk-Bridging-Header.h"; sourceTree = "<group>"; };
 		20D895FB1D23A1E7002B9F9D /* AccountState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountState.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		20D895FD1D23A637002B9F9D /* AccountReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountReducer.swift; sourceTree = "<group>"; };
@@ -222,9 +219,6 @@
 		20EC4A471D37851200785399 /* SettingsReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		20EC4A491D378CBC00785399 /* SettingsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
 		20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeAPI.swift; sourceTree = "<group>"; };
-		20F15CEA1D8A755C0000DAA7 /* DeviceGuru.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceGuru.swift; sourceTree = "<group>"; };
-		20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceList.plist; sourceTree = "<group>"; };
-		20F15CEC1D8A755C0000DAA7 /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
 		20F850901D3DF40A009079A0 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManageTrustedNetworks.storyboard; sourceTree = "<group>"; };
 		2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -442,8 +436,6 @@
 		20D895E81D1D0C17002B9F9D /* External */ = {
 			isa = PBXGroup;
 			children = (
-				20F15CE91D8A75520000DAA7 /* DeviceGuru */,
-				20D895F41D1D1C6F002B9F9D /* IPAddress.swift */,
 				2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */,
 				203C62F11D7035D800891F91 /* TwoColorGradientButton.swift */,
 				203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */,
@@ -502,16 +494,6 @@
 			path = Validator;
 			sourceTree = "<group>";
 		};
-		20F15CE91D8A75520000DAA7 /* DeviceGuru */ = {
-			isa = PBXGroup;
-			children = (
-				20F15CEA1D8A755C0000DAA7 /* DeviceGuru.swift */,
-				20F15CEB1D8A755C0000DAA7 /* DeviceList.plist */,
-				20F15CEC1D8A755C0000DAA7 /* Hardware.swift */,
-			);
-			name = DeviceGuru;
-			sourceTree = "<group>";
-		};
 		20F8508E1D3DF2F2009079A0 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,6 +530,8 @@
 				2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */,
 				2BE06E4A1DC0BE4200FDC417 /* SubscriptionAPI.swift */,
 				20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */,
+				2090F7161DD5AC1300BAB626 /* ChangeEmailAPI.swift */,
+				2090F7181DD5AF8D00BAB626 /* ChangePasswordAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -588,7 +572,6 @@
 			isa = PBXGroup;
 			children = (
 				2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */,
-				203AE7BC1D8A661900183E7F /* SpecificDataProvider.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -764,7 +747,6 @@
 				2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */,
-				20F15CEE1D8A755C0000DAA7 /* DeviceList.plist in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
 				2B2DE2831DA652F400C22098 /* ContactUs.storyboard in Resources */,
 				2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */,
@@ -1086,7 +1068,6 @@
 				20D896021D23ACE9002B9F9D /* SignInViewController.swift in Sources */,
 				2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */,
 				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
-				20F15CED1D8A755C0000DAA7 /* DeviceGuru.swift in Sources */,
 				206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */,
 				2B34557A1DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
@@ -1134,14 +1115,12 @@
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
 				205EE3241DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift in Sources */,
-				20F15CEF1D8A755C0000DAA7 /* Hardware.swift in Sources */,
-				20D895F51D1D1C6F002B9F9D /* IPAddress.swift in Sources */,
 				203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */,
-				203AE7BD1D8A661900183E7F /* SpecificDataProvider.swift in Sources */,
 				2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */,
 				2064B3A41DBF38BD00F85148 /* PopoverRootViewController.swift in Sources */,
 				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
 				20B634B61DC3591B0036169D /* AppAction.swift in Sources */,
+				2090F7191DD5AF8D00BAB626 /* ChangePasswordAPI.swift in Sources */,
 				208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */,
 				2BE06E4B1DC0BE4200FDC417 /* SubscriptionAPI.swift in Sources */,
 				2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */,
@@ -1154,6 +1133,7 @@
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 				203F4EFF1D5B079D00EA2536 /* UIColor+CIAdditions.swift in Sources */,
 				2BDBD0C61D6514AB00080E67 /* ConfigurationTableViewController.swift in Sources */,
+				2090F7171DD5AC1300BAB626 /* ChangeEmailAPI.swift in Sources */,
 				203F4F071D5B188200EA2536 /* ThemedNavigationButton.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,
 				2B6798E71DAC179500099064 /* AccountConfigurationTableViewController.swift in Sources */,

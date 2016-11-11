@@ -8,8 +8,12 @@
 
 import UIKit
 
+let EditingRootDoneButtonPushedNotification = Notification.Name(rawValue:  "EditingRootDoneButtonPushedNotification")
+let EditingRootDoneButtonIsEnabledNotification = Notification.Name(rawValue:  "EditingRootDoneButtonIsEnabledNotification")
+
 class EditingRootViewController: PopoverRootViewController {
 
+    var doneButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,10 +23,18 @@ class EditingRootViewController: PopoverRootViewController {
             NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
             NSForegroundColorAttributeName: UIColor.goldenYellowColor()
             ], for: .normal)
-
+        self.doneButton = button
+        button.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.gray], for: .disabled)
+        button.isEnabled = false
         self.navigationItem.setRightBarButton(button, animated: true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(isEnabledDoneButton(notification:)), name: EditingRootDoneButtonIsEnabledNotification, object: nil)
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -39,8 +51,13 @@ class EditingRootViewController: PopoverRootViewController {
     }
     */
 
+    func isEnabledDoneButton(notification: Notification) {
+        let bool = notification.object as! Bool
+        self.navigationItem.rightBarButtonItem?.isEnabled = bool
+    }
+    
     func doneAction() {
-        self.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: EditingRootDoneButtonPushedNotification, object: nil)
     }
     
 }

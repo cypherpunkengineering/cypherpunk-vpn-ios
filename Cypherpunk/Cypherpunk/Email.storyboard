@@ -35,13 +35,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-sD-kRU" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="127" y="0.0" width="240" height="43.5"/>
+                                                    <rect key="frame" x="127" y="0.0" width="240" height="43"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="D7N-na-4mo" id="d0h-QM-kr7"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="New Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ap-Of-3ch" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="0.0" width="74" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="74" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="1ln-M8-ZTh"/>
                                                     </constraints>
@@ -71,14 +74,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gwe-U5-k7T" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="127" y="0.0" width="240" height="43.5"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                </textField>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WA-Lc-bhQ" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="0.0" width="74" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="74" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="IeZ-n4-14B"/>
                                                     </constraints>
@@ -86,6 +83,15 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gwe-U5-k7T" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                                    <rect key="frame" x="127" y="0.0" width="240" height="43"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="D7N-na-4mo" id="ORM-WZ-hB3"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9WA-Lc-bhQ" firstAttribute="leading" secondItem="ePh-np-sDx" secondAttribute="leading" constant="15" id="1L1-Vy-bGH"/>
@@ -113,7 +119,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YiL-cL-9lj" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="0.0" width="74" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="74" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="mjS-xX-JTU"/>
                                                     </constraints>
@@ -122,10 +128,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5D-rK-vtJ" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                                    <rect key="frame" x="127" y="0.0" width="240" height="43.5"/>
+                                                    <rect key="frame" x="127" y="0.0" width="240" height="43"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="D7N-na-4mo" id="gqx-Gh-gg2"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -150,6 +159,14 @@
                             <outlet property="delegate" destination="D7N-na-4mo" id="cFq-yO-UTm"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="emailConfirmationField" destination="Gwe-U5-k7T" id="Btq-31-1o8"/>
+                        <outlet property="emailConfirmationLabel" destination="9WA-Lc-bhQ" id="hFP-8N-UmE"/>
+                        <outlet property="newEmailField" destination="dI4-sD-kRU" id="Hrv-pd-Ddz"/>
+                        <outlet property="newEmailLabel" destination="0ap-Of-3ch" id="IMS-40-efT"/>
+                        <outlet property="passwordField" destination="d5D-rK-vtJ" id="1ns-df-5iQ"/>
+                        <outlet property="passwordLabel" destination="YiL-cL-9lj" id="NK6-DW-cX7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5aQ-qc-EdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Accounts" id="hfd-bG-ubO">

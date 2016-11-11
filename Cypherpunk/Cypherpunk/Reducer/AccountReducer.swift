@@ -74,6 +74,10 @@ struct AccountReducer: Reducer {
             }
             
             accountState.save()
+        case .changeEmail(let newEmail):
+            accountState.mailAddress = newEmail
+        case .changePassword(let password):
+            accountState.password = password
         }
         
         return accountState

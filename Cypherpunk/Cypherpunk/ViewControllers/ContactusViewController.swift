@@ -13,6 +13,8 @@ class ContactusViewController: UIViewController {
     @IBOutlet weak var textViewContainerView: UIView!
     weak var textView: UITextView!
     @IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint?
+    
+    var observer: NSObjectProtocol!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,7 +22,17 @@ class ContactusViewController: UIViewController {
         registerKeyboardNotification()
 
         self.automaticallyAdjustsScrollViewInsets = false
-
+        observer = NotificationCenter.default.addObserver(
+            forName: EditingRootDoneButtonPushedNotification,
+            object: nil,
+            queue: OperationQueue.main
+            )
+        { [weak self] notification in
+            guard let `self` = self else {
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +62,7 @@ class ContactusViewController: UIViewController {
         textView.becomeFirstResponder()
     }
     deinit{
+        NotificationCenter.default.removeObserver(self)
         removeKeyboardNotification()
     }
     

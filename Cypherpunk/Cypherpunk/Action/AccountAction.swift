@@ -15,5 +15,7 @@ enum AccountAction: Action {
     case login(response: LoginResponse, password: String)
     case getSubscriptionStatus(status: SubscriptionStatus)
     case upgrade(subscription: SubscriptionType, expiredDate: Date?)
+    case changeEmail(newEmail: String)
+    case changePassword(password: String)
     case logout
 }
