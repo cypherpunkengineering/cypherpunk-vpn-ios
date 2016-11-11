@@ -24,7 +24,7 @@ struct UpgradeRequest: Request {
     }
     
     var method: HTTPMethod {
-        return .get
+        return .post
     }
     
     var path: String {
