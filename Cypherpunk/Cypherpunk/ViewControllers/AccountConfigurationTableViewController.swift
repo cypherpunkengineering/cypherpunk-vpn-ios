@@ -47,22 +47,21 @@ class AccountConfigurationTableViewController: UITableViewController {
         let accountState = mainStore.state.accountState
         mailAddressLabel.text = accountState.mailAddress ?? ""
         usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
+        
         let subscription = accountState.subscriptionType
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
         dateFormatter.locale = Locale.current
         
         let dateString: String
-        if let d = state.accountState.expiredDate {
+        if let d = accountState.expiredDate {
             dateString = dateFormatter.string(from: d)
-            expirationLabel.text = state.accountState.subscriptionType.detailMessage + " " + dateString
+            expirationLabel.text = accountState.subscriptionType.detailMessage + " " + dateString
         } else {
             expirationLabel.text = " "
         }
         
         subscriptionTypeLabel.text = subscription.title
-        expirationLabel.text = subscription.detailMessage + " " + dateString
 
         self.tableView.reloadData()
         
