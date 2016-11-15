@@ -95,6 +95,7 @@ struct AccountState: StateType {
         keychain[AccountStateKey.rawSubscriptionType] = String(subscriptionType.rawValue)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
+        dateFormatter.locale = Locale.current
         if let date = expiredDate {
             let dateString = dateFormatter.string(from: date)
             keychain[AccountStateKey.expiredDate] = dateString
@@ -122,6 +123,7 @@ struct AccountState: StateType {
             state.subscriptionType = SubscriptionType(rawValue: Int(keychain[AccountStateKey.rawSubscriptionType] ?? "\( SubscriptionType.free.rawValue)")!)!
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
+            dateFormatter.locale = Locale.current
             if let dateString = keychain[AccountStateKey.expiredDate] {
                 state.expiredDate = dateFormatter.date(from: dateString)
             }

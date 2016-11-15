@@ -50,6 +50,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         let subscription = accountState.subscriptionType
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
+        dateFormatter.locale = Locale.current
         
         let dateString: String
         if let d = accountState.expiredDate {
@@ -162,6 +163,7 @@ extension AccountConfigurationTableViewController: StoreSubscriber {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
+        dateFormatter.locale = Locale.current
         
         let dateString: String
         if let d = state.accountState.expiredDate {
