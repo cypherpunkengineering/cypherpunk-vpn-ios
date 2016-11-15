@@ -49,20 +49,30 @@ struct AccountReducer: Reducer {
         case .getSubscriptionStatus(let status):
             if status.type == "Free" {
                 accountState.subscriptionType = .free
+                accountState.expiredDate = nil
             } else {
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale.current
+
                 switch status.renewal {
                 case "none":
                     accountState.subscriptionType = .freePremium
+                    accountState.expiredDate = dateFormatter.date(from: status.expiration)
                 case "monthly":
                     accountState.subscriptionType = .monthly
+                    accountState.expiredDate = dateFormatter.date(from: status.expiration)
                 case "semiannually":
                     accountState.subscriptionType = .semiannually
+                    accountState.expiredDate = dateFormatter.date(from: status.expiration)
                 case "annually":
                     accountState.subscriptionType = .annually
+                    accountState.expiredDate = dateFormatter.date(from: status.expiration)
                 default:
                     accountState.subscriptionType = .free
+                    accountState.expiredDate = nil
                 }
             }
+            
             break
         case .upgrade(let subscription, let expiredDate):
             switch subscription {

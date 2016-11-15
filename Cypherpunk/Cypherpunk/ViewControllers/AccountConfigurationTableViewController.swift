@@ -48,15 +48,17 @@ class AccountConfigurationTableViewController: UITableViewController {
         mailAddressLabel.text = accountState.mailAddress ?? ""
         usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
         let subscription = accountState.subscriptionType
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
         dateFormatter.locale = Locale.current
         
         let dateString: String
-        if let d = accountState.expiredDate {
+        if let d = state.accountState.expiredDate {
             dateString = dateFormatter.string(from: d)
+            expirationLabel.text = state.accountState.subscriptionType.detailMessage + " " + dateString
         } else {
-            dateString = ""
+            expirationLabel.text = " "
         }
         
         subscriptionTypeLabel.text = subscription.title
@@ -168,10 +170,10 @@ extension AccountConfigurationTableViewController: StoreSubscriber {
         let dateString: String
         if let d = state.accountState.expiredDate {
             dateString = dateFormatter.string(from: d)
+            expirationLabel.text = state.accountState.subscriptionType.detailMessage + " " + dateString
         } else {
-            dateString = ""
+            expirationLabel.text = " "
         }
-        expirationLabel.text = state.accountState.subscriptionType.detailMessage + " " + dateString
 
         if self.subscriptionTypeLabel.text != state.accountState.subscriptionType.title {
 
