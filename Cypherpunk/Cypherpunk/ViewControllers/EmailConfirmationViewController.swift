@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import APIKit
 
 class EmailConfirmationViewController: UIViewController {
 
     @IBOutlet weak var resendEmailButton: UIButton!
+    
+    var mailAddress: String!
+    var password: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,4 +53,10 @@ class EmailConfirmationViewController: UIViewController {
     @IBAction func backAction(_ sender: AnyObject) {
         let _ = self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    @IBAction func resendAction(_ sender: Any) {
+        let confirmation = SignUpRequest(email: mailAddress, password: password)
+        Session.send(confirmation)
+    }
+    
 }

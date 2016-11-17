@@ -80,7 +80,13 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination
+        if let destination = destination as? EmailConfirmationViewController {
+            destination.mailAddress = email
+            destination.password = inputField.text
+        }
+    }
     /*
      // MARK: - Navigation
      
