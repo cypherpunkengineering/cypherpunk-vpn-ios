@@ -40,8 +40,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SwiftyStoreKit.completeTransactions() { completedTransactions in
             for completedTransaction in completedTransactions {
                 if completedTransaction.transactionState == .purchased || completedTransaction.transactionState == .restored {
-                    
-                    print("purchased: \(completedTransaction.productId)")
+                    let upgradeRequest = UpgradeRequest(
+                        session: mainStore.state.accountState.session!,
+                        accountId: mainStore.state.accountState.mailAddress!,
+                        planId: SubscriptionType.monthly.planId,
+                        receipt: SwiftyStoreKit.localReceiptData!
+                    )
+                    Session.send(upgradeRequest) {
+                        (result) in
+                        switch result {
+                        case .success:
+                            print("purchased \(completedTransaction.productId)!!")
+                            mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
                 }
             }
         }
@@ -131,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         FIRApp.configure()
-
+        
         return true
     }
     
@@ -196,7 +210,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         case .success:
                             break
                         case .failure:
-                            failureBlock()
+                            break
                         }
                     }
                     
@@ -206,12 +220,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         case .success(let status):
                             mainStore.dispatch(AccountAction.getSubscriptionStatus(status: status))
                         case .failure:
+                            break
+                        }
+                    }
+                case .failure(.responseError(let error as ResponseError)):
+                    if case let .unacceptableStatusCode(code) = error {
+                        if code == 401 {
                             failureBlock()
                         }
                     }
-                    
-                case .failure:
-                    failureBlock()
+                default:
+                    break
                 }
             })
         }
