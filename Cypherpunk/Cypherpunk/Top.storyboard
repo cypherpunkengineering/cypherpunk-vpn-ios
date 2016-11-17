@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rgN-tT-18u">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rgN-tT-18u">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -100,7 +100,7 @@
         <scene sceneID="5a0-Ti-oxw">
             <objects>
                 <navigationController navigationBarHidden="YES" id="JcQ-do-E5e" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PYm-P2-Gc6" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -125,14 +125,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojk-gi-tU7" userLabel="AnimationView">
-                                <rect key="frame" x="0.0" y="61" width="375" height="260"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="260"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="26Y-KX-wZQ" kind="embed" id="f9n-6F-EUv"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6e-jm-mZJ" userLabel="ConnectionButtonsView">
-                                <rect key="frame" x="0.0" y="61" width="375" height="260"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="260"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="nsJ-mm-oLD"/>
@@ -142,7 +142,7 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHJ-HJ-e0z" userLabel="Region View">
-                                <rect key="frame" x="0.0" y="321" width="375" height="48"/>
+                                <rect key="frame" x="0.0" y="305" width="375" height="48"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJF-bm-lL7">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -197,27 +197,27 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKJ-OA-8R8">
-                                <rect key="frame" x="0.0" y="369" width="375" height="298"/>
+                                <rect key="frame" x="0.0" y="353" width="375" height="314"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="7i2-HP-Zr4" kind="embed" id="Way-Zi-BOK"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnv-BC-g4G">
-                                <rect key="frame" x="0.0" y="60" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="zTE-vY-Qkl"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUr-oP-HAM">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="-20" width="375" height="64"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRi-aA-Xi6">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgW-5Z-Kgz" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
-                                                <rect key="frame" x="326" y="8" width="44" height="44"/>
+                                                <rect key="frame" x="326" y="0.0" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="DSP-az-VDt"/>
                                                     <constraint firstAttribute="height" constant="44" id="JpL-tT-o0e"/>
@@ -228,7 +228,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9s-Xw-Lxz" customClass="ThemedNavigationButton" customModule="Cypherpunk" customModuleProvider="target">
-                                                <rect key="frame" x="5" y="8" width="44" height="44"/>
+                                                <rect key="frame" x="5" y="0.0" width="44" height="44"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="GZK-5m-XKH"/>
@@ -242,7 +242,7 @@
                                                 </connections>
                                             </button>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-XV-Nmr">
-                                                <rect key="frame" x="111" y="14" width="153" height="32"/>
+                                                <rect key="frame" x="111" y="6" width="153" height="32"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -253,7 +253,7 @@
                                             <constraint firstItem="I9s-Xw-Lxz" firstAttribute="centerY" secondItem="cRi-aA-Xi6" secondAttribute="centerY" id="VIA-Lg-eaq"/>
                                             <constraint firstItem="YNk-XV-Nmr" firstAttribute="centerX" secondItem="cRi-aA-Xi6" secondAttribute="centerX" id="VZS-ww-z2k"/>
                                             <constraint firstItem="YNk-XV-Nmr" firstAttribute="centerY" secondItem="cRi-aA-Xi6" secondAttribute="centerY" id="b4n-sF-NRX"/>
-                                            <constraint firstAttribute="height" constant="60" id="dyy-Sg-hvl"/>
+                                            <constraint firstAttribute="height" constant="44" id="dyy-Sg-hvl"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -261,7 +261,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cRi-aA-Xi6" secondAttribute="trailing" id="9Pu-wf-0o2"/>
                                     <constraint firstAttribute="bottom" secondItem="cRi-aA-Xi6" secondAttribute="bottom" id="gYx-2W-ElY"/>
-                                    <constraint firstAttribute="height" constant="80" id="h3V-4l-qUo"/>
+                                    <constraint firstAttribute="height" constant="64" id="h3V-4l-qUo"/>
                                     <constraint firstItem="cRi-aA-Xi6" firstAttribute="leading" secondItem="gUr-oP-HAM" secondAttribute="leading" id="qEx-OJ-RRX"/>
                                 </constraints>
                             </view>
@@ -407,7 +407,7 @@
                                         <rect key="frame" x="90" y="195" width="195" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufD-qZ-8dw">
-                                                <rect key="frame" x="149" y="0.0" width="46" height="31"/>
+                                                <rect key="frame" x="139" y="0.0" width="56" height="31"/>
                                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
