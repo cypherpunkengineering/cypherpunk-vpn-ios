@@ -39,7 +39,6 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        inputField.text = "test@test.test"
         let attributes: [String: AnyObject] = [
             NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue as AnyObject,
             NSForegroundColorAttributeName: UIColor.white
@@ -121,7 +120,6 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                 case .logIn:
                     self.welcomeLabel.text = "Welcome back!"
                     self.inputField.placeholder = "Type your password"
-                    self.inputField.text = "test123"
                     self.actionButton.setTitle("Log In", for: .normal)
                     self.inputField.isSecureTextEntry = true
                     self.inputField.returnKeyType = UIReturnKeyType.send

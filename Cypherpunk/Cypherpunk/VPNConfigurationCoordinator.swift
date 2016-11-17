@@ -34,8 +34,8 @@ open class VPNConfigurationCoordinator {
         newIPSec.serverAddress = regionState.serverIP // IPSecDefault
         
         newIPSec.useExtendedAuthentication = true
-        newIPSec.username = accountState.mailAddress ?? "test@test.test"
-        let password = accountState.password ?? "test123"
+        newIPSec.username = accountState.mailAddress
+        let password = accountState.password
         newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
         
         newIPSec.localIdentifier = "cypherpunk-vpn-ios"
@@ -76,8 +76,8 @@ open class VPNConfigurationCoordinator {
                 newIPSec.serverAddress = regionState.serverIP // IPSecDefault
                 
                 newIPSec.useExtendedAuthentication = true
-                newIPSec.username = accountState.mailAddress ?? "test@test.test"
-                let password = accountState.password ?? "test123"
+                newIPSec.username = accountState.mailAddress
+                let password = accountState.password
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
                 
                 newIPSec.localIdentifier = "cypherpunk-vpn-ios"
@@ -90,11 +90,11 @@ open class VPNConfigurationCoordinator {
                 newIPSec.authenticationMethod = .none
                 newIPSec.serverAddress = regionState.serverIP // IPSecDefault
                 
-                newIPSec.username = accountState.mailAddress ?? "test@test.test"
+                newIPSec.username = accountState.mailAddress
                 
                 newIPSec.useExtendedAuthentication = true
-                newIPSec.username = accountState.mailAddress ?? "test@test.test"
-                let password = accountState.password ?? "test123"
+                newIPSec.username = accountState.mailAddress
+                let password = accountState.password
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
                 
                 newIPSec.localIdentifier = "cypherpunk-vpn-ios"

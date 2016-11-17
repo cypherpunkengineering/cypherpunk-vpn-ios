@@ -23,11 +23,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        mailAddressField.text = "test@test.test"
-        passwordField.text = "test123"
-        
+        super.viewDidLoad()        
     }
     
     override func viewWillAppear(_ animated: Bool) {
