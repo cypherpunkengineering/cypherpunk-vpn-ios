@@ -126,6 +126,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                 case .logIn:
                     self.welcomeLabel.text = "Welcome back!"
                     self.inputField.placeholder = "Type your password"
+                    self.inputField.text = ""
                     self.actionButton.setTitle("Log In", for: .normal)
                     self.inputField.isSecureTextEntry = true
                     self.inputField.returnKeyType = UIReturnKeyType.send
