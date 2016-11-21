@@ -59,25 +59,42 @@ struct LoginRequest: Request {
 struct LoginResponse: Decodable {
     let secret: String
     let account: Account
+    let privacy: Privacy
     var session: String
     
     static func decode(_ e: Extractor) throws -> LoginResponse {
         return try LoginResponse(
             secret: e.value("secret"),
             account: e.value("account"),
+            privacy: e.value("privacy"),
             session: ""
         )
     }
 }
 
+struct Privacy: Decodable {
+    let username: String
+    let password: String
+    
+    static func decode(_ e: Extractor) throws -> Privacy {
+        return try Privacy(
+            username: e.value("username"),
+            password: e.value("password")
+        )
+    }
+    
+}
+
 struct Account: Decodable {
     let email: String
-    let powerLevel: Int
-
+    let confirmed: Bool
+    let type: String
+    
     static func decode(_ e: Extractor) throws -> Account {
         return try Account(
             email: e.value("email"),
-            powerLevel: e.value("powerLevel")
+            confirmed: e.value("confirmed"),
+            type: e.value("type")
         )
     }
 
