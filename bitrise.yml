@@ -12,6 +12,12 @@ workflows:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@3.4.1: {}
+    - set-xcode-build-number@1.0.4:
+        is_always_run: true
+        inputs:
+        - plist_path: "./Cypherpunk/Cypherpunk/Info.plist"
+        - build_version_offset: ''
+        - build_short_version_string: ''
     - certificate-and-profile-installer: {}
     - cocoapods-install: {}
     - xcode-archive:
@@ -27,14 +33,22 @@ workflows:
             set -x # debug log
             curl -F "file=@/Users/vagrant/deploy/Cypherpunk.ipa" -F "token=${DEPLOYGATE_API_KEY}" -F "message=[$GIT_CLONE_COMMIT_HASH]$GIT_CLONE_COMMIT_MESSAGE_BODY" https://deploygate.com/api/users/cypherpunk/apps
             SRC="/Users/vagrant/deploy/Cypherpunk.ipa"
-            DST="`printf 'cypherpunk-vpn-ios-%05d' ${BITRISE_BUILD_NUMBER}`.ipa"
+            DST="`printf 'cypherpunk-privacy-ios-%05d' ${BITRISE_BUILD_NUMBER}`.ipa"
             scp -o StrictHostKeyChecking=no -P92 "${SRC}" "upload@builds-upload.cypherpunk.engineering:/data/builds/${DST}"
+    - deploy-to-itunesconnect-deliver@2.6.2:
+        is_always_run: true
+        inputs:
+        - itunescon_user: ${ITUNES_CONNECT_EMAIL}
+        - password: ${ITUNES_CONNECT_PASSWORD}
+        - app_id: '1162528030'
+        - team_id: Cypherpunk Engineering K.K.
+        - team_name: S353YJSBDX
     - git::https://github.com/netguru/bitrise-step-slack.git@master:
         title: slack
         is_always_run: true
         inputs:
         - webhook_url: ${SLACK_WEBHOOK_URL}
-        - channel: ${SLACK_CHANNEL}
+        - channel: "${SLACK_CHANNEL}"
 app:
   envs:
   - opts:
