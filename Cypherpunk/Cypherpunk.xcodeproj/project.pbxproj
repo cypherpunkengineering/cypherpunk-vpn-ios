@@ -102,6 +102,7 @@
 		2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B73C70E1D5C7F670090FF8B /* Animation.storyboard */; };
 		2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */; };
 		2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */; };
+		2B88F7E61DE45E7D00DAB027 /* ConfirmEmailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B88F7E51DE45E7D00DAB027 /* ConfirmEmailAPI.swift */; };
 		2B8D3F401DBA965A0096EEF7 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */; };
 		2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */; };
 		2B95C9191DC7749900F79A2D /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C9181DC7749800F79A2D /* SignUpAPI.swift */; };
@@ -252,6 +253,7 @@
 		2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		2B7552491D6AE80700E07A4B /* VPNPersistentDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNPersistentDataGenerator.m; sourceTree = "<group>"; };
 		2B75524B1D6AE9CA00E07A4B /* VPNPersistentDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNPersistentDataGenerator.h; sourceTree = "<group>"; };
+		2B88F7E51DE45E7D00DAB027 /* ConfirmEmailAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmEmailAPI.swift; sourceTree = "<group>"; };
 		2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyEmailAPI.swift; sourceTree = "<group>"; };
 		2B95C9181DC7749800F79A2D /* SignUpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */,
 				2090F7161DD5AC1300BAB626 /* ChangeEmailAPI.swift */,
 				2090F7181DD5AF8D00BAB626 /* ChangePasswordAPI.swift */,
+				2B88F7E51DE45E7D00DAB027 /* ConfirmEmailAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1067,6 +1070,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B88F7E61DE45E7D00DAB027 /* ConfirmEmailAPI.swift in Sources */,
 				203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */,
 				203C62F21D7035D800891F91 /* TwoColorGradientButton.swift in Sources */,
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,

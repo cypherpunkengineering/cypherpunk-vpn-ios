@@ -55,7 +55,7 @@ class EmailConfirmationViewController: UIViewController {
     }
     
     @IBAction func resendAction(_ sender: Any) {
-        let confirmation = SignUpRequest(email: mailAddress, password: password)
+        let confirmation = ConfirmEmailRequest(email: mailAddress)
         Session.send(confirmation)
     }
     
