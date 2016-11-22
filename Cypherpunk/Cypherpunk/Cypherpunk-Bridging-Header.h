@@ -12,6 +12,7 @@
 #import <CommonCrypto/CommonSymmetricKeywrap.h>
 
 #import "UINavigationController+StatusBar.h"
+#import "UIPageControl+Disable.h"
 #import "VPNPersistentDataGenerator.h"
 
 @import UITextView_Placeholder;
