@@ -105,57 +105,81 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
             self.loadingAnimationView.alpha = 1.0
             self.backButton.alpha = 0.0
             self.forgotPasswordButton.alpha = 0.0
+            
+            switch self.state {
+            case .getStarted:
+                break
+            case .logIn:
+                self.welcomeLabel.text = "Welcome back!"
+                self.inputField.placeholder = "Type your password"
+                self.inputField.text = ""
+                self.actionButton.setTitle("Log In", for: .normal)
+                self.inputField.isSecureTextEntry = true
+                self.inputField.returnKeyType = UIReturnKeyType.send
+                self.inputField.becomeFirstResponder()
+            case .signUp:
+                self.welcomeLabel.text = "Hello!\nPlease set your password"
+                self.inputField.placeholder = "Type your password"
+                self.inputField.text = ""
+                self.actionButton.setTitle("Sign Up", for: .normal)
+                self.inputField.isSecureTextEntry = true
+                self.inputField.returnKeyType = UIReturnKeyType.send
+                self.inputField.becomeFirstResponder()
+            }
+
             })
         { (finished) in
             if finished {
-                switch self.state {
-                case .getStarted:
-                    self.welcomeLabel.text = "Welcome to Cypherpunk"
-                    self.inputField.placeholder = "Type your email"
-                    self.inputField.text = self.email
-                    self.actionButton.setTitle("Get Started", for: .normal)
-                    self.inputField.isSecureTextEntry = false
-                    self.inputField.returnKeyType = UIReturnKeyType.next
-                    
-                    UIView.animate(withDuration: 0.3, animations: {
-                        self.welcomeLabel.alpha = 1.0
-                        self.inputContainerView.alpha = 1.0
-                        self.actionButton.alpha = 1.0
-                        self.loadingAnimationView.alpha = 0.0
-                    })
-                case .logIn:
-                    self.welcomeLabel.text = "Welcome back!"
-                    self.inputField.placeholder = "Type your password"
-                    self.inputField.text = ""
-                    self.actionButton.setTitle("Log In", for: .normal)
-                    self.inputField.isSecureTextEntry = true
-                    self.inputField.returnKeyType = UIReturnKeyType.send
-                    self.inputField.becomeFirstResponder()
-                    UIView.animate(withDuration: 0.3, animations: {
-                        self.welcomeLabel.alpha = 1.0
-                        self.inputContainerView.alpha = 1.0
-                        self.actionButton.alpha = 1.0
-                        self.loadingAnimationView.alpha = 0.0
-                        self.backButton.alpha = 1.0
-                        self.forgotPasswordButton.alpha = 1.0
+                DispatchQueue.main.async {
+                    switch self.state {
+                    case .getStarted:
+                        self.welcomeLabel.text = "Welcome to Cypherpunk"
+                        self.inputField.placeholder = "Type your email"
+                        self.inputField.text = self.email
+                        self.actionButton.setTitle("Get Started", for: .normal)
+                        self.inputField.isSecureTextEntry = false
+                        self.inputField.returnKeyType = UIReturnKeyType.next
                         
-                    })
-                case .signUp:
-                    self.welcomeLabel.text = "Hello!\nPlease set your password"
-                    self.inputField.placeholder = "Type your password"
-                    self.inputField.text = ""
-                    self.actionButton.setTitle("Sign Up", for: .normal)
-                    self.inputField.isSecureTextEntry = true
-                    self.inputField.returnKeyType = UIReturnKeyType.send
-                    self.inputField.becomeFirstResponder()
-
-                    UIView.animate(withDuration: 0.3, animations: {
-                        self.welcomeLabel.alpha = 1.0
-                        self.inputContainerView.alpha = 1.0
-                        self.actionButton.alpha = 1.0
-                        self.loadingAnimationView.alpha = 0.0
-                        self.backButton.alpha = 1.0
-                    })
+                        UIView.animate(withDuration: 0.3, animations: {
+                            self.welcomeLabel.alpha = 1.0
+                            self.inputContainerView.alpha = 1.0
+                            self.actionButton.alpha = 1.0
+                            self.loadingAnimationView.alpha = 0.0
+                        })
+                    case .logIn:
+                        self.welcomeLabel.text = "Welcome back!"
+                        self.inputField.placeholder = "Type your password"
+                        self.inputField.text = ""
+                        self.actionButton.setTitle("Log In", for: .normal)
+                        self.inputField.isSecureTextEntry = true
+                        self.inputField.returnKeyType = UIReturnKeyType.send
+                        self.inputField.becomeFirstResponder()
+                        UIView.animate(withDuration: 0.3, animations: {
+                            self.welcomeLabel.alpha = 1.0
+                            self.inputContainerView.alpha = 1.0
+                            self.actionButton.alpha = 1.0
+                            self.loadingAnimationView.alpha = 0.0
+                            self.backButton.alpha = 1.0
+                            self.forgotPasswordButton.alpha = 1.0
+                            
+                        })
+                    case .signUp:
+                        self.welcomeLabel.text = "Hello!\nPlease set your password"
+                        self.inputField.placeholder = "Type your password"
+                        self.inputField.text = ""
+                        self.actionButton.setTitle("Sign Up", for: .normal)
+                        self.inputField.isSecureTextEntry = true
+                        self.inputField.returnKeyType = UIReturnKeyType.send
+                        self.inputField.becomeFirstResponder()
+                        
+                        UIView.animate(withDuration: 0.3, animations: {
+                            self.welcomeLabel.alpha = 1.0
+                            self.inputContainerView.alpha = 1.0
+                            self.actionButton.alpha = 1.0
+                            self.loadingAnimationView.alpha = 0.0
+                            self.backButton.alpha = 1.0
+                        })
+                    }
                 }
             }
         }
