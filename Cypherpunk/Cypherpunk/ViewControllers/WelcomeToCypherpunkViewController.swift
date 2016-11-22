@@ -247,7 +247,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                     case .success:
                         self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
                     case .failure(let error):
-                        print(error)
+                        self.state = .getStarted
                         self.startAnimation()
                     }
                 }
