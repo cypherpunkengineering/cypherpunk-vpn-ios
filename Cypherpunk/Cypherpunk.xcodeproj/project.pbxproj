@@ -45,6 +45,7 @@
 		2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2065DD081DB8D98100D0F446 /* OneFinalStepViewController.swift */; };
 		2065DD0B1DB8D9A500D0F446 /* CongraturationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2065DD0A1DB8D9A500D0F446 /* CongraturationsViewController.swift */; };
 		206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4D6F1D82BDF300853B47 /* IndicatorView.swift */; };
+		2073AE331DE44A300090B472 /* UIPageControl+Disable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2073AE321DE44A300090B472 /* UIPageControl+Disable.m */; };
 		2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */; };
 		2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */; };
 		208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */; };
@@ -191,6 +192,8 @@
 		2065DD081DB8D98100D0F446 /* OneFinalStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneFinalStepViewController.swift; sourceTree = "<group>"; };
 		2065DD0A1DB8D9A500D0F446 /* CongraturationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongraturationsViewController.swift; sourceTree = "<group>"; };
 		206D4D6F1D82BDF300853B47 /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
+		2073AE311DE44A300090B472 /* UIPageControl+Disable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPageControl+Disable.h"; sourceTree = "<group>"; };
+		2073AE321DE44A300090B472 /* UIPageControl+Disable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPageControl+Disable.m"; sourceTree = "<group>"; };
 		2079C8851D5DD994004274ED /* RandomCharacterGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomCharacterGenerator.swift; sourceTree = "<group>"; };
 		2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentContainerViewController.swift; sourceTree = "<group>"; };
 		208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeToCypherpunkViewController.swift; sourceTree = "<group>"; };
@@ -564,6 +567,8 @@
 				2B45C1721D21076000D4326C /* UINavigationController+StatusBar.h */,
 				2B45C1731D21076000D4326C /* UINavigationController+StatusBar.m */,
 				2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */,
+				2073AE311DE44A300090B472 /* UIPageControl+Disable.h */,
+				2073AE321DE44A300090B472 /* UIPageControl+Disable.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1123,6 +1128,7 @@
 				2090F7191DD5AF8D00BAB626 /* ChangePasswordAPI.swift in Sources */,
 				208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */,
 				2BE06E4B1DC0BE4200FDC417 /* SubscriptionAPI.swift in Sources */,
+				2073AE331DE44A300090B472 /* UIPageControl+Disable.m in Sources */,
 				2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
