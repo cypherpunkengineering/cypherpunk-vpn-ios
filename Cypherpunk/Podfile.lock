@@ -1,16 +1,16 @@
 PODS:
   - APIKit (3.0.0):
     - Result (~> 3.0)
-  - Firebase/Core (3.9.0):
-    - FirebaseAnalytics (= 3.5.1)
-    - FirebaseCore (= 3.4.4)
-  - FirebaseAnalytics (3.5.1):
+  - Firebase/Core (3.10.0):
+    - FirebaseAnalytics (= 3.6.0)
+    - FirebaseCore (= 3.4.5)
+  - FirebaseAnalytics (3.6.0):
     - FirebaseCore (~> 3.4)
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (3.4.4):
+  - FirebaseCore (3.4.5):
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (1.0.8)
@@ -27,15 +27,15 @@ PODS:
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
   - ReachabilitySwift (3)
-  - Realm (2.0.3):
-    - Realm/Headers (= 2.0.3)
-  - Realm/Headers (2.0.3)
-  - RealmSwift (2.0.3):
-    - Realm (= 2.0.3)
+  - Realm (2.1.0):
+    - Realm/Headers (= 2.1.0)
+  - Realm/Headers (2.1.0)
+  - RealmSwift (2.1.0):
+    - Realm (= 2.1.0)
   - Result (3.0.0)
-  - ReSwift (2.1.0)
-  - SVProgressHUD (2.0.3)
-  - SwiftyStoreKit (0.5.4)
+  - ReSwift (3.0.0)
+  - SVProgressHUD (2.0.4)
+  - SwiftyStoreKit (0.6.0)
   - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
@@ -76,7 +76,7 @@ CHECKOUT OPTIONS:
     :commit: c76d3e20c374c4c62bdbfb92d797db4e022622af
     :git: https://github.com/ishkawa/APIKit.git
   Himotoki:
-    :commit: 68920c21ed0a16958b0f311d7d24bde697ff39ea
+    :commit: efeb1b1589303fe91f853d940f14c522a88bad0a
     :git: https://github.com/ikesyo/Himotoki.git
   KeychainAccess:
     :commit: 20f0c126c3cdd279a385b8444b55d3499f41fb82
@@ -85,23 +85,23 @@ CHECKOUT OPTIONS:
     :commit: 47f058b5187f7ac221e86846e793ff993c0c4270
     :git: https://github.com/ashleymills/Reachability.swift.git
   Result:
-    :commit: 25f2d7c051df40d173519814126a5d88ac720030
+    :commit: 5647ba49cbd0b7bf0aa2c5f2b5e602fafd109c9d
     :git: https://github.com/antitypical/Result.git
   ReSwift:
-    :commit: a560b66dae96a167e2b79c9c11aa0a3ad93c2df6
+    :commit: 916ca29c7bb85b49bec1cedd014b2e2e01b1a7a8
     :git: https://github.com/ReSwift/ReSwift.git
   SVProgressHUD:
-    :commit: 1871e8e12740f5fc672cb03f314737ab4ff319bc
+    :commit: 78fd5de1b65855269a5332e87626c9f7b4b11c7f
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
   SwiftyStoreKit:
-    :commit: 6dbcafc2b597d4bf0f9f784d6d1200bfd7c6d62b
+    :commit: 9e690ef2c24867a12380d9e66c189a51688c7ebb
     :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 SPEC CHECKSUMS:
   APIKit: 1e03f13c439fa8b0862ed676948a9f60bb259f75
-  Firebase: ff77ffb77b317c3720fef57a60e9335cebf962e6
-  FirebaseAnalytics: 6e58fc9b397664369ac7617fb0ba93fab6ba7b5b
-  FirebaseCore: d0ed25f27b6f9158eccc439f1be6f92e81207e28
+  Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
+  FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
+  FirebaseCore: 1e383fdfe37b6b5d6ff88e84204bdee30276af0f
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
@@ -112,12 +112,12 @@ SPEC CHECKSUMS:
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Realm: 5f008bfe3c8c47142eddfc30b8c1584cde22db24
-  RealmSwift: 5afb451f65b682242f272dbb52d5c6f6e343c980
+  Realm: bc829ad0ef3d4eea70c34cfcc3b1704d18d50df1
+  RealmSwift: a4d4abbf0088c337cab5b738054395842e4b3052
   Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
-  ReSwift: c13b76cb963c5ab2a137c9c6e74823cef4b81588
-  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
-  SwiftyStoreKit: 31ecbc5be1b1c15241392bf6adabdcdd501b6cb5
+  ReSwift: 00add9a3eb1b5c93a3728ea88393de390ef6ddff
+  SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
+  SwiftyStoreKit: 4c646fbaee4af01d3aa1877fb1e2e2fda7f884ee
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
 PODFILE CHECKSUM: 91506190a3666348bdd773f282b8f186ea3c2e1f

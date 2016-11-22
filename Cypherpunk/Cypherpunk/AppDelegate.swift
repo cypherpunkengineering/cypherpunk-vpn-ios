@@ -37,9 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
         
-        SwiftyStoreKit.completeTransactions() { completedTransactions in
-            for completedTransaction in completedTransactions {
-                if completedTransaction.transactionState == .purchased || completedTransaction.transactionState == .restored {
+        SwiftyStoreKit.completeTransactions() { products in
+            for product in products {
+                if product.needsFinishTransaction {
                     let upgradeRequest = UpgradeRequest(
                         session: mainStore.state.accountState.session!,
                         accountId: mainStore.state.accountState.mailAddress!,
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         (result) in
                         switch result {
                         case .success:
-                            print("purchased \(completedTransaction.productId)!!")
+                            print("purchased \(product.productId)!!")
                             mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
                         case .failure(let error):
                             print(error)
@@ -58,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
+            
         }
         
         UINavigationBar.appearance().titleTextAttributes = [
