@@ -57,20 +57,56 @@
                                     <segue destination="uXO-7N-wwL" kind="embed" id="zxo-cA-MR3"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSP-qD-QVo" customClass="ShadowView" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="-9" y="0.0" width="9" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="9" id="baG-dm-qmj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftAlpha">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightAlpha">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4T-oA-hBM" customClass="ShadowView" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="375" y="0.0" width="9" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="9" id="J9l-r7-cnx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftAlpha">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightAlpha">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="O4T-oA-hBM" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="0zD-n0-MLF"/>
                             <constraint firstItem="f2M-wi-84m" firstAttribute="top" secondItem="aIK-LW-5SE" secondAttribute="top" id="9RT-Pz-Maq"/>
                             <constraint firstItem="JOO-yj-ai0" firstAttribute="leading" secondItem="f2M-wi-84m" secondAttribute="trailing" id="Ajx-bF-pxp"/>
                             <constraint firstItem="JOO-yj-ai0" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="HaH-nE-oCL"/>
                             <constraint firstItem="JOO-yj-ai0" firstAttribute="bottom" secondItem="f2M-wi-84m" secondAttribute="bottom" id="Mr7-cc-LPr"/>
+                            <constraint firstItem="kSP-qD-QVo" firstAttribute="bottom" secondItem="f2M-wi-84m" secondAttribute="bottom" id="MvD-vP-gbG"/>
                             <constraint firstItem="f2M-wi-84m" firstAttribute="height" secondItem="aIK-LW-5SE" secondAttribute="height" id="WEO-Ef-WE1"/>
                             <constraint firstItem="f2M-wi-84m" firstAttribute="width" secondItem="aIK-LW-5SE" secondAttribute="width" id="Xd9-L7-xX3"/>
+                            <constraint firstItem="f2M-wi-84m" firstAttribute="leading" secondItem="kSP-qD-QVo" secondAttribute="trailing" id="ZWG-UL-ncg"/>
                             <constraint firstItem="4nR-yl-sVp" firstAttribute="bottom" secondItem="f2M-wi-84m" secondAttribute="bottom" id="cr9-CG-j05"/>
                             <constraint firstItem="f2M-wi-84m" firstAttribute="centerX" secondItem="aIK-LW-5SE" secondAttribute="centerX" id="eh3-4d-7Kn"/>
+                            <constraint firstItem="kSP-qD-QVo" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="jtO-dA-a51"/>
+                            <constraint firstItem="O4T-oA-hBM" firstAttribute="bottom" secondItem="f2M-wi-84m" secondAttribute="bottom" id="oxA-3Z-SRV"/>
                             <constraint firstItem="f2M-wi-84m" firstAttribute="leading" secondItem="4nR-yl-sVp" secondAttribute="trailing" id="uXJ-XK-zFY"/>
                             <constraint firstItem="4nR-yl-sVp" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="uwG-GA-K3G"/>
                             <constraint firstItem="xgB-4M-oEN" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="bottom" id="uzk-Vv-U9x"/>
+                            <constraint firstItem="O4T-oA-hBM" firstAttribute="leading" secondItem="f2M-wi-84m" secondAttribute="trailing" id="ydC-tS-YIv"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ooe-aL-HE2" appends="YES" id="EVQ-ye-Lu2"/>
@@ -407,7 +443,7 @@
                                         <rect key="frame" x="90" y="195" width="195" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufD-qZ-8dw">
-                                                <rect key="frame" x="139" y="0.0" width="56" height="31"/>
+                                                <rect key="frame" x="149" y="0.0" width="46" height="31"/>
                                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
