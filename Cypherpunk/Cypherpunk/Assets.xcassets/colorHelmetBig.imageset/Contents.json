@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "colorHelmetBig.pdf"
+      "scale" : "1x",
+      "filename" : "logoShaded.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "logoShaded@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "logoShaded@3x.png"
     }
   ],
   "info" : {
