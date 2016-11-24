@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "illustGift.pdf"
+      "scale" : "1x",
+      "filename" : "illustGift.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "illustGift@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "illustGift@3x.png"
     }
   ],
   "info" : {

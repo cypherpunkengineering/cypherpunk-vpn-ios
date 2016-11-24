@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "illustMailConfirm.pdf"
+      "scale" : "1x",
+      "filename" : "illustMailConfirm.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "illustMailConfirm@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "illustMailConfirm@3x.png"
     }
   ],
   "info" : {
