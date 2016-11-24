@@ -270,6 +270,10 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                     Session.send(request, callbackQueue: nil, handler: { (result) in
                         switch result {
                         case .success(let response):
+                            if response.account.confirmed == false {
+                                self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
+                                return
+                            }
                             let regionRequest = RegionListRequest(session: response.session)
                             Session.send(regionRequest) { (result) in
                                 switch result {
