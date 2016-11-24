@@ -217,16 +217,38 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLT-Sd-hOs">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="colorHelmetBig" translatesAutoresizingMaskIntoConstraints="NO" id="NZv-We-G6k">
+                                        <rect key="frame" x="356.5" y="388" width="55" height="76"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="b1f-5T-Je7">
+                                        <rect key="frame" x="307.5" y="486" width="153" height="32"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="NZv-We-G6k" firstAttribute="centerX" secondItem="qLT-Sd-hOs" secondAttribute="centerX" id="Gmo-dS-AoY"/>
+                                    <constraint firstItem="b1f-5T-Je7" firstAttribute="centerY" secondItem="qLT-Sd-hOs" secondAttribute="centerY" id="K7W-8t-DVs"/>
+                                    <constraint firstItem="b1f-5T-Je7" firstAttribute="top" secondItem="NZv-We-G6k" secondAttribute="bottom" constant="22" id="NwZ-ZF-461"/>
+                                    <constraint firstItem="b1f-5T-Je7" firstAttribute="centerX" secondItem="qLT-Sd-hOs" secondAttribute="centerX" id="S0J-2q-7ar"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XBA-9q-MmR" firstAttribute="top" secondItem="ySx-Sp-kK1" secondAttribute="top" id="4iS-k4-AOH"/>
                             <constraint firstItem="ySx-Sp-kK1" firstAttribute="width" secondItem="rkt-Ed-KQJ" secondAttribute="width" id="EdL-vd-QYJ"/>
+                            <constraint firstItem="XBA-9q-MmR" firstAttribute="leading" secondItem="qLT-Sd-hOs" secondAttribute="trailing" id="Fnq-Lo-Ve6"/>
                             <constraint firstItem="NGT-Qq-LbZ" firstAttribute="leading" secondItem="ySx-Sp-kK1" secondAttribute="trailing" id="HtN-Zu-eYK"/>
                             <constraint firstItem="RZP-F2-pwc" firstAttribute="top" secondItem="ySx-Sp-kK1" secondAttribute="bottom" id="JUL-q9-4yS"/>
+                            <constraint firstItem="qLT-Sd-hOs" firstAttribute="leading" secondItem="rkt-Ed-KQJ" secondAttribute="leading" id="LqV-gh-oDa"/>
                             <constraint firstItem="NGT-Qq-LbZ" firstAttribute="bottom" secondItem="ySx-Sp-kK1" secondAttribute="bottom" id="NNa-MN-x10"/>
+                            <constraint firstItem="qLT-Sd-hOs" firstAttribute="top" secondItem="sNZ-LR-2bF" secondAttribute="bottom" id="R1h-uF-gTe"/>
                             <constraint firstItem="XBA-9q-MmR" firstAttribute="leading" secondItem="ySx-Sp-kK1" secondAttribute="trailing" id="eHw-cC-rsT"/>
                             <constraint firstItem="NGT-Qq-LbZ" firstAttribute="top" secondItem="ySx-Sp-kK1" secondAttribute="top" id="gSB-rq-HEY"/>
+                            <constraint firstItem="RZP-F2-pwc" firstAttribute="top" secondItem="qLT-Sd-hOs" secondAttribute="bottom" id="jBb-S5-Xtf"/>
                             <constraint firstItem="ySx-Sp-kK1" firstAttribute="centerX" secondItem="rkt-Ed-KQJ" secondAttribute="centerX" id="lYx-yz-UcG"/>
                             <constraint firstItem="ySx-Sp-kK1" firstAttribute="height" secondItem="rkt-Ed-KQJ" secondAttribute="height" id="sAR-8q-qDt"/>
                             <constraint firstItem="XBA-9q-MmR" firstAttribute="bottom" secondItem="ySx-Sp-kK1" secondAttribute="bottom" id="x8V-lb-fg2"/>
@@ -237,6 +259,7 @@
                     </view>
                     <connections>
                         <outlet property="centerConstraint" destination="lYx-yz-UcG" id="DC2-t8-dVR"/>
+                        <outlet property="fakeLaunchView" destination="qLT-Sd-hOs" id="USr-Sq-JfC"/>
                         <outlet property="resetTapRecognizer" destination="gyy-sJ-N43" id="8fs-13-Hfu"/>
                         <outlet property="topContainerView" destination="ySx-Sp-kK1" id="tVC-0b-mc2"/>
                     </connections>
@@ -538,7 +561,7 @@
         <scene sceneID="d74-gC-XzJ">
             <objects>
                 <navigationController id="ICK-2P-0XI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="myW-vD-VeI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="myW-vD-VeI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -745,7 +768,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnN-89-7vf">
-                                <rect key="frame" x="277" y="578" width="194" height="33"/>
+                                <rect key="frame" x="277" y="578" width="194" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="194" id="MMm-PG-zcG"/>
                                 </constraints>
@@ -888,6 +911,8 @@ your preferences.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="colorHelmetBig" width="55" height="76"/>
+        <image name="headerLogo" width="153" height="32"/>
         <image name="iconSettings" width="22" height="22"/>
         <image name="iconStar" width="20" height="19"/>
         <image name="ioBtnGray" width="140" height="152"/>

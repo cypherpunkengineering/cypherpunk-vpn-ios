@@ -76,9 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         
-        let config = Realm.Configuration(schemaVersion: 4, migrationBlock: {
+        let config = Realm.Configuration(schemaVersion: 5, migrationBlock: {
             (migration, oldSchemaVersion) in
-            if (oldSchemaVersion < 4) {
+            if (oldSchemaVersion < 5) {
             }
         })
         
@@ -86,12 +86,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             
-            self.window?.rootViewController = R.storyboard.top_iPad.instantiateInitialViewController()
-            
+            let vc: SlidingNavigationViewController! = R.storyboard.top_iPad.instantiateInitialViewController()
+            let _ = vc.view // view instantiate trick
+
+            self.window?.rootViewController = vc
+            vc.fakeLaunchView.isHidden = true
             DispatchQueue.main.async { [unowned self] in
                 if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
+                    vc.fakeLaunchView.isHidden = false
                     let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
-                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
+                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: {
+                        vc.fakeLaunchView.isHidden = true
+                    })
                 } else {
                     let realm = try! Realm()
                     if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
@@ -102,12 +108,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
-            self.window?.rootViewController = R.storyboard.top.instantiateInitialViewController()
-            
+
+            let vc: SlidingNavigationViewController! = R.storyboard.top.instantiateInitialViewController()
+            let _ = vc.view // view instantiate trick
+            self.window?.rootViewController = vc
+            vc.fakeLaunchView.isHidden = true
+
             DispatchQueue.main.async { [unowned self] in
                 if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
+                    vc.fakeLaunchView.isHidden = false
                     let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
-                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
+                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: {
+                        vc.fakeLaunchView.isHidden = true
+                    })
                 } else {
                     let realm = try! Realm()
                     if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {

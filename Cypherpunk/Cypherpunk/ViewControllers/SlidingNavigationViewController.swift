@@ -21,6 +21,7 @@ class SlidingNavigationViewController: UIViewController {
     }
     
     @IBOutlet weak var topContainerView: UIView!
+    @IBOutlet weak var fakeLaunchView: UIView!
     @IBOutlet var resetTapRecognizer: UITapGestureRecognizer!
     
     private var centerState = SlideState.center {
@@ -52,6 +53,10 @@ class SlidingNavigationViewController: UIViewController {
         centerState = .center
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
