@@ -14,22 +14,12 @@ class ThemedBackgroundView: UIView {
     override var frame: CGRect {
         didSet {
             DispatchQueue.main.async(execute: {
-                let topColor = UIColor(red: 118.0 / 255.0, green: 168.0 / 255.0 , blue: 231.0 / 255.0 , alpha: 1.0)
-                let bottomColor = UIColor(red: 3.0 / 255.0, green: 70.0 / 255.0 , blue: 152.0 / 255.0 , alpha: 1.0)
-
-                let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
-                
-                let gradientLayer: CAGradientLayer = CAGradientLayer()
-                gradientLayer.colors = gradientColors
-                gradientLayer.frame = self.layer.frame
-                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-                gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-
+                let gradientLayer: CAGradientLayer = self.instantiateGradientLayer()
                 if self.gradientLayer != nil {
                     self.gradientLayer.removeFromSuperlayer()
                     self.gradientLayer = nil
                 }
-
+                
                 self.gradientLayer = gradientLayer
                 
                 self.layer.insertSublayer(gradientLayer, at: 0)
@@ -43,19 +33,7 @@ class ThemedBackgroundView: UIView {
     
     func configureView() {
         DispatchQueue.main.async(execute: {
-//            let topColor = UIColor(red: 118.0 / 255.0, green: 168.0 / 255.0 , blue: 231.0 / 255.0 , alpha: 1.0)
-//            let bottomColor = UIColor(red: 3.0 / 255.0, green: 70.0 / 255.0 , blue: 152.0 / 255.0 , alpha: 1.0)
-            let topColor = UIColor(red: 118.0 / 255.0, green: 168.0 / 255.0 , blue: 231.0 / 255.0 , alpha: 1.0)
-            let bottomColor = UIColor(red: 3.0 / 255.0, green: 70.0 / 255.0 , blue: 152.0 / 255.0 , alpha: 1.0)
-
-            let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
-            
-            let gradientLayer: CAGradientLayer = CAGradientLayer()
-            gradientLayer.colors = gradientColors
-            gradientLayer.frame = self.layer.frame
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-
+            let gradientLayer: CAGradientLayer = self.instantiateGradientLayer()
             if self.gradientLayer != nil {
                 self.gradientLayer.removeFromSuperlayer()
                 self.gradientLayer = nil
@@ -65,5 +43,19 @@ class ThemedBackgroundView: UIView {
 
             self.layer.insertSublayer(gradientLayer, at: 0)
         })
+    }
+    
+    func instantiateGradientLayer() -> CAGradientLayer {
+        let topColor = UIColor(red: 118.0 / 255.0, green: 168.0 / 255.0 , blue: 231.0 / 255.0 , alpha: 1.0)
+        let bottomColor = UIColor(red: 3.0 / 255.0, green: 70.0 / 255.0 , blue: 152.0 / 255.0 , alpha: 1.0)
+        
+        let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
+        
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.frame = self.layer.frame
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        return gradientLayer
     }
 }
