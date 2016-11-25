@@ -37,37 +37,6 @@ extension Keychain {
 }
 
 struct SettingsState: StateType {
-
-    var isAutoConnectOnBoot: Bool {
-        get{
-            if mainStore.state.isInstalledPreferences == false {
-                return false
-            }
-            
-            let keychain = Keychain.userKeychain()
-            return NSString(string: keychain[SettingsStateKey.isAutoConnectOnBoot] ?? "false").boolValue
-        }
-        set(newValue) {
-            let keychain = Keychain.userKeychain()
-            keychain[SettingsStateKey.isAutoConnectOnBoot] = String(newValue)
-        }
-    }
-    
-    var isAutoReconnect: Bool {
-        get{
-            if mainStore.state.isInstalledPreferences == false {
-                return false
-            }
-            
-            let keychain = Keychain.userKeychain()
-            return NSString(string: keychain[SettingsStateKey.isAutoReconnect] ?? "false").boolValue
-        }
-        set(newValue) {
-            let keychain = Keychain.userKeychain()
-            keychain[SettingsStateKey.isAutoReconnect] = String(newValue)
-        }
-    }
-    
     
     /* VPN Settings */
     var vpnProtocolMode: VPNProtocolMode {
@@ -89,8 +58,12 @@ struct SettingsState: StateType {
     
     var isAutoSecureConnectionsWhenConnectedUntrustedNetwork: Bool {
         get{
+            if mainStore.state.isInstalledPreferences == false {
+                return false
+            }
+
             let keychain = Keychain.userKeychain()
-            return NSString(string: keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedUntrustedNetwork] ?? "true").boolValue
+            return NSString(string: keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedUntrustedNetwork] ?? "false").boolValue
         }
         set(newValue) {
             let keychain = Keychain.userKeychain()
@@ -101,8 +74,12 @@ struct SettingsState: StateType {
 
     var isAutoSecureConnectionsWhenConnectedOtherNetwork: Bool {
         get{
+            if mainStore.state.isInstalledPreferences == false {
+                return false
+            }
+
             let keychain = Keychain.userKeychain()
-            return NSString(string: keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedOtherNetwork] ?? "true").boolValue
+            return NSString(string: keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedOtherNetwork] ?? "false").boolValue
         }
         set(newValue) {
             let keychain = Keychain.userKeychain()
@@ -114,8 +91,6 @@ struct SettingsState: StateType {
 
 
     fileprivate struct SettingsStateKey {
-        static let isAutoConnectOnBoot = "isAutoConnectOnBoot"
-        static let isAutoReconnect = "isAutoReconnect"
         static let vpnProtocolMode = "vpnProtocolMode"
         static let isAutoSecureConnectionsWhenConnectedUntrustedNetwork = "isAutoSecureConnectionsWhenConnectedUntrustedNetwork"
         static let isAutoSecureConnectionsWhenConnectedOtherNetwork = "isAutoSecureConnectionsWhenConnectedOtherNetwork"

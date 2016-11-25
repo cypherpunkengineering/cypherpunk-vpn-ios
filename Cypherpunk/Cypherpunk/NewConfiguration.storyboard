@@ -24,49 +24,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="deviceRGB"/>
                         <color key="separatorColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
                             <tableViewSection headerTitle="Basic Settings" id="7lB-RC-vP6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="fYz-H4-Z2d" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="0.0" id="JlQ-LY-Zjh" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fYz-H4-Z2d" id="3ta-lp-gdZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JlQ-LY-Zjh" id="JqA-h9-rGR">
+                                            <rect key="frame" x="0.0" y="-1" width="375" height="1"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-connect on boot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-rh-BLw">
-                                                    <rect key="frame" x="16" y="0.0" width="290" height="43"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QH2-pR-xjh">
-                                                    <rect key="frame" x="306" y="6" width="51" height="31"/>
-                                                    <color key="onTintColor" red="0.97254901959999995" green="0.81176470590000005" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <connections>
-                                                        <action selector="changeValueOfAutoConnectOnBootAction:" destination="dVY-5W-C5Z" eventType="valueChanged" id="9Xd-fk-9HM"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="QH2-pR-xjh" firstAttribute="leading" secondItem="3Yy-rh-BLw" secondAttribute="trailing" id="8K4-2y-ZXy"/>
-                                                <constraint firstItem="QH2-pR-xjh" firstAttribute="centerY" secondItem="3ta-lp-gdZ" secondAttribute="centerY" id="G9i-oJ-eZ1"/>
-                                                <constraint firstItem="3Yy-rh-BLw" firstAttribute="leading" secondItem="3ta-lp-gdZ" secondAttribute="leading" constant="16" id="Pgr-kk-lYN"/>
-                                                <constraint firstItem="3Yy-rh-BLw" firstAttribute="top" secondItem="3ta-lp-gdZ" secondAttribute="top" id="ROQ-8H-amw"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="QH2-pR-xjh" secondAttribute="trailing" constant="12" id="ZCg-Ug-3ku"/>
-                                                <constraint firstAttribute="bottom" secondItem="3Yy-rh-BLw" secondAttribute="bottom" id="h8H-R4-gcE"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="hbe-OB-T0T" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hbe-OB-T0T" id="BGX-xg-rDj">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-connect on trusted networks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9l-GN-Qwa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-connect setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9l-GN-Qwa">
                                                     <rect key="frame" x="16" y="0.0" width="326" height="44"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -85,44 +63,44 @@
                                             <segue destination="Rz3-Gx-IdV" kind="presentation" modalPresentationStyle="formSheet" id="tho-da-vjN"/>
                                         </connections>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="VPN" id="skh-iY-bG6">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Jg5-uE-gBF" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="144" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="0.0" id="0kk-Fq-xzP" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jg5-uE-gBF" id="3sP-ue-zaJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0kk-Fq-xzP" id="HET-kQ-TUs">
+                                            <rect key="frame" x="0.0" y="-1" width="342" height="1"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Always On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKR-ed-cky">
-                                                    <rect key="frame" x="16" y="0.0" width="290" height="43"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-connect setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSQ-pB-sSV">
+                                                    <rect key="frame" x="16" y="0.0" width="326" height="0.5"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lqb-ad-h8b">
-                                                    <rect key="frame" x="306" y="6" width="51" height="31"/>
-                                                    <color key="onTintColor" red="0.97254901959999995" green="0.81176470590000005" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <connections>
-                                                        <action selector="changeValueOfAlwaysOnAction:" destination="dVY-5W-C5Z" eventType="valueChanged" id="N2S-HY-awq"/>
-                                                    </connections>
-                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Lqb-ad-h8b" secondAttribute="trailing" constant="12" id="74G-Ld-GIA"/>
-                                                <constraint firstAttribute="bottom" secondItem="KKR-ed-cky" secondAttribute="bottom" id="FPu-Nu-2GH"/>
-                                                <constraint firstItem="KKR-ed-cky" firstAttribute="top" secondItem="3sP-ue-zaJ" secondAttribute="top" id="MS8-E3-4uo"/>
-                                                <constraint firstItem="KKR-ed-cky" firstAttribute="leading" secondItem="3sP-ue-zaJ" secondAttribute="leading" constant="16" id="N49-oG-TRD"/>
-                                                <constraint firstItem="Lqb-ad-h8b" firstAttribute="centerY" secondItem="3sP-ue-zaJ" secondAttribute="centerY" id="Pb2-vJ-5iL"/>
-                                                <constraint firstItem="Lqb-ad-h8b" firstAttribute="leading" secondItem="KKR-ed-cky" secondAttribute="trailing" id="yYy-FJ-HIT"/>
+                                                <constraint firstItem="ZSQ-pB-sSV" firstAttribute="centerY" secondItem="HET-kQ-TUs" secondAttribute="centerY" id="fgL-mw-xMe"/>
+                                                <constraint firstItem="ZSQ-pB-sSV" firstAttribute="top" secondItem="HET-kQ-TUs" secondAttribute="top" id="lqq-d5-XoL"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZSQ-pB-sSV" secondAttribute="trailing" id="vBH-ue-fAw"/>
+                                                <constraint firstItem="ZSQ-pB-sSV" firstAttribute="leading" secondItem="HET-kQ-TUs" secondAttribute="leadingMargin" constant="8" id="zin-kN-Kz3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="VPN Settings" id="skh-iY-bG6">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="0.0" id="B68-WM-fXu" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B68-WM-fXu" id="LZD-1y-vhe">
+                                            <rect key="frame" x="0.0" y="-1" width="375" height="1"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="E2r-ZR-pU2" detailTextLabel="ly0-4D-n7L" style="IBUITableViewCellStyleValue1" id="MV0-jF-THB" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MV0-jF-THB" id="kaG-OX-x6Y">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
@@ -158,8 +136,6 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="autoConnectOnBootSwitch" destination="QH2-pR-xjh" id="uT0-Rj-jtJ"/>
-                        <outlet property="vpnAlwaysOnSwitch" destination="Lqb-ad-h8b" id="XWZ-Ql-v88"/>
                         <outlet property="vpnProtocolValueLabel" destination="ly0-4D-n7L" id="Euf-4n-5pt"/>
                     </connections>
                 </tableViewController>

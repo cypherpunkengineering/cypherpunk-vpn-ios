@@ -18,21 +18,14 @@ struct SettingsReducer: Reducer {
         
         if let action = action as? SettingsAction {
             switch action {
-            case .isAutoReconnect(let isOn):
-                state.isAutoReconnect = isOn
             case .vpnProtocolMode(let value):
                 state.vpnProtocolMode = value
-            case .isAutoConnectOnBoot(let isOn):
-                state.isAutoConnectOnBoot = isOn
-                // No Need Update VPN Config
-                return state
             case .isAutoSecureConnectionsWhenConnectedUntrustedNetwork(let isOn):
                 state.isAutoSecureConnectionsWhenConnectedUntrustedNetwork = isOn
             case .isAutoSecureConnectionsWhenConnectedOtherNetwork(let isOn):
                 state.isAutoSecureConnectionsWhenConnectedOtherNetwork = isOn
             }
             
-            let manager = NEVPNManager.shared()
             VPNConfigurationCoordinator.start{
             }
         }

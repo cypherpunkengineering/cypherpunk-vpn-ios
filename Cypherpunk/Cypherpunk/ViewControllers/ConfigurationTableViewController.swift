@@ -11,8 +11,6 @@ import ReSwift
 
 class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
     
-    @IBOutlet weak var vpnAlwaysOnSwitch: UISwitch!
-    @IBOutlet weak var autoConnectOnBootSwitch: UISwitch!
     @IBOutlet weak var vpnProtocolValueLabel: UILabel!
     
     
@@ -30,7 +28,6 @@ class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
         
         self.navigationController?.isNavigationBarHidden = false
         vpnProtocolValueLabel.text = mainStore.state.settingsState.vpnProtocolMode.description
-        vpnAlwaysOnSwitch.isOn = mainStore.state.settingsState.isAutoReconnect
         self.tableView.reloadData()
         
         mainStore.subscribe(self)
@@ -61,6 +58,18 @@ class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
         return view
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 , indexPath.row == 1 {
+            return 44.0
+        } else if indexPath.section == 1, indexPath.row == 1 {
+            return 44.0
+        }
+        if indexPath.row == 0 {
+            return 1.0
+        }
+        return 0.0
+    }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 36
     }
@@ -69,15 +78,7 @@ class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    @IBAction func changeValueOfAutoConnectOnBootAction(_ sender: UISwitch) {
-        mainStore.dispatch(SettingsAction.isAutoConnectOnBoot(isOn: sender.isOn))
-    }
-    @IBAction func changeValueOfAlwaysOnAction(_ sender: UISwitch) {
-        mainStore.dispatch(SettingsAction.isAutoReconnect(isOn: sender.isOn))
-    }
-
     func newState(state: AppState) {
         vpnProtocolValueLabel.text = state.settingsState.vpnProtocolMode.description
-        vpnAlwaysOnSwitch.isOn = state.settingsState.isAutoReconnect
     }
 }

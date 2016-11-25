@@ -112,50 +112,43 @@ open class VPNConfigurationCoordinator {
             
             manager.localizedDescription = "Cyperpunk VPN"
             
-            if settingsState.isAutoReconnect == true
-            {
-                if settingsState.isAutoSecureConnectionsWhenConnectedOtherNetwork && settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
-                    let wifiConnectRule = NEOnDemandRuleConnect()
-                    wifiConnectRule.interfaceTypeMatch = .wiFi
-                    
-                    let cellularConnectRule = NEOnDemandRuleConnect()
-                    cellularConnectRule.interfaceTypeMatch = .cellular
-
-                    manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
-                    manager.isOnDemandEnabled = true
-                } else if settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
-                    
-                    let realm = try! Realm()
-                    let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
-
-                    var ssidList: [String] = []
-                    for netInfo in whiteList {
-                        ssidList.append(netInfo.name)
-                    }
-
-                    let wifiConnectRule = NEOnDemandRuleConnect()
-                    wifiConnectRule.interfaceTypeMatch = .wiFi
-
-                    let cellularConnectRule = NEOnDemandRuleConnect()
-                    cellularConnectRule.interfaceTypeMatch = .cellular
-
-                    
-                    let wifiDisconnectRule = NEOnDemandRuleDisconnect()
-                    wifiDisconnectRule.interfaceTypeMatch = .wiFi
-                    wifiDisconnectRule.ssidMatch = ssidList
-
-                    let wifiIggnoreRule = NEOnDemandRuleIgnore()
-                    wifiIggnoreRule.interfaceTypeMatch = .wiFi
-                    wifiIggnoreRule.ssidMatch = ssidList
-                    
-                    manager.onDemandRules = [wifiDisconnectRule,wifiIggnoreRule, wifiConnectRule, cellularConnectRule]
-                    manager.isOnDemandEnabled = true
-                } else {
-                    manager.isOnDemandEnabled = false
+            if settingsState.isAutoSecureConnectionsWhenConnectedOtherNetwork && settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
+                let wifiConnectRule = NEOnDemandRuleConnect()
+                wifiConnectRule.interfaceTypeMatch = .wiFi
+                
+                let cellularConnectRule = NEOnDemandRuleConnect()
+                cellularConnectRule.interfaceTypeMatch = .cellular
+                
+                manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
+                manager.isOnDemandEnabled = true
+            } else if settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
+                
+                let realm = try! Realm()
+                let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
+                
+                var ssidList: [String] = []
+                for netInfo in whiteList {
+                    ssidList.append(netInfo.name)
                 }
-            }
-            else
-            {
+                
+                let wifiConnectRule = NEOnDemandRuleConnect()
+                wifiConnectRule.interfaceTypeMatch = .wiFi
+                
+                let cellularConnectRule = NEOnDemandRuleConnect()
+                cellularConnectRule.interfaceTypeMatch = .cellular
+                
+                
+                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
+                wifiDisconnectRule.interfaceTypeMatch = .wiFi
+                wifiDisconnectRule.ssidMatch = ssidList
+                
+                let wifiIggnoreRule = NEOnDemandRuleIgnore()
+                wifiIggnoreRule.interfaceTypeMatch = .wiFi
+                wifiIggnoreRule.ssidMatch = ssidList
+                
+                manager.onDemandRules = [wifiDisconnectRule,wifiIggnoreRule, wifiConnectRule, cellularConnectRule]
+                manager.isOnDemandEnabled = true
+            } else {
                 manager.isOnDemandEnabled = false
             }
             
