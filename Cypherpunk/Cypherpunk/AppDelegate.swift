@@ -197,25 +197,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        if let mailAddress = mainStore.state.accountState.mailAddress, let password = mainStore.state.accountState.password {
-            let login = LoginRequest(login: mailAddress, password: password)
-            Session.send(login, callbackQueue: nil, handler: { (result) in
-                
-                let failureBlock = {
-                    mainStore.dispatch(AccountAction.logout)
-                    let firstOpen: UIViewController!
-                    if UI_USER_INTERFACE_IDIOM() == .pad {
-                        firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
-                    } else {
-                        firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
-                    }
-                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
+        if let username = mainStore.state.accountState.vpnUsername, let password = mainStore.state.accountState.vpnPassword {
+            
+            let failureBlock = {
+                mainStore.dispatch(AccountAction.logout)
+                let firstOpen: UIViewController!
+                if UI_USER_INTERFACE_IDIOM() == .pad {
+                    firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
+                } else {
+                    firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
                 }
-                
+                self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
+            }
+
+            guard let session = mainStore.state.accountState.session else {
+                return
+            }
+            let accountStatusRequest = AccountStatusRequest(session: session)
+            Session.send(accountStatusRequest) { result in
                 switch result {
                 case .success(let response):
-                    
-                    mainStore.dispatch(AccountAction.login(response: response))
+                    var response = response
+                    response.session = session
                     
                     // Region Update
                     let region = RegionListRequest(session: response.session)
@@ -228,15 +231,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                     }
                     
-                    let subscriptionStatus = SubscriptionStatusRequest(session: response.session)
-                    Session.send(subscriptionStatus) { (result) in
-                        switch result {
-                        case .success(let status):
-                            mainStore.dispatch(AccountAction.getSubscriptionStatus(status: status))
-                        case .failure:
-                            break
-                        }
-                    }
+                    mainStore.dispatch(AccountAction.login(response: response))
                 case .failure(.responseError(let error as ResponseError)):
                     if case let .unacceptableStatusCode(code) = error {
                         if code == 401 {
@@ -246,8 +241,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 default:
                     break
                 }
-            })
-        }
+            }
+       }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

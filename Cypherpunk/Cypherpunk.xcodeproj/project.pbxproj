@@ -80,6 +80,7 @@
 		20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */; };
 		2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */; };
 		2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */; };
+		2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */; };
 		2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */; };
 		2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E41D3F98D0003FA705 /* RegionAction.swift */; };
 		2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */; };
@@ -232,6 +233,7 @@
 		20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManageTrustedNetworks.storyboard; sourceTree = "<group>"; };
 		2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNProtocolSelectViewController.swift; sourceTree = "<group>"; };
+		2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountStatusAPI.swift; sourceTree = "<group>"; };
 		2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAPI.swift; sourceTree = "<group>"; };
 		2B2B59E41D3F98D0003FA705 /* RegionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionAction.swift; sourceTree = "<group>"; };
 		2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top_iPad.storyboard; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				2B95C9181DC7749800F79A2D /* SignUpAPI.swift */,
 				2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */,
 				2BE06E4A1DC0BE4200FDC417 /* SubscriptionAPI.swift */,
+				2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */,
 				20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */,
 				2090F7161DD5AC1300BAB626 /* ChangeEmailAPI.swift */,
 				2090F7181DD5AF8D00BAB626 /* ChangePasswordAPI.swift */,
@@ -1088,6 +1091,7 @@
 				2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */,
 				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
 				206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */,
+				2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */,
 				2B34557A1DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
