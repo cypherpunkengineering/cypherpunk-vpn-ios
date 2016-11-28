@@ -38,7 +38,11 @@ struct ChangeEmailRequest: Request {
     }
     
     var headerFields: [String : String] {
-        return ["Cookie": session]
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        return [
+            "Cookie": session,
+            "User-Agent": "CypherpunkPrivacy/iOS/\(version)"
+        ]
     }
     
     func intercept(object: Any, urlResponse: HTTPURLResponse) throws -> Any {

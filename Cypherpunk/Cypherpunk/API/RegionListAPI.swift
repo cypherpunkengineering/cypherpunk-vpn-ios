@@ -30,10 +30,13 @@ struct RegionListRequest: Request {
     var path: String {
         return "/api/v0/vpn/serverList"
     }
-    
-    
+        
     var headerFields: [String : String] {
-        return ["Cookie": session]
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        return [
+            "Cookie": session,
+            "User-Agent": "CypherpunkPrivacy/iOS/\(version)"
+        ]
     }
     
     func response(from object: Any, urlResponse URLResponse: HTTPURLResponse) throws -> Response {
@@ -60,6 +63,7 @@ struct RegionListRequest: Request {
                                         region.ipsecDefault = server["ipsecDefault"] as! String
                                         region.httpDefault = server["httpDefault"] as! String
                                         region.socksDefault = server["socksDefault"] as! String
+                                        region.regionEnabled = server["regionEnabled"] as! Bool
                                         region.countryCode = country
                                     } else {
                                         let region = Region(
@@ -74,7 +78,8 @@ struct RegionListRequest: Request {
                                             ipsecDefault: server["ipsecDefault"] as! String,
                                             httpDefault: server["httpDefault"] as! String,
                                             socksDefault: server["socksDefault"] as! String,
-                                            countryCode: country
+                                            countryCode: country,
+                                            regionEnabled: server["regionEnabled"] as! Bool
                                         )
                                         realm.add(region, update: true)
                                     }
@@ -116,9 +121,10 @@ class Region: Object {
     dynamic var socksDefault: String = ""
     dynamic var countryCode: String = ""
     dynamic var isFavorite: Bool = false
+    dynamic var regionEnabled: Bool = false
     dynamic var lastConnectedDate: Date = Date(timeIntervalSince1970: 1)
     
-    init(id: String, regionName: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, countryCode: String) {
+    init(id: String, regionName: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, countryCode: String, regionEnabled: Bool) {
 
         super.init()
         
@@ -134,6 +140,7 @@ class Region: Object {
         self.httpDefault = httpDefault
         self.socksDefault = socksDefault
         self.countryCode = countryCode
+        self.regionEnabled = regionEnabled
         self.isFavorite = false
     }
     required init(realm: RLMRealm, schema: RLMObjectSchema) {

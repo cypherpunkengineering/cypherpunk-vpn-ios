@@ -9,12 +9,7 @@
 import Foundation
 import APIKit
 
-protocol IdentifyEmailRequestType: Request {
-    
-}
-
-
-struct IdentifyEmailRequest: IdentifyEmailRequestType {
+struct IdentifyEmailRequest: Request {
     
     typealias Response = Bool
     
@@ -31,6 +26,11 @@ struct IdentifyEmailRequest: IdentifyEmailRequestType {
         return "/api/v0/account/identify/email"
     }
     
+    var headerFields: [String : String] {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        return ["User-Agent":"CypherpunkPrivacy/iOS/\(version)"]
+    }
+
     var parameters: Any? {
         return ["email": email]
     }
@@ -54,22 +54,4 @@ struct IdentifyEmailRequest: IdentifyEmailRequestType {
         }
         
     }
-    
-    
-
 }
-
-extension Request where Self: IdentifyEmailRequestType {
-    func parse(data: Data, urlResponse: HTTPURLResponse) throws -> Bool {
-        if urlResponse.statusCode == 401 {
-            return false
-        }
-        else if urlResponse.statusCode == 200 {
-            return false
-        } else {
-            throw ResponseError.unacceptableStatusCode(urlResponse.statusCode)
-        }
-    }
-}
-
-

@@ -24,6 +24,11 @@ struct SignUpRequest: Request {
         return .post
     }
     
+    var headerFields: [String : String] {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        return ["User-Agent":"CypherpunkPrivacy/iOS/\(version)"]
+    }
+
     var path: String {
         return "/api/v0/account/register/signup"
     }

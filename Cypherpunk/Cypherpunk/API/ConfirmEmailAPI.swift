@@ -30,6 +30,11 @@ struct ConfirmEmailRequest: Request {
         return ["email": email]
     }
     
+    var headerFields: [String : String] {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        return ["User-Agent":"CypherpunkPrivacy/iOS/\(version)"]
+    }
+    
     var dataParser: DataParser {
         return JSONDataParser(readingOptions: .allowFragments)
     }
