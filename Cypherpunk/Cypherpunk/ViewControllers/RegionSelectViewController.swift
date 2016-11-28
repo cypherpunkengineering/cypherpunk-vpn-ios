@@ -18,12 +18,63 @@ class RegionSelectViewController: UITableViewController {
         case fastestLocation
         case favorite
         case recentlyConnected
-        case allLocation
+        case NA
+        case SA
+        case CR
+        case OP
+        case EU
+        case ME
+        case AF
+        case AS
+        case developer
+        
+        var realmResults: Results<Region> {
+            let realm = try! Realm()
+            switch self {
+            case .fastestLocation:
+                fatalError()
+            case .favorite:
+                return realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
+            case .recentlyConnected:
+                return realm.objects(Region.self).filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
+            default:
+                return realm.objects(Region.self).filter("region == %@", self.regionCode).sorted(byProperty: "name")
+            }
+        }
+        
+        var regionCode: String {
+            switch self {
+            case .NA: return "NA"
+            case .SA: return "SA"
+            case .CR: return "CR"
+            case .OP: return "OP"
+            case .EU: return "EU"
+            case .ME: return "ME"
+            case .AF: return "AF"
+            case .AS: return "AS"
+            case .developer: return "DEV"
+            default:
+                fatalError()
+            }
+        }
+        
+        var title: String {
+            switch self {
+            case .fastestLocation: return ""
+            case .favorite: return "favorite".uppercased()
+            case .recentlyConnected: return "Recentry Connected".uppercased()
+            case .NA: return "North America".uppercased()
+            case .SA: return "Central & South America".uppercased()
+            case .CR: return "Caribbean".uppercased()
+            case .OP: return "Oceania & Pacific".uppercased()
+            case .EU: return "Europe".uppercased()
+            case .ME: return "Middle East".uppercased()
+            case .AF: return "Africa".uppercased()
+            case .AS: return "Asia & India Subcontinent".uppercased()
+            case .developer: return "Developer".uppercased()
+            }
+        }
     }
-    
-    var favoriteResults: Results<Region>!
-    var recentlyConnectedResults: Results<Region>!
-    var nonFavoriteResults: Results<Region>!
     
     var notificationToken: NotificationToken? = nil
     override func viewDidLoad() {
@@ -40,10 +91,6 @@ class RegionSelectViewController: UITableViewController {
         
         // Do any additional setup after loading the view.
         let realm = try! Realm()
-        favoriteResults = realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
-        nonFavoriteResults = realm.objects(Region.self).filter("isFavorite = false").sorted(byProperty: "lastConnectedDate", ascending: false)
-        recentlyConnectedResults = nonFavoriteResults.filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1))
-        
         notificationToken = realm.objects(Region.self).addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.tableView else { return }
             switch changes {
@@ -52,7 +99,7 @@ class RegionSelectViewController: UITableViewController {
                 break
             case .update:
                 tableView.beginUpdates()
-                let set = IndexSet(integersIn: NSRange(location: 0, length: 4).toRange() ?? 0..<0)
+                let set = IndexSet(integersIn: NSRange(location: 0, length: tableView.numberOfSections).toRange() ?? 0..<0)
                 tableView.reloadSections(set, with: .automatic)
                 tableView.endUpdates()
                 break
@@ -79,7 +126,7 @@ class RegionSelectViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return Section.developer.rawValue + 1
     }
     
     func didChangeVPNStatus(_ notification: Notification) {
@@ -91,18 +138,7 @@ class RegionSelectViewController: UITableViewController {
         
         if status == .connected {
             mainStore.dispatch(RegionAction.connect)
-            self.tableView.beginUpdates()
-            let set = IndexSet(integersIn: NSRange(location: 0, length: 4).toRange() ?? 0..<0)
-            self.tableView.reloadSections(set, with: .automatic)
-            self.tableView.endUpdates()
         }
-    }
-    
-    func numberOfRowsInRecentlyConnectedSection() -> Int {
-        if recentlyConnectedResults.count < 3 {
-            return recentlyConnectedResults.count
-        }
-        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,12 +147,8 @@ class RegionSelectViewController: UITableViewController {
         switch section {
         case .fastestLocation:
             return 1
-        case .favorite:
-            return favoriteResults.count
-        case .recentlyConnected:
-            return numberOfRowsInRecentlyConnectedSection()
-        case .allLocation:
-            return nonFavoriteResults.count - numberOfRowsInRecentlyConnectedSection()
+        default:
+            return section.realmResults.count
         }
     }
     
@@ -126,24 +158,31 @@ class RegionSelectViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
         cell?.starButton.isHidden = false
         cell?.flagImageView.image = nil
+        cell?.titleLabel.isEnabled = true
+        cell?.starButton.isEnabled = true
+        cell?.isUserInteractionEnabled = true
         
         switch section {
         case .fastestLocation:
             cell?.titleLabel.text = "Fastest Location"
             cell?.starButton.isHidden = true
             cell?.flagImageView.image = R.image.colorHelmetSmall()
-        case .favorite:
-            cell?.titleLabel.text = favoriteResults[indexPath.row].regionName
-            cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
-            cell?.flagImageView.image = UIImage(named: favoriteResults[indexPath.row].countryCode.lowercased())
-        case .recentlyConnected:
-            cell?.titleLabel.text = recentlyConnectedResults[indexPath.row].regionName
-            cell?.starButton.setImage(R.image.iconStar(), for: .normal)
-            cell?.flagImageView.image = UIImage(named: recentlyConnectedResults[indexPath.row].countryCode.lowercased())
-        case .allLocation:
-            cell?.titleLabel.text = nonFavoriteResults[indexPath.row + numberOfRowsInRecentlyConnectedSection()].regionName
-            cell?.starButton.setImage(R.image.iconStar(), for: .normal)
-            cell?.flagImageView.image = UIImage(named: nonFavoriteResults[indexPath.row + numberOfRowsInRecentlyConnectedSection()].countryCode.lowercased())
+        default:
+            let region = section.realmResults[indexPath.row]
+            
+            cell?.titleLabel.text = region.name
+            if region.isFavorite {
+                cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
+            } else {
+                cell?.starButton.setImage(R.image.iconStar(), for: .normal)
+            }
+            cell?.flagImageView.image = UIImage(named: region.country.lowercased())
+            
+            if region.enabled == false {
+                cell?.titleLabel.isEnabled = false
+                cell?.starButton.isEnabled = false
+                cell?.isUserInteractionEnabled = false
+            }
         }
         
         cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
@@ -159,20 +198,12 @@ class RegionSelectViewController: UITableViewController {
         let region: Region
         switch section {
         case .fastestLocation:
-            if favoriteResults.count > 0 {
-                region = favoriteResults[0]
-            } else {
-                region = nonFavoriteResults[0]
-            }
-        case .favorite:
-            region = favoriteResults[indexPath.row]
-        case .recentlyConnected:
-            region = recentlyConnectedResults[indexPath.row]
-        case .allLocation:
-            region = nonFavoriteResults[indexPath.row + numberOfRowsInRecentlyConnectedSection()]
+            return
+        default:
+            region = section.realmResults[indexPath.row]
         }
         
-        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname))
         let manager = NEVPNManager.shared()
         let isConnected = manager.connection.status == .connected
         VPNConfigurationCoordinator.start {
@@ -183,112 +214,52 @@ class RegionSelectViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        if UI_USER_INTERFACE_IDIOM() == .phone {
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
-            view.backgroundColor = .clear
-            return view
-        }
-        
-        switch Section(rawValue: section)! {
+        let section = Section(rawValue: section)!
+        switch section {
         case .fastestLocation:
             return nil
-        case .favorite:
-            if favoriteResults.count == 0 {
-                return nil
+        default:
+            if section.realmResults.count == 0 {
+                return UIView()
             }
-        case .recentlyConnected:
-            if recentlyConnectedResults.count == 0 {
-                return nil
-            }
-        case .allLocation:
-            break
         }
-        
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
         view.backgroundColor = UIColor.clear
-        if UI_USER_INTERFACE_IDIOM() == .pad {
-            let titleLabel: UILabel
-            
-            titleLabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 17))
-            
-            titleLabel.font = R.font.dosisMedium(size: 14)
-            titleLabel.textColor = UIColor.goldenYellowColor()
-            titleLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-            
-            view.addSubview(titleLabel)
-            
-        }
+
+        let titleLabel = UILabel(frame: CGRect(x: 15, y: 14, width: self.view.frame.width, height: 17))
+        
+        titleLabel.font = R.font.dosisMedium(size: 14)
+        titleLabel.textColor = UIColor.white
+        titleLabel.text = self.tableView(tableView, titleForHeaderInSection: section.rawValue)
+
+        let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 1))
+        spacerView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+
+        view.addSubview(spacerView)
+        view.addSubview(titleLabel)
+        
         return view
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if UI_USER_INTERFACE_IDIOM() == .pad {
-            switch Section(rawValue: section)! {
-            case .fastestLocation:
-                return nil
-            case .favorite:
-                if favoriteResults.count == 0 {
-                    return nil
-                }
-                return "Favorite"
-            case .recentlyConnected:
-                if recentlyConnectedResults.count == 0 {
-                    return nil
-                }
-                return "Recently Connected"
-            case .allLocation:
-                return "All Location"
-            }
-        }
-        return nil
+        return Section(rawValue: section)!.title
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        if UI_USER_INTERFACE_IDIOM() == .phone {
-            switch Section(rawValue: section)! {
-                
-            case .fastestLocation:
-                return 0.0
-            case .favorite:
-                if favoriteResults.count == 0 {
-                    return 0.0
-                }
-            case .recentlyConnected:
-                if recentlyConnectedResults.count == 0 {
-                    return 0.0
-                }
-            case .allLocation:
-                break
-            }
-            return 10
-            
-        } else {
-            switch Section(rawValue: section)! {
-            case .fastestLocation:
+        let section = Section(rawValue: section)!
+        switch section {
+        case .fastestLocation:
+            return 0.1
+        default:
+            if section.realmResults.count == 0 {
                 return 0.1
-            case .favorite:
-                if favoriteResults.count == 0 {
-                    return 0.1
-                }
-            case .recentlyConnected:
-                if recentlyConnectedResults.count == 0 {
-                    return 0.1
-                }
-            case .allLocation:
-                break
             }
-            return 17
-            
+            return 40.0
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if UI_USER_INTERFACE_IDIOM() == .pad {
-            return 0.001
-        }
-        return 0.0001
+        return 0.001
     }
     
     @IBAction func didSelectFavoriteAction(_ sender: UIButton) {
@@ -299,21 +270,13 @@ class RegionSelectViewController: UITableViewController {
         switch section {
         case .fastestLocation:
             return
-        case .favorite:
-            target = favoriteResults[row]
-        case .recentlyConnected:
-            target = recentlyConnectedResults[row]
-        case .allLocation:
-            target = nonFavoriteResults[row + numberOfRowsInRecentlyConnectedSection()]
+        default:
+            target = section.realmResults[row]
         }
         let realm = try! Realm()
         try! realm.write {
             target.isFavorite = !target.isFavorite
             realm.add(target, update: true)
         }
-        self.tableView.beginUpdates()
-        let set = IndexSet(integersIn: NSRange(location: 0, length: 4).toRange() ?? 0..<0)
-        self.tableView.reloadSections(set, with: .automatic)
-        self.tableView.endUpdates()
     }
 }

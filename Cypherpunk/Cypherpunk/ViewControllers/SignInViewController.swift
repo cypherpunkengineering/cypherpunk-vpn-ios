@@ -56,7 +56,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
             Session.send(request, callbackQueue: nil, handler: { (result) in
                 switch result {
                 case .success(let response):
-                    let regionRequest = RegionListRequest(session: response.session)
+                    let regionRequest = RegionListRequest(session: response.session, accountType: response.account.type)
                     Session.send(regionRequest) { (result) in
                         switch result {
                         case .success(_):
@@ -71,7 +71,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
                                     
                                     let realm = try! Realm()
                                     if let region = realm.objects(Region.self).first {
-                                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+                                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname))
                                     }
                                     mainStore.dispatch(AccountAction.login(response: response))
                                 case .failure(let error):

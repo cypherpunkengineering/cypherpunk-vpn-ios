@@ -178,11 +178,7 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             self.updateViewWithVPNStatus(.connected)
         } else {
             if sender == self.disconnectedButton {
-                do{
-                    try VPNConfigurationCoordinator.connect()
-                }catch (let error) {
-                    print(error)
-                }
+                VPNConfigurationCoordinator.connect()
             } else if sender == self.connectedButton {
                 VPNConfigurationCoordinator.disconnect()
             }

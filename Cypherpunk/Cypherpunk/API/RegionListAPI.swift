@@ -17,6 +17,7 @@ struct RegionListRequest: Request {
     typealias Response = ()
     
     let session: String
+    let accountType: String
     
     var baseURL: URL {
         return URL(string: "https://cypherpunk.com")!
@@ -28,7 +29,7 @@ struct RegionListRequest: Request {
     
     
     var path: String {
-        return "/api/v0/vpn/serverList"
+        return "/api/v0/location/list/\(accountType)"
     }
         
     var headerFields: [String : String] {
@@ -41,54 +42,52 @@ struct RegionListRequest: Request {
     
     func response(from object: Any, urlResponse URLResponse: HTTPURLResponse) throws -> Response {
         
-        if let areaDictionary = object as? Dictionary<String, AnyObject> {
+        if let areaDictionary = object as? Dictionary<String, [String: Any]> {
             
             let realm = try! Realm()
             try! realm.write({
                 var regionIds: [String] = []
-                for (_, list) in areaDictionary {
-                    if let countriesDictionary = list as? Dictionary<String, AnyObject> {
-                        for (country, list) in countriesDictionary {
-                            if let serverList = list as? Array<Dictionary<String, Any>> {
-                                for server in serverList {
-                                    let id = server["id"]
-                                    if let region = realm.object(ofType: Region.self, forPrimaryKey: id!) {
-                                        region.regionName = server["regionName"] as! String
-                                        region.ovHostname = server["ovHostname"] as! String
-                                        region.ovDefault = server["ovDefault"] as! String
-                                        region.ovNone = server["ovNone"] as! String
-                                        region.ovStrong = server["ovStrong"] as! String
-                                        region.ovStealth = server["ovStealth"] as! String
-                                        region.ipsecHostname = server["ipsecHostname"] as! String
-                                        region.ipsecDefault = server["ipsecDefault"] as! String
-                                        region.httpDefault = server["httpDefault"] as! String
-                                        region.socksDefault = server["socksDefault"] as! String
-                                        region.regionEnabled = server["regionEnabled"] as! Bool
-                                        region.countryCode = country
-                                    } else {
-                                        let region = Region(
-                                            id: id as! String,
-                                            regionName: server["regionName"] as! String,
-                                            ovHostname: server["ovHostname"] as! String,
-                                            ovDefault: server["ovDefault"] as! String,
-                                            ovNone: server["ovNone"] as! String,
-                                            ovStrong: server["ovStrong"] as! String,
-                                            ovStealth: server["ovStealth"] as! String,
-                                            ipsecHostname: server["ipsecHostname"] as! String,
-                                            ipsecDefault: server["ipsecDefault"] as! String,
-                                            httpDefault: server["httpDefault"] as! String,
-                                            socksDefault: server["socksDefault"] as! String,
-                                            countryCode: country,
-                                            regionEnabled: server["regionEnabled"] as! Bool
-                                        )
-                                        realm.add(region, update: true)
-                                    }
-                                    regionIds.append(id as! String)
-                                }
-                            }
-                        }
+
+                areaDictionary.values.forEach({ (server) in
+                    let id = server["id"]
+                    if let region = realm.object(ofType: Region.self, forPrimaryKey: id!) {
+                        region.region = server["region"] as! String
+                        region.level = server["level"] as! String
+                        region.name = server["name"] as! String
+                        region.ovHostname = server["ovHostname"] as! String
+                        region.ovDefault = (server["ovDefault"] as! [String]).joined(separator: "\n")
+                        region.ovNone = (server["ovNone"] as! [String]).joined(separator: "\n")
+                        region.ovStrong = (server["ovStrong"] as! [String]).joined(separator: "\n")
+                        region.ovStealth = (server["ovStealth"] as! [String]).joined(separator: "\n")
+                        region.ipsecHostname = server["ipsecHostname"] as! String
+                        region.ipsecDefault = (server["ipsecDefault"] as! [String]).joined(separator: "\n")
+                        region.httpDefault = (server["httpDefault"] as! [String]).joined(separator: "\n")
+                        region.socksDefault = (server["socksDefault"] as! [String]).joined(separator: "\n")
+                        region.enabled = server["enabled"] as! Bool
+                        region.country = server["country"] as! String
+                    } else {
+                        let region = Region(
+                            id: id as! String,
+                            region: server["region"] as! String,
+                            level: server["level"] as! String,
+                            name: server["name"] as! String,
+                            ovHostname: server["ovHostname"] as! String,
+                            ovDefault: (server["ovDefault"] as! [String]).joined(separator: "\n"),
+                            ovNone: (server["ovNone"] as! [String]).joined(separator: "\n"),
+                            ovStrong: (server["ovStrong"] as! [String]).joined(separator: "\n"),
+                            ovStealth: (server["ovStealth"] as! [String]).joined(separator: "\n"),
+                            ipsecHostname: server["ipsecHostname"] as! String,
+                            ipsecDefault: (server["ipsecDefault"] as! [String]).joined(separator: "\n"),
+                            httpDefault: (server["httpDefault"] as! [String]).joined(separator: "\n"),
+                            socksDefault: (server["socksDefault"] as! [String]).joined(separator: "\n"),
+                            country: server["country"] as! String,
+                            enabled: server["enabled"] as! Bool
+                        )
+                        realm.add(region, update: true)
                     }
-                }
+                    regionIds.append(id as! String)
+                })
+                
                 let oldRegions = realm.objects(Region.self).filter("NOT (id IN %@)", regionIds)
                 realm.delete(oldRegions)
                 
@@ -109,7 +108,9 @@ import Realm
 
 class Region: Object {
     dynamic var id: String = ""
-    dynamic var regionName: String = ""
+    dynamic var region: String = ""
+    dynamic var level: String = ""
+    dynamic var name: String = ""
     dynamic var ovHostname: String = ""
     dynamic var ovDefault: String = ""
     dynamic var ovNone: String = ""
@@ -119,17 +120,19 @@ class Region: Object {
     dynamic var ipsecDefault: String = ""
     dynamic var httpDefault: String = ""
     dynamic var socksDefault: String = ""
-    dynamic var countryCode: String = ""
+    dynamic var country: String = ""
     dynamic var isFavorite: Bool = false
-    dynamic var regionEnabled: Bool = false
+    dynamic var enabled: Bool = false
     dynamic var lastConnectedDate: Date = Date(timeIntervalSince1970: 1)
     
-    init(id: String, regionName: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, countryCode: String, regionEnabled: Bool) {
+    init(id: String, region: String, level: String, name: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, country: String, enabled: Bool) {
 
         super.init()
         
         self.id = id
-        self.regionName = regionName
+        self.region = region
+        self.level = level
+        self.name = name
         self.ovHostname = ovHostname
         self.ovDefault = ovDefault
         self.ovNone = ovNone
@@ -139,8 +142,8 @@ class Region: Object {
         self.ipsecHostname = ipsecHostname
         self.httpDefault = httpDefault
         self.socksDefault = socksDefault
-        self.countryCode = countryCode
-        self.regionEnabled = regionEnabled
+        self.country = country
+        self.enabled = enabled
         self.isFavorite = false
     }
     required init(realm: RLMRealm, schema: RLMObjectSchema) {

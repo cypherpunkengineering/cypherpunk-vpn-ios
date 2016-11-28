@@ -76,9 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         
-        let config = Realm.Configuration(schemaVersion: 5, migrationBlock: {
+        let config = Realm.Configuration(schemaVersion: 6, migrationBlock: {
             (migration, oldSchemaVersion) in
-            if (oldSchemaVersion < 5) {
+            if (oldSchemaVersion < 6) {
             }
         })
         
@@ -102,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let realm = try! Realm()
                     if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
                         
-                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname))
                     }
                 }
             }
@@ -125,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let realm = try! Realm()
                     if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
                         
-                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
+                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname))
                     }
                     
                 }
@@ -221,7 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     response.session = session
                     
                     // Region Update
-                    let region = RegionListRequest(session: response.session)
+                    let region = RegionListRequest(session: response.session, accountType: response.account.type)
                     Session.send(region) { (result) in
                         switch result {
                         case .success:
