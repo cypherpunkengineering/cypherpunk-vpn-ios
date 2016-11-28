@@ -11,8 +11,7 @@ import ReSwift
 
 enum AccountAction: Action {
     case signUp(mailAddress: String)
-    case activate(mailAddress: String, password: String)
-    case login(response: LoginResponse, password: String)
+    case login(response: LoginResponse)
     case getSubscriptionStatus(status: SubscriptionStatus)
     case upgrade(subscription: SubscriptionType, expiredDate: Date?)
     case changeEmail(newEmail: String)

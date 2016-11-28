@@ -215,7 +215,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 switch result {
                 case .success(let response):
                     
-                    mainStore.dispatch(AccountAction.login(response: response, password: password))
+                    mainStore.dispatch(AccountAction.login(response: response))
                     
                     // Region Update
                     let region = RegionListRequest(session: response.session)

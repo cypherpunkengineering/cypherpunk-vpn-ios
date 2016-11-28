@@ -246,7 +246,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                     switch result {
                     case .success:
                         self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
-                    case .failure(let error):
+                    case .failure:
                         self.state = .getStarted
                         self.startAnimation()
                     }
@@ -266,7 +266,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
             { (finished) in
                 if finished {
                     let password = self.inputField.text!
-                    let request = LoginRequest(login: self.email, password: self.inputField.text!)
+                    let request = LoginRequest(login: self.email, password: password)
                     Session.send(request, callbackQueue: nil, handler: { (result) in
                         switch result {
                         case .success(let response):
@@ -290,7 +290,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                                             if let region = realm.objects(Region.self).first {
                                                 mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.regionName, serverIP: region.ipsecDefault, countryCode: region.countryCode, remoteIdentifier: region.ipsecHostname))
                                             }
-                                            mainStore.dispatch(AccountAction.login(response: response, password: password))
+                                            mainStore.dispatch(AccountAction.login(response: response))
                                         case .failure(let error):
                                             SVProgressHUD.showError(withStatus: "\((error as NSError).localizedDescription)")
                                         }

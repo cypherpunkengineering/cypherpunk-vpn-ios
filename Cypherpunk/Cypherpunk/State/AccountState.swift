@@ -71,6 +71,7 @@ struct AccountState: StateType {
     fileprivate struct AccountStateKey {
         static let isLoggedIn = "isLoggedIn"
         static let mailAddress = "mailAddress"
+        static let username = "username"
         static let password = "password"
         static let secret = "secret"
         static let session = "session"
@@ -81,6 +82,7 @@ struct AccountState: StateType {
 
     var isLoggedIn: Bool
     var mailAddress: String?
+    var username: String?
     var password: String?
     var secret: String?
     var session: String?
@@ -92,6 +94,7 @@ struct AccountState: StateType {
         let keychain = Keychain(service: mailAddress!)
         keychain[AccountStateKey.isLoggedIn] = String(isLoggedIn)
         keychain[AccountStateKey.mailAddress] = mailAddress
+        keychain[AccountStateKey.username] = username
         keychain[AccountStateKey.password] = password
         keychain[AccountStateKey.secret] = secret
         keychain[AccountStateKey.session] = session
@@ -114,12 +117,13 @@ struct AccountState: StateType {
     }
     
     static func restore() -> AccountState {
-        var state = AccountState(isLoggedIn: false, mailAddress: nil, password: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
+        var state = AccountState(isLoggedIn: false, mailAddress: nil, username: nil, password: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
         let defaults = UserDefaults.standard
         if let service = defaults.string(forKey: AccountStateKey.mailAddress) {
             let keychain = Keychain(service: service)
             state.isLoggedIn = Bool(keychain[AccountStateKey.isLoggedIn] ?? "false")!
             state.mailAddress = keychain[AccountStateKey.mailAddress]
+            state.username = keychain[AccountStateKey.username]
             state.password = keychain[AccountStateKey.password]
             state.secret = keychain[AccountStateKey.secret]
             state.session = keychain[AccountStateKey.session]

@@ -15,7 +15,7 @@ struct AccountReducer: Reducer {
     
     func handleAction(action: Action, state: AccountState?) -> AccountState {
         
-        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, password: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
+        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, username: nil, password: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
         
         guard let accountAction = action as? AccountAction else {
             return accountState
@@ -28,18 +28,15 @@ struct AccountReducer: Reducer {
             accountState.password = nil
             
             accountState.save()
-        case .activate(let mailAddress, let password):
+        case .login(let response):
             accountState.isLoggedIn = true
-            accountState.mailAddress = mailAddress
-            accountState.password = password
             
-            accountState.save()
-        case .login(let response, let password):
-            accountState.isLoggedIn = true
             accountState.mailAddress = response.account.email
-            accountState.password = password
+            accountState.username = response.privacy.username
+            accountState.password = response.privacy.password
             accountState.secret = response.secret
             accountState.session = response.session
+            
             accountState.save()
         case .logout:
             accountState.isLoggedIn = false

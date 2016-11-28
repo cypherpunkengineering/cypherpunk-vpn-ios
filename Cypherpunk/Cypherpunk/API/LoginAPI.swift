@@ -60,6 +60,7 @@ struct LoginResponse: Decodable {
     let secret: String
     let account: Account
     let privacy: Privacy
+    let subscription: Subscription
     var session: String
     
     static func decode(_ e: Extractor) throws -> LoginResponse {
@@ -67,6 +68,7 @@ struct LoginResponse: Decodable {
             secret: e.value("secret"),
             account: e.value("account"),
             privacy: e.value("privacy"),
+            subscription: e.value("subscription"),
             session: ""
         )
     }
@@ -85,6 +87,18 @@ struct Privacy: Decodable {
     
 }
 
+struct Subscription: Decodable {
+    let renewal: String
+    let expiration: String
+    
+    static func decode(_ e: Extractor) throws -> Subscription {
+        return try Subscription(
+            renewal: e.value("renewal"),
+            expiration: e.value("expiration")
+        )
+    }
+
+}
 struct Account: Decodable {
     let email: String
     let confirmed: Bool
