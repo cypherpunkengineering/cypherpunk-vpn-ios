@@ -34,8 +34,8 @@ open class VPNConfigurationCoordinator {
         newIPSec.serverAddress = regionState.serverIP // IPSecDefault
 
         newIPSec.useExtendedAuthentication = true
-        newIPSec.username = accountState.mailAddress
-        let password = accountState.password
+        newIPSec.username = accountState.vpnUsername
+        let password = accountState.vpnPassword
         newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
         newIPSec.localIdentifier = "cypherpunk-vpn-ios"
@@ -76,8 +76,8 @@ open class VPNConfigurationCoordinator {
                 newIPSec.serverAddress = regionState.serverIP // IPSecDefault
 
                 newIPSec.useExtendedAuthentication = true
-                newIPSec.username = accountState.mailAddress
-                let password = accountState.password
+                newIPSec.username = accountState.vpnUsername
+                let password = accountState.vpnPassword
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
                 newIPSec.localIdentifier = "cypherpunk-vpn-ios"
@@ -93,8 +93,8 @@ open class VPNConfigurationCoordinator {
                 newIPSec.username = accountState.mailAddress
 
                 newIPSec.useExtendedAuthentication = true
-                newIPSec.username = accountState.mailAddress
-                let password = accountState.password
+                newIPSec.username = accountState.vpnUsername
+                let password = accountState.vpnPassword
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
                 newIPSec.localIdentifier = "cypherpunk-vpn-ios"

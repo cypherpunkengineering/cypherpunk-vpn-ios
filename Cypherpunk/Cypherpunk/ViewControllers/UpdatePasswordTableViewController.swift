@@ -40,57 +40,10 @@ class UpdatePasswordTableViewController: UITableViewController {
             }
             IndicatorView.show()
             if self.passwordConfirmationField.text == self.newPasswordField.text {
-                if self.oldPasswordField.text == mainStore.state.accountState.password {
-                    
-                    let request = ChangePasswordRequest(
-                        session: mainStore.state.accountState.session!,
-                        newPassword: self.newPasswordField.text!,
-                        oldPassword: mainStore.state.accountState.password!)
-                    
-                    Session.send(request) {
-                        (result) in
-                        switch result {
-                        case .success(let success):
-                            if success {
-                                // success
-                                print("success")
-                                IndicatorView.dismiss()
-                                self.dismiss(animated: true, completion: nil)
-                            } else {
-                                // session expired
-                                IndicatorView.dismiss()
-                            }
-                        case .failure(let error):
-                            print(error)
-                            IndicatorView.dismiss()
-                            break
-                        }
-                    }
-                    return
-                }
-            }
-            IndicatorView.dismiss()
-        }
-
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(observer)
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func done() {
-        IndicatorView.show()
-        if self.passwordConfirmationField.text == self.newPasswordField.text {
-            if self.oldPasswordField.text == mainStore.state.accountState.password {
-                
                 let request = ChangePasswordRequest(
                     session: mainStore.state.accountState.session!,
                     newPassword: self.newPasswordField.text!,
-                    oldPassword: mainStore.state.accountState.password!)
+                    oldPassword: self.oldPasswordField.text!)
                 
                 Session.send(request) {
                     (result) in
@@ -113,6 +66,47 @@ class UpdatePasswordTableViewController: UITableViewController {
                 }
                 return
             }
+            IndicatorView.dismiss()
+        }
+
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(observer)
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func done() {
+        IndicatorView.show()
+        if self.passwordConfirmationField.text == self.newPasswordField.text {
+            
+                let request = ChangePasswordRequest(
+                    session: mainStore.state.accountState.session!,
+                    newPassword: self.newPasswordField.text!,
+                    oldPassword: self.oldPasswordField.text!)
+                
+                Session.send(request) {
+                    (result) in
+                    switch result {
+                    case .success(let success):
+                        if success {
+                            // success
+                            print("success")
+                            IndicatorView.dismiss()
+                            self.dismiss(animated: true, completion: nil)
+                        } else {
+                            // session expired
+                            IndicatorView.dismiss()
+                        }
+                    case .failure(let error):
+                        print(error)
+                        IndicatorView.dismiss()
+                        break
+                    }
+                }
         }
         IndicatorView.dismiss()
     }
