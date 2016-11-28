@@ -197,7 +197,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        if let username = mainStore.state.accountState.vpnUsername, let password = mainStore.state.accountState.vpnPassword {
+        if let _ = mainStore.state.accountState.vpnUsername, let _ = mainStore.state.accountState.vpnPassword {
             
             let failureBlock = {
                 mainStore.dispatch(AccountAction.logout)
