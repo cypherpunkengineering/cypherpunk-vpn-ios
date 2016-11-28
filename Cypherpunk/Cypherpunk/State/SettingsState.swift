@@ -29,10 +29,10 @@ enum VPNProtocolMode: Int {
 
 extension Keychain {
     static func userKeychain() -> Keychain {
-        return Keychain(service: mainStore.state.accountState.mailAddress ?? "com.cyperpunk.ios.vpn.Settings")
+        return Keychain(service: mainStore.state.accountState.mailAddress ?? "com.cypherpunk.ios.vpn.Settings")
     }
     static func inAppKeychain() -> Keychain {
-        return Keychain(service: "com.cyperpunk.ios.vpn.keychain")
+        return Keychain(service: "com.cypherpunk.ios.vpn.keychain")
     }
 }
 

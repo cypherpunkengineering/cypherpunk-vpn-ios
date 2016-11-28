@@ -46,7 +46,7 @@ class ShareAppViewController: UIViewController {
 
     @IBAction func facebookShareAction(_ sender: Any) {
         guard let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook) else { return }
-        vc.add(URL(string: "https://www.cypherpunk.com/"))
+        vc.add(URL(string: "https://cypherpunk.com/"))
         vc.completionHandler = { result in
             switch result {
             case .done:
@@ -62,7 +62,7 @@ class ShareAppViewController: UIViewController {
     @IBAction func twitterShareAction(_ sender: Any) {
         guard let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter) else { return }
         vc.setInitialText("Protect yourself with Cypherpunk Privacy")
-        vc.add(URL(string: "https://www.cypherpunk.com/"))
+        vc.add(URL(string: "https://cypherpunk.com/"))
         vc.completionHandler = { result in
             switch result {
             case .done:
@@ -78,7 +78,7 @@ class ShareAppViewController: UIViewController {
     @IBAction func emailShareAction(_ sender: Any) {
         let vc = MFMailComposeViewController()
         vc.setSubject("Cypherpunk Privacy App Invitation")
-        vc.setMessageBody("Protect yourself with Cypherpunk Privacy\nhttps://www.cypherpunk.com/", isHTML: false)
+        vc.setMessageBody("Protect yourself with Cypherpunk Privacy\nhttps://cypherpunk.com/", isHTML: false)
         vc.mailComposeDelegate = self
         self.present(vc, animated: true, completion: nil)
     }

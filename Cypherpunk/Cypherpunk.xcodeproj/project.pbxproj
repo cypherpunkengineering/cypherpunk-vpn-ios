@@ -1420,7 +1420,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CypherpunkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.CypherpunkTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.ios.vpn.develop.CypherpunkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cypherpunk.app/Cypherpunk";
@@ -1435,7 +1435,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CypherpunkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.CypherpunkTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.ios.vpn.develop.CypherpunkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cypherpunk.app/Cypherpunk";
@@ -1449,7 +1449,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CypherpunkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.CypherpunkUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.ios.vpn.develop.CypherpunkUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Cypherpunk;
@@ -1463,7 +1463,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CypherpunkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyperpunk.ios.vpn.develop.CypherpunkUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.ios.vpn.develop.CypherpunkUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Cypherpunk;
