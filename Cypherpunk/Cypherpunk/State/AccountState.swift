@@ -12,26 +12,30 @@ import ReSwift
 
 enum SubscriptionType: Int {
     case free
-    case freePremium
     case monthly
     case semiannually
     case annually
+    case lifetime
     
     var title: String {
         switch self {
         case .free: return "Free"
-        case .freePremium: return "Free Premium"
-        case .monthly: return "Monthly Premium"
-        case .semiannually: return "6 Monthly Premium"
-        case .annually: return "Yearly Premium"
+        default:
+            return "Premium"
         }
     }
     
     var detailMessage: String {
         switch self {
         case .free: return ""
-        case .freePremium: return "Expired At"
-        default: return "Renews On"
+        case .monthly:
+            return "Renews monthly"
+        case .semiannually:
+            return "Renews semiannually"
+        case .annually:
+            return "Renews annually"
+        case .lifetime:
+            return "Lifetime"
         }
     }
     

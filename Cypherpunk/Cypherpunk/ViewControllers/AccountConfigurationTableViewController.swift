@@ -58,7 +58,7 @@ class AccountConfigurationTableViewController: UITableViewController {
             dateString = dateFormatter.string(from: d)
             expirationLabel.text = accountState.subscriptionType.detailMessage + " " + dateString
         } else {
-            expirationLabel.text = " "
+            expirationLabel.text = accountState.subscriptionType.detailMessage
         }
         
         subscriptionTypeLabel.text = subscription.title
@@ -169,9 +169,9 @@ extension AccountConfigurationTableViewController: StoreSubscriber {
         let dateString: String
         if let d = state.accountState.expiredDate {
             dateString = dateFormatter.string(from: d)
-            expirationLabel.text = state.accountState.subscriptionType.detailMessage + " " + dateString
+            expirationLabel.text = state.accountState.subscriptionType.detailMessage + " on " + dateString
         } else {
-            expirationLabel.text = " "
+            expirationLabel.text = state.accountState.subscriptionType.detailMessage
         }
 
         if self.subscriptionTypeLabel.text != state.accountState.subscriptionType.title {

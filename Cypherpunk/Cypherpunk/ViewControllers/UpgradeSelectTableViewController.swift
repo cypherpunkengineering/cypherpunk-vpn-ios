@@ -196,13 +196,11 @@ extension UpgradeSelectTableViewController {
         switch accountState.subscriptionType {
         case .free:
             return 3
-        case .freePremium:
-            return 3
         case .monthly:
             return 3
         case .semiannually:
             return 2
-        case .annually:
+        case .annually, .lifetime:
             fatalError()
         }
     }
@@ -211,11 +209,11 @@ extension UpgradeSelectTableViewController {
         let accountState = mainStore.state.accountState
         
         switch accountState.subscriptionType {
-        case .free, .freePremium, .monthly:
+        case .free, .monthly:
             return super.tableView(tableView, cellForRowAt: indexPath)
         case .semiannually:
             return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
-        case .annually:
+        case .annually, .lifetime:
             fatalError()
         }
     }
@@ -224,11 +222,11 @@ extension UpgradeSelectTableViewController {
         let accountState = mainStore.state.accountState
         
         switch accountState.subscriptionType {
-        case .free, .freePremium, .monthly:
+        case .free, .monthly:
             return super.tableView(tableView, heightForRowAt: indexPath)
         case .semiannually:
             return super.tableView(tableView, heightForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
-        case .annually:
+        case .annually, .lifetime:
             fatalError()
         }
     }
