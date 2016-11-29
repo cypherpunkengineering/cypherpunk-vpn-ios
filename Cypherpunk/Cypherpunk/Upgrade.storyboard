@@ -394,13 +394,35 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfJ-Yg-4DV">
+                                                    <rect key="frame" x="25" y="9" width="85" height="21"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Plan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzT-1P-fYt">
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="21"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.01176470588" green="0.27450980390000002" blue="0.59607843140000005" alpha="1" colorSpace="deviceRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="8bx-hE-kuX"/>
+                                                        <constraint firstAttribute="bottom" secondItem="vzT-1P-fYt" secondAttribute="bottom" id="SVd-SV-zOE"/>
+                                                        <constraint firstItem="vzT-1P-fYt" firstAttribute="leading" secondItem="TfJ-Yg-4DV" secondAttribute="leading" id="bt7-nW-yqb"/>
+                                                        <constraint firstItem="vzT-1P-fYt" firstAttribute="top" secondItem="TfJ-Yg-4DV" secondAttribute="top" id="hcw-xN-J3U"/>
+                                                        <constraint firstAttribute="trailing" secondItem="vzT-1P-fYt" secondAttribute="trailing" id="m8z-dI-6QO"/>
+                                                        <constraint firstAttribute="width" constant="85" id="mNd-m9-kZg"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Id6-Qr-YF8" firstAttribute="centerX" secondItem="lS0-uy-VE9" secondAttribute="centerX" id="4Zt-nq-AWd"/>
+                                                <constraint firstItem="TfJ-Yg-4DV" firstAttribute="leading" secondItem="RaY-rv-fFf" secondAttribute="leading" id="7KY-aS-MmN"/>
                                                 <constraint firstItem="RaY-rv-fFf" firstAttribute="top" secondItem="lS0-uy-VE9" secondAttribute="top" constant="9" id="A2l-PH-Oyn"/>
                                                 <constraint firstAttribute="trailing" secondItem="RaY-rv-fFf" secondAttribute="trailing" constant="24" id="OMj-NU-N0f"/>
                                                 <constraint firstItem="RaY-rv-fFf" firstAttribute="leading" secondItem="lS0-uy-VE9" secondAttribute="leading" constant="25" id="cjT-j9-hAG"/>
                                                 <constraint firstAttribute="bottom" secondItem="RaY-rv-fFf" secondAttribute="bottom" id="gRA-3W-MFB"/>
+                                                <constraint firstItem="TfJ-Yg-4DV" firstAttribute="top" secondItem="RaY-rv-fFf" secondAttribute="top" id="pFd-WT-rAZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -421,6 +443,9 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="annuallyBestValueView" destination="Id6-Qr-YF8" id="kuk-R2-V0V"/>
+                        <outlet property="annuallyCellContentView" destination="RaY-rv-fFf" id="Fef-cH-a6N"/>
+                        <outlet property="annuallyCurrentPlanLabelView" destination="TfJ-Yg-4DV" id="Pgs-7H-CFO"/>
                         <outlet property="monthlyCellContentView" destination="rF1-Lh-8el" id="GkR-lD-1Zn"/>
                         <outlet property="monthlyCurrentPlanLabelView" destination="j6C-6X-HU9" id="ha7-6X-gO0"/>
                         <outlet property="semiannuallyCellContentView" destination="8Mb-BE-qur" id="zYi-WS-r6P"/>

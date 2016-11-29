@@ -18,7 +18,11 @@ class UpgradeSelectTableViewController: UITableViewController {
     
     @IBOutlet weak var semiannuallyCellContentView: UIView!
     @IBOutlet weak var semiannuallyCurrentPlanLabelView: UIView!
-    
+
+    @IBOutlet weak var annuallyCellContentView: UIView!
+    @IBOutlet weak var annuallyBestValueView: TwoColorGradientView!
+    @IBOutlet weak var annuallyCurrentPlanLabelView: UIView!
+
     private var retrievedProducts: [SKProduct] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +42,10 @@ class UpgradeSelectTableViewController: UITableViewController {
             semiannuallyCellContentView.alpha = 0.5
             semiannuallyCellContentView.isUserInteractionEnabled = false
             semiannuallyCurrentPlanLabelView.isHidden = false
+        case .annually:
+            annuallyCellContentView.alpha = 0.5
+            annuallyCellContentView.isUserInteractionEnabled = false
+            annuallyCurrentPlanLabelView.isHidden = false
         default:
             break
         }
@@ -191,43 +199,7 @@ class UpgradeSelectTableViewController: UITableViewController {
 
 extension UpgradeSelectTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let accountState = mainStore.state.accountState
+        return 3
         
-        switch accountState.subscriptionType {
-        case .free:
-            return 3
-        case .monthly:
-            return 3
-        case .semiannually:
-            return 2
-        case .annually, .lifetime:
-            fatalError()
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let accountState = mainStore.state.accountState
-        
-        switch accountState.subscriptionType {
-        case .free, .monthly:
-            return super.tableView(tableView, cellForRowAt: indexPath)
-        case .semiannually:
-            return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
-        case .annually, .lifetime:
-            fatalError()
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let accountState = mainStore.state.accountState
-        
-        switch accountState.subscriptionType {
-        case .free, .monthly:
-            return super.tableView(tableView, heightForRowAt: indexPath)
-        case .semiannually:
-            return super.tableView(tableView, heightForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
-        case .annually, .lifetime:
-            fatalError()
-        }
     }
 }
