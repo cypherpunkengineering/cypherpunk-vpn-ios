@@ -151,6 +151,10 @@ class RegionSelectViewController: UITableViewController {
         switch section {
         case .fastestLocation:
             return 1
+        case .recentlyConnected:
+            let count = section.realmResults.count
+            
+            return count >= 3 ? 3 : count
         default:
             return section.realmResults.count
         }
