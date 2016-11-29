@@ -152,7 +152,6 @@ class RegionSelectViewController: UITableViewController {
         case .fastestLocation:
             return 1
         default:
-            print("section: \(section.rawValue) count:\(section.realmResults.count)")
             return section.realmResults.count
         }
     }
