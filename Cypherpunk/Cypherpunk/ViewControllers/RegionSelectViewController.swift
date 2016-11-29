@@ -62,7 +62,8 @@ class RegionSelectViewController: UITableViewController {
             switch self {
             case .fastestLocation: return ""
             case .favorite: return "favorite".uppercased()
-            case .recentlyConnected: return "Recentry Connected".uppercased()
+            case .recentlyConnected: return "Recently Connected".uppercased()
+            case .developer: return "Developer".uppercased()
             case .NA: return "North America".uppercased()
             case .SA: return "Central & South America".uppercased()
             case .CR: return "Caribbean".uppercased()
@@ -70,8 +71,7 @@ class RegionSelectViewController: UITableViewController {
             case .EU: return "Europe".uppercased()
             case .ME: return "Middle East".uppercased()
             case .AF: return "Africa".uppercased()
-            case .AS: return "Asia & India Subcontinent".uppercased()
-            case .developer: return "Developer".uppercased()
+            case .AS: return "Asia".uppercased()
             }
         }
     }
