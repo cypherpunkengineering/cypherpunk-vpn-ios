@@ -30,6 +30,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var loadingAnimationView: LoadingAnimationView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var termOfServiceAndPrivacyPolicyView: UIView!
     
     @IBOutlet weak var forgotPasswordButton: UIButton!
     private var email: String = ""
@@ -63,6 +64,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         self.welcomeLabel.alpha = 1.0
         self.inputContainerView.alpha = 1.0
         self.actionButton.alpha = 1.0
+        self.termOfServiceAndPrivacyPolicyView.alpha = 0.0
         self.loadingAnimationView.alpha = 0.0
 
         mainStore.subscribe(self)
@@ -105,7 +107,8 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
             self.loadingAnimationView.alpha = 1.0
             self.backButton.alpha = 0.0
             self.forgotPasswordButton.alpha = 0.0
-            
+            self.termOfServiceAndPrivacyPolicyView.alpha = 0.0
+
             switch self.state {
             case .getStarted:
                 break
@@ -178,6 +181,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                             self.actionButton.alpha = 1.0
                             self.loadingAnimationView.alpha = 0.0
                             self.backButton.alpha = 1.0
+                            self.termOfServiceAndPrivacyPolicyView.alpha = 1.0
                         })
                     }
                 }
