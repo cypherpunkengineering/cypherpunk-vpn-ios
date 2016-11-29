@@ -65,6 +65,10 @@ struct RegionListRequest: Request {
                         region.socksDefault = (server["socksDefault"] as! [String]).joined(separator: "\n")
                         region.enabled = server["enabled"] as! Bool
                         region.country = server["country"] as! String
+                        
+                        if region.ipsecDefault == "" {
+                            region.enabled = false
+                        }
                     } else {
                         let region = Region(
                             id: id as! String,
@@ -145,6 +149,10 @@ class Region: Object {
         self.country = country
         self.enabled = enabled
         self.isFavorite = false
+
+        if ipsecDefault == "" {
+            self.enabled = false
+        }
     }
     required init(realm: RLMRealm, schema: RLMObjectSchema) {
         super.init(realm: realm, schema: schema)
