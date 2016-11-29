@@ -18,6 +18,7 @@ class RegionSelectViewController: UITableViewController {
         case fastestLocation
         case favorite
         case recentlyConnected
+        case developer
         case NA
         case SA
         case CR
@@ -26,7 +27,6 @@ class RegionSelectViewController: UITableViewController {
         case ME
         case AF
         case AS
-        case developer
         
         var realmResults: Results<Region> {
             let realm = try! Realm()
@@ -38,12 +38,17 @@ class RegionSelectViewController: UITableViewController {
             case .recentlyConnected:
                 return realm.objects(Region.self).filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
             default:
-                return realm.objects(Region.self).filter("region == %@", self.regionCode).sorted(byProperty: "name")
+                let sortProperties = [
+                    SortDescriptor(property: "country", ascending: true),
+                    SortDescriptor(property: "name", ascending: true)
+                ]
+                return realm.objects(Region.self).filter("region == %@", self.regionCode).sorted(by:sortProperties)
             }
         }
         
         var regionCode: String {
             switch self {
+            case .developer: return "DEV"
             case .NA: return "NA"
             case .SA: return "SA"
             case .CR: return "CR"
@@ -52,7 +57,6 @@ class RegionSelectViewController: UITableViewController {
             case .ME: return "ME"
             case .AF: return "AF"
             case .AS: return "AS"
-            case .developer: return "DEV"
             default:
                 fatalError()
             }
@@ -126,7 +130,7 @@ class RegionSelectViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return Section.developer.rawValue + 1
+        return 12
     }
     
     func didChangeVPNStatus(_ notification: Notification) {
@@ -148,6 +152,7 @@ class RegionSelectViewController: UITableViewController {
         case .fastestLocation:
             return 1
         default:
+            print("section: \(section.rawValue) count:\(section.realmResults.count)")
             return section.realmResults.count
         }
     }
