@@ -163,8 +163,11 @@ class RegionSelectViewController: UITableViewController {
         cell?.starButton.isHidden = false
         cell?.flagImageView.image = nil
         cell?.titleLabel.isEnabled = true
-        cell?.starButton.isEnabled = true
+        cell?.starButton.alpha = 1.0
+        cell?.starButton.isUserInteractionEnabled = true
         cell?.isUserInteractionEnabled = true
+        cell?.titleLabel.textColor = UIColor.white
+        cell?.flagImageView.alpha = 1.0
         
         switch section {
         case .fastestLocation:
@@ -173,7 +176,10 @@ class RegionSelectViewController: UITableViewController {
             cell?.flagImageView.image = R.image.colorHelmetSmall()
         default:
             let region = section.realmResults[indexPath.row]
-            
+
+            if mainStore.state.regionState.regionId == region.id {
+                cell?.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
+            }
             cell?.titleLabel.text = region.name
             if region.isFavorite {
                 cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
@@ -183,8 +189,11 @@ class RegionSelectViewController: UITableViewController {
             cell?.flagImageView.image = UIImage(named: region.country.lowercased())
             
             if region.enabled == false {
+                cell?.titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
                 cell?.titleLabel.isEnabled = false
-                cell?.starButton.isEnabled = false
+                cell?.starButton.alpha = 0.5
+                cell?.flagImageView.alpha = 0.5
+                cell?.starButton.isUserInteractionEnabled = false
                 cell?.isUserInteractionEnabled = false
             }
         }
@@ -206,6 +215,16 @@ class RegionSelectViewController: UITableViewController {
         default:
             region = section.realmResults[indexPath.row]
         }
+        
+        tableView.visibleCells.forEach { (cell) in
+            guard let cell = cell as? RegionTableViewCell else {
+                return
+            }
+            cell.titleLabel.textColor = UIColor.white
+        }
+        
+        let cell = tableView.cellForRow(at: indexPath) as! RegionTableViewCell
+        cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
         
         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname))
         let manager = NEVPNManager.shared()
