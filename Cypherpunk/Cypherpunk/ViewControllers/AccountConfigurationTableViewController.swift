@@ -88,7 +88,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         if section == 0 {
             let accountState = mainStore.state.accountState
             switch accountState.subscriptionType {
-            case .annually:
+            case .annually, .lifetime:
                 return 1
             default:
                 return 2
