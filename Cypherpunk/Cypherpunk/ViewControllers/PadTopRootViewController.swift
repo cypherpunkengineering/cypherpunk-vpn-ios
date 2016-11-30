@@ -35,11 +35,14 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var regionButton: UIButton?
     @IBOutlet weak var expandArrowImageView: UIImageView?
     
-    @IBOutlet weak var devLocationIconView: UIImageView!
-    @IBOutlet weak var premiumLocationIconView: UIImageView!
+    @IBOutlet weak var devLocationIconView: UIImageView?
+    @IBOutlet weak var premiumLocationIconView: UIImageView?
     
-    @IBOutlet weak var devLocationIconWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var premiumLocationIconWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var regionTrailingConstraint: NSLayoutConstraint?
+    @IBOutlet weak var regionTitleLabel: UILabel?
+    @IBOutlet weak var regionFlagImageView: UIImageView?
+    @IBOutlet weak var devLocationIconWidthConstraint: NSLayoutConstraint?
+    @IBOutlet weak var premiumLocationIconWidthConstraint: NSLayoutConstraint?
     
     @IBOutlet weak var connectionButtonsConstraint: NSLayoutConstraint?
     var isExpand: Bool = false
@@ -141,20 +144,22 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     
     func newState(state: AppState) {
         regionButton?.setTitle(state.regionState.title, for: .normal)
-        regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
-        
-        premiumLocationIconWidthConstraint.constant = 0.0
-        devLocationIconWidthConstraint.constant = 0.0
-        premiumLocationIconView.isHidden = true
-        devLocationIconView.isHidden = true
+        regionTitleLabel?.text = state.regionState.title
+        regionFlagImageView?.image = UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal)
+        premiumLocationIconWidthConstraint?.constant = 0.0
+        devLocationIconWidthConstraint?.constant = 0.0
+        regionTrailingConstraint?.constant = 0.0
+        premiumLocationIconView?.isHidden = true
+        devLocationIconView?.isHidden = true
         if state.regionState.level == "premium" {
-            premiumLocationIconWidthConstraint.constant = 56.0
-            devLocationIconWidthConstraint.constant = 56.0
-            premiumLocationIconView.isHidden = false
+            premiumLocationIconWidthConstraint?.constant = 56.0
+            devLocationIconWidthConstraint?.constant = 56.0
+            regionTrailingConstraint?.constant = 32.0
+            premiumLocationIconView?.isHidden = false
         } else if state.regionState.level == "developer" {
-            premiumLocationIconWidthConstraint.constant = 25.0
-            devLocationIconWidthConstraint.constant = 25.0
-            devLocationIconView.isHidden = false
+            premiumLocationIconWidthConstraint?.constant = 25.0
+            devLocationIconWidthConstraint?.constant = 25.0
+            devLocationIconView?.isHidden = false
         }
         self.view.layoutIfNeeded()
     }
