@@ -137,16 +137,20 @@ open class VPNConfigurationCoordinator {
                 let cellularConnectRule = NEOnDemandRuleConnect()
                 cellularConnectRule.interfaceTypeMatch = .cellular
 
+                if ssidList.count != 0 {
+                    let wifiDisconnectRule = NEOnDemandRuleDisconnect()
+                    wifiDisconnectRule.interfaceTypeMatch = .wiFi
+                    wifiDisconnectRule.ssidMatch = ssidList
+                    
+                    let wifiIggnoreRule = NEOnDemandRuleIgnore()
+                    wifiIggnoreRule.interfaceTypeMatch = .wiFi
+                    wifiIggnoreRule.ssidMatch = ssidList
+                    
+                    manager.onDemandRules = [wifiDisconnectRule,wifiIggnoreRule, wifiConnectRule, cellularConnectRule]
+                } else {
+                    manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
+                }
 
-                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
-                wifiDisconnectRule.interfaceTypeMatch = .wiFi
-                wifiDisconnectRule.ssidMatch = ssidList
-
-                let wifiIggnoreRule = NEOnDemandRuleIgnore()
-                wifiIggnoreRule.interfaceTypeMatch = .wiFi
-                wifiIggnoreRule.ssidMatch = ssidList
-
-                manager.onDemandRules = [wifiDisconnectRule,wifiIggnoreRule, wifiConnectRule, cellularConnectRule]
                 manager.isOnDemandEnabled = true
             } else {
                 manager.isOnDemandEnabled = false

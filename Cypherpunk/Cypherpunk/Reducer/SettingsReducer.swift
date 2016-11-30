@@ -27,7 +27,8 @@ struct SettingsReducer: Reducer {
             }
             
             VPNConfigurationCoordinator.start{
-                VPNConfigurationCoordinator.start {
+                if case .vpnProtocolMode = action {
+                    VPNConfigurationCoordinator.start{}
                 }
             }
         }
