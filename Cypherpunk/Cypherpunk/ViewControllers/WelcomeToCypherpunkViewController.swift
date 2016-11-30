@@ -337,6 +337,15 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         }
     }
     
+    @IBAction func termOfServiceAction(_ sender: Any) {
+        let url = URL(string: "https://cypherpunk.com/tos")
+        UIApplication.shared.openURL(url!)
+    }
+    
+    @IBAction func privacyPolicyAction(_ sender: Any) {
+        let url = URL(string: "https://cypherpunk.com/privacy")
+        UIApplication.shared.openURL(url!)
+    }
     func newState(state: AppState)
     {
         if state.accountState.isLoggedIn {
