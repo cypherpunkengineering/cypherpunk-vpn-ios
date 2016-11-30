@@ -11,7 +11,7 @@ import UIKit
 extension VPNProtocolMode {
     static var arrayDescription: [VPNProtocolMode] {
         return [
-            .IPSec,
+            //.IPSec,
             .IKEv2
         ]
     }
