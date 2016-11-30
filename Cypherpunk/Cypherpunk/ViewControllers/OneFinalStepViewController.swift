@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class OneFinalStepViewController: UIViewController {
 
@@ -33,9 +34,11 @@ class OneFinalStepViewController: UIViewController {
     */
 
     @IBAction func allowAction(_ sender: AnyObject) {
+        FIRAnalyticsConfiguration.sharedInstance().setAnalyticsCollectionEnabled(true)
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func dontAllowAction(_ sender: AnyObject) {
+        FIRAnalyticsConfiguration.sharedInstance().setAnalyticsCollectionEnabled(false)
         self.dismiss(animated: true, completion: nil)
     }
 }
