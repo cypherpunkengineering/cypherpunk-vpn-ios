@@ -27,6 +27,8 @@ struct SettingsReducer: Reducer {
             }
             
             VPNConfigurationCoordinator.start{
+                VPNConfigurationCoordinator.start {
+                }
             }
         }
         return state
