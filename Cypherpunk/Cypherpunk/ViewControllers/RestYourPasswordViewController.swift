@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import APIKit
+import SVProgressHUD
 
 class RestYourPasswordViewController: UIViewController {
 
+    var mailAddress: String = ""
     @IBOutlet weak var inputField: ThemedTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,8 @@ class RestYourPasswordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        
+        inputField.text = mailAddress
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +45,17 @@ class RestYourPasswordViewController: UIViewController {
 
     @IBAction func submitAction(_ sender: AnyObject) {
         if let email = inputField.text, isValidMailAddress(email) {
-            self.performSegue(withIdentifier: R.segue.restYourPasswordViewController.submit, sender: nil)
+            IndicatorView.show()
+            let request = RecoverPasswordRequest(email: email)
+            Session.send(request) { result in
+                switch result {
+                case .success:
+                    let _ = self.navigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    SVProgressHUD.showError(withStatus: "\(error)")
+                }
+                IndicatorView.dismiss()
+            }
         }
 
     }

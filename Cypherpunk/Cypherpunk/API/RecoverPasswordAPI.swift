@@ -1,16 +1,15 @@
 //
-//  ConfirmEmailAPI.swift
+//  RecoverPasswordAPI.swift
 //  Cypherpunk
 //
-//  Created by KeisukeKimura on 2016/11/22.
+//  Created by KeisukeKimura on 2016/11/29.
 //  Copyright © 2016年 Cypherpunk. All rights reserved.
 //
 
 import Foundation
 import APIKit
 
-struct ConfirmEmailRequest: Request {
-    
+struct RecoverPasswordRequest: Request {
     typealias Response = ()
     
     var email: String
@@ -23,7 +22,7 @@ struct ConfirmEmailRequest: Request {
     }
     
     var path: String {
-        return "/api/v1/account/email/confirm"
+        return "/api/v1/account/password/recover"
     }
     
     var parameters: Any? {
@@ -43,4 +42,3 @@ struct ConfirmEmailRequest: Request {
     }
     
 }
-

@@ -64,6 +64,8 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         self.welcomeLabel.alpha = 1.0
         self.inputContainerView.alpha = 1.0
         self.actionButton.alpha = 1.0
+        self.backButton.alpha = 0.0
+        self.forgotPasswordButton.alpha = 0.0
         self.termOfServiceAndPrivacyPolicyView.alpha = 0.0
         self.loadingAnimationView.alpha = 0.0
 
@@ -88,6 +90,10 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
             destination.mailAddress = email
             destination.password = inputField.text
         }
+        if let destination = destination as? RestYourPasswordViewController {
+            destination.mailAddress = email
+        }
+
     }
     /*
      // MARK: - Navigation

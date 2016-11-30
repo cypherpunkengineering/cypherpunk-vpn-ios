@@ -79,6 +79,7 @@
 		20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F850901D3DF40A009079A0 /* LoginAPI.swift */; };
 		20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */; };
 		2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */; };
+		2B0A652B1DED904700905A2A /* RecoverPasswordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A652A1DED904700905A2A /* RecoverPasswordAPI.swift */; };
 		2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */; };
 		2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */; };
 		2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */; };
@@ -232,6 +233,7 @@
 		20F850901D3DF40A009079A0 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManageTrustedNetworks.storyboard; sourceTree = "<group>"; };
 		2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2B0A652A1DED904700905A2A /* RecoverPasswordAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverPasswordAPI.swift; sourceTree = "<group>"; };
 		2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNProtocolSelectViewController.swift; sourceTree = "<group>"; };
 		2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountStatusAPI.swift; sourceTree = "<group>"; };
 		2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAPI.swift; sourceTree = "<group>"; };
@@ -447,6 +449,72 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		20845B501DEEA9DD0066A906 /* FirstOpen */ = {
+			isa = PBXGroup;
+			children = (
+				2065DD061DB8D82100D0F446 /* TutorialRootViewController.swift */,
+				2065DD0A1DB8D9A500D0F446 /* CongraturationsViewController.swift */,
+				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
+				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
+				20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */,
+				2065DD081DB8D98100D0F446 /* OneFinalStepViewController.swift */,
+				203C62F31D7036C900891F91 /* FirstOpenViewController.swift */,
+				208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */,
+				2018AB091DB8AF0E00649D03 /* EmailConfirmationViewController.swift */,
+				2018AB071DB8ADD200649D03 /* RestYourPasswordViewController.swift */,
+			);
+			name = FirstOpen;
+			sourceTree = "<group>";
+		};
+		20845B511DEEAA610066A906 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				2BDBD0C51D6514AB00080E67 /* ConfigurationTableViewController.swift */,
+				2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */,
+				2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */,
+				205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
+		20845B521DEEAA910066A906 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				2B6798E61DAC179500099064 /* AccountConfigurationTableViewController.swift */,
+				2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */,
+				2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */,
+				203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */,
+				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
+				20073E0C1D9E387400BCD690 /* RateAppViewController.swift */,
+				2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		20845B531DEEAADE0066A906 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2B3455791DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift */,
+				2064B3A51DBF426700F85148 /* PopoverNavigationViewController.swift */,
+				2064B3A31DBF38BD00F85148 /* PopoverRootViewController.swift */,
+				2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */,
+				2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */,
+				2BDBD0CF1D65286D00080E67 /* EditingRootViewController.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		20845B541DEEAB010066A906 /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				2B6798E81DAC979F00099064 /* PadTopRootViewController.swift */,
+				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
+				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
+				2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */,
+			);
+			name = Top;
+			sourceTree = "<group>";
+		};
 		20D895E81D1D0C17002B9F9D /* External */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,41 +530,15 @@
 		20D895F11D1D1954002B9F9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				20D896011D23ACE9002B9F9D /* SignInViewController.swift */,
-				2B4489221D2A59F500D202F9 /* SignUpViewController.swift */,
-				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
-				2BDBD0C51D6514AB00080E67 /* ConfigurationTableViewController.swift */,
-				2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */,
-				2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */,
-				2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */,
-				2BDBD0CF1D65286D00080E67 /* EditingRootViewController.swift */,
-				203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */,
-				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
-				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
-				2B6798E61DAC179500099064 /* AccountConfigurationTableViewController.swift */,
+				20845B541DEEAB010066A906 /* Top */,
+				20845B531DEEAADE0066A906 /* Util */,
+				20845B521DEEAA910066A906 /* Account */,
+				20845B511DEEAA610066A906 /* Configuration */,
+				20845B501DEEA9DD0066A906 /* FirstOpen */,
 				2060BF871DE81C85000025BD /* PadMenuTableViewController.swift */,
 				2BC7D6641D95153400AE1F1C /* InstallPreferencesViewController.swift */,
-				203C62F31D7036C900891F91 /* FirstOpenViewController.swift */,
 				203C62F71D703A7B00891F91 /* GetPremiumPlanRootViewController.swift */,
 				203C62F51D7038E400891F91 /* GetPremiumPlanTableViewController.swift */,
-				2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */,
-				2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */,
-				2085F33A1D6C3B40002D35C2 /* PresentContainerViewController.swift */,
-				20073E0C1D9E387400BCD690 /* RateAppViewController.swift */,
-				2B6798E81DAC979F00099064 /* PadTopRootViewController.swift */,
-				2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */,
-				205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */,
-				208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */,
-				2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */,
-				2018AB071DB8ADD200649D03 /* RestYourPasswordViewController.swift */,
-				2018AB091DB8AF0E00649D03 /* EmailConfirmationViewController.swift */,
-				20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */,
-				2065DD081DB8D98100D0F446 /* OneFinalStepViewController.swift */,
-				2065DD0A1DB8D9A500D0F446 /* CongraturationsViewController.swift */,
-				2065DD061DB8D82100D0F446 /* TutorialRootViewController.swift */,
-				2B3455791DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift */,
-				2064B3A31DBF38BD00F85148 /* PopoverRootViewController.swift */,
-				2064B3A51DBF426700F85148 /* PopoverNavigationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -550,6 +592,7 @@
 				2090F7161DD5AC1300BAB626 /* ChangeEmailAPI.swift */,
 				2090F7181DD5AF8D00BAB626 /* ChangePasswordAPI.swift */,
 				2B88F7E51DE45E7D00DAB027 /* ConfirmEmailAPI.swift */,
+				2B0A652A1DED904700905A2A /* RecoverPasswordAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1093,6 +1136,7 @@
 				206D4D701D82BDF300853B47 /* IndicatorView.swift in Sources */,
 				2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */,
 				2B34557A1DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift in Sources */,
+				2B0A652B1DED904700905A2A /* RecoverPasswordAPI.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
 				2065DD0B1DB8D9A500D0F446 /* CongraturationsViewController.swift in Sources */,
