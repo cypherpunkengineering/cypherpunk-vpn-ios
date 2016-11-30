@@ -17,6 +17,8 @@ struct RegionState: StateType {
     var serverIP: String
     var countryCode: String
     var remoteIdentifier: String
+    var level: String
+    
     var title: String {
         return name
     }

@@ -23,18 +23,20 @@ struct RegionReducer: Reducer {
             name:  "",
             serverIP: "",
             countryCode: "",
-            remoteIdentifier: ""
+            remoteIdentifier: "",
+            level: ""
         )
         
         if let action = action as? RegionAction {
             switch action {
-            case .changeRegion(let regionId, let name, let serverIP, let countryCode, let remoteidentifier):
+            case .changeRegion(let regionId, let name, let serverIP, let countryCode, let remoteidentifier, let level):
                 regionState.regionId = regionId
                 regionState.name = name
-                regionState.serverIP = serverIP
+                regionState.serverIP = serverIP.components(separatedBy: "\n")[0]
                 regionState.countryCode = countryCode
                 regionState.remoteIdentifier = remoteidentifier
                 regionState.lastSelectedRegionId = regionId
+                regionState.level = level
             case .connect:
                 let realm = try! Realm()
                 if let region = realm.object(ofType: Region.self, forPrimaryKey: regionState.regionId) {

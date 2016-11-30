@@ -172,7 +172,13 @@ class RegionSelectViewController: UITableViewController {
         cell?.isUserInteractionEnabled = true
         cell?.titleLabel.textColor = UIColor.white
         cell?.flagImageView.alpha = 1.0
-        
+        cell?.devLocationIconView.alpha = 1.0
+        cell?.premiumLocationIconView.alpha = 1.0
+        cell?.unavailableLabel.alpha = 1.0
+        cell?.devLocationIconView.isHidden = true
+        cell?.premiumLocationIconView.isHidden = true
+        cell?.unavailableLabel.isHidden = true
+
         switch section {
         case .fastestLocation:
             cell?.titleLabel.text = "Fastest Location"
@@ -192,11 +198,24 @@ class RegionSelectViewController: UITableViewController {
             }
             cell?.flagImageView.image = UIImage(named: region.country.lowercased())
             
+            if region.level == "premium" {
+                cell?.premiumLocationIconView.isHidden = false
+            } else if region.level == "developer" {
+                cell?.devLocationIconView.isHidden = false
+            }
+            else if region.ipsecDefault == "" {
+                cell?.unavailableLabel.isHidden = false
+            }
+            
             if region.enabled == false {
                 cell?.titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
                 cell?.titleLabel.isEnabled = false
                 cell?.starButton.alpha = 0.5
                 cell?.flagImageView.alpha = 0.5
+                cell?.devLocationIconView.alpha = 0.5
+                cell?.premiumLocationIconView.alpha = 0.5
+                cell?.unavailableLabel.alpha = 0.5
+
                 cell?.starButton.isUserInteractionEnabled = false
                 cell?.isUserInteractionEnabled = false
             }
@@ -230,7 +249,7 @@ class RegionSelectViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath) as! RegionTableViewCell
         cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
         
-        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname))
+        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
         let manager = NEVPNManager.shared()
         let isConnected = manager.connection.status == .connected
         VPNConfigurationCoordinator.start {

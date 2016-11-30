@@ -71,7 +71,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
                                     
                                     let realm = try! Realm()
                                     if let region = realm.objects(Region.self).first {
-                                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname))
+                                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
                                     }
                                     mainStore.dispatch(AccountAction.login(response: response))
                                 case .failure(let error):
