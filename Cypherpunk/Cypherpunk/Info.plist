@@ -104,6 +104,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
-	<string>NO</string>
+	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
