@@ -29,6 +29,43 @@ struct RegionReducer: Reducer {
         
         if let action = action as? RegionAction {
             switch action {
+            case .setup:
+                
+                let realm = try! Realm()
+                var target: Region? = nil
+                if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId), region.enabled == true {
+                    target = region
+                } else {
+                    let sortProperties = [
+                        SortDescriptor(property: "country", ascending: true),
+                        SortDescriptor(property: "name", ascending: true)
+                    ]
+                    
+                    if let region = realm.objects(Region.self).filter("isFavorite == true AND enabled == true").sorted(byProperty: "lastConnectedDate", ascending: false).first {
+                        target = region
+                    } else if let region = realm.objects(Region.self).filter("isFavorite == false AND enabled == true AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false).first {
+                        target = region
+                    } else {
+                        RegionSection.regions.flatMap{return $0.regionCode}.forEach({ (regionCode) in
+                            if target != nil { return }
+                            if let region = realm.objects(Region.self).filter("region == %@ AND enabled == true", regionCode).sorted(by:sortProperties).first {
+                                target = region
+                            }
+                        })
+                    }
+                }
+                
+                if let region = target {
+                    regionState.regionId = region.id
+                    regionState.name = region.name
+                    regionState.serverIP = region.ipsecDefault.components(separatedBy: "\n")[0]
+                    regionState.countryCode = region.country
+                    regionState.remoteIdentifier = region.ipsecHostname
+                    regionState.lastSelectedRegionId = region.id
+                    regionState.level = region.level
+                }
+                VPNConfigurationCoordinator.start {
+                }
             case .changeRegion(let regionId, let name, let serverIP, let countryCode, let remoteidentifier, let level):
                 regionState.regionId = regionId
                 regionState.name = name

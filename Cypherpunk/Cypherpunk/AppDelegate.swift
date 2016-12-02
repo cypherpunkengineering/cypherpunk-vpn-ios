@@ -99,11 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         vc.fakeLaunchView.isHidden = true
                     })
                 } else {
-                    let realm = try! Realm()
-                    if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
-                        
-                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
-                    }
+                    mainStore.dispatch(RegionAction.setup)
                 }
             }
             
@@ -122,12 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         vc.fakeLaunchView.isHidden = true
                     })
                 } else {
-                    let realm = try! Realm()
-                    if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
-                        
-                        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
-                    }
-                    
+                    mainStore.dispatch(RegionAction.setup)
                 }
             }
         }
@@ -225,7 +216,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     Session.send(region) { (result) in
                         switch result {
                         case .success:
-                            break
+                            mainStore.dispatch(RegionAction.setup)
                         case .failure:
                             break
                         }

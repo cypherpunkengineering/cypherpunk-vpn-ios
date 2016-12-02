@@ -61,6 +61,7 @@ open class VPNConfigurationCoordinator {
 
     class func start(_ completion: @escaping () -> ()) {
         let manager = NEVPNManager.shared()
+        let status = manager.connection.status
         manager.loadFromPreferences { (error) in
 
             let settingsState = mainStore.state.settingsState
@@ -168,7 +169,23 @@ open class VPNConfigurationCoordinator {
             }
 
             manager.saveToPreferences(completionHandler: { (error) in
-                if error != nil {
+                let connectBlock = {
+                    let manager = NEVPNManager.shared()
+                    
+                    do {
+                        try manager.connection.startVPNTunnel()
+                    } catch NEVPNError.configurationInvalid {
+                        print("NEVPNError.configurationInvalid")
+                    } catch NEVPNError.configurationDisabled {
+                        print("NEVPNError.configurationDisabled")
+                    } catch {
+                        print("Unknown Error")
+                    }
+                }
+                
+
+                if status == .connected, manager.isOnDemandEnabled == false {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: connectBlock)
                 }
                 completion()
             })

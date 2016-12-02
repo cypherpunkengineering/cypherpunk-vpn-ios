@@ -192,13 +192,7 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
             wifiInfo.isTrusted = sender.isOn
         }
         
-        let isConnected = VPNConfigurationCoordinator.isConnected
         VPNConfigurationCoordinator.start {
-            if isConnected {
-                DispatchQueue.main.async {
-                    VPNConfigurationCoordinator.connect()
-                }
-            }
         }
     }
 

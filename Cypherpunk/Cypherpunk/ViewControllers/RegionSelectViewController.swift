@@ -12,73 +12,80 @@ import ReSwift
 import RealmSwift
 import NetworkExtension
 
-class RegionSelectViewController: UITableViewController {
+enum RegionSection: Int {
+    case fastestLocation
+    case favorite
+    case recentlyConnected
+    case developer
+    case NA
+    case SA
+    case CR
+    case EU
+    case ME
+    case AF
+    case AS
+    case OP
     
-    fileprivate enum Section: Int {
-        case fastestLocation
-        case favorite
-        case recentlyConnected
-        case developer
-        case NA
-        case SA
-        case CR
-        case EU
-        case ME
-        case AF
-        case AS
-        case OP
-        
-        var realmResults: Results<Region> {
-            let realm = try! Realm()
-            switch self {
-            case .fastestLocation:
-                fatalError()
-            case .favorite:
-                return realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
-            case .recentlyConnected:
-                return realm.objects(Region.self).filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
-            default:
-                let sortProperties = [
-                    SortDescriptor(property: "country", ascending: true),
-                    SortDescriptor(property: "name", ascending: true)
-                ]
-                return realm.objects(Region.self).filter("region == %@", self.regionCode).sorted(by:sortProperties)
-            }
-        }
-        
-        var regionCode: String {
-            switch self {
-            case .developer: return "DEV"
-            case .NA: return "NA"
-            case .SA: return "SA"
-            case .CR: return "CR"
-            case .OP: return "OP"
-            case .EU: return "EU"
-            case .ME: return "ME"
-            case .AF: return "AF"
-            case .AS: return "AS"
-            default:
-                fatalError()
-            }
-        }
-        
-        var title: String {
-            switch self {
-            case .fastestLocation: return ""
-            case .favorite: return "favorite".uppercased()
-            case .recentlyConnected: return "Recently Connected".uppercased()
-            case .developer: return "Developer".uppercased()
-            case .NA: return "North America".uppercased()
-            case .SA: return "Central & South America".uppercased()
-            case .CR: return "Caribbean".uppercased()
-            case .OP: return "Oceania & Pacific".uppercased()
-            case .EU: return "Europe".uppercased()
-            case .ME: return "Middle East".uppercased()
-            case .AF: return "Africa".uppercased()
-            case .AS: return "Asia".uppercased()
-            }
+    var realmResults: Results<Region> {
+        let realm = try! Realm()
+        switch self {
+        case .fastestLocation:
+            fatalError()
+        case .favorite:
+            return realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
+        case .recentlyConnected:
+            return realm.objects(Region.self).filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
+        default:
+            let sortProperties = [
+                SortDescriptor(property: "country", ascending: true),
+                SortDescriptor(property: "name", ascending: true)
+            ]
+            return realm.objects(Region.self).filter("region == %@", self.regionCode).sorted(by:sortProperties)
         }
     }
+    
+    var regionCode: String! {
+        switch self {
+        case .developer: return "DEV"
+        case .NA: return "NA"
+        case .SA: return "SA"
+        case .CR: return "CR"
+        case .OP: return "OP"
+        case .EU: return "EU"
+        case .ME: return "ME"
+        case .AF: return "AF"
+        case .AS: return "AS"
+        default:
+            return nil
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .fastestLocation: return ""
+        case .favorite: return "favorite".uppercased()
+        case .recentlyConnected: return "Recently Connected".uppercased()
+        case .developer: return "Developer".uppercased()
+        case .NA: return "North America".uppercased()
+        case .SA: return "Central & South America".uppercased()
+        case .CR: return "Caribbean".uppercased()
+        case .OP: return "Oceania & Pacific".uppercased()
+        case .EU: return "Europe".uppercased()
+        case .ME: return "Middle East".uppercased()
+        case .AF: return "Africa".uppercased()
+        case .AS: return "Asia".uppercased()
+        }
+    }
+    
+    static var regions: [RegionSection] {
+        return [.developer, .NA, .SA, .CR, .OP, .EU, .ME, .AF, .AS].sorted{ return $0.rawValue < $1.rawValue }
+    }
+}
+
+
+class RegionSelectViewController: UITableViewController {
+    
+    fileprivate typealias Section = RegionSection
     
     var notificationToken: NotificationToken? = nil
     override func viewDidLoad() {
@@ -231,10 +238,10 @@ class RegionSelectViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let region: Region
+        var region: Region? = nil
         switch section {
         case .fastestLocation:
-            return
+            mainStore.dispatch(RegionAction.setup)
         default:
             region = section.realmResults[indexPath.row]
         }
@@ -248,14 +255,10 @@ class RegionSelectViewController: UITableViewController {
         
         let cell = tableView.cellForRow(at: indexPath) as! RegionTableViewCell
         cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
-        
-        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
-        let manager = NEVPNManager.shared()
-        let isConnected = manager.connection.status == .connected
+        if let region = region {
+            mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+        }
         VPNConfigurationCoordinator.start {
-            if isConnected {
-                VPNConfigurationCoordinator.connect()
-            }
         }
     }
     
