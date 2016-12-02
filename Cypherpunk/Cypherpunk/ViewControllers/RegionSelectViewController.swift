@@ -22,11 +22,11 @@ class RegionSelectViewController: UITableViewController {
         case NA
         case SA
         case CR
-        case OP
         case EU
         case ME
         case AF
         case AS
+        case OP
         
         var realmResults: Results<Region> {
             let realm = try! Realm()
