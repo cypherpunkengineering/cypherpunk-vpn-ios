@@ -171,6 +171,7 @@ class RegionSelectViewController: UITableViewController {
         
         let section = Section(rawValue: (indexPath as NSIndexPath).section)!
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
+
         cell?.starButton.isHidden = false
         cell?.flagImageView.image = nil
         cell?.titleLabel.isEnabled = true
@@ -197,6 +198,11 @@ class RegionSelectViewController: UITableViewController {
             if mainStore.state.regionState.regionId == region.id {
                 cell?.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
             }
+            
+            if case .recentlyConnected = section {
+                cell?.starButton.alpha = 0.0
+            }
+            
             cell?.titleLabel.text = region.name
             if region.isFavorite {
                 cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
