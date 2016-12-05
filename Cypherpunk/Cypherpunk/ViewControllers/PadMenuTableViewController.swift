@@ -84,15 +84,6 @@ class PadMenuTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            let accountState = mainStore.state.accountState
-            switch accountState.subscriptionType {
-            case .annually:
-                return 1
-            default:
-                return 2
-            }
-        }
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
