@@ -205,14 +205,14 @@ class RegionSelectViewController: UITableViewController {
             }
             cell?.flagImageView.image = UIImage(named: region.country.lowercased())
             
-            if region.level == "premium" {
+            if region.ipsecDefault == "" {
+                cell?.unavailableLabel.isHidden = false
+            }else if region.level == "premium" {
                 cell?.premiumLocationIconView.isHidden = false
             } else if region.level == "developer" {
                 cell?.devLocationIconView.isHidden = false
             }
-            else if region.ipsecDefault == "" {
-                cell?.unavailableLabel.isHidden = false
-            }
+            
             
             if region.enabled == false {
                 cell?.titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
