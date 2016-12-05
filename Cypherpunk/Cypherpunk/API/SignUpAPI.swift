@@ -11,7 +11,7 @@ import APIKit
 
 struct SignUpRequest: Request {
 
-    typealias Response = ()
+    typealias Response = String
     
     var email: String
     var password: String
@@ -45,6 +45,13 @@ struct SignUpRequest: Request {
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        if let cookie = urlResponse.allHeaderFields["Set-Cookie"] as? String {
+            let separetedField = cookie.components(separatedBy: ";")
+            if let session = separetedField.first {
+                return session
+            }
+        }
+        throw ResponseError.unexpectedObject(object)
     }
 
 

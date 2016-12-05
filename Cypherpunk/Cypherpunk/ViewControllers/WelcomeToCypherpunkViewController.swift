@@ -254,7 +254,8 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                 Session.send(request) {
                     (result) in
                     switch result {
-                    case .success:
+                    case .success(let session):
+                        mainStore.dispatch(AccountAction.signUp(mailAddress: self.email, session: session))
                         self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
                     case .failure:
                         self.state = .getStarted

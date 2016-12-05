@@ -54,7 +54,8 @@ class SignUpViewController: UIViewController, StoreSubscriber {
             Session.send(request) {
                 (result) in
                 switch result {
-                case .success:
+                case .success(let session):
+                    mainStore.dispatch(AccountAction.signUp(mailAddress:email, session: session))
                     self.performSegue(withIdentifier: R.segue.signUpViewController.emailConfirmation, sender: nil)
                 case .failure(let error):
                     print(error)

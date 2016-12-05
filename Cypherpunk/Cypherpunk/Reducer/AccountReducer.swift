@@ -22,9 +22,10 @@ struct AccountReducer: Reducer {
         }
         
         switch accountAction {
-        case .signUp(let mailAddress):
-            accountState.isLoggedIn = true
+        case .signUp(let mailAddress, let session):
+            accountState.isLoggedIn = false
             accountState.mailAddress = mailAddress
+            accountState.session = session
             accountState.vpnUsername = nil
             accountState.vpnPassword = nil
             

@@ -33,7 +33,6 @@ extension GetPremiumPlanTableViewController {
         mailAddressField.resignFirstResponder()
         
         if let address = mailAddressField.text , isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
             mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
             
             if isModal() {
@@ -51,7 +50,6 @@ extension GetPremiumPlanTableViewController {
         mailAddressField.resignFirstResponder()
         
         if let address = mailAddressField.text , isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
             mainStore.dispatch(AccountAction.upgrade(subscription: .semiannually, expiredDate: Date()))
             if isModal() {
                 self.navigationController?.dismiss(animated: true, completion: nil)
@@ -66,7 +64,6 @@ extension GetPremiumPlanTableViewController {
         mailAddressField.resignFirstResponder()
 
         if let address = mailAddressField.text , isValidMailAddress(address) {
-            mainStore.dispatch(AccountAction.signUp(mailAddress: address))
             mainStore.dispatch(AccountAction.upgrade(subscription: .annually, expiredDate: Date()))
             if isModal() {
                 self.navigationController?.dismiss(animated: true, completion: nil)
