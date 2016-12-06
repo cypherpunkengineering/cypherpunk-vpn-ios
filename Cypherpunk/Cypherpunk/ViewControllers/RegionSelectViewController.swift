@@ -248,6 +248,8 @@ class RegionSelectViewController: UITableViewController {
         switch section {
         case .fastestLocation:
             mainStore.dispatch(RegionAction.setup)
+            let realm = try! Realm()
+            region = realm.object(ofType: Region.self, forPrimaryKey: mainStore.state.regionState.regionId)
         default:
             region = section.realmResults[indexPath.row]
         }
@@ -257,12 +259,18 @@ class RegionSelectViewController: UITableViewController {
                 return
             }
             cell.titleLabel.textColor = UIColor.white
+            
+            if cell.titleLabel.text == region?.name {
+                cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
+            }
         }
         
-        let cell = tableView.cellForRow(at: indexPath) as! RegionTableViewCell
-        cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
-        if let region = region {
-            mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+        if case .fastestLocation = section {
+            
+        } else {
+            if let region = region {
+                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+            }
         }
         VPNConfigurationCoordinator.start {
         }
