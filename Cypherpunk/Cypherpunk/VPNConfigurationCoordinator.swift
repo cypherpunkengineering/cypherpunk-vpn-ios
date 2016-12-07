@@ -228,7 +228,7 @@ open class VPNConfigurationCoordinator {
         manager.saveToPreferences(completionHandler: { error in
             
         })
-//        manager.connection.stopVPNTunnel()
+        manager.connection.stopVPNTunnel()
     }
 
     class func removeFromPreferences() {
