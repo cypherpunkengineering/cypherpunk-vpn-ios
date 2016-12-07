@@ -186,6 +186,7 @@ class RegionSelectViewController: UITableViewController {
         cell?.devLocationIconView.isHidden = true
         cell?.premiumLocationIconView.isHidden = true
         cell?.unavailableLabel.isHidden = true
+        cell?.titleLabel.font = R.font.dosisRegular(size: 18.0)
 
         switch section {
         case .fastestLocation:
@@ -197,6 +198,7 @@ class RegionSelectViewController: UITableViewController {
 
             if mainStore.state.regionState.regionId == region.id {
                 cell?.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
+                cell?.titleLabel.font = R.font.dosisBold(size: 18.0)
             }
             
             if case .recentlyConnected = section {
@@ -259,9 +261,10 @@ class RegionSelectViewController: UITableViewController {
                 return
             }
             cell.titleLabel.textColor = UIColor.white
-            
+            cell.titleLabel.font = R.font.dosisMedium(size: 18.0)
             if cell.titleLabel.text == region?.name {
                 cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
+                cell.titleLabel.font = R.font.dosisBold(size: 18.0)
             }
         }
         
