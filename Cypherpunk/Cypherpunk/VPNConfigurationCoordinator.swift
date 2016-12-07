@@ -209,10 +209,11 @@ open class VPNConfigurationCoordinator {
         }
 
         let manager = NEVPNManager.shared()
-        if manager.isEnabled == false {
-            manager.isEnabled = true
+        if manager.isOnDemandEnabled == false || manager.isEnabled == false {
             manager.saveToPreferences(completionHandler: { (error) in
-                if error != nil {
+                if let error = error {
+                    print(error)
+                } else {
                     connectBlock()
                 }
             })
@@ -224,8 +225,10 @@ open class VPNConfigurationCoordinator {
     class func disconnect() {
         let manager = NEVPNManager.shared()
         manager.isOnDemandEnabled = false
-        manager.saveToPreferences(completionHandler: nil)
-        manager.connection.stopVPNTunnel()
+        manager.saveToPreferences(completionHandler: { error in
+            
+        })
+//        manager.connection.stopVPNTunnel()
     }
 
     class func removeFromPreferences() {
