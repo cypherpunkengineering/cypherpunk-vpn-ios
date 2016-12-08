@@ -272,7 +272,7 @@ class RegionSelectViewController: UITableViewController {
             
         } else {
             if let region = region {
-                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecDefault, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
             }
         }
         VPNConfigurationCoordinator.start {
