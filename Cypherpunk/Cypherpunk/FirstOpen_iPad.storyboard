@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XWW-hf-Q22">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XWW-hf-Q22">
     <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -147,10 +147,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Hh6-wG-8K6">
-                                <rect key="frame" x="435.5" y="147" width="153" height="32"/>
+                                <rect key="frame" x="435.5" y="146" width="153" height="32"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="colorHelmetBig" translatesAutoresizingMaskIntoConstraints="NO" id="fQ1-t8-yid">
-                                <rect key="frame" x="485" y="60" width="54" height="77"/>
+                                <rect key="frame" x="484.5" y="60" width="55" height="76"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -277,7 +277,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiX-ty-IAv">
-                                                    <rect key="frame" x="0.0" y="19.5" width="375" height="23"/>
+                                                    <rect key="frame" x="0.0" y="19.5" width="1024" height="23"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -299,7 +299,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d3d-mF-Efg">
-                                                    <rect key="frame" x="39" y="0.0" width="300" height="48"/>
+                                                    <rect key="frame" x="39" y="0.0" width="949" height="48"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -344,7 +344,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your plan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crn-Or-cUu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="22"/>
                                                     <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -380,10 +380,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlY-uS-rPr">
-                                                    <rect key="frame" x="25" y="0.0" width="326" height="76"/>
+                                                    <rect key="frame" x="25" y="0.0" width="975" height="76"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sle-65-XeA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="326" height="76"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="975" height="76"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title=" "/>
                                                             <connections>
@@ -400,7 +400,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="$ 9.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxq-pw-HbW">
-                                                            <rect key="frame" x="113" y="13" width="147" height="48"/>
+                                                            <rect key="frame" x="113" y="13" width="796" height="48"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="Vnf-MF-Hem"/>
                                                             </constraints>
@@ -413,7 +413,7 @@
                                                             </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/month" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2p-RS-XsX">
-                                                            <rect key="frame" x="261" y="35" width="42" height="16"/>
+                                                            <rect key="frame" x="910" y="35" width="42" height="16"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
                                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -476,10 +476,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qig-Z8-kHY">
-                                                    <rect key="frame" x="25" y="0.0" width="326" height="76"/>
+                                                    <rect key="frame" x="25" y="0.0" width="975" height="76"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cla-ZU-3wD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="326" height="76"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="975" height="76"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title=" "/>
                                                             <connections>
@@ -496,13 +496,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/month" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqX-Xv-1qN">
-                                                            <rect key="frame" x="261" y="35" width="42" height="16"/>
+                                                            <rect key="frame" x="910" y="35" width="42" height="16"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
                                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="$ 8.33" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBj-sV-6eq">
-                                                            <rect key="frame" x="117" y="13" width="143" height="48"/>
+                                                            <rect key="frame" x="117" y="13" width="792" height="48"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="lZ2-aP-IK0"/>
                                                             </constraints>
@@ -704,7 +704,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="colorHelmetBig" width="54" height="77"/>
+        <image name="colorHelmetBig" width="55" height="76"/>
         <image name="headerLogo" width="153" height="32"/>
     </resources>
 </document>
