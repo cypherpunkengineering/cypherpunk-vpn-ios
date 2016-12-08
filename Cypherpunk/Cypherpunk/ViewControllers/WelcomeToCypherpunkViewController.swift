@@ -90,7 +90,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
             destination.mailAddress = email
             destination.password = inputField.text
         }
-        if let destination = destination as? RestYourPasswordViewController {
+        if let destination = destination as? ResetYourPasswordViewController {
             destination.mailAddress = email
         }
 

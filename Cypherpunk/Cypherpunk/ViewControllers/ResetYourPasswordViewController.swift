@@ -1,5 +1,5 @@
 //
-//  RestYourPasswordViewController.swift
+//  ResetYourPasswordViewController.swift
 //  Cypherpunk
 //
 //  Created by 木村圭佑 on 2016/10/20.
@@ -10,7 +10,7 @@ import UIKit
 import APIKit
 import SVProgressHUD
 
-class RestYourPasswordViewController: UIViewController {
+class ResetYourPasswordViewController: UIViewController {
 
     var mailAddress: String = ""
     @IBOutlet weak var inputField: ThemedTextField!
@@ -22,7 +22,6 @@ class RestYourPasswordViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
         
         inputField.text = mailAddress
     }
@@ -59,4 +58,9 @@ class RestYourPasswordViewController: UIViewController {
         }
 
     }
+    
+    @IBAction func backAction(_ sender: AnyObject) {
+        let _ = self.navigationController?.popViewController(animated: true)
+    }
+
 }
