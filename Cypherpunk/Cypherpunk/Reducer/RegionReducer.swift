@@ -64,7 +64,9 @@ struct RegionReducer: Reducer {
                     regionState.lastSelectedRegionId = region.id
                     regionState.level = region.level
                 }
-                VPNConfigurationCoordinator.start {
+                if mainStore.state.isInstalledPreferences {
+                    VPNConfigurationCoordinator.start {
+                    }
                 }
             case .changeRegion(let regionId, let name, let serverIP, let countryCode, let remoteidentifier, let level):
                 regionState.regionId = regionId
