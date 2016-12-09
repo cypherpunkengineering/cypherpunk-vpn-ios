@@ -222,7 +222,7 @@ class RegionSelectViewController: UITableViewController {
             }
             
             
-            if region.enabled == false {
+            if region.authorized == false {
                 cell?.titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
                 cell?.titleLabel.isEnabled = false
                 cell?.starButton.alpha = 0.5

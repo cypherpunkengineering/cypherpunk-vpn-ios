@@ -33,7 +33,7 @@ struct RegionReducer: Reducer {
                 
                 let realm = try! Realm()
                 var target: Region? = nil
-                if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId), region.enabled == true {
+                if let regionId = mainStore.state.regionState.lastSelectedRegionId, let region = realm.object(ofType: Region.self, forPrimaryKey: regionId), region.authorized == true {
                     target = region
                 } else {
                     let sortProperties = [
@@ -41,14 +41,14 @@ struct RegionReducer: Reducer {
                         SortDescriptor(property: "name", ascending: true)
                     ]
                     
-                    if let region = realm.objects(Region.self).filter("isFavorite == true AND enabled == true").sorted(byProperty: "lastConnectedDate", ascending: false).first {
+                    if let region = realm.objects(Region.self).filter("isFavorite == true AND authorized == true").sorted(byProperty: "lastConnectedDate", ascending: false).first {
                         target = region
-                    } else if let region = realm.objects(Region.self).filter("isFavorite == false AND enabled == true AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false).first {
+                    } else if let region = realm.objects(Region.self).filter("isFavorite == false AND authorized == true AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false).first {
                         target = region
                     } else {
                         RegionSection.regions.flatMap{return $0.regionCode}.forEach({ (regionCode) in
                             if target != nil { return }
-                            if let region = realm.objects(Region.self).filter("region == %@ AND enabled == true", regionCode).sorted(by:sortProperties).first {
+                            if let region = realm.objects(Region.self).filter("region == %@ AND authorized == true", regionCode).sorted(by:sortProperties).first {
                                 target = region
                             }
                         })

@@ -63,11 +63,11 @@ struct RegionListRequest: Request {
                         region.ipsecDefault = (server["ipsecDefault"] as! [String]).joined(separator: "\n")
                         region.httpDefault = (server["httpDefault"] as! [String]).joined(separator: "\n")
                         region.socksDefault = (server["socksDefault"] as! [String]).joined(separator: "\n")
-                        region.enabled = server["enabled"] as! Bool
+                        region.authorized = server["authorized"] as! Bool
                         region.country = server["country"] as! String
                         
                         if region.ipsecDefault == "" {
-                            region.enabled = false
+                            region.authorized = false
                         }
                     } else {
                         let region = Region(
@@ -85,7 +85,7 @@ struct RegionListRequest: Request {
                             httpDefault: (server["httpDefault"] as! [String]).joined(separator: "\n"),
                             socksDefault: (server["socksDefault"] as! [String]).joined(separator: "\n"),
                             country: server["country"] as! String,
-                            enabled: server["enabled"] as! Bool
+                            authorized: server["authorized"] as! Bool
                         )
                         realm.add(region, update: true)
                     }
@@ -126,10 +126,10 @@ class Region: Object {
     dynamic var socksDefault: String = ""
     dynamic var country: String = ""
     dynamic var isFavorite: Bool = false
-    dynamic var enabled: Bool = false
+    dynamic var authorized: Bool = false
     dynamic var lastConnectedDate: Date = Date(timeIntervalSince1970: 1)
     
-    init(id: String, region: String, level: String, name: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, country: String, enabled: Bool) {
+    init(id: String, region: String, level: String, name: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, country: String, authorized: Bool) {
 
         super.init()
         
@@ -147,11 +147,11 @@ class Region: Object {
         self.httpDefault = httpDefault
         self.socksDefault = socksDefault
         self.country = country
-        self.enabled = enabled
+        self.authorized = authorized
         self.isFavorite = false
 
         if ipsecDefault == "" {
-            self.enabled = false
+            self.authorized = false
         }
     }
     required init(realm: RLMRealm, schema: RLMObjectSchema) {
