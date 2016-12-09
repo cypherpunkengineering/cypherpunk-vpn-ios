@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="37O-y4-8Ms">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="37O-y4-8Ms">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,13 +16,16 @@
         <array key="Dosis-Regular.otf">
             <string>Dosis-Regular</string>
         </array>
+        <array key="Dosis-SemiBold.otf">
+            <string>Dosis-SemiBold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="YlT-Gp-oWm">
             <objects>
                 <navigationController navigationBarHidden="YES" id="37O-y4-8Ms" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NdI-vH-ygT" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NdI-vH-ygT" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,7 +141,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fpp-gQ-V9A" kind="show" id="P4u-6t-6aW"/>
+                                    <segue destination="1Ca-PF-FdM" kind="show" id="e4a-Iu-Slq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Quh-4L-vOV">
@@ -258,16 +261,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent you confirmation via Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-HY-MRX">
-                                <rect key="frame" x="31.5" y="88" width="312.5" height="23.5"/>
+                                <rect key="frame" x="52" y="88" width="271.5" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="illustMailConfirm" translatesAutoresizingMaskIntoConstraints="NO" id="R2C-A1-EUr">
-                                <rect key="frame" x="77" y="136.5" width="220" height="180"/>
+                                <rect key="frame" x="77" y="138.5" width="220" height="180"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPN-7y-nl4">
-                                <rect key="frame" x="67" y="344.5" width="240" height="37.5"/>
+                                <rect key="frame" x="85.5" y="346.5" width="203.5" height="40.5"/>
                                 <string key="text">Please check your Email App and
 do something….</string>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
@@ -275,7 +278,7 @@ do something….</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DIz-Gg-2QJ">
-                                <rect key="frame" x="117.5" y="561.5" width="140" height="18.5"/>
+                                <rect key="frame" x="117.5" y="558" width="140" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="A0k-1c-WVc"/>
                                 </constraints>
@@ -294,7 +297,7 @@ do something….</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-hB-YoU">
-                                <rect key="frame" x="115.5" y="610" width="144" height="19"/>
+                                <rect key="frame" x="115.5" y="608" width="144" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="144" id="l0e-hV-VAD"/>
                                 </constraints>
@@ -331,37 +334,31 @@ do something….</string>
             </objects>
             <point key="canvasLocation" x="969" y="-569"/>
         </scene>
-        <!--Rest your password-->
-        <scene sceneID="Vai-rE-MGH">
+        <!--Reset your password-->
+        <scene sceneID="ldx-0L-wx4">
             <objects>
-                <viewController id="fpp-gQ-V9A" customClass="ResetYourPasswordViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1Ca-PF-FdM" userLabel="Reset your password" customClass="ResetYourPasswordViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IO3-bG-DXT"/>
-                        <viewControllerLayoutGuide type="bottom" id="I50-Qe-Yvr"/>
+                        <viewControllerLayoutGuide type="top" id="65p-cw-kyR"/>
+                        <viewControllerLayoutGuide type="bottom" id="MG4-Ai-lCB"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vaD-93-reH" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="QEs-xo-hN8" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgi-2t-cZ9">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="ilT-N4-3y6"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iaf-R4-QSn">
-                                <rect key="frame" x="101.5" y="111" width="173.5" height="46"/>
-                                <string key="text">Enter your email address
-to reset your password.</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2H-fg-e8v">
+                                <rect key="frame" x="92" y="112" width="191" height="46"/>
+                                <string key="text">Enter your email address to
+reset your password.</string>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="-2"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eX-lR-lht">
-                                <rect key="frame" x="39" y="181" width="300" height="48"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ts-7v-rbe">
+                                <rect key="frame" x="39" y="188" width="300" height="48"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ng4-xY-a6k" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OGQ-Uq-zX5" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="13" y="0.0" width="274" height="48"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -372,11 +369,11 @@ to reset your password.</string>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="ng4-xY-a6k" firstAttribute="top" secondItem="5eX-lR-lht" secondAttribute="top" id="28I-0R-FlA"/>
-                                    <constraint firstAttribute="height" constant="48" id="62i-LK-C58"/>
-                                    <constraint firstAttribute="trailing" secondItem="ng4-xY-a6k" secondAttribute="trailing" constant="13" id="T0X-Ge-yKw"/>
-                                    <constraint firstItem="ng4-xY-a6k" firstAttribute="leading" secondItem="5eX-lR-lht" secondAttribute="leading" constant="13" id="f9E-3P-RMF"/>
-                                    <constraint firstAttribute="bottom" secondItem="ng4-xY-a6k" secondAttribute="bottom" id="gPA-Zo-n22"/>
+                                    <constraint firstAttribute="height" constant="48" id="4SB-dp-AmV"/>
+                                    <constraint firstAttribute="bottom" secondItem="OGQ-Uq-zX5" secondAttribute="bottom" id="4zU-Z1-cbr"/>
+                                    <constraint firstItem="OGQ-Uq-zX5" firstAttribute="top" secondItem="1ts-7v-rbe" secondAttribute="top" id="TYQ-ys-Va2"/>
+                                    <constraint firstAttribute="trailing" secondItem="OGQ-Uq-zX5" secondAttribute="trailing" constant="13" id="f4E-h8-Kxp"/>
+                                    <constraint firstItem="OGQ-Uq-zX5" firstAttribute="leading" secondItem="1ts-7v-rbe" secondAttribute="leading" constant="13" id="pVV-EC-wAX"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -384,10 +381,10 @@ to reset your password.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXg-Yg-llr" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="39" y="249" width="300" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twy-fL-NlK" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="39" y="259" width="300" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="jgX-YF-BPu"/>
+                                    <constraint firstAttribute="height" constant="48" id="kvK-wa-FYD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <state key="normal" title="Submit">
@@ -411,35 +408,52 @@ to reset your password.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="submitAction:" destination="fpp-gQ-V9A" eventType="touchUpInside" id="b5S-xM-Npr"/>
+                                    <action selector="submitAction:" destination="1Ca-PF-FdM" eventType="touchUpInside" id="bt0-VU-2IW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkh-RF-3o5">
+                                <rect key="frame" x="16" y="32" width="34" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="MFT-dx-H51"/>
+                                    <constraint firstAttribute="width" constant="34" id="USI-gZ-RMA"/>
+                                </constraints>
+                                <state key="normal" image="iconBack"/>
+                                <connections>
+                                    <action selector="backAction:" destination="1Ca-PF-FdM" eventType="touchUpInside" id="leD-Qj-d2a"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset your password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtm-xp-Msg">
+                                <rect key="frame" x="97" y="40" width="182" height="28"/>
+                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Iaf-R4-QSn" firstAttribute="top" secondItem="IO3-bG-DXT" secondAttribute="bottom" constant="47" id="0sX-Rp-ifx"/>
-                            <constraint firstItem="5eX-lR-lht" firstAttribute="top" secondItem="Iaf-R4-QSn" secondAttribute="bottom" constant="24" id="6Vg-cn-9jt"/>
-                            <constraint firstItem="Iaf-R4-QSn" firstAttribute="centerX" secondItem="vaD-93-reH" secondAttribute="centerX" id="Jlm-rp-7fY"/>
-                            <constraint firstItem="5eX-lR-lht" firstAttribute="leading" secondItem="vaD-93-reH" secondAttribute="leading" constant="39" id="Qq1-0I-n05"/>
-                            <constraint firstItem="HXg-Yg-llr" firstAttribute="trailing" secondItem="5eX-lR-lht" secondAttribute="trailing" id="R6w-MQ-p1C"/>
-                            <constraint firstItem="HXg-Yg-llr" firstAttribute="leading" secondItem="5eX-lR-lht" secondAttribute="leading" id="XJP-A6-Sme"/>
-                            <constraint firstAttribute="trailing" secondItem="Cgi-2t-cZ9" secondAttribute="trailing" id="dpn-cI-vLa"/>
-                            <constraint firstItem="HXg-Yg-llr" firstAttribute="top" secondItem="5eX-lR-lht" secondAttribute="bottom" constant="20" id="j0A-lO-iDv"/>
-                            <constraint firstItem="Cgi-2t-cZ9" firstAttribute="top" secondItem="IO3-bG-DXT" secondAttribute="bottom" id="pRJ-dz-yv7"/>
-                            <constraint firstItem="Cgi-2t-cZ9" firstAttribute="leading" secondItem="vaD-93-reH" secondAttribute="leading" id="seb-DV-4Er"/>
-                            <constraint firstAttribute="trailing" secondItem="5eX-lR-lht" secondAttribute="trailing" constant="36" id="wDu-2j-Evw"/>
+                            <constraint firstItem="R2H-fg-e8v" firstAttribute="top" secondItem="Rtm-xp-Msg" secondAttribute="bottom" constant="44" id="3VV-YT-emJ"/>
+                            <constraint firstItem="Rtm-xp-Msg" firstAttribute="top" secondItem="65p-cw-kyR" secondAttribute="bottom" constant="20" id="6UE-Yq-CxP"/>
+                            <constraint firstItem="gkh-RF-3o5" firstAttribute="top" secondItem="65p-cw-kyR" secondAttribute="bottom" constant="12" id="81n-Z4-Ssl"/>
+                            <constraint firstItem="R2H-fg-e8v" firstAttribute="centerX" secondItem="QEs-xo-hN8" secondAttribute="centerX" id="BEZ-ra-12G"/>
+                            <constraint firstItem="twy-fL-NlK" firstAttribute="trailing" secondItem="1ts-7v-rbe" secondAttribute="trailing" id="ETV-Ge-Goi"/>
+                            <constraint firstAttribute="trailing" secondItem="1ts-7v-rbe" secondAttribute="trailing" constant="36" id="Ud4-Uw-qZU"/>
+                            <constraint firstItem="gkh-RF-3o5" firstAttribute="leading" secondItem="QEs-xo-hN8" secondAttribute="leadingMargin" id="XlS-3d-LWb"/>
+                            <constraint firstItem="1ts-7v-rbe" firstAttribute="top" secondItem="R2H-fg-e8v" secondAttribute="bottom" constant="30" id="ZNn-3t-JrS"/>
+                            <constraint firstItem="twy-fL-NlK" firstAttribute="leading" secondItem="1ts-7v-rbe" secondAttribute="leading" id="cWi-lZ-6fr"/>
+                            <constraint firstItem="twy-fL-NlK" firstAttribute="top" secondItem="1ts-7v-rbe" secondAttribute="bottom" constant="23" id="nnX-SH-Svi"/>
+                            <constraint firstItem="1ts-7v-rbe" firstAttribute="leading" secondItem="QEs-xo-hN8" secondAttribute="leading" constant="39" id="uhC-S1-CgV"/>
+                            <constraint firstItem="Rtm-xp-Msg" firstAttribute="centerX" secondItem="QEs-xo-hN8" secondAttribute="centerX" id="wsS-ro-a8a"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Rest your password" id="zyL-EE-Zoz"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationItem key="navigationItem" title="Rest your password" id="JTG-MV-RhD"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="inputField" destination="ng4-xY-a6k" id="WJM-91-ae4"/>
-                        <segue destination="mR6-J3-kHM" kind="show" identifier="Submit" id="MvA-bR-f9Q"/>
+                        <outlet property="inputField" destination="OGQ-Uq-zX5" id="MmV-uk-Mb9"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u1S-ab-ssF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JBZ-j7-owd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="970" y="-1269"/>
+            <point key="canvasLocation" x="969" y="-1256"/>
         </scene>
     </scenes>
     <resources>
@@ -451,7 +465,4 @@ to reset your password.</string>
         <image name="illustMailConfirm" width="220" height="180"/>
         <image name="loading" width="72" height="72"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="MvA-bR-f9Q"/>
-    </inferredMetricsTieBreakers>
 </document>

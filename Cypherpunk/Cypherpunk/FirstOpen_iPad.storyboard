@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w6Z-YF-E6g">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w6Z-YF-E6g">
     <device id="ipad12_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -277,16 +277,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent you confirmation via Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qzf-6A-Mtv">
-                                <rect key="frame" x="547" y="88" width="272" height="26"/>
+                                <rect key="frame" x="547.5" y="88" width="271.5" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="illustMailConfirm" translatesAutoresizingMaskIntoConstraints="NO" id="tuf-RE-UbR">
-                                <rect key="frame" x="573" y="164" width="220" height="180"/>
+                                <rect key="frame" x="573" y="163.5" width="220" height="180"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7N-kt-RWV">
-                                <rect key="frame" x="581" y="374" width="204" height="54"/>
+                                <rect key="frame" x="581.5" y="373.5" width="203.5" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="aGB-UC-NWh"/>
                                 </constraints>
@@ -365,13 +365,6 @@ do something….</string>
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASC-D2-Jvn">
-                                <rect key="frame" x="0.0" y="20" width="1366" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="heL-LG-C7h"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address to reset your password." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5to-kS-adJ">
                                 <rect key="frame" x="514" y="112" width="338.5" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
@@ -437,7 +430,7 @@ do something….</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drg-cq-Eg3">
-                                <rect key="frame" x="20" y="33" width="34" height="44"/>
+                                <rect key="frame" x="20" y="41" width="34" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="FO9-yj-UPu"/>
                                     <constraint firstAttribute="height" constant="44" id="XV5-4c-9KT"/>
@@ -459,18 +452,15 @@ do something….</string>
                         <constraints>
                             <constraint firstItem="5to-kS-adJ" firstAttribute="top" secondItem="mfh-QE-jfi" secondAttribute="bottom" constant="36" id="5do-dR-bZN"/>
                             <constraint firstItem="mfh-QE-jfi" firstAttribute="top" secondItem="gOE-bb-bjA" secondAttribute="bottom" constant="28" id="ES3-8f-MbA"/>
-                            <constraint firstItem="ASC-D2-Jvn" firstAttribute="leading" secondItem="xTk-Eg-ohc" secondAttribute="leading" id="Fmu-fd-q8q"/>
                             <constraint firstItem="slN-QV-eJp" firstAttribute="trailing" secondItem="z6I-sO-0bC" secondAttribute="trailing" id="HTo-SE-Cj0"/>
                             <constraint firstItem="z6I-sO-0bC" firstAttribute="centerX" secondItem="xTk-Eg-ohc" secondAttribute="centerX" id="J7S-hJ-tQe"/>
-                            <constraint firstItem="drg-cq-Eg3" firstAttribute="top" secondItem="gOE-bb-bjA" secondAttribute="bottom" constant="13" id="N5m-Dk-lQN"/>
+                            <constraint firstItem="drg-cq-Eg3" firstAttribute="top" secondItem="gOE-bb-bjA" secondAttribute="bottom" constant="21" id="N5m-Dk-lQN"/>
                             <constraint firstItem="slN-QV-eJp" firstAttribute="leading" secondItem="z6I-sO-0bC" secondAttribute="leading" id="Tm0-3M-1Rb"/>
                             <constraint firstItem="slN-QV-eJp" firstAttribute="top" secondItem="z6I-sO-0bC" secondAttribute="bottom" constant="23" id="Tmv-Gh-7y7"/>
                             <constraint firstItem="drg-cq-Eg3" firstAttribute="leading" secondItem="xTk-Eg-ohc" secondAttribute="leadingMargin" id="W5I-vw-FjZ"/>
                             <constraint firstItem="z6I-sO-0bC" firstAttribute="top" secondItem="5to-kS-adJ" secondAttribute="bottom" constant="30" id="dH0-Xq-G2y"/>
                             <constraint firstItem="5to-kS-adJ" firstAttribute="centerX" secondItem="xTk-Eg-ohc" secondAttribute="centerX" id="fE6-6Q-eML"/>
                             <constraint firstItem="mfh-QE-jfi" firstAttribute="centerX" secondItem="xTk-Eg-ohc" secondAttribute="centerX" id="hhj-GU-pNX"/>
-                            <constraint firstAttribute="trailing" secondItem="ASC-D2-Jvn" secondAttribute="trailing" id="jdA-kJ-NhA"/>
-                            <constraint firstItem="ASC-D2-Jvn" firstAttribute="top" secondItem="gOE-bb-bjA" secondAttribute="bottom" id="kT4-fl-7Ah"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rest your password" id="AFQ-tJ-CKA"/>
