@@ -34,7 +34,7 @@ enum RegionSection: Int {
         case .favorite:
             return realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
         case .recentlyConnected:
-            return realm.objects(Region.self).filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
+            return realm.objects(Region.self).filter("isFavorite = false").filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
         default:
             let sortProperties = [
                 SortDescriptor(property: "country", ascending: true),
