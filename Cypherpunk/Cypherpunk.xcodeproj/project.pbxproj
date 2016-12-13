@@ -123,7 +123,6 @@
 		2BDBD0D01D65286D00080E67 /* EditingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0CF1D65286D00080E67 /* EditingRootViewController.swift */; };
 		2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDBD0D11D65295F00080E67 /* Password.storyboard */; };
 		2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */; };
-		2BE06E4B1DC0BE4200FDC417 /* SubscriptionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE06E4A1DC0BE4200FDC417 /* SubscriptionAPI.swift */; };
 		2BEC968F1D75FF8900CBBC04 /* RegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */; };
 		2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF33BC41D5314F1003FCFF3 /* test.p12 */; };
 		2BFBE9DD1DC0A33F008D9F5D /* Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBE9DC1DC0A33F008D9F5D /* Share.storyboard */; };
@@ -277,7 +276,6 @@
 		2BDBD0CF1D65286D00080E67 /* EditingRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingRootViewController.swift; sourceTree = "<group>"; };
 		2BDBD0D11D65295F00080E67 /* Password.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
 		2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactusViewController.swift; sourceTree = "<group>"; };
-		2BE06E4A1DC0BE4200FDC417 /* SubscriptionAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionAPI.swift; sourceTree = "<group>"; };
 		2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionTableViewCell.swift; sourceTree = "<group>"; };
 		2BF33BC41D5314F1003FCFF3 /* test.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.p12; sourceTree = "<group>"; };
 		2BFBE9DC1DC0A33F008D9F5D /* Share.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Share.storyboard; sourceTree = "<group>"; };
@@ -580,7 +578,6 @@
 				2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */,
 				2B95C9181DC7749800F79A2D /* SignUpAPI.swift */,
 				2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */,
-				2BE06E4A1DC0BE4200FDC417 /* SubscriptionAPI.swift */,
 				2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */,
 				20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */,
 				2090F7161DD5AC1300BAB626 /* ChangeEmailAPI.swift */,
@@ -1182,7 +1179,6 @@
 				20B634B61DC3591B0036169D /* AppAction.swift in Sources */,
 				2090F7191DD5AF8D00BAB626 /* ChangePasswordAPI.swift in Sources */,
 				208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */,
-				2BE06E4B1DC0BE4200FDC417 /* SubscriptionAPI.swift in Sources */,
 				2073AE331DE44A300090B472 /* UIPageControl+Disable.m in Sources */,
 				2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
