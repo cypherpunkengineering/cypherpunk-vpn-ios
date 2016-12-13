@@ -38,21 +38,15 @@ struct AccountReducer: Reducer {
             accountState.vpnPassword = response.privacy.password
             accountState.secret = response.secret
             accountState.session = response.session
-            
-            accountState.save()
-        case .logout:
-            accountState.isLoggedIn = false
-            VPNConfigurationCoordinator.disconnect()
-            VPNConfigurationCoordinator.removeFromPreferences()
-            AccountState.removeLastLoggedInService()
-        case .getSubscriptionStatus(let status):
-            if status.type == "Free" {
+
+            let status = response.subscription
+            if response.account.type == "Free" {
                 accountState.subscriptionType = .free
                 accountState.expiredDate = nil
             } else {
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale.current
-
+                
                 switch status.renewal {
                 case "none":
                     accountState.subscriptionType = .free
@@ -75,7 +69,12 @@ struct AccountReducer: Reducer {
                 }
             }
             
-            break
+            accountState.save()
+        case .logout:
+            accountState.isLoggedIn = false
+            VPNConfigurationCoordinator.disconnect()
+            VPNConfigurationCoordinator.removeFromPreferences()
+            AccountState.removeLastLoggedInService()
         case .upgrade(let subscription, let expiredDate):
             switch subscription {
             case .free:
@@ -88,7 +87,7 @@ struct AccountReducer: Reducer {
             accountState.save()
         case .changeEmail(let newEmail):
             accountState.mailAddress = newEmail
-        case .changePassword(let _):
+        case .changePassword(_):
             break
         }
         

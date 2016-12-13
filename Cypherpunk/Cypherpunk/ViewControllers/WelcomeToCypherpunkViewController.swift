@@ -296,18 +296,8 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                             Session.send(regionRequest) { (result) in
                                 switch result {
                                 case .success(_):
-                                    let subscriptionRequest = SubscriptionStatusRequest(session: response.session)
-                                    Session.send(subscriptionRequest) {
-                                        (result) in
-                                        switch result {
-                                        case .success(let status):
-                                            mainStore.dispatch(AccountAction.getSubscriptionStatus(status: status))
-                                            mainStore.dispatch(RegionAction.setup)
-                                            mainStore.dispatch(AccountAction.login(response: response))
-                                        case .failure(let error):
-                                            SVProgressHUD.showError(withStatus: "\((error as NSError).localizedDescription)")
-                                        }
-                                    }
+                                    mainStore.dispatch(RegionAction.setup)
+                                    mainStore.dispatch(AccountAction.login(response: response))
                                 case .failure:
                                     UIView.animate(withDuration: 0.3, animations: {
                                         self.welcomeLabel.alpha = 1.0
