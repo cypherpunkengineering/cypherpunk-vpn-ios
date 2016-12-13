@@ -130,53 +130,55 @@ extension UpdatePasswordTableViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let newString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
-        
-        self.newPasswordLabel.textColor = UIColor.white
-        self.passwordConfirmationLabel.textColor = UIColor.white
-        
+
         var doneButtonIsEnabled = true
-        
-        switch textField {
-        case self.newPasswordField:
-            if newString?.characters.count == 0 {
-                self.newPasswordLabel.textColor = UIColor.red
-                doneButtonIsEnabled = false
+        if let newString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) {
+            self.newPasswordLabel.textColor = UIColor.white
+            self.passwordConfirmationLabel.textColor = UIColor.white
+            
+            
+            switch textField {
+            case self.newPasswordField:
+                if newString.characters.count < 6 {
+                    self.newPasswordLabel.textColor = UIColor.red
+                    doneButtonIsEnabled = false
+                }
+                
+                if newString != self.passwordConfirmationLabel.text {
+                    passwordConfirmationLabel.textColor = UIColor.red
+                    doneButtonIsEnabled = false
+                }
+                
+            case self.passwordConfirmationField:
+                if newString.characters.count < 6 {
+                    self.passwordConfirmationLabel.textColor = UIColor.red
+                    doneButtonIsEnabled = false
+                }
+                
+                if newPasswordField.text != newString {
+                    passwordConfirmationLabel.textColor = UIColor.red
+                    doneButtonIsEnabled = false
+                }
+                
+            case self.oldPasswordField:
+                if newString.characters.count < 6 {
+                    doneButtonIsEnabled = false
+                }
+                
+                break
+            default:
+                break
             }
             
-            if newString != self.passwordConfirmationLabel.text {
-                passwordConfirmationLabel.textColor = UIColor.red
+            if textField != self.oldPasswordField, let text = oldPasswordField.text, text.characters.count < 6 {
                 doneButtonIsEnabled = false
             }
-            
-        case self.passwordConfirmationField:
-            if newString?.characters.count == 0 {
-                self.passwordConfirmationLabel.textColor = UIColor.red
-                doneButtonIsEnabled = false
-            }
-            
-            if newPasswordField.text != newString {
-                passwordConfirmationLabel.textColor = UIColor.red
-                doneButtonIsEnabled = false
-            }
-            
-        case self.oldPasswordField:
-            if newString?.characters.count == 0 {
-                doneButtonIsEnabled = false
-            }
-            
-            break
-        default:
-            break
-        }
-        
-        if textField != self.oldPasswordField , self.oldPasswordField.text?.characters.count == 0 {
+    
+        } else {
             doneButtonIsEnabled = false
         }
         
         NotificationCenter.default.post(name: EditingRootDoneButtonIsEnabledNotification, object: doneButtonIsEnabled)
-        
         return true
     }
 }

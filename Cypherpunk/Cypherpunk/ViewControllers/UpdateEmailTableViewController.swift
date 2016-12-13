@@ -127,7 +127,11 @@ extension UpdateEmailTableViewController: UITextFieldDelegate {
             }
             
         case self.passwordField:
-            if newString?.characters.count == 0 {
+            if let newString = newString {
+                if newString.characters.count < 6 {
+                    doneButtonIsEnabled = false
+                }
+            } else {
                 doneButtonIsEnabled = false
             }
             
@@ -136,7 +140,7 @@ extension UpdateEmailTableViewController: UITextFieldDelegate {
             break
         }
         
-        if textField != self.passwordField , self.passwordField.text?.characters.count == 0 {
+        if textField != self.passwordField , (self.passwordField.text?.characters.count)! < 6 {
             doneButtonIsEnabled = false
         }
         

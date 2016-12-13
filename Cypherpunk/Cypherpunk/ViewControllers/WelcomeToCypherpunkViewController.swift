@@ -15,7 +15,7 @@ import ReSwift
 
 class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
     
-    private enum State {
+    fileprivate enum State {
         case getStarted
         case signUp
         case logIn
@@ -33,9 +33,9 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var termOfServiceAndPrivacyPolicyView: UIView!
     
     @IBOutlet weak var forgotPasswordButton: UIButton!
-    private var email: String = ""
+    fileprivate var email: String = ""
     
-    private var state: State = .getStarted
+    fileprivate var state: State = .getStarted
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,7 +58,9 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         self.welcomeLabel.text = "Welcome to Cypherpunk"
         self.inputField.placeholder = "Type your email"
         self.inputField.text = self.email
+        self.actionButton.isEnabled = isValidMailAddress(inputField.text!)
         self.actionButton.setTitle("Get Started", for: .normal)
+        self.actionButton.setTitleColor(UIColor.lightGray, for: .disabled)
         self.inputField.isSecureTextEntry = false
         self.inputField.keyboardType = .emailAddress
         self.inputField.returnKeyType = UIReturnKeyType.next
@@ -146,6 +148,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                         self.welcomeLabel.text = "Welcome to Cypherpunk"
                         self.inputField.placeholder = "Type your email"
                         self.inputField.text = self.email
+                        self.actionButton.isEnabled = isValidMailAddress(self.inputField.text!)
                         self.actionButton.setTitle("Get Started", for: .normal)
                         self.inputField.keyboardType = .emailAddress
                         self.inputField.isSecureTextEntry = false
@@ -161,6 +164,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                         self.welcomeLabel.text = "Welcome back!"
                         self.inputField.placeholder = "Type your password"
                         self.inputField.text = ""
+                        self.actionButton.isEnabled = false
                         self.actionButton.setTitle("Log In", for: .normal)
                         self.inputField.isSecureTextEntry = true
                         self.inputField.returnKeyType = UIReturnKeyType.send
@@ -178,6 +182,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                         self.welcomeLabel.text = "Hello!\nPlease set your password"
                         self.inputField.placeholder = "Type your password"
                         self.inputField.text = ""
+                        self.actionButton.isEnabled = false
                         self.actionButton.setTitle("Sign Up", for: .normal)
                         self.inputField.isSecureTextEntry = true
                         self.inputField.returnKeyType = UIReturnKeyType.send
@@ -367,7 +372,34 @@ extension WelcomeToCypherpunkViewController: UITextFieldDelegate {
         startAction()
         return false
     }
-
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var doneButtonIsEnabled = true
+        if let newString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) {
+            switch state {
+            case .getStarted:
+                if isValidMailAddress(newString) == false {
+                    doneButtonIsEnabled = false
+                }
+            case .logIn, .signUp:
+                if newString.characters.count < 6 {
+                    doneButtonIsEnabled = false
+                }
+            }
+        } else {
+            doneButtonIsEnabled = false
+        }
+        
+        self.actionButton.isEnabled = doneButtonIsEnabled
+        
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.actionButton.isEnabled = false
+        return true
+    }
+    
 }
 
 extension WelcomeToCypherpunkViewController {
