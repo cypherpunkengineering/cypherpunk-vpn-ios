@@ -60,6 +60,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         self.inputField.text = self.email
         self.actionButton.setTitle("Get Started", for: .normal)
         self.inputField.isSecureTextEntry = false
+        self.inputField.keyboardType = .emailAddress
         self.inputField.returnKeyType = UIReturnKeyType.next
         self.welcomeLabel.alpha = 1.0
         self.inputContainerView.alpha = 1.0
@@ -146,6 +147,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                         self.inputField.placeholder = "Type your email"
                         self.inputField.text = self.email
                         self.actionButton.setTitle("Get Started", for: .normal)
+                        self.inputField.keyboardType = .emailAddress
                         self.inputField.isSecureTextEntry = false
                         self.inputField.returnKeyType = UIReturnKeyType.next
                         

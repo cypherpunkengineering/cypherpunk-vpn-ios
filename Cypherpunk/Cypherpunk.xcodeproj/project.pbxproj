@@ -57,6 +57,8 @@
 		20B634B61DC3591B0036169D /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B634B51DC3591B0036169D /* AppAction.swift */; };
 		20BF04D31DB8B8E30007B633 /* SettingUpYourVPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */; };
 		20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */; };
+		20CF42A31DFFB15E00BC8267 /* ReconnectDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF42A21DFFB15E00BC8267 /* ReconnectDialogView.swift */; };
+		20CF42A51DFFB1E500BC8267 /* ReconnectDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20CF42A41DFFB1E500BC8267 /* ReconnectDialogView.xib */; };
 		20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D895EB1D1D0F67002B9F9D /* Top.storyboard */; };
 		20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895ED1D1D16FB002B9F9D /* R.generated.swift */; };
 		20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D895FB1D23A1E7002B9F9D /* AccountState.swift */; };
@@ -207,6 +209,8 @@
 		20B634B51DC3591B0036169D /* AppAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		20BF04D21DB8B8E30007B633 /* SettingUpYourVPNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingUpYourVPNViewController.swift; sourceTree = "<group>"; };
 		20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
+		20CF42A21DFFB15E00BC8267 /* ReconnectDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReconnectDialogView.swift; sourceTree = "<group>"; };
+		20CF42A41DFFB1E500BC8267 /* ReconnectDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReconnectDialogView.xib; sourceTree = "<group>"; };
 		20D895EB1D1D0F67002B9F9D /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		20D895ED1D1D16FB002B9F9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		20D895F61D1D1CC1002B9F9D /* Cypherpunk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cypherpunk-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -433,6 +437,8 @@
 				2BEC968E1D75FF8900CBBC04 /* RegionTableViewCell.swift */,
 				2061342C1D8296AC00480621 /* BlurredIndicatorView.xib */,
 				206D4D6F1D82BDF300853B47 /* IndicatorView.swift */,
+				20CF42A21DFFB15E00BC8267 /* ReconnectDialogView.swift */,
+				20CF42A41DFFB1E500BC8267 /* ReconnectDialogView.xib */,
 				2033FB441DB89E4D004D14B7 /* LoadingAnimationView.swift */,
 				201C0F561DC9E60500B5624B /* WifiNetworksCell.swift */,
 				2BA4E2A51DD1B23C006ACDC5 /* UpgradeTableViewCell.swift */,
@@ -732,7 +738,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Cypherpunk;
 				TargetAttributes = {
 					203809641D13D89D005145CD = {
@@ -806,6 +812,7 @@
 				2B6798E51DAC0FB600099064 /* FirstOpen_iPad.storyboard in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
 				2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */,
+				20CF42A51DFFB1E500BC8267 /* ReconnectDialogView.xib in Resources */,
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
 				200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
@@ -1182,6 +1189,7 @@
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
 				203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */,
+				20CF42A31DFFB15E00BC8267 /* ReconnectDialogView.swift in Sources */,
 				2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,

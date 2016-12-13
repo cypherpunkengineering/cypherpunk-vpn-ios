@@ -169,23 +169,10 @@ open class VPNConfigurationCoordinator {
             }
 
             manager.saveToPreferences(completionHandler: { (error) in
-                let connectBlock = {
-                    let manager = NEVPNManager.shared()
-                    
-                    do {
-                        try manager.connection.startVPNTunnel()
-                    } catch NEVPNError.configurationInvalid {
-                        print("NEVPNError.configurationInvalid")
-                    } catch NEVPNError.configurationDisabled {
-                        print("NEVPNError.configurationDisabled")
-                    } catch {
-                        print("Unknown Error")
-                    }
-                }
-                
-
                 if status == .connected, manager.isOnDemandEnabled == false {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: connectBlock)
+                    DispatchQueue.main.async {
+                        ReconnectDialogView.show()
+                    }
                 }
                 completion()
             })
