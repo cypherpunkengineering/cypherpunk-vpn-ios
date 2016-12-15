@@ -201,10 +201,6 @@ class RegionSelectViewController: UITableViewController {
                 cell?.titleLabel.font = R.font.dosisBold(size: 18.0)
             }
             
-            if case .recentlyConnected = section {
-                cell?.starButton.alpha = 0.0
-            }
-            
             cell?.titleLabel.text = region.name
             if region.isFavorite {
                 cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
