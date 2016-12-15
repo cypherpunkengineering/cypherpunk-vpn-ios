@@ -359,7 +359,9 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
 
 extension WelcomeToCypherpunkViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        startAction()
+        if actionButton.isEnabled {
+            startAction()
+        }
         return false
     }
     
