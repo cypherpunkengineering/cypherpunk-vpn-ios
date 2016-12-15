@@ -10,7 +10,8 @@ import Foundation
 
 import ReSwift
 
-struct AppReducer: Reducer {
+let appReducer = AppReducer()
+struct AppReducer {
     typealias ReducerStateType = AppState
 
     let accountReducer = AccountReducer()

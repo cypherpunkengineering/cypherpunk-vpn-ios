@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 import NetworkExtension
  
-struct SettingsReducer: Reducer {
+struct SettingsReducer {
     typealias ReducerStateType = SettingsState
     
     func handleAction(action: Action, state: SettingsState?) -> SettingsState {

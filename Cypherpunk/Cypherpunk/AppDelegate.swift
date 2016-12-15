@@ -18,7 +18,7 @@ import SwiftyStoreKit
 import Firebase
 
 let mainStore = Store<AppState>(
-    reducer: AppReducer(),
+    reducer: appReducer.handleAction,
     state: nil
 )
 

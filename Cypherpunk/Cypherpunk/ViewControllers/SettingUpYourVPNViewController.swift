@@ -15,7 +15,6 @@ class SettingUpYourVPNViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // Do any additional setup after loading the view.
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(
             self,

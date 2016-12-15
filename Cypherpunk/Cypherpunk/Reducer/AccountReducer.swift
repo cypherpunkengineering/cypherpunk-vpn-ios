@@ -10,12 +10,12 @@ import Foundation
 
 import ReSwift
 
-struct AccountReducer: Reducer {
+struct AccountReducer {
     typealias ReducerStateType = AccountState
     
     func handleAction(action: Action, state: AccountState?) -> AccountState {
         
-        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
+        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil, accountType: nil)
         
         guard let accountAction = action as? AccountAction else {
             return accountState
@@ -38,7 +38,7 @@ struct AccountReducer: Reducer {
             accountState.vpnPassword = response.privacy.password
             accountState.secret = response.secret
             accountState.session = response.session
-
+            accountState.accountType = response.account.type
             let status = response.subscription
             if response.account.type == "Free" {
                 accountState.subscriptionType = .free

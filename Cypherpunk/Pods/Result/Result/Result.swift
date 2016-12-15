@@ -108,10 +108,24 @@ public enum Result<T, Error: Swift.Error>: ResultProtocol, CustomStringConvertib
 
 // MARK: - Derive result from failable closure
 
+public func materialize<T>(_ f: () throws -> T) -> Result<T, AnyError> {
+	return materialize(try f())
+}
+
+public func materialize<T>(_ f: @autoclosure () throws -> T) -> Result<T, AnyError> {
+	do {
+		return .success(try f())
+	} catch {
+		return .failure(AnyError(error))
+	}
+}
+
+@available(*, deprecated, message: "Use the overload which returns `Result<T, AnyError>` instead")
 public func materialize<T>(_ f: () throws -> T) -> Result<T, NSError> {
 	return materialize(try f())
 }
 
+@available(*, deprecated, message: "Use the overload which returns `Result<T, AnyError>` instead")
 public func materialize<T>(_ f: @autoclosure () throws -> T) -> Result<T, NSError> {
 	do {
 		return .success(try f())
@@ -160,14 +174,45 @@ extension NSError: ErrorProtocolConvertible {
 	}
 }
 
-// MARK: -
+// MARK: - Errors
 
 /// An “error” that is impossible to construct.
 ///
 /// This can be used to describe `Result`s where failures will never
 /// be generated. For example, `Result<Int, NoError>` describes a result that
 /// contains an `Int`eger and is guaranteed never to be a `failure`.
-public enum NoError: Swift.Error { }
+public enum NoError: Swift.Error, Equatable {
+	public static func ==(lhs: NoError, rhs: NoError) -> Bool {
+		return true
+	}
+}
+
+/// A type-erased error which wraps an arbitrary error instance. This should be
+/// useful for generic contexts.
+public struct AnyError: Swift.Error {
+	/// The underlying error.
+	public let error: Swift.Error
+
+	public init(_ error: Swift.Error) {
+		if let anyError = error as? AnyError {
+			self = anyError
+		} else {
+			self.error = error
+		}
+	}
+}
+
+extension AnyError: ErrorProtocolConvertible {
+	public static func error(from error: Error) -> AnyError {
+		return AnyError(error)
+	}
+}
+
+extension AnyError: CustomStringConvertible {
+	public var description: String {
+		return String(describing: error)
+	}
+}
 
 // MARK: - migration support
 extension Result {

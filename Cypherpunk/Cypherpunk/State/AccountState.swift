@@ -93,6 +93,8 @@ struct AccountState: StateType {
         static let nickName = "nickName"
         static let rawSubscriptionType = "rawSubscriptionType"
         static let expiredDate = "expiredDate"
+        static let accountType = "accountType"
+
     }
 
     var isLoggedIn: Bool
@@ -104,6 +106,7 @@ struct AccountState: StateType {
     var nickName: String?
     var subscriptionType: SubscriptionType
     var expiredDate: Date?
+    var accountType: String?
     
     func save() {
         let keychain = Keychain(service: mailAddress!)
@@ -114,6 +117,8 @@ struct AccountState: StateType {
         keychain[AccountStateKey.secret] = secret
         keychain[AccountStateKey.session] = session
         keychain[AccountStateKey.nickName] = nickName
+        keychain[AccountStateKey.accountType] = accountType
+
         keychain[AccountStateKey.rawSubscriptionType] = String(subscriptionType.rawValue)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
@@ -132,7 +137,7 @@ struct AccountState: StateType {
     }
     
     static func restore() -> AccountState {
-        var state = AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil)
+        var state = AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil, accountType: nil)
         let defaults = UserDefaults.standard
         if let service = defaults.string(forKey: AccountStateKey.mailAddress) {
             let keychain = Keychain(service: service)
@@ -143,6 +148,8 @@ struct AccountState: StateType {
             state.secret = keychain[AccountStateKey.secret]
             state.session = keychain[AccountStateKey.session]
             state.nickName = keychain[AccountStateKey.nickName]
+            state.accountType = keychain[AccountStateKey.accountType]
+
             state.subscriptionType = SubscriptionType(rawValue: Int(keychain[AccountStateKey.rawSubscriptionType] ?? "\( SubscriptionType.free.rawValue)")!)!
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"

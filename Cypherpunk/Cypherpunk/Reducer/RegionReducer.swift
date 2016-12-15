@@ -12,7 +12,7 @@ import ReSwift
 import RealmSwift
 
 
-struct RegionReducer: Reducer {
+struct RegionReducer {
 
     typealias ReducerStateType = RegionState
     
