@@ -257,7 +257,7 @@ class RegionSelectViewController: UITableViewController {
                 return
             }
             cell.titleLabel.textColor = UIColor.white
-            cell.titleLabel.font = R.font.dosisMedium(size: 18.0)
+            cell.titleLabel.font = R.font.dosisRegular(size: 18.0)
             if cell.titleLabel.text == region?.name {
                 cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
                 cell.titleLabel.font = R.font.dosisBold(size: 18.0)
