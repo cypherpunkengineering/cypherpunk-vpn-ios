@@ -12,7 +12,7 @@ import ReSwift
 enum AccountAction: Action {
     case signUp(mailAddress: String, session: String)
     case login(response: LoginResponse)
-    case upgrade(subscription: SubscriptionType, expiredDate: Date?)
+    case upgrade(subscription: SubscriptionType?, expiredDate: Date?)
     case changeEmail(newEmail: String)
     case changePassword(password: String)
     case logout

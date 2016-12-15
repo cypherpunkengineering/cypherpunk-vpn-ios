@@ -11,12 +11,7 @@ import Foundation
 import ReSwift
 
 enum SubscriptionType: Int {
-    case free
-    case premium
-    case family
-    case enterprise
-    case staff
-    case developer
+    // none is nil
     case monthly
     case semiannually
     case annually
@@ -25,7 +20,6 @@ enum SubscriptionType: Int {
         
     var detailMessage: String {
         switch self {
-        case .free: return ""
         case .monthly:
             return "Renews monthly"
         case .semiannually:
@@ -36,8 +30,6 @@ enum SubscriptionType: Int {
             return "Lifetime"
         case .forever:
             return "Forever"
-		default:
-			return ""
         }
     }
     
@@ -91,7 +83,7 @@ struct AccountState: StateType {
     var secret: String?
     var session: String?
     var nickName: String?
-    var subscriptionType: SubscriptionType
+    var subscriptionType: SubscriptionType?
     var expiredDate: Date?
     var accountType: String?
     
@@ -106,7 +98,11 @@ struct AccountState: StateType {
         keychain[AccountStateKey.nickName] = nickName
         keychain[AccountStateKey.accountType] = accountType
 
-        keychain[AccountStateKey.rawSubscriptionType] = String(subscriptionType.rawValue)
+        if let subscriptionType = subscriptionType {
+            keychain[AccountStateKey.rawSubscriptionType] = String(subscriptionType.rawValue)
+        } else {
+            keychain[AccountStateKey.rawSubscriptionType] = nil
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
         dateFormatter.locale = Locale.current
@@ -124,7 +120,7 @@ struct AccountState: StateType {
     }
     
     static func restore() -> AccountState {
-        var state = AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil, accountType: nil)
+        var state = AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, expiredDate: nil, accountType: nil)
         let defaults = UserDefaults.standard
         if let service = defaults.string(forKey: AccountStateKey.mailAddress) {
             let keychain = Keychain(service: service)
@@ -137,7 +133,11 @@ struct AccountState: StateType {
             state.nickName = keychain[AccountStateKey.nickName]
             state.accountType = keychain[AccountStateKey.accountType]
 
-            state.subscriptionType = SubscriptionType(rawValue: Int(keychain[AccountStateKey.rawSubscriptionType] ?? "\( SubscriptionType.free.rawValue)")!)!
+            if let rawSubscriptionTypeString = keychain[AccountStateKey.rawSubscriptionType], let rawSubscriptionType = Int(rawSubscriptionTypeString) {
+                state.subscriptionType = SubscriptionType(rawValue: rawSubscriptionType)
+            } else {
+                state.subscriptionType = nil
+            }
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
             dateFormatter.locale = Locale.current

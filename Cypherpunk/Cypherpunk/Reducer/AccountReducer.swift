@@ -15,7 +15,7 @@ struct AccountReducer {
     
     func handleAction(action: Action, state: AccountState?) -> AccountState {
         
-        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: .free, expiredDate: nil, accountType: nil)
+        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, expiredDate: nil, accountType: nil)
         
         guard let accountAction = action as? AccountAction else {
             return accountState
@@ -39,34 +39,30 @@ struct AccountReducer {
             accountState.secret = response.secret
             accountState.session = response.session
             accountState.accountType = response.account.type
+
             let status = response.subscription
-            if response.account.type.lowercased() == "free" {
-                accountState.subscriptionType = .free
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale.current
+            
+            switch status.renewal.lowercased() {
+            case "none":
+                accountState.subscriptionType = nil
+                accountState.expiredDate = dateFormatter.date(from: status.expiration)
+            case "monthly":
+                accountState.subscriptionType = .monthly
+                accountState.expiredDate = dateFormatter.date(from: status.expiration)
+            case "semiannually":
+                accountState.subscriptionType = .semiannually
+                accountState.expiredDate = dateFormatter.date(from: status.expiration)
+            case "annually":
+                accountState.subscriptionType = .annually
+                accountState.expiredDate = dateFormatter.date(from: status.expiration)
+            case "forever":
+                accountState.subscriptionType = .lifetime
+                accountState.expiredDate = dateFormatter.date(from: status.expiration)
+            default:
+                accountState.subscriptionType = nil
                 accountState.expiredDate = nil
-            } else {
-                let dateFormatter = DateFormatter()
-                dateFormatter.locale = Locale.current
-                
-                switch status.renewal.lowercased() {
-                case "none":
-                    accountState.subscriptionType = .free
-                    accountState.expiredDate = dateFormatter.date(from: status.expiration)
-                case "monthly":
-                    accountState.subscriptionType = .monthly
-                    accountState.expiredDate = dateFormatter.date(from: status.expiration)
-                case "semiannually":
-                    accountState.subscriptionType = .semiannually
-                    accountState.expiredDate = dateFormatter.date(from: status.expiration)
-                case "annually":
-                    accountState.subscriptionType = .annually
-                    accountState.expiredDate = dateFormatter.date(from: status.expiration)
-                case "forever":
-                    accountState.subscriptionType = .lifetime
-                    accountState.expiredDate = dateFormatter.date(from: status.expiration)
-                default:
-                    accountState.subscriptionType = .free
-                    accountState.expiredDate = nil
-                }
             }
             
             accountState.save()
@@ -77,7 +73,7 @@ struct AccountReducer {
             AccountState.removeLastLoggedInService()
         case .upgrade(let subscription, let expiredDate):
             switch subscription {
-            case .free:
+            case .none:
                 accountState.expiredDate = nil
             default:
                 accountState.subscriptionType = subscription

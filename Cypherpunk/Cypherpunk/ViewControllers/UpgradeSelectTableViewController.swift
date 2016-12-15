@@ -33,23 +33,24 @@ class UpgradeSelectTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        switch mainStore.state.accountState.subscriptionType {
-        case .monthly:
-            monthlyCellContentView.alpha = 0.5
-            monthlyCellContentView.isUserInteractionEnabled = false
-            monthlyCurrentPlanLabelView.isHidden = false
-        case .semiannually:
-            semiannuallyCellContentView.alpha = 0.5
-            semiannuallyCellContentView.isUserInteractionEnabled = false
-            semiannuallyCurrentPlanLabelView.isHidden = false
-        case .annually:
-            annuallyCellContentView.alpha = 0.5
-            annuallyCellContentView.isUserInteractionEnabled = false
-            annuallyCurrentPlanLabelView.isHidden = false
-        default:
-            break
+        if let subscriptionType = mainStore.state.accountState.subscriptionType {
+            switch subscriptionType {
+            case .monthly:
+                monthlyCellContentView.alpha = 0.5
+                monthlyCellContentView.isUserInteractionEnabled = false
+                monthlyCurrentPlanLabelView.isHidden = false
+            case .semiannually:
+                semiannuallyCellContentView.alpha = 0.5
+                semiannuallyCellContentView.isUserInteractionEnabled = false
+                semiannuallyCurrentPlanLabelView.isHidden = false
+            case .annually:
+                annuallyCellContentView.alpha = 0.5
+                annuallyCellContentView.isUserInteractionEnabled = false
+                annuallyCurrentPlanLabelView.isHidden = false
+            default:
+                break
+            }
         }
-        
         SwiftyStoreKit.retrieveProductsInfo([
             SubscriptionType.monthly.subscriptionProductId,
             SubscriptionType.semiannually.subscriptionProductId,

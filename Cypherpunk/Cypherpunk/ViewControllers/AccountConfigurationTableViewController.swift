@@ -53,11 +53,15 @@ class AccountConfigurationTableViewController: UITableViewController {
         dateFormatter.locale = Locale.current
         
         let dateString: String
-        if let d = accountState.expiredDate {
-            dateString = dateFormatter.string(from: d)
-            expirationLabel.text = accountState.subscriptionType.detailMessage + " " + dateString
+        if let subscriptionType = accountState.subscriptionType {
+            if let d = accountState.expiredDate {
+                dateString = dateFormatter.string(from: d)
+                expirationLabel.text = subscriptionType.detailMessage + " " + dateString
+            } else {
+                expirationLabel.text = subscriptionType.detailMessage
+            }
         } else {
-            expirationLabel.text = accountState.subscriptionType.detailMessage
+            expirationLabel.text = ""
         }
         
         subscriptionTypeLabel.text = accountState.accountType
@@ -156,12 +160,17 @@ extension AccountConfigurationTableViewController: StoreSubscriber {
         dateFormatter.dateFormat = "MM/dd/yy"
         dateFormatter.locale = Locale.current
         
+        let accountState = state.accountState
         let dateString: String
-        if let d = state.accountState.expiredDate {
-            dateString = dateFormatter.string(from: d)
-            expirationLabel.text = state.accountState.subscriptionType.detailMessage + " on " + dateString
+        if let subscriptionType = accountState.subscriptionType {
+            if let d = accountState.expiredDate {
+                dateString = dateFormatter.string(from: d)
+                expirationLabel.text = subscriptionType.detailMessage + " " + dateString
+            } else {
+                expirationLabel.text = subscriptionType.detailMessage
+            }
         } else {
-            expirationLabel.text = state.accountState.subscriptionType.detailMessage
+            expirationLabel.text = ""
         }
 
         if self.subscriptionTypeLabel.text != state.accountState.accountType {
