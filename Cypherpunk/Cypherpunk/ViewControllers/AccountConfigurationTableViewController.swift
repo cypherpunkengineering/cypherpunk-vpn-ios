@@ -138,7 +138,7 @@ extension AccountConfigurationTableViewController: StoreSubscriber {
         dateFormatter.dateFormat = "MM/dd/yy"
         dateFormatter.locale = Locale.current
         
-        let accountState = state.accountState
+        let accountState = mainStore.state.accountState
         let dateString: String
         if let subscriptionType = accountState.subscriptionType {
             if let d = accountState.expiredDate {
@@ -155,6 +155,8 @@ extension AccountConfigurationTableViewController: StoreSubscriber {
             self.subscriptionTypeLabel.text = state.accountState.accountType?.capitalized
         }
         
-        self.mailAddressLabel.text = state.accountState.mailAddress
+        mailAddressLabel.text = accountState.mailAddress ?? ""
+        usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
+
     }
 }

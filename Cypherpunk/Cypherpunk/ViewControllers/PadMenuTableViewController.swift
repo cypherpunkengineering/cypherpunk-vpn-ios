@@ -153,6 +153,7 @@ extension PadMenuTableViewController: StoreSubscriber {
             self.subscriptionTypeLabel.text = state.accountState.accountType?.capitalized
         }
         
+        usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
         self.mailAddressLabel.text = state.accountState.mailAddress
         self.vpnProtocolValueLabel.text = state.settingsState.vpnProtocolMode.description
 
