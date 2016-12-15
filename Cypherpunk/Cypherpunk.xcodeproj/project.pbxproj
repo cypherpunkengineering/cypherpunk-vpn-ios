@@ -1382,8 +1382,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "43192613-f690-4f41-b9c7-2ca676e04762";
-				PROVISIONING_PROFILE_SPECIFIER = "Cypherpunk Privacy app store distribution";
+				PROVISIONING_PROFILE = "eb75f06d-908b-4f10-b69a-f4a11de219c4";
+				PROVISIONING_PROFILE_SPECIFIER = "Cypherpunk Privacy distribution 20161212";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1439,8 +1439,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "43192613-f690-4f41-b9c7-2ca676e04762";
-				PROVISIONING_PROFILE_SPECIFIER = "Cypherpunk Privacy app store distribution";
+				PROVISIONING_PROFILE = "eb75f06d-908b-4f10-b69a-f4a11de219c4";
+				PROVISIONING_PROFILE_SPECIFIER = "Cypherpunk Privacy distribution 20161212";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cypherpunk/Cypherpunk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
