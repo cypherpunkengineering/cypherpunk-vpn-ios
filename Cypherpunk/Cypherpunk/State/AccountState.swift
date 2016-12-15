@@ -22,20 +22,7 @@ enum SubscriptionType: Int {
     case annually
     case lifetime
     case forever
-    
-    var title: String {
-        switch self {
-        case .free: return "Free"
-        case .premium: return "Premium"
-        case .family: return "Family"
-        case .enterprise: return "Enterprise"
-        case .staff: return "Staff"
-        case .developer: return "Developer"
-        default:
-            return "Special"
-        }
-    }
-    
+        
     var detailMessage: String {
         switch self {
         case .free: return ""

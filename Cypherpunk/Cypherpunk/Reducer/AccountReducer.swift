@@ -40,14 +40,14 @@ struct AccountReducer {
             accountState.session = response.session
             accountState.accountType = response.account.type
             let status = response.subscription
-            if response.account.type == "Free" {
+            if response.account.type.lowercased() == "free" {
                 accountState.subscriptionType = .free
                 accountState.expiredDate = nil
             } else {
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale.current
                 
-                switch status.renewal {
+                switch status.renewal.lowercased() {
                 case "none":
                     accountState.subscriptionType = .free
                     accountState.expiredDate = dateFormatter.date(from: status.expiration)
