@@ -57,8 +57,11 @@ struct AccountReducer {
             case "annually":
                 accountState.subscriptionType = .annually
                 accountState.expiredDate = dateFormatter.date(from: status.expiration)
-            case "forever":
+            case "lifetime":
                 accountState.subscriptionType = .lifetime
+                accountState.expiredDate = dateFormatter.date(from: status.expiration)
+            case "forever":
+                accountState.subscriptionType = .forever
                 accountState.expiredDate = dateFormatter.date(from: status.expiration)
             default:
                 accountState.subscriptionType = nil

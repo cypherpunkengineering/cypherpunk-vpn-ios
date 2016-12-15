@@ -26,10 +26,26 @@ struct SettingsReducer {
                 state.isAutoSecureConnectionsWhenConnectedOtherNetwork = isOn
             }
             
+            let isConnected = VPNConfigurationCoordinator.isConnected
             VPNConfigurationCoordinator.start{
                 if case .vpnProtocolMode = action {
-                    VPNConfigurationCoordinator.start{}
+                    VPNConfigurationCoordinator.start{
+                        let manager = NEVPNManager.shared()
+                        if isConnected, manager.isOnDemandEnabled == false {
+                            DispatchQueue.main.async {
+                                ReconnectDialogView.show()
+                            }
+                        }
+                    }
+                    return
                 }
+                let manager = NEVPNManager.shared()
+                if isConnected, manager.isOnDemandEnabled == false {
+                    DispatchQueue.main.async {
+                        ReconnectDialogView.show()
+                    }
+                }
+
             }
         }
         return state

@@ -61,7 +61,6 @@ open class VPNConfigurationCoordinator {
 
     class func start(_ completion: @escaping () -> ()) {
         let manager = NEVPNManager.shared()
-        let status = manager.connection.status
         manager.loadFromPreferences { (error) in
 
             let settingsState = mainStore.state.settingsState
@@ -169,11 +168,6 @@ open class VPNConfigurationCoordinator {
             }
 
             manager.saveToPreferences(completionHandler: { (error) in
-                if status == .connected, manager.isOnDemandEnabled == false {
-                    DispatchQueue.main.async {
-                        ReconnectDialogView.show()
-                    }
-                }
                 completion()
             })
         }

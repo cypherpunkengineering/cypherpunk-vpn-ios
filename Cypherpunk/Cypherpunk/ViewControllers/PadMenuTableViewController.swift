@@ -42,29 +42,6 @@ class PadMenuTableViewController: UITableViewController {
         
         self.navigationController?.isNavigationBarHidden = false
         
-        let accountState = mainStore.state.accountState
-        mailAddressLabel.text = accountState.mailAddress ?? ""
-        usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
-        vpnProtocolValueLabel.text = mainStore.state.settingsState.vpnProtocolMode.description
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yy"
-        dateFormatter.locale = Locale.current
-        
-        let dateString: String
-        if let subscriptionType = accountState.subscriptionType {
-            if let d = accountState.expiredDate {
-                dateString = dateFormatter.string(from: d)
-                expirationLabel.text = subscriptionType.detailMessage + " " + dateString
-            } else {
-                expirationLabel.text = subscriptionType.detailMessage
-            }
-        } else {
-            expirationLabel.text = ""
-        }
-        
-        subscriptionTypeLabel.text = accountState.accountType
-        
         self.tableView.reloadData()
         
         mainStore.subscribe(self)
@@ -172,10 +149,12 @@ extension PadMenuTableViewController: StoreSubscriber {
             expirationLabel.text = ""
         }
         
-        if self.subscriptionTypeLabel.text != state.accountState.accountType {
-            self.subscriptionTypeLabel.text = state.accountState.accountType
+        if self.subscriptionTypeLabel.text?.lowercased() != state.accountState.accountType?.lowercased() {
+            self.subscriptionTypeLabel.text = state.accountState.accountType?.capitalized
         }
         
         self.mailAddressLabel.text = state.accountState.mailAddress
+        self.vpnProtocolValueLabel.text = state.settingsState.vpnProtocolMode.description
+
     }
 }

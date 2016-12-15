@@ -271,7 +271,15 @@ class RegionSelectViewController: UITableViewController {
                 mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
             }
         }
+        
+        let isConnected = VPNConfigurationCoordinator.isConnected
         VPNConfigurationCoordinator.start {
+            let manager = NEVPNManager.shared()
+            if isConnected, manager.isOnDemandEnabled == false {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6, execute: {
+                    VPNConfigurationCoordinator.connect()
+                })
+            }
         }
     }
     
