@@ -26,7 +26,6 @@ extension NEVPNStatus: CustomStringConvertible {
 
 class PadTopRootViewController: UIViewController, StoreSubscriber {
     
-    @IBOutlet weak var installPreferencesView: UIView?
     @IBOutlet weak var animationContainerView: UIView!
     @IBOutlet weak var connectionActionView: UIView!
     @IBOutlet weak var locationActionView: UIView!
@@ -120,21 +119,18 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             if status == .invalid {
                 if TARGET_OS_SIMULATOR == 0 {
-                    installPreferencesView?.isHidden = false
                     connectionActionView.isHidden = true
                     locationActionView.isHidden = true
                     animationContainerView.isHidden = true
                     contentsSeparatorView?.isHidden = true
                 }
             } else {
-                installPreferencesView?.isHidden = true
                 connectionActionView.isHidden = false
                 locationActionView.isHidden = false
                 animationContainerView.isHidden = false
                 contentsSeparatorView?.isHidden = false
             }
         } else {
-            installPreferencesView?.isHidden = true
             connectionActionView.isHidden = false
             locationActionView.isHidden = false
             animationContainerView.isHidden = false

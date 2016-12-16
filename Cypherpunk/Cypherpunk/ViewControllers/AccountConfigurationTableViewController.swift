@@ -105,6 +105,12 @@ class AccountConfigurationTableViewController: UITableViewController {
                 if let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(appID)") {
                     UIApplication.shared.openURL(url)
                 }
+            case .contactus:
+                let url = URL(string: "https://cypherpunk.zendesk.com/tickets/new")
+                UIApplication.shared.openURL(url!)
+            case .help:
+                let url = URL(string: "https://support.cypherpunk.com/hc")
+                UIApplication.shared.openURL(url!)
             case .signOut:
                 mainStore.dispatch(AccountAction.logout)
                 
@@ -120,7 +126,6 @@ class AccountConfigurationTableViewController: UITableViewController {
                         NotificationCenter.default.post(name: kResetCenterViewNotification, object: nil)
                     }
                 }
-                
             default:
                 break
             }
