@@ -64,6 +64,13 @@ class UpgradeSelectTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -200,7 +207,32 @@ class UpgradeSelectTableViewController: UITableViewController {
 
 extension UpgradeSelectTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        let accountState = mainStore.state.accountState
         
+        if let subscription = accountState.subscriptionType, case .semiannually = subscription {
+            return 2
+        }
+        
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let accountState = mainStore.state.accountState
+        
+        if let subscription = accountState.subscriptionType, case .semiannually = subscription {
+            return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
+        }
+        
+        return super.tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let accountState = mainStore.state.accountState
+        
+        if let subscription = accountState.subscriptionType, case .semiannually = subscription {
+            return super.tableView(tableView, heightForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
+        }
+        
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
 }

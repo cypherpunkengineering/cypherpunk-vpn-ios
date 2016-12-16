@@ -66,6 +66,23 @@ class AccountConfigurationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            if mainStore.state.accountState.accountType?.lowercased() == "free" {
+                return 2
+            } else if let subscription = mainStore.state.accountState.subscriptionType {
+                switch subscription {
+                case .annually,.forever,.lifetime:
+                    return 1
+                default:
+                    if mainStore.state.accountState.accountType?.lowercased() == "developer" {
+                        return 1
+                    }
+                    return 2
+                }
+            } else {
+                return 2
+            }
+        }
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
