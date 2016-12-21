@@ -156,7 +156,7 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         }
         
         titleLabel.font = R.font.dosisMedium(size: 14)
-        titleLabel.textColor = UIColor.goldenYellowColor()
+        titleLabel.textColor = UIColor.goldenYellow
         
         view.addSubview(titleLabel)
         

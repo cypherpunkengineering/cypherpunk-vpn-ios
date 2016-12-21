@@ -21,7 +21,7 @@ class EditingRootViewController: PopoverRootViewController {
         let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(EditingRootViewController.doneAction))
         button.setTitleTextAttributes([
             NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
-            NSForegroundColorAttributeName: UIColor.goldenYellowColor()
+            NSForegroundColorAttributeName: UIColor.goldenYellow
             ], for: .normal)
         self.doneButton = button
         button.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.gray], for: .disabled)

@@ -15,7 +15,7 @@ class ThemedLabel: UILabel {
     }
     
     func configureView() {
-        self.textColor = UIColor.blackThemeTextColor()
+        self.textColor = UIColor.white
     }
     
 }
