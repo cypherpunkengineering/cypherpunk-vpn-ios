@@ -123,7 +123,7 @@ class AccountConfigurationTableViewController: UITableViewController {
                     UIApplication.shared.openURL(url)
                 }
             case .contactus:
-                let url = URL(string: "https://cypherpunk.zendesk.com/tickets/new")
+                let url = URL(string: "https://cypherpunk.zendesk.com/hc/requests/new")
                 UIApplication.shared.openURL(url!)
             case .help:
                 let url = URL(string: "https://support.cypherpunk.com/hc")
