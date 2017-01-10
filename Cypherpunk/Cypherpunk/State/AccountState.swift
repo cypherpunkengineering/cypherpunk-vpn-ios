@@ -34,13 +34,9 @@ enum SubscriptionType: Int {
     }
     
     var subscriptionProductId : String! {
-        guard let AppBundleID = Bundle.main.bundleIdentifier else {
-            return nil
-        }
-        
         switch self {
         case .monthly, .semiannually, .annually:
-            return AppBundleID + "." + "iTunes_" + self.planId
+            return "iTunes_" + self.planId
         default:
             return nil
         }

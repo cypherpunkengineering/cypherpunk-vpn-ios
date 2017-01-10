@@ -23,7 +23,7 @@ class UpgradeSelectTableViewController: UITableViewController {
     @IBOutlet weak var annuallyBestValueView: TwoColorGradientView!
     @IBOutlet weak var annuallyCurrentPlanLabelView: UIView!
 
-    private var retrievedProducts: [SKProduct] = []
+    fileprivate var retrievedProducts: [SKProduct] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,16 +51,20 @@ class UpgradeSelectTableViewController: UITableViewController {
                 break
             }
         }
+        IndicatorView.show()
         SwiftyStoreKit.retrieveProductsInfo([
             SubscriptionType.monthly.subscriptionProductId,
             SubscriptionType.semiannually.subscriptionProductId,
             SubscriptionType.annually.subscriptionProductId
         ]) { result in
-            // show Indicator
             self.retrievedProducts.removeAll()
-            self.retrievedProducts.append(contentsOf: result.retrievedProducts)
-            print(self.retrievedProducts)
+            
+            self.retrievedProducts.append(result.retrievedProducts.filter{return $0.productIdentifier == SubscriptionType.monthly.subscriptionProductId}[0])
+            self.retrievedProducts.append(result.retrievedProducts.filter{return $0.productIdentifier == SubscriptionType.semiannually.subscriptionProductId}[0])
+            self.retrievedProducts.append(result.retrievedProducts.filter{return $0.productIdentifier == SubscriptionType.annually.subscriptionProductId}[0])
             // dismiss Indicator
+            self.tableView.reloadData()
+            IndicatorView.dismiss()
         }
     }
     
@@ -77,14 +81,14 @@ class UpgradeSelectTableViewController: UITableViewController {
     }
     
     @IBAction func upgradeToMonthlySubscriptionAction(_ sender: AnyObject) {
-        let priceString = "$8.99"
+        let priceString = retrievedProducts[0].localizedPrice!
         let alert = UIAlertController(title: "Subscription Terms", message: "Subscribe to Recurring Subscription. This subscription will automatically renew every month for \(priceString)", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let continueAction = UIAlertAction(title: "Continue", style: .default) { action in
-            SwiftyStoreKit.purchaseProduct(SubscriptionType.monthly.subscriptionProductId) { result in
+            SwiftyStoreKit.purchaseProduct(SubscriptionType.monthly.subscriptionProductId, atomically: false) { result in
                 switch result {
-                case .success(let productId):
+                case .success(let product):
                     
                     let upgradeRequest = UpgradeRequest(
                         session: mainStore.state.accountState.session!,
@@ -97,7 +101,9 @@ class UpgradeSelectTableViewController: UITableViewController {
                         switch result {
                         case .success:
                             DispatchQueue.main.async {
-                                print("purchased \(productId)!!")
+                                if product.needsFinishTransaction {
+                                    SwiftyStoreKit.finishTransaction(product.transaction)
+                                }
                                 mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
                                 self.dismiss(animated: true, completion: nil)
                             }
@@ -118,14 +124,14 @@ class UpgradeSelectTableViewController: UITableViewController {
         self.present(alert, animated: true, completion: nil)
     }
     @IBAction func upgradeToSemiannuallySubscriptionAction(_ sender: AnyObject) {
-        let priceString = "$44.99"
+        let priceString = retrievedProducts[1].localizedPrice!
         let alert = UIAlertController(title: "Subscription Terms", message: "Subscribe to Recurring Subscription. This subscription will automatically renew 6 month's for \(priceString)", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let continueAction = UIAlertAction(title: "Continue", style: .default) { action in
-            SwiftyStoreKit.purchaseProduct(SubscriptionType.semiannually.subscriptionProductId) { result in
+            SwiftyStoreKit.purchaseProduct(SubscriptionType.semiannually.subscriptionProductId, atomically: false) { result in
                 switch result {
-                case .success(let productId):
+                case .success(let product):
                     
                     let upgradeRequest = UpgradeRequest(
                         session: mainStore.state.accountState.session!,
@@ -138,7 +144,9 @@ class UpgradeSelectTableViewController: UITableViewController {
                         switch result {
                         case .success:
                             DispatchQueue.main.async {
-                                print("purchased \(productId)!!")
+                                if product.needsFinishTransaction {
+                                    SwiftyStoreKit.finishTransaction(product.transaction)
+                                }
                                 mainStore.dispatch(AccountAction.upgrade(subscription: .semiannually, expiredDate: Date()))
                                 self.dismiss(animated: true, completion: nil)
                             }
@@ -159,14 +167,14 @@ class UpgradeSelectTableViewController: UITableViewController {
         self.present(alert, animated: true, completion: nil)
     }
     @IBAction func upgradeToAnnuallySubscriptionAction(_ sender: AnyObject) {
-        let priceString = "$59.99"
+        let priceString = retrievedProducts[2].localizedPrice!
         let alert = UIAlertController(title: "Subscription Terms", message: "Subscribe to Recurring Subscription. This subscription will automatically renew every year for \(priceString)", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let continueAction = UIAlertAction(title: "Continue", style: .default) { action in
             SwiftyStoreKit.purchaseProduct(SubscriptionType.annually.subscriptionProductId) { result in
                 switch result {
-                case .success(let productId):
+                case .success(let product):
                     
                     let upgradeRequest = UpgradeRequest(
                         session: mainStore.state.accountState.session!,
@@ -179,7 +187,10 @@ class UpgradeSelectTableViewController: UITableViewController {
                         switch result {
                         case .success:
                             DispatchQueue.main.async {
-                                print("purchased \(productId)!!")
+                                // fetch content from your server, then:
+                                if product.needsFinishTransaction {
+                                    SwiftyStoreKit.finishTransaction(product.transaction)
+                                }
                                 mainStore.dispatch(AccountAction.upgrade(subscription: .annually, expiredDate: Date()))
                                 self.dismiss(animated: true, completion: nil)
                             }
@@ -205,8 +216,14 @@ class UpgradeSelectTableViewController: UITableViewController {
     
 }
 
+fileprivate let perMonthValues = [1,6,12]
 extension UpgradeSelectTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
+        
+        if retrievedProducts.count == 0 {
+            return 0
+        }
+        
         let accountState = mainStore.state.accountState
         
         if let subscription = accountState.subscriptionType, case .semiannually = subscription {
@@ -220,10 +237,20 @@ extension UpgradeSelectTableViewController {
         let accountState = mainStore.state.accountState
         
         if let subscription = accountState.subscriptionType, case .semiannually = subscription {
-            return super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
+            let cell = super.tableView(tableView, cellForRowAt: IndexPath(row: (indexPath as NSIndexPath).row, section: (indexPath as NSIndexPath).section + 1))
+            if let cell = cell as? UpgradeTableViewCell {
+                cell.subscriptionPriceLabel.text = retrievedProducts[indexPath.section + 1].localizedPrice(perMonth: perMonthValues[indexPath.section + 1])
+            }
+            return cell
         }
         
-        return super.tableView(tableView, cellForRowAt: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+
+        if let cell = cell as? UpgradeTableViewCell {
+            cell.subscriptionPriceLabel.text = retrievedProducts[indexPath.section].localizedPrice(perMonth: perMonthValues[indexPath.section])
+        }
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -234,5 +261,16 @@ extension UpgradeSelectTableViewController {
         }
         
         return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+}
+
+fileprivate extension SKProduct {
+    func localizedPrice(perMonth: Int) -> String? {
+        let nsNumberPerMonth = NSDecimalNumber(value: perMonth)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = self.priceLocale
+        numberFormatter.numberStyle = .currency
+        let handler = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.up, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+        return numberFormatter.string(from: self.price.dividing(by: nsNumberPerMonth, withBehavior: handler))
     }
 }

@@ -50,8 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         (result) in
                         switch result {
                         case .success:
-                            print("purchased \(product.productId)!!")
-                            mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
+                            SwiftyStoreKit.finishTransaction(product.transaction)
+                            if product.productId == SubscriptionType.monthly.subscriptionProductId {
+                                mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
+                            } else if product.productId == SubscriptionType.semiannually.subscriptionProductId {
+                                mainStore.dispatch(AccountAction.upgrade(subscription: .semiannually, expiredDate: Date()))
+                            } else if product.productId == SubscriptionType.annually.subscriptionProductId {
+                                mainStore.dispatch(AccountAction.upgrade(subscription: .annually, expiredDate: Date()))
+                            }
                         case .failure(let error):
                             print(error)
                         }
