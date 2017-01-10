@@ -8,7 +8,7 @@
 
 import UIKit
 import QuartzCore
-private weak var __indicatorView: IndicatorView! = nil
+private var __indicatorView: IndicatorView! = nil
 class IndicatorView: UIView {
     
     @IBOutlet weak var indicatorImageView: UIImageView!
@@ -32,8 +32,13 @@ class IndicatorView: UIView {
     }
     
     static func dismiss() {
+        __indicatorView.stopAnimation()
         UIView.animate(withDuration: 0.3, animations: {
             __indicatorView.removeFromSuperview()
+        }, completion: { (finished) in
+            if finished {
+                __indicatorView = nil
+            }
         })
     }
     
