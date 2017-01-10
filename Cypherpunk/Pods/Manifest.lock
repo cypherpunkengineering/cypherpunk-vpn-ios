@@ -1,5 +1,5 @@
 PODS:
-  - APIKit (3.1.1):
+  - APIKit (3.1.2):
     - Result (~> 3.0)
   - Firebase/Core (3.11.0):
     - FirebaseAnalytics (= 3.6.0)
@@ -27,11 +27,11 @@ PODS:
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
   - ReachabilitySwift (3)
-  - Realm (2.1.1):
-    - Realm/Headers (= 2.1.1)
-  - Realm/Headers (2.1.1)
-  - RealmSwift (2.1.1):
-    - Realm (= 2.1.1)
+  - Realm (2.1.2):
+    - Realm/Headers (= 2.1.2)
+  - Realm/Headers (2.1.2)
+  - RealmSwift (2.1.2):
+    - Realm (= 2.1.2)
   - Result (3.1.0)
   - ReSwift (3.0.0)
   - SVProgressHUD (2.1.2)
@@ -73,7 +73,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   APIKit:
-    :commit: b1fe81ed4429a941d8fd67187b1f025a87bedf62
+    :commit: e756462be5f19101fcbed77465b168f6167be7af
     :git: https://github.com/ishkawa/APIKit.git
   Himotoki:
     :commit: efeb1b1589303fe91f853d940f14c522a88bad0a
@@ -88,7 +88,7 @@ CHECKOUT OPTIONS:
     :commit: 17dfc26d7c779a84568ead9a29bbef49904ee62a
     :git: https://github.com/antitypical/Result.git
   ReSwift:
-    :commit: 805f1062ed4cc392509129560866ef92c86857aa
+    :commit: d3530509e0602d03edc536005a9c4f517f2bf1c0
     :git: https://github.com/ReSwift/ReSwift.git
   SVProgressHUD:
     :commit: 5d459e4bc09df23cbce92ad4d510004c1b58c1c7
@@ -98,7 +98,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 SPEC CHECKSUMS:
-  APIKit: bbcd3d113d0a252ef88f06d39ed59bac450d4460
+  APIKit: 923b510c13eb4d977d2d0ffcd51c88e9dfe7a74a
   Firebase: b8134e285eb33201115bc688bc5d7f112923bc1f
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseCore: 03da1cb32615569bbc2830a22f9ad753d9a02ef5
@@ -112,8 +112,8 @@ SPEC CHECKSUMS:
   R.swift: 207a372a2b5977caef440c696a368009460641d1
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Realm: a55959c0b171a5fe5267406d17f314fec3cefaae
-  RealmSwift: 749fd955bf8d6471c21d218b9389a47aaeccfe3f
+  Realm: efe855f4d977c8ce5a82d3116d9f1ff155a6550c
+  RealmSwift: 17d6ee30b6f9df86364408c2197492e33bfea567
   Result: 7bf0849344f557cd4beee129c876965e4bbdd7dd
   ReSwift: 00add9a3eb1b5c93a3728ea88393de390ef6ddff
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994

@@ -35,6 +35,7 @@
 		203F4EFF1D5B079D00EA2536 /* UIColor+CIAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */; };
 		203F4F071D5B188200EA2536 /* ThemedNavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4F061D5B188200EA2536 /* ThemedNavigationButton.swift */; };
 		203F4F091D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4F081D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift */; };
+		204398601E0BA64900DCBE8E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2043985F1E0BA64900DCBE8E /* StoreKit.framework */; };
 		205EE3241DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */; };
 		2060BF861DE815A8000025BD /* PadMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2060BF851DE815A8000025BD /* PadMenu.storyboard */; };
 		2060BF881DE81C85000025BD /* PadMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2060BF871DE81C85000025BD /* PadMenuTableViewController.swift */; };
@@ -181,6 +182,7 @@
 		203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+CIAdditions.swift"; sourceTree = "<group>"; };
 		203F4F061D5B188200EA2536 /* ThemedNavigationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationButton.swift; sourceTree = "<group>"; };
 		203F4F081D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTintedNavigationButton.swift; sourceTree = "<group>"; };
+		2043985F1E0BA64900DCBE8E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageTrustedNetworksTableViewController.swift; sourceTree = "<group>"; };
 		2060BF851DE815A8000025BD /* PadMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PadMenu.storyboard; sourceTree = "<group>"; };
 		2060BF871DE81C85000025BD /* PadMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				204398601E0BA64900DCBE8E /* StoreKit.framework in Frameworks */,
 				203809971D13DAF3005145CD /* NetworkExtension.framework in Frameworks */,
 				7DE528ADF6E5D381A02FC441 /* Pods_Cypherpunk.framework in Frameworks */,
 			);
@@ -634,6 +637,7 @@
 		BCFC6193A7F401D78A06D6FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2043985F1E0BA64900DCBE8E /* StoreKit.framework */,
 				203809961D13DAF3005145CD /* NetworkExtension.framework */,
 				AE0613D733DE238733B8E2E2 /* Pods_Cypherpunk.framework */,
 				D36169EA8A575594574AEA8F /* Pods_CypherpunkTests.framework */,
@@ -728,7 +732,7 @@
 				TargetAttributes = {
 					203809641D13D89D005145CD = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = S353YJSBDX;
+						DevelopmentTeam = 7NZDHD5S7U;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1331,7 +1335,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = S353YJSBDX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1367,7 +1371,7 @@
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy.ios.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1388,7 +1392,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cypherpunk/Cypherpunk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = S353YJSBDX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Cypherpunk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1424,7 +1428,7 @@
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy.ios.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
