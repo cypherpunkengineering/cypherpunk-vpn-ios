@@ -86,6 +86,7 @@ class UpgradeSelectTableViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let continueAction = UIAlertAction(title: "Continue", style: .default) { action in
+            IndicatorView.show()
             SwiftyStoreKit.purchaseProduct(SubscriptionType.monthly.subscriptionProductId, atomically: false) { result in
                 switch result {
                 case .success(let product):
@@ -105,14 +106,15 @@ class UpgradeSelectTableViewController: UITableViewController {
                                     SwiftyStoreKit.finishTransaction(product.transaction)
                                 }
                                 mainStore.dispatch(AccountAction.upgrade(subscription: .monthly, expiredDate: Date()))
+                                IndicatorView.dismiss()
                                 self.dismiss(animated: true, completion: nil)
                             }
-                        case .failure(let error):
-                            print(error)
+                        case .failure(_):
+                            IndicatorView.dismiss()
                         }
                     }
-                case .error(let error):
-                    print(error)
+                case .error(_):
+                    IndicatorView.dismiss()
                 }
             }
             
@@ -129,6 +131,7 @@ class UpgradeSelectTableViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let continueAction = UIAlertAction(title: "Continue", style: .default) { action in
+            IndicatorView.show()
             SwiftyStoreKit.purchaseProduct(SubscriptionType.semiannually.subscriptionProductId, atomically: false) { result in
                 switch result {
                 case .success(let product):
@@ -148,14 +151,15 @@ class UpgradeSelectTableViewController: UITableViewController {
                                     SwiftyStoreKit.finishTransaction(product.transaction)
                                 }
                                 mainStore.dispatch(AccountAction.upgrade(subscription: .semiannually, expiredDate: Date()))
+                                IndicatorView.dismiss()
                                 self.dismiss(animated: true, completion: nil)
                             }
                         case .failure(let error):
-                            print(error)
+                            IndicatorView.dismiss()
                         }
                     }
                 case .error(let error):
-                    print(error)
+                    IndicatorView.dismiss()
                 }
             }
             
@@ -172,7 +176,8 @@ class UpgradeSelectTableViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let continueAction = UIAlertAction(title: "Continue", style: .default) { action in
-            SwiftyStoreKit.purchaseProduct(SubscriptionType.annually.subscriptionProductId) { result in
+            IndicatorView.show()
+            SwiftyStoreKit.purchaseProduct(SubscriptionType.annually.subscriptionProductId, atomically: false) { result in
                 switch result {
                 case .success(let product):
                     
@@ -187,7 +192,6 @@ class UpgradeSelectTableViewController: UITableViewController {
                         switch result {
                         case .success:
                             DispatchQueue.main.async {
-                                // fetch content from your server, then:
                                 if product.needsFinishTransaction {
                                     SwiftyStoreKit.finishTransaction(product.transaction)
                                 }
@@ -195,11 +199,11 @@ class UpgradeSelectTableViewController: UITableViewController {
                                 self.dismiss(animated: true, completion: nil)
                             }
                         case .failure(let error):
-                            print(error)
+                            IndicatorView.dismiss()
                         }
                     }
                 case .error(let error):
-                    print(error)
+                    IndicatorView.dismiss()
                 }
             }
             
