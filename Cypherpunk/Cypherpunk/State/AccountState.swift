@@ -45,11 +45,11 @@ enum SubscriptionType: Int {
     var planId: String! {
         switch self {
         case .monthly:
-            return "monthly899"
+            return "monthly1199"
         case .semiannually:
-            return "semiannually4499"
+            return "semiannually5899"
         case .annually:
-            return "annually5999"
+            return "annually9499"
         default:
             return nil
         }

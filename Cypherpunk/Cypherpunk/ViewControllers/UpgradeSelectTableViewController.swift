@@ -127,7 +127,7 @@ class UpgradeSelectTableViewController: UITableViewController {
     }
     @IBAction func upgradeToSemiannuallySubscriptionAction(_ sender: AnyObject) {
         let priceString = retrievedProducts[1].localizedPrice!
-        let alert = UIAlertController(title: "Subscription Terms", message: "Subscribe to Recurring Subscription. This subscription will automatically renew 6 month's for \(priceString)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Subscription Terms", message: "Subscribe to Recurring Subscription. This subscription will automatically renew every 6 months for \(priceString)", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let continueAction = UIAlertAction(title: "Continue", style: .default) { action in
