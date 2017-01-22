@@ -13,7 +13,8 @@ import RealmSwift
 import SVProgressHUD
 import ReSwift
 
-class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
+
+class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTAttributedLabelDelegate {
     
     fileprivate enum State {
         case getStarted
@@ -24,13 +25,14 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var topSpaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var inputField: ThemedTextField!
-    @IBOutlet weak var actionButton: TwoColorGradientButton!
+    @IBOutlet weak var actionButton: UIButton!
     
     @IBOutlet weak var inputContainerView: UIView!
     
     @IBOutlet weak var loadingAnimationView: LoadingAnimationView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var termOfServiceAndPrivacyPolicyView: UIView!
+    @IBOutlet weak var termsLabel: TTTAttributedLabel!
     
     @IBOutlet weak var forgotPasswordButton: UIButton!
     fileprivate var email: String = ""
@@ -42,9 +44,9 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         // Do any additional setup after loading the view.
         let attributes: [String: AnyObject] = [
             NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue as AnyObject,
-            NSForegroundColorAttributeName: UIColor.white
+            NSForegroundColorAttributeName: #colorLiteral(red: 0.5212592483, green: 0.7715299726, blue: 0.8048351407, alpha: 1)
         ]
-        let forgotPasswordAttributed = NSAttributedString(string: "Forgot Password", attributes: attributes)
+        let forgotPasswordAttributed = NSAttributedString(string: "Forgot Password?", attributes: attributes)
         forgotPasswordButton?.setAttributedTitle(forgotPasswordAttributed, for: .normal)
 
     }
@@ -71,6 +73,18 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         self.forgotPasswordButton.alpha = 0.0
         self.termOfServiceAndPrivacyPolicyView.alpha = 0.0
         self.loadingAnimationView.alpha = 0.0
+        
+        // Build the ToS and Privacy disclaimer label text
+        self.termsLabel.numberOfLines = 0;
+        let string = "By signing up, you agree to our Terms of Service and confirm that you have read the Privacy Policy."
+        self.termsLabel.text = string
+        self.termsLabel.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : #colorLiteral(red: 0.6228144169, green: 0.9941515326, blue: 0.9880328774, alpha: 1), kCTUnderlineStyleAttributeName as AnyHashable : NSUnderlineStyle.styleSingle.rawValue, kCTUnderlineColorAttributeName as AnyHashable : #colorLiteral(red: 0.6228144169, green: 0.9941515326, blue: 0.9880328774, alpha: 1)]
+        self.termsLabel.activeLinkAttributes = [kCTForegroundColorAttributeName as AnyHashable : #colorLiteral(red: 0.1723374724, green: 0.3221004605, blue: 0.3453483284, alpha: 1), kCTUnderlineStyleAttributeName as AnyHashable : NSUnderlineStyle.styleSingle.rawValue, kCTUnderlineColorAttributeName as AnyHashable : #colorLiteral(red: 0.1723374724, green: 0.3221004605, blue: 0.3453483284, alpha: 1)]
+        let tosRange = NSMakeRange(32, 16)
+        self.termsLabel.addLink(to: URL(string: "https://cypherpunk.com/tos"), with: tosRange)
+        let privacyPolicyRange = NSMakeRange(84, 14)
+        self.termsLabel.addLink(to: URL(string: "https://cypherpunk.com/privacy"), with: privacyPolicyRange)
+        self.termsLabel.delegate = self
 
         mainStore.subscribe(self)
         registerKeyboardNotification()
@@ -98,6 +112,12 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
         }
 
     }
+    
+    // TTTAttributedLabelDelegate - handle the ToS and Privacy links
+    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+        UIApplication.shared.openURL(url)
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -128,7 +148,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                 self.actionButton.setTitle("Log In", for: .normal)
                 self.inputField.isSecureTextEntry = true
                 self.inputField.returnKeyType = UIReturnKeyType.send
-                self.inputField.becomeFirstResponder()
+//                self.inputField.becomeFirstResponder()
             case .signUp:
                 self.welcomeLabel.text = "Hello!\nPlease set your password"
                 self.inputField.placeholder = "Type your password"
@@ -136,7 +156,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                 self.actionButton.setTitle("Sign Up", for: .normal)
                 self.inputField.isSecureTextEntry = true
                 self.inputField.returnKeyType = UIReturnKeyType.send
-                self.inputField.becomeFirstResponder()
+//                self.inputField.becomeFirstResponder()
             }
 
             })
@@ -168,7 +188,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                         self.actionButton.setTitle("Log In", for: .normal)
                         self.inputField.isSecureTextEntry = true
                         self.inputField.returnKeyType = UIReturnKeyType.send
-                        self.inputField.becomeFirstResponder()
+//                        self.inputField.becomeFirstResponder()
                         UIView.animate(withDuration: 0.3, animations: {
                             self.welcomeLabel.alpha = 1.0
                             self.inputContainerView.alpha = 1.0
@@ -186,7 +206,13 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
                         self.actionButton.setTitle("Sign Up", for: .normal)
                         self.inputField.isSecureTextEntry = true
                         self.inputField.returnKeyType = UIReturnKeyType.send
-                        self.inputField.becomeFirstResponder()
+//                        self.inputField.becomeFirstResponder()
+                        
+                        // create attributed string
+                        let attributedString = NSMutableAttributedString(string: "Hello!\nPlease set your password")
+                        attributedString.addAttributes([ NSFontAttributeName : UIFont(name: "Dosis-Medium", size: 18)! ], range: NSRange(location: 6, length: 25))
+                        self.welcomeLabel.numberOfLines = 0
+                        self.welcomeLabel.attributedText = attributedString
                         
                         UIView.animate(withDuration: 0.3, animations: {
                             self.welcomeLabel.alpha = 1.0
@@ -332,6 +358,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber {
             break
         case .logIn, .signUp:
             state = .getStarted
+            self.inputField.resignFirstResponder()
             startAnimation()
         }
     }

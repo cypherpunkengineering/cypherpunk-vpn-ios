@@ -17,6 +17,7 @@ target 'Cypherpunk' do
        pod 'UITextView+Placeholder', '~> 1.2'
        pod 'FontAwesome.swift'
        pod 'Firebase/Core'
+       pod 'TTTAttributedLabel'
 end
 
 target 'CypherpunkTests' do

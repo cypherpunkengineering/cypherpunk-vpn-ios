@@ -16,3 +16,4 @@
 #import "VPNPersistentDataGenerator.h"
 
 @import UITextView_Placeholder;
+@import TTTAttributedLabel;
