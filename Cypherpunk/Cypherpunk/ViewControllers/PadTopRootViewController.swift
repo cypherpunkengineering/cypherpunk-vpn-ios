@@ -50,7 +50,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let logoView = UIImageView(image: R.image.headerLogo())
+        let logoView = UIImageView(image: R.image.headerIconLogo())
         self.navigationItem.titleView = logoView
         
         self.navigationController?.navigationBar.titleTextAttributes = [
@@ -75,10 +75,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
-            self.navigationController?.isNavigationBarHidden = true
-        }
+
         VPNConfigurationCoordinator.load {_ in
             let status = NEVPNManager.shared().connection.status
             self.updateView(withVPNStatus: status)
