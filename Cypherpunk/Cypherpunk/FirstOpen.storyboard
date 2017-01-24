@@ -190,14 +190,6 @@
                                     <segue destination="1Ca-PF-FdM" kind="show" id="e4a-Iu-Slq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ca-Sa-K0t">
-                                <rect key="frame" x="228" y="12" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="mR6-J3-kHM" kind="show" id="97g-qn-6vT"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.10980392160000001" green="0.19215686269999999" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -458,7 +450,4 @@ reset your password.</string>
         <image name="loading" width="72" height="72"/>
         <image name="tutorialBtn" width="212" height="62"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Ph6-C7-gkw"/>
-    </inferredMetricsTieBreakers>
 </document>
