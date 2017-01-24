@@ -20,12 +20,12 @@ class EmailConfirmationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let attributes: [String: AnyObject] = [
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue as AnyObject,
-            NSForegroundColorAttributeName: UIColor.white
-        ]
-        let resendEmailButtonAttribute = NSAttributedString(string: "Resend Email", attributes: attributes)
-        resendEmailButton?.setAttributedTitle(resendEmailButtonAttribute, for: .normal)
+//        let attributes: [String: AnyObject] = [
+//            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue as AnyObject,
+//            NSForegroundColorAttributeName: UIColor.white
+//        ]
+//        let resendEmailButtonAttribute = NSAttributedString(string: "Resend Email", attributes: attributes)
+//        resendEmailButton?.setAttributedTitle(resendEmailButtonAttribute, for: .normal)
 
     }
     

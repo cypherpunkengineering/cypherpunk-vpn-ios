@@ -62,7 +62,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Welcome to Cypherpunk" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-7x-T35">
-                                <rect key="frame" x="76" y="257.5" width="224.5" height="29.5"/>
+                                <rect key="frame" x="75.5" y="257.5" width="224.5" height="29.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -190,6 +190,14 @@
                                     <segue destination="1Ca-PF-FdM" kind="show" id="e4a-Iu-Slq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ca-Sa-K0t">
+                                <rect key="frame" x="228" y="12" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="mR6-J3-kHM" kind="show" id="97g-qn-6vT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.10980392160000001" green="0.19215686269999999" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -244,71 +252,75 @@
                         <viewControllerLayoutGuide type="top" id="75w-Eh-KNw"/>
                         <viewControllerLayoutGuide type="bottom" id="ygU-hS-aiM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="sWd-9b-dYD" customClass="ThemedBackgroundView" customModule="Cypherpunk" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="sWd-9b-dYD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent you confirmation via Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-HY-MRX">
-                                <rect key="frame" x="31.5" y="52" width="312.5" height="23.5"/>
-                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="illustMailConfirm" translatesAutoresizingMaskIntoConstraints="NO" id="R2C-A1-EUr">
-                                <rect key="frame" x="77.5" y="100.5" width="220" height="180"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPN-7y-nl4">
-                                <rect key="frame" x="67.5" y="308.5" width="240" height="37.5"/>
-                                <string key="text">Please check your Email App and
-do something….</string>
-                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DIz-Gg-2QJ">
-                                <rect key="frame" x="117.5" y="561" width="140" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation email was sent to you" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-HY-MRX">
+                                <rect key="frame" x="73" y="45" width="229" height="67"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="A0k-1c-WVc"/>
+                                    <constraint firstAttribute="height" constant="67" id="Vbj-lX-Gq2"/>
+                                    <constraint firstAttribute="width" constant="229" id="ZeT-xl-gBP"/>
                                 </constraints>
-                                <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="iconMail">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Resend Email">
-                                            <attributes>
-                                                <font key="NSFont" metaFont="system" size="16"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" image="illustEmailConfirmation" translatesAutoresizingMaskIntoConstraints="NO" id="R2C-A1-EUr">
+                                <rect key="frame" x="112" y="127" width="150" height="238"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="R2C-A1-EUr" secondAttribute="height" multiplier="75:119" id="dVb-w0-2pE"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIz-Gg-2QJ">
+                                <rect key="frame" x="82" y="456" width="212" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="212" id="A0k-1c-WVc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="23"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
+                                <state key="normal" title="Resend Email" backgroundImage="tutorialBtn">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="resendAction:" destination="mR6-J3-kHM" eventType="touchUpInside" id="ETe-cg-oSi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-hB-YoU">
-                                <rect key="frame" x="115.5" y="610" width="144" height="19"/>
+                                <rect key="frame" x="116" y="597" width="144" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="144" id="l0e-hV-VAD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
-                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Back to Log In" image="iconBack">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <state key="normal" title="&lt; Back to Log In">
+                                    <color key="titleColor" red="0.38823529410000002" green="0.73333333329999995" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="backAction:" destination="mR6-J3-kHM" eventType="touchUpInside" id="uEK-Iz-L4e"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check your email and follow the instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPN-7y-nl4">
+                                <rect key="frame" x="95" y="380" width="184" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="7AN-N0-Mnl"/>
+                                    <constraint firstAttribute="width" constant="184" id="KyO-3h-gjm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
+                                <color key="textColor" red="0.56862745100000001" green="1" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.10980392160000001" green="0.19215686269999999" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="t7N-hB-YoU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DIz-Gg-2QJ" secondAttribute="bottom" priority="750" constant="15" id="2pO-qJ-iTQ"/>
                             <constraint firstItem="jPN-7y-nl4" firstAttribute="centerX" secondItem="R2C-A1-EUr" secondAttribute="centerX" id="LmA-OK-cAv"/>
-                            <constraint firstItem="R2C-A1-EUr" firstAttribute="top" secondItem="sNz-HY-MRX" secondAttribute="bottom" constant="25" id="W1V-Ha-mMO"/>
-                            <constraint firstItem="sNz-HY-MRX" firstAttribute="top" secondItem="75w-Eh-KNw" secondAttribute="bottom" constant="32" id="izz-Zd-lLX"/>
+                            <constraint firstItem="R2C-A1-EUr" firstAttribute="top" secondItem="sNz-HY-MRX" secondAttribute="bottom" constant="15" id="W1V-Ha-mMO"/>
+                            <constraint firstItem="sNz-HY-MRX" firstAttribute="top" secondItem="75w-Eh-KNw" secondAttribute="bottom" constant="25" id="izz-Zd-lLX"/>
                             <constraint firstItem="sNz-HY-MRX" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="o9q-B0-zew"/>
-                            <constraint firstItem="ygU-hS-aiM" firstAttribute="top" secondItem="t7N-hB-YoU" secondAttribute="bottom" constant="38" id="pN0-cz-W7H"/>
-                            <constraint firstItem="jPN-7y-nl4" firstAttribute="top" secondItem="R2C-A1-EUr" secondAttribute="bottom" constant="28" id="pj9-T5-zWt"/>
+                            <constraint firstItem="DIz-Gg-2QJ" firstAttribute="top" secondItem="jPN-7y-nl4" secondAttribute="bottom" constant="25" id="pE4-Tg-QG1"/>
+                            <constraint firstItem="ygU-hS-aiM" firstAttribute="top" secondItem="t7N-hB-YoU" secondAttribute="bottom" constant="35" id="pN0-cz-W7H"/>
+                            <constraint firstItem="jPN-7y-nl4" firstAttribute="top" secondItem="R2C-A1-EUr" secondAttribute="bottom" constant="15" id="pj9-T5-zWt"/>
                             <constraint firstItem="t7N-hB-YoU" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="q5o-FJ-3PM"/>
-                            <constraint firstItem="t7N-hB-YoU" firstAttribute="top" secondItem="DIz-Gg-2QJ" secondAttribute="bottom" constant="30" id="qLL-Gy-pBB"/>
                             <constraint firstItem="R2C-A1-EUr" firstAttribute="centerX" secondItem="sNz-HY-MRX" secondAttribute="centerX" id="r1T-LX-vz1"/>
                             <constraint firstItem="DIz-Gg-2QJ" firstAttribute="centerX" secondItem="t7N-hB-YoU" secondAttribute="centerX" id="vbs-Q7-RzZ"/>
                         </constraints>
@@ -320,7 +332,7 @@ do something….</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aB-lp-eqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969" y="-528"/>
+            <point key="canvasLocation" x="968.79999999999995" y="-528.48575712143929"/>
         </scene>
         <!--Reset your password-->
         <scene sceneID="ldx-0L-wx4">
@@ -381,7 +393,7 @@ reset your password.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset your password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtm-xp-Msg">
-                                <rect key="frame" x="97" y="40" width="181.5" height="28"/>
+                                <rect key="frame" x="97" y="40" width="182" height="28"/>
                                 <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -441,10 +453,12 @@ reset your password.</string>
     </scenes>
     <resources>
         <image name="iconBack" width="12" height="18"/>
-        <image name="iconMail" width="18" height="15"/>
-        <image name="illustMailConfirm" width="220" height="180"/>
+        <image name="illustEmailConfirmation" width="150" height="238"/>
         <image name="illustSignin" width="334" height="198"/>
         <image name="loading" width="72" height="72"/>
-        <image name="tutorialBtn" width="206" height="62"/>
+        <image name="tutorialBtn" width="212" height="62"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ph6-C7-gkw"/>
+    </inferredMetricsTieBreakers>
 </document>
