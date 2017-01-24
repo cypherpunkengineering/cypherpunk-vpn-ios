@@ -28,9 +28,8 @@ class SettingUpYourVPNViewController: UIViewController {
         super.viewWillAppear(animated)
 
         if mainStore.state.isInstalledPreferences {
-            let notification = Notification(name: ScrollToSecondPage)
-            NotificationCenter.default.post(notification)
             NotificationCenter.default.removeObserver(self)
+            performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
         }
         
         let connection = NEVPNManager.shared().connection
@@ -38,9 +37,8 @@ class SettingUpYourVPNViewController: UIViewController {
         if status != .invalid {
             // 次のページ
             mainStore.dispatch(AppAction.VPNInstalled)
-            let notification = Notification(name: ScrollToSecondPage)
-            NotificationCenter.default.post(notification)
             NotificationCenter.default.removeObserver(self)
+            performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
         }
 
         
@@ -60,9 +58,8 @@ class SettingUpYourVPNViewController: UIViewController {
         if status != .invalid {
             // 次のページ
             mainStore.dispatch(AppAction.VPNInstalled)
-            let notification = Notification(name: ScrollToSecondPage)
-            NotificationCenter.default.post(notification)
             NotificationCenter.default.removeObserver(self)
+            performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
         }
     }
 
@@ -80,9 +77,8 @@ class SettingUpYourVPNViewController: UIViewController {
     @IBAction func allowAction(_ sender: AnyObject) {
         if TARGET_OS_SIMULATOR != 0 {
             mainStore.dispatch(AppAction.VPNInstalled)
-            let notification = Notification(name: ScrollToSecondPage)
-            NotificationCenter.default.post(notification)
             NotificationCenter.default.removeObserver(self)
+            performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
         } else {
             VPNConfigurationCoordinator.install()
         }
