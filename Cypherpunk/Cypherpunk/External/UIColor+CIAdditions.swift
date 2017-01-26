@@ -11,4 +11,12 @@ extension UIColor {
 	class var goldenYellow: UIColor {
 		return UIColor(red: 248.0 / 255.0, green: 207.0 / 255.0, blue: 28.0 / 255.0, alpha: 1.0)
 	}
+    
+    class var seafoamBlue: UIColor {
+        return UIColor(red: 95.0 / 255.0, green: 187.0 / 255.0, blue: 196.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var peach: UIColor {
+        return UIColor(red: 255.0 / 255.0, green: 177.0 / 255.0, blue: 121.0 / 255.0, alpha: 1.0)
+    }
 }

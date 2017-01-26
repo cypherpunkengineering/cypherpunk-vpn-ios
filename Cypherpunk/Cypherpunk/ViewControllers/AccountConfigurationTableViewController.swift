@@ -12,19 +12,19 @@ import ReSwift
 class AccountConfigurationTableViewController: UITableViewController {
     
     fileprivate enum Rows: Int {
-        case account = 00
-        case paymentUpgrade = 01
-        case accountEmailDetail = 10
-        case accountPasswordDetail = 11
-        case get30daysPremiumFree = 20
-        case rateOurService = 21
-        case contactus = 22
-        case help = 23
-        case signOut = 24
+        case account = 10
+        case paymentUpgrade = 20
+        case accountEmailDetail = 30
+        case accountPasswordDetail = 40
+        case get30daysPremiumFree = 50
+        case rateOurService = 60
+        case contactus = 70
+        case help = 80
+        case signOut = 90
+        case share = 100
     }
     
     @IBOutlet weak var usernameLabelButton: UIButton!
-    @IBOutlet weak var mailAddressLabel: UILabel!
 
     @IBOutlet weak var subscriptionTypeLabel: UILabel!
     @IBOutlet weak var expirationLabel: UILabel!
@@ -66,23 +66,23 @@ class AccountConfigurationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            if mainStore.state.accountState.accountType?.lowercased() == "free" {
-                return 2
-            } else if let subscription = mainStore.state.accountState.subscriptionType {
-                switch subscription {
-                case .annually,.forever,.lifetime:
-                    return 1
-                default:
-                    if mainStore.state.accountState.accountType?.lowercased() == "developer" {
-                        return 1
-                    }
-                    return 2
-                }
-            } else {
-                return 2
-            }
-        }
+//        if section == 0 {
+//            if mainStore.state.accountState.accountType?.lowercased() == "free" {
+//                return 2
+//            } else if let subscription = mainStore.state.accountState.subscriptionType {
+//                switch subscription {
+//                case .annually,.forever,.lifetime:
+//                    return 1
+//                default:
+//                    if mainStore.state.accountState.accountType?.lowercased() == "developer" {
+//                        return 1
+//                    }
+//                    return 2
+//                }
+//            } else {
+//                return 2
+//            }
+//        }
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
@@ -92,8 +92,8 @@ class AccountConfigurationTableViewController: UITableViewController {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 36))
         let titleLabel: UILabel
         titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 304, height: 36))
-        titleLabel.font = R.font.dosisMedium(size: 14)
-        titleLabel.textColor = UIColor.goldenYellow
+        titleLabel.font = R.font.dosisMedium(size: 13)
+        titleLabel.textColor = UIColor.peach
         titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
         
         view.addSubview(titleLabel)
@@ -116,7 +116,9 @@ class AccountConfigurationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let row = Rows(rawValue: (indexPath as NSIndexPath).section * 10 + (indexPath as NSIndexPath).row) {
+        let tableRow = tableView.cellForRow(at: indexPath)
+        
+        if let row = Rows(rawValue: (tableRow?.tag)!) {
             switch row {
             case .rateOurService:
                 if let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(appID)") {
@@ -177,7 +179,6 @@ extension AccountConfigurationTableViewController: StoreSubscriber {
             self.subscriptionTypeLabel.text = state.accountState.accountType?.capitalized
         }
         
-        mailAddressLabel.text = accountState.mailAddress ?? ""
         usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
 
     }

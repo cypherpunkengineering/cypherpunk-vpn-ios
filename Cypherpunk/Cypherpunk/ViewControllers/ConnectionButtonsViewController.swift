@@ -27,6 +27,8 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var regionWidthConstraint: NSLayoutConstraint?
     @IBOutlet weak var connectingStateLabel: UILabel?
     
+    @IBOutlet weak var disconnectedHelmetImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -107,7 +109,7 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
         
         connectingButton.layer.removeAnimation(forKey: "rotation")
         cancelEmbededView.isHidden = true
-        connectionStateLabel.isHidden = false
+//        connectionStateLabel.isHidden = false
         connectingButton.isHidden = false
         connectedButton.isHidden = false
         
@@ -139,9 +141,9 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             })
 
             
-            if connectingStateLabel != nil {
-                connectionStateLabel.isHidden = true
-            }
+//            if connectingStateLabel != nil {
+//                connectionStateLabel.isHidden = true
+//            }
             
         case .disconnected:
             self.connectedButton.alpha = 0.0
@@ -168,7 +170,7 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             disconnectedButton.isEnabled = false
         }
         
-        connectionStateLabel.text = String(describing: status)
+//        connectionStateLabel.text = String(describing: status)
     }
 
     @IBAction func connectAction(_ sender: UIButton) {

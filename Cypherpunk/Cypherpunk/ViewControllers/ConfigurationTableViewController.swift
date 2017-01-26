@@ -49,8 +49,8 @@ class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 36))
         let titleLabel: UILabel
         titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 304, height: 36))
-        titleLabel.font = R.font.dosisMedium(size: 14)
-        titleLabel.textColor = UIColor.goldenYellow
+        titleLabel.font = R.font.dosisMedium(size: 15)
+        titleLabel.textColor = UIColor.seafoamBlue
         titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
         
         view.addSubview(titleLabel)
