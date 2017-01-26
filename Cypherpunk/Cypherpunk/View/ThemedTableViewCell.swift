@@ -22,7 +22,7 @@ class ThemedTableViewCell: UITableViewCell {
         
         self.textLabel?.textColor = UIColor.white
         self.detailTextLabel?.textColor = UIColor(white: 227.0 / 255.0, alpha: 1.0)
-//        self.backgroundColor = UIColor.white.withAlphaComponent(0.16)
+        self.backgroundColor = UIColor.darkSlateBlue
         self.tintColor = UIColor.seafoamBlue
     }
     

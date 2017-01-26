@@ -14,11 +14,8 @@ class PopoverRootViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let barbutton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeAction))
-        barbutton.setTitleTextAttributes([
-            NSFontAttributeName: R.font.dosisMedium(size: 18.0)!,
-            NSForegroundColorAttributeName: UIColor.goldenYellow
-            ], for: .normal)
+        let barbutton = UIBarButtonItem(image: R.image.titleIconCancel(), style: .plain, target: self, action: #selector(closeAction))
+        barbutton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = barbutton
         
     }

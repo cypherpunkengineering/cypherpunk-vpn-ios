@@ -38,6 +38,8 @@ class UpdateEmailTableViewController: UITableViewController {
             self.done()
         }
         
+        // Trick to hide the empty table cells that usually show in UITableView
+        self.tableView.tableFooterView = UIView()
     }
     
     deinit {
@@ -69,6 +71,15 @@ class UpdateEmailTableViewController: UITableViewController {
                 case .failure(let error):
                     print(error)
                     IndicatorView.dismiss()
+                    
+                    let alert = UIAlertController(title: "Unable to Update Email",
+                                                  message: "Email address is already in use or password is incorrect.",
+                                                  preferredStyle: UIAlertControllerStyle.alert)
+                    let cancelAction = UIAlertAction(title: "OK",
+                                                     style: .cancel, handler: nil)
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                    
                     break
                 }
             }
@@ -147,5 +158,26 @@ extension UpdateEmailTableViewController: UITextFieldDelegate {
         NotificationCenter.default.post(name: EditingRootDoneButtonIsEnabledNotification, object: doneButtonIsEnabled)
         
         return true
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // this adds the space above the Password field
+        if section == 1 {
+            return 20
+        }
+        else {
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            let transparentView = UIView(frame: CGRect(x: 0, y: 0.0, width: 100.0, height: 20.0))
+            transparentView.backgroundColor = UIColor.clear
+            return transparentView
+        }
+        else {
+            return nil
+        }
     }
 }
