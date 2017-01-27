@@ -12,6 +12,9 @@
         <array key="Dosis-Medium.otf">
             <string>Dosis-Medium</string>
         </array>
+        <array key="Dosis-Regular.otf">
+            <string>Dosis-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--UpdateEmail-->
@@ -19,10 +22,10 @@
             <objects>
                 <tableViewController title="Accounts" id="D7N-na-4mo" userLabel="UpdateEmail" customClass="UpdateEmailTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="A3r-97-m3W">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="602"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.050980392156862744" green="0.11764705882352941" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.078431372550000003" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="A5R-lL-mx9">
@@ -31,14 +34,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j7y-qQ-rYa" id="F3F-2j-Q6t">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="verify@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-sD-kRU" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
                                                     <rect key="frame" x="127" y="0.0" width="240" height="43"/>
                                                     <color key="backgroundColor" red="0.098039215686274508" green="0.27843137254901962" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.55294117647058827" green="1" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="D7N-na-4mo" id="d0h-QM-kr7"/>
@@ -72,7 +75,7 @@
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xnl-ow-P3B" id="ePh-np-sDx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WA-Lc-bhQ" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
@@ -88,7 +91,7 @@
                                                     <rect key="frame" x="127" y="0.0" width="240" height="43"/>
                                                     <color key="backgroundColor" red="0.098039215690000001" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.55294117649999996" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="D7N-na-4mo" id="ORM-WZ-hB3"/>
@@ -117,7 +120,7 @@
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zpf-x6-vD3" id="IHa-Zv-5TL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YiL-cL-9lj" customClass="ThemedLabel" customModule="Cypherpunk" customModuleProvider="target">
@@ -132,7 +135,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5D-rK-vtJ" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
                                                     <rect key="frame" x="127" y="0.0" width="240" height="43"/>
                                                     <color key="textColor" red="0.55294117649999996" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="D7N-na-4mo" id="gqx-Gh-gg2"/>
@@ -211,36 +214,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mOC-4X-XQl">
-                                <rect key="frame" x="0.0" y="1" width="375" height="602"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="D7N-na-4mo" kind="embed" id="GJr-Wu-zbb"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkI-bf-LZN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="drD-86-O28"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.050980392156862744" green="0.11764705882352941" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YkI-bf-LZN" firstAttribute="top" secondItem="fi6-FK-Y4z" secondAttribute="bottom" id="1R9-tH-do6"/>
                             <constraint firstItem="mOC-4X-XQl" firstAttribute="leading" secondItem="Zpa-be-DCe" secondAttribute="leading" id="3SR-Fb-N16"/>
-                            <constraint firstItem="YkI-bf-LZN" firstAttribute="leading" secondItem="Zpa-be-DCe" secondAttribute="leading" id="8Pa-NW-lMd"/>
-                            <constraint firstAttribute="trailing" secondItem="YkI-bf-LZN" secondAttribute="trailing" id="FqB-J2-63H"/>
                             <constraint firstItem="rM5-ce-S48" firstAttribute="top" secondItem="mOC-4X-XQl" secondAttribute="bottom" id="FvV-08-TYX"/>
                             <constraint firstAttribute="trailing" secondItem="mOC-4X-XQl" secondAttribute="trailing" id="NWa-l1-qcD"/>
-                            <constraint firstItem="mOC-4X-XQl" firstAttribute="top" secondItem="YkI-bf-LZN" secondAttribute="bottom" id="lnZ-rJ-ucG"/>
+                            <constraint firstItem="mOC-4X-XQl" firstAttribute="top" secondItem="fi6-FK-Y4z" secondAttribute="bottom" id="yxk-rD-ZBI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Change Email" id="eva-aw-HVZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3e-xq-fgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="365"/>
+            <point key="canvasLocation" x="-52" y="364.7676161919041"/>
         </scene>
     </scenes>
 </document>

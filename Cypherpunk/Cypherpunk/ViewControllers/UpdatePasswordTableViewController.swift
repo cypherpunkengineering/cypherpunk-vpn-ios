@@ -61,6 +61,13 @@ class UpdatePasswordTableViewController: UITableViewController {
                     case .failure(let error):
                         print(error)
                         IndicatorView.dismiss()
+                        let alert = UIAlertController(title: "Unable to Update Password",
+                                                      message: "Password could not be updated. Please verify that your current password is correct.",
+                                                      preferredStyle: UIAlertControllerStyle.alert)
+                        let cancelAction = UIAlertAction(title: "OK",
+                                                         style: .cancel, handler: nil)
+                        alert.addAction(cancelAction)
+                        self.present(alert, animated: true, completion: nil)
                         break
                     }
                 }
@@ -68,7 +75,9 @@ class UpdatePasswordTableViewController: UITableViewController {
             }
             IndicatorView.dismiss()
         }
-
+        
+        // Trick to hide the empty table cells that usually show in UITableView
+        self.tableView.tableFooterView = UIView()
     }
 
     deinit {
@@ -180,5 +189,37 @@ extension UpdatePasswordTableViewController: UITextFieldDelegate {
         
         NotificationCenter.default.post(name: EditingRootDoneButtonIsEnabledNotification, object: doneButtonIsEnabled)
         return true
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // this adds the space above the Password field
+        if section == 1 {
+            return 40
+        }
+        else {
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            let transparentView = UIView(frame: CGRect(x: 0, y: 0.0, width: 200.0, height: 40.0))
+            transparentView.backgroundColor = UIColor.clear
+            
+            let label = UILabel()
+            label.text = "Input current password to update your password."
+            label.font = R.font.dosisRegular(size: 14)
+            label.textColor = UIColor.white.withAlphaComponent(0.6)
+            label.frame.origin.x = 15
+            label.frame.origin.y = 15
+            
+            transparentView.addSubview(label)
+            label.sizeToFit()
+            
+            return transparentView
+        }
+        else {
+            return nil
+        }
     }
 }

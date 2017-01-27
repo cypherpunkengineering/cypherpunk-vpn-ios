@@ -163,7 +163,7 @@ extension UpdateEmailTableViewController: UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         // this adds the space above the Password field
         if section == 1 {
-            return 20
+            return 40
         }
         else {
             return 0
@@ -172,8 +172,19 @@ extension UpdateEmailTableViewController: UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 {
-            let transparentView = UIView(frame: CGRect(x: 0, y: 0.0, width: 100.0, height: 20.0))
+            let transparentView = UIView(frame: CGRect(x: 0, y: 0.0, width: 200.0, height: 40.0))
             transparentView.backgroundColor = UIColor.clear
+            
+            let label = UILabel()
+            label.text = "Input current password to change email."
+            label.font = R.font.dosisRegular(size: 14)
+            label.textColor = UIColor.white.withAlphaComponent(0.6)
+            label.frame.origin.x = 15
+            label.frame.origin.y = 15
+            
+            transparentView.addSubview(label)
+            label.sizeToFit()
+            
             return transparentView
         }
         else {
