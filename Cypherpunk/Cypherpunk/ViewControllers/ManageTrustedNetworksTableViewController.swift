@@ -128,11 +128,11 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 17))
         let section = Section(rawValue: section)!
         let titleLabel: UILabel
-        titleLabel = UILabel(frame: CGRect(x: 15, y: 9, width: 300, height: 17))
+        titleLabel = UILabel(frame: CGRect(x: 15, y: 5, width: 300, height: 17))
 
         switch section {
         case .autoSecure:
-            titleLabel.text = "Auto Secure"
+            titleLabel.text = "AUTO-SECURE"
 
             let descriptionLabel = UILabel(frame: CGRect(x: 15, y: 31, width: 300, height: 36))
             descriptionLabel.text = "Cypherpunk can automatically secure connections to untrusted networks."
@@ -141,11 +141,12 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
             descriptionLabel.numberOfLines = 0
             view.addSubview(descriptionLabel)
         case .otherNetworks:
-            titleLabel.text = "Other Networks"
+            titleLabel.frame = CGRect(x: 15, y: 0, width: 320, height: 30)
+            titleLabel.text = "OTHER NETWORKS"
 
             break
         case .wifiNetworks:
-            titleLabel.text = "Wifi Networks"
+            titleLabel.text = "WIFI NETWORKS"
 
             let descriptionLabel = UILabel(frame: CGRect(x: 15, y: 31, width: 300, height: 36))
             descriptionLabel.text = "Add the networks you trust so Cypherpunk will now when connections should be secured."
@@ -155,8 +156,8 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
             view.addSubview(descriptionLabel)
         }
         
-        titleLabel.font = R.font.dosisMedium(size: 14)
-        titleLabel.textColor = UIColor.goldenYellow
+        titleLabel.font = R.font.dosisMedium(size: 13)
+        titleLabel.textColor = UIColor.peach
         
         view.addSubview(titleLabel)
         
@@ -170,7 +171,7 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         case .autoSecure:
             return 80.0
         case .otherNetworks:
-            return 40.0
+            return 30.0
         case .wifiNetworks:
             return 80.0
         }
