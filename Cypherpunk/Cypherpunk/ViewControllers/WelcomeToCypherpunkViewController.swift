@@ -81,9 +81,9 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         self.termsLabel.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : #colorLiteral(red: 0.6228144169, green: 0.9941515326, blue: 0.9880328774, alpha: 1), kCTUnderlineStyleAttributeName as AnyHashable : NSUnderlineStyle.styleSingle.rawValue, kCTUnderlineColorAttributeName as AnyHashable : #colorLiteral(red: 0.6228144169, green: 0.9941515326, blue: 0.9880328774, alpha: 1)]
         self.termsLabel.activeLinkAttributes = [kCTForegroundColorAttributeName as AnyHashable : #colorLiteral(red: 0.1723374724, green: 0.3221004605, blue: 0.3453483284, alpha: 1), kCTUnderlineStyleAttributeName as AnyHashable : NSUnderlineStyle.styleSingle.rawValue, kCTUnderlineColorAttributeName as AnyHashable : #colorLiteral(red: 0.1723374724, green: 0.3221004605, blue: 0.3453483284, alpha: 1)]
         let tosRange = NSMakeRange(32, 16)
-        self.termsLabel.addLink(to: URL(string: "https://cypherpunk.com/tos"), with: tosRange)
+        self.termsLabel.addLink(to: URL(string: "https://cypherpunk.com/terms-of-service"), with: tosRange)
         let privacyPolicyRange = NSMakeRange(84, 14)
-        self.termsLabel.addLink(to: URL(string: "https://cypherpunk.com/privacy"), with: privacyPolicyRange)
+        self.termsLabel.addLink(to: URL(string: "https://cypherpunk.com/privacy-policy"), with: privacyPolicyRange)
         self.termsLabel.delegate = self
 
         mainStore.subscribe(self)
@@ -364,12 +364,12 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
     }
     
     @IBAction func termOfServiceAction(_ sender: Any) {
-        let url = URL(string: "https://cypherpunk.com/tos")
+        let url = URL(string: "https://cypherpunk.com/terms-of-service")
         UIApplication.shared.openURL(url!)
     }
     
     @IBAction func privacyPolicyAction(_ sender: Any) {
-        let url = URL(string: "https://cypherpunk.com/privacy")
+        let url = URL(string: "https://cypherpunk.com/privacy-policy")
         UIApplication.shared.openURL(url!)
     }
     func newState(state: AppState)
