@@ -20,7 +20,7 @@ struct RegionListRequest: Request {
     let accountType: String
     
     var baseURL: URL {
-        return URL(string: "https://cypherpunk.com")!
+        return URL(string: "https://cypherpunk.privacy.network")!
     }
     
     var method: HTTPMethod {

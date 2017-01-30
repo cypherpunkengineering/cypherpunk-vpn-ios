@@ -17,7 +17,7 @@ struct SignUpRequest: Request {
     var password: String
     
     var baseURL: URL {
-        return URL(string: "https://cypherpunk.com")!
+        return URL(string: "https://cypherpunk.privacy.network")!
     }
     
     var method: HTTPMethod {

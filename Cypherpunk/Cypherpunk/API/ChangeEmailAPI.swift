@@ -19,7 +19,7 @@ struct ChangeEmailRequest: Request {
     let password: String
 
     var baseURL: URL {
-        return URL(string: "https://cypherpunk.com")!
+        return URL(string: "https://cypherpunk.privacy.network")!
     }
     
     var method: HTTPMethod {
