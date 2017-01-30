@@ -131,7 +131,7 @@ passcode or use Touch ID to complete the configuration.</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.10980392160000001" green="0.19215686269999999" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.086274509803921567" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZJJ-6w-TJ4" firstAttribute="centerX" secondItem="T9j-Td-zgW" secondAttribute="centerX" id="0ak-qb-lec"/>
                             <constraint firstItem="ZJJ-6w-TJ4" firstAttribute="top" secondItem="RZ3-k4-hO8" secondAttribute="bottom" constant="8" id="442-mD-oqQ"/>
@@ -165,20 +165,20 @@ passcode or use Touch ID to complete the configuration.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One Final Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QT-eu-bYW" userLabel="Title">
-                                <rect key="frame" x="0.0" y="35" width="320" height="26"/>
+                                <rect key="frame" x="0.0" y="35" width="320" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-Bold" family="Dosis" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcG-qY-HBp" userLabel="Title-Description">
-                                <rect key="frame" x="0.0" y="61" width="320" height="10"/>
+                                <rect key="frame" x="0.0" y="60.5" width="320" height="10"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="VkX-gQ-A6K"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share anonymized analytics about your VPN connections to help make Cypherpunk Privacy faster and more reliable." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLB-52-hoD" userLabel="Description">
-                                <rect key="frame" x="18" y="71" width="284" height="69"/>
+                                <rect key="frame" x="18" y="70.5" width="284" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="284" id="5aE-da-zpE"/>
                                     <constraint firstAttribute="height" constant="69" id="jxy-vR-gJH"/>
@@ -188,7 +188,7 @@ passcode or use Touch ID to complete the configuration.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkZ-bU-j5m">
-                                <rect key="frame" x="75" y="383" width="171" height="47"/>
+                                <rect key="frame" x="75" y="382.5" width="171" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="GCP-gx-w3q"/>
                                     <constraint firstAttribute="width" constant="171" id="K9W-dC-Hal"/>
@@ -214,7 +214,7 @@ passcode or use Touch ID to complete the configuration.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oN-I3-JmV">
-                                <rect key="frame" x="126" y="435.5" width="68" height="33"/>
+                                <rect key="frame" x="126" y="435" width="68" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="LRf-lY-0Xv"/>
                                 </constraints>
@@ -227,13 +227,13 @@ passcode or use Touch ID to complete the configuration.</string>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" image="illustTutorial2" translatesAutoresizingMaskIntoConstraints="NO" id="Jy4-pG-iev">
-                                <rect key="frame" x="25" y="162.5" width="270" height="185"/>
+                                <rect key="frame" x="25" y="162" width="270" height="185"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jy4-pG-iev" secondAttribute="height" multiplier="291:199" id="3ZA-69-tKL"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.10980392160000001" green="0.19215686269999999" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.086274509799999996" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0QT-eu-bYW" firstAttribute="leading" secondItem="Y0e-rk-ChY" secondAttribute="leading" id="44o-Su-f3F"/>
                             <constraint firstItem="Jy4-pG-iev" firstAttribute="leading" secondItem="Y0e-rk-ChY" secondAttribute="leadingMargin" constant="9" id="6Kx-7Q-Ft5"/>
