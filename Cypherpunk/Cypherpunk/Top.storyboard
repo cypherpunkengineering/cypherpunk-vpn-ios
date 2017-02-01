@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rgN-tT-18u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rgN-tT-18u">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -92,10 +92,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="colorHelmetBig" translatesAutoresizingMaskIntoConstraints="NO" id="U9x-b7-0rs">
-                                        <rect key="frame" x="133" y="127" width="55" height="76"/>
+                                        <rect key="frame" x="132.5" y="126.5" width="55" height="76"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="h6z-JE-4ND">
-                                        <rect key="frame" x="84" y="225" width="153" height="32"/>
+                                        <rect key="frame" x="83.5" y="224.5" width="153" height="32"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -230,14 +230,14 @@
                                         <rect key="frame" x="0.0" y="1" width="320" height="46"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="us" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-ea-HJV">
-                                                <rect key="frame" x="98" y="11" width="24" height="24"/>
+                                                <rect key="frame" x="98.5" y="11" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="AOf-zi-une"/>
                                                     <constraint firstAttribute="height" constant="24" id="K2M-Yy-yML"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="TestTest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh7-RF-Rg4">
-                                                <rect key="frame" x="132" y="0.0" width="56" height="46"/>
+                                                <rect key="frame" x="132.5" y="0.0" width="55.5" height="46"/>
                                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -349,7 +349,7 @@
                                                 </connections>
                                             </button>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-XV-Nmr">
-                                                <rect key="frame" x="84" y="6" width="153" height="32"/>
+                                                <rect key="frame" x="83.5" y="6" width="153" height="32"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -452,7 +452,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9o-RS-Qx1">
-                                        <rect key="frame" x="91" y="60" width="140" height="140"/>
+                                        <rect key="frame" x="90.5" y="60" width="140" height="140"/>
                                         <subviews>
                                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXJ-Ms-Ihx">
                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
@@ -518,7 +518,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezt-q9-Ykd">
-                                        <rect key="frame" x="63" y="195" width="195" height="31"/>
+                                        <rect key="frame" x="62.5" y="195" width="195" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufD-qZ-8dw">
                                                 <rect key="frame" x="149" y="0.0" width="46" height="31"/>
@@ -644,7 +644,7 @@
         <scene sceneID="wDI-YT-LlJ">
             <objects>
                 <navigationController id="TzT-qx-x3D" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Vid-Qw-1d6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Vid-Qw-1d6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -665,7 +665,7 @@
         <scene sceneID="B8l-cx-2OE">
             <objects>
                 <navigationController storyboardIdentifier="AccountNavigation" id="uXO-7N-wwL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="quD-bl-a9g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="quD-bl-a9g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
