@@ -28,6 +28,8 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var connectingStateLabel: UILabel?
     
     @IBOutlet weak var disconnectedHelmetImageView: UIImageView!
+    @IBOutlet weak var connectedHelmetImageView: UIImageView!
+    @IBOutlet weak var connectingHelmetImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,37 +109,49 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
     
     func updateViewWithVPNStatus(_ status: NEVPNStatus) {
         
-        connectingButton.layer.removeAnimation(forKey: "rotation")
-        cancelEmbededView.isHidden = true
+//        connectingButton.layer.removeAnimation(forKey: "rotation")
+        // cancelEmbededView.isHidden = true
 //        connectionStateLabel.isHidden = false
         connectingButton.isHidden = false
         connectedButton.isHidden = false
+        
+        connectingHelmetImageView.isHidden = false
+        connectedHelmetImageView.isHidden = false
         
         switch status {
         case .connected:
             disconnectedButton.alpha = 0.0
             disconnectedButton.isEnabled = true
             
+            disconnectedHelmetImageView.alpha = 0.0
+            
             UIView.animate(withDuration: 0.3, animations: { 
                 self.connectedButton.alpha = 1.0
                 self.connectingButton.alpha = 0.0
+                
+                self.connectedHelmetImageView.alpha = 1.0
+                self.connectingHelmetImageView.alpha = 0.0
             })
         case .connecting, .reasserting:
             
-            let animation = CABasicAnimation(keyPath: "transform.rotation")
-            animation.fromValue = 0
-            animation.toValue = M_PI * 2.0
-            animation.duration = circleAnimationDuration
-            animation.repeatCount = HUGE
-            connectingButton.layer.add(animation, forKey: "rotation")
+//            let animation = CABasicAnimation(keyPath: "transform.rotation")
+//            animation.fromValue = 0
+//            animation.toValue = M_PI * 2.0
+//            animation.duration = circleAnimationDuration
+//            animation.repeatCount = HUGE
+//            connectingButton.layer.add(animation, forKey: "rotation")
 
             disconnectedButton.isEnabled = true
-            cancelEmbededView.isHidden = false
+            // cancelEmbededView.isHidden = false
 
             UIView.animate(withDuration: 0.3, animations: {
                 self.connectedButton.alpha = 0.0
                 self.connectingButton.alpha = 1.0
                 self.disconnectedButton.alpha = 0.0
+                
+                self.connectedHelmetImageView.alpha = 0.0
+                self.connectingHelmetImageView.alpha = 1.0
+                self.disconnectedHelmetImageView.alpha = 0.0
             })
 
             
@@ -149,6 +163,10 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             self.connectedButton.alpha = 0.0
             self.connectingButton.alpha = 0.0
             self.disconnectedButton.alpha = 1.0
+            
+            self.connectedHelmetImageView.alpha = 0.0
+            self.connectingHelmetImageView.alpha = 0.0
+            self.disconnectedHelmetImageView.alpha = 1.0
 
             UIView.animate(withDuration: 0.3, animations: {
                 self.disconnectedButton.isEnabled = true
@@ -158,13 +176,21 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             self.connectedButton.alpha = 0.0
             self.connectingButton.alpha = 0.0
             self.disconnectedButton.alpha = 1.0
+            
+            self.connectedHelmetImageView.alpha = 0.0
+            self.connectingHelmetImageView.alpha = 0.0
+            self.disconnectedHelmetImageView.alpha = 1.0
             break
         case .disconnecting:
             self.connectingButton.alpha = 0.0
+            self.connectingHelmetImageView.alpha = 0.0
 
             UIView.animate(withDuration: 0.3, animations: {
                 self.connectedButton.alpha = 0.0
                 self.disconnectedButton.alpha = 1.0
+                
+                self.connectedHelmetImageView.alpha = 0.0
+                self.disconnectedHelmetImageView.alpha = 1.0
             })
 
             disconnectedButton.isEnabled = false
