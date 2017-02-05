@@ -192,9 +192,6 @@
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6e-jm-mZJ" userLabel="ConnectionButtonsView">
                                 <rect key="frame" x="0.0" y="1" width="320" height="260"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="260" id="nsJ-mm-oLD"/>
-                                </constraints>
                                 <connections>
                                     <segue destination="Tzv-dG-faD" kind="embed" id="SAt-xf-QdQ"/>
                                 </connections>
@@ -228,14 +225,14 @@
                                         <rect key="frame" x="0.0" y="1" width="320" height="46"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="us" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-ea-HJV">
-                                                <rect key="frame" x="98" y="11" width="24" height="24"/>
+                                                <rect key="frame" x="98.5" y="11" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="AOf-zi-une"/>
                                                     <constraint firstAttribute="height" constant="24" id="K2M-Yy-yML"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="TestTest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh7-RF-Rg4">
-                                                <rect key="frame" x="132" y="0.0" width="56" height="46"/>
+                                                <rect key="frame" x="132.5" y="0.0" width="55.5" height="46"/>
                                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -304,8 +301,11 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKJ-OA-8R8">
                                 <rect key="frame" x="0.0" y="309" width="320" height="107"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="107" id="NwC-UG-eoH"/>
+                                </constraints>
                                 <connections>
-                                    <segue destination="7i2-HP-Zr4" kind="embed" id="Way-Zi-BOK"/>
+                                    <segue destination="IXt-Vg-waZ" kind="embed" id="vK3-MP-vNi"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -352,8 +352,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="animationContainerView" destination="ojk-gi-tU7" id="zn2-TO-j2L"/>
+                        <outlet property="buttonView" destination="zKJ-OA-8R8" id="6Nb-o0-G9e"/>
                         <outlet property="connectionActionView" destination="V6e-jm-mZJ" id="Va4-ws-DRT"/>
-                        <outlet property="connectionButtonsConstraint" destination="nsJ-mm-oLD" id="BOj-Zd-sti"/>
+                        <outlet property="connectionButtonsConstraint" destination="NwC-UG-eoH" id="hlb-js-apq"/>
                         <outlet property="devLocationIconView" destination="KDN-Ry-2pQ" id="ab7-Kb-OZN"/>
                         <outlet property="devLocationIconWidthConstraint" destination="MBK-BS-Ib0" id="lo1-Mu-65M"/>
                         <outlet property="expandArrowImageView" destination="fRu-H5-S8B" id="9XY-kf-LD9"/>
@@ -386,6 +387,14 @@
             </objects>
             <point key="canvasLocation" x="1070" y="580"/>
         </scene>
+        <!--ActionButtons-->
+        <scene sceneID="HR4-Mx-yZr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ActionButtons" id="IXt-Vg-waZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="awZ-wF-NxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085" y="726"/>
+        </scene>
         <!--Connection Buttons View Controller-->
         <scene sceneID="t52-C9-K7j">
             <objects>
@@ -402,7 +411,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connectHelmetBg" translatesAutoresizingMaskIntoConstraints="NO" id="lQp-Tu-cpr">
-                                        <rect key="frame" x="112.5" y="61" width="93" height="95"/>
+                                        <rect key="frame" x="113" y="61" width="93" height="95"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="95" id="16C-q7-yiP"/>
                                         </constraints>
@@ -577,7 +586,7 @@
         <scene sceneID="wDI-YT-LlJ">
             <objects>
                 <navigationController id="TzT-qx-x3D" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Vid-Qw-1d6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Vid-Qw-1d6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -598,7 +607,7 @@
         <scene sceneID="B8l-cx-2OE">
             <objects>
                 <navigationController storyboardIdentifier="AccountNavigation" id="uXO-7N-wwL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="quD-bl-a9g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="quD-bl-a9g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

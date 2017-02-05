@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0967D5051E41D97100CA392D /* MainButtonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */; };
+		0967D5071E41DC0A00CA392D /* ButtonGridHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */; };
+		0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0967D5091E42D72100CA392D /* ActionButtons.storyboard */; };
+		0967D50D1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D50B1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift */; };
+		0967D50E1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0967D50C1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib */; };
+		09796A5E1E46765500CBF912 /* MenuGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796A5C1E46765500CBF912 /* MenuGridCollectionViewCell.swift */; };
+		09796A5F1E46765500CBF912 /* MenuGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09796A5D1E46765500CBF912 /* MenuGridCollectionViewCell.xib */; };
+		0985F0941E43434B00737D64 /* FastestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */; };
+		0985F0951E43434B00737D64 /* FastestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */; };
 		20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20073E0C1D9E387400BCD690 /* RateAppViewController.swift */; };
 		200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200A0B011D9E29BB00D59249 /* RateApp.storyboard */; };
 		2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */; };
@@ -146,6 +155,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButtonsCollectionViewController.swift; sourceTree = "<group>"; };
+		0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonGridHelper.swift; path = Cypherpunk/Helper/ButtonGridHelper.swift; sourceTree = SOURCE_ROOT; };
+		0967D5091E42D72100CA392D /* ActionButtons.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActionButtons.storyboard; sourceTree = "<group>"; };
+		0967D50B1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CypherPlayCollectionViewCell.swift; path = Buttons/CypherPlayCollectionViewCell.swift; sourceTree = "<group>"; };
+		0967D50C1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CypherPlayCollectionViewCell.xib; path = Buttons/CypherPlayCollectionViewCell.xib; sourceTree = "<group>"; };
+		09796A5C1E46765500CBF912 /* MenuGridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuGridCollectionViewCell.swift; path = Buttons/MenuGridCollectionViewCell.swift; sourceTree = "<group>"; };
+		09796A5D1E46765500CBF912 /* MenuGridCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuGridCollectionViewCell.xib; path = Buttons/MenuGridCollectionViewCell.xib; sourceTree = "<group>"; };
+		0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastestCollectionViewCell.swift; path = Buttons/FastestCollectionViewCell.swift; sourceTree = "<group>"; };
+		0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FastestCollectionViewCell.xib; path = Buttons/FastestCollectionViewCell.xib; sourceTree = "<group>"; };
 		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
 		20073E0C1D9E387400BCD690 /* RateAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateAppViewController.swift; sourceTree = "<group>"; };
 		200A0B011D9E29BB00D59249 /* RateApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RateApp.storyboard; sourceTree = "<group>"; };
@@ -313,6 +331,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0967D5081E41DC1E00CA392D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */,
+			);
+			name = Helper;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0967D50F1E42D8AF00CA392D /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				0967D50B1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift */,
+				0967D50C1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib */,
+				0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */,
+				0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */,
+				09796A5C1E46765500CBF912 /* MenuGridCollectionViewCell.swift */,
+				09796A5D1E46765500CBF912 /* MenuGridCollectionViewCell.xib */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
 		2038095C1D13D89D005145CD = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +393,7 @@
 				203809991D13ED84005145CD /* State */,
 				2038099B1D13EDA1005145CD /* Reducer */,
 				20F8508E1D3DF2F2009079A0 /* Storyboard */,
+				0967D5081E41DC1E00CA392D /* Helper */,
 				2038096F1D13D89D005145CD /* Assets.xcassets */,
 				20D895ED1D1D16FB002B9F9D /* R.generated.swift */,
 				203809681D13D89D005145CD /* AppDelegate.swift */,
@@ -436,6 +477,7 @@
 				201C0F561DC9E60500B5624B /* WifiNetworksCell.swift */,
 				2BA4E2A51DD1B23C006ACDC5 /* UpgradeTableViewCell.swift */,
 				2B88F7E81DE6CFAB00DAB027 /* ShadowView.swift */,
+				0967D50F1E42D8AF00CA392D /* Buttons */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -500,6 +542,7 @@
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
 				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
 				2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */,
+				0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */,
 			);
 			name = Top;
 			sourceTree = "<group>";
@@ -558,6 +601,7 @@
 				2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */,
 				2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */,
 				2B6798E41DAC0FB600099064 /* FirstOpen_iPad.storyboard */,
+				0967D5091E42D72100CA392D /* ActionButtons.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -801,6 +845,7 @@
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */,
 				2B6798E51DAC0FB600099064 /* FirstOpen_iPad.storyboard in Resources */,
+				0967D50E1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
 				2B73C70F1D5C7F670090FF8B /* Animation.storyboard in Resources */,
 				20CF42A51DFFB1E500BC8267 /* ReconnectDialogView.xib in Resources */,
@@ -808,10 +853,13 @@
 				200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
+				0985F0951E43434B00737D64 /* FastestCollectionViewCell.xib in Resources */,
 				2B2DE2851DA6530800C22098 /* VPNProtocol.storyboard in Resources */,
 				2060BF861DE815A8000025BD /* PadMenu.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
 				2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */,
+				0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */,
+				09796A5F1E46765500CBF912 /* MenuGridCollectionViewCell.xib in Resources */,
 				20DA369B1DB5E6C1003F4999 /* Inconsolata-Regular.ttf in Resources */,
 				20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */,
 				2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */,
@@ -1120,6 +1168,7 @@
 				2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */,
 				2B34557A1DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift in Sources */,
 				2B0A652B1DED904700905A2A /* RecoverPasswordAPI.swift in Sources */,
+				0967D5071E41DC0A00CA392D /* ButtonGridHelper.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
 				2065DD0B1DB8D9A500D0F446 /* CongraturationsViewController.swift in Sources */,
@@ -1145,6 +1194,7 @@
 				2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */,
 				2033FB451DB89E4D004D14B7 /* LoadingAnimationView.swift in Sources */,
 				2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */,
+				0967D5051E41D97100CA392D /* MainButtonsCollectionViewController.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B88F7E91DE6CFAB00DAB027 /* ShadowView.swift in Sources */,
 				2BA4E2A61DD1B23C006ACDC5 /* UpgradeTableViewCell.swift in Sources */,
@@ -1157,12 +1207,14 @@
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
 				20F07FD91DD47CCD005FC1D6 /* UpgradeAPI.swift in Sources */,
 				201C0F571DC9E60500B5624B /* WifiNetworksCell.swift in Sources */,
+				0967D50D1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */,
 				2BDBD0D01D65286D00080E67 /* EditingRootViewController.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
 				205EE3241DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift in Sources */,
+				0985F0941E43434B00737D64 /* FastestCollectionViewCell.swift in Sources */,
 				203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */,
 				2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */,
 				2064B3A41DBF38BD00F85148 /* PopoverRootViewController.swift in Sources */,
@@ -1188,6 +1240,7 @@
 				2B6798E71DAC179500099064 /* AccountConfigurationTableViewController.swift in Sources */,
 				20EC4A341D2F785600785399 /* RegionSelectViewController.swift in Sources */,
 				2BEC968F1D75FF8900CBBC04 /* RegionTableViewCell.swift in Sources */,
+				09796A5E1E46765500CBF912 /* MenuGridCollectionViewCell.swift in Sources */,
 				20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -46,6 +46,8 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var connectionButtonsConstraint: NSLayoutConstraint?
     var isExpand: Bool = false
     
+    @IBOutlet weak var buttonView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,6 +73,8 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
             regionButton?.setTitle(state.regionState.title, for: .normal)
             regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
+        
+        self.connectionButtonsConstraint?.constant = CGFloat(ButtonGridHelper.heightForButtonGrid())
     }
     
     override func viewWillAppear(_ animated: Bool) {
