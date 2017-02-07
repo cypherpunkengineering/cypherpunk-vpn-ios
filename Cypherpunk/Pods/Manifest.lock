@@ -15,6 +15,7 @@ PODS:
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (1.0.8)
   - FontAwesome.swift (1.0.0)
+  - GBPing (1.4.0)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - APIKit (from `https://github.com/ishkawa/APIKit.git`)
   - Firebase/Core
   - FontAwesome.swift
+  - GBPing
   - Himotoki (from `https://github.com/ikesyo/Himotoki.git`)
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
   - R.swift
@@ -106,6 +108,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 03da1cb32615569bbc2830a22f9ad753d9a02ef5
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
+  GBPing: 1d91d253c93d01bbdcf797658e8cc0376e2e6842
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
@@ -123,6 +126,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: bd520f51d4dedc2b0f45d8263ec6d55c24799c7a
+PODFILE CHECKSUM: 043bf0f34bc9b686066608d6c66427dfc317c05e
 
 COCOAPODS: 1.1.1
