@@ -18,6 +18,7 @@ target 'Cypherpunk' do
        pod 'FontAwesome.swift'
        pod 'Firebase/Core'
        pod 'TTTAttributedLabel'
+       pod 'GBPing'
 end
 
 target 'CypherpunkTests' do

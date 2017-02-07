@@ -94,7 +94,7 @@ struct RegionListRequest: Request {
                 
                 let oldRegions = realm.objects(Region.self).filter("NOT (id IN %@)", regionIds)
                 realm.delete(oldRegions)
-                
+                ServerPingHelper.updateLatencyForServers()
             })
             
         } else {
@@ -128,6 +128,7 @@ class Region: Object {
     dynamic var isFavorite: Bool = false
     dynamic var authorized: Bool = false
     dynamic var lastConnectedDate: Date = Date(timeIntervalSince1970: 1)
+    dynamic var latencySeconds: Double = Double.infinity
     
     init(id: String, region: String, level: String, name: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, country: String, authorized: Bool) {
 

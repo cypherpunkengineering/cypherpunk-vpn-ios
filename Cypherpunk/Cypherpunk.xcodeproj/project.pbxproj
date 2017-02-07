@@ -16,6 +16,7 @@
 		09796A5F1E46765500CBF912 /* MenuGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09796A5D1E46765500CBF912 /* MenuGridCollectionViewCell.xib */; };
 		0985F0941E43434B00737D64 /* FastestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */; };
 		0985F0951E43434B00737D64 /* FastestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */; };
+		09796A621E49456D00CBF912 /* ServerPingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796A611E49456D00CBF912 /* ServerPingHelper.swift */; };
 		20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20073E0C1D9E387400BCD690 /* RateAppViewController.swift */; };
 		200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200A0B011D9E29BB00D59249 /* RateApp.storyboard */; };
 		2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */; };
@@ -164,6 +165,7 @@
 		09796A5D1E46765500CBF912 /* MenuGridCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuGridCollectionViewCell.xib; path = Buttons/MenuGridCollectionViewCell.xib; sourceTree = "<group>"; };
 		0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastestCollectionViewCell.swift; path = Buttons/FastestCollectionViewCell.swift; sourceTree = "<group>"; };
 		0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FastestCollectionViewCell.xib; path = Buttons/FastestCollectionViewCell.xib; sourceTree = "<group>"; };
+		09796A611E49456D00CBF912 /* ServerPingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerPingHelper.swift; path = Util/ServerPingHelper.swift; sourceTree = "<group>"; };
 		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
 		20073E0C1D9E387400BCD690 /* RateAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateAppViewController.swift; sourceTree = "<group>"; };
 		200A0B011D9E29BB00D59249 /* RateApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RateApp.storyboard; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				20D895F61D1D1CC1002B9F9D /* Cypherpunk-Bridging-Header.h */,
 				203809741D13D89D005145CD /* Info.plist */,
 				2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */,
+				09796A611E49456D00CBF912 /* ServerPingHelper.swift */,
 			);
 			path = Cypherpunk;
 			sourceTree = "<group>";
@@ -1181,6 +1184,7 @@
 				2092AF801DACC2B400F77031 /* ConnectionButtonsViewController.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */,
+				09796A621E49456D00CBF912 /* ServerPingHelper.swift in Sources */,
 				203F4F091D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift in Sources */,
 				20D896001D23A84D002B9F9D /* AccountAction.swift in Sources */,
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
