@@ -84,6 +84,7 @@ enum RegionSection: Int {
 
 
 class RegionSelectViewController: UITableViewController {
+    var delegate: RegionSelectionDelegate?
     
     fileprivate typealias Section = RegionSection
     
@@ -242,45 +243,25 @@ class RegionSelectViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        var region: Region? = nil
-        switch section {
-        case .fastestLocation:
-            mainStore.dispatch(RegionAction.setup)
-            let realm = try! Realm()
-            region = realm.object(ofType: Region.self, forPrimaryKey: mainStore.state.regionState.regionId)
-        default:
-            region = section.realmResults[indexPath.row]
-        }
-        
-        tableView.visibleCells.forEach { (cell) in
-            guard let cell = cell as? RegionTableViewCell else {
-                return
-            }
-            cell.titleLabel.textColor = UIColor.white
-            cell.titleLabel.font = R.font.dosisRegular(size: 18.0)
-            if cell.titleLabel.text == region?.name {
-                cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
-                cell.titleLabel.font = R.font.dosisBold(size: 18.0)
-            }
-        }
-        
-        if case .fastestLocation = section {
+        if section != .fastestLocation {
+            let region = section.realmResults[indexPath.row]
+            ConnectionHelper.connectTo(region: region)
             
-        } else {
-            if let region = region {
-                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+            // TODO: Does this really need to be done this way? can we just reload the visible cells instead?
+            tableView.visibleCells.forEach { (cell) in
+                guard let cell = cell as? RegionTableViewCell else {
+                    return
+                }
+                cell.titleLabel.textColor = UIColor.white
+                cell.titleLabel.font = R.font.dosisRegular(size: 18.0)
+                if cell.titleLabel.text == region.name {
+                    cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
+                    cell.titleLabel.font = R.font.dosisBold(size: 18.0)
+                }
             }
         }
         
-        let isConnected = VPNConfigurationCoordinator.isConnected
-        VPNConfigurationCoordinator.start {
-            let manager = NEVPNManager.shared()
-            if isConnected, manager.isOnDemandEnabled == false {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6, execute: {
-                    VPNConfigurationCoordinator.connect()
-                })
-            }
-        }
+        delegate?.dismissRegionSelector()
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -349,4 +330,8 @@ class RegionSelectViewController: UITableViewController {
             realm.add(target, update: true)
         }
     }
+}
+
+protocol RegionSelectionDelegate {
+    func dismissRegionSelector()
 }
