@@ -24,7 +24,7 @@ extension NEVPNStatus: CustomStringConvertible {
     }
 }
 
-class PadTopRootViewController: UIViewController, StoreSubscriber {
+class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelectionDelegate, MainButtonsDelegate {
     
     @IBOutlet weak var animationContainerView: UIView!
     @IBOutlet weak var connectionActionView: UIView!
@@ -44,6 +44,8 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var premiumLocationIconWidthConstraint: NSLayoutConstraint?
     
     @IBOutlet weak var connectionButtonsConstraint: NSLayoutConstraint?
+    @IBOutlet weak var serverListHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var serverListView: UIView!
     var isExpand: Bool = false
     
     @IBOutlet weak var buttonView: UIView!
@@ -74,7 +76,9 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
             regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
         
-        self.connectionButtonsConstraint?.constant = CGFloat(ButtonGridHelper.heightForButtonGrid())
+        self.connectionButtonsConstraint?.constant = CGFloat(ButtonGridHelper.sharedInstance.heightForButtonGrid())
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,6 +115,8 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
         guard let connection = notification.object as? NEVPNConnection else {
             return
         }
+        
+        print("VPN Status Changed: \(connection.status)")
         
         let status = connection.status
         updateView(withVPNStatus: status)
@@ -169,22 +175,71 @@ class PadTopRootViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func openOrCloseRegionAction(_ sender: AnyObject) {
-        let angle: Double
-        if connectionButtonsConstraint?.constant == 260.0 {
-            connectionButtonsConstraint?.constant = 0.0
+        if (isExpand) {
+            // already expanded, collapse
             isExpand = false
-            angle = M_PI_2 + M_PI
-            expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
-        } else {
-            connectionButtonsConstraint?.constant = 260.0
-            angle = M_PI_2
-
-            isExpand = true
+            
+            UIView.animate(withDuration: 0.5) {
+                self.serverListHeightConstraint.constant = 0
+                self.view.layoutIfNeeded()
+            }
         }
-        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-            self.view.layoutIfNeeded()
-            self.expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
-            }, completion: nil)
+        else {
+            isExpand = true
+            
+            UIView.animate(withDuration: 0.5) {
+                let visibleSize = self.getVisibleSize()
+                self.serverListHeightConstraint.constant = visibleSize.height
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "EmbedRegionList") {
+            let regionSelectViewController = segue.destination as! RegionSelectViewController
+            
+            regionSelectViewController.delegate = self
+        }
+        else if (segue.identifier == "EmbedButtonView") {
+            let buttonViewController = segue.destination as! MainButtonsCollectionViewController
+            
+            buttonViewController.delegate = self
+        }
+    }
+    
+    func getVisibleSize() -> CGSize {
+        var result = CGSize();
+        
+        var size = UIScreen.main.bounds.size
+        
+        if (UIDevice.current.orientation.isLandscape) {
+            result.width = size.height
+            result.height = size.width
+        }
+        else {
+            result.width = size.width
+            result.height = size.height
+        }
+        
+        size = UIApplication.shared.statusBarFrame.size
+        result.height -= min(size.width, size.height)
+        
+        if (self.navigationController != nil) {
+            size = (self.navigationController?.navigationBar.frame.size)!
+            result.height -= min(size.width, size.height)
+        }
+        
+        return result
+    }
+    
+    // MARK: RegionSelectionDelegate
+    func dismissRegionSelector() {
+        openOrCloseRegionAction(self)
+    }
+    
+    // MARK: MainButtonsDelegate
+    func showServerList() {
+        openOrCloseRegionAction(self)
+    }
 }

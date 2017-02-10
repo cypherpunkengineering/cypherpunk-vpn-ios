@@ -7,20 +7,22 @@
 //
 
 import UIKit
+import RealmSwift
+import NetworkExtension
 
 private let reuseIdentifier = "Cell"
 
 class MainButtonsCollectionViewController: UICollectionViewController {
+    var delegate: MainButtonsDelegate?
+    
+    private let gridHelper = ButtonGridHelper.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-//        self.collectionView!.register(CypherPlayCollectionViewCell.self, forCellWithReuseIdentifier: "CypherPlayCell")
         let cyperPlayNib = UINib(nibName: "CypherPlayCollectionViewCell", bundle: nil)
         self.collectionView!.register(cyperPlayNib, forCellWithReuseIdentifier: "CypherPlayCell")
         
@@ -53,11 +55,31 @@ class MainButtonsCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ButtonGridHelper.numberOfButtonsForGrid()
+        return gridHelper.numberOfButtonsForGrid()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return ButtonGridHelper.setupButtonAt(indexPath: indexPath, collectionView: collectionView)
+        return gridHelper.setupButtonAt(indexPath: indexPath, collectionView: collectionView)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
+        print(action.type)
+        switch (action.type) {
+        case .CypherPlay:
+            print()
+            // TODO save cypherplay setting to the user prefs
+        case .Fastest:
+            connectToFastest()
+        case .FastestUS:
+            print()
+        case .FastestUK:
+            print()
+        case .SavedServer:
+            print()
+        case .ServerList:
+            delegate?.showServerList()
+        }
     }
 
     // MARK: UICollectionViewDelegate
@@ -90,12 +112,44 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    private func connectToFastest() {
+        var region: Region? = nil
+        
+//        mainStore.dispatch(RegionAction.setup)
+//        print(mainStore.state.accountState.accountType as Any)
+        
+        let accountType = mainStore.state.accountState.accountType
+        
+        
+        let realm = try! Realm()
+        region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0").sorted(byKeyPath: "latencySeconds").first
+        print(region)
+        if (region != nil) {
+//            mainStore.dispatch(RegionAction.changeRegion(regionId: region!.id, name: region!.name, serverIP: region!.ipsecHostname, countryCode: region!.country, remoteIdentifier: region!.ipsecHostname, level: region!.level))
+//            
+//            let isConnected = VPNConfigurationCoordinator.isConnected
+//            VPNConfigurationCoordinator.start {
+//                let manager = NEVPNManager.shared()
+//                if isConnected, manager.isOnDemandEnabled == false {
+//                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6, execute: {
+//                        VPNConfigurationCoordinator.connect()
+//                    })
+//                }
+//            }
+            ConnectionHelper.connectTo(region: region!)
+        }
+    }
 }
 
 extension MainButtonsCollectionViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return ButtonGridHelper.sizeForButton(index: indexPath.item)
+        return ButtonGridHelper.sharedInstance.sizeForButton(index: indexPath.item)
     }
+}
+
+protocol MainButtonsDelegate {
+    func showServerList()
 }

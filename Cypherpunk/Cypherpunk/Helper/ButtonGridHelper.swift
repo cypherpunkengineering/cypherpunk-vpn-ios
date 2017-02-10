@@ -1,5 +1,5 @@
 //
-//  ScreenSizehHelper.swift
+//  ButtonGridHelper.swift
 //  Cypherpunk
 //
 //  Created by Julie Ann Sakuda on 1/31/17.
@@ -9,24 +9,60 @@
 enum ButtonCellTypes: String {
     case CypherPlay
     case Fastest
+    case FastestUS
     case FastestUK
     case ServerList
     case SavedServer
 }
 
-class ButtonGridHelper {
-    static func heightForButtonGrid() -> Int {
-        // TODO: check idiom for iPad
-        if (UIScreen.main.bounds.height < 568) {
-            // assume iPhone 4s size
-            return 100
-        }
-        else {
-            return 200
-        }
+struct ButtonAction {
+    var type: ButtonCellTypes
+    var server: String
+}
+
+final class ButtonGridHelper {
+    private var buttonActions : [ButtonAction]
+    
+    // Can't init is singleton
+    private init() {
+        buttonActions = [ButtonAction]()
+        createButtonActions()
     }
     
-    static func numberOfButtonsForGrid() -> Int {
+    //MARK: Shared Instance
+    static let sharedInstance: ButtonGridHelper = ButtonGridHelper()
+    
+    private func createButtonActions() {
+        buttonActions.removeAll() // clear out any actions
+        let buttonCount = numberOfButtonsForGrid()
+        
+        // all layouts have a cyperplay, fastest, and server list
+        let cyperplayAction = ButtonAction(type: .CypherPlay, server: "")
+        buttonActions.append(cyperplayAction) // this is always first
+        
+        let fastestAction = ButtonAction(type: .Fastest, server: "")
+        
+        let serverList = ButtonAction(type: .ServerList, server: "")
+        
+        if (buttonCount == 3) {
+            buttonActions.append(fastestAction)
+            buttonActions.append(serverList)
+        }
+        else if (buttonCount == 6) {
+            buttonActions.append(fastestAction)
+            buttonActions.append(fastestAction)
+            buttonActions.append(fastestAction)
+            buttonActions.append(fastestAction)
+        }
+        else if (buttonCount == 7) {
+            buttonActions.append(fastestAction)
+        }
+        
+        // server list action should always be last
+        buttonActions.append(serverList)
+    }
+    
+    func numberOfButtonsForGrid() -> Int {
         // TODO: check idiom for iPad
         if (UIScreen.main.bounds.height < 568) {
             // assume iPhone 4s size
@@ -42,7 +78,7 @@ class ButtonGridHelper {
         }
     }
     
-    static func heightForButtonAt(index: Int) -> Int {
+    func heightForButtonAt(index: Int) -> Int {
         // TODO: check idiom for iPad
         if (index == 0 && UIScreen.main.bounds.height > 568) {
             // iPhone 6 and above
@@ -53,11 +89,22 @@ class ButtonGridHelper {
         }
     }
     
-    static func widthForButtonAt(index: Int) -> Int {
+    func heightForButtonGrid() -> Int {
         // TODO: check idiom for iPad
-        
+        if (UIScreen.main.bounds.height < 568) {
+            // assume iPhone 4s size
+            return 100
+        }
+        else {
+            return 200
+        }
+    }
+
+    func widthForButtonAt(index: Int) -> Int {
+        // TODO: check idiom for iPad
+
         let screenWidth = UIScreen.main.bounds.width
-        
+
         if (UIScreen.main.bounds.height > 568) {
             // iPhone 6 and above
             return Int(screenWidth) / 4
@@ -66,12 +113,12 @@ class ButtonGridHelper {
             return Int(screenWidth) / 3
         }
     }
-    
-    static func sizeForButton(index: Int) -> CGSize {
+
+    func sizeForButton(index: Int) -> CGSize {
         return CGSize(width: widthForButtonAt(index: index), height: heightForButtonAt(index: index))
     }
-    
-    static func setupButtonAt(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+
+    func setupButtonAt(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
         // TODO: check idiom for iPad
         if (UIScreen.main.bounds.height < 568) {
             // assume iPhone 4s size
@@ -86,10 +133,10 @@ class ButtonGridHelper {
             return cellForSevenButtonGrid(indexPath: indexPath, collectionView: collectionView)
         }
     }
-    
-    private static func cellForThreeButtonGrid(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+
+    private func cellForThreeButtonGrid(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
         var cell : UICollectionViewCell? = nil
-        
+
         switch indexPath.item {
         case 0:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CypherPlayCell", for: indexPath)
@@ -98,13 +145,13 @@ class ButtonGridHelper {
         default:
             cell = serverListCell(indexPath: indexPath, collectionView: collectionView)
         }
-        
+
         return cell!
     }
-    
-    private static func cellForSixButtonGrid(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+
+    private func cellForSixButtonGrid(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
         var cell : UICollectionViewCell? = nil
-        
+
         switch indexPath.item {
         case 0:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CypherPlayCell", for: indexPath)
@@ -115,13 +162,13 @@ class ButtonGridHelper {
         default:
             cell = serverListCell(indexPath: indexPath, collectionView: collectionView)
         }
-        
+
         return cell!
     }
-    
-    private static func cellForSevenButtonGrid(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+
+    private func cellForSevenButtonGrid(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
         var cell : UICollectionViewCell? = nil
-        
+
         switch indexPath.item {
         case 0:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CypherPlayCell", for: indexPath)
@@ -130,26 +177,26 @@ class ButtonGridHelper {
         default:
             cell = serverListCell(indexPath: indexPath, collectionView: collectionView)
         }
-        
+
         return cell!
     }
-    
-    private static func fastestCell(indexPath: IndexPath, collectionView: UICollectionView) -> MenuGridCollectionViewCell {
+
+    private func fastestCell(indexPath: IndexPath, collectionView: UICollectionView) -> MenuGridCollectionViewCell {
         let menuGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuGridCell", for: indexPath) as! MenuGridCollectionViewCell
         menuGridCell.iconView.image = R.image.topButtonRocket()
         menuGridCell.textLabel.text = "Fastest"
         return menuGridCell
     }
-    
-    private static func serverListCell(indexPath: IndexPath, collectionView: UICollectionView) -> MenuGridCollectionViewCell {
+
+    private func serverListCell(indexPath: IndexPath, collectionView: UICollectionView) -> MenuGridCollectionViewCell {
         let menuGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuGridCell", for: indexPath) as! MenuGridCollectionViewCell
 //        menuGridCell.iconView.image = R.image.headerIconLogo() // TODO get the correct icon
         menuGridCell.iconView.image = nil
         menuGridCell.textLabel.text = "Servers"
         return menuGridCell
     }
-    
-    private static func locationCell(indexPath: IndexPath, collectionView: UICollectionView) -> MenuGridCollectionViewCell {
+
+    private func locationCell(indexPath: IndexPath, collectionView: UICollectionView) -> MenuGridCollectionViewCell {
         let menuGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuGridCell", for: indexPath) as! MenuGridCollectionViewCell
         //        menuGridCell.iconView.image = R.image.headerIconLogo() // TODO get the correct icon
         menuGridCell.iconView.image = R.image.us()
@@ -158,4 +205,9 @@ class ButtonGridHelper {
         menuGridCell.textLabel.text = "Atlanta"
         return menuGridCell
     }
+    
+    func buttonActionForCellAt(indexPath: IndexPath) -> ButtonAction {
+        return buttonActions[indexPath.item]
+    }
 }
+
