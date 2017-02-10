@@ -274,22 +274,20 @@ class RegionSelectViewController: UITableViewController {
                 return UIView()
             }
         }
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
-        view.backgroundColor = UIColor.clear
-
-        let titleLabel = UILabel(frame: CGRect(x: 15, y: 14, width: self.view.frame.width, height: 17))
         
-        titleLabel.font = R.font.dosisMedium(size: 14)
-        titleLabel.textColor = UIColor.white
-        titleLabel.text = self.tableView(tableView, titleForHeaderInSection: section.rawValue)
-
-        let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 1))
-        spacerView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
-
-        view.addSubview(spacerView)
-        view.addSubview(titleLabel)
+        let headerView = Bundle.main.loadNibNamed("RegionTableHeaderView", owner: nil, options: nil)?.first as? RegionTableHeaderView
+        headerView?.titleLabel.text = self.tableView(tableView, titleForHeaderInSection: section.rawValue)
         
-        return view
+        switch section {
+        case .favorite:
+            headerView?.iconView.image = R.image.locationTitleStar()
+        case .recentlyConnected:
+            headerView?.iconView.image = R.image.locationTitleRecent()
+        default:
+            headerView?.hideIconView()
+        }
+        
+        return headerView
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -305,7 +303,7 @@ class RegionSelectViewController: UITableViewController {
             if section.realmResults.count == 0 {
                 return 0.1
             }
-            return 40.0
+            return 25.0
         }
     }
     

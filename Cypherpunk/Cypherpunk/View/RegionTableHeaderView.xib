@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Dosis-Medium.otf">
+            <string>Dosis-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RegionTableHeaderView" customModule="Cypherpunk" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationTitleRecent" translatesAutoresizingMaskIntoConstraints="NO" id="fKQ-dR-Qgm">
+                    <rect key="frame" x="17" y="5" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="HjH-LE-rsO"/>
+                        <constraint firstAttribute="width" constant="15" id="m0g-6k-QVd"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5A-qi-vtX">
+                    <rect key="frame" x="42" y="2" width="200" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="PTW-Lh-0sl"/>
+                        <constraint firstAttribute="width" constant="200" id="UDc-qh-U3i"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
+                    <color key="textColor" red="0.55294117649999996" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.098039215686274508" green="0.27843137254901962" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="i5A-qi-vtX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Chb-Fz-l5W"/>
+                <constraint firstItem="fKQ-dR-Qgm" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="SYP-e8-hvL"/>
+                <constraint firstItem="fKQ-dR-Qgm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="17" id="kyT-8p-8Jc"/>
+                <constraint firstItem="i5A-qi-vtX" firstAttribute="leading" secondItem="fKQ-dR-Qgm" secondAttribute="trailing" constant="10" id="xfm-YI-Brq"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="iconView" destination="fKQ-dR-Qgm" id="7Hu-iV-8XY"/>
+                <outlet property="iconViewWidthConstraint" destination="m0g-6k-QVd" id="QiS-k8-AH3"/>
+                <outlet property="titleLabel" destination="i5A-qi-vtX" id="TPd-za-kpq"/>
+                <outlet property="titleViewLeadingSpaceConstraint" destination="kyT-8p-8Jc" id="ra6-dX-yBk"/>
+            </connections>
+            <point key="canvasLocation" x="-11.5" y="-381.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="locationTitleRecent" width="19" height="19"/>
+    </resources>
+</document>
