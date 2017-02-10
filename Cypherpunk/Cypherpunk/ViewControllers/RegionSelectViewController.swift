@@ -32,13 +32,13 @@ enum RegionSection: Int {
         case .fastestLocation:
             fatalError()
         case .favorite:
-            return realm.objects(Region.self).filter("isFavorite = true").sorted(byProperty: "lastConnectedDate", ascending: false)
+            return realm.objects(Region.self).filter("isFavorite = true").sorted(byKeyPath: "lastConnectedDate", ascending: false)
         case .recentlyConnected:
-            return realm.objects(Region.self).filter("isFavorite = false").filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false)
+            return realm.objects(Region.self).filter("isFavorite = false").filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byKeyPath: "lastConnectedDate", ascending: false)
         default:
             let sortProperties = [
-                SortDescriptor(property: "country", ascending: true),
-                SortDescriptor(property: "name", ascending: true)
+                SortDescriptor(keyPath: "country", ascending: true),
+                SortDescriptor(keyPath: "name", ascending: true)
             ]
             return realm.objects(Region.self).filter("region == %@", self.regionCode).sorted(by:sortProperties)
         }
