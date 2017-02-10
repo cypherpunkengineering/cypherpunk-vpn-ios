@@ -179,6 +179,12 @@ open class VPNConfigurationCoordinator {
             let manager = NEVPNManager.shared()
 
             do {
+                if #available(iOS 9.0, *) {
+                    print("Starting VPN tunnel to \(manager.protocolConfiguration?.serverAddress)")
+                } else {
+                    // Fallback on earlier versions
+                    print("Starting VPN tunnel to \(manager.protocol?.serverAddress)")
+                }
                 try manager.connection.startVPNTunnel()
             } catch NEVPNError.configurationInvalid {
                 print("NEVPNError.configurationInvalid")
@@ -209,6 +215,12 @@ open class VPNConfigurationCoordinator {
         manager.saveToPreferences(completionHandler: { error in
             
         })
+        if #available(iOS 9.0, *) {
+            print("Stopping VPN tunnel to \(manager.protocolConfiguration?.serverAddress)")
+        } else {
+            // Fallback on earlier versions
+            print("Stopping VPN tunnel to \(manager.protocol?.serverAddress)")
+        }
         manager.connection.stopVPNTunnel()
     }
 

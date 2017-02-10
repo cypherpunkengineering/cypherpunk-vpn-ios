@@ -80,7 +80,6 @@ class AnimationViewController: UIViewController {
         }
         
         let status = connection.status
-     
         self.updateAnimationState(status: status)
     }
     
