@@ -37,13 +37,13 @@ struct RegionReducer {
                     target = region
                 } else {
                     let sortProperties = [
-                        SortDescriptor(property: "country", ascending: true),
-                        SortDescriptor(property: "name", ascending: true)
+                        SortDescriptor(keyPath: "country", ascending: true),
+                        SortDescriptor(keyPath: "name", ascending: true)
                     ]
                     
-                    if let region = realm.objects(Region.self).filter("isFavorite == true AND authorized == true").sorted(byProperty: "lastConnectedDate", ascending: false).first {
+                    if let region = realm.objects(Region.self).filter("isFavorite == true AND authorized == true").sorted(byKeyPath: "lastConnectedDate", ascending: false).first {
                         target = region
-                    } else if let region = realm.objects(Region.self).filter("isFavorite == false AND authorized == true AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byProperty: "lastConnectedDate", ascending: false).first {
+                    } else if let region = realm.objects(Region.self).filter("isFavorite == false AND authorized == true AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byKeyPath: "lastConnectedDate", ascending: false).first {
                         target = region
                     } else {
                         RegionSection.regions.flatMap{return $0.regionCode}.forEach({ (regionCode) in
