@@ -14,7 +14,7 @@ class RegionTableViewCell: UITableViewCell {
     @IBOutlet weak var flagImageView: UIImageView!
     @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var devLocationIconView: UIImageView!
-    @IBOutlet weak var unavailableLabel: UILabel!
+    @IBOutlet weak var unavailableLocationIconView: UIImageView!
     
     @IBOutlet weak var premiumLocationIconView: UIImageView!
     override func awakeFromNib() {

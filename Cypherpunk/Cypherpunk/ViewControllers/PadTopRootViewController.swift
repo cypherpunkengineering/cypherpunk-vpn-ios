@@ -88,15 +88,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
             let status = NEVPNManager.shared().connection.status
             self.updateView(withVPNStatus: status)
         }
-        
-        if isExpand {
-            let angle = -M_PI_2
-            expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
-        } else {
-            let angle = M_PI_2
-            expandArrowImageView?.layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1.0)
-        }
-        
+                
         mainStore.subscribe(self)
         
     }

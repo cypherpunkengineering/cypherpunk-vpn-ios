@@ -213,7 +213,7 @@
                                             <constraint firstAttribute="height" constant="1" id="AGf-TG-Zc4"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBack" translatesAutoresizingMaskIntoConstraints="NO" id="fRu-H5-S8B">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="fRu-H5-S8B">
                                         <rect key="frame" x="276" y="2" width="44" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -225,32 +225,32 @@
                                         <rect key="frame" x="0.0" y="1" width="320" height="46"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="us" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-ea-HJV">
-                                                <rect key="frame" x="98" y="11" width="24" height="24"/>
+                                                <rect key="frame" x="94" y="11" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="AOf-zi-une"/>
                                                     <constraint firstAttribute="height" constant="24" id="K2M-Yy-yML"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="TestTest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh7-RF-Rg4">
-                                                <rect key="frame" x="132" y="0.0" width="56" height="46"/>
-                                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <rect key="frame" x="128" y="0.0" width="65.5" height="46"/>
+                                                <fontDescription key="fontDescription" name="Dosis-Bold" family="Dosis" pointSize="18"/>
+                                                <color key="textColor" red="0.55294117649999996" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationIconDev" translatesAutoresizingMaskIntoConstraints="NO" id="KDN-Ry-2pQ">
-                                                <rect key="frame" x="198" y="14" width="56" height="17"/>
+                                                <rect key="frame" x="203.5" y="14.5" width="27" height="17"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="56" id="MBK-BS-Ib0"/>
+                                                    <constraint firstAttribute="width" constant="27" id="MBK-BS-Ib0"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationIconPremium" translatesAutoresizingMaskIntoConstraints="NO" id="vqt-Xe-c0W">
-                                                <rect key="frame" x="198" y="13" width="56" height="19"/>
+                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationFlagPremium" translatesAutoresizingMaskIntoConstraints="NO" id="vqt-Xe-c0W">
+                                                <rect key="frame" x="203.5" y="14" width="50" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="56" id="JBB-zX-kuG"/>
+                                                    <constraint firstAttribute="width" constant="50" id="JBB-zX-kuG"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0039215686274509803" green="0.0" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="A0j-ea-HJV" firstAttribute="centerY" secondItem="bh7-RF-Rg4" secondAttribute="centerY" id="GyD-08-nay"/>
                                             <constraint firstItem="bh7-RF-Rg4" firstAttribute="top" secondItem="bxn-Wp-Alj" secondAttribute="top" id="KGG-Ui-UXU"/>
@@ -277,7 +277,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0039215686269999999" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="i9k-iB-aN3" firstAttribute="leading" secondItem="vHJ-HJ-e0z" secondAttribute="leading" id="0sk-4q-yF0"/>
                                     <constraint firstAttribute="height" constant="48" id="Afd-s2-ZD0"/>
@@ -697,6 +697,10 @@
         <scene sceneID="t2M-hn-QXJ">
             <objects>
                 <viewController id="VJu-Zq-Enu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dW1-Bm-q9s"/>
+                        <viewControllerLayoutGuide type="bottom" id="qkn-yF-USa"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CN5-6O-ZT0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -716,9 +720,9 @@
         <image name="headerIconAccount" width="21" height="24"/>
         <image name="headerIconSettings" width="22" height="22"/>
         <image name="headerLogo" width="153" height="32"/>
-        <image name="iconBack" width="12" height="18"/>
+        <image name="locationArrowDown" width="16" height="9"/>
+        <image name="locationFlagPremium" width="50" height="18"/>
         <image name="locationIconDev" width="25" height="17"/>
-        <image name="locationIconPremium" width="56" height="19"/>
         <image name="us" width="24" height="24"/>
     </resources>
 </document>

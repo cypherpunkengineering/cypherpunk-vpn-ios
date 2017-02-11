@@ -183,10 +183,10 @@ class RegionSelectViewController: UITableViewController {
         cell?.flagImageView.alpha = 1.0
         cell?.devLocationIconView.alpha = 1.0
         cell?.premiumLocationIconView.alpha = 1.0
-        cell?.unavailableLabel.alpha = 1.0
+        cell?.unavailableLocationIconView.alpha = 1.0
         cell?.devLocationIconView.isHidden = true
         cell?.premiumLocationIconView.isHidden = true
-        cell?.unavailableLabel.isHidden = true
+        cell?.unavailableLocationIconView.isHidden = true
         cell?.titleLabel.font = R.font.dosisRegular(size: 18.0)
 
         switch section {
@@ -210,14 +210,16 @@ class RegionSelectViewController: UITableViewController {
             }
             cell?.flagImageView.image = UIImage(named: region.country.lowercased())
             
-            if region.ipsecDefault == "" {
-                cell?.unavailableLabel.isHidden = false
-            }else if region.level == "premium" {
+            if region.httpDefault.isEmpty || !region.authorized {
+                cell?.unavailableLocationIconView.isHidden = false
+            }
+            else if region.level == "premium" {
                 cell?.premiumLocationIconView.isHidden = false
-            } else if region.level == "developer" {
+            }
+            else if region.level == "developer" {
                 cell?.devLocationIconView.isHidden = false
             }
-            
+        
             
             if region.authorized == false {
                 cell?.titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
@@ -226,7 +228,8 @@ class RegionSelectViewController: UITableViewController {
                 cell?.flagImageView.alpha = 0.5
                 cell?.devLocationIconView.alpha = 0.5
                 cell?.premiumLocationIconView.alpha = 0.5
-                cell?.unavailableLabel.alpha = 0.5
+                cell?.unavailableLocationIconView
+                    .alpha = 0.5
 
                 cell?.starButton.isUserInteractionEnabled = false
                 cell?.isUserInteractionEnabled = false
