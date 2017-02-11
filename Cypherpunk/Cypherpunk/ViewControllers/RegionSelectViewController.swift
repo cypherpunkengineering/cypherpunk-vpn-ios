@@ -204,9 +204,9 @@ class RegionSelectViewController: UITableViewController {
             
             cell?.titleLabel.text = region.name
             if region.isFavorite {
-                cell?.starButton.setImage(R.image.iconStarOn(), for: .normal)
+                cell?.starButton.setImage(R.image.locationIconStared(), for: .normal)
             } else {
-                cell?.starButton.setImage(R.image.iconStar(), for: .normal)
+                cell?.starButton.setImage(R.image.locationIconStar(), for: .normal)
             }
             cell?.flagImageView.image = UIImage(named: region.country.lowercased())
             

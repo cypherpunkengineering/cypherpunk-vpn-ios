@@ -53,7 +53,7 @@
                                                 <constraint firstAttribute="height" constant="44" id="cH1-hQ-089"/>
                                                 <constraint firstAttribute="width" constant="44" id="fHV-5c-W0a"/>
                                             </constraints>
-                                            <state key="normal" image="iconStar"/>
+                                            <state key="normal" image="locationIconStar"/>
                                             <connections>
                                                 <action selector="didSelectFavoriteAction:" destination="1Te-By-WNs" eventType="touchUpInside" id="fS5-zT-QKo"/>
                                             </connections>
@@ -65,7 +65,7 @@
                                             <rect key="frame" x="112" y="13" width="56" height="19"/>
                                         </imageView>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNAVAILABLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNY-3m-GBM">
-                                            <rect key="frame" x="112" y="15" width="65" height="16"/>
+                                            <rect key="frame" x="112" y="15.5" width="65" height="15.5"/>
                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -110,8 +110,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iconStar" width="20" height="19"/>
         <image name="locationIconDev" width="25" height="17"/>
         <image name="locationIconPremium" width="56" height="19"/>
+        <image name="locationIconStar" width="18" height="18"/>
     </resources>
 </document>
