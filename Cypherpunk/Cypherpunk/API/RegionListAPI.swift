@@ -12,6 +12,8 @@ import APIKit
 import Himotoki
 import RealmSwift
 
+let regionUpdateNotificationKey = "com.cypherpunk.regionUpdateNotificationKey"
+
 struct RegionListRequest: Request {
     
     typealias Response = ()
@@ -45,6 +47,9 @@ struct RegionListRequest: Request {
         if let areaDictionary = object as? Dictionary<String, [String: Any]> {
             
             let realm = try! Realm()
+            
+            let initial = realm.objects(Region.self).count == 0
+            
             try! realm.write({
                 var regionIds: [String] = []
 
@@ -95,6 +100,11 @@ struct RegionListRequest: Request {
                 let oldRegions = realm.objects(Region.self).filter("NOT (id IN %@)", regionIds)
                 realm.delete(oldRegions)
                 ServerPingHelper.updateLatencyForServers()
+                
+                if initial {
+                    // need to notify grid to update
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: regionUpdateNotificationKey), object: self)
+                }
             })
             
         } else {

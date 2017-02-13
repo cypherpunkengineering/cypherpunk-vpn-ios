@@ -82,9 +82,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         
-        let config = Realm.Configuration(schemaVersion: 8, migrationBlock: {
+        let config = Realm.Configuration(schemaVersion: 9, migrationBlock: {
             (migration, oldSchemaVersion) in
-            if (oldSchemaVersion < 8) {
+            if (oldSchemaVersion < 9) {
+                migration.enumerateObjects(ofType: Region.className(), { (oldRegion, newRegion) in
+                    newRegion?["latencySeconds"] = Double.infinity
+                })
             }
         })
         
@@ -235,8 +238,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             failureBlock()
                         }
                     }
-                default:
-                    break
+                case .failure(let error):
+                    print(error)
+                    // unexpected error, force a logout
+//                    failureBlock()
                 }
             }
        }

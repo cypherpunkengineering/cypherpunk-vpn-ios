@@ -30,11 +30,16 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         self.collectionView!.register(fastestNib, forCellWithReuseIdentifier: "MenuGridCell")
 
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionUpdateNotificationKey), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func handleRegionUpdateNotification() {
+        self.collectionView?.reloadData()
     }
 
     /*
@@ -72,11 +77,11 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         case .Fastest:
             connectToFastest()
         case .FastestUS:
-            print()
+            connectToFastestUS()
         case .FastestUK:
-            print()
+            connectToFastestUK()
         case .SavedServer:
-            print()
+            ConnectionHelper.connectTo(region: action.server!)
         case .ServerList:
             delegate?.showServerList()
         }
@@ -116,27 +121,44 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     private func connectToFastest() {
         var region: Region? = nil
         
-//        mainStore.dispatch(RegionAction.setup)
-//        print(mainStore.state.accountState.accountType as Any)
+        let accountType = mainStore.state.accountState.accountType
+        
+        
+        let realm = try! Realm()
+        
+        region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0").sorted(byKeyPath: "latencySeconds").first
+        print(region!)
+        if (region != nil) {
+            ConnectionHelper.connectTo(region: region!)
+        }
+    }
+    
+    private func connectToFastestUS() {
+        var region: Region? = nil
         
         let accountType = mainStore.state.accountState.accountType
         
         
         let realm = try! Realm()
-        region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0").sorted(byKeyPath: "latencySeconds").first
-        print(region)
+        
+        region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0 AND country = 'US'").sorted(byKeyPath: "latencySeconds").first
+        print(region!)
         if (region != nil) {
-//            mainStore.dispatch(RegionAction.changeRegion(regionId: region!.id, name: region!.name, serverIP: region!.ipsecHostname, countryCode: region!.country, remoteIdentifier: region!.ipsecHostname, level: region!.level))
-//            
-//            let isConnected = VPNConfigurationCoordinator.isConnected
-//            VPNConfigurationCoordinator.start {
-//                let manager = NEVPNManager.shared()
-//                if isConnected, manager.isOnDemandEnabled == false {
-//                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6, execute: {
-//                        VPNConfigurationCoordinator.connect()
-//                    })
-//                }
-//            }
+            ConnectionHelper.connectTo(region: region!)
+        }
+    }
+    
+    private func connectToFastestUK() {
+        var region: Region? = nil
+        
+        let accountType = mainStore.state.accountState.accountType
+        
+        
+        let realm = try! Realm()
+        
+        region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0 AND country= 'GB'").sorted(byKeyPath: "latencySeconds").first
+        print(region!)
+        if (region != nil) {
             ConnectionHelper.connectTo(region: region!)
         }
     }
