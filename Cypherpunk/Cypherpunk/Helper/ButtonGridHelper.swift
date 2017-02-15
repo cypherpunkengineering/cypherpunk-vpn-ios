@@ -134,10 +134,10 @@ final class ButtonGridHelper {
 
         if (UIScreen.main.bounds.height > 568) {
             // iPhone 6 and above
-            return Int(screenWidth) / 4
+            return Int(round(screenWidth /  4)) - 2
         }
         else {
-            return Int(screenWidth) / 3
+            return Int(round(screenWidth /  3)) - 2
         }
     }
 
@@ -152,7 +152,16 @@ final class ButtonGridHelper {
         var cell : UICollectionViewCell? = nil
         switch action.type {
         case .CypherPlay:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CypherPlayCell", for: indexPath)
+            if UIScreen.main.bounds.height < 568 {
+                // use a normal sized cell
+                let menuGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuGridCell", for: indexPath) as! MenuGridCollectionViewCell
+                menuGridCell.iconView.image = R.image.topButtonKey()
+                menuGridCell.textLabel.text = "CypherPlay"
+                cell = menuGridCell
+            }
+            else {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CypherPlayCell", for: indexPath)
+            }
         case .Fastest:
             cell = fastestCell(indexPath: indexPath, collectionView: collectionView)
         case .FastestUS:
@@ -200,7 +209,8 @@ final class ButtonGridHelper {
     private func locationCell(indexPath: IndexPath, collectionView: UICollectionView, action: ButtonAction) -> MenuGridCollectionViewCell {
         let menuGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuGridCell", for: indexPath) as! MenuGridCollectionViewCell
         menuGridCell.iconView.image = UIImage(named: (action.server?.country.lowercased())!)
-        menuGridCell.textLabel.text = action.server?.name
+        
+        let nameComponents = action.server?.name.components(separatedBy: ",")
         
         if action.favorite {
             menuGridCell.decoratorView.image = R.image.topButtonStarSmall()
@@ -210,6 +220,7 @@ final class ButtonGridHelper {
             menuGridCell.decoratorView.image = R.image.topButtonRocketSmall()
             menuGridCell.decoratorBgView.isHidden = false
         }
+        menuGridCell.textLabel.text = nameComponents?.first
         
         return menuGridCell
     }

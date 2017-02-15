@@ -24,20 +24,20 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3NK-to-B93">
-                        <rect key="frame" x="8" y="11" width="80" height="88"/>
+                        <rect key="frame" x="8" y="8" width="80" height="94"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMr-pD-kPO" userLabel="Icon Background View">
-                                <rect key="frame" x="14" y="9" width="52" height="54"/>
+                                <rect key="frame" x="12" y="5" width="56" height="54"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topButtonRocket" translatesAutoresizingMaskIntoConstraints="NO" id="YXj-16-mfQ">
-                                        <rect key="frame" x="8" y="8" width="36" height="38"/>
+                                        <rect key="frame" x="10" y="8" width="36" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="NrP-pa-Q3y"/>
                                             <constraint firstAttribute="width" constant="36" id="nF5-3M-6HY"/>
                                         </constraints>
                                     </imageView>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Usp-yJ-HoP" userLabel="Decorator Background View">
-                                        <rect key="frame" x="38" y="40" width="14" height="14"/>
+                                        <rect key="frame" x="42" y="40" width="14" height="14"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topButtonHistorySmall" translatesAutoresizingMaskIntoConstraints="NO" id="kbA-yy-120">
                                                 <rect key="frame" x="2" y="2" width="10" height="10"/>
@@ -73,13 +73,19 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.098039215686274508" green="0.27843137254901962" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fastest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyP-S2-6Pc">
-                                <rect key="frame" x="8" y="65" width="64" height="21"/>
+                                <rect key="frame" x="0.0" y="61" width="80" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="Lnl-Af-QYw"/>
-                                    <constraint firstAttribute="height" constant="21" id="Pct-4a-yal"/>
+                                    <constraint firstAttribute="width" constant="80" id="Lnl-Af-QYw"/>
+                                    <constraint firstAttribute="height" constant="20" id="Pct-4a-yal"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.55294117649999996" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -88,12 +94,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="KMr-pD-kPO" secondAttribute="trailing" constant="14" id="JSU-iH-39g"/>
+                            <constraint firstAttribute="trailing" secondItem="KMr-pD-kPO" secondAttribute="trailing" constant="12" id="JSU-iH-39g"/>
                             <constraint firstItem="PyP-S2-6Pc" firstAttribute="top" secondItem="KMr-pD-kPO" secondAttribute="bottom" constant="2" id="K5C-n3-dQW"/>
                             <constraint firstItem="KMr-pD-kPO" firstAttribute="centerX" secondItem="3NK-to-B93" secondAttribute="centerX" id="Kzm-vm-7ps"/>
                             <constraint firstItem="PyP-S2-6Pc" firstAttribute="centerX" secondItem="3NK-to-B93" secondAttribute="centerX" id="TFo-rf-iTc"/>
-                            <constraint firstItem="KMr-pD-kPO" firstAttribute="leading" secondItem="3NK-to-B93" secondAttribute="leading" constant="14" id="d3h-3d-BNe"/>
-                            <constraint firstItem="KMr-pD-kPO" firstAttribute="top" secondItem="3NK-to-B93" secondAttribute="top" constant="9" id="wbN-kk-dBA"/>
+                            <constraint firstItem="KMr-pD-kPO" firstAttribute="leading" secondItem="3NK-to-B93" secondAttribute="leading" constant="12" id="d3h-3d-BNe"/>
+                            <constraint firstItem="KMr-pD-kPO" firstAttribute="top" secondItem="3NK-to-B93" secondAttribute="top" constant="5" id="wbN-kk-dBA"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -101,8 +107,8 @@
             <color key="backgroundColor" red="0.086274509799999996" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="3NK-to-B93" firstAttribute="leading" secondItem="uqp-Gc-cdj" secondAttribute="leading" constant="8" id="4Lz-q5-MsK"/>
-                <constraint firstAttribute="bottom" secondItem="3NK-to-B93" secondAttribute="bottom" constant="11" id="T2l-GD-nqE"/>
-                <constraint firstItem="3NK-to-B93" firstAttribute="top" secondItem="uqp-Gc-cdj" secondAttribute="top" constant="11" id="umx-1B-ylj"/>
+                <constraint firstAttribute="bottom" secondItem="3NK-to-B93" secondAttribute="bottom" constant="8" id="T2l-GD-nqE"/>
+                <constraint firstItem="3NK-to-B93" firstAttribute="top" secondItem="uqp-Gc-cdj" secondAttribute="top" constant="8" id="umx-1B-ylj"/>
                 <constraint firstAttribute="trailing" secondItem="3NK-to-B93" secondAttribute="trailing" constant="8" id="v7S-0U-uga"/>
             </constraints>
             <size key="customSize" width="96" height="110"/>

@@ -27,7 +27,7 @@
                         <rect key="frame" x="10" y="25" width="81" height="94"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CypherPlay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfS-Gx-RfB">
-                                <rect key="frame" x="6.5" y="69" width="68.5" height="21"/>
+                                <rect key="frame" x="6.5" y="72" width="68.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="bsC-si-4bI"/>
                                 </constraints>
@@ -56,6 +56,12 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.55294117649999996" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -64,7 +70,7 @@
                             <constraint firstAttribute="height" constant="94" id="6d1-IO-7o7"/>
                             <constraint firstAttribute="trailing" secondItem="gCP-tH-Ecx" secondAttribute="trailing" constant="9" id="Ivj-Bp-khv"/>
                             <constraint firstItem="gCP-tH-Ecx" firstAttribute="top" secondItem="2eR-kC-ZBL" secondAttribute="top" constant="4" id="V7z-cZ-9JS"/>
-                            <constraint firstItem="wfS-Gx-RfB" firstAttribute="top" secondItem="gCP-tH-Ecx" secondAttribute="bottom" constant="2" id="aDz-Fd-idD"/>
+                            <constraint firstItem="wfS-Gx-RfB" firstAttribute="top" secondItem="gCP-tH-Ecx" secondAttribute="bottom" constant="5" id="aDz-Fd-idD"/>
                             <constraint firstItem="gCP-tH-Ecx" firstAttribute="leading" secondItem="2eR-kC-ZBL" secondAttribute="leading" constant="8" id="aXJ-d0-pF1"/>
                             <constraint firstAttribute="width" constant="81" id="d59-F3-2Vi"/>
                             <constraint firstItem="wfS-Gx-RfB" firstAttribute="centerX" secondItem="2eR-kC-ZBL" secondAttribute="centerX" id="hYW-uL-wUk"/>
