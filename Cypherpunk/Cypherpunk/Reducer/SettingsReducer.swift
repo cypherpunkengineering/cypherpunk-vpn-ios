@@ -17,6 +17,8 @@ struct SettingsReducer {
         var state = state ?? SettingsState()
         
         if let action = action as? SettingsAction {
+            var suppressReconnectDialog = false
+            
             switch action {
             case .vpnProtocolMode(let value):
                 state.vpnProtocolMode = value
@@ -30,6 +32,8 @@ struct SettingsReducer {
                 state.blockMalware = block
             case .cypherplayOn(let isOn):
                 state.cypherplayOn = isOn
+                // do not show user the dialog if we are changing cypherplay setting
+                suppressReconnectDialog = true
             }
             
             let isConnected = VPNConfigurationCoordinator.isConnected
@@ -37,7 +41,7 @@ struct SettingsReducer {
                 if case .vpnProtocolMode = action {
                     VPNConfigurationCoordinator.start{
                         let manager = NEVPNManager.shared()
-                        if isConnected, manager.isOnDemandEnabled == false {
+                        if isConnected, manager.isOnDemandEnabled == false, !suppressReconnectDialog {
                             DispatchQueue.main.async {
                                 ReconnectDialogView.show()
                             }
@@ -46,7 +50,7 @@ struct SettingsReducer {
                     return
                 }
                 let manager = NEVPNManager.shared()
-                if isConnected, manager.isOnDemandEnabled == false {
+                if isConnected, manager.isOnDemandEnabled == false, !suppressReconnectDialog {
                     DispatchQueue.main.async {
                         ReconnectDialogView.show()
                     }
