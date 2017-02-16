@@ -284,6 +284,11 @@ class RegionSelectViewController: UITableViewController {
         }
         
         delegate?.dismissRegionSelector()
+        
+        // scroll back to top of table
+        if self.tableView.numberOfSections > 0 {
+            self.tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+        }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
