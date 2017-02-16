@@ -225,26 +225,26 @@
                                         <rect key="frame" x="0.0" y="1" width="320" height="46"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="us" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-ea-HJV">
-                                                <rect key="frame" x="94" y="11" width="24" height="24"/>
+                                                <rect key="frame" x="97" y="11" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="AOf-zi-une"/>
                                                     <constraint firstAttribute="height" constant="24" id="K2M-Yy-yML"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="TestTest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh7-RF-Rg4">
-                                                <rect key="frame" x="128" y="0.0" width="65.5" height="46"/>
+                                                <rect key="frame" x="131" y="0.0" width="59.5" height="46"/>
                                                 <fontDescription key="fontDescription" name="Dosis-Bold" family="Dosis" pointSize="18"/>
                                                 <color key="textColor" red="0.55294117649999996" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationIconDev" translatesAutoresizingMaskIntoConstraints="NO" id="KDN-Ry-2pQ">
-                                                <rect key="frame" x="203.5" y="14.5" width="27" height="17"/>
+                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationFlagDev" translatesAutoresizingMaskIntoConstraints="NO" id="KDN-Ry-2pQ">
+                                                <rect key="frame" x="200.5" y="14" width="27" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="27" id="MBK-BS-Ib0"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationFlagPremium" translatesAutoresizingMaskIntoConstraints="NO" id="vqt-Xe-c0W">
-                                                <rect key="frame" x="203.5" y="14" width="50" height="18"/>
+                                                <rect key="frame" x="200.5" y="14" width="50" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="JBB-zX-kuG"/>
                                                 </constraints>
@@ -704,8 +704,8 @@
         <image name="headerIconSettings" width="22" height="22"/>
         <image name="headerLogo" width="153" height="32"/>
         <image name="locationArrowDown" width="16" height="9"/>
+        <image name="locationFlagDev" width="27" height="18"/>
         <image name="locationFlagPremium" width="50" height="18"/>
-        <image name="locationIconDev" width="25" height="17"/>
         <image name="us" width="24" height="24"/>
     </resources>
 </document>
