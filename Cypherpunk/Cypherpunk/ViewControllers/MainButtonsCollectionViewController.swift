@@ -31,6 +31,10 @@ class MainButtonsCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionUpdateNotificationKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionSelectedNotificationKey), object: nil)
+        
+        // allowing multiple selection so a button can be selected and server list can be selected. will enforce single selection in code.
+        self.collectionView?.allowsMultipleSelection = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +44,13 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     
     func handleRegionUpdateNotification() {
         self.collectionView?.reloadData()
+    }
+    
+    func handleRegionSelectedNotification() {
+        let selectedIndexPaths = self.collectionView!.indexPathsForSelectedItems
+        for indexPath in selectedIndexPaths! {
+            self.collectionView?.deselectItem(at: indexPath, animated: true)
+        }
     }
 
     /*
@@ -71,6 +82,15 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
         print(action.type)
         
+        if action.type == .ServerList {
+            // deselect the server list button, let any other button that is selected stay selected
+            collectionView.deselectItem(at: indexPath, animated: true)
+        }
+        else {
+            // allow only the newly selected cell to be selected
+            deselectAllOtherCells(indexPathToKeep: indexPath)
+        }
+        
         switch (action.type) {
         case .CypherPlay:
             connectToFastest(cypherplay: true)
@@ -81,7 +101,7 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         case .FastestUK:
             connectToFastestUK()
         case .SavedServer:
-            ConnectionHelper.connectTo(region: action.server!)
+            ConnectionHelper.connectTo(region: action.server!, cypherplay: false)
         case .ServerList:
             delegate?.showServerList()
         }
@@ -119,8 +139,6 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     */
     
     private func connectToFastest(cypherplay: Bool) {
-        mainStore.dispatch(SettingsAction.cypherplayOn(isOn: cypherplay))
-        
         var region: Region? = nil
         
         let accountType = mainStore.state.accountState.accountType
@@ -131,13 +149,11 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0").sorted(byKeyPath: "latencySeconds").first
         print(region!)
         if (region != nil) {
-            ConnectionHelper.connectTo(region: region!)
+            ConnectionHelper.connectTo(region: region!, cypherplay: cypherplay)
         }
     }
     
     private func connectToFastestUS() {
-        mainStore.dispatch(SettingsAction.cypherplayOn(isOn: false))
-        
         var region: Region? = nil
         
         let accountType = mainStore.state.accountState.accountType
@@ -148,13 +164,11 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0 AND country = 'US'").sorted(byKeyPath: "latencySeconds").first
         print(region!)
         if (region != nil) {
-            ConnectionHelper.connectTo(region: region!)
+            ConnectionHelper.connectTo(region: region!, cypherplay: false)
         }
     }
     
     private func connectToFastestUK() {
-        mainStore.dispatch(SettingsAction.cypherplayOn(isOn: false))
-        
         var region: Region? = nil
         
         let accountType = mainStore.state.accountState.accountType
@@ -165,7 +179,16 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0 AND country= 'GB'").sorted(byKeyPath: "latencySeconds").first
         print(region!)
         if (region != nil) {
-            ConnectionHelper.connectTo(region: region!)
+            ConnectionHelper.connectTo(region: region!, cypherplay: false)
+        }
+    }
+    
+    private func deselectAllOtherCells(indexPathToKeep: IndexPath) {
+        let selectedItemsIndexPaths = collectionView?.indexPathsForSelectedItems
+        for selectedIndexPath in selectedItemsIndexPaths! {
+            if selectedIndexPath != indexPathToKeep {
+                collectionView?.deselectItem(at: selectedIndexPath, animated: true)
+            }
         }
     }
 }

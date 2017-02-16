@@ -30,7 +30,7 @@ class ReconnectDialogView: UIView {
         UIView.animate(withDuration: 0.3, animations: {  [unowned self] in
             self.alpha = 0.0
         }) { (finished) in
-            VPNConfigurationCoordinator.connect()
+//            VPNConfigurationCoordinator.connect()
             self.removeFromSuperview()
         }
     }

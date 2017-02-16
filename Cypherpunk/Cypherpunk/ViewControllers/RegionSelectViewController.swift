@@ -82,6 +82,7 @@ enum RegionSection: Int {
     }
 }
 
+let regionSelectedNotificationKey = "com.cypherpunk.regionSelectedNotificationKey"
 
 class RegionSelectViewController: UITableViewController {
     var delegate: RegionSelectionDelegate?
@@ -264,7 +265,9 @@ class RegionSelectViewController: UITableViewController {
         
         if section != .fastestLocation {
             let region = section.realmResults[indexPath.row]
-            ConnectionHelper.connectTo(region: region)
+            ConnectionHelper.connectTo(region: region, cypherplay: false)
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: regionSelectedNotificationKey), object: self, userInfo: [ region: region.id ])
             
             // TODO: Does this really need to be done this way? can we just reload the visible cells instead?
             tableView.visibleCells.forEach { (cell) in

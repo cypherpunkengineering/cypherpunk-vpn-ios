@@ -13,7 +13,7 @@
         <scene sceneID="WYU-pe-I07">
             <objects>
                 <collectionViewController id="z46-wM-hW5" customClass="MainButtonsCollectionViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" id="zGE-tc-4Xx">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" dataMode="prototypes" id="zGE-tc-4Xx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0039215686274509803" green="0.0" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

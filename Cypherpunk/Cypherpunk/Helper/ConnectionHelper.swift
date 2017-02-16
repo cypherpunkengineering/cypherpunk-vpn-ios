@@ -9,7 +9,9 @@
 import NetworkExtension
 
 class ConnectionHelper {
-    static func connectTo(region: Region) {
+    static func connectTo(region: Region, cypherplay: Bool) {
+         mainStore.dispatch(SettingsAction.cypherplayOn(isOn: cypherplay))
+        
         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
         
         // TODO: I don't think this logic is what is desired, will revisit once other issues are addressed
