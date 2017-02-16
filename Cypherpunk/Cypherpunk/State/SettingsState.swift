@@ -88,11 +88,59 @@ struct SettingsState: StateType {
         
     }
     
+    var blockAds: Bool {
+        get {
+            if !mainStore.state.isInstalledPreferences {
+                return false
+            }
+            
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.blockAds] ?? "false").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.blockAds] = String(newValue)
+        }
+    }
+    
+    var blockMalware: Bool {
+        get {
+            if !mainStore.state.isInstalledPreferences {
+                return false
+            }
+            
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.blockMalware] ?? "false").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.blockMalware] = String(newValue)
+        }
+    }
+    
+    var cypherplayOn : Bool {
+        get {
+            if !mainStore.state.isInstalledPreferences {
+                return false
+            }
+            
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.cypherplayOn] ?? "false").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.cypherplayOn] = String(newValue)
+        }
+    }
+    
 
 
     fileprivate struct SettingsStateKey {
         static let vpnProtocolMode = "vpnProtocolMode"
         static let isAutoSecureConnectionsWhenConnectedUntrustedNetwork = "isAutoSecureConnectionsWhenConnectedUntrustedNetwork"
         static let isAutoSecureConnectionsWhenConnectedOtherNetwork = "isAutoSecureConnectionsWhenConnectedOtherNetwork"
+        static let blockAds = "blockAds"
+        static let blockMalware = "blockMalware"
+        static let cypherplayOn = "cypherplayOn"
     }
 }

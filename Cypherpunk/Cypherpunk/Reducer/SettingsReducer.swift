@@ -24,6 +24,12 @@ struct SettingsReducer {
                 state.isAutoSecureConnectionsWhenConnectedUntrustedNetwork = isOn
             case .isAutoSecureConnectionsWhenConnectedOtherNetwork(let isOn):
                 state.isAutoSecureConnectionsWhenConnectedOtherNetwork = isOn
+            case .blockAds(let block):
+                state.blockAds = block
+            case .blockMalware(let block):
+                state.blockMalware = block
+            case .cypherplayOn(let isOn):
+                state.cypherplayOn = isOn
             }
             
             let isConnected = VPNConfigurationCoordinator.isConnected

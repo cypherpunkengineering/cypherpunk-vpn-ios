@@ -38,7 +38,7 @@ open class VPNConfigurationCoordinator {
         let password = accountState.vpnPassword
         newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
-        newIPSec.localIdentifier = "cypherpunk-vpn-ios"
+        newIPSec.localIdentifier = generateLocalIdentifier()
         newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
         newIPSec.disconnectOnSleep = false
 
@@ -80,7 +80,7 @@ open class VPNConfigurationCoordinator {
                 let password = accountState.vpnPassword
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
-                newIPSec.localIdentifier = "cypherpunk-vpn-ios"
+                newIPSec.localIdentifier = generateLocalIdentifier()
                 newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
             }
             else
@@ -97,7 +97,7 @@ open class VPNConfigurationCoordinator {
                 let password = accountState.vpnPassword
                 newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
-                newIPSec.localIdentifier = "cypherpunk-vpn-ios"
+                newIPSec.localIdentifier = generateLocalIdentifier()
                 newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
             }
 
@@ -236,5 +236,17 @@ open class VPNConfigurationCoordinator {
         }
         return false
     }
-
+    
+    private class func generateLocalIdentifier() -> String {
+        let settingsState = mainStore.state.settingsState
+        
+        var bitmask = 10
+        
+        bitmask += settingsState.blockAds ? 1 : 0
+        bitmask += settingsState.blockMalware ? 2 : 0
+        bitmask += settingsState.cypherplayOn ? 4 : 0
+        
+        print("Local Identifier: cypherpunk-vpn-ios-\(bitmask)")
+        return "cypherpunk-vpn-ios-\(bitmask)"
+    }
 }

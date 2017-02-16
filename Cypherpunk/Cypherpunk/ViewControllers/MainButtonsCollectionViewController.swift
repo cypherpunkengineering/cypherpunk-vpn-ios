@@ -70,12 +70,12 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
         print(action.type)
+        
         switch (action.type) {
         case .CypherPlay:
-            print()
-            // TODO save cypherplay setting to the user prefs
+            connectToFastest(cypherplay: true)
         case .Fastest:
-            connectToFastest()
+            connectToFastest(cypherplay: false)
         case .FastestUS:
             connectToFastestUS()
         case .FastestUK:
@@ -118,7 +118,9 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     }
     */
     
-    private func connectToFastest() {
+    private func connectToFastest(cypherplay: Bool) {
+        mainStore.dispatch(SettingsAction.cypherplayOn(isOn: cypherplay))
+        
         var region: Region? = nil
         
         let accountType = mainStore.state.accountState.accountType
@@ -134,6 +136,8 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     }
     
     private func connectToFastestUS() {
+        mainStore.dispatch(SettingsAction.cypherplayOn(isOn: false))
+        
         var region: Region? = nil
         
         let accountType = mainStore.state.accountState.accountType
@@ -149,6 +153,8 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     }
     
     private func connectToFastestUK() {
+        mainStore.dispatch(SettingsAction.cypherplayOn(isOn: false))
+        
         var region: Region? = nil
         
         let accountType = mainStore.state.accountState.accountType

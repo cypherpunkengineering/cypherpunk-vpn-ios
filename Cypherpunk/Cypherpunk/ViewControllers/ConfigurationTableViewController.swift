@@ -73,4 +73,12 @@ class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
     func newState(state: AppState) {
         vpnProtocolValueLabel.text = state.settingsState.vpnProtocolMode.description
     }
+    
+    @IBAction func blockAdsChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.blockAds(block: sender.isOn))
+    }
+    
+    @IBAction func blockMalwareChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
+    }
 }
