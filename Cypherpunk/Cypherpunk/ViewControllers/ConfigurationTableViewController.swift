@@ -59,15 +59,7 @@ class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 , indexPath.row == 1 {
-            return 44.0
-        } else if indexPath.section == 1, indexPath.row == 1 {
-            return 44.0
-        }
-        if indexPath.row == 0 {
-            return 1.0
-        }
-        return 0.0
+        return 44.0
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

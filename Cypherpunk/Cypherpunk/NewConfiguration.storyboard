@@ -31,15 +31,6 @@
                         <sections>
                             <tableViewSection headerTitle="Basic Settings" id="7lB-RC-vP6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="0.0" id="JlQ-LY-Zjh" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="0.0"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JlQ-LY-Zjh" id="JqA-h9-rGR">
-                                            <rect key="frame" x="0.0" y="-1" width="375" height="1"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="hbe-OB-T0T" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -66,42 +57,10 @@
                                             <segue destination="Rz3-Gx-IdV" kind="presentation" modalPresentationStyle="formSheet" id="tho-da-vjN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="0.0" id="0kk-Fq-xzP" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="0.0"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0kk-Fq-xzP" id="HET-kQ-TUs">
-                                            <rect key="frame" x="0.0" y="-1" width="342" height="1"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-connect setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSQ-pB-sSV">
-                                                    <rect key="frame" x="16" y="0.0" width="326" height="0.0"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ZSQ-pB-sSV" firstAttribute="centerY" secondItem="HET-kQ-TUs" secondAttribute="centerY" id="fgL-mw-xMe"/>
-                                                <constraint firstItem="ZSQ-pB-sSV" firstAttribute="top" secondItem="HET-kQ-TUs" secondAttribute="top" id="lqq-d5-XoL"/>
-                                                <constraint firstAttribute="trailing" secondItem="ZSQ-pB-sSV" secondAttribute="trailing" id="vBH-ue-fAw"/>
-                                                <constraint firstItem="ZSQ-pB-sSV" firstAttribute="leading" secondItem="HET-kQ-TUs" secondAttribute="leadingMargin" constant="8" id="zin-kN-Kz3"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="VPN Settings" id="skh-iY-bG6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="0.0" id="B68-WM-fXu" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="0.0"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B68-WM-fXu" id="LZD-1y-vhe">
-                                            <rect key="frame" x="0.0" y="-1" width="375" height="1"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="E2r-ZR-pU2" detailTextLabel="ly0-4D-n7L" style="IBUITableViewCellStyleValue1" id="MV0-jF-THB" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
