@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Dosis-Medium.otf">
-            <string>Dosis-Medium</string>
+        <array key="Dosis-Regular.otf">
+            <string>Dosis-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -23,63 +23,34 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ur-oV-0UN">
                     <rect key="frame" x="40" y="258" width="296" height="151"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reconnect to apply new settings?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0K-gE-dS5">
-                            <rect key="frame" x="46" y="24" width="210" height="18"/>
-                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reconnecting and applying new settings" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYI-Fr-eNm">
+                            <rect key="frame" x="45" y="15" width="207" height="56"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCX-o5-F0L" customClass="TwoColorGradientButton" customModule="Cypherpunk" customModuleProvider="target">
-                            <rect key="frame" x="18" y="65" width="260" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="AUe-9s-PgB"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
-                            <state key="normal" title="Connect">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxJ-in-1Yf">
+                            <rect key="frame" x="40" y="89" width="217" height="39"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.098039215690000001" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" red="0.55294117649999996" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="aColor">
-                                    <color key="value" red="1" green="0.792156862745098" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="bColor">
-                                    <color key="value" red="0.81960784313725488" green="0.61960784313725492" blue="0.074509803921568626" alpha="1" colorSpace="deviceRGB"/>
-                                </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="4"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="connectAction" destination="iN0-l3-epB" eventType="touchUpInside" id="0FA-h8-zgE"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REy-Je-PYt">
-                            <rect key="frame" x="46" y="116" width="210" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="KNu-Mj-Xk0"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
-                            <state key="normal" title="Not now">
-                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="cancelAction" destination="iN0-l3-epB" eventType="touchUpInside" id="ore-Ib-Fux"/>
+                                <action selector="connectAction" destination="iN0-l3-epB" eventType="touchUpInside" id="c8M-6C-SUb"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="X0K-gE-dS5" secondAttribute="trailing" constant="40" id="0bi-Db-AXH"/>
-                        <constraint firstItem="gCX-o5-F0L" firstAttribute="top" secondItem="X0K-gE-dS5" secondAttribute="bottom" constant="23" id="2Xi-fN-0O0"/>
-                        <constraint firstItem="REy-Je-PYt" firstAttribute="top" secondItem="gCX-o5-F0L" secondAttribute="bottom" constant="7" id="BKG-xl-AgB"/>
                         <constraint firstAttribute="width" constant="296" id="Cdt-CY-nVp"/>
-                        <constraint firstItem="REy-Je-PYt" firstAttribute="leading" secondItem="X0K-gE-dS5" secondAttribute="leading" id="Cgp-7L-UXf"/>
                         <constraint firstAttribute="height" constant="151" id="Mca-Pw-MP7"/>
-                        <constraint firstItem="gCX-o5-F0L" firstAttribute="leading" secondItem="8ur-oV-0UN" secondAttribute="leading" constant="18" id="UU4-4R-nkP"/>
-                        <constraint firstItem="REy-Je-PYt" firstAttribute="trailing" secondItem="X0K-gE-dS5" secondAttribute="trailing" id="Vrt-gR-6IN"/>
-                        <constraint firstItem="X0K-gE-dS5" firstAttribute="leading" secondItem="8ur-oV-0UN" secondAttribute="leading" constant="46" id="Y1w-ev-TaN"/>
-                        <constraint firstAttribute="trailing" secondItem="gCX-o5-F0L" secondAttribute="trailing" constant="18" id="l3X-sz-lSf"/>
-                        <constraint firstItem="X0K-gE-dS5" firstAttribute="top" secondItem="8ur-oV-0UN" secondAttribute="top" constant="24" id="rNF-N7-Sa0"/>
                     </constraints>
                 </view>
             </subviews>
@@ -88,6 +59,7 @@
                 <constraint firstItem="8ur-oV-0UN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hki-cV-YMA"/>
                 <constraint firstItem="8ur-oV-0UN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kOb-kh-NYW"/>
             </constraints>
+            <point key="canvasLocation" x="70.5" y="59.5"/>
         </view>
     </objects>
 </document>
