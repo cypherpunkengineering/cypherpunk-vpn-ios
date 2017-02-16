@@ -84,6 +84,10 @@
                 <constraint firstItem="2eR-kC-ZBL" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="vIv-Qg-Hj3"/>
             </constraints>
             <size key="customSize" width="100" height="144"/>
+            <connections>
+                <outlet property="iconBgView" destination="gCP-tH-Ecx" id="Hr9-Fp-uIg"/>
+                <outlet property="textLabel" destination="wfS-Gx-RfB" id="67f-c4-TDh"/>
+            </connections>
             <point key="canvasLocation" x="25" y="30"/>
         </collectionViewCell>
     </objects>

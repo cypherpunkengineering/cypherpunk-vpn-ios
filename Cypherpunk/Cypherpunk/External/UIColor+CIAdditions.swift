@@ -35,4 +35,8 @@ extension UIColor {
     class var robinEggBlue: UIColor {
         return UIColor(red: 141.0 / 255.0, green: 255.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
     }
+    
+    class var darkCream: UIColor {
+        return UIColor(red: 255.0 / 255.0, green: 228.0 / 255.0, blue: 154.0 / 255.0, alpha: 1.0)
+    }
 }
