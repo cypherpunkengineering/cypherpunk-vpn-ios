@@ -171,30 +171,46 @@ class RegionSelectViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let section = Section(rawValue: (indexPath as NSIndexPath).section)!
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
-
-        cell?.starButton.isHidden = false
-        cell?.flagImageView.image = nil
-        cell?.titleLabel.isEnabled = true
-        cell?.starButton.alpha = 1.0
-        cell?.starButton.isUserInteractionEnabled = true
-        cell?.isUserInteractionEnabled = true
-        cell?.titleLabel.textColor = UIColor.white
-        cell?.flagImageView.alpha = 1.0
-        cell?.devLocationIconView.alpha = 1.0
-        cell?.premiumLocationIconView.alpha = 1.0
-        cell?.unavailableLocationIconView.alpha = 1.0
-        cell?.devLocationIconView.isHidden = true
-        cell?.premiumLocationIconView.isHidden = true
-        cell?.unavailableLocationIconView.isHidden = true
-        cell?.titleLabel.font = R.font.dosisRegular(size: 18.0)
-
+        
         switch section {
         case .fastestLocation:
-            cell?.titleLabel.text = "Fastest Location"
-            cell?.starButton.isHidden = true
-            cell?.flagImageView.image = R.image.colorHelmetSmall()
+            let currentLocationCell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.currentLocationCell, for: indexPath)
+            
+            let regionId = mainStore.state.regionState.lastSelectedRegionId
+            
+            if regionId != nil {
+                let realm = try! Realm()
+                let region = realm.object(ofType: Region.self, forPrimaryKey: regionId)
+                currentLocationCell?.flagImageView.image = UIImage(named: (region?.country.lowercased())!)
+                currentLocationCell?.locationTextLabel.text = region?.name
+                
+                let maxSize = CGSize(width: (currentLocationCell?.locationView.frame.width)!, height: CGFloat.greatestFiniteMagnitude)
+                let idealSize = currentLocationCell?.locationTextLabel.sizeThatFits(maxSize)
+                currentLocationCell?.locationTextLabelWidthConstraint.constant = idealSize!.width
+            }
+            else {
+                currentLocationCell?.flagImageView.image = nil
+                currentLocationCell?.locationTextLabel.text = nil
+            }
+            return currentLocationCell!
         default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
+            cell?.starButton.isHidden = false
+            cell?.flagImageView.image = nil
+            cell?.titleLabel.isEnabled = true
+            cell?.starButton.alpha = 1.0
+            cell?.starButton.isUserInteractionEnabled = true
+            cell?.isUserInteractionEnabled = true
+            cell?.titleLabel.textColor = UIColor.white
+            cell?.flagImageView.alpha = 1.0
+            cell?.devLocationIconView.alpha = 1.0
+            cell?.premiumLocationIconView.alpha = 1.0
+            cell?.unavailableLocationIconView.alpha = 1.0
+            cell?.devLocationIconView.isHidden = true
+            cell?.premiumLocationIconView.isHidden = true
+            cell?.unavailableLocationIconView.isHidden = true
+            cell?.titleLabel.font = R.font.dosisRegular(size: 18.0)
+            
             let region = section.realmResults[indexPath.row]
 
             if mainStore.state.regionState.regionId == region.id {
@@ -234,11 +250,11 @@ class RegionSelectViewController: UITableViewController {
                 cell?.starButton.isUserInteractionEnabled = false
                 cell?.isUserInteractionEnabled = false
             }
+            
+            cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
+            
+            return cell!
         }
-        
-        cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
-        
-        return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
