@@ -27,9 +27,9 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var regionWidthConstraint: NSLayoutConstraint?
     @IBOutlet weak var connectingStateLabel: UILabel?
     
-    @IBOutlet weak var disconnectedHelmetImageView: UIImageView!
-    @IBOutlet weak var connectedHelmetImageView: UIImageView!
-    @IBOutlet weak var connectingHelmetImageView: UIImageView!
+    @IBOutlet weak var disconnectedHelmetButton: UIButton!
+    @IBOutlet weak var connectedHelmetButton: UIButton!
+    @IBOutlet weak var connectingHelmetButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,22 +115,22 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
         connectingButton.isHidden = false
         connectedButton.isHidden = false
         
-        connectingHelmetImageView.isHidden = false
-        connectedHelmetImageView.isHidden = false
+        connectingHelmetButton.isHidden = false
+        connectedHelmetButton.isHidden = false
         
         switch status {
         case .connected:
             disconnectedButton.alpha = 0.0
             disconnectedButton.isEnabled = true
             
-            disconnectedHelmetImageView.alpha = 0.0
+            disconnectedHelmetButton.alpha = 0.0
             
             UIView.animate(withDuration: 0.3, animations: { 
                 self.connectedButton.alpha = 1.0
                 self.connectingButton.alpha = 0.0
                 
-                self.connectedHelmetImageView.alpha = 1.0
-                self.connectingHelmetImageView.alpha = 0.0
+                self.connectedHelmetButton.alpha = 1.0
+                self.connectingHelmetButton.alpha = 0.0
             })
         case .connecting, .reasserting:
             
@@ -149,9 +149,9 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
                 self.connectingButton.alpha = 1.0
                 self.disconnectedButton.alpha = 0.0
                 
-                self.connectedHelmetImageView.alpha = 0.0
-                self.connectingHelmetImageView.alpha = 1.0
-                self.disconnectedHelmetImageView.alpha = 0.0
+                self.connectedHelmetButton.alpha = 0.0
+                self.connectingHelmetButton.alpha = 1.0
+                self.disconnectedHelmetButton.alpha = 0.0
             })
 
             
@@ -164,9 +164,9 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             self.connectingButton.alpha = 0.0
             self.disconnectedButton.alpha = 1.0
             
-            self.connectedHelmetImageView.alpha = 0.0
-            self.connectingHelmetImageView.alpha = 0.0
-            self.disconnectedHelmetImageView.alpha = 1.0
+            self.connectedHelmetButton.alpha = 0.0
+            self.connectingHelmetButton.alpha = 0.0
+            self.disconnectedHelmetButton.alpha = 1.0
 
             UIView.animate(withDuration: 0.3, animations: {
                 self.disconnectedButton.isEnabled = true
@@ -177,20 +177,20 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             self.connectingButton.alpha = 0.0
             self.disconnectedButton.alpha = 1.0
             
-            self.connectedHelmetImageView.alpha = 0.0
-            self.connectingHelmetImageView.alpha = 0.0
-            self.disconnectedHelmetImageView.alpha = 1.0
+            self.connectedHelmetButton.alpha = 0.0
+            self.connectingHelmetButton.alpha = 0.0
+            self.disconnectedHelmetButton.alpha = 1.0
             break
         case .disconnecting:
             self.connectingButton.alpha = 0.0
-            self.connectingHelmetImageView.alpha = 0.0
+            self.connectingHelmetButton.alpha = 0.0
 
             UIView.animate(withDuration: 0.3, animations: {
                 self.connectedButton.alpha = 0.0
                 self.disconnectedButton.alpha = 1.0
                 
-                self.connectedHelmetImageView.alpha = 0.0
-                self.disconnectedHelmetImageView.alpha = 1.0
+                self.connectedHelmetButton.alpha = 0.0
+                self.disconnectedHelmetButton.alpha = 1.0
             })
 
             disconnectedButton.isEnabled = false
@@ -205,9 +205,9 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             mainStore.dispatch(RegionAction.connect)
             self.updateViewWithVPNStatus(.connected)
         } else {
-            if sender == self.disconnectedButton {
+            if sender == self.disconnectedButton || sender == self.disconnectedHelmetButton {
                 VPNConfigurationCoordinator.connect()
-            } else if sender == self.connectedButton {
+            } else if sender == self.connectedButton || sender == self.connectedHelmetButton{
                 VPNConfigurationCoordinator.disconnect()
             }
         }

@@ -425,43 +425,55 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connectHelmetBg" translatesAutoresizingMaskIntoConstraints="NO" id="lQp-Tu-cpr">
-                                        <rect key="frame" x="113" y="61" width="93" height="95"/>
+                                        <rect key="frame" x="114" y="61" width="93" height="95"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="95" id="16C-q7-yiP"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connectHelmetDisconnect" translatesAutoresizingMaskIntoConstraints="NO" id="tpX-wv-BXw">
-                                        <rect key="frame" x="99" y="37" width="123" height="142"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHk-gl-Ea8">
+                                        <rect key="frame" x="99" y="38" width="123" height="141"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="123" id="hJW-Ob-VjH"/>
-                                            <constraint firstAttribute="height" constant="142" id="hom-GX-hGF"/>
+                                            <constraint firstAttribute="height" constant="141" id="WjE-3n-9lp"/>
+                                            <constraint firstAttribute="width" constant="123" id="t9o-Ah-bDp"/>
                                         </constraints>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connectHelmetConnecting" translatesAutoresizingMaskIntoConstraints="NO" id="dOj-nE-ThR" userLabel="Connecting Helmet Image">
-                                        <rect key="frame" x="99" y="37" width="123" height="142"/>
+                                        <state key="normal" image="connectHelmetDisconnect"/>
+                                        <connections>
+                                            <action selector="connectAction:" destination="Tzv-dG-faD" eventType="touchUpInside" id="67e-IA-xUu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PX-bF-vnC">
+                                        <rect key="frame" x="99" y="38" width="123" height="141"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="123" id="hKb-k2-0qR"/>
-                                            <constraint firstAttribute="height" constant="142" id="iAL-DP-eXX"/>
+                                            <constraint firstAttribute="width" constant="123" id="8SC-N6-Gy6"/>
+                                            <constraint firstAttribute="height" constant="141" id="SOC-sg-IfC"/>
                                         </constraints>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connectHelmetConnect" translatesAutoresizingMaskIntoConstraints="NO" id="BiG-wE-DfK" userLabel="Connected Helmet Image">
-                                        <rect key="frame" x="99" y="37" width="123" height="142"/>
+                                        <state key="normal" image="connectHelmetConnecting"/>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="Tzv-dG-faD" eventType="touchUpInside" id="cZo-Df-O3a"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ac8-Tl-4jj">
+                                        <rect key="frame" x="99" y="38" width="123" height="141"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="123" id="ci7-Dr-nGa"/>
-                                            <constraint firstAttribute="height" constant="142" id="lq6-Es-ITr"/>
+                                            <constraint firstAttribute="height" constant="141" id="Bp5-xI-3Bd"/>
+                                            <constraint firstAttribute="width" constant="123" id="Kw0-fn-ip9"/>
                                         </constraints>
-                                    </imageView>
+                                        <state key="normal" image="connectHelmetConnect"/>
+                                        <connections>
+                                            <action selector="connectAction:" destination="Tzv-dG-faD" eventType="touchUpInside" id="6BM-9U-FGV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="lQp-Tu-cpr" firstAttribute="top" secondItem="tpX-wv-BXw" secondAttribute="bottom" constant="-118" id="ATf-yM-aKi"/>
-                                    <constraint firstItem="tpX-wv-BXw" firstAttribute="centerY" secondItem="cfv-6g-t4I" secondAttribute="centerY" id="GKl-4c-5tX"/>
-                                    <constraint firstItem="BiG-wE-DfK" firstAttribute="centerY" secondItem="cfv-6g-t4I" secondAttribute="centerY" id="IjG-dX-v36"/>
-                                    <constraint firstItem="dOj-nE-ThR" firstAttribute="centerY" secondItem="tpX-wv-BXw" secondAttribute="centerY" id="MKZ-l5-SVY"/>
-                                    <constraint firstItem="BiG-wE-DfK" firstAttribute="centerX" secondItem="cfv-6g-t4I" secondAttribute="centerX" id="adf-ou-q7v"/>
-                                    <constraint firstItem="dOj-nE-ThR" firstAttribute="centerX" secondItem="tpX-wv-BXw" secondAttribute="centerX" id="bUX-3k-rWx"/>
-                                    <constraint firstItem="tpX-wv-BXw" firstAttribute="leading" secondItem="lQp-Tu-cpr" secondAttribute="trailing" constant="-107" id="cnj-1f-ui5"/>
-                                    <constraint firstItem="tpX-wv-BXw" firstAttribute="centerX" secondItem="cfv-6g-t4I" secondAttribute="centerX" id="mHx-pq-krB"/>
+                                    <constraint firstItem="AHk-gl-Ea8" firstAttribute="centerX" secondItem="lQp-Tu-cpr" secondAttribute="centerX" id="69P-4H-Txz"/>
+                                    <constraint firstItem="1PX-bF-vnC" firstAttribute="centerX" secondItem="cfv-6g-t4I" secondAttribute="centerX" id="Eao-n9-jpx"/>
+                                    <constraint firstItem="AHk-gl-Ea8" firstAttribute="centerY" secondItem="cfv-6g-t4I" secondAttribute="centerY" id="GTl-gl-8LS"/>
+                                    <constraint firstItem="1PX-bF-vnC" firstAttribute="centerY" secondItem="cfv-6g-t4I" secondAttribute="centerY" id="PQZ-fV-hjo"/>
+                                    <constraint firstItem="AHk-gl-Ea8" firstAttribute="centerX" secondItem="cfv-6g-t4I" secondAttribute="centerX" id="Sfb-ZL-7Cr"/>
+                                    <constraint firstItem="Ac8-Tl-4jj" firstAttribute="centerY" secondItem="cfv-6g-t4I" secondAttribute="centerY" id="XFp-AA-HYe"/>
+                                    <constraint firstItem="AHk-gl-Ea8" firstAttribute="centerY" secondItem="lQp-Tu-cpr" secondAttribute="centerY" id="gET-4h-Kf2"/>
+                                    <constraint firstItem="Ac8-Tl-4jj" firstAttribute="centerX" secondItem="cfv-6g-t4I" secondAttribute="centerX" id="kd5-QM-VbK"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmx-Fy-I05">
@@ -533,11 +545,11 @@
                     </view>
                     <connections>
                         <outlet property="connectedButton" destination="qHN-hr-E0d" id="Oba-ai-hus"/>
-                        <outlet property="connectedHelmetImageView" destination="BiG-wE-DfK" id="cZj-HG-7DJ"/>
+                        <outlet property="connectedHelmetButton" destination="Ac8-Tl-4jj" id="TJ5-eL-4bg"/>
                         <outlet property="connectingButton" destination="MkN-N1-DRB" id="sW9-5o-cFd"/>
-                        <outlet property="connectingHelmetImageView" destination="dOj-nE-ThR" id="ph8-Ud-Vso"/>
+                        <outlet property="connectingHelmetButton" destination="1PX-bF-vnC" id="tXb-Ww-9gr"/>
                         <outlet property="disconnectedButton" destination="Dmx-Fy-I05" id="daz-Q6-Mx3"/>
-                        <outlet property="disconnectedHelmetImageView" destination="tpX-wv-BXw" id="H3Q-yJ-iIi"/>
+                        <outlet property="disconnectedHelmetButton" destination="AHk-gl-Ea8" id="hOM-yU-0F0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzG-3V-ELr" userLabel="First Responder" sceneMemberID="firstResponder"/>
