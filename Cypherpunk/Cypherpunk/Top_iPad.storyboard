@@ -23,7 +23,7 @@
         <scene sceneID="q29-oO-DEh">
             <objects>
                 <navigationController storyboardIdentifier="AccountNavigation" id="cVP-0K-Ofi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="kgw-Rx-IUm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="kgw-Rx-IUm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,14 +95,14 @@
             </objects>
             <point key="canvasLocation" x="-2393" y="-946"/>
         </scene>
-        <!--Themed Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="cRv-vS-caq">
             <objects>
-                <navigationController storyboardIdentifier="TopRootNavigation" automaticallyAdjustsScrollViewInsets="NO" id="t8E-0d-eHG" customClass="ThemedNavigationViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="3E2-XB-hmN">
+                <navigationController storyboardIdentifier="TopRootNavigation" automaticallyAdjustsScrollViewInsets="NO" id="t8E-0d-eHG" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="3E2-XB-hmN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.21176470588235294" green="0.40000000000000002" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.086274509803921567" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="9Qi-68-jyN" kind="relationship" relationship="rootViewController" id="e6I-sD-vxA"/>
@@ -228,18 +228,6 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcW-v4-z29" customClass="TwoColorGradientView" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-64" width="768" height="1024"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="aColor">
-                                        <color key="value" red="0.46274509803921571" green="0.66274509803921566" blue="0.90588235294117647" alpha="1" colorSpace="deviceRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bColor">
-                                        <color key="value" red="0.011764705882352941" green="0.27450980392156865" blue="0.59607843137254901" alpha="1" colorSpace="deviceRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHh-Bm-INH">
                                 <rect key="frame" x="0.0" y="1" width="300" height="959"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -321,7 +309,7 @@
                                 </variation>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.050980392156862744" green="0.11764705882352941" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NHh-Bm-INH" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leading" id="79m-uh-F2R"/>
                             <constraint firstItem="kNB-Mt-7k6" firstAttribute="trailing" secondItem="EXU-JE-Og2" secondAttribute="trailing" id="8Cs-wm-G4h"/>
@@ -332,11 +320,9 @@
                             <constraint firstAttribute="trailing" secondItem="9Xz-Gx-FOW" secondAttribute="trailing" id="FkH-40-467"/>
                             <constraint firstItem="S8w-76-peP" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leading" id="Go1-Fo-hgG"/>
                             <constraint firstAttribute="bottom" secondItem="NHh-Bm-INH" secondAttribute="bottom" id="Kyv-M1-9hW"/>
-                            <constraint firstItem="KJN-iJ-OYp" firstAttribute="top" secondItem="hcW-v4-z29" secondAttribute="bottom" id="LIt-EI-cPg"/>
                             <constraint firstAttribute="bottom" secondItem="KuI-Eg-TtN" secondAttribute="bottom" id="LP2-9v-K5Y"/>
                             <constraint firstItem="S8w-76-peP" firstAttribute="top" secondItem="2fB-go-XnJ" secondAttribute="bottom" id="Ovw-VF-Brg"/>
                             <constraint firstItem="KJN-iJ-OYp" firstAttribute="top" secondItem="EXU-JE-Og2" secondAttribute="bottom" id="PSx-lI-TDD"/>
-                            <constraint firstItem="hcW-v4-z29" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leading" id="TOa-54-74Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9Xz-Gx-FOW" secondAttribute="trailing" constant="164" id="TWJ-uq-KmS">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
@@ -344,7 +330,6 @@
                             <constraint firstItem="EXU-JE-Og2" firstAttribute="top" secondItem="S8w-76-peP" secondAttribute="bottom" id="Vds-Oq-YoY">
                                 <variation key="widthClass=compact" constant="8"/>
                             </constraint>
-                            <constraint firstItem="hcW-v4-z29" firstAttribute="top" secondItem="2fB-go-XnJ" secondAttribute="bottom" constant="-64" id="XK2-EV-1FI"/>
                             <constraint firstItem="9Xz-Gx-FOW" firstAttribute="leading" secondItem="KuI-Eg-TtN" secondAttribute="trailing" id="Ygq-NC-1Z6"/>
                             <constraint firstItem="kNB-Mt-7k6" firstAttribute="bottom" secondItem="EXU-JE-Og2" secondAttribute="bottom" id="bbi-7F-UGS"/>
                             <constraint firstAttribute="trailing" secondItem="EXU-JE-Og2" secondAttribute="trailing" constant="12" id="dLE-OG-yIV"/>
@@ -359,7 +344,6 @@
                             <constraint firstItem="EXU-JE-Og2" firstAttribute="leading" secondItem="ntq-hq-IK8" secondAttribute="leadingMargin" constant="243" id="lcA-Bq-a1Z">
                                 <variation key="widthClass=compact" constant="8"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="hcW-v4-z29" secondAttribute="trailing" id="r3W-yt-RHc"/>
                             <constraint firstItem="NHh-Bm-INH" firstAttribute="top" secondItem="S8w-76-peP" secondAttribute="bottom" id="tnA-FK-4W1"/>
                             <constraint firstItem="9Xz-Gx-FOW" firstAttribute="top" secondItem="EXU-JE-Og2" secondAttribute="bottom" constant="-327" id="xRr-rY-eKI">
                                 <variation key="widthClass=compact" constant="0.0"/>
@@ -413,7 +397,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="tk0-IW-gud">
                         <barButtonItem key="backBarButtonItem" id="KaO-Sm-mWt"/>
-                        <barButtonItem key="rightBarButtonItem" image="iconSettings" id="SE0-UB-8gc">
+                        <barButtonItem key="rightBarButtonItem" image="headerIconSettings" id="SE0-UB-8gc">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="openOrCloseConfigurationAction:" destination="9Qi-68-jyN" id="w5f-2P-hpC"/>
@@ -517,7 +501,7 @@
                                     </view>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC2-qr-143">
                                         <rect key="frame" x="72" y="569" width="300" height="48"/>
-                                        <color key="backgroundColor" red="0.058823529411764705" green="0.31372549019607843" blue="0.62745098039215685" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.098039215686274508" green="0.27843137254901962" blue="0.29803921568627451" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="dUQ-lZ-X2H"/>
                                             <constraint firstAttribute="height" constant="48" id="jHU-9d-kOX"/>
@@ -655,7 +639,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvc-tE-Y0e">
-                                            <rect key="frame" x="64" y="0.0" width="38" height="44"/>
+                                            <rect key="frame" x="64" y="0.0" width="45" height="44"/>
                                             <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -714,8 +698,8 @@
         <image name="connectHelmetConnect" width="123" height="141"/>
         <image name="connectHelmetConnecting" width="123" height="141"/>
         <image name="connectHelmetDisconnect" width="123" height="141"/>
+        <image name="headerIconSettings" width="22" height="22"/>
         <image name="headerLogo" width="153" height="32"/>
-        <image name="iconSettings" width="22" height="22"/>
         <image name="iconStar" width="20" height="19"/>
     </resources>
 </document>
