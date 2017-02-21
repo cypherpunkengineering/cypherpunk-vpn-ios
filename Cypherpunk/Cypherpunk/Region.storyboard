@@ -43,7 +43,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kka-7q-zdp">
-                                            <rect key="frame" x="64" y="0.0" width="38" height="44"/>
+                                            <rect key="frame" x="64" y="0.0" width="44.5" height="44"/>
                                             <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -60,13 +60,13 @@
                                             </connections>
                                         </button>
                                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationFlagDev" translatesAutoresizingMaskIntoConstraints="NO" id="h32-nh-dE6">
-                                            <rect key="frame" x="112" y="13" width="27" height="18"/>
+                                            <rect key="frame" x="118.5" y="13" width="27" height="18"/>
                                         </imageView>
                                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationFlagPremium" translatesAutoresizingMaskIntoConstraints="NO" id="Qbc-wu-Cbf">
-                                            <rect key="frame" x="112" y="13" width="50" height="18"/>
+                                            <rect key="frame" x="118.5" y="13" width="50" height="18"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationFlagUnavailable" translatesAutoresizingMaskIntoConstraints="NO" id="EiL-BB-DUR" userLabel="Unavailable Location Icon View">
-                                            <rect key="frame" x="112" y="13" width="61" height="18"/>
+                                            <rect key="frame" x="118.5" y="13" width="61" height="18"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -139,6 +139,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.0039215686274509803" green="0.0" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="OQI-Ql-aFj" firstAttribute="centerY" secondItem="Qut-s1-Q83" secondAttribute="centerY" id="PK0-1Q-z5X"/>
                                         <constraint firstItem="wMh-GJ-HGg" firstAttribute="centerY" secondItem="Qut-s1-Q83" secondAttribute="centerY" id="Zaq-U8-OtZ"/>
