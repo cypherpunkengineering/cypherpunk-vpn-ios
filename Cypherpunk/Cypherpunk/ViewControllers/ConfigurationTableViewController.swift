@@ -12,6 +12,8 @@ import ReSwift
 class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
     
     @IBOutlet weak var vpnProtocolValueLabel: UILabel!
+    @IBOutlet weak var blockAdsSwitch: UISwitch!
+    @IBOutlet weak var blockMalwareSwitch: UISwitch!
     
     
     override func viewDidLoad() {
@@ -20,7 +22,9 @@ class ConfigurationTableViewController: UITableViewController, StoreSubscriber {
         if UI_USER_INTERFACE_IDIOM() == .pad {
             self.tableView.isScrollEnabled = false
         }
-
+        
+        self.blockAdsSwitch.isOn = mainStore.state.settingsState.blockAds
+        self.blockMalwareSwitch.isOn = mainStore.state.settingsState.blockMalware
     }
     
     override func viewWillAppear(_ animated: Bool) {

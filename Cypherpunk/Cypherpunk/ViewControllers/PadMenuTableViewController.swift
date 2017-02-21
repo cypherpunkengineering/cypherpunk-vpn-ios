@@ -30,10 +30,17 @@ class PadMenuTableViewController: UITableViewController {
     @IBOutlet weak var subscriptionTypeLabel: UILabel!
     @IBOutlet weak var expirationLabel: UILabel!
     
+    @IBOutlet weak var blockAdsSwitch: UISwitch!
+    @IBOutlet weak var blockMalwareSwitch: UISwitch!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView()
+        
+        self.blockAdsSwitch.isOn = mainStore.state.settingsState.blockAds
+        self.blockMalwareSwitch.isOn = mainStore.state.settingsState.blockMalware
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,6 +138,14 @@ class PadMenuTableViewController: UITableViewController {
             fatalError()
         }
         
+    }
+    
+    @IBAction func blockAdsChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.blockAds(block: sender.isOn))
+    }
+    
+    @IBAction func blockMalwareChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
     }
 }
 
