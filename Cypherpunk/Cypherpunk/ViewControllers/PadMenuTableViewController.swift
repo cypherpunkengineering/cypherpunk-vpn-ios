@@ -25,7 +25,6 @@ class PadMenuTableViewController: UITableViewController {
     }
     
     @IBOutlet weak var usernameLabelButton: UIButton!
-    @IBOutlet weak var mailAddressLabel: UILabel!
     @IBOutlet weak var vpnProtocolValueLabel: UILabel!
 
     @IBOutlet weak var subscriptionTypeLabel: UILabel!
@@ -73,8 +72,8 @@ class PadMenuTableViewController: UITableViewController {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 36))
         let titleLabel: UILabel
         titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 304, height: 36))
-        titleLabel.font = R.font.dosisMedium(size: 14)
-        titleLabel.textColor = UIColor.goldenYellow
+        titleLabel.font = R.font.dosisMedium(size: 13)
+        titleLabel.textColor = UIColor.peach
         titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
         
         view.addSubview(titleLabel)
@@ -160,7 +159,6 @@ extension PadMenuTableViewController: StoreSubscriber {
         }
         
         usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
-        self.mailAddressLabel.text = state.accountState.mailAddress
         self.vpnProtocolValueLabel.text = state.settingsState.vpnProtocolMode.description
 
     }
