@@ -235,12 +235,6 @@ final class ButtonGridHelper {
         var regions = [Region]()
         var regionButtonActions = [ButtonAction]()
         
-//        region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0").sorted(byKeyPath: "latencySeconds").first
-//        print(region!)
-//        if (region != nil) {
-//            ConnectionHelper.connectTo(region: region!)
-//        }
-        let accountType = mainStore.state.accountState.accountType ?? "free"
         let favorites = realm.objects(Region.self).filter("isFavorite = true").sorted(byKeyPath: "lastConnectedDate", ascending: false)
         print(favorites)
 
@@ -254,7 +248,12 @@ final class ButtonGridHelper {
         }
         
         if regions.count < count {
-            let recent = realm.objects(Region.self).filter("isFavorite = false").filter("lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byKeyPath: "lastConnectedDate", ascending: false)
+            var predicates = [NSPredicate]()
+            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "isFavorite = true")))
+            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "lastConnectedDate = %@", Date(timeIntervalSince1970: 1) as CVarArg)))
+            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level = 'developer'")))
+            
+            let recent = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "lastConnectedDate", ascending: false)
             print(recent)
             
             for region in recent {
@@ -268,8 +267,18 @@ final class ButtonGridHelper {
         }
         
         if regions.count < count {
-            // TODO need to exclude the regions already added above!
-            let closest = realm.objects(Region.self).filter("level = '\(accountType)' AND latencySeconds > 0.0 AND isFavorite = false").sorted(byKeyPath: "latencySeconds")
+            var predicates = [NSPredicate]()
+            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "isFavorite = true")))
+            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "lastConnectedDate = %@", Date(timeIntervalSince1970: 1) as CVarArg)))
+            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level = 'developer'")))
+            
+            // exclude the regions already added
+            let regionIds = regions.map({ (region) -> String in
+                region.id
+            })
+            predicates.append(NSPredicate(format: "NOT id IN %@", regionIds))
+            
+            let closest = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
             print(closest)
             
             for region in closest {

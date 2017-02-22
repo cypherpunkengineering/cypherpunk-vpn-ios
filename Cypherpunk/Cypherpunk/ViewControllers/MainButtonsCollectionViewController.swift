@@ -141,13 +141,12 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     private func connectToFastest(cypherplay: Bool) {
         var region: Region? = nil
         
-        let accountType = mainStore.state.accountState.accountType
-        
+        let predicates = buildBasePredicates()
         
         let realm = try! Realm()
-        
-        region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0").sorted(byKeyPath: "latencySeconds").first
-        print(region!)
+        let regions = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds")
+
+        region = regions.first
         if (region != nil) {
             ConnectionHelper.connectTo(region: region!, cypherplay: cypherplay)
         }
@@ -156,13 +155,13 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     private func connectToFastestUS() {
         var region: Region? = nil
         
-        let accountType = mainStore.state.accountState.accountType
-        
+        var predicates = buildBasePredicates()
+        predicates.append(NSPredicate(format: "country = 'US'"))
         
         let realm = try! Realm()
         
-        region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0 AND country = 'US'").sorted(byKeyPath: "latencySeconds").first
-        print(region!)
+        region = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds").first
+
         if (region != nil) {
             ConnectionHelper.connectTo(region: region!, cypherplay: false)
         }
@@ -171,16 +170,25 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     private func connectToFastestUK() {
         var region: Region? = nil
         
-        let accountType = mainStore.state.accountState.accountType
-        
+        var predicates = buildBasePredicates()
+        predicates.append(NSPredicate(format: "country = 'GB'"))
         
         let realm = try! Realm()
         
-        region = realm.objects(Region.self).filter("level = '\(accountType!)' AND latencySeconds > 0.0 AND country= 'GB'").sorted(byKeyPath: "latencySeconds").first
-        print(region!)
+        region = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds").first
+        
         if (region != nil) {
             ConnectionHelper.connectTo(region: region!, cypherplay: false)
         }
+    }
+    
+    private func buildBasePredicates() -> [NSPredicate] {
+        var predicates = [NSPredicate]()
+        
+        predicates.append(NSPredicate(format: "authorized == true"))
+        predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level == 'developer'")))
+        
+        return predicates
     }
     
     private func deselectAllOtherCells(indexPathToKeep: IndexPath) {
