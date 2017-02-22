@@ -36,7 +36,7 @@ enum SubscriptionType: Int {
     var subscriptionProductId : String! {
         switch self {
         case .monthly, .semiannually, .annually:
-            return "iTunes_" + self.planId
+            return self.planId
         default:
             return nil
         }

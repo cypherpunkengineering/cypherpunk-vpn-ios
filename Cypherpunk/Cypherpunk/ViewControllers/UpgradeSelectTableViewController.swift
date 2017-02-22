@@ -274,7 +274,7 @@ fileprivate extension SKProduct {
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = self.priceLocale
         numberFormatter.numberStyle = .currency
-        let handler = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.up, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+        let handler = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.plain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
         return numberFormatter.string(from: self.price.dividing(by: nsNumberPerMonth, withBehavior: handler))
     }
 }
