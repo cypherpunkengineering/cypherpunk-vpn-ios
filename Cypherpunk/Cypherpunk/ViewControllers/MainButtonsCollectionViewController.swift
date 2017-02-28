@@ -179,7 +179,7 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     private func connectToFastest(cypherplay: Bool) {
         var region: Region? = nil
         
-        let predicates = buildBasePredicates()
+        let predicates = baseRegionQueryPredicates()
         
         let realm = try! Realm()
         let regions = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds")
@@ -193,7 +193,8 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     private func connectToFastestUS() {
         var region: Region? = nil
         
-        var predicates = buildBasePredicates()
+        var predicates = baseRegionQueryPredicates()
+        // fastest US will restrict query to servers that have country set to US
         predicates.append(NSPredicate(format: "country = 'US'"))
         
         let realm = try! Realm()
@@ -208,7 +209,8 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     private func connectToFastestUK() {
         var region: Region? = nil
         
-        var predicates = buildBasePredicates()
+        var predicates = baseRegionQueryPredicates()
+        // fastest UK will restrict query to servers that have country set to GB
         predicates.append(NSPredicate(format: "country = 'GB'"))
         
         let realm = try! Realm()
@@ -220,8 +222,14 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         }
     }
     
-    private func buildBasePredicates() -> [NSPredicate] {
+    private func baseRegionQueryPredicates() -> [NSPredicate] {
         var predicates = [NSPredicate]()
+        
+        /**
+         * All queries will do the following:
+         * 1) Check that authorized is set to true
+         * 2) Exclude any servers that developer servers
+         */
         
         predicates.append(NSPredicate(format: "authorized == true"))
         predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level == 'developer'")))
