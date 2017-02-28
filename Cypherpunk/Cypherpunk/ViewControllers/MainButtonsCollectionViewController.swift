@@ -12,6 +12,12 @@ import NetworkExtension
 
 private let reuseIdentifier = "Cell"
 
+
+/**
+ This view controller leverages a UICollectionView to manage the server buttons on the iPhone sized screens.
+ It has multiple selection enabled but does not actually allow multiple cells to be selected at once. The reason for this is so that a server button can be selected and the server list button will still be clickable.
+ **/
+
 class MainButtonsCollectionViewController: UICollectionViewController {
     var delegate: MainButtonsDelegate?
     
@@ -93,6 +99,7 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         return gridHelper.setupButtonAt(indexPath: indexPath, collectionView: collectionView)
     }
     
+    // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
         
@@ -102,6 +109,11 @@ class MainButtonsCollectionViewController: UICollectionViewController {
             selectable = false
         }
         return selectable
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        // prevent selected cells from being tapped on again and be deselected
+        return false
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -134,8 +146,6 @@ class MainButtonsCollectionViewController: UICollectionViewController {
             delegate?.showServerList()
         }
     }
-
-    // MARK: UICollectionViewDelegate
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
