@@ -18,6 +18,7 @@ struct RegionState: StateType {
     var countryCode: String
     var remoteIdentifier: String
     var level: String
+    let serverPinger = ServerPinger()
     
     var title: String {
         return name

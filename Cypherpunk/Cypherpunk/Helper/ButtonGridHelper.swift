@@ -63,15 +63,29 @@ final class ButtonGridHelper {
             
             buttonActions.append(fastestAction)
             
-            buttonActions.append(locationButtonActions.first!) // location 1
+            // First user based location
+            if let locationAction = locationButtonActions.first {
+                buttonActions.append(locationAction) // location 1
+            }
+            else {
+                // append empty button action because no locations were available
+                buttonActions.append(ButtonAction(type: .SavedServer, server: nil, favorite: false, recent: false))
+            }
             
             let fastestUS = ButtonAction(type: .FastestUS, server: nil, favorite: false, recent: false)
-            buttonActions.append(fastestUS) // location 1
+            buttonActions.append(fastestUS)
             
-            buttonActions.append(locationButtonActions[1]) // location 2
+            // Second user based location
+            if locationButtonActions.count > 1 {
+                buttonActions.append(locationButtonActions[1]) // location 2
+            }
+            else {
+                // append empty button action because no locations were available
+                buttonActions.append(ButtonAction(type: .SavedServer, server: nil, favorite: false, recent: false))
+            }
             
             let fastestUK = ButtonAction(type: .FastestUK, server: nil, favorite: false, recent: false)
-            buttonActions.append(fastestUK) // location 1
+            buttonActions.append(fastestUK)
         }
         
         // server list action should always be last
@@ -208,9 +222,13 @@ final class ButtonGridHelper {
 
     private func locationCell(indexPath: IndexPath, collectionView: UICollectionView, action: ButtonAction) -> MenuGridCollectionViewCell {
         let menuGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuGridCell", for: indexPath) as! MenuGridCollectionViewCell
-        menuGridCell.iconView.image = UIImage(named: (action.server?.country.lowercased())!)
         
-        let nameComponents = action.server?.name.components(separatedBy: ",")
+        if let server = action.server {
+            menuGridCell.iconView.image = UIImage(named: (server.country.lowercased()))
+            
+            let nameComponents = server.name.components(separatedBy: ",")
+            menuGridCell.textLabel.text = nameComponents.first
+        }
         
         if action.favorite {
             menuGridCell.decoratorView.image = R.image.topButtonStarSmall()
@@ -220,7 +238,6 @@ final class ButtonGridHelper {
             menuGridCell.decoratorView.image = R.image.topButtonRocketSmall()
             menuGridCell.decoratorBgView.isHidden = false
         }
-        menuGridCell.textLabel.text = nameComponents?.first
         
         return menuGridCell
     }
@@ -236,7 +253,6 @@ final class ButtonGridHelper {
         var regionButtonActions = [ButtonAction]()
         
         let favorites = realm.objects(Region.self).filter("isFavorite = true").sorted(byKeyPath: "lastConnectedDate", ascending: false)
-        print(favorites)
 
         for favorite in favorites {
             regions.append(favorite)
@@ -254,7 +270,6 @@ final class ButtonGridHelper {
             predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level = 'developer'")))
             
             let recent = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "lastConnectedDate", ascending: false)
-            print(recent)
             
             for region in recent {
                 regions.append(region)
@@ -269,8 +284,8 @@ final class ButtonGridHelper {
         if regions.count < count {
             var predicates = [NSPredicate]()
             predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "isFavorite = true")))
-            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "lastConnectedDate = %@", Date(timeIntervalSince1970: 1) as CVarArg)))
             predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level = 'developer'")))
+            predicates.append(NSPredicate(format: "authorized = true"))
             
             // exclude the regions already added
             let regionIds = regions.map({ (region) -> String in
@@ -279,7 +294,6 @@ final class ButtonGridHelper {
             predicates.append(NSPredicate(format: "NOT id IN %@", regionIds))
             
             let closest = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
-            print(closest)
             
             for region in closest {
                 regions.append(region)

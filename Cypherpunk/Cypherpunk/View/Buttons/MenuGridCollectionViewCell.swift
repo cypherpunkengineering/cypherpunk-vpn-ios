@@ -29,6 +29,8 @@ class MenuGridCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         decoratorBgView.isHidden = true
         decoratorBgView.backgroundColor = UIColor.darkNavyBlue
+        iconView.image = nil
+        textLabel.text = ""
         cellDeselected()
     }
     

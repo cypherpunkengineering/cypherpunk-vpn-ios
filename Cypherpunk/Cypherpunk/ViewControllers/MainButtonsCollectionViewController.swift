@@ -33,6 +33,13 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionUpdateNotificationKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionSelectedNotificationKey), object: nil)
         
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleVpnStatusChanged),
+            name: NSNotification.Name.NEVPNStatusDidChange,
+            object: nil
+        )
+        
         // allowing multiple selection so a button can be selected and server list can be selected. will enforce single selection in code.
         self.collectionView?.allowsMultipleSelection = true
     }
@@ -51,6 +58,14 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         for indexPath in selectedIndexPaths! {
             self.collectionView?.deselectItem(at: indexPath, animated: true)
         }
+    }
+    
+    func handleVpnStatusChanged(_ notification: Notification) {
+        guard let connection = notification.object as? NEVPNConnection else {
+            return
+        }
+//        let status = connection.status
+        // TODO what should be done here?
     }
 
     /*
@@ -101,7 +116,9 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         case .FastestUK:
             connectToFastestUK()
         case .SavedServer:
-            ConnectionHelper.connectTo(region: action.server!, cypherplay: false)
+            if let server = action.server {
+                ConnectionHelper.connectTo(region: server, cypherplay: false)
+            }
         case .ServerList:
             delegate?.showServerList()
         }
