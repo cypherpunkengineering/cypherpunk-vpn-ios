@@ -93,6 +93,17 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         return gridHelper.setupButtonAt(indexPath: indexPath, collectionView: collectionView)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
+        
+        var selectable = true
+        // if there isn't a server defined so don't allow it to be selected
+        if action.type == .SavedServer && action.server == nil {
+            selectable = false
+        }
+        return selectable
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
         print(action.type)
