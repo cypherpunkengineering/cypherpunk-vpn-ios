@@ -28,7 +28,7 @@ struct UpgradeRequest: Request {
     }
     
     var path: String {
-        return "/api/v1/account/upgrade/iTunesAppStore"
+        return "/api/account/v0/subscription/upgrade/iTunesAppStore"
     }
     
     var parameters: Any? {
