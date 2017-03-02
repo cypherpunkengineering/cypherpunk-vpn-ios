@@ -23,11 +23,6 @@ class AccountConfigurationTableViewController: UITableViewController {
         case signOut = 90
         case share = 100
     }
-    
-    @IBOutlet weak var usernameLabelButton: UIButton!
-
-    @IBOutlet weak var subscriptionTypeLabel: UILabel!
-    @IBOutlet weak var expirationLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +39,15 @@ class AccountConfigurationTableViewController: UITableViewController {
         
         self.navigationController?.isNavigationBarHidden = false
 
-        self.tableView.reloadData()
+        let menuCellNib = UINib(nibName: "MenuTableViewCell", bundle: nil)
+        self.tableView.register(menuCellNib, forCellReuseIdentifier: "MenuCell")
         
+        let accountDetailNib = UINib(nibName: "AccountDetailTableViewCell", bundle: nil)
+        self.tableView.register(accountDetailNib, forCellReuseIdentifier: "AccountDetailCell")
+
         mainStore.subscribe(self)
+        
+        self.tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,43 +63,58 @@ class AccountConfigurationTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return super.numberOfSections(in: tableView)
+        return 3 // account detail, account settings, more
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            if mainStore.state.accountState.accountType?.lowercased() == "free" {
-//                return 2
-//            } else if let subscription = mainStore.state.accountState.subscriptionType {
-//                switch subscription {
-//                case .annually,.forever,.lifetime:
-//                    return 1
-//                default:
-//                    if mainStore.state.accountState.accountType?.lowercased() == "developer" {
-//                        return 1
-//                    }
-//                    return 2
-//                }
-//            } else {
-//                return 2
-//            }
-//        }
-        return super.tableView(tableView, numberOfRowsInSection: section)
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            // depending on the type of account and plan the upgrade button may not be shown
+            return shouldHideUpgradeMenuItem() ? 2 : 3
+        case 2:
+            return 5
+        default:
+            return 0
+        }
     }
     
-    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var view: UIView?
         
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 36))
-        let titleLabel: UILabel
-        titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 304, height: 36))
-        titleLabel.font = R.font.dosisMedium(size: 13)
-        titleLabel.textColor = UIColor.peach
-        titleLabel.text = super.tableView(tableView, titleForHeaderInSection: section)
+        if section > 0 {
+            view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 36))
+            let titleLabel: UILabel
+            titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 304, height: 36))
+            titleLabel.font = R.font.dosisMedium(size: 13)
+            titleLabel.textColor = UIColor.peach
+            titleLabel.text = section == 1 ? "Account Settings" : "More"
+            
+            view?.addSubview(titleLabel)
+        }
+
+        return view // section 0 will have a nil header view
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell?
         
-        view.addSubview(titleLabel)
-        
-        return view
+        if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "AccountDetailCell")
+        }
+        else {
+            // special handling for account settings because upgrade button is not always shown
+            cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell")
+            
+            if indexPath.section == 1 {
+                setupCellForAccountSettingsSection(row: indexPath.row, cell: cell!)
+            }
+            else if indexPath.section == 2 {
+                setupCellForMoreSection(row: indexPath.row, cell: cell!)
+            }
+        }
+        return cell!
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -111,6 +127,15 @@ class AccountConfigurationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 104.5
+        default:
+            return 44.0
+        }
+    }
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -120,6 +145,14 @@ class AccountConfigurationTableViewController: UITableViewController {
         
         if let row = Rows(rawValue: (tableRow?.tag)!) {
             switch row {
+            case .paymentUpgrade:
+                self.performSegue(withIdentifier: "ShowUpgrade", sender: self)
+            case .accountEmailDetail:
+                self.performSegue(withIdentifier: "ShowEmail", sender: self)
+            case .accountPasswordDetail:
+                self.performSegue(withIdentifier: "ShowPassword", sender: self)
+            case .share:
+                self.performSegue(withIdentifier: "ShowShare", sender: self)
             case .rateOurService:
                 if let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(appID)") {
                     UIApplication.shared.openURL(url)
@@ -153,33 +186,71 @@ class AccountConfigurationTableViewController: UITableViewController {
         }
         
     }
+    
+    private func shouldHideUpgradeMenuItem() -> Bool {
+        // if the plan is annual or forever or the account type is developer, don't show the upgrade button
+        let accountState = mainStore.state.accountState
+        return accountState.isDeveloperAccount || !accountState.isSubscriptionUpgradeable
+    }
+    
+    private func setupCellForAccountSettingsSection(row: Int, cell: UITableViewCell) {
+        // this section will be either
+        // Upgrade, Email, Password OR
+        // Email, Password
+        switch row {
+        case 0:
+            if shouldHideUpgradeMenuItem() {
+                cell.textLabel?.text = "Email"
+                cell.tag = Rows.accountEmailDetail.rawValue
+            }
+            else {
+                cell.textLabel?.text = "Upgrade"
+                cell.tag = Rows.paymentUpgrade.rawValue
+            }
+        case 1:
+            if shouldHideUpgradeMenuItem() {
+                cell.textLabel?.text = "Password"
+                cell.tag = Rows.accountPasswordDetail.rawValue
+            }
+            else {
+                cell.textLabel?.text = "Email"
+                cell.tag = Rows.accountEmailDetail.rawValue
+            }
+        case 2:
+            cell.textLabel?.text = "Password"
+            cell.tag = Rows.accountPasswordDetail.rawValue
+        default:
+            break
+        }
+    }
+    
+    private func setupCellForMoreSection(row: Int, cell: UITableViewCell) {
+        switch row {
+        case 0:
+            cell.textLabel?.text = "Share with a friend"
+            cell.tag = Rows.share.rawValue
+        case 1:
+            cell.textLabel?.text = "Rate Our Service"
+            cell.tag = Rows.rateOurService.rawValue
+        case 2:
+            cell.textLabel?.text = "Contact the Founders"
+            cell.tag = Rows.contactus.rawValue
+            cell.accessoryType = .none
+        case 3:
+            cell.textLabel?.text = "Help"
+            cell.tag = Rows.help.rawValue
+        case 4:
+            cell.textLabel?.text = "Log out"
+            cell.tag = Rows.signOut.rawValue
+            cell.accessoryType = .none
+        default:
+            break
+        }
+    }
 }
 
 extension AccountConfigurationTableViewController: StoreSubscriber {
     func newState(state: AppState) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yy"
-        dateFormatter.locale = Locale.current
-        
-        let accountState = mainStore.state.accountState
-        let dateString: String
-        if let subscriptionType = accountState.subscriptionType {
-            if let d = accountState.expiredDate {
-                dateString = dateFormatter.string(from: d)
-                expirationLabel.text = subscriptionType.detailMessage + " " + dateString
-            } else {
-                expirationLabel.text = subscriptionType.detailMessage
-            }
-        } else {
-            expirationLabel.text = ""
-        }
-
-        if self.subscriptionTypeLabel.text?.lowercased() != state.accountState.accountType?.lowercased() {
-            self.subscriptionTypeLabel.text = state.accountState.accountType?.capitalized
-        }
-        
-        usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
-
+        self.tableView.reloadSections([0, 1], with: .automatic)
     }
 }

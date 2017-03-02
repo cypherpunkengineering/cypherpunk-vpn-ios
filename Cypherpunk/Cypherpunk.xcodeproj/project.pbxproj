@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		094C1B9B1E4D31CD00D9036F /* ConnectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */; };
 		094C1B9D1E4E697000D9036F /* RegionTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */; };
+		0959A5071E681FB200A95A49 /* AccountDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */; };
+		0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0959A5061E681FB200A95A49 /* AccountDetailTableViewCell.xib */; };
 		0967D5051E41D97100CA392D /* MainButtonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */; };
 		0967D5071E41DC0A00CA392D /* ButtonGridHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */; };
 		0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0967D5091E42D72100CA392D /* ActionButtons.storyboard */; };
 		0967D50D1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D50B1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift */; };
 		0967D50E1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0967D50C1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib */; };
+		0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */; };
+		0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */; };
 		09796A5E1E46765500CBF912 /* MenuGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796A5C1E46765500CBF912 /* MenuGridCollectionViewCell.swift */; };
 		09796A5F1E46765500CBF912 /* MenuGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09796A5D1E46765500CBF912 /* MenuGridCollectionViewCell.xib */; };
 		09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796A611E49456D00CBF912 /* ServerPinger.swift */; };
@@ -162,11 +166,15 @@
 /* Begin PBXFileReference section */
 		094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionHelper.swift; path = Cypherpunk/Helper/ConnectionHelper.swift; sourceTree = SOURCE_ROOT; };
 		094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegionTableHeaderView.xib; sourceTree = "<group>"; };
+		0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewCell.swift; sourceTree = "<group>"; };
+		0959A5061E681FB200A95A49 /* AccountDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetailTableViewCell.xib; sourceTree = "<group>"; };
 		0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButtonsCollectionViewController.swift; sourceTree = "<group>"; };
 		0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonGridHelper.swift; path = Cypherpunk/Helper/ButtonGridHelper.swift; sourceTree = SOURCE_ROOT; };
 		0967D5091E42D72100CA392D /* ActionButtons.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActionButtons.storyboard; sourceTree = "<group>"; };
 		0967D50B1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CypherPlayCollectionViewCell.swift; path = Buttons/CypherPlayCollectionViewCell.swift; sourceTree = "<group>"; };
 		0967D50C1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CypherPlayCollectionViewCell.xib; path = Buttons/CypherPlayCollectionViewCell.xib; sourceTree = "<group>"; };
+		0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = Cypherpunk/View/MenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuTableViewCell.xib; path = Cypherpunk/View/MenuTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		09796A5C1E46765500CBF912 /* MenuGridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuGridCollectionViewCell.swift; path = Buttons/MenuGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		09796A5D1E46765500CBF912 /* MenuGridCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuGridCollectionViewCell.xib; path = Buttons/MenuGridCollectionViewCell.xib; sourceTree = "<group>"; };
 		09796A611E49456D00CBF912 /* ServerPinger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerPinger.swift; path = Util/ServerPinger.swift; sourceTree = "<group>"; };
@@ -493,6 +501,8 @@
 				094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */,
 				09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */,
 				09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */,
+				0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */,
+				0959A5061E681FB200A95A49 /* AccountDetailTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -533,6 +543,8 @@
 				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
 				20073E0C1D9E387400BCD690 /* RateAppViewController.swift */,
 				2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */,
+				0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */,
+				0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -859,7 +871,9 @@
 				2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */,
 				094C1B9D1E4E697000D9036F /* RegionTableHeaderView.xib in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
+				0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */,
 				20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */,
+				0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */,
 				2B6798E51DAC0FB600099064 /* FirstOpen_iPad.storyboard in Resources */,
 				0967D50E1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
@@ -1216,9 +1230,11 @@
 				2B88F7E91DE6CFAB00DAB027 /* ShadowView.swift in Sources */,
 				2BA4E2A61DD1B23C006ACDC5 /* UpgradeTableViewCell.swift in Sources */,
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
+				0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */,
 				20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */,
 				2B6798E91DAC979F00099064 /* PadTopRootViewController.swift in Sources */,
 				2018AB081DB8ADD200649D03 /* ResetYourPasswordViewController.swift in Sources */,
+				0959A5071E681FB200A95A49 /* AccountDetailTableViewCell.swift in Sources */,
 				2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,

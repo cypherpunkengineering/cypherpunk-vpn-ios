@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Dosis-Bold.otf">
+            <string>Dosis-Bold</string>
+        </array>
+        <array key="Dosis-Medium.otf">
+            <string>Dosis-Medium</string>
+        </array>
+        <array key="Dosis-Regular.otf">
+            <string>Dosis-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="AccountDetailCell" rowHeight="105" id="Rys-yl-SHz" customClass="AccountDetailTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="105"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rys-yl-SHz" id="dmC-Le-9j0">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="104.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zv5-L3-g60">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="icH-T3-ZXu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
+                        <state key="normal" title="vpntestmax@gmail.com"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aST-jx-kik">
+                        <rect key="frame" x="0.0" y="53.5" width="375" height="23"/>
+                        <fontDescription key="fontDescription" name="Dosis-Bold" family="Dosis" pointSize="18"/>
+                        <color key="textColor" red="1" green="0.89411764709999997" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Renews On 02/22/2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUK-ph-lUX">
+                        <rect key="frame" x="0.0" y="80.5" width="375" height="15.5"/>
+                        <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="12"/>
+                        <color key="textColor" red="0.098039215690000001" green="0.2784313725" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="aST-jx-kik" secondAttribute="trailing" id="3Je-3c-CCK"/>
+                    <constraint firstAttribute="trailing" secondItem="zv5-L3-g60" secondAttribute="trailing" id="6yZ-RK-Qmz"/>
+                    <constraint firstItem="zv5-L3-g60" firstAttribute="top" secondItem="dmC-Le-9j0" secondAttribute="top" id="9eQ-xy-gcf"/>
+                    <constraint firstAttribute="bottom" secondItem="EUK-ph-lUX" secondAttribute="bottom" constant="8" id="Ove-tv-GUz"/>
+                    <constraint firstItem="zv5-L3-g60" firstAttribute="leading" secondItem="dmC-Le-9j0" secondAttribute="leading" id="b5w-up-dff"/>
+                    <constraint firstItem="EUK-ph-lUX" firstAttribute="leading" secondItem="dmC-Le-9j0" secondAttribute="leading" id="fnr-ty-Ycv"/>
+                    <constraint firstItem="EUK-ph-lUX" firstAttribute="top" secondItem="aST-jx-kik" secondAttribute="bottom" constant="4" id="kFH-nd-uu9"/>
+                    <constraint firstAttribute="trailing" secondItem="EUK-ph-lUX" secondAttribute="trailing" id="lWs-0b-vgd"/>
+                    <constraint firstItem="aST-jx-kik" firstAttribute="leading" secondItem="dmC-Le-9j0" secondAttribute="leading" id="yNi-JL-1j2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.050980392156862744" green="0.11764705882352941" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+            <connections>
+                <outlet property="expirationLabel" destination="EUK-ph-lUX" id="URe-Gc-SGr"/>
+                <outlet property="subscriptionTypeLabel" destination="aST-jx-kik" id="Kgj-em-fDK"/>
+                <outlet property="usernameLabelButton" destination="zv5-L3-g60" id="OXj-rf-srL"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

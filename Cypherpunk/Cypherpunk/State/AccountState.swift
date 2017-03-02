@@ -83,6 +83,23 @@ struct AccountState: StateType {
     var expiredDate: Date?
     var accountType: String?
     
+    var isDeveloperAccount: Bool {
+        return mainStore.state.accountState.accountType?.lowercased() == "developer"
+    }
+    
+    var isPremiumAccount: Bool {
+        return mainStore.state.accountState.accountType?.lowercased() == "premium"
+    }
+    
+    var isFreeAccount: Bool {
+        return mainStore.state.accountState.accountType?.lowercased() == "free"
+    }
+    
+    var isSubscriptionUpgradeable: Bool {
+        // premium subscription is upgradeable as long as it isn't annual, forever, or lifetime
+        return isFreeAccount || (isPremiumAccount && subscriptionType != .annually && subscriptionType != .forever && subscriptionType != .lifetime)
+    }
+    
     func save() {
         let keychain = Keychain(service: mailAddress!)
         keychain[AccountStateKey.isLoggedIn] = String(isLoggedIn)
