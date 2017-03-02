@@ -204,7 +204,8 @@ class AccountConfigurationTableViewController: UITableViewController {
                 cell.tag = Rows.accountEmailDetail.rawValue
             }
             else {
-                cell.textLabel?.text = "Upgrade"
+                let premium = mainStore.state.accountState.isPremiumAccount
+                cell.textLabel?.text = premium ? "Change Plan" : "Upgrade"
                 cell.tag = Rows.paymentUpgrade.rawValue
             }
         case 1:

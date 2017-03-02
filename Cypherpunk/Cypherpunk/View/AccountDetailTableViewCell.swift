@@ -47,7 +47,7 @@ extension AccountDetailTableViewCell: StoreSubscriber {
         if let subscriptionType = accountState.subscriptionType {
             if let d = accountState.expiredDate {
                 dateString = dateFormatter.string(from: d)
-                expirationLabel.text = subscriptionType.detailMessage + " " + dateString
+                expirationLabel.text = "\(subscriptionType.detailMessage) on \(dateString)"
             } else {
                 expirationLabel.text = subscriptionType.detailMessage
             }
