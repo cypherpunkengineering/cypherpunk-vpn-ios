@@ -10,8 +10,6 @@ import UIKit
 import RealmSwift
 import NetworkExtension
 
-private let reuseIdentifier = "Cell"
-
 
 /**
  This view controller leverages a UICollectionView to manage the server buttons on the iPhone sized screens.
