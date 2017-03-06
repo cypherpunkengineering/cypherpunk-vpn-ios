@@ -344,6 +344,15 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                                 self.backButton.alpha = 1.0
                                 self.forgotPasswordButton.alpha = 1.0
                             })
+                            
+                            let alertController = UIAlertController(title: "Invalid Password", message: "The password that was entered is incorrect. Please try again.", preferredStyle: .alert)
+                            
+                            // Create OK button
+                            let okAction = UIAlertAction(title: "OK", style: .default)
+                            alertController.addAction(okAction)
+
+                            // Present Dialog message
+                            self.present(alertController, animated: true, completion:nil)
                         }
                     })
                 }
