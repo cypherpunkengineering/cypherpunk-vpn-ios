@@ -165,4 +165,18 @@ struct AccountState: StateType {
         let defaults = UserDefaults.standard
         defaults.set(nil, forKey: AccountStateKey.mailAddress)
     }
+    
+    static func numberOfMonthsForPlan(planId: String) -> Int? {
+        var months: Int?
+        if SubscriptionType.monthly.planId == planId {
+            months = 1
+        }
+        else if SubscriptionType.semiannually.planId == planId {
+            months = 6
+        }
+        else if SubscriptionType.annually.planId == planId {
+            months = 12
+        }
+        return months
+    }
 }

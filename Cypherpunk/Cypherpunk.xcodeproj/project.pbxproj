@@ -11,6 +11,11 @@
 		094C1B9D1E4E697000D9036F /* RegionTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */; };
 		0959A5071E681FB200A95A49 /* AccountDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */; };
 		0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0959A5061E681FB200A95A49 /* AccountDetailTableViewCell.xib */; };
+		0959A50B1E69768100A95A49 /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5091E69768100A95A49 /* PlanTableViewCell.swift */; };
+		0959A50C1E69768100A95A49 /* PlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0959A50A1E69768100A95A49 /* PlanTableViewCell.xib */; };
+		0959A50E1E69879A00A95A49 /* PlanCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A50D1E69879A00A95A49 /* PlanCollectionViewController.swift */; };
+		0959A5171E69883D00A95A49 /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */; };
+		0959A5181E69883D00A95A49 /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */; };
 		0967D5051E41D97100CA392D /* MainButtonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */; };
 		0967D5071E41DC0A00CA392D /* ButtonGridHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */; };
 		0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0967D5091E42D72100CA392D /* ActionButtons.storyboard */; };
@@ -44,7 +49,6 @@
 		2038099D1D13EEA9005145CD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099C1D13EEA9005145CD /* AppState.swift */; };
 		2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038099E1D13EEEB005145CD /* AppReducer.swift */; };
 		203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203C62EB1D7014B700891F91 /* Upgrade.storyboard */; };
-		203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */; };
 		203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203C62EF1D702CD900891F91 /* FirstOpen.storyboard */; };
 		203C62F21D7035D800891F91 /* TwoColorGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62F11D7035D800891F91 /* TwoColorGradientButton.swift */; };
 		203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C62F31D7036C900891F91 /* FirstOpenViewController.swift */; };
@@ -126,7 +130,6 @@
 		2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */; };
 		2B95C9191DC7749900F79A2D /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C9181DC7749800F79A2D /* SignUpAPI.swift */; };
 		2BA4E2A41DD06372006ACDC5 /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */; };
-		2BA4E2A61DD1B23C006ACDC5 /* UpgradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA4E2A51DD1B23C006ACDC5 /* UpgradeTableViewCell.swift */; };
 		2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */; };
 		2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */; };
 		2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */; };
@@ -168,6 +171,11 @@
 		094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegionTableHeaderView.xib; sourceTree = "<group>"; };
 		0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewCell.swift; sourceTree = "<group>"; };
 		0959A5061E681FB200A95A49 /* AccountDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetailTableViewCell.xib; sourceTree = "<group>"; };
+		0959A5091E69768100A95A49 /* PlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
+		0959A50A1E69768100A95A49 /* PlanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanTableViewCell.xib; sourceTree = "<group>"; };
+		0959A50D1E69879A00A95A49 /* PlanCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewController.swift; sourceTree = "<group>"; };
+		0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
+		0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
 		0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButtonsCollectionViewController.swift; sourceTree = "<group>"; };
 		0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonGridHelper.swift; path = Cypherpunk/Helper/ButtonGridHelper.swift; sourceTree = SOURCE_ROOT; };
 		0967D5091E42D72100CA392D /* ActionButtons.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActionButtons.storyboard; sourceTree = "<group>"; };
@@ -209,7 +217,6 @@
 		2038099C1D13EEA9005145CD /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		2038099E1D13EEEB005145CD /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		203C62EB1D7014B700891F91 /* Upgrade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Upgrade.storyboard; sourceTree = "<group>"; };
-		203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeSelectTableViewController.swift; sourceTree = "<group>"; };
 		203C62EF1D702CD900891F91 /* FirstOpen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstOpen.storyboard; sourceTree = "<group>"; };
 		203C62F11D7035D800891F91 /* TwoColorGradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorGradientButton.swift; sourceTree = "<group>"; };
 		203C62F31D7036C900891F91 /* FirstOpenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstOpenViewController.swift; sourceTree = "<group>"; };
@@ -294,7 +301,6 @@
 		2B95C9161DC7429A00F79A2D /* IdentifyEmailAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyEmailAPI.swift; sourceTree = "<group>"; };
 		2B95C9181DC7749800F79A2D /* SignUpAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
 		2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
-		2BA4E2A51DD1B23C006ACDC5 /* UpgradeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeTableViewCell.swift; sourceTree = "<group>"; };
 		2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewConfiguration.storyboard; sourceTree = "<group>"; };
 		2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordTableViewController.swift; sourceTree = "<group>"; };
 		2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationViewController.swift; sourceTree = "<group>"; };
@@ -495,7 +501,6 @@
 				20CF42A41DFFB1E500BC8267 /* ReconnectDialogView.xib */,
 				2033FB441DB89E4D004D14B7 /* LoadingAnimationView.swift */,
 				201C0F561DC9E60500B5624B /* WifiNetworksCell.swift */,
-				2BA4E2A51DD1B23C006ACDC5 /* UpgradeTableViewCell.swift */,
 				2B88F7E81DE6CFAB00DAB027 /* ShadowView.swift */,
 				0967D50F1E42D8AF00CA392D /* Buttons */,
 				094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */,
@@ -503,6 +508,10 @@
 				09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */,
 				0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */,
 				0959A5061E681FB200A95A49 /* AccountDetailTableViewCell.xib */,
+				0959A5091E69768100A95A49 /* PlanTableViewCell.swift */,
+				0959A50A1E69768100A95A49 /* PlanTableViewCell.xib */,
+				0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */,
+				0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -539,12 +548,12 @@
 				2B6798E61DAC179500099064 /* AccountConfigurationTableViewController.swift */,
 				2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */,
 				2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */,
-				203C62ED1D701FBA00891F91 /* UpgradeSelectTableViewController.swift */,
 				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
 				20073E0C1D9E387400BCD690 /* RateAppViewController.swift */,
 				2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */,
 				0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */,
 				0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */,
+				0959A50D1E69879A00A95A49 /* PlanCollectionViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -860,6 +869,7 @@
 				2B45C16C1D20D64600D4326C /* Dosis-Medium.otf in Resources */,
 				2061342D1D8296AC00480621 /* BlurredIndicatorView.xib in Resources */,
 				2BFBE9DD1DC0A33F008D9F5D /* Share.storyboard in Resources */,
+				0959A5181E69883D00A95A49 /* PlanCollectionViewCell.xib in Resources */,
 				2B45C16B1D20D64600D4326C /* Dosis-Light.otf in Resources */,
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
 				203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */,
@@ -874,6 +884,7 @@
 				0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */,
 				20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */,
 				0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */,
+				0959A50C1E69768100A95A49 /* PlanTableViewCell.xib in Resources */,
 				2B6798E51DAC0FB600099064 /* FirstOpen_iPad.storyboard in Resources */,
 				0967D50E1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
@@ -1189,6 +1200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B88F7E61DE45E7D00DAB027 /* ConfirmEmailAPI.swift in Sources */,
+				0959A50B1E69768100A95A49 /* PlanTableViewCell.swift in Sources */,
 				203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */,
 				203C62F21D7035D800891F91 /* TwoColorGradientButton.swift in Sources */,
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
@@ -1228,7 +1240,6 @@
 				0967D5051E41D97100CA392D /* MainButtonsCollectionViewController.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B88F7E91DE6CFAB00DAB027 /* ShadowView.swift in Sources */,
-				2BA4E2A61DD1B23C006ACDC5 /* UpgradeTableViewCell.swift in Sources */,
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
 				0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */,
 				20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */,
@@ -1238,6 +1249,7 @@
 				2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
+				0959A50E1E69879A00A95A49 /* PlanCollectionViewController.swift in Sources */,
 				20F07FD91DD47CCD005FC1D6 /* UpgradeAPI.swift in Sources */,
 				201C0F571DC9E60500B5624B /* WifiNetworksCell.swift in Sources */,
 				0967D50D1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift in Sources */,
@@ -1251,6 +1263,7 @@
 				0985F0941E43434B00737D64 /* FastestCollectionViewCell.swift in Sources */,
 				203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */,
 				2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */,
+				0959A5171E69883D00A95A49 /* PlanCollectionViewCell.swift in Sources */,
 				2064B3A41DBF38BD00F85148 /* PopoverRootViewController.swift in Sources */,
 				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
 				20B634B61DC3591B0036169D /* AppAction.swift in Sources */,
@@ -1262,7 +1275,6 @@
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
-				203C62EE1D701FBA00891F91 /* UpgradeSelectTableViewController.swift in Sources */,
 				20CF42A31DFFB15E00BC8267 /* ReconnectDialogView.swift in Sources */,
 				2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,

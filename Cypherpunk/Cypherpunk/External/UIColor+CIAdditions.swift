@@ -39,4 +39,12 @@ extension UIColor {
     class var darkCream: UIColor {
         return UIColor(red: 255.0 / 255.0, green: 228.0 / 255.0, blue: 154.0 / 255.0, alpha: 1.0)
     }
+    
+    class var nastyGreen: UIColor {
+        return UIColor(red: 103.0 / 255.0, green: 177.0 / 255.0, blue: 63.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var niceBlue: UIColor {
+        return UIColor(red: 25.0 / 255.0, green: 135.0 / 255.0, blue: 189.0 / 255.0, alpha: 1.0)
+    }
 }
