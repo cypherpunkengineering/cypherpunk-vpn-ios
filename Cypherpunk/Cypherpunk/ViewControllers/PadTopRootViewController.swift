@@ -227,11 +227,15 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
     
     // MARK: RegionSelectionDelegate
     func dismissRegionSelector() {
-        openOrCloseRegionAction(self)
+        if UI_USER_INTERFACE_IDIOM() == .phone {
+            openOrCloseRegionAction(self)
+        }
     }
     
     // MARK: MainButtonsDelegate
     func showServerList() {
-        openOrCloseRegionAction(self)
+        if UI_USER_INTERFACE_IDIOM() == .phone {
+            openOrCloseRegionAction(self)            
+        }
     }
 }

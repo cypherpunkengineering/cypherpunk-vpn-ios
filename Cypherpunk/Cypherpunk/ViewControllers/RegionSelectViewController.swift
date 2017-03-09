@@ -159,7 +159,7 @@ class RegionSelectViewController: UITableViewController {
         
         switch section {
         case .fastestLocation:
-            return 1
+            return UI_USER_INTERFACE_IDIOM() == .phone ? 1 : 0
         case .recentlyConnected:
             let count = section.realmResults.count
             
@@ -210,13 +210,11 @@ class RegionSelectViewController: UITableViewController {
             cell?.devLocationIconView.isHidden = true
             cell?.premiumLocationIconView.isHidden = true
             cell?.unavailableLocationIconView.isHidden = true
-            cell?.titleLabel.font = R.font.dosisRegular(size: 18.0)
             
             let region = section.realmResults[indexPath.row]
 
             if mainStore.state.regionState.regionId == region.id {
-                cell?.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
-                cell?.titleLabel.font = R.font.dosisBold(size: 18.0)
+                cell?.applySelectedStyle()
             }
             
             cell?.titleLabel.text = region.name
@@ -274,19 +272,19 @@ class RegionSelectViewController: UITableViewController {
                 guard let cell = cell as? RegionTableViewCell else {
                     return
                 }
-                cell.titleLabel.textColor = UIColor.white
-                cell.titleLabel.font = R.font.dosisRegular(size: 18.0)
                 if cell.titleLabel.text == region.name {
-                    cell.titleLabel.textColor = #colorLiteral(red: 0.9725490196, green: 0.8117647059, blue: 0.1098039216, alpha: 1)
-                    cell.titleLabel.font = R.font.dosisBold(size: 18.0)
+                    cell.applySelectedStyle()
+                }
+                else {
+                    cell.configureView() // this will reset to default styling
                 }
             }
         }
         
         delegate?.dismissRegionSelector()
         
-        // scroll back to top of table
-        if self.tableView.numberOfSections > 0 {
+        // scroll back to top of table if this on the iPhone (don't do it on the iPad, the user will be able to see it)
+        if self.tableView.numberOfSections > 0 && UI_USER_INTERFACE_IDIOM() == .phone {
             self.tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
         }
     }

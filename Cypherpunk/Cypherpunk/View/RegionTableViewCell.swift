@@ -26,9 +26,15 @@ class RegionTableViewCell: UITableViewCell {
     
     func configureView() {
         self.titleLabel?.textColor = UIColor.white
-        self.titleLabel.font = R.font.dosisMedium(size: 18.0)
+        self.titleLabel?.font = R.font.dosisRegular(size: 16.0)
         self.backgroundColor = UIColor.clear
         self.tintColor = UIColor.white
+    }
+    
+    func applySelectedStyle() {
+        self.titleLabel?.textColor = UIColor.robinEggBlue
+        self.titleLabel?.font = R.font.dosisBold(size: 16.0)
+        self.backgroundColor = UIColor.darkBlueGrey
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,5 +43,7 @@ class RegionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-
+    override func prepareForReuse() {
+        configureView()
+    }
 }
