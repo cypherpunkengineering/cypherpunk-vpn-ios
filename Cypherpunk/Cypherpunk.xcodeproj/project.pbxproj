@@ -31,6 +31,10 @@
 		09ACCDBB1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACCDBA1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift */; };
 		09ACCDCA1E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACCDC81E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift */; };
 		09ACCDCB1E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDC91E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib */; };
+		09ACCDCD1E71892200AF3E4F /* splashscreen-illustration@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */; };
+		09ACCDCF1E71892E00AF3E4F /* splashscreen-illustration.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDCE1E71892E00AF3E4F /* splashscreen-illustration.png */; };
+		09ACCDD11E71894800AF3E4F /* bk-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD01E71894800AF3E4F /* bk-overlay.png */; };
+		09ACCDD31E71894F00AF3E4F /* bk-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */; };
 		09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */; };
 		09DF43AF1E4E6D2100937469 /* RegionTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */; };
 		20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20073E0C1D9E387400BCD690 /* RateAppViewController.swift */; };
@@ -194,6 +198,10 @@
 		09ACCDBA1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletMainButtonsCollectionViewController.swift; sourceTree = "<group>"; };
 		09ACCDC81E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabletButtonCollectionViewCell.swift; path = Cypherpunk/View/Buttons/TabletButtonCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		09ACCDC91E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabletButtonCollectionViewCell.xib; path = Cypherpunk/View/Buttons/TabletButtonCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen-illustration@2x.png"; sourceTree = "<group>"; };
+		09ACCDCE1E71892E00AF3E4F /* splashscreen-illustration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen-illustration.png"; sourceTree = "<group>"; };
+		09ACCDD01E71894800AF3E4F /* bk-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay.png"; sourceTree = "<group>"; };
+		09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay@2x.png"; sourceTree = "<group>"; };
 		09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationTableViewCell.swift; sourceTree = "<group>"; };
 		09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionTableHeaderView.swift; sourceTree = "<group>"; };
 		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
@@ -386,6 +394,17 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
+		09ACCDD41E7189A300AF3E4F /* Launch Images */ = {
+			isa = PBXGroup;
+			children = (
+				09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */,
+				09ACCDD01E71894800AF3E4F /* bk-overlay.png */,
+				09ACCDCE1E71892E00AF3E4F /* splashscreen-illustration.png */,
+				09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */,
+			);
+			name = "Launch Images";
+			sourceTree = "<group>";
+		};
 		2038095C1D13D89D005145CD = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +430,7 @@
 		203809671D13D89D005145CD /* Cypherpunk */ = {
 			isa = PBXGroup;
 			children = (
+				09ACCDD41E7189A300AF3E4F /* Launch Images */,
 				2B73C7121D5CDBCD0090FF8B /* Animation */,
 				2B45C1601D20D61B00D4326C /* Font */,
 				203809981D13DAF3005145CD /* Cypherpunk.entitlements */,
@@ -874,6 +894,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B45C1691D20D64600D4326C /* Dosis-ExtraBold.otf in Resources */,
+				09ACCDD31E71894F00AF3E4F /* bk-overlay@2x.png in Resources */,
 				2B8D3F401DBA965A0096EEF7 /* Account.storyboard in Resources */,
 				2B45C16C1D20D64600D4326C /* Dosis-Medium.otf in Resources */,
 				2061342D1D8296AC00480621 /* BlurredIndicatorView.xib in Resources */,
@@ -888,11 +909,13 @@
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
+				09ACCDCD1E71892200AF3E4F /* splashscreen-illustration@2x.png in Resources */,
 				2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */,
 				094C1B9D1E4E697000D9036F /* RegionTableHeaderView.xib in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */,
 				20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */,
+				09ACCDD11E71894800AF3E4F /* bk-overlay.png in Resources */,
 				0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */,
 				0959A50C1E69768100A95A49 /* PlanTableViewCell.xib in Resources */,
 				2B6798E51DAC0FB600099064 /* FirstOpen_iPad.storyboard in Resources */,
@@ -911,6 +934,7 @@
 				2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */,
 				0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */,
 				09796A5F1E46765500CBF912 /* MenuGridCollectionViewCell.xib in Resources */,
+				09ACCDCF1E71892E00AF3E4F /* splashscreen-illustration.png in Resources */,
 				20DA369B1DB5E6C1003F4999 /* Inconsolata-Regular.ttf in Resources */,
 				20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */,
 				2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */,
