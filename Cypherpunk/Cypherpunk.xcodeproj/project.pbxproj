@@ -28,6 +28,9 @@
 		09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796A611E49456D00CBF912 /* ServerPinger.swift */; };
 		0985F0941E43434B00737D64 /* FastestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */; };
 		0985F0951E43434B00737D64 /* FastestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */; };
+		09ACCDBB1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACCDBA1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift */; };
+		09ACCDCA1E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACCDC81E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift */; };
+		09ACCDCB1E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDC91E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib */; };
 		09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */; };
 		09DF43AF1E4E6D2100937469 /* RegionTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */; };
 		20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20073E0C1D9E387400BCD690 /* RateAppViewController.swift */; };
@@ -188,6 +191,9 @@
 		09796A611E49456D00CBF912 /* ServerPinger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerPinger.swift; path = Util/ServerPinger.swift; sourceTree = "<group>"; };
 		0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastestCollectionViewCell.swift; path = Buttons/FastestCollectionViewCell.swift; sourceTree = "<group>"; };
 		0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FastestCollectionViewCell.xib; path = Buttons/FastestCollectionViewCell.xib; sourceTree = "<group>"; };
+		09ACCDBA1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletMainButtonsCollectionViewController.swift; sourceTree = "<group>"; };
+		09ACCDC81E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabletButtonCollectionViewCell.swift; path = Cypherpunk/View/Buttons/TabletButtonCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		09ACCDC91E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabletButtonCollectionViewCell.xib; path = Cypherpunk/View/Buttons/TabletButtonCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationTableViewCell.swift; sourceTree = "<group>"; };
 		09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionTableHeaderView.swift; sourceTree = "<group>"; };
 		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
@@ -368,6 +374,8 @@
 		0967D50F1E42D8AF00CA392D /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				09ACCDC81E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift */,
+				09ACCDC91E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib */,
 				0967D50B1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift */,
 				0967D50C1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib */,
 				0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */,
@@ -579,6 +587,7 @@
 				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
 				2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */,
 				0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */,
+				09ACCDBA1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift */,
 			);
 			name = Top;
 			sourceTree = "<group>";
@@ -875,6 +884,7 @@
 				203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */,
 				2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */,
 				2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */,
+				09ACCDCB1E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
@@ -1272,10 +1282,12 @@
 				2073AE331DE44A300090B472 /* UIPageControl+Disable.m in Sources */,
 				2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */,
 				09DF43AF1E4E6D2100937469 /* RegionTableHeaderView.swift in Sources */,
+				09ACCDCA1E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
 				20CF42A31DFFB15E00BC8267 /* ReconnectDialogView.swift in Sources */,
+				09ACCDBB1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift in Sources */,
 				2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */,
 				20EC4A3A1D2F82CC00785399 /* RegionReducer.swift in Sources */,
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,

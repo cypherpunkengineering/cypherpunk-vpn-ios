@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import NetworkExtension
 
 
@@ -129,13 +128,13 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         
         switch (action.type) {
         case .CypherPlay:
-            connectToFastest(cypherplay: true)
+            ConnectionHelper.connectToFastest(cypherplay: true)
         case .Fastest:
-            connectToFastest(cypherplay: false)
+            ConnectionHelper.connectToFastest(cypherplay: false)
         case .FastestUS:
-            connectToFastestUS()
+            ConnectionHelper.connectToFastestUS()
         case .FastestUK:
-            connectToFastestUK()
+            ConnectionHelper.connectToFastestUK()
         case .SavedServer:
             if let server = action.server {
                 ConnectionHelper.connectTo(region: server, cypherplay: false)
@@ -143,96 +142,6 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         case .ServerList:
             delegate?.showServerList()
         }
-    }
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-    
-    private func connectToFastest(cypherplay: Bool) {
-        var region: Region? = nil
-        
-        let predicates = baseRegionQueryPredicates()
-        
-        let realm = try! Realm()
-        let regions = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds")
-
-        region = regions.first
-        if (region != nil) {
-            ConnectionHelper.connectTo(region: region!, cypherplay: cypherplay)
-        }
-    }
-    
-    private func connectToFastestUS() {
-        var region: Region? = nil
-        
-        var predicates = baseRegionQueryPredicates()
-        // fastest US will restrict query to servers that have country set to US
-        predicates.append(NSPredicate(format: "country = 'US'"))
-        
-        let realm = try! Realm()
-        
-        region = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds").first
-
-        if (region != nil) {
-            ConnectionHelper.connectTo(region: region!, cypherplay: false)
-        }
-    }
-    
-    private func connectToFastestUK() {
-        var region: Region? = nil
-        
-        var predicates = baseRegionQueryPredicates()
-        // fastest UK will restrict query to servers that have country set to GB
-        predicates.append(NSPredicate(format: "country = 'GB'"))
-        
-        let realm = try! Realm()
-        
-        region = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds").first
-        
-        if (region != nil) {
-            ConnectionHelper.connectTo(region: region!, cypherplay: false)
-        }
-    }
-    
-    private func baseRegionQueryPredicates() -> [NSPredicate] {
-        var predicates = [NSPredicate]()
-        
-        /**
-         * All queries will do the following:
-         * 1) Check that authorized is set to true
-         * 2) Exclude any servers that developer servers
-         */
-        
-        predicates.append(NSPredicate(format: "authorized == true"))
-        predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level == 'developer'")))
-        
-        return predicates
     }
     
     private func deselectAllOtherCells(indexPathToKeep: IndexPath) {
