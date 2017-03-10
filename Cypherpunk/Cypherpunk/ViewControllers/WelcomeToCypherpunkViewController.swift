@@ -199,7 +199,6 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                             
                         })
                     case .signUp:
-                        self.welcomeLabel.text = "Hello!\nPlease set your password"
                         self.inputField.placeholder = "Type your password"
                         self.inputField.text = ""
                         self.actionButton.isEnabled = false
@@ -209,8 +208,18 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
 //                        self.inputField.becomeFirstResponder()
                         
                         // create attributed string
-                        let attributedString = NSMutableAttributedString(string: "Hello!\nPlease set your password")
-                        attributedString.addAttributes([ NSFontAttributeName : UIFont(name: "Dosis-Medium", size: 18)! ], range: NSRange(location: 6, length: 25))
+                        var attributedString : NSMutableAttributedString
+                        
+                        if UIScreen.main.bounds.height < 568 {
+                            // iPhone 4 height doesn't have enough space for 2 lines of text
+                            attributedString = NSMutableAttributedString(string: "Hello, please set your password")
+                            attributedString.addAttributes([ NSFontAttributeName : UIFont(name: "Dosis-Medium", size: 18)! ], range: NSRange(location: 0, length: attributedString.length))
+                        }
+                        else {
+                            attributedString = NSMutableAttributedString(string: "Hello!\nPlease set your password")
+                            attributedString.addAttributes([ NSFontAttributeName : UIFont(name: "Dosis-Medium", size: 18)! ], range: NSRange(location: 6, length: 25))
+                        }
+                        
                         self.welcomeLabel.numberOfLines = 0
                         self.welcomeLabel.attributedText = attributedString
                         
