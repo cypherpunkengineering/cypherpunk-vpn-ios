@@ -26,6 +26,7 @@ class TabletMainButtonsCollectionViewController: UICollectionViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionUpdateNotificationKey), object: nil)
 
         // Do any additional setup after loading the view.
+        setContentInsets(landscape: UIDevice.current.orientation.isLandscape)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +36,28 @@ class TabletMainButtonsCollectionViewController: UICollectionViewController {
     
     func handleRegionUpdateNotification() {
         self.collectionView?.reloadData()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        // the device is going to rotate but has not rotated yet, set insets based on what the orientation will be
+        setContentInsets(landscape: UIDevice.current.orientation.isLandscape)
+        
+        // reload to force cells to run prepare for reuse
+        self.collectionView?.reloadData()
+    }
+    
+    private func setContentInsets(landscape: Bool) {
+        if landscape {
+            self.collectionView?.contentInset.top = 12
+            self.collectionView?.contentInset.bottom = 12
+            self.collectionView?.contentInset.right = 0
+            self.collectionView?.contentInset.left = 0
+        }
+        else {
+            self.collectionView?.contentInset.top = 10
+            self.collectionView?.contentInset.bottom = 10
+            self.collectionView?.contentInset.left = 12
+        }
     }
 
     /*
@@ -86,6 +109,8 @@ class TabletMainButtonsCollectionViewController: UICollectionViewController {
         return cell!
     }
     
+    
+    
 
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -101,6 +126,22 @@ class TabletMainButtonsCollectionViewController: UICollectionViewController {
             ConnectionHelper.connectToFastestUK()
         default:
             break
+        }
+    }
+}
+
+extension TabletMainButtonsCollectionViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if UIDevice.current.orientation.isLandscape {
+            let collectionViewWidth = UIScreen.main.bounds.width - 350
+            return CGSize(width: (collectionViewWidth - 50) / 4, height: 90)
+        }
+        else {
+            let collectionViewWidth = UIScreen.main.bounds.width - 350
+            return CGSize(width: (collectionViewWidth - 50) / 2, height: 60)
         }
     }
 }

@@ -62,13 +62,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Welcome to Cypherpunk" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-7x-T35">
-                                <rect key="frame" x="61.5" y="258" width="254" height="27"/>
+                                <rect key="frame" x="76" y="258" width="224.5" height="29.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="gUg-J8-dle">
-                                <rect key="frame" x="37.5" y="295" width="300" height="51"/>
+                                <rect key="frame" x="37.5" y="297.5" width="300" height="51"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-wa-el4" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="11" y="2" width="279" height="48"/>
@@ -105,7 +105,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCz-mW-Egf">
-                                <rect key="frame" x="81.5" y="361" width="212" height="62"/>
+                                <rect key="frame" x="81.5" y="363.5" width="212" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="N5X-b3-Zzl"/>
                                     <constraint firstAttribute="width" constant="212" id="RXy-Uu-gi6"/>
@@ -163,7 +163,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="100" verticalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Hfr-WV-idt" userLabel="Spacer View">
-                                <rect key="frame" x="12.5" y="423" width="350" height="190"/>
+                                <rect key="frame" x="12.5" y="425.5" width="350" height="187.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="Upv-7C-JJD"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="65" id="Y13-vg-FMj"/>
@@ -177,7 +177,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-ue-9dj">
-                                <rect key="frame" x="112.5" y="436.5" width="150" height="17"/>
+                                <rect key="frame" x="112.5" y="439" width="150" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="MJh-xq-cJp"/>
                                     <constraint firstAttribute="width" constant="150" id="aie-3O-GsV"/>

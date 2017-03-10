@@ -50,6 +50,8 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
     
     @IBOutlet weak var buttonView: UIView!
     
+    @IBOutlet weak var tabletButtonsHeightConstraint: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,8 +79,6 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
         }
         
         self.connectionButtonsConstraint?.constant = CGFloat(ButtonGridHelper.sharedInstance.heightForButtonGrid())
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +91,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
                 
         mainStore.subscribe(self)
         
+        updateTabletButtonsHeight(animate: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,6 +99,27 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
         
         mainStore.unsubscribe(self)
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        updateTabletButtonsHeight(animate: true)
+    }
+    
+    private func updateTabletButtonsHeight(animate: Bool) {
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            self.tabletButtonsHeightConstraint?.constant = UIDevice.current.orientation.isLandscape ? 140 : 190
+            
+            if animate {
+                UIView.animate(withDuration: 1) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+            else {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

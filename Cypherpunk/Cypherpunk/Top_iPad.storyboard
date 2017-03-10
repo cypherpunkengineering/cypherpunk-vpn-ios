@@ -25,7 +25,7 @@
         <scene sceneID="q29-oO-DEh">
             <objects>
                 <navigationController storyboardIdentifier="AccountNavigation" id="cVP-0K-Ofi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="kgw-Rx-IUm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="kgw-Rx-IUm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,7 +101,7 @@
         <scene sceneID="cRv-vS-caq">
             <objects>
                 <navigationController storyboardIdentifier="TopRootNavigation" automaticallyAdjustsScrollViewInsets="NO" id="t8E-0d-eHG" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="3E2-XB-hmN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="3E2-XB-hmN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.086274509803921567" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -446,6 +446,7 @@
                         <outlet property="connectionActionView" destination="EXU-JE-Og2" id="uXx-CX-Vuw"/>
                         <outlet property="contentsSeparatorView" destination="KuI-Eg-TtN" id="Wgs-UF-6ff"/>
                         <outlet property="locationActionView" destination="NHh-Bm-INH" id="874-zx-u6R"/>
+                        <outlet property="tabletButtonsHeightConstraint" destination="wxD-dz-a3Q" id="JFu-iE-tfU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNT-qa-Bh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -733,7 +734,7 @@
         <scene sceneID="MJa-Ur-rhp">
             <objects>
                 <collectionViewController id="v6e-0u-8Jc" customClass="TabletMainButtonsCollectionViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="P1U-oP-07a">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="P1U-oP-07a">
                         <rect key="frame" x="0.0" y="0.0" width="418" height="190"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.086274509803921567" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
