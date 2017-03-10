@@ -228,7 +228,7 @@ class AccountConfigurationTableViewController: UITableViewController {
     private func setupCellForMoreSection(row: Int, cell: UITableViewCell) {
         switch row {
         case 0:
-            cell.textLabel?.text = "Share with a friend"
+            cell.textLabel?.text = "Share With Your Friends"
             cell.tag = Rows.share.rawValue
         case 1:
             cell.textLabel?.text = "Rate Our Service"

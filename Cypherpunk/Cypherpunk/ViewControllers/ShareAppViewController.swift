@@ -22,9 +22,9 @@ class ShareAppViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let iconSize = CGSize(width: 22, height: 22)
-        facebookButton.setImage(UIImage.fontAwesomeIcon(name: .facebookOfficial, textColor: UIColor.white, size: iconSize).withRenderingMode(.alwaysOriginal), for: .normal)
-        twitterButton.setImage(UIImage.fontAwesomeIcon(name: .twitter, textColor: UIColor.white, size: iconSize).withRenderingMode(.alwaysOriginal), for: .normal)
-        emailButton.setImage(UIImage.fontAwesomeIcon(name: .envelopeO, textColor: UIColor.white, size: iconSize).withRenderingMode(.alwaysOriginal), for: .normal)
+        facebookButton.setImage(UIImage.fontAwesomeIcon(name: .facebookOfficial, textColor: UIColor.seafoamBlue, size: iconSize).withRenderingMode(.alwaysOriginal), for: .normal)
+        twitterButton.setImage(UIImage.fontAwesomeIcon(name: .twitter, textColor: UIColor.seafoamBlue, size: iconSize).withRenderingMode(.alwaysOriginal), for: .normal)
+        emailButton.setImage(UIImage.fontAwesomeIcon(name: .envelopeO, textColor: UIColor.seafoamBlue, size: iconSize).withRenderingMode(.alwaysOriginal), for: .normal)
 
     }
 
