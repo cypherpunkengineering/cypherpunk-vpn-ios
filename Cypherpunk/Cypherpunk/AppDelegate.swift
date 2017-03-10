@@ -103,7 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DispatchQueue.main.async { [unowned self] in
                 if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
                     vc.fakeLaunchView.isHidden = false
-                    let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
+//                    let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
+                    let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
                     self.window?.rootViewController!.present(firstOpen!, animated: false, completion: {
                         vc.fakeLaunchView.isHidden = true
                     })

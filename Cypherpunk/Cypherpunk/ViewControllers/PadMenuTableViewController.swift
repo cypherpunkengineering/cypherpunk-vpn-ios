@@ -125,7 +125,7 @@ class PadMenuTableViewController: UITableViewController {
                     }
                     
                 } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-                    let vc = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
+                    let vc = R.storyboard.firstOpen.instantiateInitialViewController()
                     UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
                         NotificationCenter.default.post(name: kResetCenterViewNotification, object: nil)
                     }

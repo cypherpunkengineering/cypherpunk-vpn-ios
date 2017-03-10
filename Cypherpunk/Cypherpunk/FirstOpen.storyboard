@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="37O-y4-8Ms">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="37O-y4-8Ms">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -56,19 +55,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="illustSignin" translatesAutoresizingMaskIntoConstraints="NO" id="i8D-EZ-W4K">
-                                <rect key="frame" x="21" y="50" width="333" height="197.5"/>
+                                <rect key="frame" x="20.5" y="50" width="334" height="198"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="334" id="HGa-Fl-FuH"/>
                                     <constraint firstAttribute="width" secondItem="i8D-EZ-W4K" secondAttribute="height" multiplier="167:99" id="Zog-Gr-ejR"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Welcome to Cypherpunk" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-7x-T35">
-                                <rect key="frame" x="75.5" y="257.5" width="224.5" height="29.5"/>
+                                <rect key="frame" x="75.5" y="258" width="224.5" height="29.5"/>
                                 <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="gUg-J8-dle">
-                                <rect key="frame" x="37.5" y="297" width="300" height="51"/>
+                                <rect key="frame" x="37.5" y="297.5" width="300" height="51"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-wa-el4" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
                                         <rect key="frame" x="11" y="2" width="279" height="48"/>
@@ -105,7 +105,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCz-mW-Egf">
-                                <rect key="frame" x="81.5" y="363" width="212" height="62"/>
+                                <rect key="frame" x="81.5" y="363.5" width="212" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="N5X-b3-Zzl"/>
                                     <constraint firstAttribute="width" constant="212" id="RXy-Uu-gi6"/>
@@ -163,7 +163,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="100" verticalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Hfr-WV-idt" userLabel="Spacer View">
-                                <rect key="frame" x="12.5" y="425" width="350" height="188"/>
+                                <rect key="frame" x="12.5" y="425.5" width="350" height="187.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="Upv-7C-JJD"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="65" id="Y13-vg-FMj"/>
@@ -177,7 +177,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-ue-9dj">
-                                <rect key="frame" x="112.5" y="438.5" width="150" height="17"/>
+                                <rect key="frame" x="112.5" y="439" width="150" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="MJh-xq-cJp"/>
                                     <constraint firstAttribute="width" constant="150" id="aie-3O-GsV"/>
@@ -202,7 +202,6 @@
                             <constraint firstItem="NCz-mW-Egf" firstAttribute="top" secondItem="gUg-J8-dle" secondAttribute="bottom" constant="15" id="SBV-vC-Wa4"/>
                             <constraint firstItem="i8D-EZ-W4K" firstAttribute="top" secondItem="A1N-sG-hSC" secondAttribute="bottom" priority="750" constant="30" id="TZa-bU-GB0"/>
                             <constraint firstItem="Hfr-WV-idt" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="ZwY-i0-ejr"/>
-                            <constraint firstItem="i8D-EZ-W4K" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leadingMargin" constant="5" id="aiM-v7-shg"/>
                             <constraint firstItem="vIy-7x-T35" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="b5p-Vn-O8m"/>
                             <constraint firstItem="FfU-Tv-Qkt" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="bpu-ny-GPM"/>
                             <constraint firstItem="i8D-EZ-W4K" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="gKd-nw-0gi"/>
@@ -348,10 +347,10 @@ reset your password.</string>
                                 <size key="shadowOffset" width="0.0" height="-2"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ts-7v-rbe">
-                                <rect key="frame" x="39" y="188" width="300" height="48"/>
+                                <rect key="frame" x="37.5" y="188" width="299" height="48"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OGQ-Uq-zX5" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="13" y="0.0" width="274" height="48"/>
+                                        <rect key="frame" x="13" y="0.0" width="273" height="48"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.35686274509999999" green="0.73333333329999995" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
@@ -364,6 +363,7 @@ reset your password.</string>
                                     <constraint firstAttribute="height" constant="48" id="4SB-dp-AmV"/>
                                     <constraint firstAttribute="bottom" secondItem="OGQ-Uq-zX5" secondAttribute="bottom" id="4zU-Z1-cbr"/>
                                     <constraint firstItem="OGQ-Uq-zX5" firstAttribute="top" secondItem="1ts-7v-rbe" secondAttribute="top" id="TYQ-ys-Va2"/>
+                                    <constraint firstAttribute="width" constant="299" id="VCa-ms-TL4"/>
                                     <constraint firstAttribute="trailing" secondItem="OGQ-Uq-zX5" secondAttribute="trailing" constant="13" id="f4E-h8-Kxp"/>
                                     <constraint firstItem="OGQ-Uq-zX5" firstAttribute="leading" secondItem="1ts-7v-rbe" secondAttribute="leading" constant="13" id="pVV-EC-wAX"/>
                                 </constraints>
@@ -424,11 +424,10 @@ reset your password.</string>
                             <constraint firstItem="gkh-RF-3o5" firstAttribute="top" secondItem="65p-cw-kyR" secondAttribute="bottom" constant="12" id="81n-Z4-Ssl"/>
                             <constraint firstItem="R2H-fg-e8v" firstAttribute="centerX" secondItem="QEs-xo-hN8" secondAttribute="centerX" id="BEZ-ra-12G"/>
                             <constraint firstItem="twy-fL-NlK" firstAttribute="centerX" secondItem="QEs-xo-hN8" secondAttribute="centerX" id="R2N-nn-Nbp"/>
-                            <constraint firstAttribute="trailing" secondItem="1ts-7v-rbe" secondAttribute="trailing" constant="36" id="Ud4-Uw-qZU"/>
                             <constraint firstItem="gkh-RF-3o5" firstAttribute="leading" secondItem="QEs-xo-hN8" secondAttribute="leadingMargin" id="XlS-3d-LWb"/>
                             <constraint firstItem="1ts-7v-rbe" firstAttribute="top" secondItem="R2H-fg-e8v" secondAttribute="bottom" constant="30" id="ZNn-3t-JrS"/>
+                            <constraint firstItem="1ts-7v-rbe" firstAttribute="centerX" secondItem="QEs-xo-hN8" secondAttribute="centerX" id="bHQ-JR-ENy"/>
                             <constraint firstItem="twy-fL-NlK" firstAttribute="top" secondItem="1ts-7v-rbe" secondAttribute="bottom" constant="23" id="nnX-SH-Svi"/>
-                            <constraint firstItem="1ts-7v-rbe" firstAttribute="leading" secondItem="QEs-xo-hN8" secondAttribute="leading" constant="39" id="uhC-S1-CgV"/>
                             <constraint firstItem="Rtm-xp-Msg" firstAttribute="centerX" secondItem="QEs-xo-hN8" secondAttribute="centerX" id="wsS-ro-a8a"/>
                         </constraints>
                     </view>
@@ -440,7 +439,7 @@ reset your password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBZ-j7-owd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969" y="-1256"/>
+            <point key="canvasLocation" x="968.79999999999995" y="-1256.2218890554723"/>
         </scene>
     </scenes>
     <resources>
