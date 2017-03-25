@@ -46,7 +46,7 @@ final class ButtonGridHelper {
         let noopServerOption = VPNServerOption(findServer: {(nil) -> Region? in return nil }, type: .Server)
         
         let fastestUSOption = VPNServerOption(findServer: ConnectionHelper.findFastest, type: .FastestUS, country: "US")
-        let fastestUKOption = VPNServerOption(findServer: ConnectionHelper.findFastest, type: .FastestUK, country: "UK")
+        let fastestUKOption = VPNServerOption(findServer: ConnectionHelper.findFastest, type: .FastestUK, country: "GB")
         
         // all layouts have a cyperplay, fastest, and server list
         let cyperplayAction = ButtonAction(type: .CypherPlay, favorite: false, recent: false, vpnServerOption: cypherplayServerOption)

@@ -38,6 +38,9 @@ final class VPNStateController: UIResponder {
         }
         
         let status = connection.status
+        
+        print("VPN Status: \(status)")
+        
         switch status {
         case .connected:
             responders.forEach({ (responder) in
@@ -45,17 +48,13 @@ final class VPNStateController: UIResponder {
             })
         case .connecting:
             print()
-//            responders.forEach({ (responder) in
-//                responder.disconnected(disconnectedOption: previousServerOption)
-////                activeServerOption = nil
-////                previousServerOption = nil
-//            })
         case .disconnected:
             responders.forEach({ (responder) in
                 responder.disconnected(disconnectedOption: activeServerOption)
             })
             
             previousServerOption = activeServerOption
+            activeServerOption = nil
             
             // check if we need to connect to another VPN
             if let connectOption = connectAfterDisconnectOption {

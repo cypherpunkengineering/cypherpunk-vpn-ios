@@ -127,9 +127,10 @@ class MainButtonsCollectionViewController: UICollectionViewController, VPNStateR
 //            action.vpnServerOption.connect(cypherplay: false)
             vpnStateController.connect(newOption: action.vpnServerOption)
         case .SavedServer:
-            if let server = action.vpnServerOption.getServer() {
-                ConnectionHelper.connectTo(region: server, cypherplay: false)
-            }
+//            if let server = action.vpnServerOption.getServer() {
+//                ConnectionHelper.connectTo(region: server, cypherplay: false)
+//            }
+            vpnStateController.connect(newOption: action.vpnServerOption)
         case .ServerList:
             delegate?.showServerList()
         }

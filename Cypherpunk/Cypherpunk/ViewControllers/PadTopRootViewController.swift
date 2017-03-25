@@ -130,8 +130,6 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
             return
         }
         
-        print("VPN Status Changed: \(connection.status)")
-        
         let status = connection.status
         updateView(withVPNStatus: status)
     }
