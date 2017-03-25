@@ -19,9 +19,10 @@ enum ButtonCellTypes: String {
 
 struct ButtonAction {
     var type: ButtonCellTypes
-    var server: Region?
+//    var server: Region?
     var favorite: Bool
     var recent: Bool
+    var vpnServerOption: VPNServerOption
 }
 
 final class ButtonGridHelper {
@@ -38,13 +39,22 @@ final class ButtonGridHelper {
     private func createButtonActions(buttonCount: Int) {
         buttonActions.removeAll() // clear out any actions
         
+        let cypherplayServerOption = VPNServerOption(findServer: ConnectionHelper.findFastest, type: .CypherPlay)
+        cypherplayServerOption.cypherplay = true
+        
+        let fastestServerOption = VPNServerOption(findServer: ConnectionHelper.findFastest, type: .Fastest)
+        let noopServerOption = VPNServerOption(findServer: {(nil) -> Region? in return nil }, type: .Server)
+        
+        let fastestUSOption = VPNServerOption(findServer: ConnectionHelper.findFastest, type: .FastestUS, country: "US")
+        let fastestUKOption = VPNServerOption(findServer: ConnectionHelper.findFastest, type: .FastestUK, country: "UK")
+        
         // all layouts have a cyperplay, fastest, and server list
-        let cyperplayAction = ButtonAction(type: .CypherPlay, server: nil, favorite: false, recent: false)
+        let cyperplayAction = ButtonAction(type: .CypherPlay, favorite: false, recent: false, vpnServerOption: cypherplayServerOption)
         buttonActions.append(cyperplayAction) // this is always first
         
-        let fastestAction = ButtonAction(type: .Fastest, server: nil, favorite: false, recent: false)
+        let fastestAction = ButtonAction(type: .Fastest, favorite: false, recent: false, vpnServerOption: fastestServerOption)
         
-        let serverList = ButtonAction(type: .ServerList, server: nil, favorite: false, recent: false)
+        let serverList = ButtonAction(type: .ServerList, favorite: false, recent: false, vpnServerOption: noopServerOption)
         
         if (buttonCount == 3) {
             buttonActions.append(fastestAction)
@@ -69,10 +79,10 @@ final class ButtonGridHelper {
             }
             else {
                 // append empty button action because no locations were available
-                buttonActions.append(ButtonAction(type: .SavedServer, server: nil, favorite: false, recent: false))
+                buttonActions.append(ButtonAction(type: .SavedServer, favorite: false, recent: false, vpnServerOption: noopServerOption))
             }
             
-            let fastestUS = ButtonAction(type: .FastestUS, server: nil, favorite: false, recent: false)
+            let fastestUS = ButtonAction(type: .FastestUS, favorite: false, recent: false, vpnServerOption: fastestUSOption)
             buttonActions.append(fastestUS)
             
             // Second user based location
@@ -81,10 +91,10 @@ final class ButtonGridHelper {
             }
             else {
                 // append empty button action because no locations were available
-                buttonActions.append(ButtonAction(type: .SavedServer, server: nil, favorite: false, recent: false))
+                buttonActions.append(ButtonAction(type: .SavedServer, favorite: false, recent: false, vpnServerOption: noopServerOption))
             }
             
-            let fastestUK = ButtonAction(type: .FastestUK, server: nil, favorite: false, recent: false)
+            let fastestUK = ButtonAction(type: .FastestUK, favorite: false, recent: false, vpnServerOption: fastestUKOption)
             buttonActions.append(fastestUK)
         }
         
@@ -223,7 +233,7 @@ final class ButtonGridHelper {
     private func locationCell(indexPath: IndexPath, collectionView: UICollectionView, action: ButtonAction) -> MenuGridCollectionViewCell {
         let menuGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuGridCell", for: indexPath) as! MenuGridCollectionViewCell
         
-        if let server = action.server {
+        if let server = action.vpnServerOption.getServer() {
             menuGridCell.iconView.image = UIImage(named: (server.country.lowercased()))
             
             let nameComponents = server.name.components(separatedBy: ",")
@@ -256,24 +266,30 @@ final class ButtonGridHelper {
 
         for favorite in favorites {
             regions.append(favorite)
-            regionButtonActions.append(ButtonAction(type: .SavedServer, server: favorite, favorite: true, recent: false))
+            let option = VPNServerOption(findServer: {(nil) -> Region? in return favorite }, type: .Server)
+            regionButtonActions.append(ButtonAction(type: .SavedServer, favorite: true, recent: false, vpnServerOption: option))
             
             if regions.count == count {
                 break;
             }
         }
         
+        let notFavoritePredicate = NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "isFavorite = true"))
+        let notDeveloperPredicate = NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level = 'developer'"))
+        let authorizedPredicate = NSPredicate(format: "authorized = true")
+        
         if regions.count < count {
             var predicates = [NSPredicate]()
-            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "isFavorite = true")))
+            predicates.append(notFavoritePredicate)
             predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "lastConnectedDate = %@", Date(timeIntervalSince1970: 1) as CVarArg)))
-            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level = 'developer'")))
+            predicates.append(notDeveloperPredicate)
             
             let recent = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "lastConnectedDate", ascending: false)
             
             for region in recent {
                 regions.append(region)
-                regionButtonActions.append(ButtonAction(type: .SavedServer, server: region, favorite: false, recent: true))
+                let option = VPNServerOption(findServer: {(nil) -> Region? in return region }, type: .Server)
+                regionButtonActions.append(ButtonAction(type: .SavedServer, favorite: false, recent: true, vpnServerOption: option))
                 
                 if regions.count == count {
                     break;
@@ -283,9 +299,9 @@ final class ButtonGridHelper {
         
         if regions.count < count {
             var predicates = [NSPredicate]()
-            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "isFavorite = true")))
-            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level = 'developer'")))
-            predicates.append(NSPredicate(format: "authorized = true"))
+            predicates.append(notFavoritePredicate)
+            predicates.append(notDeveloperPredicate)
+            predicates.append(authorizedPredicate)
             
             // exclude the regions already added
             let regionIds = regions.map({ (region) -> String in
@@ -297,7 +313,8 @@ final class ButtonGridHelper {
             
             for region in closest {
                 regions.append(region)
-                regionButtonActions.append(ButtonAction(type: .SavedServer, server: region, favorite: false, recent: false))
+                let option = VPNServerOption(findServer: {(nil) -> Region? in return region }, type: .Server)
+                regionButtonActions.append(ButtonAction(type: .SavedServer, favorite: false, recent: false, vpnServerOption: option))
                 
                 if regions.count == count {
                     break;

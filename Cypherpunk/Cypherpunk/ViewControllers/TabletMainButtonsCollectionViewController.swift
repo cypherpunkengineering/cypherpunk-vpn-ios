@@ -121,9 +121,9 @@ class TabletMainButtonsCollectionViewController: UICollectionViewController {
         case 1:
             ConnectionHelper.connectToFastest(cypherplay: false)
         case 2:
-            ConnectionHelper.connectToFastestUS()
+            ConnectionHelper.connectToFastest(cypherplay: false, country: "US")
         case 3:
-            ConnectionHelper.connectToFastestUK()
+            ConnectionHelper.connectToFastest(cypherplay: false, country: "GB")
         default:
             break
         }

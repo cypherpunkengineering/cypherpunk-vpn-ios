@@ -29,50 +29,27 @@ class ConnectionHelper {
             })
         }
     }
-    
-    static func connectToFastest(cypherplay: Bool) {
+        
+    static func findFastest(_ country: String? = nil) -> Region? {
         var region: Region? = nil
         
-        let predicates = baseRegionQueryPredicates()
+        var predicates = baseRegionQueryPredicates()
+        
+        // check if a country was provided, if so restrict the query by it
+        if let unwrappedCountry = country {
+            predicates.append(NSPredicate(format: "country = '\(unwrappedCountry)'"))
+        }
         
         let realm = try! Realm()
         let regions = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds")
         
         region = regions.first
-        if (region != nil) {
-            ConnectionHelper.connectTo(region: region!, cypherplay: cypherplay)
-        }
+        return region
     }
     
-    static func connectToFastestUS() {
-        var region: Region? = nil
-        
-        var predicates = baseRegionQueryPredicates()
-        // fastest US will restrict query to servers that have country set to US
-        predicates.append(NSPredicate(format: "country = 'US'"))
-        
-        let realm = try! Realm()
-        
-        region = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds").first
-        
-        if (region != nil) {
-            ConnectionHelper.connectTo(region: region!, cypherplay: false)
-        }
-    }
-    
-    static func connectToFastestUK() {
-        var region: Region? = nil
-        
-        var predicates = baseRegionQueryPredicates()
-        // fastest UK will restrict query to servers that have country set to GB
-        predicates.append(NSPredicate(format: "country = 'GB'"))
-        
-        let realm = try! Realm()
-        
-        region = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "latencySeconds").first
-        
-        if (region != nil) {
-            ConnectionHelper.connectTo(region: region!, cypherplay: false)
+    static func connectToFastest(cypherplay: Bool, country: String? = nil) {
+        if let region = findFastest(country) {
+            ConnectionHelper.connectTo(region: region, cypherplay: cypherplay)
         }
     }
     

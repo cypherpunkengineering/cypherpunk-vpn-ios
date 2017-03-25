@@ -15,10 +15,13 @@ import NetworkExtension
  It has multiple selection enabled but does not actually allow multiple cells to be selected at once. The reason for this is so that a server button can be selected and the server list button will still be clickable.
  **/
 
-class MainButtonsCollectionViewController: UICollectionViewController {
+class MainButtonsCollectionViewController: UICollectionViewController, VPNStateResponder {
     var delegate: MainButtonsDelegate?
     
     private let gridHelper = ButtonGridHelper.sharedInstance
+    private let vpnStateController = VPNStateController.sharedInstance
+    private var lastSelectedServerOption: VPNServerOption?
+    private var lastSelectedButtonAction: ButtonAction?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +39,10 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionUpdateNotificationKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleRegionSelectedNotification), name: NSNotification.Name(rawValue: regionSelectedNotificationKey), object: nil)
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleVpnStatusChanged),
-            name: NSNotification.Name.NEVPNStatusDidChange,
-            object: nil
-        )
-        
         // allowing multiple selection so a button can be selected and server list can be selected. will enforce single selection in code.
         self.collectionView?.allowsMultipleSelection = true
+        
+        vpnStateController.addResponder(vpnStateResponder: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,14 +59,6 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         for indexPath in selectedIndexPaths! {
             self.collectionView?.deselectItem(at: indexPath, animated: true)
         }
-    }
-    
-    func handleVpnStatusChanged(_ notification: Notification) {
-        guard let connection = notification.object as? NEVPNConnection else {
-            return
-        }
-//        let status = connection.status
-        // TODO what should be done here?
     }
 
     /*
@@ -102,7 +92,7 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         
         var selectable = true
         // if there isn't a server defined so don't allow it to be selected
-        if action.type == .SavedServer && action.server == nil {
+        if action.type == .SavedServer && action.vpnServerOption.getServer() == nil {
             selectable = false
         }
         return selectable
@@ -110,7 +100,8 @@ class MainButtonsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         // prevent selected cells from being tapped on again and be deselected
-        return false
+//        return false
+        return true
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -123,20 +114,20 @@ class MainButtonsCollectionViewController: UICollectionViewController {
         }
         else {
             // allow only the newly selected cell to be selected
-            deselectAllOtherCells(indexPathToKeep: indexPath)
+//            deselectAllOtherCells(indexPathToKeep: indexPath)
         }
         
         switch (action.type) {
         case .CypherPlay:
-            ConnectionHelper.connectToFastest(cypherplay: true)
-        case .Fastest:
-            ConnectionHelper.connectToFastest(cypherplay: false)
-        case .FastestUS:
-            ConnectionHelper.connectToFastestUS()
-        case .FastestUK:
-            ConnectionHelper.connectToFastestUK()
+//            action.vpnServerOption.connect(cypherplay: true)
+            lastSelectedServerOption = action.vpnServerOption
+            lastSelectedButtonAction = action
+            vpnStateController.connect(newOption: action.vpnServerOption)
+        case .Fastest, .FastestUS, .FastestUK:
+//            action.vpnServerOption.connect(cypherplay: false)
+            vpnStateController.connect(newOption: action.vpnServerOption)
         case .SavedServer:
-            if let server = action.server {
+            if let server = action.vpnServerOption.getServer() {
                 ConnectionHelper.connectTo(region: server, cypherplay: false)
             }
         case .ServerList:
@@ -151,6 +142,27 @@ class MainButtonsCollectionViewController: UICollectionViewController {
                 collectionView?.deselectItem(at: selectedIndexPath, animated: true)
             }
         }
+    }
+    
+    // MARK: VPNStateResponder
+    func connected(disconnectedOption: VPNServerOption?, connectedOption: VPNServerOption?) {
+        let selectedIndexPaths = collectionView?.indexPathsForSelectedItems
+        selectedIndexPaths?.forEach({ (indexPath) in
+            let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
+            if action.vpnServerOption != connectedOption {
+                collectionView?.deselectItem(at: indexPath, animated: true)
+            }
+        })
+    }
+    
+    func disconnected(disconnectedOption: VPNServerOption?) {
+        let selectedIndexPaths = collectionView?.indexPathsForSelectedItems
+        selectedIndexPaths?.forEach({ (indexPath) in
+            let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
+            if action.vpnServerOption == disconnectedOption {
+                collectionView?.deselectItem(at: indexPath, animated: true)
+            }
+        })
     }
 }
 
