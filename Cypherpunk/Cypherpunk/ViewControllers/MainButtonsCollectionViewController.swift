@@ -119,17 +119,12 @@ class MainButtonsCollectionViewController: UICollectionViewController, VPNStateR
         
         switch (action.type) {
         case .CypherPlay:
-//            action.vpnServerOption.connect(cypherplay: true)
             lastSelectedServerOption = action.vpnServerOption
             lastSelectedButtonAction = action
             vpnStateController.connect(newOption: action.vpnServerOption)
         case .Fastest, .FastestUS, .FastestUK:
-//            action.vpnServerOption.connect(cypherplay: false)
             vpnStateController.connect(newOption: action.vpnServerOption)
         case .SavedServer:
-//            if let server = action.vpnServerOption.getServer() {
-//                ConnectionHelper.connectTo(region: server, cypherplay: false)
-//            }
             vpnStateController.connect(newOption: action.vpnServerOption)
         case .ServerList:
             delegate?.showServerList()
@@ -146,11 +141,31 @@ class MainButtonsCollectionViewController: UICollectionViewController, VPNStateR
     }
     
     // MARK: VPNStateResponder
+    func connecting(disconnectedOption: VPNServerOption?, connectingOption: VPNServerOption?) {
+        let selectedIndexPaths = collectionView?.indexPathsForSelectedItems
+        selectedIndexPaths?.forEach({ (indexPath) in
+            let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
+            if action.vpnServerOption != connectingOption {
+                collectionView?.deselectItem(at: indexPath, animated: true)
+            }
+        })
+    }
+    
     func connected(disconnectedOption: VPNServerOption?, connectedOption: VPNServerOption?) {
         let selectedIndexPaths = collectionView?.indexPathsForSelectedItems
         selectedIndexPaths?.forEach({ (indexPath) in
             let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
             if action.vpnServerOption != connectedOption {
+                collectionView?.deselectItem(at: indexPath, animated: true)
+            }
+        })
+    }
+    
+    func disconnecting(disconnectingOption: VPNServerOption?) {
+        let selectedIndexPaths = collectionView?.indexPathsForSelectedItems
+        selectedIndexPaths?.forEach({ (indexPath) in
+            let action = gridHelper.buttonActionForCellAt(indexPath: indexPath)
+            if action.vpnServerOption == disconnectingOption {
                 collectionView?.deselectItem(at: indexPath, animated: true)
             }
         })

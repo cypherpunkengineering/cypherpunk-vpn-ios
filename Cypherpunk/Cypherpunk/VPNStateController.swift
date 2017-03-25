@@ -48,6 +48,10 @@ final class VPNStateController: UIResponder {
             })
         case .connecting:
             print()
+        case .disconnecting:
+            responders.forEach({ (responder) in
+                responder.disconnecting(disconnectingOption: activeServerOption)
+            })
         case .disconnected:
             responders.forEach({ (responder) in
                 responder.disconnected(disconnectedOption: activeServerOption)
@@ -79,7 +83,7 @@ final class VPNStateController: UIResponder {
     
     func connect(newOption: VPNServerOption) {
         // if the VPN is connected, disconnect it
-        if VPNConfigurationCoordinator.isConnected {
+        if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting {
             connectAfterDisconnectOption = newOption
             VPNConfigurationCoordinator.disconnect()
         }
@@ -95,7 +99,7 @@ final class VPNStateController: UIResponder {
     func disconnect() {
 //        previousServerOption = activeServerOption
 //        activeServerOption = nil
-        
+        VPNConfigurationCoordinator.disconnect()
         disconnectingServerOption = activeServerOption
     }
     

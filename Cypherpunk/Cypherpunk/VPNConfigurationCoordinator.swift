@@ -237,6 +237,10 @@ open class VPNConfigurationCoordinator {
         return false
     }
     
+    class var isConnecting: Bool {
+        return NEVPNManager.shared().connection.status == .connecting
+    }
+    
     private class func generateLocalIdentifier() -> String {
         let settingsState = mainStore.state.settingsState
         

@@ -218,7 +218,8 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
             self.updateViewWithVPNStatus(.disconnected)
         }
         
-        VPNConfigurationCoordinator.disconnect()
+//        VPNConfigurationCoordinator.disconnect()
+        VPNStateController.sharedInstance.disconnect()
     }
 
     func newState(state: AppState) {
