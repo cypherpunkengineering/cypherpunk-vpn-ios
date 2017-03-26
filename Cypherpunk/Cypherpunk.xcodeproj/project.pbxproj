@@ -19,6 +19,7 @@
 		0959A50E1E69879A00A95A49 /* PlanCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A50D1E69879A00A95A49 /* PlanCollectionViewController.swift */; };
 		0959A5171E69883D00A95A49 /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */; };
 		0959A5181E69883D00A95A49 /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */; };
+		095DB96D1E87C1E200A3E874 /* UIDevice+Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */; };
 		0967D5051E41D97100CA392D /* MainButtonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */; };
 		0967D5071E41DC0A00CA392D /* ButtonGridHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */; };
 		0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0967D5091E42D72100CA392D /* ActionButtons.storyboard */; };
@@ -188,6 +189,7 @@
 		0959A50D1E69879A00A95A49 /* PlanCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewController.swift; sourceTree = "<group>"; };
 		0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
+		095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Simulator.swift"; sourceTree = "<group>"; };
 		0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButtonsCollectionViewController.swift; sourceTree = "<group>"; };
 		0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonGridHelper.swift; path = Cypherpunk/Helper/ButtonGridHelper.swift; sourceTree = SOURCE_ROOT; };
 		0967D5091E42D72100CA392D /* ActionButtons.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActionButtons.storyboard; sourceTree = "<group>"; };
@@ -724,6 +726,7 @@
 				2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */,
 				2073AE311DE44A300090B472 /* UIPageControl+Disable.h */,
 				2073AE321DE44A300090B472 /* UIPageControl+Disable.m */,
+				095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1315,6 +1318,7 @@
 				0910AE481E7BFC93003802DB /* VPNServerOption.swift in Sources */,
 				09DF43AF1E4E6D2100937469 /* RegionTableHeaderView.swift in Sources */,
 				09ACCDCA1E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift in Sources */,
+				095DB96D1E87C1E200A3E874 /* UIDevice+Simulator.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
 				2B73C7111D5C85EF0090FF8B /* AnimationViewController.swift in Sources */,
 				20D895EE1D1D16FB002B9F9D /* R.generated.swift in Sources */,
@@ -1516,6 +1520,7 @@
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
+				"OTHER_SWIFT_FLAGS[sdk=iphonesimulator*]" = "$(inherited) \"-D\" \"IOS_SIMULATOR\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cypherpunk.privacy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

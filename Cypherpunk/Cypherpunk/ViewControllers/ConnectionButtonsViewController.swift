@@ -201,7 +201,7 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
 
     @IBAction func connectAction(_ sender: UIButton) {
         
-        if TARGET_OS_SIMULATOR != 0 {
+        if UIDevice.current.isSimulator {
             mainStore.dispatch(RegionAction.connect)
             self.updateViewWithVPNStatus(.connected)
         } else {
@@ -214,7 +214,7 @@ class ConnectionButtonsViewController: UIViewController, StoreSubscriber {
     }
     
     @IBAction func cancelAction(_ sender: AnyObject) {
-        if TARGET_OS_SIMULATOR != 0 {
+        if UIDevice.current.isSimulator {
             self.updateViewWithVPNStatus(.disconnected)
         }
         

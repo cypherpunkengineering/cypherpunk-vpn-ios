@@ -75,7 +75,7 @@ class SettingUpYourVPNViewController: UIViewController {
     */
 
     @IBAction func allowAction(_ sender: AnyObject) {
-        if TARGET_OS_SIMULATOR != 0 {
+        if UIDevice.current.isSimulator {
             mainStore.dispatch(AppAction.VPNInstalled)
             NotificationCenter.default.removeObserver(self)
             performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
