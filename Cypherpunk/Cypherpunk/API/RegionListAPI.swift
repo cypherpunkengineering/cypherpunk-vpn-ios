@@ -97,7 +97,10 @@ struct RegionListRequest: Request {
                 
                 let oldRegions = realm.objects(Region.self).filter("NOT (id IN %@)", regionIds)
                 realm.delete(oldRegions)
-                mainStore.state.regionState.serverPinger.updateLatencyForServers()
+                
+                if !VPNConfigurationCoordinator.isConnected {
+                    mainStore.state.regionState.serverPinger.updateLatencyForServers()
+                }
             })
             
         } else {

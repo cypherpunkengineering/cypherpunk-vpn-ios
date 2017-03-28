@@ -43,6 +43,7 @@ final class VPNStateController: UIResponder {
         
         switch status {
         case .connected:
+            mainStore.state.regionState.serverPinger.cancelPinging()
             responders.forEach({ (responder) in
                 responder.connected(disconnectedOption: previousServerOption, connectedOption: activeServerOption)
             })

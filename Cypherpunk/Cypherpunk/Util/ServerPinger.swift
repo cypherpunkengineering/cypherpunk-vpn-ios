@@ -12,6 +12,7 @@ import RealmSwift
 class ServerPinger : NSObject, GBPingDelegate {
     private var serversDone: Int = 0
     private var delegates = [PingHandler]()
+    private var pingers = [GBPing]()
     
 //    init() {
 //
@@ -26,6 +27,19 @@ class ServerPinger : NSObject, GBPingDelegate {
         
         for server in servers {
             ping(server: server)
+        }
+    }
+    
+    func cancelPinging() {
+        // Stops pinging servers and disregards any results that may have already returned
+        let pingersToStop = pingers // make a copy of the pingers to stop
+        
+        delegates.removeAll()
+        pingers.removeAll()
+        
+        pingersToStop.forEach { (pinger) in
+            pinger.delegate = nil
+            pinger.stop()
         }
     }
     
