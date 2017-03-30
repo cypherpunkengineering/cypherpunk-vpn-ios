@@ -20,6 +20,8 @@
 		0959A5171E69883D00A95A49 /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */; };
 		0959A5181E69883D00A95A49 /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */; };
 		095DB96D1E87C1E200A3E874 /* UIDevice+Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */; };
+		095DB9701E8A53F800A3E874 /* SevenButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DB96E1E8A53F800A3E874 /* SevenButtonViewController.swift */; };
+		095DB9711E8A53F800A3E874 /* SevenButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 095DB96F1E8A53F800A3E874 /* SevenButtonViewController.xib */; };
 		0967D5051E41D97100CA392D /* MainButtonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */; };
 		0967D5071E41DC0A00CA392D /* ButtonGridHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */; };
 		0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0967D5091E42D72100CA392D /* ActionButtons.storyboard */; };
@@ -32,6 +34,8 @@
 		09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796A611E49456D00CBF912 /* ServerPinger.swift */; };
 		0985F0941E43434B00737D64 /* FastestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */; };
 		0985F0951E43434B00737D64 /* FastestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */; };
+		099FE7281E8A6AC50017CF89 /* BaseButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099FE7271E8A6AC50017CF89 /* BaseButtonsViewController.swift */; };
+		099FE72A1E8A6EA30017CF89 /* MainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099FE7291E8A6EA30017CF89 /* MainButtonView.swift */; };
 		09ACCDBB1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACCDBA1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift */; };
 		09ACCDCA1E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACCDC81E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift */; };
 		09ACCDCB1E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDC91E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib */; };
@@ -190,6 +194,8 @@
 		0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
 		095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Simulator.swift"; sourceTree = "<group>"; };
+		095DB96E1E8A53F800A3E874 /* SevenButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SevenButtonViewController.swift; path = Cypherpunk/ViewControllers/SevenButtonViewController.swift; sourceTree = SOURCE_ROOT; };
+		095DB96F1E8A53F800A3E874 /* SevenButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SevenButtonViewController.xib; path = Cypherpunk/ViewControllers/SevenButtonViewController.xib; sourceTree = SOURCE_ROOT; };
 		0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButtonsCollectionViewController.swift; sourceTree = "<group>"; };
 		0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonGridHelper.swift; path = Cypherpunk/Helper/ButtonGridHelper.swift; sourceTree = SOURCE_ROOT; };
 		0967D5091E42D72100CA392D /* ActionButtons.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActionButtons.storyboard; sourceTree = "<group>"; };
@@ -202,6 +208,8 @@
 		09796A611E49456D00CBF912 /* ServerPinger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerPinger.swift; path = Util/ServerPinger.swift; sourceTree = "<group>"; };
 		0985F0921E43434B00737D64 /* FastestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastestCollectionViewCell.swift; path = Buttons/FastestCollectionViewCell.swift; sourceTree = "<group>"; };
 		0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FastestCollectionViewCell.xib; path = Buttons/FastestCollectionViewCell.xib; sourceTree = "<group>"; };
+		099FE7271E8A6AC50017CF89 /* BaseButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButtonsViewController.swift; sourceTree = "<group>"; };
+		099FE7291E8A6EA30017CF89 /* MainButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainButtonView.swift; path = Buttons/MainButtonView.swift; sourceTree = "<group>"; };
 		09ACCDBA1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletMainButtonsCollectionViewController.swift; sourceTree = "<group>"; };
 		09ACCDC81E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabletButtonCollectionViewCell.swift; path = Cypherpunk/View/Buttons/TabletButtonCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		09ACCDC91E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabletButtonCollectionViewCell.xib; path = Cypherpunk/View/Buttons/TabletButtonCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -398,6 +406,7 @@
 				0985F0931E43434B00737D64 /* FastestCollectionViewCell.xib */,
 				09796A5C1E46765500CBF912 /* MenuGridCollectionViewCell.swift */,
 				09796A5D1E46765500CBF912 /* MenuGridCollectionViewCell.xib */,
+				099FE7291E8A6EA30017CF89 /* MainButtonView.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -610,12 +619,15 @@
 		20845B541DEEAB010066A906 /* Top */ = {
 			isa = PBXGroup;
 			children = (
+				095DB96E1E8A53F800A3E874 /* SevenButtonViewController.swift */,
+				095DB96F1E8A53F800A3E874 /* SevenButtonViewController.xib */,
 				2B6798E81DAC979F00099064 /* PadTopRootViewController.swift */,
 				20EC4A331D2F785600785399 /* RegionSelectViewController.swift */,
 				2B73C7101D5C85EF0090FF8B /* AnimationViewController.swift */,
 				2092AF7F1DACC2B400F77031 /* ConnectionButtonsViewController.swift */,
 				0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */,
 				09ACCDBA1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift */,
+				099FE7271E8A6AC50017CF89 /* BaseButtonsViewController.swift */,
 			);
 			name = Top;
 			sourceTree = "<group>";
@@ -940,6 +952,7 @@
 				2B2DE2851DA6530800C22098 /* VPNProtocol.storyboard in Resources */,
 				2060BF861DE815A8000025BD /* PadMenu.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
+				095DB9711E8A53F800A3E874 /* SevenButtonViewController.xib in Resources */,
 				2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */,
 				0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */,
 				09796A5F1E46765500CBF912 /* MenuGridCollectionViewCell.xib in Resources */,
@@ -1257,6 +1270,7 @@
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
 				2065DD0B1DB8D9A500D0F446 /* CongraturationsViewController.swift in Sources */,
+				099FE7281E8A6AC50017CF89 /* BaseButtonsViewController.swift in Sources */,
 				20BF04D31DB8B8E30007B633 /* SettingUpYourVPNViewController.swift in Sources */,
 				2060BF881DE81C85000025BD /* PadMenuTableViewController.swift in Sources */,
 				2BDBD0CC1D651D6700080E67 /* UpdateEmailTableViewController.swift in Sources */,
@@ -1298,10 +1312,12 @@
 				20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */,
 				09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */,
 				2BDBD0D01D65286D00080E67 /* EditingRootViewController.swift in Sources */,
+				099FE72A1E8A6EA30017CF89 /* MainButtonView.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */,
 				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
+				095DB9701E8A53F800A3E874 /* SevenButtonViewController.swift in Sources */,
 				205EE3241DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift in Sources */,
 				0985F0941E43434B00737D64 /* FastestCollectionViewCell.swift in Sources */,
 				203F4EF51D5AFC9B00EA2536 /* ThemedBackgroundView.swift in Sources */,

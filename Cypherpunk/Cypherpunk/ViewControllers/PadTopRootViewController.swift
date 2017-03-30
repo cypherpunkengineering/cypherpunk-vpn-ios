@@ -24,7 +24,7 @@ extension NEVPNStatus: CustomStringConvertible {
     }
 }
 
-class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelectionDelegate, MainButtonsDelegate {
+class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelectionDelegate, ButtonsDelegate {
     
     @IBOutlet weak var animationContainerView: UIView!
     @IBOutlet weak var connectionActionView: UIView!
@@ -79,6 +79,8 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
         }
         
         self.connectionButtonsConstraint?.constant = CGFloat(ButtonGridHelper.sharedInstance.heightForButtonGrid())
+        
+        loadButtonViewController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -213,11 +215,6 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
             
             regionSelectViewController.delegate = self
         }
-        else if (segue.identifier == "EmbedButtonView") {
-            let buttonViewController = segue.destination as! MainButtonsCollectionViewController
-            
-            buttonViewController.delegate = self
-        }
     }
     
     func getVisibleSize() -> CGSize {
@@ -243,6 +240,30 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
         }
         
         return result
+    }
+    
+    private func loadButtonViewController() {
+        let buttonViewController = R.storyboard.actionButtons.instantiateInitialViewController()
+        self.addChildViewController(buttonViewController!)
+        buttonViewController?.view.frame = CGRect(x: 0, y: 0, width: buttonView.frame.width, height: buttonView.frame.height)
+        
+        self.buttonView.addSubview((buttonViewController?.view)!)
+        
+        buttonView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: buttonViewController?.view as Any, attribute: .leading, relatedBy: .equal, toItem: buttonView, attribute: .leadingMargin, multiplier: 1.0, constant: 0.0).isActive = true
+        
+        NSLayoutConstraint(item: buttonViewController?.view! as Any, attribute: .trailing, relatedBy: .equal, toItem: buttonView, attribute: .trailingMargin, multiplier: 1.0, constant: 0.0).isActive = true
+        
+        NSLayoutConstraint(item: buttonViewController?.view! as Any, attribute: .top, relatedBy: .equal, toItem: buttonView, attribute: .topMargin, multiplier: 1.0, constant:0.0).isActive = true
+        
+        NSLayoutConstraint(item: buttonViewController?.view! as Any, attribute: .bottom, relatedBy: .equal, toItem: buttonView, attribute: .bottomMargin, multiplier: 1.0, constant:0.0).isActive = true
+        
+        buttonView.layoutIfNeeded()
+        
+        buttonViewController?.didMove(toParentViewController: self)
+        
+        buttonViewController?.delegate = self
     }
     
     // MARK: RegionSelectionDelegate

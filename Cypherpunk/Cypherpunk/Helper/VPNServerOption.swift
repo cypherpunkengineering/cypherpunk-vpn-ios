@@ -13,6 +13,8 @@ enum VPNServerOptionType: String {
     case FastestUS
     case FastestUK
     case Server
+    case Location1
+    case Location2
 }
 
 class VPNServerOption : Equatable {
