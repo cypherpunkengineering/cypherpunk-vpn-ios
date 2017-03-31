@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,19 +88,26 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAt-GE-8uZ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="colorHelmetBig" translatesAutoresizingMaskIntoConstraints="NO" id="U9x-b7-0rs">
-                                        <rect key="frame" x="133" y="126" width="55" height="76"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bk-overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="VTo-cJ-lwf">
+                                        <rect key="frame" x="76" y="20" width="167" height="539"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="headerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="h6z-JE-4ND">
-                                        <rect key="frame" x="84" y="224" width="153" height="32"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen-illustration.png" translatesAutoresizingMaskIntoConstraints="NO" id="tHL-TB-faf">
+                                        <rect key="frame" x="38.5" y="10" width="242" height="460"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="tHL-TB-faf" secondAttribute="height" multiplier="129:245" id="Nc6-Da-b7x"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="490" id="aoF-BY-x0l"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.08235294118" green="0.37647058820000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.050980392156862744" green="0.11764705882352941" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="h6z-JE-4ND" firstAttribute="centerY" secondItem="VAt-GE-8uZ" secondAttribute="centerY" id="VFc-aE-XdC"/>
-                                    <constraint firstItem="h6z-JE-4ND" firstAttribute="top" secondItem="U9x-b7-0rs" secondAttribute="bottom" constant="22" id="jUm-S9-ajz"/>
-                                    <constraint firstItem="h6z-JE-4ND" firstAttribute="centerX" secondItem="VAt-GE-8uZ" secondAttribute="centerX" id="q3C-fG-qiI"/>
-                                    <constraint firstItem="U9x-b7-0rs" firstAttribute="centerX" secondItem="VAt-GE-8uZ" secondAttribute="centerX" id="z7H-Nl-Hiq"/>
+                                    <constraint firstItem="tHL-TB-faf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VAt-GE-8uZ" secondAttribute="top" constant="10" id="FYE-i1-Wra"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tHL-TB-faf" secondAttribute="bottom" constant="10" id="KeL-Od-u40"/>
+                                    <constraint firstItem="VTo-cJ-lwf" firstAttribute="centerX" secondItem="VAt-GE-8uZ" secondAttribute="centerX" id="cgs-NE-Yqq"/>
+                                    <constraint firstItem="VTo-cJ-lwf" firstAttribute="width" secondItem="tHL-TB-faf" secondAttribute="height" multiplier="59:163" id="hDh-eL-lLy"/>
+                                    <constraint firstItem="tHL-TB-faf" firstAttribute="centerY" secondItem="VAt-GE-8uZ" secondAttribute="centerY" id="kVU-7J-GtT"/>
+                                    <constraint firstItem="tHL-TB-faf" firstAttribute="centerX" secondItem="VAt-GE-8uZ" secondAttribute="centerX" id="p0W-rJ-gyp"/>
+                                    <constraint firstItem="VTo-cJ-lwf" firstAttribute="top" secondItem="tHL-TB-faf" secondAttribute="bottom" constant="-450" id="wy5-Lx-VJc"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -600,7 +608,7 @@
         <scene sceneID="wDI-YT-LlJ">
             <objects>
                 <navigationController id="TzT-qx-x3D" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Vid-Qw-1d6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Vid-Qw-1d6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -621,7 +629,7 @@
         <scene sceneID="B8l-cx-2OE">
             <objects>
                 <navigationController storyboardIdentifier="AccountNavigation" id="uXO-7N-wwL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="quD-bl-a9g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="quD-bl-a9g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -695,17 +703,17 @@
         </scene>
     </scenes>
     <resources>
-        <image name="colorHelmetBig" width="55" height="76"/>
+        <image name="bk-overlay.png" width="177" height="539"/>
         <image name="connectHelmetBg" width="93" height="89"/>
         <image name="connectHelmetConnect" width="123" height="141"/>
         <image name="connectHelmetConnecting" width="123" height="141"/>
         <image name="connectHelmetDisconnect" width="123" height="141"/>
         <image name="headerIconAccount" width="21" height="24"/>
         <image name="headerIconSettings" width="22" height="22"/>
-        <image name="headerLogo" width="153" height="32"/>
         <image name="locationArrowDown" width="16" height="9"/>
         <image name="locationFlagDev" width="27" height="18"/>
         <image name="locationFlagPremium" width="50" height="18"/>
+        <image name="splashscreen-illustration.png" width="257" height="489"/>
         <image name="us" width="24" height="24"/>
     </resources>
 </document>
