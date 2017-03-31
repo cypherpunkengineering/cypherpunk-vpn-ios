@@ -139,7 +139,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
     func updateView(withVPNStatus status: NEVPNStatus) {
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             if status == .invalid {
-                if TARGET_OS_SIMULATOR == 0 {
+                if UIDevice.current.isSimulator {
                     connectionActionView.isHidden = true
                     locationActionView.isHidden = true
                     animationContainerView.isHidden = true
@@ -256,10 +256,6 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
             // iPhone 6 and above
             buttonViewController = SevenButtonViewController(nibName: "SevenButtonViewController", bundle: Bundle.main)
         }
-    
-//        let mainViewController = MainViewController(nibName: "MainViewController", bundle: nil)
-        
-//        let buttonViewController = R.storyboard.actionButtons.instantiateInitialViewController()
         
         self.addChildViewController(buttonViewController!)
         buttonViewController?.view.frame = CGRect(x: 0, y: 0, width: buttonView.frame.width, height: buttonView.frame.height)
