@@ -78,7 +78,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
             regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
         
-        self.connectionButtonsConstraint?.constant = CGFloat(ButtonGridHelper.sharedInstance.heightForButtonGrid())
+        self.connectionButtonsConstraint?.constant = CGFloat(heightForButtonGrid())
         
         loadButtonViewController()
     }
@@ -277,6 +277,16 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
         buttonViewController?.didMove(toParentViewController: self)
         
         buttonViewController?.delegate = self
+    }
+    
+    func heightForButtonGrid() -> Int {
+        if (UIScreen.main.bounds.height < 568) {
+            // assume iPhone 4s size
+            return 100
+        }
+        else {
+            return 200
+        }
     }
     
     // MARK: RegionSelectionDelegate
