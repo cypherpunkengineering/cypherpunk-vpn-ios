@@ -45,7 +45,7 @@ class IndicatorView: UIView {
     fileprivate func startAnimation() {
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0.0
-        animation.toValue = M_PI * 2
+        animation.toValue = Double.pi * 2
         animation.duration = 2
         animation.isCumulative = true
         animation.repeatCount = Float.infinity

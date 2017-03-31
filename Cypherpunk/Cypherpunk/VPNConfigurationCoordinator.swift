@@ -180,10 +180,10 @@ open class VPNConfigurationCoordinator {
 
             do {
                 if #available(iOS 9.0, *) {
-                    print("Starting VPN tunnel to \(manager.protocolConfiguration?.serverAddress)")
+                    print("Starting VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
                 } else {
                     // Fallback on earlier versions
-                    print("Starting VPN tunnel to \(manager.protocol?.serverAddress)")
+                    print("Starting VPN tunnel to \(String(describing: manager.protocol?.serverAddress))")
                 }
                 try manager.connection.startVPNTunnel()
             } catch NEVPNError.configurationInvalid {
@@ -216,10 +216,10 @@ open class VPNConfigurationCoordinator {
             
         })
         if #available(iOS 9.0, *) {
-            print("Stopping VPN tunnel to \(manager.protocolConfiguration?.serverAddress)")
+            print("Stopping VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
         } else {
             // Fallback on earlier versions
-            print("Stopping VPN tunnel to \(manager.protocol?.serverAddress)")
+            print("Stopping VPN tunnel to \(String(describing: manager.protocol?.serverAddress))")
         }
         manager.connection.stopVPNTunnel()
     }

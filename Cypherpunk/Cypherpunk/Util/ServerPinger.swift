@@ -59,7 +59,7 @@ class ServerPinger : NSObject, GBPingDelegate {
                 self.delegates.append(delegate)
             }
             else {
-                print("Failed to setup pinger for \(hostname) - \(error)")
+                print("Failed to setup pinger for \(hostname) - \(String(describing: error))")
             }
         })
     }
