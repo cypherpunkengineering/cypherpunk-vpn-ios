@@ -26,7 +26,6 @@
 		095DB9711E8A53F800A3E874 /* SevenButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 095DB96F1E8A53F800A3E874 /* SevenButtonViewController.xib */; };
 		0967D5051E41D97100CA392D /* MainButtonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */; };
 		0967D5071E41DC0A00CA392D /* ButtonGridHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */; };
-		0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0967D5091E42D72100CA392D /* ActionButtons.storyboard */; };
 		0967D50D1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967D50B1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift */; };
 		0967D50E1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0967D50C1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib */; };
 		0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */; };
@@ -204,7 +203,6 @@
 		095DB96F1E8A53F800A3E874 /* SevenButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SevenButtonViewController.xib; path = Cypherpunk/ViewControllers/SevenButtonViewController.xib; sourceTree = SOURCE_ROOT; };
 		0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButtonsCollectionViewController.swift; sourceTree = "<group>"; };
 		0967D5061E41DC0A00CA392D /* ButtonGridHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonGridHelper.swift; path = Cypherpunk/Helper/ButtonGridHelper.swift; sourceTree = SOURCE_ROOT; };
-		0967D5091E42D72100CA392D /* ActionButtons.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActionButtons.storyboard; sourceTree = "<group>"; };
 		0967D50B1E42D8A900CA392D /* CypherPlayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CypherPlayCollectionViewCell.swift; path = Buttons/CypherPlayCollectionViewCell.swift; sourceTree = "<group>"; };
 		0967D50C1E42D8A900CA392D /* CypherPlayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CypherPlayCollectionViewCell.xib; path = Buttons/CypherPlayCollectionViewCell.xib; sourceTree = "<group>"; };
 		0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = Cypherpunk/View/MenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -698,7 +696,6 @@
 				2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */,
 				2B2DE27C1DA4D06500C22098 /* Top_iPad.storyboard */,
 				2B6798E41DAC0FB600099064 /* FirstOpen_iPad.storyboard */,
-				0967D5091E42D72100CA392D /* ActionButtons.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -968,7 +965,6 @@
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
 				095DB9711E8A53F800A3E874 /* SevenButtonViewController.xib in Resources */,
 				2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */,
-				0967D50A1E42D72100CA392D /* ActionButtons.storyboard in Resources */,
 				09796A5F1E46765500CBF912 /* MenuGridCollectionViewCell.xib in Resources */,
 				09ACCDCF1E71892E00AF3E4F /* splashscreen-illustration.png in Resources */,
 				20DA369B1DB5E6C1003F4999 /* Inconsolata-Regular.ttf in Resources */,
