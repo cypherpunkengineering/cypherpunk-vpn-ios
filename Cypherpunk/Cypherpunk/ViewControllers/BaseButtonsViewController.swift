@@ -30,8 +30,21 @@ class BaseButtonsViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initialize()
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        initialize()
+    }
+    
+    private func initialize() {
         layoutType = determineButtonLayoutType()
         createVPNServerOptions()
+        
+        // listen for notifictions
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionUpdateNotificationKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRegionSelectedNotification), name: NSNotification.Name(rawValue: regionSelectedNotificationKey), object: nil)
     }
 
     override func viewDidLoad() {
@@ -60,6 +73,14 @@ class BaseButtonsViewController: UIViewController {
         }
     }
     
+    func handleRegionUpdateNotification() {
+        updateLocationButtons()
+    }
+    
+    func handleRegionSelectedNotification() {
+        
+    }
+    
     private func createVPNServerOptions() {
         var newVPNServerOptions = [VPNServerOptionType: VPNServerOption]()
         
@@ -77,7 +98,7 @@ class BaseButtonsViewController: UIViewController {
         newVPNServerOptions[.FastestUS] = fastestUSOption
         newVPNServerOptions[.FastestUK] = fastestUKOption
         
-        if layoutType == .Seven {
+        if layoutType == .Seven || layoutType == .Five {
             // need to find 2 locations to show
             newVPNServerOptions = createUserLocationsOptions(newVPNServerOptions)
         }
@@ -170,6 +191,10 @@ class BaseButtonsViewController: UIViewController {
         }
         
         return modifiedVPNOptions
+    }
+    
+    func updateLocationButtons() {
+        // empty for base class, subclasses can override if neccessary
     }
 
     /*

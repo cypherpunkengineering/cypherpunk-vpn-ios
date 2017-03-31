@@ -243,7 +243,24 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
     }
     
     private func loadButtonViewController() {
-        let buttonViewController = R.storyboard.actionButtons.instantiateInitialViewController()
+        var buttonViewController: BaseButtonsViewController?
+        
+        if (UIScreen.main.bounds.height < 568) {
+            // assume iPhone 4s size
+            buttonViewController = SevenButtonViewController(nibName: "SevenButtonViewController", bundle: Bundle.main)
+        }
+        else if (UIScreen.main.bounds.height < 667) {
+            buttonViewController = FiveButtonViewController(nibName: "FiveButtonViewController", bundle: Bundle.main)
+        }
+        else {
+            // iPhone 6 and above
+            buttonViewController = SevenButtonViewController(nibName: "SevenButtonViewController", bundle: Bundle.main)
+        }
+    
+//        let mainViewController = MainViewController(nibName: "MainViewController", bundle: nil)
+        
+//        let buttonViewController = R.storyboard.actionButtons.instantiateInitialViewController()
+        
         self.addChildViewController(buttonViewController!)
         buttonViewController?.view.frame = CGRect(x: 0, y: 0, width: buttonView.frame.width, height: buttonView.frame.height)
         

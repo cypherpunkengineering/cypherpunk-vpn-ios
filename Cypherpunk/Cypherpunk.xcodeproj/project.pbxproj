@@ -45,6 +45,8 @@
 		09ACCDD31E71894F00AF3E4F /* bk-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */; };
 		09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */; };
 		09DF43AF1E4E6D2100937469 /* RegionTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */; };
+		09EA58C91E8CC0FE0045297A /* FiveButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA58C71E8CC0FE0045297A /* FiveButtonViewController.swift */; };
+		09EA58CA1E8CC0FE0045297A /* FiveButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EA58C81E8CC0FE0045297A /* FiveButtonViewController.xib */; };
 		20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20073E0C1D9E387400BCD690 /* RateAppViewController.swift */; };
 		200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200A0B011D9E29BB00D59249 /* RateApp.storyboard */; };
 		2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */; };
@@ -219,6 +221,8 @@
 		09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay@2x.png"; sourceTree = "<group>"; };
 		09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationTableViewCell.swift; sourceTree = "<group>"; };
 		09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionTableHeaderView.swift; sourceTree = "<group>"; };
+		09EA58C71E8CC0FE0045297A /* FiveButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiveButtonViewController.swift; sourceTree = "<group>"; };
+		09EA58C81E8CC0FE0045297A /* FiveButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiveButtonViewController.xib; sourceTree = "<group>"; };
 		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
 		20073E0C1D9E387400BCD690 /* RateAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateAppViewController.swift; sourceTree = "<group>"; };
 		200A0B011D9E29BB00D59249 /* RateApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RateApp.storyboard; sourceTree = "<group>"; };
@@ -628,6 +632,8 @@
 				0967D5041E41D97100CA392D /* MainButtonsCollectionViewController.swift */,
 				09ACCDBA1E7159BB00AF3E4F /* TabletMainButtonsCollectionViewController.swift */,
 				099FE7271E8A6AC50017CF89 /* BaseButtonsViewController.swift */,
+				09EA58C71E8CC0FE0045297A /* FiveButtonViewController.swift */,
+				09EA58C81E8CC0FE0045297A /* FiveButtonViewController.xib */,
 			);
 			name = Top;
 			sourceTree = "<group>";
@@ -925,6 +931,7 @@
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
 				203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */,
 				2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */,
+				09EA58CA1E8CC0FE0045297A /* FiveButtonViewController.xib in Resources */,
 				2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */,
 				09ACCDCB1E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
@@ -1289,6 +1296,7 @@
 				2B95C9191DC7749900F79A2D /* SignUpAPI.swift in Sources */,
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
 				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
+				09EA58C91E8CC0FE0045297A /* FiveButtonViewController.swift in Sources */,
 				201809E61D5B394900730FA4 /* ThemedTableViewCell.swift in Sources */,
 				2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */,
 				2033FB451DB89E4D004D14B7 /* LoadingAnimationView.swift in Sources */,
