@@ -247,7 +247,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
         
         if (UIScreen.main.bounds.height < 568) {
             // assume iPhone 4s size
-            buttonViewController = SevenButtonViewController(nibName: "SevenButtonViewController", bundle: Bundle.main)
+            buttonViewController = ThreeButtonViewController(nibName: "ThreeButtonViewController", bundle: Bundle.main)
         }
         else if (UIScreen.main.bounds.height < 667) {
             buttonViewController = FiveButtonViewController(nibName: "FiveButtonViewController", bundle: Bundle.main)
