@@ -98,6 +98,8 @@ struct RegionListRequest: Request {
                 let oldRegions = realm.objects(Region.self).filter("NOT (id IN %@)", regionIds)
                 realm.delete(oldRegions)
                 
+                checkLastConnectedServer()
+
                 if !VPNConfigurationCoordinator.isConnected {
                     mainStore.state.regionState.serverPinger.updateLatencyForServers()
                 }
@@ -110,6 +112,32 @@ struct RegionListRequest: Request {
     
     var dataParser: DataParser {
         return JSONDataParser(readingOptions: [])
+    }
+    
+    private func checkLastConnectedServer() {
+        let realm = try! Realm()
+        
+        // check that the selected server is still available
+        let lastSelectedRegionId = mainStore.state.regionState.lastSelectedRegionId
+        if let lastSelectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelectedRegionId) {
+            // found the region, check if authorized
+            if !lastSelectedRegion.authorized {
+                setFastestToLastConnected()
+            }
+        }
+        else {
+            setFastestToLastConnected()
+        }
+    }
+    
+    private func setFastestToLastConnected() {
+        // set to fastest
+        if let fastestRegion = ConnectionHelper.findFastest() {
+            mainStore.dispatch(RegionAction.changeRegion(regionId: fastestRegion.id, name: fastestRegion.name, serverIP: fastestRegion.ipsecHostname, countryCode: fastestRegion.country, remoteIdentifier: fastestRegion.ipsecHostname, level: fastestRegion.level))
+        }
+        else {
+            mainStore.dispatch(RegionAction.changeRegion(regionId: "", name: "", serverIP: "", countryCode: "", remoteIdentifier: "", level: ""))
+        }
     }
 }
 
