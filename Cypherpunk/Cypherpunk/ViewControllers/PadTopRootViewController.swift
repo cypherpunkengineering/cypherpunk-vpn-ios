@@ -80,7 +80,10 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
         
         self.connectionButtonsConstraint?.constant = CGFloat(heightForButtonGrid())
         
-        loadButtonViewController()
+        
+        if UI_USER_INTERFACE_IDIOM() == .phone {
+            loadButtonViewController()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
