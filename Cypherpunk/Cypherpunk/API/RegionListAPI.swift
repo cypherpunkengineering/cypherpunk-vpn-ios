@@ -118,8 +118,7 @@ struct RegionListRequest: Request {
         let realm = try! Realm()
         
         // check that the selected server is still available
-        let lastSelectedRegionId = mainStore.state.regionState.lastSelectedRegionId
-        if let lastSelectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelectedRegionId) {
+        if let lastSelectedRegionId = mainStore.state.regionState.lastSelectedRegionId, let lastSelectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelectedRegionId) {
             // found the region, check if authorized
             if !lastSelectedRegion.authorized {
                 setFastestToLastConnected()
