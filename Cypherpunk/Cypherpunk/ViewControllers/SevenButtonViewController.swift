@@ -45,29 +45,11 @@ class SevenButtonViewController: BaseButtonsViewController {
     
     override func updateLocationButtons() {
         if let loc1Option = vpnServerOptions[.Location1] {
-            if let server = loc1Option.getServer() {
-                loc1ButtonView.iconView.image = UIImage(named: server.country.lowercased())
-                
-                let nameComponents = server.name.components(separatedBy: ",")
-                loc1ButtonView.textLabel.text = nameComponents.first
-            }
-            else {
-                loc1ButtonView.iconView.image = nil
-                loc1ButtonView.textLabel.text = ""
-            }
+            populateButtonViewWithLocationOption(option: loc1Option, view: loc1ButtonView)
         }
         
         if let loc2Option = vpnServerOptions[.Location2] {
-            if let server = loc2Option.getServer() {
-                loc2ButtonView.iconView.image = UIImage(named: server.country.lowercased())
-                
-                let nameComponents = server.name.components(separatedBy: ",")
-                loc2ButtonView.textLabel.text = nameComponents.first
-            }
-            else {
-                loc2ButtonView.iconView.image = nil
-                loc2ButtonView.textLabel.text = ""
-            }
+            populateButtonViewWithLocationOption(option: loc2Option, view: loc2ButtonView)
         }
     }
 

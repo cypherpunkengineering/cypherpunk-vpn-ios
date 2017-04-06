@@ -197,16 +197,6 @@ class BaseButtonsViewController: UIViewController {
     func updateLocationButtons() {
         // empty for base class, subclasses can override if neccessary
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func connectToServer(vpnServerOptionType: VPNServerOptionType) {
         if let option = vpnServerOptions[vpnServerOptionType] {
@@ -216,5 +206,18 @@ class BaseButtonsViewController: UIViewController {
     
     func showServerList() {
         delegate?.showServerList()
+    }
+    
+    func populateButtonViewWithLocationOption(option: VPNServerOption, view: MainButtonView) {
+        if let server = option.getServer() {
+            view.iconView.image = UIImage(named: server.country.lowercased())
+            
+            let nameComponents = server.name.components(separatedBy: ",")
+            view.textLabel.text = nameComponents.first
+        }
+        else {
+            view.iconView.image = nil
+            view.textLabel.text = ""
+        }
     }
 }
