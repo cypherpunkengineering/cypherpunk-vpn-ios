@@ -67,5 +67,71 @@ class ConnectionHelper {
         
         return predicates
     }
+    
+    static func getUserLocations(count: Int) -> [Region] {
+        var regions = [Region]()
+        
+        let realm = try! Realm()
+        let favorites = realm.objects(Region.self).filter("isFavorite = true").sorted(byKeyPath: "lastConnectedDate", ascending: false)
+        
+        // check for favorites
+        for favorite in favorites {
+            if regions.count < count {
+                regions.append(favorite)
+            }
+            else {
+                break
+            }
+        }
+        
+        let notFavoritePredicate = NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "isFavorite = true"))
+        let notDeveloperPredicate = NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level = 'developer'"))
+        let authorizedPredicate = NSPredicate(format: "authorized = true")
+        
+        // check for recently connected
+        if regions.count < count {
+            var predicates = [NSPredicate]()
+            predicates.append(notFavoritePredicate)
+            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "lastConnectedDate = %@", Date(timeIntervalSince1970: 1) as CVarArg)))
+            predicates.append(notDeveloperPredicate)
+            
+            let recent = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "lastConnectedDate", ascending: false)
+            
+            for region in recent {
+                if regions.count < count {
+                    regions.append(region)
+                }
+                else {
+                    break
+                }
+            }
+        }
+        
+        // if there weren't enough recently connected or favorites, just find closest servers
+        if regions.count < count {
+            var predicates = [NSPredicate]()
+            predicates.append(notFavoritePredicate)
+            predicates.append(notDeveloperPredicate)
+            predicates.append(authorizedPredicate)
+            
+            // exclude the regions already added
+            let regionIds = regions.map({ (region) -> String in
+                region.id
+            })
+            predicates.append(NSPredicate(format: "NOT id IN %@", regionIds))
+            
+            let closest = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
+            
+            for region in closest {
+                if regions.count < count {
+                    regions.append(region)
+                }
+                else {
+                    break
+                }
+            }
+        }
+        return regions
+    }
 }
 

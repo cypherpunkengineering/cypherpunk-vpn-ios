@@ -50,48 +50,6 @@
 		<string>Dosis-Regular.otf</string>
 		<string>Dosis-SemiBold.otf</string>
 	</array>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>3DmenuConnect</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Connect</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).First</string>
-			<key>UIApplicationShortcutItemUserInfo</key>
-			<dict>
-				<key>firstShorcutKey1</key>
-				<string>firstShortcutKeyValue1</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>3DmenuAccount</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Fastest Location</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Second</string>
-			<key>UIApplicationShortcutItemUserInfo</key>
-			<dict>
-				<key>secondShortcutKey1</key>
-				<string>secondShortcutValue1</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>3DmenuShare</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Share Cypherpunk</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Second</string>
-			<key>UIApplicationShortcutItemUserInfo</key>
-			<dict>
-				<key>secondShortcutKey1</key>
-				<string>secondShortcutValue1</string>
-			</dict>
-		</dict>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
