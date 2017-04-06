@@ -74,6 +74,7 @@ class BaseButtonsViewController: UIViewController {
     }
     
     func handleRegionUpdateNotification() {
+        vpnServerOptions = createUserLocationsOptions(vpnServerOptions)
         updateLocationButtons()
     }
     
