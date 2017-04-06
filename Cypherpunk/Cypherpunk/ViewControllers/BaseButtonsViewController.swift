@@ -110,82 +110,21 @@ class BaseButtonsViewController: UIViewController {
     private func createUserLocationsOptions(_ vpnOptionsDict: [VPNServerOptionType: VPNServerOption]) -> [VPNServerOptionType: VPNServerOption] {
         var modifiedVPNOptions = vpnOptionsDict
         
-        let count = 2
+        let regions = ConnectionHelper.getUserLocations(count: 2)
         
         let noopServerOption = VPNServerOption(findServer: {(nil) -> Region? in return nil }, type: .Server)
         
-        let realm = try! Realm()
-        var serverOptions = [VPNServerOption]()
-        
-        let favorites = realm.objects(Region.self).filter("isFavorite = true").sorted(byKeyPath: "lastConnectedDate", ascending: false)
-
-        // check for favorites
-        for favorite in favorites {
-            let option = VPNServerOption(findServer: {(nil) -> Region? in return favorite }, type: .Server)
-            serverOptions.append(option)
-
-            if serverOptions.count == count {
-                break;
-            }
-        }
-        
-        let notFavoritePredicate = NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "isFavorite = true"))
-        let notDeveloperPredicate = NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "level = 'developer'"))
-        let authorizedPredicate = NSPredicate(format: "authorized = true")
-
-        // check for recently connected
-        if serverOptions.count < count {
-            var predicates = [NSPredicate]()
-            predicates.append(notFavoritePredicate)
-            predicates.append(NSCompoundPredicate(notPredicateWithSubpredicate: NSPredicate(format: "lastConnectedDate = %@", Date(timeIntervalSince1970: 1) as CVarArg)))
-            predicates.append(notDeveloperPredicate)
-
-            let recent = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).sorted(byKeyPath: "lastConnectedDate", ascending: false)
-
-            for region in recent {
-                let option = VPNServerOption(findServer: {(nil) -> Region? in return region }, type: .Server)
-                serverOptions.append(option)
-
-                if serverOptions.count == count {
-                    break;
-                }
-            }
-        }
-
-        // if there weren't enough recently connected or favorites, just find closest servers
-        if serverOptions.count < count {
-            var predicates = [NSPredicate]()
-            predicates.append(notFavoritePredicate)
-            predicates.append(notDeveloperPredicate)
-            predicates.append(authorizedPredicate)
-
-            // exclude the regions already added
-            let regionIds = serverOptions.map({ (serverOption) -> String in
-                (serverOption.getServer()?.id)!
-            })
-            predicates.append(NSPredicate(format: "NOT id IN %@", regionIds))
-
-            let closest = realm.objects(Region.self).filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
-
-            for region in closest {
-                let option = VPNServerOption(findServer: {(nil) -> Region? in return region }, type: .Server)
-                serverOptions.append(option)
-                
-                if serverOptions.count == count {
-                    break;
-                }
-            }
-        }
-        
-        if let firstOption = serverOptions.first {
-            modifiedVPNOptions[.Location1] = firstOption
+        if let region = regions.first {
+            let option = VPNServerOption(findServer: {(nil) -> Region? in return region }, type: .Server)
+            modifiedVPNOptions[.Location1] = option
         }
         else {
             modifiedVPNOptions[.Location1] = noopServerOption
         }
-        
-        if serverOptions.count > 1 {
-            modifiedVPNOptions[.Location2] = serverOptions[1]
+
+        if regions.count > 1 {
+            let option = VPNServerOption(findServer: {(nil) -> Region? in return regions[1] }, type: .Server)
+            modifiedVPNOptions[.Location2] = option
         }
         else {
             modifiedVPNOptions[.Location2] = noopServerOption
