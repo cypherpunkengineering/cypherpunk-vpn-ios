@@ -31,7 +31,6 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
     @IBOutlet weak var locationActionView: UIView!
     @IBOutlet weak var contentsSeparatorView: UIView?
     
-    @IBOutlet weak var regionButton: UIButton?
     @IBOutlet weak var expandArrowImageView: UIImageView?
     
     @IBOutlet weak var devLocationIconView: UIImageView?
@@ -72,11 +71,6 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
-                
-        if let state = mainStore.state {
-            regionButton?.setTitle(state.regionState.title, for: .normal)
-            regionButton?.setImage(UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal), for: .normal)
-        }
         
         self.connectionButtonsConstraint?.constant = CGFloat(heightForButtonGrid())
         
@@ -163,7 +157,6 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
     }
     
     func newState(state: AppState) {
-        regionButton?.setTitle(state.regionState.title, for: .normal)
         regionTitleLabel?.text = state.regionState.title
         regionFlagImageView?.image = UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal)
         premiumLocationIconWidthConstraint?.constant = 0.0

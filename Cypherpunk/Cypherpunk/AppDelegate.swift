@@ -200,8 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // install the shortcut items
         registerShortcutItems(application)
         
-        return true
-//        return shouldPerformAdditionalDelegateHandling
+        return shouldPerformAdditionalDelegateHandling
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
