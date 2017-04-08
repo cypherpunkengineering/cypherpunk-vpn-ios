@@ -91,10 +91,10 @@ class TabletMainButtonsCollectionViewController: UICollectionViewController {
         // Configure the cell
         switch indexPath.item {
         case 0:
-            cell?.imageView.image = R.image.topButtonKey()
+            cell?.imageView.image = R.image.cypherPlay()
             cell?.titleLabel.text = "CypherPlay™"
         case 1:
-            cell?.imageView.image = R.image.topButtonRocket()
+            cell?.imageView.image = R.image.fastestServer()
             cell?.titleLabel.text = "Fastest Server"
         case 2:
             cell?.imageView.image = R.image.us()
