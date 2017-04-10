@@ -28,11 +28,11 @@ PODS:
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
   - ReachabilitySwift (3)
-  - Realm (2.4.2):
-    - Realm/Headers (= 2.4.2)
-  - Realm/Headers (2.4.2)
-  - RealmSwift (2.4.2):
-    - Realm (= 2.4.2)
+  - Realm (2.5.1):
+    - Realm/Headers (= 2.5.1)
+  - Realm/Headers (2.5.1)
+  - RealmSwift (2.5.1):
+    - Realm (= 2.5.1)
   - Result (3.1.0)
   - ReSwift (3.0.0)
   - SVProgressHUD (2.1.2)
@@ -122,8 +122,8 @@ SPEC CHECKSUMS:
   R.swift: 207a372a2b5977caef440c696a368009460641d1
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
-  RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
+  Realm: 32f86104d37c8521f864d4274050b38ba6190733
+  RealmSwift: f719e7511c902b8908593e8f143f59e47931bdb6
   Result: 7bf0849344f557cd4beee129c876965e4bbdd7dd
   ReSwift: 00add9a3eb1b5c93a3728ea88393de390ef6ddff
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
