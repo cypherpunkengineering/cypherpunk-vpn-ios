@@ -17,7 +17,7 @@ target 'Cypherpunk' do
        pod 'UITextView+Placeholder', '~> 1.2'
        pod 'FontAwesome.swift'
        pod 'Firebase/Core'
-       pod 'TTTAttributedLabel'
+       pod 'TTTAttributedLabel', :git => 'https://github.com/TTTAttributedLabel/TTTAttributedLabel.git'
        pod 'GBPing'
 end
 

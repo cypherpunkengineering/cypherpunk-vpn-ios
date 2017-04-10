@@ -54,7 +54,7 @@ DEPENDENCIES:
   - ReSwift (from `https://github.com/ReSwift/ReSwift.git`)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`)
-  - TTTAttributedLabel
+  - TTTAttributedLabel (from `https://github.com/TTTAttributedLabel/TTTAttributedLabel.git`)
   - UITextView+Placeholder (~> 1.2)
 
 EXTERNAL SOURCES:
@@ -74,6 +74,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
   SwiftyStoreKit:
     :git: https://github.com/bizz84/SwiftyStoreKit.git
+  TTTAttributedLabel:
+    :git: https://github.com/TTTAttributedLabel/TTTAttributedLabel.git
 
 CHECKOUT OPTIONS:
   APIKit:
@@ -100,6 +102,9 @@ CHECKOUT OPTIONS:
   SwiftyStoreKit:
     :commit: eb3c9061a83f61f4926ffab6faf7861c9b088220
     :git: https://github.com/bizz84/SwiftyStoreKit.git
+  TTTAttributedLabel:
+    :commit: b0f1f93d5d4368a7aaf52e848013a1b40b00dc3c
+    :git: https://github.com/TTTAttributedLabel/TTTAttributedLabel.git
 
 SPEC CHECKSUMS:
   APIKit: 923b510c13eb4d977d2d0ffcd51c88e9dfe7a74a
@@ -126,6 +131,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 043bf0f34bc9b686066608d6c66427dfc317c05e
+PODFILE CHECKSUM: 17779cb167e60c5467efa765903ca18c5c6db1d4
 
 COCOAPODS: 1.1.1
