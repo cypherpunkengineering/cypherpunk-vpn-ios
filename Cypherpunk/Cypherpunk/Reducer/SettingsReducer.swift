@@ -34,6 +34,8 @@ struct SettingsReducer {
                 state.cypherplayOn = isOn
                 // do not show user the dialog if we are changing cypherplay setting
                 suppressReconnectDialog = true
+            case .alwaysOn(let isOn):
+                state.alwaysOn = isOn
             }
             
             let isConnected = VPNConfigurationCoordinator.isConnected

@@ -18,4 +18,5 @@ enum SettingsAction: Action {
     case blockAds(block: Bool)
     case blockMalware(block: Bool)
     case cypherplayOn(isOn: Bool)
+    case alwaysOn(isOn: Bool)
 }

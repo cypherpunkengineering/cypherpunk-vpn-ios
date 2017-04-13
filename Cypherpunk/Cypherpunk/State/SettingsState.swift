@@ -133,7 +133,21 @@ struct SettingsState: StateType {
         }
     }
     
-
+    var alwaysOn : Bool {
+        get {
+            if !mainStore.state.isInstalledPreferences {
+                return false
+            }
+            
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.alwaysOn] ?? "false").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.alwaysOn] = String(newValue)
+        }
+    }
+    
 
     fileprivate struct SettingsStateKey {
         static let vpnProtocolMode = "vpnProtocolMode"
@@ -142,5 +156,6 @@ struct SettingsState: StateType {
         static let blockAds = "blockAds"
         static let blockMalware = "blockMalware"
         static let cypherplayOn = "cypherplayOn"
+        static let alwaysOn = "alwaysOn"
     }
 }

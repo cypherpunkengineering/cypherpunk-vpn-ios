@@ -23,6 +23,7 @@ class WifiNetworks: Object {
 class ManageTrustedNetworksTableViewController: UITableViewController {
 
     private enum Section: Int {
+        case alwaysOn
         case autoSecure
         case otherNetworks
         case wifiNetworks
@@ -75,7 +76,7 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,6 +85,8 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         }
 
         switch section {
+        case .alwaysOn:
+            return 1
         case .autoSecure:
             return 1
         case .otherNetworks:
@@ -102,6 +105,10 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         }
         
         switch section {
+        case .alwaysOn:
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.alwaysOn, for: indexPath)
+            cell?.isTrustedSwitch.isOn = mainStore.state.settingsState.alwaysOn
+            return cell!
         case .autoSecure:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.autoSecure, for: indexPath)
             cell?.isTrustedSwitch.isOn = mainStore.state.settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork
@@ -131,6 +138,8 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         titleLabel = UILabel(frame: CGRect(x: 15, y: 5, width: 300, height: 17))
 
         switch section {
+        case .alwaysOn:
+            return nil
         case .autoSecure:
             titleLabel.text = "AUTO-SECURE"
 
@@ -168,6 +177,8 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         let section = Section(rawValue: section)!
         
         switch section {
+        case .alwaysOn:
+            return 0.0
         case .autoSecure:
             return 80.0
         case .otherNetworks:
@@ -175,6 +186,11 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         case .wifiNetworks:
             return 80.0
         }
+    }
+    
+    
+    @IBAction func valueChangedOfAlwaysOnProtection(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.alwaysOn(isOn: sender.isOn))
     }
     
     @IBAction func valueChangedOfAutoSecureSwitchAction(_ sender: UISwitch) {
