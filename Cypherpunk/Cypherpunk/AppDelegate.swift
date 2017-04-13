@@ -315,14 +315,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             items.append(connectShortcut)
             
-            let cypherplayShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Cypherplay.type, localizedTitle: "CypherPlay™", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "cypher-play"), userInfo: [
+            let cypherplayShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Cypherplay.type, localizedTitle: "CypherPlay™", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "cypherplay70x70"), userInfo: [
                 AppDelegate.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Cypherplay.rawValue
                 ]
             )
             
             items.append(cypherplayShortcut)
             
-            let fastestShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Cypherplay.type, localizedTitle: "Fastest Server", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "fastest server"), userInfo: [
+            let fastestShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Cypherplay.type, localizedTitle: "Fastest Server", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "fastest-server70x70"), userInfo: [
                 AppDelegate.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Fastest.rawValue
                 ]
             )
@@ -333,7 +333,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if regions.count > 0 {
                 let region = regions.first
                 let nameComponents = region?.name.components(separatedBy: ",")
-                let locationShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Location.type, localizedTitle: (nameComponents?.first)!, localizedSubtitle: "", icon: nil, userInfo: [
+                let locationShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Location.type, localizedTitle: (nameComponents?.first)!, localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "location70x70"), userInfo: [
                     AppDelegate.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Location.rawValue,
                     AppDelegate.applicationShortcutUserInfoServerKey: region?.id as Any
                     ]
