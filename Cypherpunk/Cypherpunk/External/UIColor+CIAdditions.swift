@@ -47,4 +47,8 @@ extension UIColor {
     class var niceBlue: UIColor {
         return UIColor(red: 25.0 / 255.0, green: 135.0 / 255.0, blue: 189.0 / 255.0, alpha: 1.0)
     }
+    
+    class var greenyBlue: UIColor {
+        return UIColor(red: 80.0 / 255.0, green: 174.0 / 255.0, blue: 183.0 / 255.0, alpha: 1.0)
+    }
 }

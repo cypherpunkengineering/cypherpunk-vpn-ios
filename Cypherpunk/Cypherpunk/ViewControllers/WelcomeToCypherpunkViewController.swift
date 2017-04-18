@@ -27,14 +27,13 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
     @IBOutlet weak var inputField: ThemedTextField!
     @IBOutlet weak var actionButton: UIButton!
     
-    @IBOutlet weak var inputContainerView: UIView!
-    
     @IBOutlet weak var loadingAnimationView: LoadingAnimationView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var termOfServiceAndPrivacyPolicyView: UIView!
     @IBOutlet weak var termsLabel: TTTAttributedLabel!
     
     @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var illustrationView: UIImageView!
     fileprivate var email: String = ""
     
     fileprivate var state: State = .getStarted
@@ -48,7 +47,6 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         ]
         let forgotPasswordAttributed = NSAttributedString(string: "Forgot Password?", attributes: attributes)
         forgotPasswordButton?.setAttributedTitle(forgotPasswordAttributed, for: .normal)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,9 +55,11 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         loadingAnimationView.startAnimation()
         
         self.state = .getStarted
-        self.welcomeLabel.text = "Welcome to Cypherpunk"
-        self.inputField.placeholder = "Type your email"
+        self.welcomeLabel.text = "Please enter your email to begin"
+        setPlaceholderText("Type your email")
         self.inputField.text = self.email
+        
+        
         self.actionButton.isEnabled = isValidMailAddress(inputField.text!)
         self.actionButton.setTitle("Get Started", for: .normal)
         self.actionButton.setTitleColor(UIColor.lightGray, for: .disabled)
@@ -67,7 +67,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         self.inputField.keyboardType = .emailAddress
         self.inputField.returnKeyType = UIReturnKeyType.next
         self.welcomeLabel.alpha = 1.0
-        self.inputContainerView.alpha = 1.0
+        self.inputField.alpha = 1.0
         self.actionButton.alpha = 1.0
         self.backButton.alpha = 0.0
         self.forgotPasswordButton.alpha = 0.0
@@ -131,7 +131,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
     func startAnimation() {
         UIView.animate(withDuration: 0.3, animations: {
             self.welcomeLabel.alpha = 0.0
-            self.inputContainerView.alpha = 0.0
+            self.inputField.alpha = 1.0
             self.actionButton.alpha = 0.0
             self.loadingAnimationView.alpha = 1.0
             self.backButton.alpha = 0.0
@@ -142,17 +142,15 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
             case .getStarted:
                 break
             case .logIn:
-                self.welcomeLabel.text = "Welcome back!"
-                self.inputField.placeholder = "Type your password"
-                self.inputField.text = ""
+                self.welcomeLabel.text = "Please enter your password to login"
+                self.setPlaceholderText("Type your password")
                 self.actionButton.setTitle("Log In", for: .normal)
                 self.inputField.isSecureTextEntry = true
                 self.inputField.returnKeyType = UIReturnKeyType.send
 //                self.inputField.becomeFirstResponder()
             case .signUp:
-                self.welcomeLabel.text = "Hello!\nPlease set your password"
-                self.inputField.placeholder = "Type your password"
-                self.inputField.text = ""
+                self.welcomeLabel.text = "Please create a password to begin"
+                self.setPlaceholderText("Type your password")
                 self.actionButton.setTitle("Sign Up", for: .normal)
                 self.inputField.isSecureTextEntry = true
                 self.inputField.returnKeyType = UIReturnKeyType.send
@@ -165,8 +163,8 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                 DispatchQueue.main.async {
                     switch self.state {
                     case .getStarted:
-                        self.welcomeLabel.text = "Welcome to Cypherpunk"
-                        self.inputField.placeholder = "Type your email"
+                        self.welcomeLabel.text = "Please enter your email to begin"
+                        self.setPlaceholderText("Type your email")
                         self.inputField.text = self.email
                         self.actionButton.isEnabled = isValidMailAddress(self.inputField.text!)
                         self.actionButton.setTitle("Get Started", for: .normal)
@@ -174,24 +172,35 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                         self.inputField.isSecureTextEntry = false
                         self.inputField.returnKeyType = UIReturnKeyType.next
                         
+                        UIView.transition(with: self.illustrationView,
+                                          duration: 0.3,
+                                          options: .transitionCrossDissolve,
+                                          animations: { self.illustrationView.image = UIImage(named: "illustWelcome") },
+                                          completion: nil)
+                        
                         UIView.animate(withDuration: 0.3, animations: {
                             self.welcomeLabel.alpha = 1.0
-                            self.inputContainerView.alpha = 1.0
+                            self.inputField.alpha = 1.0
                             self.actionButton.alpha = 1.0
                             self.loadingAnimationView.alpha = 0.0
                         })
                     case .logIn:
-                        self.welcomeLabel.text = "Welcome back!"
-                        self.inputField.placeholder = "Type your password"
-                        self.inputField.text = ""
+                        self.welcomeLabel.text = "Please enter your password to login"
+                        self.setPlaceholderText("Type your password")
                         self.actionButton.isEnabled = false
                         self.actionButton.setTitle("Log In", for: .normal)
+
+                        UIView.transition(with: self.illustrationView,
+                                          duration: 0.3,
+                                          options: .transitionCrossDissolve,
+                                          animations: { self.illustrationView.image = UIImage(named: "illustWelcomeback") },
+                                          completion: nil)
                         self.inputField.isSecureTextEntry = true
                         self.inputField.returnKeyType = UIReturnKeyType.send
 //                        self.inputField.becomeFirstResponder()
                         UIView.animate(withDuration: 0.3, animations: {
                             self.welcomeLabel.alpha = 1.0
-                            self.inputContainerView.alpha = 1.0
+                            self.inputField.alpha = 1.0
                             self.actionButton.alpha = 1.0
                             self.loadingAnimationView.alpha = 0.0
                             self.backButton.alpha = 1.0
@@ -199,33 +208,25 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                             
                         })
                     case .signUp:
-                        self.inputField.placeholder = "Type your password"
-                        self.inputField.text = ""
+                        self.setPlaceholderText("Type your password")
                         self.actionButton.isEnabled = false
                         self.actionButton.setTitle("Sign Up", for: .normal)
+                        
                         self.inputField.isSecureTextEntry = true
                         self.inputField.returnKeyType = UIReturnKeyType.send
 //                        self.inputField.becomeFirstResponder()
                         
-                        // create attributed string
-                        var attributedString : NSMutableAttributedString
+                        self.welcomeLabel.text = "Please create a password to begin"
                         
-                        if UIScreen.main.bounds.height < 568 {
-                            // iPhone 4 height doesn't have enough space for 2 lines of text
-                            attributedString = NSMutableAttributedString(string: "Hello, please set your password")
-                            attributedString.addAttributes([ NSFontAttributeName : UIFont(name: "Dosis-Medium", size: 18)! ], range: NSRange(location: 0, length: attributedString.length))
-                        }
-                        else {
-                            attributedString = NSMutableAttributedString(string: "Hello!\nPlease set your password")
-                            attributedString.addAttributes([ NSFontAttributeName : UIFont(name: "Dosis-Medium", size: 18)! ], range: NSRange(location: 6, length: 25))
-                        }
-                        
-                        self.welcomeLabel.numberOfLines = 0
-                        self.welcomeLabel.attributedText = attributedString
+                        UIView.transition(with: self.illustrationView,
+                                          duration: 0.3,
+                                          options: .transitionCrossDissolve,
+                                          animations: { self.illustrationView.image = UIImage(named: "illustWelcome") },
+                                          completion: nil)
                         
                         UIView.animate(withDuration: 0.3, animations: {
                             self.welcomeLabel.alpha = 1.0
-                            self.inputContainerView.alpha = 1.0
+                            self.inputField.alpha = 1.0
                             self.actionButton.alpha = 1.0
                             self.loadingAnimationView.alpha = 0.0
                             self.backButton.alpha = 1.0
@@ -243,7 +244,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         case .getStarted:
             UIView.animate(withDuration: 0.3, animations: {
                 self.welcomeLabel.alpha = 0.0
-                self.inputContainerView.alpha = 0.0
+                self.inputField.alpha = 0.0
                 self.actionButton.alpha = 0.0
                 self.loadingAnimationView.alpha = 1.0
                 self.backButton.alpha = 0.0
@@ -279,7 +280,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         case .signUp:
             UIView.animate(withDuration: 0.3, animations: {
                 self.welcomeLabel.alpha = 0.0
-                self.inputContainerView.alpha = 0.0
+                self.inputField.alpha = 0.0
                 self.actionButton.alpha = 0.0
                 self.loadingAnimationView.alpha = 1.0
                 self.backButton.alpha = 0.0
@@ -310,7 +311,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         case .logIn:
             UIView.animate(withDuration: 0.3, animations: {
                 self.welcomeLabel.alpha = 0.0
-                self.inputContainerView.alpha = 0.0
+                self.inputField.alpha = 0.0
                 self.actionButton.alpha = 0.0
                 self.loadingAnimationView.alpha = 1.0
                 self.backButton.alpha = 0.0
@@ -336,7 +337,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                                 case .failure:
                                     UIView.animate(withDuration: 0.3, animations: {
                                         self.welcomeLabel.alpha = 1.0
-                                        self.inputContainerView.alpha = 1.0
+                                        self.inputField.alpha = 1.0
                                         self.actionButton.alpha = 1.0
                                         self.loadingAnimationView.alpha = 0.0
                                         self.backButton.alpha = 1.0
@@ -347,7 +348,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                         case .failure:
                             UIView.animate(withDuration: 0.3, animations: {
                                 self.welcomeLabel.alpha = 1.0
-                                self.inputContainerView.alpha = 1.0
+                                self.inputField.alpha = 1.0
                                 self.actionButton.alpha = 1.0
                                 self.loadingAnimationView.alpha = 0.0
                                 self.backButton.alpha = 1.0
@@ -400,6 +401,11 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         }
     }
     
+    private func setPlaceholderText(_ placeholder: String) {
+        let placeholderAttributes = [NSForegroundColorAttributeName: UIColor.greenyBlue]
+        self.inputField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: placeholderAttributes)
+        self.inputField.text = ""
+    }
 }
 
 extension WelcomeToCypherpunkViewController: UITextFieldDelegate {
@@ -436,7 +442,6 @@ extension WelcomeToCypherpunkViewController: UITextFieldDelegate {
         self.actionButton.isEnabled = false
         return true
     }
-    
 }
 
 extension WelcomeToCypherpunkViewController {
