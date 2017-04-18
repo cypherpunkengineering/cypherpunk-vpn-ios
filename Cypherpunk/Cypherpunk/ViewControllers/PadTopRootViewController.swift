@@ -257,19 +257,7 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
         buttonViewController?.view.frame = CGRect(x: 0, y: 0, width: buttonView.frame.width, height: buttonView.frame.height)
         
         self.buttonView.addSubview((buttonViewController?.view)!)
-        
-        buttonView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint(item: buttonViewController?.view as Any, attribute: .leading, relatedBy: .equal, toItem: buttonView, attribute: .leadingMargin, multiplier: 1.0, constant: 0.0).isActive = true
-        
-        NSLayoutConstraint(item: buttonViewController?.view! as Any, attribute: .trailing, relatedBy: .equal, toItem: buttonView, attribute: .trailingMargin, multiplier: 1.0, constant: 0.0).isActive = true
-        
-        NSLayoutConstraint(item: buttonViewController?.view! as Any, attribute: .top, relatedBy: .equal, toItem: buttonView, attribute: .topMargin, multiplier: 1.0, constant:0.0).isActive = true
-        
-        NSLayoutConstraint(item: buttonViewController?.view! as Any, attribute: .bottom, relatedBy: .equal, toItem: buttonView, attribute: .bottomMargin, multiplier: 1.0, constant:0.0).isActive = true
-        
-        buttonView.layoutIfNeeded()
-        
+                
         buttonViewController?.didMove(toParentViewController: self)
         
         buttonViewController?.delegate = self
