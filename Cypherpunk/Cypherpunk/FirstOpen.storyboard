@@ -163,7 +163,7 @@
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmG-ZZ-5OX" customClass="ActiveLabel" customModule="ActiveLabel">
                                 <rect key="frame" x="50.5" y="613" width="274" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-CJ-Dm2" userLabel="Terms Label" customClass="TTTAttributedLabel">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-CJ-Dm2" userLabel="Terms Label" customClass="TTTAttributedLabel">
                                         <rect key="frame" x="-15" y="-12" width="305" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
@@ -323,7 +323,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.10980392160000001" green="0.19215686269999999" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.086274509803921567" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t7N-hB-YoU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DIz-Gg-2QJ" secondAttribute="bottom" priority="750" constant="15" id="2pO-qJ-iTQ"/>
                             <constraint firstItem="jPN-7y-nl4" firstAttribute="centerX" secondItem="R2C-A1-EUr" secondAttribute="centerX" id="LmA-OK-cAv"/>
@@ -439,7 +439,7 @@ reset your password.</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.10980392160000001" green="0.19215686269999999" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.086274509803921567" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="R2H-fg-e8v" firstAttribute="top" secondItem="Rtm-xp-Msg" secondAttribute="bottom" constant="44" id="3VV-YT-emJ"/>
                             <constraint firstItem="Rtm-xp-Msg" firstAttribute="top" secondItem="65p-cw-kyR" secondAttribute="bottom" constant="20" id="6UE-Yq-CxP"/>
