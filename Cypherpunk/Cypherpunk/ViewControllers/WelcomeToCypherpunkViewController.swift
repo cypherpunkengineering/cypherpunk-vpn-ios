@@ -186,12 +186,6 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                         self.inputField.isSecureTextEntry = false
                         self.inputField.returnKeyType = UIReturnKeyType.next
                         
-                        UIView.transition(with: self.illustrationView,
-                                          duration: 0.3,
-                                          options: .transitionCrossDissolve,
-                                          animations: { self.illustrationView.image = UIImage(named: "illustWelcome") },
-                                          completion: nil)
-                        
                         UIView.animate(withDuration: 0.3, animations: {
                             self.welcomeLabel.alpha = 1.0
                             self.inputField.alpha = 1.0
@@ -204,11 +198,6 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                         self.actionButton.isEnabled = false
                         self.actionButton.setTitle("Log In", for: .normal)
 
-                        UIView.transition(with: self.illustrationView,
-                                          duration: 0.3,
-                                          options: .transitionCrossDissolve,
-                                          animations: { self.illustrationView.image = UIImage(named: "illustWelcomeback") },
-                                          completion: nil)
                         self.inputField.isSecureTextEntry = true
                         self.inputField.returnKeyType = UIReturnKeyType.send
 //                        self.inputField.becomeFirstResponder()
@@ -231,13 +220,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
 //                        self.inputField.becomeFirstResponder()
                         
                         self.welcomeLabel.text = "Please create a password to begin"
-                        
-                        UIView.transition(with: self.illustrationView,
-                                          duration: 0.3,
-                                          options: .transitionCrossDissolve,
-                                          animations: { self.illustrationView.image = UIImage(named: "illustWelcome") },
-                                          completion: nil)
-                        
+
                         UIView.animate(withDuration: 0.3, animations: {
                             self.welcomeLabel.alpha = 1.0
                             self.inputField.alpha = 1.0
