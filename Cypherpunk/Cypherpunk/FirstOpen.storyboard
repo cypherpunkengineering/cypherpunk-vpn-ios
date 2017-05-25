@@ -25,7 +25,7 @@
         <scene sceneID="YlT-Gp-oWm">
             <objects>
                 <navigationController navigationBarHidden="YES" id="37O-y4-8Ms" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NdI-vH-ygT" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NdI-vH-ygT" customClass="ThemedNavigationBar" customModule="Cypherpunk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,7 +54,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="700" image="illustWelcome" translatesAutoresizingMaskIntoConstraints="NO" id="i8D-EZ-W4K">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="700" image="illustWelcomeback" translatesAutoresizingMaskIntoConstraints="NO" id="i8D-EZ-W4K">
                                 <rect key="frame" x="0.0" y="35" width="375" height="205"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i8D-EZ-W4K" secondAttribute="height" multiplier="75:41" id="6Dr-NN-IjP"/>
@@ -124,7 +124,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCz-mW-Egf">
-                                <rect key="frame" x="81.5" y="404" width="200" height="50"/>
+                                <rect key="frame" x="87.5" y="404" width="200" height="50"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.49803921569999998" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="N5X-b3-Zzl"/>
@@ -230,7 +230,7 @@
                             <constraint firstItem="qmG-ZZ-5OX" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="j9W-b3-0GI"/>
                             <constraint firstItem="Hfr-WV-idt" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="7" id="lQs-lG-mUe"/>
                             <constraint firstItem="PdL-ZB-Ytk" firstAttribute="top" secondItem="qmG-ZZ-5OX" secondAttribute="bottom" constant="20" id="sTb-ot-v7A"/>
-                            <constraint firstItem="NCz-mW-Egf" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" constant="-6" id="ske-Pt-3bP"/>
+                            <constraint firstItem="NCz-mW-Egf" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="ske-Pt-3bP"/>
                             <constraint firstItem="Quh-4L-vOV" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leadingMargin" constant="-16" id="xcQ-9U-aid"/>
                             <constraint firstItem="pHg-wa-el4" firstAttribute="top" secondItem="vIy-7x-T35" secondAttribute="bottom" constant="8" id="yY5-sc-ZEY"/>
                             <constraint firstItem="NCz-mW-Egf" firstAttribute="top" secondItem="pHg-wa-el4" secondAttribute="bottom" constant="20" id="zGy-c7-wEZ"/>
@@ -469,7 +469,7 @@ reset your password.</string>
         <image name="headerIconLogo" width="165" height="18"/>
         <image name="iconBack" width="12" height="18"/>
         <image name="illustEmailConfirmation" width="150" height="238"/>
-        <image name="illustWelcome" width="377" height="199"/>
+        <image name="illustWelcomeback" width="375" height="200"/>
         <image name="loading" width="72" height="72"/>
         <image name="tutorialBtn" width="212" height="62"/>
     </resources>
