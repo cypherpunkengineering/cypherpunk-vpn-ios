@@ -64,6 +64,16 @@ extension UIColor {
         return UIColor(red:0.96, green:0.71, blue:0.51, alpha:1.00)
     }
     
+    class var greenVogue: UIColor {
+//        26,71,76
+        return UIColor(red: 26.0 / 255.0, green: 71.0 / 255.0, blue: 76.0 / 255.0, alpha:1.00)
+    }
+    
+    class var aztec: UIColor {
+        // 12 27 30
+        return UIColor(red: 12.0 / 255.0, green: 27.0 / 255.0, blue: 30.0 /  255.0, alpha: 1.0)
+    }
+    
     
     /**    https://gist.github.com/mbigatti/c6be210a6bbc0ff25972 */
     /**

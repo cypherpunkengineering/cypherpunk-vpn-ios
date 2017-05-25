@@ -12,6 +12,7 @@
 		0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */; };
 		091BBCC91E8E427F003D16A8 /* ThreeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BBCC71E8E427F003D16A8 /* ThreeButtonViewController.swift */; };
 		091BBCCA1E8E427F003D16A8 /* ThreeButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091BBCC81E8E427F003D16A8 /* ThreeButtonViewController.xib */; };
+		0948DBA51ED776F400A7A475 /* ConfigurationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948DBA41ED776F400A7A475 /* ConfigurationButton.swift */; };
 		094C1B9B1E4D31CD00D9036F /* ConnectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */; };
 		094C1B9D1E4E697000D9036F /* RegionTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */; };
 		0959A5071E681FB200A95A49 /* AccountDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */; };
@@ -39,6 +40,9 @@
 		09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */; };
 		09DF43AF1E4E6D2100937469 /* RegionTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */; };
 		09E60D8F1ED521490037BA0D /* UIButton+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E60D8E1ED521490037BA0D /* UIButton+BackgroundColor.swift */; };
+		09E60D941ED688CF0037BA0D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E60D921ED688CF0037BA0D /* MainViewController.swift */; };
+		09E60D951ED688CF0037BA0D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E60D931ED688CF0037BA0D /* MainViewController.xib */; };
+		09E60D971ED6E0430037BA0D /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E60D961ED6E0430037BA0D /* AccountButton.swift */; };
 		09EA58C91E8CC0FE0045297A /* FiveButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA58C71E8CC0FE0045297A /* FiveButtonViewController.swift */; };
 		09EA58CA1E8CC0FE0045297A /* FiveButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EA58C81E8CC0FE0045297A /* FiveButtonViewController.xib */; };
 		20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20073E0C1D9E387400BCD690 /* RateAppViewController.swift */; };
@@ -182,6 +186,7 @@
 		0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNStateResponder.swift; path = Cypherpunk/Helper/VPNStateResponder.swift; sourceTree = SOURCE_ROOT; };
 		091BBCC71E8E427F003D16A8 /* ThreeButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeButtonViewController.swift; sourceTree = "<group>"; };
 		091BBCC81E8E427F003D16A8 /* ThreeButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreeButtonViewController.xib; sourceTree = "<group>"; };
+		0948DBA41ED776F400A7A475 /* ConfigurationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationButton.swift; path = Buttons/ConfigurationButton.swift; sourceTree = "<group>"; };
 		094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionHelper.swift; path = Cypherpunk/Helper/ConnectionHelper.swift; sourceTree = SOURCE_ROOT; };
 		094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegionTableHeaderView.xib; sourceTree = "<group>"; };
 		0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -209,6 +214,9 @@
 		09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationTableViewCell.swift; sourceTree = "<group>"; };
 		09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionTableHeaderView.swift; sourceTree = "<group>"; };
 		09E60D8E1ED521490037BA0D /* UIButton+BackgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+BackgroundColor.swift"; sourceTree = "<group>"; };
+		09E60D921ED688CF0037BA0D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		09E60D931ED688CF0037BA0D /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		09E60D961ED6E0430037BA0D /* AccountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountButton.swift; path = Buttons/AccountButton.swift; sourceTree = "<group>"; };
 		09EA58C71E8CC0FE0045297A /* FiveButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiveButtonViewController.swift; sourceTree = "<group>"; };
 		09EA58C81E8CC0FE0045297A /* FiveButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiveButtonViewController.xib; sourceTree = "<group>"; };
 		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
@@ -389,6 +397,8 @@
 		0967D50F1E42D8AF00CA392D /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				09E60D961ED6E0430037BA0D /* AccountButton.swift */,
+				0948DBA41ED776F400A7A475 /* ConfigurationButton.swift */,
 				09ACCDC81E71718C00AF3E4F /* TabletButtonCollectionViewCell.swift */,
 				09ACCDC91E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib */,
 				099FE7291E8A6EA30017CF89 /* MainButtonView.swift */,
@@ -616,6 +626,8 @@
 				09EA58C81E8CC0FE0045297A /* FiveButtonViewController.xib */,
 				091BBCC71E8E427F003D16A8 /* ThreeButtonViewController.swift */,
 				091BBCC81E8E427F003D16A8 /* ThreeButtonViewController.xib */,
+				09E60D921ED688CF0037BA0D /* MainViewController.swift */,
+				09E60D931ED688CF0037BA0D /* MainViewController.xib */,
 			);
 			name = Top;
 			sourceTree = "<group>";
@@ -924,6 +936,7 @@
 				2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */,
 				094C1B9D1E4E697000D9036F /* RegionTableHeaderView.xib in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
+				09E60D951ED688CF0037BA0D /* MainViewController.xib in Resources */,
 				0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */,
 				20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */,
 				09ACCDD11E71894800AF3E4F /* bk-overlay.png in Resources */,
@@ -1279,6 +1292,7 @@
 				2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */,
 				2033FB451DB89E4D004D14B7 /* LoadingAnimationView.swift in Sources */,
 				2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */,
+				09E60D971ED6E0430037BA0D /* AccountButton.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
 				2B88F7E91DE6CFAB00DAB027 /* ShadowView.swift in Sources */,
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
@@ -1332,6 +1346,8 @@
 				2090F7171DD5AC1300BAB626 /* ChangeEmailAPI.swift in Sources */,
 				203F4F071D5B188200EA2536 /* ThemedNavigationButton.swift in Sources */,
 				094C1B9B1E4D31CD00D9036F /* ConnectionHelper.swift in Sources */,
+				0948DBA51ED776F400A7A475 /* ConfigurationButton.swift in Sources */,
+				09E60D941ED688CF0037BA0D /* MainViewController.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,
 				09E60D8F1ED521490037BA0D /* UIButton+BackgroundColor.swift in Sources */,
 				2B6798E71DAC179500099064 /* AccountConfigurationTableViewController.swift in Sources */,

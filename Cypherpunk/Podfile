@@ -19,6 +19,7 @@ target 'Cypherpunk' do
        pod 'Firebase/Core'
        pod 'TTTAttributedLabel', :git => 'https://github.com/TTTAttributedLabel/TTTAttributedLabel.git'
        pod 'GBPing'
+       pod 'Cartography'
 end
 
 target 'CypherpunkTests' do
