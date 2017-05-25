@@ -70,7 +70,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         
         self.state = .getStarted
         self.welcomeLabel.text = "Please enter your email to begin"
-        setPlaceholderText("Type your email")
+        setPlaceholderText("Type your email", color: UIColor.greenyBlue)
         self.inputField.text = self.email
         
         
@@ -157,14 +157,14 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                 break
             case .logIn:
                 self.welcomeLabel.text = "Please enter your password to login"
-                self.setPlaceholderText("Type your password")
+                self.setPlaceholderText("Type your password", color: UIColor.white)
                 self.actionButton.setTitle("Log In", for: .normal)
                 self.inputField.isSecureTextEntry = true
                 self.inputField.returnKeyType = UIReturnKeyType.send
 //                self.inputField.becomeFirstResponder()
             case .signUp:
                 self.welcomeLabel.text = "Please create a password to begin"
-                self.setPlaceholderText("Type your password")
+                self.setPlaceholderText("Type your password", color: UIColor.white)
                 self.actionButton.setTitle("Sign Up", for: .normal)
                 self.inputField.isSecureTextEntry = true
                 self.inputField.returnKeyType = UIReturnKeyType.send
@@ -178,7 +178,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                     switch self.state {
                     case .getStarted:
                         self.welcomeLabel.text = "Please enter your email to begin"
-                        self.setPlaceholderText("Type your email")
+                        self.setPlaceholderText("Type your email", color: UIColor.greenyBlue)
                         self.inputField.text = self.email
                         self.actionButton.isEnabled = isValidMailAddress(self.inputField.text!)
                         self.actionButton.setTitle("Get Started", for: .normal)
@@ -194,7 +194,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                         })
                     case .logIn:
                         self.welcomeLabel.text = "Please enter your password to login"
-                        self.setPlaceholderText("Type your password")
+                        self.setPlaceholderText("Type your password", color: UIColor.white)
                         self.actionButton.isEnabled = false
                         self.actionButton.setTitle("Log In", for: .normal)
 
@@ -211,7 +211,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                             
                         })
                     case .signUp:
-                        self.setPlaceholderText("Type your password")
+                        self.setPlaceholderText("Type your password", color: UIColor.white)
                         self.actionButton.isEnabled = false
                         self.actionButton.setTitle("Sign Up", for: .normal)
                         
@@ -398,8 +398,8 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         }
     }
     
-    private func setPlaceholderText(_ placeholder: String) {
-        let placeholderAttributes = [NSForegroundColorAttributeName: UIColor.greenyBlue]
+    private func setPlaceholderText(_ placeholder: String, color: UIColor) {
+        let placeholderAttributes = [NSForegroundColorAttributeName: color]
         self.inputField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: placeholderAttributes)
         self.inputField.text = ""
     }
