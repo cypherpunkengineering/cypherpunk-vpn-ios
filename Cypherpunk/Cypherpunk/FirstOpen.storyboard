@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="37O-y4-8Ms">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="37O-y4-8Ms">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -124,14 +124,14 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCz-mW-Egf">
-                                <rect key="frame" x="81.5" y="404" width="212" height="62"/>
+                                <rect key="frame" x="81.5" y="404" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.49803921569999998" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="N5X-b3-Zzl"/>
-                                    <constraint firstAttribute="width" constant="212" id="RXy-Uu-gi6"/>
+                                    <constraint firstAttribute="height" constant="50" id="N5X-b3-Zzl"/>
+                                    <constraint firstAttribute="width" constant="200" id="RXy-Uu-gi6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="23"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
-                                <state key="normal" title="Get Started" backgroundImage="tutorialBtn">
+                                <state key="normal" title="Get Started">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -142,8 +142,9 @@
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="4"/>
+                                        <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startAction" destination="rah-Zv-HVw" eventType="touchUpInside" id="ZEb-ZL-VpY"/>
@@ -163,7 +164,7 @@
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmG-ZZ-5OX" customClass="ActiveLabel" customModule="ActiveLabel">
                                 <rect key="frame" x="50.5" y="613" width="274" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-CJ-Dm2" userLabel="Terms Label" customClass="TTTAttributedLabel">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-CJ-Dm2" userLabel="Terms Label" customClass="TTTAttributedLabel">
                                         <rect key="frame" x="-15" y="-12" width="305" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
@@ -182,7 +183,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="100" verticalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Hfr-WV-idt" userLabel="Spacer View">
-                                <rect key="frame" x="12.5" y="466" width="350" height="147"/>
+                                <rect key="frame" x="12.5" y="461" width="350" height="152"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="Upv-7C-JJD"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="65" id="Y13-vg-FMj"/>
@@ -196,7 +197,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-ue-9dj">
-                                <rect key="frame" x="112.5" y="479.5" width="150" height="17"/>
+                                <rect key="frame" x="112.5" y="474.5" width="150" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="MJh-xq-cJp"/>
                                     <constraint firstAttribute="width" constant="150" id="aie-3O-GsV"/>
@@ -215,7 +216,7 @@
                             <constraint firstItem="6zJ-ue-9dj" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="0ac-Dl-A1o"/>
                             <constraint firstItem="FfU-Tv-Qkt" firstAttribute="centerY" secondItem="cK6-8c-cze" secondAttribute="centerY" id="19R-dj-0Ix"/>
                             <constraint firstItem="oVi-SW-B2h" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leading" id="51Z-SA-7UK"/>
-                            <constraint firstItem="6zJ-ue-9dj" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="13.5" id="EEC-ec-Zen"/>
+                            <constraint firstItem="6zJ-ue-9dj" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="20.5" id="EEC-ec-Zen"/>
                             <constraint firstItem="Quh-4L-vOV" firstAttribute="top" secondItem="A1N-sG-hSC" secondAttribute="bottom" constant="12" id="K3G-NC-Xs4"/>
                             <constraint firstItem="i8D-EZ-W4K" firstAttribute="top" secondItem="A1N-sG-hSC" secondAttribute="bottom" priority="500" constant="15" id="TZa-bU-GB0"/>
                             <constraint firstItem="oVi-SW-B2h" firstAttribute="top" secondItem="i8D-EZ-W4K" secondAttribute="bottom" id="U3E-Uq-LRq"/>
@@ -227,9 +228,9 @@
                             <constraint firstItem="qmG-ZZ-5OX" firstAttribute="top" secondItem="Hfr-WV-idt" secondAttribute="bottom" id="hEL-bh-rkW"/>
                             <constraint firstAttribute="trailing" secondItem="oVi-SW-B2h" secondAttribute="trailing" id="hcY-fw-dPl"/>
                             <constraint firstItem="qmG-ZZ-5OX" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="j9W-b3-0GI"/>
-                            <constraint firstItem="Hfr-WV-idt" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" id="lQs-lG-mUe"/>
+                            <constraint firstItem="Hfr-WV-idt" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="7" id="lQs-lG-mUe"/>
                             <constraint firstItem="PdL-ZB-Ytk" firstAttribute="top" secondItem="qmG-ZZ-5OX" secondAttribute="bottom" constant="20" id="sTb-ot-v7A"/>
-                            <constraint firstItem="NCz-mW-Egf" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="ske-Pt-3bP"/>
+                            <constraint firstItem="NCz-mW-Egf" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" constant="-6" id="ske-Pt-3bP"/>
                             <constraint firstItem="Quh-4L-vOV" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leadingMargin" constant="-16" id="xcQ-9U-aid"/>
                             <constraint firstItem="pHg-wa-el4" firstAttribute="top" secondItem="vIy-7x-T35" secondAttribute="bottom" constant="8" id="yY5-sc-ZEY"/>
                             <constraint firstItem="NCz-mW-Egf" firstAttribute="top" secondItem="pHg-wa-el4" secondAttribute="bottom" constant="20" id="zGy-c7-wEZ"/>

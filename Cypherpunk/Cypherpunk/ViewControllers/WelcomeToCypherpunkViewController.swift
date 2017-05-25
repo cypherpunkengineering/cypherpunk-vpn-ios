@@ -47,6 +47,20 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         ]
         let forgotPasswordAttributed = NSAttributedString(string: "Forgot Password?", attributes: attributes)
         forgotPasswordButton?.setAttributedTitle(forgotPasswordAttributed, for: .normal)
+        
+        actionButton.layer.cornerRadius = 5.0
+        actionButton.layer.shadowOpacity = 1.0
+        actionButton.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
+        actionButton.layer.shadowRadius = 5.0
+        actionButton.layer.shadowColor = UIColor.darkBlueGreyTwo.cgColor
+        
+        actionButton.setBackgroundColor(color: UIColor.burntSienna, forState: .normal)
+        
+        actionButton.setBackgroundColor(color: UIColor.tacao, forState: .highlighted)
+        
+        actionButton.setBackgroundColor(color: UIColor.burntSienna.darkerColor(percent: 0.2), forState: .disabled)
+        
+        actionButton.layer.masksToBounds = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

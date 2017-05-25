@@ -51,4 +51,73 @@ extension UIColor {
     class var greenyBlue: UIColor {
         return UIColor(red: 80.0 / 255.0, green: 174.0 / 255.0, blue: 183.0 / 255.0, alpha: 1.0)
     }
+    
+    class var darkBlueGreyTwo: UIColor {
+        return UIColor(red: 13.0 / 255.0, green: 30.0 /  255.0, blue: 38.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var burntSienna: UIColor {
+        return UIColor(red:0.94, green:0.50, blue:0.38, alpha:1.00)
+    }
+    
+    class var tacao: UIColor {
+        return UIColor(red:0.96, green:0.71, blue:0.51, alpha:1.00)
+    }
+    
+    
+    /**    https://gist.github.com/mbigatti/c6be210a6bbc0ff25972 */
+    /**
+     Construct a UIColor using an HTML/CSS RGB formatted value and an alpha value
+     
+     :param: rgbValue RGB value
+     :param: alpha color alpha value
+     
+     :returns: an UIColor instance that represent the required color
+     */
+    class func colorWithRGB(rgbValue : UInt, alpha : CGFloat = 1.0) -> UIColor {
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255
+        let green = CGFloat((rgbValue & 0xFF00) >> 8) / 255
+        let blue = CGFloat(rgbValue & 0xFF) / 255
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+    }
+    
+    /**
+     Returns a lighter color by the provided percentage
+     
+     :param: lighting percent percentage
+     :returns: lighter UIColor
+     */
+    func lighterColor(percent : Double) -> UIColor {
+        return colorWithBrightnessFactor(factor: CGFloat(1 + percent));
+    }
+    
+    /**
+     Returns a darker color by the provided percentage
+     
+     :param: darking percent percentage
+     :returns: darker UIColor
+     */
+    func darkerColor(percent : Double) -> UIColor {
+        return colorWithBrightnessFactor(factor: CGFloat(1 - percent));
+    }
+    
+    /**
+     Return a modified color using the brightness factor provided
+     
+     :param: factor brightness factor
+     :returns: modified color
+     */
+    func colorWithBrightnessFactor(factor: CGFloat) -> UIColor {
+        var hue : CGFloat = 0
+        var saturation : CGFloat = 0
+        var brightness : CGFloat = 0
+        var alpha : CGFloat = 0
+        
+        if getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+            return UIColor(hue: hue, saturation: saturation, brightness: brightness * factor, alpha: alpha)
+        } else {
+            return self;
+        }
+    }
 }
