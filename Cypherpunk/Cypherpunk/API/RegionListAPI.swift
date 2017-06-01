@@ -68,6 +68,9 @@ struct RegionListRequest: Request {
                         region.socksDefault = (server["socksDefault"] as! [String]).joined(separator: "\n")
                         region.authorized = server["authorized"] as! Bool
                         region.country = server["country"] as! String
+                        region.latitude = server["lat"] as! CGFloat
+                        region.longitude = server["lon"] as! CGFloat
+                        region.locDisplayScale = server["scale"] as! CGFloat
                         
                         if region.ipsecDefault == "" {
                             region.authorized = false
@@ -88,7 +91,10 @@ struct RegionListRequest: Request {
                             httpDefault: (server["httpDefault"] as! [String]).joined(separator: "\n"),
                             socksDefault: (server["socksDefault"] as! [String]).joined(separator: "\n"),
                             country: server["country"] as! String,
-                            authorized: server["authorized"] as! Bool
+                            authorized: server["authorized"] as! Bool,
+                            latitude: server["lat"] as! CGFloat,
+                            longitude: server["lon"] as! CGFloat,
+                            locDisplayScale: server["scale"] as! CGFloat
                         )
                         realm.add(region, update: true)
                     }
@@ -163,7 +169,11 @@ class Region: Object {
     dynamic var lastConnectedDate: Date = Date(timeIntervalSince1970: 1)
     dynamic var latencySeconds: Double = Double.infinity
     
-    init(id: String, region: String, level: String, name: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, country: String, authorized: Bool) {
+    dynamic var latitude: CGFloat = 0.0
+    dynamic var longitude: CGFloat = 0.0
+    dynamic var locDisplayScale: CGFloat = 1.0
+    
+    init(id: String, region: String, level: String, name: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, country: String, authorized: Bool, latitude: CGFloat, longitude: CGFloat, locDisplayScale: CGFloat) {
 
         super.init()
         
@@ -183,6 +193,10 @@ class Region: Object {
         self.country = country
         self.authorized = authorized
         self.isFavorite = false
+        
+        self.latitude = latitude
+        self.longitude = longitude
+        self.locDisplayScale = locDisplayScale
 
         if ipsecDefault == "" {
             self.authorized = false
