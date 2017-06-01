@@ -71,7 +71,11 @@ extension UIColor {
     
     class var aztec: UIColor {
         // 12 27 30
-        return UIColor(red: 12.0 / 255.0, green: 27.0 / 255.0, blue: 30.0 /  255.0, alpha: 1.0)
+        return UIColor(red: 12.0 / 255.0, green: 27.0 / 255.0, blue: 30.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var mainScreenBg: UIColor {
+        return UIColor(red: 5.0 / 255.0, green: 53.0 / 255.0, blue: 54.0 / 255.0, alpha: 1.0)
     }
     
     
