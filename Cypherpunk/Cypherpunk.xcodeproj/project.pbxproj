@@ -12,6 +12,9 @@
 		0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */; };
 		091BBCC91E8E427F003D16A8 /* ThreeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091BBCC71E8E427F003D16A8 /* ThreeButtonViewController.swift */; };
 		091BBCCA1E8E427F003D16A8 /* ThreeButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091BBCC81E8E427F003D16A8 /* ThreeButtonViewController.xib */; };
+		0948DBA71ED7C88500A7A475 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948DBA61ED7C88500A7A475 /* ConfigurationViewController.swift */; };
+		0948DBAA1ED7D1CB00A7A475 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948DBA81ED7D1CB00A7A475 /* ToggleTableViewCell.swift */; };
+		0948DBAB1ED7D1CB00A7A475 /* ToggleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0948DBA91ED7D1CB00A7A475 /* ToggleTableViewCell.xib */; };
 		094C1B9B1E4D31CD00D9036F /* ConnectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */; };
 		094C1B9D1E4E697000D9036F /* RegionTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */; };
 		0959A5071E681FB200A95A49 /* AccountDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */; };
@@ -182,6 +185,9 @@
 		0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNStateResponder.swift; path = Cypherpunk/Helper/VPNStateResponder.swift; sourceTree = SOURCE_ROOT; };
 		091BBCC71E8E427F003D16A8 /* ThreeButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeButtonViewController.swift; sourceTree = "<group>"; };
 		091BBCC81E8E427F003D16A8 /* ThreeButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreeButtonViewController.xib; sourceTree = "<group>"; };
+		0948DBA61ED7C88500A7A475 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		0948DBA81ED7D1CB00A7A475 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
+		0948DBA91ED7D1CB00A7A475 /* ToggleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToggleTableViewCell.xib; sourceTree = "<group>"; };
 		094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionHelper.swift; path = Cypherpunk/Helper/ConnectionHelper.swift; sourceTree = SOURCE_ROOT; };
 		094C1B9C1E4E697000D9036F /* RegionTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegionTableHeaderView.xib; sourceTree = "<group>"; };
 		0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -543,6 +549,8 @@
 				0959A50A1E69768100A95A49 /* PlanTableViewCell.xib */,
 				0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */,
 				0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */,
+				0948DBA81ED7D1CB00A7A475 /* ToggleTableViewCell.swift */,
+				0948DBA91ED7D1CB00A7A475 /* ToggleTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -568,6 +576,7 @@
 				2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */,
 				2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */,
 				205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */,
+				0948DBA61ED7C88500A7A475 /* ConfigurationViewController.swift */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -911,6 +920,7 @@
 				0959A5181E69883D00A95A49 /* PlanCollectionViewCell.xib in Resources */,
 				2B45C16B1D20D64600D4326C /* Dosis-Light.otf in Resources */,
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
+				0948DBAB1ED7D1CB00A7A475 /* ToggleTableViewCell.xib in Resources */,
 				203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */,
 				2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */,
 				09EA58CA1E8CC0FE0045297A /* FiveButtonViewController.xib in Resources */,
@@ -1266,6 +1276,7 @@
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */,
 				09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */,
+				0948DBA71ED7C88500A7A475 /* ConfigurationViewController.swift in Sources */,
 				203F4F091D5B1B2200EA2536 /* ThemedTintedNavigationButton.swift in Sources */,
 				20D896001D23A84D002B9F9D /* AccountAction.swift in Sources */,
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
@@ -1331,6 +1342,7 @@
 				2BDBD0C61D6514AB00080E67 /* ConfigurationTableViewController.swift in Sources */,
 				2090F7171DD5AC1300BAB626 /* ChangeEmailAPI.swift in Sources */,
 				203F4F071D5B188200EA2536 /* ThemedNavigationButton.swift in Sources */,
+				0948DBAA1ED7D1CB00A7A475 /* ToggleTableViewCell.swift in Sources */,
 				094C1B9B1E4D31CD00D9036F /* ConnectionHelper.swift in Sources */,
 				2B45C1741D21076000D4326C /* UINavigationController+StatusBar.m in Sources */,
 				09E60D8F1ED521490037BA0D /* UIButton+BackgroundColor.swift in Sources */,

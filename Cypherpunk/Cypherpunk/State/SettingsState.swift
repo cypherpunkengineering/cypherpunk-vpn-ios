@@ -56,6 +56,7 @@ struct SettingsState: StateType {
         }
     }
     
+    @available(*, deprecated)
     var isAutoSecureConnectionsWhenConnectedUntrustedNetwork: Bool {
         get{
             if mainStore.state.isInstalledPreferences == false {
@@ -72,6 +73,7 @@ struct SettingsState: StateType {
 
     }
 
+    @available(*, deprecated)
     var isAutoSecureConnectionsWhenConnectedOtherNetwork: Bool {
         get{
             if mainStore.state.isInstalledPreferences == false {
@@ -118,6 +120,7 @@ struct SettingsState: StateType {
         }
     }
     
+    @available(*, deprecated)
     var cypherplayOn : Bool {
         get {
             if !mainStore.state.isInstalledPreferences {
@@ -133,6 +136,7 @@ struct SettingsState: StateType {
         }
     }
     
+    @available(*, deprecated)
     var alwaysOn : Bool {
         get {
             if !mainStore.state.isInstalledPreferences {
@@ -151,11 +155,16 @@ struct SettingsState: StateType {
 
     fileprivate struct SettingsStateKey {
         static let vpnProtocolMode = "vpnProtocolMode"
+        static let trustCellularNetworks = "trustCellularNetworks"
+        @available(*, deprecated)
         static let isAutoSecureConnectionsWhenConnectedUntrustedNetwork = "isAutoSecureConnectionsWhenConnectedUntrustedNetwork"
+        @available(*, deprecated)
         static let isAutoSecureConnectionsWhenConnectedOtherNetwork = "isAutoSecureConnectionsWhenConnectedOtherNetwork"
         static let blockAds = "blockAds"
         static let blockMalware = "blockMalware"
+        @available(*, deprecated)
         static let cypherplayOn = "cypherplayOn"
+        @available(*, deprecated)
         static let alwaysOn = "alwaysOn"
     }
 }

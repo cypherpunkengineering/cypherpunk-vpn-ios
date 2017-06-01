@@ -64,6 +64,14 @@ extension UIColor {
         return UIColor(red:0.96, green:0.71, blue:0.51, alpha:1.00)
     }
     
+    class var configTableBg: UIColor {
+        return UIColor(red: 15.0 / 255.0, green: 44.0 /  255.0, blue: 44.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var configTableCellBg: UIColor {
+        return UIColor(red: 54.0 / 255.0, green: 83.0 /  255.0, blue: 83.0 / 255.0, alpha: 1.0)
+    }
+    
     
     /**    https://gist.github.com/mbigatti/c6be210a6bbc0ff25972 */
     /**
