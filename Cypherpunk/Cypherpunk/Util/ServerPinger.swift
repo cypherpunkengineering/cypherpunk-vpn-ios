@@ -105,7 +105,7 @@ class PingHandler : NSObject, GBPingDelegate {
     }
     
     func ping(_ pinger: GBPing!, didReceiveReplyWith summary: GBPingSummary!) {
-        print("\(serverId) - \(summary.rtt)")
+//        print("\(serverId) - \(summary.rtt)")
         
         storePingValue(pingValue: summary.rtt, pinger: pinger, summary: summary)
     }

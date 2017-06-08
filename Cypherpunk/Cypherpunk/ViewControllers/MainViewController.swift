@@ -9,12 +9,13 @@
 import UIKit
 import Cartography
 import simd
+import RealmSwift
 
 class MainViewController: UIViewController {
     
     var topBarView: UIView
     var bottomBorderLayer: CALayer
-    var mapImageView: UIImageView
+    var mapImageView: MapImageView
     
     required init?(coder aDecoder: NSCoder) {
         self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
@@ -25,11 +26,7 @@ class MainViewController: UIViewController {
         self.bottomBorderLayer.backgroundColor = UIColor.greenVogue.cgColor
         self.topBarView.layer.addSublayer(self.bottomBorderLayer)
         
-        self.mapImageView = UIImageView(image: R.image.worldmap_2000())
-        self.mapImageView.contentMode = .center
-        self.mapImageView.alpha = 0.3
-        
-//        self.mapImageView.contentScaleFactor = 1.5
+        self.mapImageView = MapImageView()
         
         super.init(coder: aDecoder)
     }
@@ -37,15 +34,28 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.mainScreenBg
+        // Add gradient layer for gradient background color
+        let gradient = CAGradientLayer()
+        gradient.frame = self.view.bounds
+        gradient.colors = [UIColor(hexString: "#0F2125").cgColor, UIColor(hexString: "#004444").cgColor]
+        self.view.layer.insertSublayer(gradient, at: 0)
 
-        // Do any additional setup after loading the view.
+        // add map image view
+        self.view.addSubview(self.mapImageView)
+        
         self.view.addSubview(self.topBarView)
         constrain(self.view, self.topBarView) { parentView, childView in
             childView.leading == parentView.leading
             childView.trailing == parentView.trailing
             childView.top == parentView.top
             childView.height == 64.0
+        }
+        
+        let logoImageView = UIImageView(image: R.image.headerIconLogo())
+        self.topBarView.addSubview(logoImageView)
+        constrain(self.topBarView, logoImageView) { parentView, childView in
+            childView.centerX == parentView.centerX
+            childView.top == parentView.top + 32
         }
         
         let leftButton = AccountButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
@@ -66,21 +76,15 @@ class MainViewController: UIViewController {
             childView.width == 60.0
         }
         
-        let logoImageView = UIImageView(image: R.image.headerIconLogo())
-        self.topBarView.addSubview(logoImageView)
-        constrain(self.topBarView, logoImageView) { parentView, childView in
-            childView.centerX == parentView.centerX
-            childView.top == parentView.top + 32
-        }
-        
-        // add map image view
-        self.view.addSubview(self.mapImageView)
-        constrain(self.view, self.mapImageView, self.topBarView) { parentView, childView, topBarView in
-            childView.leading == parentView.leading
-            childView.trailing == parentView.trailing
-            childView.top == topBarView.bottom
-            childView.bottom == parentView.bottom
-        }
+//        self.mapImageView.frame = CGRect(x: -200, y: 200, width: self.mapImageView.bounds.size.width, height: self.mapImageView.bounds.size.height)
+//        self.mapImageView.zoomToLastSelected()
+        self.mapImageView.zoomToRegion(regionId: "tokyo")
+
+        let dotPath = UIBezierPath(ovalIn: CGRect(x: self.view.center.x - 1.5, y: self.view.center.y - 1.5, width: 3, height: 3))
+        let layer = CAShapeLayer()
+        layer.path = dotPath.cgPath
+        layer.fillColor = UIColor.magenta.cgColor
+        self.view.layer.addSublayer(layer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,7 +109,7 @@ class MainViewController: UIViewController {
     */
     
     // MARK: - Map Helpers
-    let mapSize = 2000.0 // width
+    let mapSize = 1000.0 // width, image is 2000 pixels but in points it will be 1000
     let longOffset: Double = 11
     let pi = Double.pi
     let halfPi = Double.pi / 2
@@ -127,7 +131,7 @@ class MainViewController: UIViewController {
         let A = (pi / lambda - lambda / pi) / 2
         let y1 = sinTheta / (1 + cos(theta))
         
-        return (x: pi * (sign(lambda) * sqrt(A * A + 1 - y1 * y1)), y: pi * y1)
+        return (x: pi * (sign(lambda) * sqrt(A * A + 1 - y1 * y1) - A), y: pi * y1)
     }
     
     // GPS coordinates in degrees
@@ -136,8 +140,22 @@ class MainViewController: UIViewController {
         
         let temp: Double = mapSize / 920.0
         let xCoord = (coords.x * 150.0 + (920 / 2)) * temp
-        let yCoord = coords.y * 150 + (500 / 2 + 500 * 0.15) * temp
+        let yCoord = (coords.y * 150 + (500 / 2 + 500 * 0.15)) * temp
         
         return (x: xCoord, y: yCoord)
     }
+    
+    func drawLocationOnMap(lat: Double, long: Double) {
+        let imageCoordinates = transformToXY(lat: lat, long: long)
+        print(imageCoordinates)
+        let dotPath = UIBezierPath(ovalIn: CGRect(x: imageCoordinates.x, y: imageCoordinates.y, width: 5, height: 5))
+        
+        let layer = CAShapeLayer()
+//        layer.bounds = self.mapImageView.bounds
+        layer.path = dotPath.cgPath
+        layer.fillColor = UIColor.white.cgColor
+        
+        self.mapImageView.layer.addSublayer(layer)
+    }
+
 }
