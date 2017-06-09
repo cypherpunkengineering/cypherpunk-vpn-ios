@@ -66,7 +66,7 @@ class MapImageView: UIImageView {
     func drawLocationOnMap(lat: Double, long: Double, regionId: String) {
         let imageCoordinates = transformToXY(lat: lat, long: long)
         let dotPath = UIBezierPath(ovalIn: CGRect(x: imageCoordinates.x - 2.5, y: imageCoordinates.y - 2.5, width: 5, height: 5))
-        print(self.frame)
+
         let layer = CAShapeLayer()
         layer.path = dotPath.cgPath
         layer.fillColor = locationColor
@@ -98,22 +98,17 @@ class MapImageView: UIImageView {
         
         let coords = transformToXY(lat: region.latitude, long: region.longitude)
         
-        let superviewFrame = self.superview?.frame
-        
-        let xTrans = (superviewFrame?.midX)! - CGFloat(coords.x)
-        let yTrans = (superviewFrame?.midY)! - CGFloat(coords.y)
-        
-//        let xTrans = self.center.x - CGFloat(coords.x)
-//        let yTrans = self.center.y - CGFloat(coords.y)
-
-//        self.layer.position = CGPoint(x: (superviewFrame?.midX)!, y: (superviewFrame?.midY)!)
-//        self.layer.position = CGPoint(x: coords.x, y: coords.y)
-        self.layer.position = CGPoint(x: CGFloat(coords.x) + xTrans, y: CGFloat(coords.y) + yTrans)
-        UIView.animate(withDuration: 2.0, animations: {
-//            var transform = CGAffineTransform.init(scaleX: scale, y: scale)//.translatedBy(x: xCoord, y: yCoord)
-            var transform = CGAffineTransform.init(translationX: xTrans, y: yTrans).scaledBy(x: scale, y: scale)
-            self.transform = transform
-        })
+        if let superView = self.superview {
+            let superviewFrame = superView.frame
+            let superViewFrameMidX = superviewFrame.midX
+            let superViewFrameMidY = superviewFrame.midY
+            
+            UIView.animate(withDuration: 2.0, animations: {
+                self.transform = CGAffineTransform.init(scaleX: scale, y: scale)
+                
+                self.frame = CGRect(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale, width: self.frame.size.width, height: self.frame.size.height)
+            })
+        }
     }
     
     func zoomToRegion(regionId: String) {
@@ -140,7 +135,7 @@ class MapImageView: UIImageView {
         let theta = asin(sinTheta)
         
         if (abs(lambda) < epsilon || abs(abs(phi) - halfPi) < epsilon) {
-            return (x: 0, y: tan(theta / 2))
+            return (x: 0, y: pi * tan(theta / 2))
         }
         
         let A = (pi / lambda - lambda / pi) / 2
@@ -155,7 +150,7 @@ class MapImageView: UIImageView {
         
         let temp: Double = mapSize / 920.0
         let xCoord = (coords.x * 150.0 + (920 / 2)) * temp
-        let yCoord = (coords.y * 150 + (500 / 2 + 500 * 0.15)) * temp
+        let yCoord = (-coords.y * 150 + (500 / 2 + 500 * 0.15)) * temp
         
         return (x: xCoord, y: yCoord)
     }
