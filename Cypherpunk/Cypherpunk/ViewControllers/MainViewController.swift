@@ -59,6 +59,7 @@ class MainViewController: UIViewController {
         }
         
         let leftButton = AccountButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        leftButton.addTarget(self, action: #selector(openOrCloseAccountAction(_:)), for: .touchUpInside)
         self.view.addSubview(leftButton)
         constrain(self.view, leftButton) { parentView, childView in
             childView.leading == parentView.leading
@@ -68,6 +69,7 @@ class MainViewController: UIViewController {
         }
         
         let rightButton = ConfigurationButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        rightButton.addTarget(self, action: #selector(openOrCloseConfigurationAction(_:)), for: .touchUpInside)
         self.view.addSubview(rightButton)
         constrain(self.view, rightButton) { parentView, childView in
             childView.trailing == parentView.trailing
@@ -75,16 +77,6 @@ class MainViewController: UIViewController {
             childView.height == 60.0
             childView.width == 60.0
         }
-        
-//        self.mapImageView.frame = CGRect(x: -200, y: 200, width: self.mapImageView.bounds.size.width, height: self.mapImageView.bounds.size.height)
-//        self.mapImageView.zoomToLastSelected()
-        self.mapImageView.zoomToRegion(regionId: "tokyo")
-
-        let dotPath = UIBezierPath(ovalIn: CGRect(x: self.view.center.x - 1.5, y: self.view.center.y - 1.5, width: 3, height: 3))
-        let layer = CAShapeLayer()
-        layer.path = dotPath.cgPath
-        layer.fillColor = UIColor.magenta.cgColor
-        self.view.layer.addSublayer(layer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,15 +90,12 @@ class MainViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func openOrCloseConfigurationAction(_ sender: AnyObject) {
+        NotificationCenter.default.post(name: kOpenOrCloseConfigurationNotification, object: nil)
     }
-    */
+    @IBAction func openOrCloseAccountAction(_ sender: AnyObject) {
+        NotificationCenter.default.post(name: kOpenOrCloseAccountNotification, object: nil)
+    }
     
     // MARK: - Map Helpers
     let mapSize = 1000.0 // width, image is 2000 pixels but in points it will be 1000
