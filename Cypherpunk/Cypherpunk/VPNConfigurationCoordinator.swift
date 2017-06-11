@@ -20,7 +20,7 @@ open class VPNConfigurationCoordinator {
         }
     }
 
-    class func install() {
+    class func install(completion: ((Error?) -> Swift.Void)? = nil) {
 
         let regionState = mainStore.state.regionState
         let accountState = mainStore.state.accountState
@@ -52,11 +52,15 @@ open class VPNConfigurationCoordinator {
 
         manager.isOnDemandEnabled = false
         manager.isEnabled = false
-
-        manager.saveToPreferences(completionHandler: { (error) in
-            if error != nil {
+        
+        manager.loadFromPreferences { (error) in
+            if error == nil {
+                manager.saveToPreferences(completionHandler: completion)
             }
-        })
+            else {
+                completion?(error)
+            }
+        }
     }
 
     class func start(_ completion: @escaping () -> ()) {
