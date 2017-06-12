@@ -8,10 +8,19 @@
 
 import UIKit
 
+protocol VPNSwitchDelegate: class {
+    func stateChanged(on: Bool)
+}
+
 class VPNSwitch: UIView, UIGestureRecognizerDelegate {
+    weak var delegate: VPNSwitchDelegate?
+    
     var isOn: Bool = false {
         didSet {
-            updateToggle(on: isOn)
+            if oldValue != isOn {
+                updateToggle(on: isOn)
+                delegate?.stateChanged(on: isOn)
+            }
         }
     }
     

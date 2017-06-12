@@ -13,7 +13,7 @@ import RealmSwift
 import NetworkExtension
 import ReSwift
 
-class MainViewController: UIViewController, StoreSubscriber {
+class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     
     var topBarView: UIView
     var bottomBorderLayer: CALayer
@@ -100,6 +100,7 @@ class MainViewController: UIViewController, StoreSubscriber {
             childView.width == 100.0
             childView.centerX == parentView.centerX
         }
+        self.vpnSwitch.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -141,9 +142,11 @@ class MainViewController: UIViewController, StoreSubscriber {
                 print("INVALID") // TODO
                 break
             case .connected:
-                vpnSwitch.isOn = true
+//                vpnSwitch.isOn = true
+                break
             case .disconnected:
-                vpnSwitch.isOn = false
+//                vpnSwitch.isOn = false
+                break
             default:
                 break
             }
@@ -156,6 +159,19 @@ class MainViewController: UIViewController, StoreSubscriber {
         }
         
         let status = connection.status
+        
+        switch status {
+        case .invalid:
+            print("INVALID") // TODO
+            break
+        case .connected:
+            vpnSwitch.isOn = true
+        case .disconnected:
+            vpnSwitch.isOn = false
+        default:
+            break
+        }
+        
         self.updateView(vpnStatus: status)
     }
     
@@ -178,6 +194,22 @@ class MainViewController: UIViewController, StoreSubscriber {
 //            devLocationIconView?.isHidden = false
 //        }
 //        self.view.layoutIfNeeded()
+    }
+    
+    // MARK: - VPNSwitchDelegate
+    func stateChanged(on: Bool) {
+        if UIDevice.current.isSimulator {
+            mainStore.dispatch(RegionAction.connect)
+            self.updateView(vpnStatus: .connected)
+        }
+        else {
+            if on {
+                VPNConfigurationCoordinator.connect()
+            }
+            else {
+                VPNConfigurationCoordinator.disconnect()
+            }
+        }
     }
     
     // MARK: - Map Helpers
