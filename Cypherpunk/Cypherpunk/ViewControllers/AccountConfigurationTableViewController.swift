@@ -158,10 +158,10 @@ class AccountConfigurationTableViewController: UITableViewController {
                     UIApplication.shared.openURL(url)
                 }
             case .contactus:
-                let url = URL(string: "https://cypherpunk.zendesk.com/hc/requests/new")
+                let url = URL(string: "https://cypherpunk.com/support/request/new")
                 UIApplication.shared.openURL(url!)
             case .help:
-                let url = URL(string: "https://support.cypherpunk.com/hc")
+                let url = URL(string: "https://cypherpunk.com/support")
                 UIApplication.shared.openURL(url!)
             case .signOut:
                 mainStore.dispatch(AccountAction.logout)
