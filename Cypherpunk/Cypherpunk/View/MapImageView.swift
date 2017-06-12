@@ -150,7 +150,7 @@ class MapImageView: UIImageView {
         
         let temp: Double = mapSize / 920.0
         let xCoord = (coords.x * 150.0 + (920 / 2)) * temp
-        let yCoord = (-coords.y * 150 + (500 / 2 + 500 * 0.15)) * temp
+        let yCoord = (coords.y * 150 + (500 / 2 + 500 * 0.15)) * temp
         
         return (x: xCoord, y: yCoord)
     }
