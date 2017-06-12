@@ -10,12 +10,15 @@ import UIKit
 import Cartography
 import simd
 import RealmSwift
+import NetworkExtension
+import ReSwift
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, StoreSubscriber {
     
     var topBarView: UIView
     var bottomBorderLayer: CALayer
     var mapImageView: MapImageView
+    var vpnSwitch: VPNSwitch
     
     required init?(coder aDecoder: NSCoder) {
         self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
@@ -28,11 +31,23 @@ class MainViewController: UIViewController {
         
         self.mapImageView = MapImageView()
         
+        self.vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // listen for VPN status changes
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(vpnStatusChanged(_:)),
+            name: NSNotification.Name.NEVPNStatusDidChange,
+            object: nil
+        )
+        
         
         // Add gradient layer for gradient background color
         let gradient = CAGradientLayer()
@@ -77,11 +92,30 @@ class MainViewController: UIViewController {
             childView.height == 60.0
             childView.width == 60.0
         }
+        
+        self.view.addSubview(self.vpnSwitch)
+        constrain(self.view, self.vpnSwitch, self.topBarView) { parentView, childView, topBarView in
+            childView.top == topBarView.bottom + 100
+            childView.height == 50.0
+            childView.width == 100.0
+            childView.centerX == parentView.centerX
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        VPNConfigurationCoordinator.load {_ in
+            let status = NEVPNManager.shared().connection.status
+            self.updateView(vpnStatus: status)
+        }
+        
+        mainStore.subscribe(self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,6 +129,55 @@ class MainViewController: UIViewController {
     }
     @IBAction func openOrCloseAccountAction(_ sender: AnyObject) {
         NotificationCenter.default.post(name: kOpenOrCloseAccountNotification, object: nil)
+    }
+    
+    private func updateView(vpnStatus: NEVPNStatus) {
+        if UIDevice.current.isSimulator {
+            // TODO what should be done here
+        }
+        else {
+            switch vpnStatus {
+            case .invalid:
+                print("INVALID") // TODO
+                break
+            case .connected:
+                vpnSwitch.isOn = true
+            case .disconnected:
+                vpnSwitch.isOn = false
+            default:
+                break
+            }
+        }
+    }
+    
+    func vpnStatusChanged(_ notification: Notification) {
+        guard let connection = notification.object as? NEVPNConnection else {
+            return
+        }
+        
+        let status = connection.status
+        self.updateView(vpnStatus: status)
+    }
+    
+    func newState(state: AppState) {
+//        regionTitleLabel?.text = state.regionState.title
+//        regionFlagImageView?.image = UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal)
+//        premiumLocationIconWidthConstraint?.constant = 0.0
+//        devLocationIconWidthConstraint?.constant = 0.0
+//        regionTrailingConstraint?.constant = 0.0
+//        premiumLocationIconView?.isHidden = true
+//        devLocationIconView?.isHidden = true
+//        if state.regionState.level == "premium" {
+//            premiumLocationIconWidthConstraint?.constant = 56.0
+//            devLocationIconWidthConstraint?.constant = 56.0
+//            regionTrailingConstraint?.constant = 32.0
+//            premiumLocationIconView?.isHidden = false
+//        } else if state.regionState.level == "developer" {
+//            premiumLocationIconWidthConstraint?.constant = 25.0
+//            devLocationIconWidthConstraint?.constant = 25.0
+//            devLocationIconView?.isHidden = false
+//        }
+//        self.view.layoutIfNeeded()
     }
     
     // MARK: - Map Helpers
