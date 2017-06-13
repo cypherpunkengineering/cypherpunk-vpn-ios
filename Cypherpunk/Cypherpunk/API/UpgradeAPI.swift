@@ -20,7 +20,7 @@ struct UpgradeRequest: Request {
     let receipt: Data
     
     var baseURL: URL {
-        return URL(string: "https://cypherpunk.privacy.network")!
+        return URL(string: "https://api.cypherpunk.com")!
     }
     
     var method: HTTPMethod {
