@@ -20,6 +20,7 @@ target 'Cypherpunk' do
        pod 'TTTAttributedLabel', :git => 'https://github.com/TTTAttributedLabel/TTTAttributedLabel.git'
        pod 'GBPing'
        pod 'Cartography'
+       pod 'TinySwift'
 end
 
 target 'CypherpunkTests' do

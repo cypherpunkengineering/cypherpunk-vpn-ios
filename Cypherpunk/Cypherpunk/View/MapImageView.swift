@@ -11,8 +11,8 @@ import RealmSwift
 import simd
 
 class MapImageView: UIImageView {
-    private let locationColor = UIColor.init(hexString: "#008888").cgColor
-    private let locationBorderColor = UIColor.init(hexString: "#004444").cgColor
+    private let locationColor = UIColor.init(hex: "#008888")!.cgColor
+    private let locationBorderColor = UIColor.init(hex: "#004444")!.cgColor
 
     /*
     // Only override draw() if you perform custom drawing.

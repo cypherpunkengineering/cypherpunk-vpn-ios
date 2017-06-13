@@ -12,6 +12,7 @@ import simd
 import RealmSwift
 import NetworkExtension
 import ReSwift
+import TinySwift
 
 class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     
@@ -52,7 +53,7 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         // Add gradient layer for gradient background color
         let gradient = CAGradientLayer()
         gradient.frame = self.view.bounds
-        gradient.colors = [UIColor(hexString: "#0F2125").cgColor, UIColor(hexString: "#004444").cgColor]
+        gradient.colors = [UIColor(hex: "#0F2125")!.cgColor, UIColor(hex: "#004444")!.cgColor]
         self.view.layer.insertSublayer(gradient, at: 0)
 
         // add map image view

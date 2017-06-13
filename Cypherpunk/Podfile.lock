@@ -38,6 +38,7 @@ PODS:
   - ReSwift (3.0.0)
   - SVProgressHUD (2.1.2)
   - SwiftyStoreKit (0.6.1)
+  - TinySwift (1.0.1)
   - TTTAttributedLabel (2.0.0)
   - UITextView+Placeholder (1.2.0)
 
@@ -56,6 +57,7 @@ DEPENDENCIES:
   - ReSwift (from `https://github.com/ReSwift/ReSwift.git`)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`)
+  - TinySwift
   - TTTAttributedLabel (from `https://github.com/TTTAttributedLabel/TTTAttributedLabel.git`)
   - UITextView+Placeholder (~> 1.2)
 
@@ -131,9 +133,10 @@ SPEC CHECKSUMS:
   ReSwift: 00add9a3eb1b5c93a3728ea88393de390ef6ddff
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyStoreKit: bcaf2ec585a66b04c0175ffc9e2b84d0d106a033
+  TinySwift: d2cab7518495a9a862c296ce86e3223230a45bae
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: '01841de8ae6d8ca6aacb44575878cd3a2f7fef8e'
+PODFILE CHECKSUM: e0dff93079a6dd7d50939fa64abd1f2f8daac16f
 
 COCOAPODS: 1.1.1
