@@ -95,9 +95,6 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // this will force the items onto their own line
-//        self.collectionViewFlowLayout.minimumInteritemSpacing = CGFloat.greatestFiniteMagnitude
-        
         self.collectionView.register(UINib(nibName: "LocationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LocationCell")
         self.collectionView.register(UINib(nibName: "LocationHeaderReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView")
         
@@ -140,6 +137,10 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
             let region = section.realmResults[indexPath.row]
             cell.flagView.image = UIImage(named: region.country.lowercased())
             cell.locationLabel.text = region.name
+            
+            if !region.authorized {
+                cell.showDisabledAppearance()
+            }
             
 //            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
 //            cell?.starButton.isHidden = false
@@ -208,7 +209,9 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
 
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+        let section = LocationSection(rawValue: (indexPath as NSIndexPath).section)!
+        let region = section.realmResults[indexPath.row]
+        return region.authorized
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

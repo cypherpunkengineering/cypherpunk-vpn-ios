@@ -17,4 +17,13 @@ class LocationCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    override func prepareForReuse() {
+        self.locationLabel.textColor = UIColor.white
+        self.flagView.alpha = 1.0
+    }
+    
+    func showDisabledAppearance() {
+        self.locationLabel.textColor = UIColor(white: 1.0, alpha: 0.5)
+        self.flagView.alpha = 0.5
+    }
 }
