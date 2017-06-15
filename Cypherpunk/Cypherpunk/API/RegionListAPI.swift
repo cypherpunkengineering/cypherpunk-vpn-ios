@@ -31,7 +31,7 @@ struct RegionListRequest: Request {
     
     
     var path: String {
-        return "/api/v0/location/list/\(accountType)"
+        return "/api/v1/location/list/\(accountType)"
     }
         
     var headerFields: [String : String] {

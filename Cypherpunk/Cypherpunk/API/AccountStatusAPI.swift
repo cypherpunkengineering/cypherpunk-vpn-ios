@@ -26,7 +26,7 @@ struct AccountStatusRequest: Request {
     }
     
     var path: String {
-        return "/api/v0/account/status"
+        return "/api/v1/account/status"
     }
     
     var headerFields: [String : String] {

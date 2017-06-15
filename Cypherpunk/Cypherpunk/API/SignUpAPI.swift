@@ -30,7 +30,7 @@ struct SignUpRequest: Request {
     }
 
     var path: String {
-        return "/api/v0/account/register/signup"
+        return "/api/v1/account/register/signup"
     }
     
     var parameters: Any? {

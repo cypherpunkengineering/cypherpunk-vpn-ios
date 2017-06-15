@@ -23,7 +23,7 @@ struct IdentifyEmailRequest: Request {
     }
     
     var path: String {
-        return "/api/v0/account/identify/email"
+        return "/api/v1/account/identify/email"
     }
     
     var headerFields: [String : String] {
