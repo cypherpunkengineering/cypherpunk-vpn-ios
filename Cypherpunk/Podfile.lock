@@ -23,6 +23,7 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
+  - Hero (0.3.6)
   - Himotoki (3.0.0)
   - KeychainAccess (3.0.1)
   - R.swift (3.2.0):
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - Firebase/Core
   - FontAwesome.swift
   - GBPing
+  - Hero
   - Himotoki (from `https://github.com/ikesyo/Himotoki.git`)
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
   - R.swift
@@ -122,6 +124,7 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   Himotoki: df74b01035e86e021b7b04a15b033a7fd189b84f
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   R.swift: 207a372a2b5977caef440c696a368009460641d1
@@ -137,6 +140,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: e0dff93079a6dd7d50939fa64abd1f2f8daac16f
+PODFILE CHECKSUM: cf1d38281733aa4d85c9b54feef2e12dd9db6d3b
 
 COCOAPODS: 1.1.1

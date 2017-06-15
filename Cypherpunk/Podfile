@@ -21,6 +21,7 @@ target 'Cypherpunk' do
        pod 'GBPing'
        pod 'Cartography'
        pod 'TinySwift'
+       pod 'Hero'
 end
 
 target 'CypherpunkTests' do

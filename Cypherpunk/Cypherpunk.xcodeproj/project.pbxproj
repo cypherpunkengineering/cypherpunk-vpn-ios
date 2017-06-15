@@ -40,6 +40,8 @@
 		09ACCDD11E71894800AF3E4F /* bk-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD01E71894800AF3E4F /* bk-overlay.png */; };
 		09ACCDD31E71894F00AF3E4F /* bk-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */; };
 		09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */; };
+		09DDDE551EF289E000E7F2B7 /* LocationHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DDDE531EF289E000E7F2B7 /* LocationHeaderReusableView.swift */; };
+		09DDDE561EF289E000E7F2B7 /* LocationHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DDDE541EF289E000E7F2B7 /* LocationHeaderReusableView.xib */; };
 		09DF43AF1E4E6D2100937469 /* RegionTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */; };
 		09E60D8F1ED521490037BA0D /* UIButton+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E60D8E1ED521490037BA0D /* UIButton+BackgroundColor.swift */; };
 		09E60D941ED688CF0037BA0D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E60D921ED688CF0037BA0D /* MainViewController.swift */; };
@@ -47,6 +49,11 @@
 		09E60D971ED6E0430037BA0D /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E60D961ED6E0430037BA0D /* AccountButton.swift */; };
 		09EA58C91E8CC0FE0045297A /* FiveButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA58C71E8CC0FE0045297A /* FiveButtonViewController.swift */; };
 		09EA58CA1E8CC0FE0045297A /* FiveButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EA58C81E8CC0FE0045297A /* FiveButtonViewController.xib */; };
+		09EAFBB81EF0AAC5001B9375 /* LocationSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EAFBB61EF0AAC5001B9375 /* LocationSelectorViewController.swift */; };
+		09EAFBB91EF0AAC5001B9375 /* LocationSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EAFBB71EF0AAC5001B9375 /* LocationSelectorViewController.xib */; };
+		09EAFBBC1EF0AE72001B9375 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EAFBBA1EF0AE72001B9375 /* LocationCollectionViewCell.swift */; };
+		09EAFBBD1EF0AE72001B9375 /* LocationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EAFBBB1EF0AE72001B9375 /* LocationCollectionViewCell.xib */; };
+		09EAFBBF1EF23843001B9375 /* LocationListFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EAFBBE1EF23843001B9375 /* LocationListFlowLayout.swift */; };
 		20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20073E0C1D9E387400BCD690 /* RateAppViewController.swift */; };
 		200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200A0B011D9E29BB00D59249 /* RateApp.storyboard */; };
 		2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */; };
@@ -216,6 +223,8 @@
 		09ACCDD01E71894800AF3E4F /* bk-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay.png"; sourceTree = "<group>"; };
 		09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay@2x.png"; sourceTree = "<group>"; };
 		09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationTableViewCell.swift; sourceTree = "<group>"; };
+		09DDDE531EF289E000E7F2B7 /* LocationHeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHeaderReusableView.swift; sourceTree = "<group>"; };
+		09DDDE541EF289E000E7F2B7 /* LocationHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationHeaderReusableView.xib; sourceTree = "<group>"; };
 		09DF43AE1E4E6D2100937469 /* RegionTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionTableHeaderView.swift; sourceTree = "<group>"; };
 		09E60D8E1ED521490037BA0D /* UIButton+BackgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+BackgroundColor.swift"; sourceTree = "<group>"; };
 		09E60D921ED688CF0037BA0D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +232,11 @@
 		09E60D961ED6E0430037BA0D /* AccountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountButton.swift; path = Buttons/AccountButton.swift; sourceTree = "<group>"; };
 		09EA58C71E8CC0FE0045297A /* FiveButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiveButtonViewController.swift; sourceTree = "<group>"; };
 		09EA58C81E8CC0FE0045297A /* FiveButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiveButtonViewController.xib; sourceTree = "<group>"; };
+		09EAFBB61EF0AAC5001B9375 /* LocationSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectorViewController.swift; sourceTree = "<group>"; };
+		09EAFBB71EF0AAC5001B9375 /* LocationSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationSelectorViewController.xib; sourceTree = "<group>"; };
+		09EAFBBA1EF0AE72001B9375 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		09EAFBBB1EF0AE72001B9375 /* LocationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCollectionViewCell.xib; sourceTree = "<group>"; };
+		09EAFBBE1EF23843001B9375 /* LocationListFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListFlowLayout.swift; sourceTree = "<group>"; };
 		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
 		20073E0C1D9E387400BCD690 /* RateAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateAppViewController.swift; sourceTree = "<group>"; };
 		200A0B011D9E29BB00D59249 /* RateApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RateApp.storyboard; sourceTree = "<group>"; };
@@ -559,6 +573,11 @@
 				0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */,
 				09661F2A1EE645B200F242E6 /* MapImageView.swift */,
 				09099D6C1EEE567200891128 /* VPNSwitch.swift */,
+				09EAFBBA1EF0AE72001B9375 /* LocationCollectionViewCell.swift */,
+				09EAFBBB1EF0AE72001B9375 /* LocationCollectionViewCell.xib */,
+				09EAFBBE1EF23843001B9375 /* LocationListFlowLayout.swift */,
+				09DDDE531EF289E000E7F2B7 /* LocationHeaderReusableView.swift */,
+				09DDDE541EF289E000E7F2B7 /* LocationHeaderReusableView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -634,6 +653,8 @@
 				091BBCC81E8E427F003D16A8 /* ThreeButtonViewController.xib */,
 				09E60D921ED688CF0037BA0D /* MainViewController.swift */,
 				09E60D931ED688CF0037BA0D /* MainViewController.xib */,
+				09EAFBB61EF0AAC5001B9375 /* LocationSelectorViewController.swift */,
+				09EAFBB71EF0AAC5001B9375 /* LocationSelectorViewController.xib */,
 			);
 			name = Top;
 			sourceTree = "<group>";
@@ -922,6 +943,7 @@
 			files = (
 				2B45C1691D20D64600D4326C /* Dosis-ExtraBold.otf in Resources */,
 				09ACCDD31E71894F00AF3E4F /* bk-overlay@2x.png in Resources */,
+				09EAFBBD1EF0AE72001B9375 /* LocationCollectionViewCell.xib in Resources */,
 				2B8D3F401DBA965A0096EEF7 /* Account.storyboard in Resources */,
 				2B45C16C1D20D64600D4326C /* Dosis-Medium.otf in Resources */,
 				2061342D1D8296AC00480621 /* BlurredIndicatorView.xib in Resources */,
@@ -934,12 +956,14 @@
 				09EA58CA1E8CC0FE0045297A /* FiveButtonViewController.xib in Resources */,
 				2BF33BC51D5314F1003FCFF3 /* test.p12 in Resources */,
 				09ACCDCB1E71718C00AF3E4F /* TabletButtonCollectionViewCell.xib in Resources */,
+				09DDDE561EF289E000E7F2B7 /* LocationHeaderReusableView.xib in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */,
 				20EC4A321D2F702100785399 /* Region.storyboard in Resources */,
 				091BBCCA1E8E427F003D16A8 /* ThreeButtonViewController.xib in Resources */,
 				09ACCDCD1E71892200AF3E4F /* splashscreen-illustration@2x.png in Resources */,
 				2B2DE27D1DA4D06500C22098 /* Top_iPad.storyboard in Resources */,
+				09EAFBB91EF0AAC5001B9375 /* LocationSelectorViewController.xib in Resources */,
 				094C1B9D1E4E697000D9036F /* RegionTableHeaderView.xib in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				09E60D951ED688CF0037BA0D /* MainViewController.xib in Resources */,
@@ -1282,6 +1306,7 @@
 				2018AB0A1DB8AF0E00649D03 /* EmailConfirmationViewController.swift in Sources */,
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
 				2092AF801DACC2B400F77031 /* ConnectionButtonsViewController.swift in Sources */,
+				09EAFBBC1EF0AE72001B9375 /* LocationCollectionViewCell.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				2079C8861D5DD994004274ED /* RandomCharacterGenerator.swift in Sources */,
 				09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */,
@@ -1294,6 +1319,7 @@
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
 				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
 				09EA58C91E8CC0FE0045297A /* FiveButtonViewController.swift in Sources */,
+				09EAFBB81EF0AAC5001B9375 /* LocationSelectorViewController.swift in Sources */,
 				201809E61D5B394900730FA4 /* ThemedTableViewCell.swift in Sources */,
 				2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */,
 				2033FB451DB89E4D004D14B7 /* LoadingAnimationView.swift in Sources */,
@@ -1332,9 +1358,11 @@
 				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
 				20B634B61DC3591B0036169D /* AppAction.swift in Sources */,
 				2090F7191DD5AF8D00BAB626 /* ChangePasswordAPI.swift in Sources */,
+				09DDDE551EF289E000E7F2B7 /* LocationHeaderReusableView.swift in Sources */,
 				0910AE4A1E7C0A4C003802DB /* VPNStateController.swift in Sources */,
 				208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */,
 				2073AE331DE44A300090B472 /* UIPageControl+Disable.m in Sources */,
+				09EAFBBF1EF23843001B9375 /* LocationListFlowLayout.swift in Sources */,
 				2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */,
 				0910AE481E7BFC93003802DB /* VPNServerOption.swift in Sources */,
 				09DF43AF1E4E6D2100937469 /* RegionTableHeaderView.swift in Sources */,

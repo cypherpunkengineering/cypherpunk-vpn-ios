@@ -20,6 +20,7 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     var bottomBorderLayer: CALayer
     var mapImageView: MapImageView
     var vpnSwitch: VPNSwitch
+    var locationSelectorButton: UIButton
     
     required init?(coder aDecoder: NSCoder) {
         self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
@@ -33,6 +34,11 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         self.mapImageView = MapImageView()
         
         self.vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        
+        self.locationSelectorButton = UIButton(type: .custom)
+        self.locationSelectorButton.titleLabel?.text = "Location"
+        self.locationSelectorButton.frame = CGRect(x: 0, y: 0, width: 175, height: 60)
+        self.locationSelectorButton.backgroundColor = UIColor.green
         
         super.init(coder: aDecoder)
     }
@@ -102,6 +108,15 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             childView.centerX == parentView.centerX
         }
         self.vpnSwitch.delegate = self
+        
+        self.view.addSubview(self.locationSelectorButton)
+        constrain(self.view, self.locationSelectorButton, self.vpnSwitch) { parentView, childView, vpnSwitch in
+            childView.top == vpnSwitch.bottom + 100
+            childView.height == 60.0
+            childView.width == 175.0
+            childView.centerX == parentView.centerX
+        }
+        self.locationSelectorButton.addTarget(self, action: #selector(showLocationSelector(_:)), for: .touchUpInside)
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,6 +146,14 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     }
     @IBAction func openOrCloseAccountAction(_ sender: AnyObject) {
         NotificationCenter.default.post(name: kOpenOrCloseAccountNotification, object: nil)
+    }
+    
+    @IBAction func showLocationSelector(_ sender: AnyObject) {
+        let viewController = LocationSelectorViewController(nibName: "LocationSelectorViewController", bundle: nil)
+        viewController.modalPresentationStyle = .overCurrentContext
+        self.present(viewController, animated: true) {
+            
+        }
     }
     
     private func updateView(vpnStatus: NEVPNStatus) {
