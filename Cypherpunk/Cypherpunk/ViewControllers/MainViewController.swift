@@ -14,13 +14,14 @@ import NetworkExtension
 import ReSwift
 import TinySwift
 
-class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
+class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate, LocationSelectionDelegate {
     
     var topBarView: UIView
     var bottomBorderLayer: CALayer
     var mapImageView: MapImageView
     var vpnSwitch: VPNSwitch
     var locationSelectorButton: UIButton
+    var locationSelectorVC: LocationSelectorViewController?
     
     required init?(coder aDecoder: NSCoder) {
         self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
@@ -149,11 +150,21 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     }
     
     @IBAction func showLocationSelector(_ sender: AnyObject) {
-        let viewController = LocationSelectorViewController(nibName: "LocationSelectorViewController", bundle: nil)
-        viewController.modalPresentationStyle = .overCurrentContext
-        self.present(viewController, animated: true) {
-            
-        }
+        self.locationSelectorVC = LocationSelectorViewController(nibName: "LocationSelectorViewController", bundle: nil)
+        self.locationSelectorVC?.delegate = self
+        
+        self.addChildViewController(self.locationSelectorVC!)
+        
+        UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: { _ in
+            self.view.addSubview((self.locationSelectorVC?.view)!)
+            self.locationSelectorVC?.didMove(toParentViewController: self)
+            constrain(self.view, (self.locationSelectorVC?.view)!, self.topBarView) { parentView, childView, topBarView in
+                childView.top == topBarView.bottom
+                childView.leading == parentView.leading
+                childView.trailing == parentView.trailing
+                childView.bottom == parentView.bottom
+            }
+        }, completion: nil)
     }
     
     private func updateView(vpnStatus: NEVPNStatus) {
@@ -233,6 +244,17 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             else {
                 VPNConfigurationCoordinator.disconnect()
             }
+        }
+    }
+    
+    // MARK: - LocationSelectionDelegate
+    func dismissSelector() {
+        self.locationSelectorVC?.willMove(toParentViewController: nil)
+        
+        UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: { 
+            self.locationSelectorVC?.view.removeFromSuperview()
+        }) { (completed) in
+            self.locationSelectorVC?.removeFromParentViewController()
         }
     }
 }

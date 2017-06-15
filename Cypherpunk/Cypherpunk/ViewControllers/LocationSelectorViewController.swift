@@ -11,6 +11,10 @@ import ReSwift
 import RealmSwift
 import NetworkExtension
 
+protocol LocationSelectionDelegate {
+    func dismissSelector()
+}
+
 enum LocationSection: Int {
     case cypherplay
 //    case favorite
@@ -86,6 +90,8 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
+    var delegate: LocationSelectionDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -106,7 +112,7 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 10
     }
@@ -200,7 +206,7 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
     }
     
 
-    // MARK: UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -209,7 +215,7 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
         let section = LocationSection(rawValue: (indexPath as NSIndexPath).section)!
         let location = section.realmResults[indexPath.row]
         ConnectionHelper.connectTo(region: location, cypherplay: false)
-        self.dismiss(animated: true, completion: nil)
+        self.delegate?.dismissSelector()
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
@@ -226,7 +232,7 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
         }
     }
     
-    // MARK: UICollectionViewDelegateFlowLayout
+    // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
