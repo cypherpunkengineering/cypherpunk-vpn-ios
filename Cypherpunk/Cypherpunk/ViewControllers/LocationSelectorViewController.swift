@@ -89,6 +89,7 @@ enum LocationSection: Int {
 class LocationSelectorViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var backButton: UIButton!
     
     var delegate: LocationSelectionDelegate?
     
@@ -102,11 +103,22 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
         self.collectionView.dataSource = self
         
         self.collectionView.reloadData()
+        
+        let buttonText = String.fontAwesomeIcon(name: .chevronLeft) + " Back"
+        let mutableString = NSMutableAttributedString(string: buttonText)
+        mutableString.addAttribute(NSFontAttributeName, value: UIFont.fontAwesome(ofSize: 16), range: NSRange(location: 0, length: 1))
+        mutableString.addAttribute(NSFontAttributeName, value: R.font.dosisSemiBold(size: 17)!, range: NSRange(location: 2, length: 4))
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenyBlue, range: NSRange(location: 0, length: 6))
+        self.backButton.setAttributedTitle(mutableString, for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func backPressed(_ sender: Any) {
+        delegate?.dismissSelector()
     }
     
     // MARK: - UICollectionViewDataSource
