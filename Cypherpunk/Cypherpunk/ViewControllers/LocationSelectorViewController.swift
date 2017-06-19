@@ -13,6 +13,7 @@ import NetworkExtension
 
 protocol LocationSelectionDelegate {
     func dismissSelector()
+    func scrolledTo(location: Region)
 }
 
 enum LocationSection: Int {
@@ -154,6 +155,43 @@ extension LocationSelectorViewController: UICollectionViewDelegate {
         let cell = collectionView.cellForItem(at: indexPath)
         UIView.animate(withDuration: 0.1) {
             cell?.backgroundColor = UIColor.clear
+        }
+    }
+    
+    // MARK: UIScrollViewDelegate
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        notifyScrolledLocation(scrollView)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // if decelerate is true didEndDecelerating will be used instead
+        if !decelerate {
+            notifyScrolledLocation(scrollView)
+        }
+    }
+    
+    private func notifyScrolledLocation(_ scrollView: UIScrollView) {
+        // get the cell at the center of the scroll view
+        let center = self.view.convert(self.view.center, to: self.collectionView)
+        var scrolledToIndexPath: IndexPath? = nil
+        if let indexPath = collectionView.indexPathForItem(at: center) {
+            if indexPath.section > 0 {
+                scrolledToIndexPath = indexPath
+            }
+        }
+        else {
+            // failed to find an item, this is likely a section header at the point
+            let headerPaths = self.collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionElementKindSectionHeader)
+            if headerPaths.count > 0 {
+                scrolledToIndexPath = headerPaths[0]
+            }
+        }
+        
+        if scrolledToIndexPath != nil {
+            // zoom to the first item in the section instead
+            let section = LocationSection(rawValue: (scrolledToIndexPath! as NSIndexPath).section)!
+            let location = section.realmResults[(scrolledToIndexPath?.row)!]
+            self.delegate?.scrolledTo(location: location)
         }
     }
 }

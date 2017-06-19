@@ -14,7 +14,7 @@ import NetworkExtension
 import ReSwift
 import TinySwift
 
-class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate, LocationSelectionDelegate {
+class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     
     var topBarView: UIView
     var bottomBorderLayer: CALayer
@@ -246,15 +246,20 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate, 
             }
         }
     }
-    
-    // MARK: - LocationSelectionDelegate
+}
+
+extension MainViewController: LocationSelectionDelegate {
     func dismissSelector() {
         self.locationSelectorVC?.willMove(toParentViewController: nil)
         
-        UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: { 
+        UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
             self.locationSelectorVC?.view.removeFromSuperview()
         }) { (completed) in
             self.locationSelectorVC?.removeFromParentViewController()
         }
+    }
+    
+    func scrolledTo(location: Region) {
+        self.mapImageView.zoomToRegion(region: location)
     }
 }
