@@ -164,6 +164,9 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
                 childView.trailing == parentView.trailing
                 childView.bottom == parentView.bottom
             }
+            
+            self.vpnSwitch.isHidden = true
+            self.locationSelectorButton.isHidden = true
         }, completion: nil)
     }
     
@@ -212,9 +215,9 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     
     func newState(state: AppState) {
         // TODO: is there really no way to target specific property changes?
-        if let regionId = state.regionState.lastSelectedRegionId {
-            self.mapImageView.zoomToRegion(regionId: regionId)
-        }
+//        if let regionId = state.regionState.lastSelectedRegionId {
+//            self.mapImageView.zoomToRegion(regionId: regionId)
+//        }
         
 //        regionTitleLabel?.text = state.regionState.title
 //        regionFlagImageView?.image = UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal)
@@ -257,11 +260,21 @@ extension MainViewController: LocationSelectionDelegate {
     func dismissSelector() {
         self.locationSelectorVC?.willMove(toParentViewController: nil)
         
+        // reset the zoom just in case they didn't select anything
+        if let regionId = mainStore.state.regionState.lastSelectedRegionId {
+            self.mapImageView.zoomToRegion(regionId: regionId)
+        }
+        
         UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
             self.locationSelectorVC?.view.removeFromSuperview()
+            
+            self.vpnSwitch.isHidden = false
+            self.locationSelectorButton.isHidden = false
         }) { (completed) in
             self.locationSelectorVC?.removeFromParentViewController()
         }
+        
+        self.locationSelectorVC = nil
     }
     
     func scrolledTo(location: Region) {
