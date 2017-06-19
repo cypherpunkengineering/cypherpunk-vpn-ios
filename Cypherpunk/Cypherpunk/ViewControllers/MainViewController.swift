@@ -211,6 +211,11 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     }
     
     func newState(state: AppState) {
+        // TODO: is there really no way to target specific property changes?
+        if let regionId = state.regionState.lastSelectedRegionId {
+            self.mapImageView.zoomToRegion(regionId: regionId)
+        }
+        
 //        regionTitleLabel?.text = state.regionState.title
 //        regionFlagImageView?.image = UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal)
 //        premiumLocationIconWidthConstraint?.constant = 0.0
