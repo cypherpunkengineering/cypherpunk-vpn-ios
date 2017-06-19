@@ -26,4 +26,13 @@ class LocationCollectionViewCell: UICollectionViewCell {
         self.locationLabel.textColor = UIColor(white: 1.0, alpha: 0.5)
         self.flagView.alpha = 0.5
     }
+    
+    func displayRegion(region: Region) {
+        self.flagView.image = UIImage(named: region.country.lowercased())
+        self.locationLabel.text = region.name
+        
+        if !region.authorized {
+            self.showDisabledAppearance()
+        }
+    }
 }

@@ -69,7 +69,7 @@ enum LocationSection: Int {
 //        case .favorite: return "favorite".uppercased()
 //        case .recentlyConnected: return "Recently Connected".uppercased()
         case .cypherplay: return ""
-        case .developer: return "Developer".uppercased()
+        case .developer: return "Development".uppercased()
         case .NA: return "North America".uppercased()
         case .SA: return "Central & South America".uppercased()
         case .CR: return "Caribbean".uppercased()
@@ -86,7 +86,7 @@ enum LocationSection: Int {
     }
 }
 
-class LocationSelectorViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class LocationSelectorViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var backButton: UIButton!
@@ -97,6 +97,7 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
         super.viewDidLoad()
 
         self.collectionView.register(UINib(nibName: "LocationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LocationCell")
+        self.collectionView.register(UINib(nibName: "CypherplayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CypherPlayCell")
         self.collectionView.register(UINib(nibName: "LocationHeaderReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView")
         
         self.collectionView.delegate = self
@@ -118,108 +119,11 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
     }
     
     @IBAction func backPressed(_ sender: Any) {
-        delegate?.dismissSelector()
+        self.delegate?.dismissSelector()
     }
-    
-    // MARK: - UICollectionViewDataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let section = LocationSection(rawValue: section)!
-        
-        switch section {
-        case .cypherplay:
-            return 0
-        default:
-            return section.realmResults.count
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
-        
-        let section = LocationSection(rawValue: (indexPath as NSIndexPath).section)!
-        
-        switch section {
-        case .cypherplay:
-            break
-        default:
-            let region = section.realmResults[indexPath.row]
-            cell.flagView.image = UIImage(named: region.country.lowercased())
-            cell.locationLabel.text = region.name
-            
-            if !region.authorized {
-                cell.showDisabledAppearance()
-            }
-            
-//            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
-//            cell?.starButton.isHidden = false
-//            cell?.flagImageView.image = nil
-//            cell?.titleLabel.isEnabled = true
-//            cell?.starButton.alpha = 1.0
-//            cell?.starButton.isUserInteractionEnabled = true
-//            cell?.isUserInteractionEnabled = true
-//            cell?.titleLabel.textColor = UIColor.white
-//            cell?.flagImageView.alpha = 1.0
-//            cell?.devLocationIconView.alpha = 1.0
-//            cell?.premiumLocationIconView.alpha = 1.0
-//            cell?.unavailableLocationIconView.alpha = 1.0
-//            cell?.devLocationIconView.isHidden = true
-//            cell?.premiumLocationIconView.isHidden = true
-//            cell?.unavailableLocationIconView.isHidden = true
-//
-//            let region = section.realmResults[indexPath.row]
-//
-//            if mainStore.state.regionState.regionId == region.id {
-//                cell?.applySelectedStyle()
-//            }
-//
-//            cell?.titleLabel.text = region.name
-//            if region.isFavorite {
-//                cell?.starButton.setImage(R.image.locationIconStared(), for: .normal)
-//            } else {
-//                cell?.starButton.setImage(R.image.locationIconStar(), for: .normal)
-//            }
-//            cell?.flagImageView.image = UIImage(named: region.country.lowercased())
-//
-//            if region.httpDefault.isEmpty || !region.authorized {
-//                cell?.unavailableLocationIconView.isHidden = false
-//            }
-//            else if region.level == "premium" {
-//                cell?.premiumLocationIconView.isHidden = false
-//            }
-//            else if region.level == "developer" {
-//                cell?.devLocationIconView.isHidden = false
-//            }
-//
-//
-//            if region.authorized == false {
-//                cell?.titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
-//                cell?.titleLabel.isEnabled = false
-//                cell?.starButton.alpha = 0.5
-//                cell?.flagImageView.alpha = 0.5
-//                cell?.devLocationIconView.alpha = 0.5
-//                cell?.premiumLocationIconView.alpha = 0.5
-//                cell?.unavailableLocationIconView
-//                    .alpha = 0.5
-//                
-//                cell?.starButton.isUserInteractionEnabled = false
-//                cell?.isUserInteractionEnabled = false
-//            }
-//            
-//            cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
-//            
-//            return cell!
-        }
-        
-        
-        return cell
-    }
-    
+}
 
-    // MARK: - UICollectionViewDelegate
+extension LocationSelectorViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let section = LocationSection(rawValue: (indexPath as NSIndexPath).section)!
         let region = section.realmResults[indexPath.row]
@@ -228,14 +132,20 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = LocationSection(rawValue: (indexPath as NSIndexPath).section)!
-        let location = section.realmResults[indexPath.row]
-        ConnectionHelper.connectTo(region: location, cypherplay: false)
+        
+        if section == .cypherplay {
+            ConnectionHelper.connectToFastest(cypherplay: true)
+        }
+        else {
+            let location = section.realmResults[indexPath.row]
+            ConnectionHelper.connectTo(region: location, cypherplay: false)
+        }
         self.delegate?.dismissSelector()
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.1) { 
+        UIView.animate(withDuration: 0.1) {
             cell?.backgroundColor = UIColor.greenyBlue
         }
     }
@@ -246,8 +156,102 @@ class LocationSelectorViewController: UIViewController, UICollectionViewDelegate
             cell?.backgroundColor = UIColor.clear
         }
     }
+}
+
+extension LocationSelectorViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 10
+    }
     
-    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let section = LocationSection(rawValue: section)!
+        
+        switch section {
+        case .cypherplay:
+            return 1
+        default:
+            return section.realmResults.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: UICollectionViewCell
+        
+        let section = LocationSection(rawValue: (indexPath as NSIndexPath).section)!
+        
+        switch section {
+        case .cypherplay:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CypherPlayCell", for: indexPath)
+        default:
+            let locCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
+            let region = section.realmResults[indexPath.row]
+            locCell.displayRegion(region: region)
+            cell = locCell
+            
+            //            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
+            //            cell?.starButton.isHidden = false
+            //            cell?.flagImageView.image = nil
+            //            cell?.titleLabel.isEnabled = true
+            //            cell?.starButton.alpha = 1.0
+            //            cell?.starButton.isUserInteractionEnabled = true
+            //            cell?.isUserInteractionEnabled = true
+            //            cell?.titleLabel.textColor = UIColor.white
+            //            cell?.flagImageView.alpha = 1.0
+            //            cell?.devLocationIconView.alpha = 1.0
+            //            cell?.premiumLocationIconView.alpha = 1.0
+            //            cell?.unavailableLocationIconView.alpha = 1.0
+            //            cell?.devLocationIconView.isHidden = true
+            //            cell?.premiumLocationIconView.isHidden = true
+            //            cell?.unavailableLocationIconView.isHidden = true
+            //
+            //            let region = section.realmResults[indexPath.row]
+            //
+            //            if mainStore.state.regionState.regionId == region.id {
+            //                cell?.applySelectedStyle()
+            //            }
+            //
+            //            cell?.titleLabel.text = region.name
+            //            if region.isFavorite {
+            //                cell?.starButton.setImage(R.image.locationIconStared(), for: .normal)
+            //            } else {
+            //                cell?.starButton.setImage(R.image.locationIconStar(), for: .normal)
+            //            }
+            //            cell?.flagImageView.image = UIImage(named: region.country.lowercased())
+            //
+            //            if region.httpDefault.isEmpty || !region.authorized {
+            //                cell?.unavailableLocationIconView.isHidden = false
+            //            }
+            //            else if region.level == "premium" {
+            //                cell?.premiumLocationIconView.isHidden = false
+            //            }
+            //            else if region.level == "developer" {
+            //                cell?.devLocationIconView.isHidden = false
+            //            }
+            //
+            //
+            //            if region.authorized == false {
+            //                cell?.titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
+            //                cell?.titleLabel.isEnabled = false
+            //                cell?.starButton.alpha = 0.5
+            //                cell?.flagImageView.alpha = 0.5
+            //                cell?.devLocationIconView.alpha = 0.5
+            //                cell?.premiumLocationIconView.alpha = 0.5
+            //                cell?.unavailableLocationIconView
+            //                    .alpha = 0.5
+            //                
+            //                cell?.starButton.isUserInteractionEnabled = false
+            //                cell?.isUserInteractionEnabled = false
+            //            }
+            //            
+            //            cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
+            //            
+            //            return cell!
+        }
+        return cell
+    }
+}
+
+extension LocationSelectorViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
