@@ -103,7 +103,7 @@ class MapImageView: UIImageView {
             
             let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
             
-            UIView.animate(withDuration: 2.0, animations: {
+            UIView.animate(withDuration: 1.25, animations: {
                 self.transform = CGAffineTransform.init(scaleX: scale, y: scale)
                 
                 self.frame = CGRect(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale, width: self.frame.size.width, height: self.frame.size.height)
