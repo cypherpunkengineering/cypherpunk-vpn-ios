@@ -94,14 +94,14 @@ class MapImageView: UIImageView {
     }
     
     func zoomToRegion(region: Region) {
-        let scale = region.locDisplayScale
-        
         let coords = transformToXY(lat: region.latitude, long: region.longitude)
         
         if let superView = self.superview {
             let superviewFrame = superView.frame
             let superViewFrameMidX = superviewFrame.midX
             let superViewFrameMidY = superviewFrame.midY
+            
+            let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
             
             UIView.animate(withDuration: 2.0, animations: {
                 self.transform = CGAffineTransform.init(scaleX: scale, y: scale)
@@ -116,6 +116,16 @@ class MapImageView: UIImageView {
         if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
             zoomToRegion(region: region)
         }
+    }
+    
+    private func translateScaleToiOS(regionScale: CGFloat, superviewFrame: CGRect) -> CGFloat {
+        // scale values were based on 350x500 res, need to compute the right values for iOS
+        let height = superviewFrame.height
+        
+        // scale it based on the height
+        let scale = height / 500 * regionScale
+        
+        return scale
     }
     
     // MARK: - Map Helpers
