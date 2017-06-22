@@ -20,8 +20,10 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     var bottomBorderLayer: CALayer
     var mapImageView: MapImageView
     var vpnSwitch: VPNSwitch
-    var locationSelectorButton: UIButton
+    var locationSelectorButton: LocationButton
     var locationSelectorVC: LocationSelectorViewController?
+    
+    var locationButtonConstraintGroup: ConstraintGroup?
     
     required init?(coder aDecoder: NSCoder) {
         self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
@@ -36,10 +38,7 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         
         self.vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
-        self.locationSelectorButton = UIButton(type: .custom)
-        self.locationSelectorButton.titleLabel?.text = "Location"
-        self.locationSelectorButton.frame = CGRect(x: 0, y: 0, width: 175, height: 60)
-        self.locationSelectorButton.backgroundColor = UIColor.green
+        self.locationSelectorButton = LocationButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         
         super.init(coder: aDecoder)
     }
@@ -111,13 +110,22 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         self.vpnSwitch.delegate = self
         
         self.view.addSubview(self.locationSelectorButton)
-        constrain(self.view, self.locationSelectorButton, self.vpnSwitch) { parentView, childView, vpnSwitch in
-            childView.top == vpnSwitch.bottom + 100
-            childView.height == 60.0
-            childView.width == 175.0
+        locationButtonConstraintGroup = constrain(self.view, self.locationSelectorButton, self.vpnSwitch) { parentView, childView, vpnSwitch in
+            // do not constrain the width of the location button, it needs to flex based on the text shown
+            childView.top == vpnSwitch.bottom + 150
+            childView.height == 40.0
             childView.centerX == parentView.centerX
         }
-        self.locationSelectorButton.addTarget(self, action: #selector(showLocationSelector(_:)), for: .touchUpInside)
+        self.locationSelectorButton.delegate = self
+        
+        
+        self.mapImageView.zoomToLastSelected()
+        if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
+            let realm = try! Realm()
+            if let selectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
+                self.locationSelectorButton.location = selectedRegion
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -215,9 +223,15 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     
     func newState(state: AppState) {
         // TODO: is there really no way to target specific property changes?
-//        if let regionId = state.regionState.lastSelectedRegionId {
+        if let regionId = state.regionState.lastSelectedRegionId {
 //            self.mapImageView.zoomToRegion(regionId: regionId)
-//        }
+            let realm = try! Realm()
+            if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
+                self.mapImageView.zoomToRegion(region: region)
+                self.locationSelectorButton.location = region
+            }
+//            self.locationSelectorButton.location =
+        }
         
 //        regionTitleLabel?.text = state.regionState.title
 //        regionFlagImageView?.image = UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal)
@@ -279,5 +293,11 @@ extension MainViewController: LocationSelectionDelegate {
     
     func scrolledTo(location: Region) {
         self.mapImageView.zoomToRegion(region: location)
+    }
+}
+
+extension MainViewController: LocationButtonDelgate {
+    func buttonPressed() {
+        showLocationSelector(self)
     }
 }
