@@ -22,6 +22,8 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     var vpnSwitch: VPNSwitch
     var locationSelectorButton: LocationButton
     var locationSelectorVC: LocationSelectorViewController?
+    var statusTitleLabel = UILabel()
+    var statusLabel = UILabel()
     
     var locationButtonConstraintGroup: ConstraintGroup?
     
@@ -118,7 +120,25 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         }
         self.locationSelectorButton.delegate = self
         
+        self.view.addSubview(self.statusLabel)
+        self.statusLabel.font = R.font.dosisMedium(size: 18)
+        self.statusLabel.text = "DISCONNECTED"
+        self.statusLabel.textColor = UIColor.white
+        constrain(self.view, self.statusLabel, self.vpnSwitch) { parentView, childView, vpnSwitch in
+            childView.top == vpnSwitch.bottom + 40
+            childView.centerX == parentView.centerX
+        }
         
+        statusTitleLabel.textColor = UIColor.greenyBlue
+        statusTitleLabel.text = "STATUS"
+        statusTitleLabel.font = R.font.dosisMedium(size: 10)
+        self.view.addSubview(statusTitleLabel)
+        constrain(self.view, statusTitleLabel, self.statusLabel) { parentView, childView, statusLabel in
+            childView.leading == statusLabel.leading
+            childView.bottom == statusLabel.top
+        }
+        
+        // set the map and location button based on the last selected region
         self.mapImageView.zoomToLastSelected()
         if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
             let realm = try! Realm()
@@ -175,27 +195,35 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             
             self.vpnSwitch.isHidden = true
             self.locationSelectorButton.isHidden = true
+            self.statusTitleLabel.isHidden = true
+            self.statusLabel.isHidden = true
         }, completion: nil)
     }
     
     private func updateView(vpnStatus: NEVPNStatus) {
+        var status = ""
+        
+        switch vpnStatus {
+        case .invalid:
+            status = "Invalid"
+        case .connecting:
+            status = "Connecting"
+            self.vpnSwitch.isOn = true
+        case .connected:
+            status = "Connected"
+        case .disconnecting:
+            status = "Disconnecting"
+        case .disconnected:
+            status = "Disconnected"
+        case .reasserting:
+            status = "Reasserting"
+        }
+        
+        self.statusLabel.text = status.uppercased()
+        self.statusLabel.sizeToFit()
+        
         if UIDevice.current.isSimulator {
             // TODO what should be done here
-        }
-        else {
-            switch vpnStatus {
-            case .invalid:
-                print("INVALID") // TODO
-                break
-            case .connected:
-//                vpnSwitch.isOn = true
-                break
-            case .disconnected:
-//                vpnSwitch.isOn = false
-                break
-            default:
-                break
-            }
         }
     }
     
@@ -284,6 +312,8 @@ extension MainViewController: LocationSelectionDelegate {
             
             self.vpnSwitch.isHidden = false
             self.locationSelectorButton.isHidden = false
+            self.statusTitleLabel.isHidden = false
+            self.statusLabel.isHidden = false
         }) { (completed) in
             self.locationSelectorVC?.removeFromParentViewController()
         }
