@@ -103,6 +103,7 @@ class LocationButton: UIView {
         chevronLayer.frame = chevronRect
         chevronLayer.foregroundColor = UIColor.greenyBlue.cgColor
         chevronLayer.position = CGPoint(x: ceil(gradientLayer.frame.width / 2) + 2, y: gradientLayer.frame.height / 2)
+        chevronLayer.contentsScale = UIScreen.main.scale
         
         gradientLayer.addSublayer(chevronLayer)
         self.decoratorView.layer.addSublayer(gradientLayer)
