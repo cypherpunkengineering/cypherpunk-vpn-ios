@@ -18,6 +18,7 @@ class MapImageView: UIView {
     private let mapLayer = CALayer()
     private var scaleTransform: CATransform3D? = nil
     private var mapScale: CGFloat = 1.0
+    private var lastPosition: CGPoint? = nil
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -104,11 +105,11 @@ class MapImageView: UIView {
         self.mapLayer.addSublayer(layer)
     }
     
-    func zoomToScale(_ scale: CGFloat) {
-        UIView.animate(withDuration: MapImageView.mapPanDuration) {
-            self.mapLayer.setAffineTransform(CGAffineTransform.init(scaleX: scale, y: scale))
-        }
-    }
+//    func zoomToScale(_ scale: CGFloat) {
+//        UIView.animate(withDuration: MapImageView.mapPanDuration) {
+//            self.mapLayer.setAffineTransform(CGAffineTransform.init(scaleX: scale, y: scale))
+//        }
+//    }
     
     func zoomToLastSelected() {
         if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
@@ -131,16 +132,21 @@ class MapImageView: UIView {
             let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
             
             let position = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
-            print(position)
             
             // scale animation
-            let animation = CABasicAnimation(keyPath: "transform.scale")
-            animation.fromValue = self.mapScale
-            animation.toValue = scale
+            let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+            scaleAnimation.fromValue = self.mapScale
+            scaleAnimation.toValue = scale
             
             // move the map
             let positionAnimation = CABasicAnimation(keyPath: "position")
-            positionAnimation.fromValue = self.mapLayer.value(forKey: "position")
+            
+            if let currentPosition = self.lastPosition {
+                positionAnimation.fromValue = currentPosition
+            }
+            else {
+                positionAnimation.fromValue = CGPoint(x: superViewFrameMidX, y: superViewFrameMidY)
+            }
             positionAnimation.toValue = position
             
             // animation group
@@ -148,9 +154,10 @@ class MapImageView: UIView {
             animationGroup.duration = MapImageView.mapPanDuration
             animationGroup.fillMode = kCAFillModeForwards
             animationGroup.isRemovedOnCompletion = false
-            animationGroup.animations = [animation, positionAnimation]
+            animationGroup.animations = [positionAnimation, scaleAnimation]
             
             self.mapScale = scale
+            self.lastPosition = position
             self.mapLayer.position = position
             self.mapLayer.add(animationGroup, forKey: "panAndZoom")
         }

@@ -139,13 +139,13 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         }
         
         // set the map and location button based on the last selected region
-//        self.mapImageView.zoomToLastSelected()
-//        if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
-//            let realm = try! Realm()
-//            if let selectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
-//                self.locationSelectorButton.location = selectedRegion
-//            }
-//        }
+        if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
+            let realm = try! Realm()
+            if let selectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
+                self.mapImageView.zoomToRegion(region: selectedRegion)
+                self.locationSelectorButton.location = selectedRegion
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -250,15 +250,15 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     }
     
     func newState(state: AppState) {
+        print("NEW STATE")
         // TODO: is there really no way to target specific property changes?
-        if let regionId = state.regionState.lastSelectedRegionId {
-//            self.mapImageView.zoomToRegion(regionId: regionId)
-            let realm = try! Realm()
-            if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
-                self.mapImageView.zoomToRegion(region: region)
-                self.locationSelectorButton.location = region
-            }
-        }
+//        if let regionId = state.regionState.lastSelectedRegionId {
+//            let realm = try! Realm()
+//            if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
+//                self.mapImageView.zoomToRegion(region: region)
+//                self.locationSelectorButton.location = region
+//            }
+//        }
         
 //        regionTitleLabel?.text = state.regionState.title
 //        regionFlagImageView?.image = UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal)
@@ -299,12 +299,27 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
 
 extension MainViewController: LocationSelectionDelegate {
     func dismissSelector() {
-        self.locationSelectorVC?.willMove(toParentViewController: nil)
-        
-        // reset the zoom just in case they didn't select anything
-        if let regionId = mainStore.state.regionState.lastSelectedRegionId {
-            self.mapImageView.zoomToRegion(regionId: regionId)
+        showControls() {
+            // reset the zoom just in case they didn't select anything
+            if let regionId = mainStore.state.regionState.lastSelectedRegionId {
+                self.mapImageView.zoomToRegion(regionId: regionId)
+            }
         }
+    }
+    
+    func scrolledTo(location: Region) {
+        self.mapImageView.zoomToRegion(region: location)
+    }
+    
+    func locationSelected(location: Region) {
+        showControls() {
+            self.mapImageView.zoomToRegion(region: location)
+            self.locationSelectorButton.location = location
+        }
+    }
+    
+    private func showControls(_ completion: (() -> Void)? = nil) {
+        self.locationSelectorVC?.willMove(toParentViewController: nil)
         
         UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
             self.locationSelectorVC?.view.removeFromSuperview()
@@ -315,13 +330,12 @@ extension MainViewController: LocationSelectionDelegate {
             self.statusLabel.isHidden = false
         }) { (completed) in
             self.locationSelectorVC?.removeFromParentViewController()
+            if let block = completion {
+                block()
+            }
         }
-        
-        self.locationSelectorVC = nil
-    }
     
-    func scrolledTo(location: Region) {
-        self.mapImageView.zoomToRegion(region: location)
+        self.locationSelectorVC = nil
     }
 }
 
