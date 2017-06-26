@@ -16,6 +16,8 @@ class MapImageView: UIView {
     private let locationBorderColor = UIColor.init(hex: "#004444")!.cgColor
     private let markerLayer = CALayer()
     private let mapLayer = CALayer()
+    private var scaleTransform: CATransform3D? = nil
+    private var mapScale: CGFloat = 1.0
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -68,15 +70,15 @@ class MapImageView: UIView {
         
         drawLocationsOnMap()
         
-//        let markerImage = UIImage.fontAwesomeIcon(name: .mapMarker, textColor: UIColor(red: 136.0 / 255.0, green: 1.0, blue: 1.0, alpha: 1.0), size: CGSize(width: 50, height: 50))
-//        print(markerImage.size)
-//        self.markerLayer.contents = markerImage.cgImage
-//        self.markerLayer.contentsScale = UIScreen.main.scale
-//        self.markerLayer.frame = CGRect(x: 50, y: 100, width: 50, height: 50)
-//        self.markerLayer.contentsGravity = kCAGravityCenter
-//        self.markerLayer.opacity = 1.0
-//        self.layer.addSublayer(self.markerLayer)
-////        self.markerLayer.isHidden = true
+        let markerImage = UIImage.fontAwesomeIcon(name: .mapMarker, textColor: UIColor(red: 136.0 / 255.0, green: 1.0, blue: 1.0, alpha: 1.0), size: CGSize(width: 50, height: 50))
+        print(markerImage.size)
+        self.markerLayer.contents = markerImage.cgImage
+        self.markerLayer.contentsScale = UIScreen.main.scale
+        self.markerLayer.frame = CGRect(x: 50, y: 100, width: 50, height: 50)
+        self.markerLayer.contentsGravity = kCAGravityCenter
+        self.markerLayer.opacity = 1.0
+        self.layer.addSublayer(self.markerLayer)
+//        self.markerLayer.isHidden = true
     }
     
     func drawLocationsOnMap() {
@@ -128,25 +130,29 @@ class MapImageView: UIView {
             
             let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
             
-            UIView.animate(withDuration: MapImageView.mapPanDuration, animations: {
-                self.mapLayer.setAffineTransform(CGAffineTransform.init(scaleX: scale, y: scale))
-                
-                self.frame = CGRect(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale, width: self.frame.size.width, height: self.frame.size.height)
-                
-                // move the map marker
-//                self.markerLayer.isHidden = false
-//                //            self.markerLayer.position = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
-////                self.markerLayer.frame = CGRect(x: CGFloat(coords.x) * scale + 25, y: CGFloat(coords.y) * scale + 25, width: 50, height: 50)
-//                self.markerLayer.frame = CGRect(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale, width: 50, height: 50)
-//                
-//                self.markerLayer.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-//                print("CENTER: \(self.markerLayer.frame.midX), \(self.markerLayer.frame.midY)")
-//                
-//                //            self.setNeedsDisplay()
-//                print("********")
-//                print(self.frame)
-//                print(self.markerLayer.frame)
-            })
+            let position = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
+            print(position)
+            
+            // scale animation
+            let animation = CABasicAnimation(keyPath: "transform.scale")
+            animation.fromValue = self.mapScale
+            animation.toValue = scale
+            
+            // move the map
+            let positionAnimation = CABasicAnimation(keyPath: "position")
+            positionAnimation.fromValue = self.mapLayer.value(forKey: "position")
+            positionAnimation.toValue = position
+            
+            // animation group
+            let animationGroup = CAAnimationGroup()
+            animationGroup.duration = MapImageView.mapPanDuration
+            animationGroup.fillMode = kCAFillModeForwards
+            animationGroup.isRemovedOnCompletion = false
+            animationGroup.animations = [animation, positionAnimation]
+            
+            self.mapScale = scale
+            self.mapLayer.position = position
+            self.mapLayer.add(animationGroup, forKey: "panAndZoom")
         }
     }
     
