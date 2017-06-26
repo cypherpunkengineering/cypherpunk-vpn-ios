@@ -139,13 +139,13 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         }
         
         // set the map and location button based on the last selected region
-        self.mapImageView.zoomToLastSelected()
-        if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
-            let realm = try! Realm()
-            if let selectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
-                self.locationSelectorButton.location = selectedRegion
-            }
-        }
+//        self.mapImageView.zoomToLastSelected()
+//        if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
+//            let realm = try! Realm()
+//            if let selectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
+//                self.locationSelectorButton.location = selectedRegion
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -258,7 +258,6 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
                 self.mapImageView.zoomToRegion(region: region)
                 self.locationSelectorButton.location = region
             }
-//            self.locationSelectorButton.location =
         }
         
 //        regionTitleLabel?.text = state.regionState.title

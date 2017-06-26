@@ -10,9 +10,12 @@ import UIKit
 import RealmSwift
 import simd
 
-class MapImageView: UIImageView {
+class MapImageView: UIView {
+    static let mapPanDuration = 1.25 // duration of the map animation when it pans/zooms
     private let locationColor = UIColor.init(hex: "#008888")!.cgColor
     private let locationBorderColor = UIColor.init(hex: "#004444")!.cgColor
+    private let markerLayer = CALayer()
+    private let mapLayer = CALayer()
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -23,36 +26,57 @@ class MapImageView: UIImageView {
     */
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(image: R.image.worldmap_2000())
+        super.init(coder: aDecoder)
         setupMap()
     }
     
     override init(frame: CGRect) {
-        super.init(image: R.image.worldmap_2000())
-        setupMap()
-    }
-    
-    init() {
-        super.init(image: R.image.worldmap_2000())
+        super.init(frame: frame)
         setupMap()
     }
     
     override func layoutSublayers(of layer: CALayer) {
         if layer == self.layer {
-            // set bounds for all sublayers
-            let sublayers = self.layer.sublayers
+            // set frame for all map sublayers
+            self.mapLayer.frame = self.bounds
+            let sublayers = self.mapLayer.sublayers
             sublayers?.forEach({ (sublayer) in
                 sublayer.frame = self.bounds
             })
         }
     }
     
+    private func createTransparentMapImage() -> UIImage? {
+        var transparentImage: UIImage?
+        let originalImage = R.image.worldmap_2000()
+        if let image = originalImage {
+            transparentImage = image.image(alpha: 0.3)
+        }
+        return transparentImage
+    }
+    
     private func setupMap() {
+        let mapImage = createTransparentMapImage()
+        self.mapLayer.contents = mapImage?.cgImage
+        self.mapLayer.contentsScale = UIScreen.main.scale
+        self.mapLayer.frame = CGRect(x: 0, y: 0, width: (mapImage?.size.width)!, height: (mapImage?.size.height)!)
+        self.mapLayer.contentsGravity = kCAGravityBottomLeft
+        self.layer.addSublayer(self.mapLayer)
+        
         self.contentMode = .center
-        self.alpha = 0.3
         self.layer.needsDisplayOnBoundsChange = true
         
         drawLocationsOnMap()
+        
+//        let markerImage = UIImage.fontAwesomeIcon(name: .mapMarker, textColor: UIColor(red: 136.0 / 255.0, green: 1.0, blue: 1.0, alpha: 1.0), size: CGSize(width: 50, height: 50))
+//        print(markerImage.size)
+//        self.markerLayer.contents = markerImage.cgImage
+//        self.markerLayer.contentsScale = UIScreen.main.scale
+//        self.markerLayer.frame = CGRect(x: 50, y: 100, width: 50, height: 50)
+//        self.markerLayer.contentsGravity = kCAGravityCenter
+//        self.markerLayer.opacity = 1.0
+//        self.layer.addSublayer(self.markerLayer)
+////        self.markerLayer.isHidden = true
     }
     
     func drawLocationsOnMap() {
@@ -73,13 +97,14 @@ class MapImageView: UIImageView {
         layer.strokeColor = locationBorderColor
         
         layer.setValue(regionId, forKey: "regionId")
+        layer.contentsScale = UIScreen.main.scale
         
-        self.layer.addSublayer(layer)
+        self.mapLayer.addSublayer(layer)
     }
     
     func zoomToScale(_ scale: CGFloat) {
-        UIView.animate(withDuration: 5.0) {
-            self.transform = CGAffineTransform(scaleX: scale, y: scale)
+        UIView.animate(withDuration: MapImageView.mapPanDuration) {
+            self.mapLayer.setAffineTransform(CGAffineTransform.init(scaleX: scale, y: scale))
         }
     }
     
@@ -103,10 +128,24 @@ class MapImageView: UIImageView {
             
             let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
             
-            UIView.animate(withDuration: 1.25, animations: {
-                self.transform = CGAffineTransform.init(scaleX: scale, y: scale)
+            UIView.animate(withDuration: MapImageView.mapPanDuration, animations: {
+                self.mapLayer.setAffineTransform(CGAffineTransform.init(scaleX: scale, y: scale))
                 
                 self.frame = CGRect(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale, width: self.frame.size.width, height: self.frame.size.height)
+                
+                // move the map marker
+//                self.markerLayer.isHidden = false
+//                //            self.markerLayer.position = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
+////                self.markerLayer.frame = CGRect(x: CGFloat(coords.x) * scale + 25, y: CGFloat(coords.y) * scale + 25, width: 50, height: 50)
+//                self.markerLayer.frame = CGRect(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale, width: 50, height: 50)
+//                
+//                self.markerLayer.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+//                print("CENTER: \(self.markerLayer.frame.midX), \(self.markerLayer.frame.midY)")
+//                
+//                //            self.setNeedsDisplay()
+//                print("********")
+//                print(self.frame)
+//                print(self.markerLayer.frame)
             })
         }
     }
