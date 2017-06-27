@@ -12,9 +12,20 @@ import simd
 
 class MapImageView: UIView {
     static let mapPanDuration = 1.25 // duration of the map animation when it pans/zooms
+    var isMarkerInBackground = false {
+        didSet {
+            if isMarkerInBackground {
+                self.markerLayer.foregroundColor = UIColor(hex: "#448888")?.cgColor
+            }
+            else {
+                self.markerLayer.foregroundColor = UIColor(red: 136.0 / 255.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
+            }
+        }
+    }
+    
     private let locationColor = UIColor.init(hex: "#008888")!.cgColor
     private let locationBorderColor = UIColor.init(hex: "#004444")!.cgColor
-    private let markerLayer = CALayer()
+    private let markerLayer = CATextLayer()
     private let mapLayer = CALayer()
     private var scaleTransform: CATransform3D? = nil
     private var mapScale: CGFloat = 1.0
@@ -46,7 +57,7 @@ class MapImageView: UIView {
             sublayers?.forEach({ (sublayer) in
                 sublayer.frame = self.bounds
             })
-            self.markerLayer.position = CGPoint(x: (self.superview?.frame.midX)!, y: (self.superview?.frame.midY)! - self.markerLayer.frame.midY + 6)
+            self.markerLayer.position = CGPoint(x: (self.superview?.frame.midX)!, y: (self.superview?.frame.midY)! - self.markerLayer.frame.midY - 4)
         }
     }
     
@@ -70,17 +81,21 @@ class MapImageView: UIView {
         self.contentMode = .center
         self.layer.needsDisplayOnBoundsChange = true
         
-        drawLocationsOnMap()
-        
-        let markerImage = UIImage.fontAwesomeIcon(name: .mapMarker, textColor: UIColor(red: 136.0 / 255.0, green: 1.0, blue: 1.0, alpha: 1.0), size: CGSize(width: 50, height: 50))
-        print(markerImage.size)
-        self.markerLayer.contents = markerImage.cgImage
-        self.markerLayer.contentsScale = UIScreen.main.scale
-        self.markerLayer.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        self.markerLayer.contentsGravity = kCAGravityCenter
+
+        let font = UIFont.fontAwesome(ofSize: 40)
+        let markerString = String.fontAwesomeIcon(name: .mapMarker)
+        let markerRect = (markerString as NSString).boundingRect(with: CGSize(), options: NSStringDrawingOptions.truncatesLastVisibleLine, attributes: [NSFontAttributeName: font], context: nil)
+        self.markerLayer.font = font
+        self.markerLayer.fontSize = 40
+        self.markerLayer.string = markerString
+        self.markerLayer.alignmentMode = kCAAlignmentCenter
+        self.markerLayer.frame = markerRect
+        self.markerLayer.foregroundColor = UIColor(red: 136.0 / 255.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
         self.markerLayer.opacity = 1.0
+        self.markerLayer.contentsScale = UIScreen.main.scale
+        //        self.markerLayer.isHidden = true
+
         self.layer.addSublayer(self.markerLayer)
-//        self.markerLayer.isHidden = true
     }
     
     func drawLocationsOnMap() {

@@ -202,6 +202,7 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             self.locationSelectorButton.isHidden = true
             self.statusTitleLabel.isHidden = true
             self.statusLabel.isHidden = true
+            self.mapImageView.isMarkerInBackground = true
         }
     }
     
@@ -333,6 +334,8 @@ extension MainViewController: LocationSelectionDelegate {
             self.locationSelectorButton.isHidden = false
             self.statusTitleLabel.isHidden = false
             self.statusLabel.isHidden = false
+            
+            self.mapImageView.isMarkerInBackground = false
         }) { (completed) in
             self.locationSelectorVC?.removeFromParentViewController()
             if let block = completion {
