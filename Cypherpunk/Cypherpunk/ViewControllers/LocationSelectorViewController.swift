@@ -97,6 +97,8 @@ class LocationSelectorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(red: 80.0 / 255.0, green: 1.0, blue: 1.0, alpha: 0.15)
 
         self.collectionView.register(UINib(nibName: "LocationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LocationCell")
         self.collectionView.register(UINib(nibName: "CypherplayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CypherPlayCell")

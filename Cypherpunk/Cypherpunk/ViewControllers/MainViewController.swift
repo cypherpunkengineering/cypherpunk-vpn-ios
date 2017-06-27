@@ -24,6 +24,8 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     var locationSelectorVC: LocationSelectorViewController?
     var statusTitleLabel = UILabel()
     var statusLabel = UILabel()
+    let leftButton = AccountButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    let rightButton = ConfigurationButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     
     var locationButtonConstraintGroup: ConstraintGroup?
     
@@ -82,20 +84,18 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             childView.top == parentView.top + 32
         }
         
-        let leftButton = AccountButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        leftButton.addTarget(self, action: #selector(openOrCloseAccountAction(_:)), for: .touchUpInside)
-        self.view.addSubview(leftButton)
-        constrain(self.view, leftButton) { parentView, childView in
+        self.leftButton.addTarget(self, action: #selector(openOrCloseAccountAction(_:)), for: .touchUpInside)
+        self.view.addSubview(self.leftButton)
+        constrain(self.view, self.leftButton) { parentView, childView in
             childView.leading == parentView.leading
             childView.top == parentView.top + 36.0
             childView.height == 60.0
             childView.width == 60.0
         }
         
-        let rightButton = ConfigurationButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        rightButton.addTarget(self, action: #selector(openOrCloseConfigurationAction(_:)), for: .touchUpInside)
-        self.view.addSubview(rightButton)
-        constrain(self.view, rightButton) { parentView, childView in
+        self.rightButton.addTarget(self, action: #selector(openOrCloseConfigurationAction(_:)), for: .touchUpInside)
+        self.view.addSubview(self.rightButton)
+        constrain(self.view, self.rightButton) { parentView, childView in
             childView.trailing == parentView.trailing
             childView.top == parentView.top + 36.0
             childView.height == 60.0
@@ -183,21 +183,26 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         
         self.addChildViewController(self.locationSelectorVC!)
         
-        UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: { _ in
-            self.view.addSubview((self.locationSelectorVC?.view)!)
-            self.locationSelectorVC?.didMove(toParentViewController: self)
-            constrain(self.view, (self.locationSelectorVC?.view)!, self.topBarView) { parentView, childView, topBarView in
-                childView.top == topBarView.bottom
-                childView.leading == parentView.leading
-                childView.trailing == parentView.trailing
-                childView.bottom == parentView.bottom
-            }
-            
+        self.locationSelectorVC?.view.alpha = 0.0
+        self.view.addSubview((self.locationSelectorVC?.view)!)
+        self.view.bringSubview(toFront: self.leftButton)
+        self.view.bringSubview(toFront: self.rightButton)
+        
+        
+        constrain(self.view, (self.locationSelectorVC?.view)!, self.topBarView) { parentView, childView, topBarView in
+            childView.top == topBarView.bottom
+            childView.leading == parentView.leading
+            childView.trailing == parentView.trailing
+            childView.bottom == parentView.bottom
+        }
+        
+        UIView.animate(withDuration: 0.5) { 
+            self.locationSelectorVC?.view.alpha = 1.0
             self.vpnSwitch.isHidden = true
             self.locationSelectorButton.isHidden = true
             self.statusTitleLabel.isHidden = true
             self.statusLabel.isHidden = true
-        }, completion: nil)
+        }
     }
     
     private func updateView(vpnStatus: NEVPNStatus) {
