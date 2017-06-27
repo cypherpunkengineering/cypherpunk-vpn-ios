@@ -46,6 +46,7 @@ class MapImageView: UIView {
             sublayers?.forEach({ (sublayer) in
                 sublayer.frame = self.bounds
             })
+            self.markerLayer.position = CGPoint(x: (self.superview?.frame.midX)!, y: (self.superview?.frame.midY)! - self.markerLayer.frame.midY + 6)
         }
     }
     
@@ -75,7 +76,7 @@ class MapImageView: UIView {
         print(markerImage.size)
         self.markerLayer.contents = markerImage.cgImage
         self.markerLayer.contentsScale = UIScreen.main.scale
-        self.markerLayer.frame = CGRect(x: 50, y: 100, width: 50, height: 50)
+        self.markerLayer.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         self.markerLayer.contentsGravity = kCAGravityCenter
         self.markerLayer.opacity = 1.0
         self.layer.addSublayer(self.markerLayer)
@@ -156,6 +157,18 @@ class MapImageView: UIView {
             animationGroup.isRemovedOnCompletion = false
             animationGroup.animations = [positionAnimation, scaleAnimation]
             
+            // animation the position of the marker
+            let bounceAnimation = CABasicAnimation(keyPath: "position.y")
+            bounceAnimation.duration = 0.75
+            bounceAnimation.speed = 1.25
+            bounceAnimation.fromValue = 0
+            bounceAnimation.toValue = -25
+            bounceAnimation.autoreverses = true
+            bounceAnimation.fillMode = kCAFillModeForwards
+            bounceAnimation.isRemovedOnCompletion = true
+            bounceAnimation.isAdditive = true
+            self.markerLayer.add(bounceAnimation, forKey: "bounceMarker")
+
             self.mapScale = scale
             self.lastPosition = position
             self.mapLayer.position = position
