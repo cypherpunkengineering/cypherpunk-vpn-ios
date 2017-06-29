@@ -59,7 +59,7 @@ class ServerPinger : NSObject, GBPingDelegate {
                 self.delegates.append(delegate)
             }
             else {
-                print("Failed to setup pinger for \(hostname) - \(String(describing: error))")
+//                print("Failed to setup pinger for \(hostname) - \(String(describing: error))")
             }
         })
     }
@@ -105,20 +105,20 @@ class PingHandler : NSObject, GBPingDelegate {
     }
     
     func ping(_ pinger: GBPing!, didReceiveReplyWith summary: GBPingSummary!) {
-        print("\(serverId) - \(summary.rtt)")
+//        print("\(serverId) - \(summary.rtt)")
         
         storePingValue(pingValue: summary.rtt, pinger: pinger, summary: summary)
     }
     
     func ping(_ pinger: GBPing!, didTimeoutWith summary: GBPingSummary!) {
-        print("Timeout > \(serverId)")
+//        print("Timeout > \(serverId)")
         
         // If a timeout occurs count it as a 10 second ping time
         storePingValue(pingValue: 10, pinger: pinger, summary: summary)
     }
     
     func ping(_ pinger: GBPing!, didReceiveUnexpectedReplyWith summary: GBPingSummary!) {
-        print("Unexpected Reply > \(serverId)")
+//        print("Unexpected Reply > \(serverId)")
         pinger.stop() // not sure what happened, stop pinging the server
         serverPinger?.donePinging(serverId: self.serverId, results: rtts)
     }

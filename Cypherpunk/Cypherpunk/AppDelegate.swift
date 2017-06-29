@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         
-        let config = Realm.Configuration(schemaVersion: 9, migrationBlock: {
+        let config = Realm.Configuration(schemaVersion: 10, migrationBlock: {
             (migration, oldSchemaVersion) in
             if (oldSchemaVersion < 9) {
                 migration.enumerateObjects(ofType: Region.className(), { (oldRegion, newRegion) in

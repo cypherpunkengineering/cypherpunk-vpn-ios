@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIColor {
+    /* https://stackoverflow.com/a/33397427 */
 	class var goldenYellow: UIColor {
 		return UIColor(red: 248.0 / 255.0, green: 207.0 / 255.0, blue: 28.0 / 255.0, alpha: 1.0)
 	}
@@ -70,6 +71,20 @@ extension UIColor {
     
     class var configTableCellBg: UIColor {
         return UIColor(red: 54.0 / 255.0, green: 83.0 /  255.0, blue: 83.0 / 255.0, alpha: 1.0)
+    }
+
+    class var greenVogue: UIColor {
+//        26,71,76
+        return UIColor(red: 26.0 / 255.0, green: 71.0 / 255.0, blue: 76.0 / 255.0, alpha:1.00)
+    }
+    
+    class var aztec: UIColor {
+        // 12 27 30
+        return UIColor(red: 12.0 / 255.0, green: 27.0 / 255.0, blue: 30.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var mainScreenBg: UIColor {
+        return UIColor(red: 5.0 / 255.0, green: 53.0 / 255.0, blue: 54.0 / 255.0, alpha: 1.0)
     }
     
     

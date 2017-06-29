@@ -47,7 +47,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         wifiNetworksResult = realm.objects(WifiNetworks.self)
         // Listen to changes for wifi networks
         notificationToken = wifiNetworksResult.addNotificationBlock({ (change) in
-            self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
         })
     }
 
@@ -78,7 +78,11 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         case 0:
             rows = 2
         case 1:
-            rows = 1 + wifiNetworksResult.count
+            rows = 1
+            
+            if let results = wifiNetworksResult {
+                rows += results.count
+            }
         default:
             break
         }

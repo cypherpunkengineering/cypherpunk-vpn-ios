@@ -1,6 +1,7 @@
 PODS:
   - APIKit (3.1.2):
     - Result (~> 3.0)
+  - Cartography (1.1.0)
   - Firebase/Core (3.11.0):
     - FirebaseAnalytics (= 3.6.0)
     - FirebaseCore (= 3.4.6)
@@ -22,6 +23,7 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
+  - Hero (0.3.6)
   - Himotoki (3.0.0)
   - KeychainAccess (3.0.1)
   - R.swift (3.2.0):
@@ -37,14 +39,17 @@ PODS:
   - ReSwift (3.0.0)
   - SVProgressHUD (2.1.2)
   - SwiftyStoreKit (0.6.1)
+  - TinySwift (1.0.1)
   - TTTAttributedLabel (2.0.0)
   - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
   - APIKit (from `https://github.com/ishkawa/APIKit.git`)
+  - Cartography
   - Firebase/Core
   - FontAwesome.swift
   - GBPing
+  - Hero
   - Himotoki (from `https://github.com/ikesyo/Himotoki.git`)
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
   - R.swift
@@ -54,6 +59,7 @@ DEPENDENCIES:
   - ReSwift (from `https://github.com/ReSwift/ReSwift.git`)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`)
+  - TinySwift
   - TTTAttributedLabel (from `https://github.com/TTTAttributedLabel/TTTAttributedLabel.git`)
   - UITextView+Placeholder (~> 1.2)
 
@@ -108,6 +114,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   APIKit: 923b510c13eb4d977d2d0ffcd51c88e9dfe7a74a
+  Cartography: '0538ccb4044acbbda2266335fc58cb4228794d90'
   Firebase: b8134e285eb33201115bc688bc5d7f112923bc1f
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseCore: 03da1cb32615569bbc2830a22f9ad753d9a02ef5
@@ -117,6 +124,7 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   Himotoki: df74b01035e86e021b7b04a15b033a7fd189b84f
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   R.swift: 207a372a2b5977caef440c696a368009460641d1
@@ -128,9 +136,10 @@ SPEC CHECKSUMS:
   ReSwift: 00add9a3eb1b5c93a3728ea88393de390ef6ddff
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyStoreKit: bcaf2ec585a66b04c0175ffc9e2b84d0d106a033
+  TinySwift: d2cab7518495a9a862c296ce86e3223230a45bae
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 17779cb167e60c5467efa765903ca18c5c6db1d4
+PODFILE CHECKSUM: cf1d38281733aa4d85c9b54feef2e12dd9db6d3b
 
 COCOAPODS: 1.1.1

@@ -15,13 +15,13 @@ class SettingUpYourVPNViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(
-            self,
-            selector: #selector(didChangeVPNStatus),
-            name: NSNotification.Name.NEVPNStatusDidChange,
-            object: nil
-        )
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.addObserver(
+//            self,
+//            selector: #selector(didChangeVPNStatus),
+//            name: NSNotification.Name.NEVPNStatusDidChange,
+//            object: nil
+//        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,9 +36,7 @@ class SettingUpYourVPNViewController: UIViewController {
         let status = connection.status
         if status != .invalid {
             // 次のページ
-            mainStore.dispatch(AppAction.VPNInstalled)
-            NotificationCenter.default.removeObserver(self)
-            performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
+            showAnalyticsStep()
         }
 
         
@@ -49,19 +47,17 @@ class SettingUpYourVPNViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func didChangeVPNStatus(_ notification: Notification) {
-        guard let connection = notification.object as? NEVPNConnection else {
-            return
-        }
-        
-        let status = connection.status
-        if status != .invalid {
-            // 次のページ
-            mainStore.dispatch(AppAction.VPNInstalled)
-            NotificationCenter.default.removeObserver(self)
-            performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
-        }
-    }
+//    func didChangeVPNStatus(_ notification: Notification) {
+//        guard let connection = notification.object as? NEVPNConnection else {
+//            return
+//        }
+//        
+//        let status = connection.status
+//        if status != .invalid {
+//            // 次のページ
+//            showAnalyticsStep()
+//        }
+//    }
 
 
     /*
@@ -80,7 +76,17 @@ class SettingUpYourVPNViewController: UIViewController {
             NotificationCenter.default.removeObserver(self)
             performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
         } else {
-            VPNConfigurationCoordinator.install()
+            VPNConfigurationCoordinator.install() { (error) in
+                if error == nil {
+                    self.showAnalyticsStep()
+                }
+            }
         }
+    }
+    
+    private func showAnalyticsStep() {
+        mainStore.dispatch(AppAction.VPNInstalled)
+        NotificationCenter.default.removeObserver(self)
+        performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
     }
 }
