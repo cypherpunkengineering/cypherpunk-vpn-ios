@@ -94,6 +94,8 @@ class MapImageView: UIView {
         self.markerLayer.opacity = 1.0
         self.markerLayer.contentsScale = UIScreen.main.scale
         //        self.markerLayer.isHidden = true
+        
+        drawLocationsOnMap()
 
         self.layer.addSublayer(self.markerLayer)
     }
