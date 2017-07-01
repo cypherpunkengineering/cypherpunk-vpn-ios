@@ -191,6 +191,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         case 0:
             cell.label.text = "Trust Cellular Networks"
             cell.toggle.addTarget(self, action: #selector(handleTrustCellularValueChanged(_:)), for: .valueChanged)
+            cell.toggle.isOn = mainStore.state.settingsState.isTrustCellularNetworks
         default:
             let wifiInfo = wifiNetworksResult[row - 1] // offset by 1 because of the celluar cell
             cell.toggle.isOn = !wifiInfo.isTrusted
@@ -204,7 +205,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func handleTrustCellularValueChanged(_ sender: UISwitch) {
-        mainStore.dispatch(SettingsAction.alwaysOn(isOn: sender.isOn))
+        mainStore.dispatch(SettingsAction.isTrustCellularNetworks(isOn: sender.isOn))
     }
     
     @IBAction private func handleTrustedNetworkValueChanged(_ sender: UISwitch) {

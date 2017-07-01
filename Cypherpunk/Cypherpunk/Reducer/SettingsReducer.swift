@@ -22,6 +22,8 @@ struct SettingsReducer {
             switch action {
             case .vpnProtocolMode(let value):
                 state.vpnProtocolMode = value
+            case .isTrustCellularNetworks(let isOn):
+                state.isTrustCellularNetworks = isOn
             case .isAutoSecureConnectionsWhenConnectedUntrustedNetwork(let isOn):
                 state.isAutoSecureConnectionsWhenConnectedUntrustedNetwork = isOn
             case .isAutoSecureConnectionsWhenConnectedOtherNetwork(let isOn):

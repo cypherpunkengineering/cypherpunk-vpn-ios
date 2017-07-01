@@ -13,6 +13,7 @@ import NetworkExtension
 
 enum SettingsAction: Action {
     case vpnProtocolMode(value: VPNProtocolMode)
+    case isTrustCellularNetworks(isOn: Bool)
     case isAutoSecureConnectionsWhenConnectedUntrustedNetwork(isOn: Bool)
     case isAutoSecureConnectionsWhenConnectedOtherNetwork(isOn: Bool)
     case blockAds(block: Bool)

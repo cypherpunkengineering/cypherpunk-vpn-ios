@@ -62,13 +62,29 @@ struct SettingsState: StateType {
             if mainStore.state.isInstalledPreferences == false {
                 return false
             }
-
+            
             let keychain = Keychain.userKeychain()
             return NSString(string: keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedUntrustedNetwork] ?? "false").boolValue
         }
         set(newValue) {
             let keychain = Keychain.userKeychain()
             keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedUntrustedNetwork] = String(newValue)
+        }
+        
+    }
+    
+    var isTrustCellularNetworks: Bool {
+        get{
+            if mainStore.state.isInstalledPreferences == false {
+                return false
+            }
+
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.isTrustCellularNetworks] ?? "false").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.isTrustCellularNetworks] = String(newValue)
         }
 
     }
@@ -155,7 +171,7 @@ struct SettingsState: StateType {
 
     fileprivate struct SettingsStateKey {
         static let vpnProtocolMode = "vpnProtocolMode"
-        static let trustCellularNetworks = "trustCellularNetworks"
+        static let isTrustCellularNetworks = "isTrustCellularNetworks"
         @available(*, deprecated)
         static let isAutoSecureConnectionsWhenConnectedUntrustedNetwork = "isAutoSecureConnectionsWhenConnectedUntrustedNetwork"
         @available(*, deprecated)
