@@ -58,6 +58,7 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
+        notificationCenter.addObserver(self, selector: #selector(regionsUpdated(_:)), name: regionUpdateNotification, object: nil)
         
         
         // Add gradient layer for gradient background color
@@ -254,6 +255,10 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         }
         
         self.updateView(vpnStatus: status)
+    }
+    
+    func regionsUpdated(_ notification: Notification) {
+        self.mapImageView.drawLocationsOnMap()
     }
     
     func newState(state: AppState) {

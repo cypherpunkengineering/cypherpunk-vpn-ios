@@ -12,7 +12,7 @@ import APIKit
 import Himotoki
 import RealmSwift
 
-let regionUpdateNotificationKey = "com.cypherpunk.regionUpdateNotificationKey"
+let regionUpdateNotification = Notification.Name("com.cypherpunk.regionUpdateNotificationKey")
 
 struct RegionListRequest: Request {
     
@@ -109,6 +109,8 @@ struct RegionListRequest: Request {
                 if !VPNConfigurationCoordinator.isConnected {
                     mainStore.state.regionState.serverPinger.updateLatencyForServers()
                 }
+                
+                NotificationCenter.default.post(name: regionUpdateNotification, object: self)
             })
             
         } else {

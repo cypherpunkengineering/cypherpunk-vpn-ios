@@ -73,7 +73,7 @@ class ServerPinger : NSObject, GBPingDelegate {
         
         if serversDone == delegates.count {
             // all servers are done, fire notification
-            NotificationCenter.default.post(name: Notification.Name(rawValue: regionUpdateNotificationKey), object: self)
+            NotificationCenter.default.post(name: regionUpdateNotification, object: self)
         }
     }
     

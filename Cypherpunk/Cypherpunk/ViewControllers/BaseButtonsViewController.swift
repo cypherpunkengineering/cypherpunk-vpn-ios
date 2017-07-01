@@ -43,7 +43,7 @@ class BaseButtonsViewController: UIViewController {
         createVPNServerOptions()
         
         // listen for notifictions
-        NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionUpdateNotificationKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: regionUpdateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleRegionSelectedNotification), name: NSNotification.Name(rawValue: regionSelectedNotificationKey), object: nil)
     }
 

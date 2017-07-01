@@ -23,7 +23,7 @@ class TabletMainButtonsCollectionViewController: UICollectionViewController {
         let cellNib = UINib(nibName: "TabletButtonCollectionViewCell", bundle: nil)
         self.collectionView!.register(cellNib, forCellWithReuseIdentifier: reuseIdentifier)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: NSNotification.Name(rawValue: regionUpdateNotificationKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRegionUpdateNotification), name: regionUpdateNotification, object: nil)
 
         // Do any additional setup after loading the view.
         setContentInsets(landscape: UIDevice.current.orientation.isLandscape)
