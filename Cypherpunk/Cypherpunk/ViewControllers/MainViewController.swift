@@ -103,29 +103,20 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         }
         
         self.view.addSubview(self.vpnSwitch)
-        constrain(self.view, self.vpnSwitch, self.topBarView) { parentView, childView, topBarView in
-            childView.top == topBarView.bottom + 100
+        constrain(self.view, self.vpnSwitch) { parentView, childView in
+            childView.bottom == parentView.centerY - 75
             childView.height == 50.0
             childView.width == 100.0
             childView.centerX == parentView.centerX
         }
         self.vpnSwitch.delegate = self
         
-        self.view.addSubview(self.locationSelectorButton)
-        locationButtonConstraintGroup = constrain(self.view, self.locationSelectorButton, self.vpnSwitch) { parentView, childView, vpnSwitch in
-            // do not constrain the width of the location button, it needs to flex based on the text shown
-            childView.top == vpnSwitch.bottom + 150
-            childView.height == 40.0
-            childView.centerX == parentView.centerX
-        }
-        self.locationSelectorButton.delegate = self
-        
         self.view.addSubview(self.statusLabel)
         self.statusLabel.font = R.font.dosisMedium(size: 18)
         self.statusLabel.text = "DISCONNECTED"
         self.statusLabel.textColor = UIColor.white
-        constrain(self.view, self.statusLabel, self.vpnSwitch) { parentView, childView, vpnSwitch in
-            childView.top == vpnSwitch.bottom + 40
+        constrain(self.view, self.statusLabel) { parentView, childView in
+            childView.bottom == parentView.centerY
             childView.centerX == parentView.centerX
         }
         
@@ -137,6 +128,16 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             childView.leading == statusLabel.leading
             childView.bottom == statusLabel.top
         }
+        
+        self.view.addSubview(self.locationSelectorButton)
+        locationButtonConstraintGroup = constrain(self.view, self.locationSelectorButton) { parentView, childView in
+            // do not constrain the width of the location button, it needs to flex based on the text shown
+            childView.top == parentView.centerY + 100
+            childView.height == 40.0
+            childView.centerX == parentView.centerX
+        }
+        self.locationSelectorButton.delegate = self
+        
         
         // set the map and location button based on the last selected region
         if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {

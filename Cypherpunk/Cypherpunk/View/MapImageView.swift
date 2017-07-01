@@ -12,6 +12,11 @@ import simd
 
 class MapImageView: UIView {
     static let mapPanDuration = 1.25 // duration of the map animation when it pans/zooms
+    var parentMidYOffset: CGFloat = 70 {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
     var isMarkerInBackground = false {
         didSet {
             if isMarkerInBackground {
@@ -57,7 +62,12 @@ class MapImageView: UIView {
             sublayers?.forEach({ (sublayer) in
                 sublayer.frame = self.bounds
             })
-            self.markerLayer.position = CGPoint(x: (self.superview?.frame.midX)!, y: (self.superview?.frame.midY)! - self.markerLayer.frame.midY - 4)
+            
+            if let superView = self.superview {
+                let superViewFrame = superView.frame
+                let superViewMidY = superViewFrame.midY + parentMidYOffset
+                self.markerLayer.position = CGPoint(x: (self.superview?.frame.midX)!, y: superViewMidY - self.markerLayer.frame.midY - 3)
+            }
         }
     }
     
@@ -80,6 +90,8 @@ class MapImageView: UIView {
         
         self.contentMode = .center
         self.layer.needsDisplayOnBoundsChange = true
+        
+        drawLocationsOnMap()
         
 
         let font = UIFont.fontAwesome(ofSize: 40)
@@ -143,7 +155,7 @@ class MapImageView: UIView {
         if let superView = self.superview {
             let superviewFrame = superView.frame
             let superViewFrameMidX = superviewFrame.midX
-            let superViewFrameMidY = superviewFrame.midY
+            let superViewFrameMidY = superviewFrame.midY + parentMidYOffset
             
             let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
             
