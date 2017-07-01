@@ -19,7 +19,7 @@ struct LoginRequest: Request {
     let password: String
     
     var baseURL: URL {
-        return URL(string: "https://cypherpunk.privacy.network")!
+        return URL(string: "https://api.cypherpunk.com")!
     }
 
     var method: HTTPMethod {
@@ -32,7 +32,7 @@ struct LoginRequest: Request {
     }
     
     var path: String {
-        return "/api/v0/account/authenticate/userpasswd"
+        return "/api/v1/account/authenticate/userpasswd"
     }
     
     var parameters: Any? {

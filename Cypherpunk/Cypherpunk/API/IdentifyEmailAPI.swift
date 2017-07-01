@@ -15,7 +15,7 @@ struct IdentifyEmailRequest: Request {
     
     var email: String
     var baseURL: URL {
-        return URL(string: "https://cypherpunk.privacy.network")!
+        return URL(string: "https://api.cypherpunk.com")!
     }
     
     var method: HTTPMethod {
@@ -23,7 +23,7 @@ struct IdentifyEmailRequest: Request {
     }
     
     var path: String {
-        return "/api/v0/account/identify/email"
+        return "/api/v1/account/identify/email"
     }
     
     var headerFields: [String : String] {

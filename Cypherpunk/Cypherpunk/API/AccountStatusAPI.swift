@@ -18,7 +18,7 @@ struct AccountStatusRequest: Request {
     let session: String
     
     var baseURL: URL {
-        return URL(string: "https://cypherpunk.privacy.network")!
+        return URL(string: "https://api.cypherpunk.com")!
     }
     
     var method: HTTPMethod {
@@ -26,7 +26,7 @@ struct AccountStatusRequest: Request {
     }
     
     var path: String {
-        return "/api/v0/account/status"
+        return "/api/v1/account/status"
     }
     
     var headerFields: [String : String] {

@@ -22,7 +22,7 @@ struct RegionListRequest: Request {
     let accountType: String
     
     var baseURL: URL {
-        return URL(string: "https://cypherpunk.privacy.network")!
+        return URL(string: "https://api.cypherpunk.com")!
     }
     
     var method: HTTPMethod {
@@ -31,7 +31,7 @@ struct RegionListRequest: Request {
     
     
     var path: String {
-        return "/api/v0/location/list/\(accountType)"
+        return "/api/v1/location/list/\(accountType)"
     }
         
     var headerFields: [String : String] {
