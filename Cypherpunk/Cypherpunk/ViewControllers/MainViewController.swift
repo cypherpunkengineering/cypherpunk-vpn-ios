@@ -29,6 +29,8 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     
     var locationButtonConstraintGroup: ConstraintGroup?
     
+    var lastSelectedRegionId: String?
+    
     required init?(coder aDecoder: NSCoder) {
         self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
         self.topBarView.backgroundColor = UIColor.aztec
@@ -49,6 +51,8 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainStore.subscribe(self)
         
         // listen for VPN status changes
         let notificationCenter = NotificationCenter.default
@@ -141,11 +145,15 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         
         
         // set the map and location button based on the last selected region
-        if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
+        if let regionId = mainStore.state.regionState.lastSelectedRegionId {
             let realm = try! Realm()
-            if let selectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
-                self.mapImageView.zoomToRegion(region: selectedRegion)
-                self.locationSelectorButton.location = selectedRegion
+            if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
+                self.mapImageView.zoomToRegion(region: region)
+                self.locationSelectorButton.location = region
+                self.view.setNeedsDisplay()
+                self.view.setNeedsLayout()
+                
+                self.lastSelectedRegionId = regionId
             }
         }
     }
@@ -162,8 +170,6 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             let status = NEVPNManager.shared().connection.status
             self.updateView(vpnStatus: status)
         }
-        
-        mainStore.subscribe(self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -235,6 +241,21 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         }
     }
     
+    private func updateViewWithLastSeclectedRegion() {
+        if let regionId = mainStore.state.regionState.lastSelectedRegionId {
+            if self.lastSelectedRegionId != regionId {
+                let realm = try! Realm()
+                if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
+                    self.mapImageView.zoomToRegion(region: region)
+                    self.locationSelectorButton.location = region
+                    self.view.setNeedsDisplay()
+                    
+                    self.lastSelectedRegionId = regionId
+                }
+            }
+        }
+    }
+    
     func vpnStatusChanged(_ notification: Notification) {
         guard let connection = notification.object as? NEVPNConnection else {
             return
@@ -264,13 +285,7 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     func newState(state: AppState) {
         print("NEW STATE")
         // TODO: is there really no way to target specific property changes?
-//        if let regionId = state.regionState.lastSelectedRegionId {
-//            let realm = try! Realm()
-//            if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
-//                self.mapImageView.zoomToRegion(region: region)
-//                self.locationSelectorButton.location = region
-//            }
-//        }
+        updateViewWithLastSeclectedRegion()
         
 //        regionTitleLabel?.text = state.regionState.title
 //        regionFlagImageView?.image = UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal)
@@ -312,9 +327,11 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
 extension MainViewController: LocationSelectionDelegate {
     func dismissSelector() {
         showControls() {
-            // reset the zoom just in case they didn't select anything
+            // check if the user actually selected a new region, if not reset to last selected
             if let regionId = mainStore.state.regionState.lastSelectedRegionId {
-                self.mapImageView.zoomToRegion(regionId: regionId)
+                if self.lastSelectedRegionId == regionId {
+                    self.mapImageView.zoomToRegion(regionId: regionId)
+                }
             }
         }
     }
@@ -324,10 +341,7 @@ extension MainViewController: LocationSelectionDelegate {
     }
     
     func locationSelected(location: Region) {
-        showControls() {
-            self.mapImageView.zoomToRegion(region: location)
-            self.locationSelectorButton.location = location
-        }
+        showControls() // the state change will handle the map movement
     }
     
     private func showControls(_ completion: (() -> Void)? = nil) {

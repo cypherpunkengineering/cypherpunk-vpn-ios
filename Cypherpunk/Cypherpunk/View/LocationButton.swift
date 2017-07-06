@@ -23,8 +23,11 @@ class LocationButton: UIView {
                 self.labelView.text = loc.name
                 
                 self.labelView.sizeToFit() // resizes label to text length
-                self.setNeedsLayout() // causes views to be layed out again using constraints
-                self.setNeedsDisplay() // causes a redraw, needed for the background layers
+                
+                DispatchQueue.main.async {
+                    self.setNeedsLayout() // causes views to be layed out again using constraints
+                    self.setNeedsDisplay() // causes a redraw, needed for the background layers
+                }
             }
         }
     }
@@ -133,6 +136,8 @@ class LocationButton: UIView {
             self.shadowLayer?.fillColor = nil
             self.shadowLayer?.lineWidth = 4
             self.shadowLayer?.opacity = 0.5
+            
+            self.layer.addSublayer(shadowLayer!)
         }
         else {
             let shadowLayerPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.bounds.width + 4, height: self.bounds.height + 4), cornerRadius: (self.bounds.height + 10) / 2)
@@ -147,15 +152,13 @@ class LocationButton: UIView {
             self.backgroundLayer?.fillColor = UIColor(red: 80.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 0.15).cgColor
             
             self.backgroundLayer?.cornerRadius = self.bounds.height / 2
+            self.layer.addSublayer(backgroundLayer!)
         }
         else {
             let bglayerPath = UIBezierPath(roundedRect: CGRect(x: 2, y: 2, width: self.bounds.width, height: self.bounds.height), cornerRadius: self.bounds.height / 2)
             self.backgroundLayer?.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
             self.backgroundLayer?.path = bglayerPath.cgPath
         }
-        
-        self.layer.addSublayer(shadowLayer!)
-        self.layer.addSublayer(backgroundLayer!)
     }
     
     func handleTap(sender: UITapGestureRecognizer) {
