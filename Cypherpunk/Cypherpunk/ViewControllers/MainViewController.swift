@@ -273,19 +273,6 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         }
         
         let status = connection.status
-//        print(connection.status.description)
-        
-        switch status {
-        case .invalid:
-            print("INVALID") // TODO
-            break
-        case .connected:
-            vpnSwitch.isOn = true
-        case .disconnected:
-            vpnSwitch.isOn = false
-        default:
-            break
-        }
         
         self.updateView(vpnStatus: status)
     }
