@@ -232,6 +232,29 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.removeFromPreferences(completionHandler: nil)
     }
+    
+    class var isProfileEnabled: Bool {
+        set {
+            let manager = NEVPNManager.shared()
+            manager.isEnabled = newValue
+            
+            print(manager.isEnabled)
+            
+            // the profile is being enabled, connect to the VPN
+            if newValue {
+                VPNConfigurationCoordinator.connect()
+            }
+            else {
+                if self.isConnected {
+                    VPNConfigurationCoordinator.disconnect()
+                }
+            }
+        }
+        get {
+            let manager = NEVPNManager.shared()
+            return manager.isEnabled
+        }
+    }
 
     class var isConnected: Bool {
         let manager = NEVPNManager.shared()

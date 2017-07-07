@@ -136,7 +136,6 @@ struct SettingsState: StateType {
         }
     }
     
-    @available(*, deprecated)
     var cypherplayOn : Bool {
         get {
             if !mainStore.state.isInstalledPreferences {

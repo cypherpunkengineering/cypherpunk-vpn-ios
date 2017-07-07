@@ -194,7 +194,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             cell.toggle.isOn = mainStore.state.settingsState.isTrustCellularNetworks
         default:
             let wifiInfo = wifiNetworksResult[row - 1] // offset by 1 because of the celluar cell
-            cell.toggle.isOn = !wifiInfo.isTrusted
+            cell.toggle.isOn = wifiInfo.isTrusted
             cell.toggle.addTarget(self, action: #selector(handleTrustedNetworkValueChanged(_:)), for: .valueChanged)
             cell.toggle.tag = row
             
@@ -213,7 +213,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         
         let wifiInfo = wifiNetworksResult[sender.tag - 1] // offset by 1 because of the celluar cell
         try! realm.write {
-            wifiInfo.isTrusted = !sender.isOn
+            wifiInfo.isTrusted = sender.isOn
         }
         
         VPNConfigurationCoordinator.start {
