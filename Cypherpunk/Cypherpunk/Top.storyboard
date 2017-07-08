@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rgN-tT-18u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rgN-tT-18u">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,15 +27,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2M-wi-84m" userLabel="Top Container">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="6Hj-WP-7Vb" appends="YES" id="Odo-D5-NzM"/>
-                                    <segue destination="JcQ-do-E5e" kind="embed" id="juC-gd-AbO"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOO-yj-ai0" userLabel="Configuration Container">
-                                <rect key="frame" x="320" y="0.0" width="276" height="480"/>
+                                <rect key="frame" x="182" y="0.0" width="276" height="480"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="276" id="ckS-VQ-sWM"/>
                                 </constraints>
@@ -44,12 +37,19 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4nR-yl-sVp" userLabel="Account Container">
-                                <rect key="frame" x="-276" y="0.0" width="276" height="480"/>
+                                <rect key="frame" x="-138" y="0.0" width="276" height="480"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="276" id="A6c-Bf-QGM"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="uXO-7N-wwL" kind="embed" id="zxo-cA-MR3"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2M-wi-84m" userLabel="Top Container">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6Hj-WP-7Vb" appends="YES" id="Odo-D5-NzM"/>
+                                    <segue destination="JcQ-do-E5e" kind="embed" id="juC-gd-AbO"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSP-qD-QVo" customClass="ShadowView" customModule="Cypherpunk" customModuleProvider="target">
@@ -113,7 +113,7 @@
                             <constraint firstItem="O4T-oA-hBM" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="0zD-n0-MLF"/>
                             <constraint firstItem="VAt-GE-8uZ" firstAttribute="bottom" secondItem="xgB-4M-oEN" secondAttribute="top" id="4Ei-B9-gTZ"/>
                             <constraint firstItem="f2M-wi-84m" firstAttribute="top" secondItem="aIK-LW-5SE" secondAttribute="top" id="9RT-Pz-Maq"/>
-                            <constraint firstItem="JOO-yj-ai0" firstAttribute="leading" secondItem="f2M-wi-84m" secondAttribute="trailing" id="Ajx-bF-pxp"/>
+                            <constraint firstAttribute="trailing" secondItem="JOO-yj-ai0" secondAttribute="trailing" constant="-138" id="Csv-aR-aMM"/>
                             <constraint firstItem="JOO-yj-ai0" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="HaH-nE-oCL"/>
                             <constraint firstItem="VAt-GE-8uZ" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="Iub-Si-NqE"/>
                             <constraint firstItem="JOO-yj-ai0" firstAttribute="bottom" secondItem="f2M-wi-84m" secondAttribute="bottom" id="Mr7-cc-LPr"/>
@@ -127,9 +127,9 @@
                             <constraint firstItem="f2M-wi-84m" firstAttribute="centerX" secondItem="aIK-LW-5SE" secondAttribute="centerX" id="eh3-4d-7Kn"/>
                             <constraint firstItem="kSP-qD-QVo" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="jtO-dA-a51"/>
                             <constraint firstItem="O4T-oA-hBM" firstAttribute="bottom" secondItem="f2M-wi-84m" secondAttribute="bottom" id="oxA-3Z-SRV"/>
-                            <constraint firstItem="f2M-wi-84m" firstAttribute="leading" secondItem="4nR-yl-sVp" secondAttribute="trailing" id="uXJ-XK-zFY"/>
                             <constraint firstItem="4nR-yl-sVp" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="top" id="uwG-GA-K3G"/>
                             <constraint firstItem="xgB-4M-oEN" firstAttribute="top" secondItem="f2M-wi-84m" secondAttribute="bottom" id="uzk-Vv-U9x"/>
+                            <constraint firstItem="4nR-yl-sVp" firstAttribute="leading" secondItem="aIK-LW-5SE" secondAttribute="leading" constant="-138" id="wPs-If-4Za"/>
                             <constraint firstItem="O4T-oA-hBM" firstAttribute="leading" secondItem="f2M-wi-84m" secondAttribute="trailing" id="ydC-tS-YIv"/>
                         </constraints>
                         <connections>
@@ -137,18 +137,18 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="accountContainerView" destination="4nR-yl-sVp" id="5eR-fI-ORk"/>
+                        <outlet property="accountLeadingConstraint" destination="wPs-If-4Za" id="R4p-je-O4p"/>
                         <outlet property="centerConstraint" destination="eh3-4d-7Kn" id="hjj-Bk-Bjy"/>
+                        <outlet property="configContainerView" destination="JOO-yj-ai0" id="7om-F9-fNJ"/>
+                        <outlet property="configTrailingConstraint" destination="Csv-aR-aMM" id="XAF-jJ-m8P"/>
                         <outlet property="fakeLaunchView" destination="VAt-GE-8uZ" id="hQV-kf-6hR"/>
                         <outlet property="resetTapRecognizer" destination="6Hj-WP-7Vb" id="HTJ-vN-AAz"/>
                         <outlet property="topContainerView" destination="f2M-wi-84m" id="DXJ-BC-2hI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WS1-CA-Qff" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="ooe-aL-HE2">
-                    <connections>
-                        <action selector="reconizePanGestureAction:" destination="rgN-tT-18u" id="kFa-DH-Cau"/>
-                    </connections>
-                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ooe-aL-HE2"/>
                 <tapGestureRecognizer id="6Hj-WP-7Vb">
                     <connections>
                         <action selector="recognizeResetTapActionWithRecognizer:" destination="rgN-tT-18u" id="aiX-pE-hbC"/>
@@ -229,26 +229,26 @@
                                         <rect key="frame" x="0.0" y="1" width="320" height="46"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="us" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-ea-HJV">
-                                                <rect key="frame" x="93.5" y="11" width="24" height="24"/>
+                                                <rect key="frame" x="96.5" y="11" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="AOf-zi-une"/>
                                                     <constraint firstAttribute="height" constant="24" id="K2M-Yy-yML"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="TestTest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh7-RF-Rg4">
-                                                <rect key="frame" x="127.5" y="0.0" width="65.5" height="46"/>
+                                                <rect key="frame" x="130.5" y="0.0" width="59.5" height="46"/>
                                                 <fontDescription key="fontDescription" name="Dosis-Bold" family="Dosis" pointSize="18"/>
                                                 <color key="textColor" red="0.55294117649999996" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationFlagDev" translatesAutoresizingMaskIntoConstraints="NO" id="KDN-Ry-2pQ">
-                                                <rect key="frame" x="203" y="14" width="27" height="18"/>
+                                                <rect key="frame" x="200" y="14" width="27" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="27" id="MBK-BS-Ib0"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationFlagPremium" translatesAutoresizingMaskIntoConstraints="NO" id="vqt-Xe-c0W">
-                                                <rect key="frame" x="203" y="14" width="50" height="18"/>
+                                                <rect key="frame" x="200" y="14" width="50" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="JBB-zX-kuG"/>
                                                 </constraints>
@@ -598,7 +598,7 @@
         <scene sceneID="wDI-YT-LlJ">
             <objects>
                 <navigationController id="TzT-qx-x3D" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Vid-Qw-1d6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Vid-Qw-1d6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -619,7 +619,7 @@
         <scene sceneID="B8l-cx-2OE">
             <objects>
                 <navigationController storyboardIdentifier="AccountNavigation" id="uXO-7N-wwL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="quD-bl-a9g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="quD-bl-a9g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

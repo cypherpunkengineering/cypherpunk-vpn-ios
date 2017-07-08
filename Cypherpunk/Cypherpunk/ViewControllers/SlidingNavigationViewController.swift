@@ -21,6 +21,8 @@ class SlidingNavigationViewController: UIViewController {
     }
     
     @IBOutlet weak var topContainerView: UIView!
+    @IBOutlet weak var configContainerView: UIView!
+    @IBOutlet weak var accountContainerView: UIView!
     @IBOutlet weak var fakeLaunchView: UIView!
     @IBOutlet var resetTapRecognizer: UITapGestureRecognizer!
     
@@ -36,6 +38,8 @@ class SlidingNavigationViewController: UIViewController {
     var slideWidth: CGFloat = 274
 
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
+    @IBOutlet weak var configTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var accountLeadingConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -64,19 +68,21 @@ class SlidingNavigationViewController: UIViewController {
     
     func openOrCloseConfiguration() {
         if self.centerConstraint.constant == 0.0 {
-
             self.centerConstraint.constant = -slideWidth
+            self.configTrailingConstraint.constant = 0.0
             self.view.setNeedsUpdateConstraints()
             self.centerState = .left
-            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.view.sendSubview(toBack: self.accountContainerView)
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
 
         } else {
             self.centerConstraint.constant = 0.0
+            self.configTrailingConstraint.constant = -138.0
             self.view.setNeedsUpdateConstraints()
             self.centerState = .center
-            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
 
@@ -85,17 +91,20 @@ class SlidingNavigationViewController: UIViewController {
     func openOrCloseAccount() {
         if self.centerConstraint.constant == 0.0 {
             self.centerConstraint.constant = slideWidth
+            self.accountLeadingConstraint.constant = 0.0
             self.centerState = .right
             self.view.setNeedsUpdateConstraints()
-            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.view.sendSubview(toBack: self.configContainerView)
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
             
         } else {
             self.centerConstraint.constant = 0.0
+            self.accountLeadingConstraint.constant = -138.0
             self.view.setNeedsUpdateConstraints()
             self.centerState = .center
-            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
         }
@@ -110,9 +119,11 @@ class SlidingNavigationViewController: UIViewController {
     func resetCenterView() {
         self.centerState = .center
         self.centerConstraint.constant = 0.0
+        self.accountLeadingConstraint.constant = -138.0
+        self.configTrailingConstraint.constant = -138.0
         self.view.setNeedsUpdateConstraints()
         self.centerState = .center
-        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
