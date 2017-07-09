@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Dosis-Medium.otf">
+            <string>Dosis-Medium</string>
+        </array>
         <array key="Dosis-SemiBold.otf">
             <string>Dosis-SemiBold</string>
         </array>
@@ -27,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cXR-iY-pqr">
-                    <rect key="frame" x="0.0" y="53" width="375" height="577"/>
+                    <rect key="frame" x="0.0" y="40" width="375" height="590"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8L0-CX-QI0">
                         <size key="itemSize" width="50" height="50"/>
@@ -61,18 +64,30 @@
                         <constraint firstItem="GdV-ul-mlQ" firstAttribute="centerY" secondItem="FIr-oW-pru" secondAttribute="centerY" id="rTs-Bs-iHf"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONNECT TO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaY-6o-ZMI">
+                    <rect key="frame" x="122" y="10" width="130" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="1NY-09-hG8"/>
+                        <constraint firstAttribute="height" constant="21" id="Wuc-Ff-Zhm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="FIr-oW-pru" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5Wo-aM-D1X"/>
                 <constraint firstAttribute="trailing" secondItem="cXR-iY-pqr" secondAttribute="trailing" id="IC7-1o-jG2"/>
+                <constraint firstItem="WaY-6o-ZMI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="Vi3-TM-lKL"/>
                 <constraint firstAttribute="bottom" secondItem="FIr-oW-pru" secondAttribute="bottom" id="Ypx-Xo-AbX"/>
                 <constraint firstAttribute="trailing" secondItem="FIr-oW-pru" secondAttribute="trailing" id="f0P-n5-8Hi"/>
-                <constraint firstItem="cXR-iY-pqr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="53" id="flU-lH-zSw"/>
+                <constraint firstItem="cXR-iY-pqr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="flU-lH-zSw"/>
                 <constraint firstItem="cXR-iY-pqr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hi7-2R-HB5"/>
                 <constraint firstItem="FIr-oW-pru" firstAttribute="top" secondItem="cXR-iY-pqr" secondAttribute="bottom" id="iTu-fp-PUq"/>
+                <constraint firstItem="WaY-6o-ZMI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lsD-R6-3vt"/>
             </constraints>
-            <point key="canvasLocation" x="25.5" y="52.5"/>
+            <point key="canvasLocation" x="24" y="50"/>
         </view>
     </objects>
 </document>
