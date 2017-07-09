@@ -218,12 +218,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let failureBlock = {
                 mainStore.dispatch(AccountAction.logout)
-                let firstOpen: UIViewController!
-                if UI_USER_INTERFACE_IDIOM() == .pad {
-                    firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
-                } else {
-                    firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
-                }
+                let firstOpen: UIViewController! = R.storyboard.firstOpen.instantiateInitialViewController()
                 self.window?.rootViewController!.present(firstOpen!, animated: false, completion: nil)
             }
 

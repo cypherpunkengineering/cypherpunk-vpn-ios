@@ -166,17 +166,9 @@ class AccountConfigurationTableViewController: UITableViewController {
             case .signOut:
                 mainStore.dispatch(AccountAction.logout)
                 
-                if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
-                    let vc = R.storyboard.firstOpen.instantiateInitialViewController()
-                    UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
-                        NotificationCenter.default.post(name: kResetCenterViewNotification, object: nil)
-                    }
-                    
-                } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-                    let vc = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
-                    UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
-                        NotificationCenter.default.post(name: kResetCenterViewNotification, object: nil)
-                    }
+                let vc = R.storyboard.firstOpen.instantiateInitialViewController()
+                UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
+                    NotificationCenter.default.post(name: kResetCenterViewNotification, object: nil)
                 }
             default:
                 break

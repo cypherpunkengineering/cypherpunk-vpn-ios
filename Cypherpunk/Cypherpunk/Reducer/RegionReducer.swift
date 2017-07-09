@@ -46,7 +46,7 @@ struct RegionReducer {
                     } else if let region = realm.objects(Region.self).filter("isFavorite == false AND authorized == true AND lastConnectedDate != %@", Date(timeIntervalSince1970: 1)).sorted(byKeyPath: "lastConnectedDate", ascending: false).first {
                         target = region
                     } else {
-                        RegionSection.regions.flatMap{return $0.regionCode}.forEach({ (regionCode) in
+                        LocationSection.regions.flatMap{return $0.regionCode}.forEach({ (regionCode) in
                             if target != nil { return }
                             if let region = realm.objects(Region.self).filter("region == %@ AND authorized == true", regionCode).sorted(by:sortProperties).first {
                                 target = region

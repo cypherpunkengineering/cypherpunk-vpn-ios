@@ -83,7 +83,7 @@ enum LocationSection: Int {
         }
     }
     
-    static var regions: [RegionSection] {
+    static var regions: [LocationSection] {
         return [.developer, .NA, .SA, .CR, .OP, .EU, .ME, .AF, .AS].sorted{ return $0.rawValue < $1.rawValue }
     }
 }
