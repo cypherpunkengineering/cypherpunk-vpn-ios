@@ -65,8 +65,13 @@ class MapImageView: UIView {
             
             if let superView = self.superview {
                 let superViewFrame = superView.frame
-                let superViewMidY = superViewFrame.midY + parentMidYOffset
-                self.markerLayer.position = CGPoint(x: (self.superview?.frame.midX)!, y: superViewMidY - self.markerLayer.frame.midY - 3)
+//              let superViewMidY _ = superViewFrame.midY + parentMidYOffset
+//                self.markerLayer.position = CGPoint(x: (self.superview?.frame.midX)!, y: superViewMidY - self.markerLayer.frame.midY - 3)
+                self.markerLayer.position = CGPoint(x: superViewFrame.midX, y: superViewFrame.midY + parentMidYOffset - 17)
+                
+                if UI_USER_INTERFACE_IDIOM() == .pad {
+                    zoomToLastSelected() // TODO figure out how to detect rotation and do this
+                }
             }
         }
     }
@@ -120,7 +125,7 @@ class MapImageView: UIView {
     
     func drawLocationOnMap(lat: Double, long: Double, regionId: String) {
         let imageCoordinates = transformToXY(lat: lat, long: long)
-        let dotPath = UIBezierPath(ovalIn: CGRect(x: imageCoordinates.x - 2.5, y: imageCoordinates.y - 2.5, width: 5, height: 5))
+        let dotPath = UIBezierPath(ovalIn: CGRect(x: imageCoordinates.x - 3, y: imageCoordinates.y - 3, width: 6, height: 6))
 
         let layer = CAShapeLayer()
         layer.path = dotPath.cgPath

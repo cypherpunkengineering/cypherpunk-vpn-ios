@@ -117,43 +117,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Realm.Configuration.defaultConfiguration = config
         
-        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-            
-            let vc: SlidingNavigationViewController! = R.storyboard.top_iPad.instantiateInitialViewController()
-            let _ = vc.view // view instantiate trick
+        let vc: SlidingNavigationViewController! = R.storyboard.top.instantiateInitialViewController()
+        let _ = vc.view // view instantiate trick
+        self.window?.rootViewController = vc
+        vc.fakeLaunchView.isHidden = true
 
-            self.window?.rootViewController = vc
-            vc.fakeLaunchView.isHidden = true
-            DispatchQueue.main.async { [unowned self] in
-                if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
-                    vc.fakeLaunchView.isHidden = false
-//                    let firstOpen = R.storyboard.firstOpen_iPad.instantiateInitialViewController()
-                    let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
-                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: {
-                        vc.fakeLaunchView.isHidden = true
-                    })
-                } else {
-                    mainStore.dispatch(RegionAction.setup)
-                }
-            }
-            
-        } else if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
-
-            let vc: SlidingNavigationViewController! = R.storyboard.top.instantiateInitialViewController()
-            let _ = vc.view // view instantiate trick
-            self.window?.rootViewController = vc
-            vc.fakeLaunchView.isHidden = true
-
-            DispatchQueue.main.async { [unowned self] in
-                if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
-                    vc.fakeLaunchView.isHidden = false
-                    let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
-                    self.window?.rootViewController!.present(firstOpen!, animated: false, completion: {
-                        vc.fakeLaunchView.isHidden = true
-                    })
-                } else {
-                    mainStore.dispatch(RegionAction.setup)
-                }
+        DispatchQueue.main.async { [unowned self] in
+            if mainStore.state.accountState.isLoggedIn == false || mainStore.state.isInstalledPreferences == false {
+                vc.fakeLaunchView.isHidden = false
+                let firstOpen = R.storyboard.firstOpen.instantiateInitialViewController()
+                self.window?.rootViewController!.present(firstOpen!, animated: false, completion: {
+                    vc.fakeLaunchView.isHidden = true
+                })
+            } else {
+                mainStore.dispatch(RegionAction.setup)
             }
         }
         

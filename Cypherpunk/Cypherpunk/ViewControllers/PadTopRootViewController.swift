@@ -26,8 +26,6 @@ extension NEVPNStatus: CustomStringConvertible {
 
 class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelectionDelegate, ButtonsDelegate {
     
-    @IBOutlet weak var animationContainerView: UIView!
-    @IBOutlet weak var connectionActionView: UIView!
     @IBOutlet weak var locationActionView: UIView!
     @IBOutlet weak var contentsSeparatorView: UIView?
     
@@ -137,21 +135,15 @@ class PadTopRootViewController: UIViewController, StoreSubscriber, RegionSelecti
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             if status == .invalid {
                 if UIDevice.current.isSimulator {
-                    connectionActionView.isHidden = true
                     locationActionView.isHidden = true
-                    animationContainerView.isHidden = true
                     contentsSeparatorView?.isHidden = true
                 }
             } else {
-                connectionActionView.isHidden = false
                 locationActionView.isHidden = false
-                animationContainerView.isHidden = false
                 contentsSeparatorView?.isHidden = false
             }
         } else {
-            connectionActionView.isHidden = false
             locationActionView.isHidden = false
-            animationContainerView.isHidden = false
             contentsSeparatorView?.isHidden = false
         }
     }

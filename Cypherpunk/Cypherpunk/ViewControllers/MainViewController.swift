@@ -18,6 +18,7 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     
     var topBarView: UIView
     var bottomBorderLayer: CALayer
+    var gradientLayer: CAGradientLayer
     var mapImageView: MapImageView
     var vpnSwitch: VPNSwitch
     var locationSelectorButton: LocationButton
@@ -39,6 +40,9 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         self.bottomBorderLayer.frame = CGRect(x: 0, y: 0, width: 200.0, height: 1)
         self.bottomBorderLayer.backgroundColor = UIColor.greenVogue.cgColor
         self.topBarView.layer.addSublayer(self.bottomBorderLayer)
+        
+        self.gradientLayer = CAGradientLayer()
+        self.gradientLayer.colors = [UIColor(hex: "#0F2125")!.cgColor, UIColor(hex: "#004444")!.cgColor]
         
         self.mapImageView = MapImageView()
         
@@ -66,10 +70,8 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         
         
         // Add gradient layer for gradient background color
-        let gradient = CAGradientLayer()
-        gradient.frame = self.view.bounds
-        gradient.colors = [UIColor(hex: "#0F2125")!.cgColor, UIColor(hex: "#004444")!.cgColor]
-        self.view.layer.insertSublayer(gradient, at: 0)
+        self.gradientLayer.frame = self.view.bounds
+        self.view.layer.insertSublayer(self.gradientLayer, at: 0)
 
         // add map image view
         self.view.addSubview(self.mapImageView)
@@ -177,9 +179,16 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.bottomBorderLayer.frame = CGRect(x: 0, y: self.topBarView.frame.height - 1, width: self.topBarView.frame.width, height: 1)
+        self.gradientLayer.frame = self.view.bounds
     }
     
-
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.mapImageView.setNeedsLayout()
+        self.mapImageView.setNeedsDisplay()
+        self.view.setNeedsDisplay()
+        self.view.setNeedsLayout()
+    }
+    
     @IBAction func openOrCloseConfigurationAction(_ sender: AnyObject) {
         NotificationCenter.default.post(name: kOpenOrCloseConfigurationNotification, object: nil)
     }

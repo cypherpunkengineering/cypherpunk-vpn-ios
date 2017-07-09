@@ -47,9 +47,6 @@ class SlidingNavigationViewController: UIViewController {
         resetTapRecognizer.numberOfTapsRequired = 1
         resetTapRecognizer.numberOfTouchesRequired = 1
         
-        if UI_USER_INTERFACE_IDIOM() == .pad {
-            slideWidth = 300
-        }
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseConfiguration), name: kOpenOrCloseConfigurationNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(openOrCloseAccount), name: kOpenOrCloseAccountNotification, object: nil)
