@@ -36,6 +36,8 @@ class SlidingNavigationViewController: UIViewController {
         }
     }
     var slideWidth: CGFloat = 274
+    
+    static let animationTime: Double = 0.3
 
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var configTrailingConstraint: NSLayoutConstraint!
@@ -70,7 +72,7 @@ class SlidingNavigationViewController: UIViewController {
             self.view.setNeedsUpdateConstraints()
             self.centerState = .left
             self.view.sendSubview(toBack: self.accountContainerView)
-            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            UIView.animate(withDuration: SlidingNavigationViewController.animationTime, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
 
@@ -79,7 +81,7 @@ class SlidingNavigationViewController: UIViewController {
             self.configTrailingConstraint.constant = -138.0
             self.view.setNeedsUpdateConstraints()
             self.centerState = .center
-            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            UIView.animate(withDuration: SlidingNavigationViewController.animationTime, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
 
@@ -92,7 +94,7 @@ class SlidingNavigationViewController: UIViewController {
             self.centerState = .right
             self.view.setNeedsUpdateConstraints()
             self.view.sendSubview(toBack: self.configContainerView)
-            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            UIView.animate(withDuration: SlidingNavigationViewController.animationTime, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
             
@@ -101,7 +103,7 @@ class SlidingNavigationViewController: UIViewController {
             self.accountLeadingConstraint.constant = -138.0
             self.view.setNeedsUpdateConstraints()
             self.centerState = .center
-            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            UIView.animate(withDuration: SlidingNavigationViewController.animationTime, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
         }
@@ -120,7 +122,7 @@ class SlidingNavigationViewController: UIViewController {
         self.configTrailingConstraint.constant = -138.0
         self.view.setNeedsUpdateConstraints()
         self.centerState = .center
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+        UIView.animate(withDuration: SlidingNavigationViewController.animationTime, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
