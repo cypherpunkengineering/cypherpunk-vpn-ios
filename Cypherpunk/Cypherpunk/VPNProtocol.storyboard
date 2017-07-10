@@ -49,7 +49,7 @@
         <scene sceneID="4DC-Lf-NTa">
             <objects>
                 <navigationController id="rtd-Ia-i01" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="dnc-S2-hWT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dnc-S2-hWT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.086274509803921567" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -66,7 +66,7 @@
         <scene sceneID="aFQ-0y-UrO">
             <objects>
                 <navigationController id="TV3-HH-e9M" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="IKF-0z-Puj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="IKF-0z-Puj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.031372549019607843" green="0.082352941176470587" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

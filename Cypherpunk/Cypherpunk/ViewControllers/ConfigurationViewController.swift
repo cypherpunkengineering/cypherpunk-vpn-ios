@@ -26,32 +26,6 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         
         nib = UINib(nibName: "DrilldownTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "DrilldownCell")
-        
-        // Load wifi networks
-        if #available(iOS 9.0, *) {
-            let interfaces = NEHotspotHelper.supportedNetworkInterfaces()
-            for interface in interfaces {
-                let realm = try! Realm()
-                try! realm.write {
-                    
-                    if let interface = interface as? NEHotspotNetwork {
-                        if realm.object(ofType: WifiNetworks.self, forPrimaryKey: interface.ssid) == nil {
-                            let wifi = WifiNetworks()
-                            wifi.name = interface.ssid
-                            realm.add(wifi, update: false)
-                        }
-                        
-                    }
-                }
-            }
-        }
-        
-        let realm = try! Realm()
-        wifiNetworksResult = realm.objects(WifiNetworks.self)
-        // Listen to changes for wifi networks
-        notificationToken = wifiNetworksResult.addNotificationBlock({ (change) in
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
-        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,7 +46,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
 
     // MARK: UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,12 +54,6 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         switch section {
         case 0:
             rows = 4
-        case 1:
-            rows = 1
-            
-            if let results = wifiNetworksResult {
-                rows += results.count
-            }
         default:
             break
         }
@@ -98,8 +66,6 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         switch indexPath.section {
         case 0:
             cell = cellForPrivacySettings(tableView, row: indexPath.row)
-        case 1:
-            cell = cellForTrustedNetworks(tableView, row: indexPath.row)
         default:
             cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell")!
         }
@@ -113,14 +79,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        var height: CGFloat = 30.0
-        switch section {
-        case 1:
-            height = 65.0
-        default:
-            break
-        }
-        return height
+        return 30.0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -137,25 +96,6 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         switch section {
         case 0:
             label.text = "Privacy Settings"
-        case 1:
-            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 65))
-            headerView.backgroundColor = UIColor.configTableCellBg
-            let label = UILabel(frame: CGRect(x: 20, y: 0, width: 320, height: 30))
-            label.textColor = UIColor.goldenYellow
-            label.font = R.font.dosisSemiBold(size: 13.0)
-            label.text = "Trusted Networks"
-            
-            let descLabel = UILabel(frame: CGRect(x: 20, y: 30, width: tableView.bounds.width - 30, height: 35))
-            descLabel.textColor = UIColor.white
-            descLabel.numberOfLines = 2
-            descLabel.lineBreakMode = .byWordWrapping
-            descLabel.font = R.font.dosisRegular(size: 12)
-            descLabel.text = "Cypherpunk Privacy will automatically connect, except when on the following trusted networks"
-            
-            headerView.addSubview(label)
-            headerView.addSubview(descLabel)
-            
-            return headerView
         default:
             label.text = ""
         }
@@ -205,41 +145,5 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         return cell
-    }
-    
-    private func cellForTrustedNetworks(_ tableView: UITableView, row: Int) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell") as! ToggleTableViewCell
-        
-        switch row {
-        case 0:
-            cell.label.text = "Trust Cellular Networks"
-            cell.toggle.addTarget(self, action: #selector(handleTrustCellularValueChanged(_:)), for: .valueChanged)
-            cell.toggle.isOn = mainStore.state.settingsState.isTrustCellularNetworks
-        default:
-            let wifiInfo = wifiNetworksResult[row - 1] // offset by 1 because of the celluar cell
-            cell.toggle.isOn = wifiInfo.isTrusted
-            cell.toggle.addTarget(self, action: #selector(handleTrustedNetworkValueChanged(_:)), for: .valueChanged)
-            cell.toggle.tag = row
-            
-            cell.label.text = wifiInfo.name
-        }
-        
-        return cell
-    }
-    
-    @IBAction func handleTrustCellularValueChanged(_ sender: UISwitch) {
-        mainStore.dispatch(SettingsAction.isTrustCellularNetworks(isOn: sender.isOn))
-    }
-    
-    @IBAction private func handleTrustedNetworkValueChanged(_ sender: UISwitch) {
-        let realm = try! Realm()
-        
-        let wifiInfo = wifiNetworksResult[sender.tag - 1] // offset by 1 because of the celluar cell
-        try! realm.write {
-            wifiInfo.isTrusted = sender.isOn
-        }
-        
-        VPNConfigurationCoordinator.start {
-        }
     }
 }
