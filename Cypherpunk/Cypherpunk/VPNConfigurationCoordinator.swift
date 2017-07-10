@@ -237,17 +237,20 @@ open class VPNConfigurationCoordinator {
         set {
             let manager = NEVPNManager.shared()
             manager.isEnabled = newValue
-            
-            print(manager.isEnabled)
-            
-            // the profile is being enabled, connect to the VPN
-            if newValue {
-                VPNConfigurationCoordinator.connect()
-            }
-            else {
-                if self.isConnected {
-                    VPNConfigurationCoordinator.disconnect()
+            manager.isOnDemandEnabled = newValue
+            manager.saveToPreferences { (error) in
+                print(manager.isEnabled)
+                
+                // the profile is being enabled, connect to the VPN
+                if newValue {
+                    VPNConfigurationCoordinator.connect()
                 }
+                else {
+                    if self.isConnected {
+                        VPNConfigurationCoordinator.disconnect()
+                    }
+                }
+                
             }
         }
         get {
