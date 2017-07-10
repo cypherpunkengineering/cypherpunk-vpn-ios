@@ -68,18 +68,6 @@ struct AccountReducer {
                 accountState.subscriptionType = nil
                 accountState.expiredDate = nil
             }
-            
-            let certRequest = CertificateRequest(session: response.session)
-            Session.send(certRequest) { (result) in
-                switch result {
-                case .success(let certResponse):
-                    mainStore.dispatch(AccountAction.certificate(p12: certResponse.p12))
-                case .failure:
-                    // TODO what happens if the retrieval of the cert fails?
-                    break
-                }
-            }
-            
             accountState.save()
         case .logout:
             accountState.isLoggedIn = false

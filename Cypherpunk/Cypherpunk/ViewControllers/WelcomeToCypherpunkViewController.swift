@@ -343,6 +343,16 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                                     })
                                 }
                             }
+
+                            let certRequest = CertificateRequest(session: response.session)
+                            Session.send(certRequest) { result in
+                                switch result {
+                                case .success(let certResponse):
+                                    mainStore.dispatch(AccountAction.certificate(p12: certResponse.p12))
+                                case .failure:
+                                    break
+                                }
+                            }
                         case .failure:
                             UIView.animate(withDuration: 0.3, animations: {
                                 self.welcomeLabel.alpha = 1.0
