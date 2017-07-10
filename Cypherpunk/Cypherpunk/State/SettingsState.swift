@@ -177,7 +177,6 @@ struct SettingsState: StateType {
         static let isAutoSecureConnectionsWhenConnectedOtherNetwork = "isAutoSecureConnectionsWhenConnectedOtherNetwork"
         static let blockAds = "blockAds"
         static let blockMalware = "blockMalware"
-        @available(*, deprecated)
         static let cypherplayOn = "cypherplayOn"
         @available(*, deprecated)
         static let alwaysOn = "alwaysOn"

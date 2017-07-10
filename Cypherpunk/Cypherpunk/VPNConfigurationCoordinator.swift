@@ -126,7 +126,7 @@ open class VPNConfigurationCoordinator {
 
             manager.localizedDescription = "Cypherpunk Privacy"
 
-            if settingsState.isAutoSecureConnectionsWhenConnectedOtherNetwork && settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
+            if settingsState.isTrustCellularNetworks && settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
                 let wifiConnectRule = NEOnDemandRuleConnect()
                 wifiConnectRule.interfaceTypeMatch = .wiFi
 
