@@ -90,8 +90,7 @@ open class VPNConfigurationCoordinator {
             else
             {
                 newIPSec = NEVPNProtocolIPSec()
-
-                newIPSec.authenticationMethod = .none
+                newIPSec.authenticationMethod = .certificate
                 newIPSec.serverAddress = regionState.serverIP // IPSecDefault
 
                 newIPSec.username = accountState.mailAddress
@@ -103,8 +102,19 @@ open class VPNConfigurationCoordinator {
 
                 newIPSec.localIdentifier = generateLocalIdentifier()
                 newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
+                
+                if let cert = accountState.certificate {
+                    let p12 = cert.data(using: .utf8)
+                    print(cert)
+                    
+                    if #available(iOS 9.0, *) {
+                        newIPSec.identityReference = p12
+                    }
+                    else {
+                        newIPSec.identityData = p12
+                    }
+                }
             }
-
 
             newIPSec.disconnectOnSleep = false
 

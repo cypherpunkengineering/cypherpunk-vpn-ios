@@ -20,6 +20,7 @@
 		0948DBAA1ED7D1CB00A7A475 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948DBA81ED7D1CB00A7A475 /* ToggleTableViewCell.swift */; };
 		0948DBAB1ED7D1CB00A7A475 /* ToggleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0948DBA91ED7D1CB00A7A475 /* ToggleTableViewCell.xib */; };
 		094C1B9B1E4D31CD00D9036F /* ConnectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */; };
+		09591ACD1F13878C0035247D /* CertificateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09591ACC1F13878C0035247D /* CertificateAPI.swift */; };
 		0959A5071E681FB200A95A49 /* AccountDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */; };
 		0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0959A5061E681FB200A95A49 /* AccountDetailTableViewCell.xib */; };
 		0959A50B1E69768100A95A49 /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5091E69768100A95A49 /* PlanTableViewCell.swift */; };
@@ -182,6 +183,7 @@
 		0948DBA81ED7D1CB00A7A475 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
 		0948DBA91ED7D1CB00A7A475 /* ToggleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToggleTableViewCell.xib; sourceTree = "<group>"; };
 		094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionHelper.swift; path = Cypherpunk/Helper/ConnectionHelper.swift; sourceTree = SOURCE_ROOT; };
+		09591ACC1F13878C0035247D /* CertificateAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificateAPI.swift; sourceTree = "<group>"; };
 		0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewCell.swift; sourceTree = "<group>"; };
 		0959A5061E681FB200A95A49 /* AccountDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetailTableViewCell.xib; sourceTree = "<group>"; };
 		0959A5091E69768100A95A49 /* PlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
@@ -666,6 +668,7 @@
 				2090F7181DD5AF8D00BAB626 /* ChangePasswordAPI.swift */,
 				2B88F7E51DE45E7D00DAB027 /* ConfirmEmailAPI.swift */,
 				2B0A652A1DED904700905A2A /* RecoverPasswordAPI.swift */,
+				09591ACC1F13878C0035247D /* CertificateAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1255,6 +1258,7 @@
 				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
 				0959A50E1E69879A00A95A49 /* PlanCollectionViewController.swift in Sources */,
 				20F07FD91DD47CCD005FC1D6 /* UpgradeAPI.swift in Sources */,
+				09591ACD1F13878C0035247D /* CertificateAPI.swift in Sources */,
 				201C0F571DC9E60500B5624B /* WifiNetworksCell.swift in Sources */,
 				20D895FC1D23A1E7002B9F9D /* AccountState.swift in Sources */,
 				09099D6D1EEE567200891128 /* VPNSwitch.swift in Sources */,

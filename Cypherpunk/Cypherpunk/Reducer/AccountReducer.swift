@@ -9,13 +9,14 @@
 import Foundation
 
 import ReSwift
+import APIKit
 
 struct AccountReducer {
     typealias ReducerStateType = AccountState
     
     func handleAction(action: Action, state: AccountState?) -> AccountState {
         
-        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, expiredDate: nil, accountType: nil)
+        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, expiredDate: nil, accountType: nil, certificate: nil)
         
         guard let accountAction = action as? AccountAction else {
             return accountState
@@ -68,6 +69,17 @@ struct AccountReducer {
                 accountState.expiredDate = nil
             }
             
+            let certRequest = CertificateRequest(session: response.session)
+            Session.send(certRequest) { (result) in
+                switch result {
+                case .success(let certResponse):
+                    mainStore.dispatch(AccountAction.certificate(p12: certResponse.p12))
+                case .failure:
+                    // TODO what happens if the retrieval of the cert fails?
+                    break
+                }
+            }
+            
             accountState.save()
         case .logout:
             accountState.isLoggedIn = false
@@ -88,6 +100,9 @@ struct AccountReducer {
             accountState.mailAddress = newEmail
         case .changePassword(_):
             break
+        case .certificate(let p12):
+            accountState.certificate = p12
+            accountState.save()
         }
         
         return accountState

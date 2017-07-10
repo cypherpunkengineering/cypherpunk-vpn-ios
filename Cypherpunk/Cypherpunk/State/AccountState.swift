@@ -69,7 +69,7 @@ struct AccountState: StateType {
         static let rawSubscriptionType = "rawSubscriptionType"
         static let expiredDate = "expiredDate"
         static let accountType = "accountType"
-
+        static let certificate = "certificate"
     }
 
     var isLoggedIn: Bool
@@ -82,6 +82,7 @@ struct AccountState: StateType {
     var subscriptionType: SubscriptionType?
     var expiredDate: Date?
     var accountType: String?
+    var certificate: String?
     
     var isDeveloperAccount: Bool {
         return mainStore.state.accountState.accountType?.lowercased() == "developer"
@@ -101,6 +102,11 @@ struct AccountState: StateType {
     }
     
     func save() {
+        // can't save if there is no mail address
+        if self.mailAddress == nil {
+            return
+        }
+        
         let keychain = Keychain(service: mailAddress!)
         keychain[AccountStateKey.isLoggedIn] = String(isLoggedIn)
         keychain[AccountStateKey.mailAddress] = mailAddress
@@ -110,6 +116,7 @@ struct AccountState: StateType {
         keychain[AccountStateKey.session] = session
         keychain[AccountStateKey.nickName] = nickName
         keychain[AccountStateKey.accountType] = accountType
+        keychain[AccountStateKey.certificate] = certificate
 
         if let subscriptionType = subscriptionType {
             keychain[AccountStateKey.rawSubscriptionType] = String(subscriptionType.rawValue)
@@ -133,7 +140,7 @@ struct AccountState: StateType {
     }
     
     static func restore() -> AccountState {
-        var state = AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, expiredDate: nil, accountType: nil)
+        var state = AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, expiredDate: nil, accountType: nil, certificate: nil)
         let defaults = UserDefaults.standard
         if let service = defaults.string(forKey: AccountStateKey.mailAddress) {
             let keychain = Keychain(service: service)
@@ -145,6 +152,7 @@ struct AccountState: StateType {
             state.session = keychain[AccountStateKey.session]
             state.nickName = keychain[AccountStateKey.nickName]
             state.accountType = keychain[AccountStateKey.accountType]
+            state.certificate = keychain[AccountStateKey.certificate]
 
             if let rawSubscriptionTypeString = keychain[AccountStateKey.rawSubscriptionType], let rawSubscriptionType = Int(rawSubscriptionTypeString) {
                 state.subscriptionType = SubscriptionType(rawValue: rawSubscriptionType)

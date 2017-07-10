@@ -16,4 +16,5 @@ enum AccountAction: Action {
     case changeEmail(newEmail: String)
     case changePassword(password: String)
     case logout
+    case certificate(p12: String)
 }
