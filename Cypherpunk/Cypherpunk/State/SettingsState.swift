@@ -151,7 +151,6 @@ struct SettingsState: StateType {
         }
     }
     
-    @available(*, deprecated)
     var alwaysOn : Bool {
         get {
             if !mainStore.state.isInstalledPreferences {
@@ -178,7 +177,6 @@ struct SettingsState: StateType {
         static let blockAds = "blockAds"
         static let blockMalware = "blockMalware"
         static let cypherplayOn = "cypherplayOn"
-        @available(*, deprecated)
         static let alwaysOn = "alwaysOn"
     }
 }

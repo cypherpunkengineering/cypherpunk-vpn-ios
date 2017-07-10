@@ -16,6 +16,8 @@ class ToggleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.isUserInteractionEnabled = false
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,5 +30,7 @@ class ToggleTableViewCell: UITableViewCell {
         super.prepareForReuse()
         // remove any events that were added to the toggle
         self.toggle.removeTarget(nil, action: nil, for: .allEvents)
+        self.isUserInteractionEnabled = false
+        self.selectionStyle = .none
     }
 }

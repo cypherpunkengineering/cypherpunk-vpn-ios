@@ -21,8 +21,11 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let nib = UINib(nibName: "ToggleTableViewCell", bundle: nil)
+        var nib = UINib(nibName: "ToggleTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "ToggleCell")
+        
+        nib = UINib(nibName: "DrilldownTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "DrilldownCell")
         
         // Load wifi networks
         if #available(iOS 9.0, *) {
@@ -76,7 +79,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         var rows = 0
         switch section {
         case 0:
-            rows = 2
+            rows = 3
         case 1:
             rows = 1
             
@@ -168,14 +171,26 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         return footerView
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 0 && indexPath.row == 0 {
+            // automatic protection
+            self.performSegue(withIdentifier: "PresentManageTrustedNetworks", sender: self)
+        }
+    }
+    
     // MARK: Helper Methods
     private func cellForPrivacySettings(_ tableView: UITableView, row: Int) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell") as! ToggleTableViewCell
         
         switch row {
         case 0:
-            cell.label.text = "Block Ads"
+            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "DrilldownCell") as! DrilldownTableViewCell
+            drilldownCell.label.text = "Automatic Protection"
+            return drilldownCell
         case 1:
+            cell.label.text = "Block Ads"
+        case 2:
             cell.label.text = "Block Malware"
         default:
             cell.label.text = ""
