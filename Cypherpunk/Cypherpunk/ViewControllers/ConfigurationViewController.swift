@@ -79,7 +79,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         var rows = 0
         switch section {
         case 0:
-            rows = 3
+            rows = 4
         case 1:
             rows = 1
             
@@ -189,8 +189,12 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             drilldownCell.label.text = "Automatic Protection"
             return drilldownCell
         case 1:
-            cell.label.text = "Block Ads"
+            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "DrilldownCell") as! DrilldownTableViewCell
+            drilldownCell.label.text = "VPN Mode"
+            return drilldownCell
         case 2:
+            cell.label.text = "Block Ads"
+        case 3:
             cell.label.text = "Block Malware"
         default:
             cell.label.text = ""
