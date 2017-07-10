@@ -177,6 +177,10 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             // automatic protection
             self.performSegue(withIdentifier: "PresentManageTrustedNetworks", sender: self)
         }
+        else if indexPath.section == 0 && indexPath.row == 1 {
+            // vpn mode
+            self.performSegue(withIdentifier: "PresentVPNMode", sender: self)
+        }
     }
     
     // MARK: Helper Methods

@@ -13,6 +13,9 @@
 		0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */; };
 		091D05791F13AE3A0027C2D7 /* DrilldownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D05771F13AE3A0027C2D7 /* DrilldownTableViewCell.swift */; };
 		091D057A1F13AE3A0027C2D7 /* DrilldownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091D05781F13AE3A0027C2D7 /* DrilldownTableViewCell.xib */; };
+		091D057C1F13C1560027C2D7 /* VPNModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */; };
+		091D057F1F13CAF90027C2D7 /* VPNModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D057D1F13CAF90027C2D7 /* VPNModeTableViewCell.swift */; };
+		091D05801F13CAF90027C2D7 /* VPNModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091D057E1F13CAF90027C2D7 /* VPNModeTableViewCell.xib */; };
 		0932DFEB1F00AF4600DD2EE6 /* UIImage+Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */; };
 		0945DBE21EF60842005119E8 /* CypherplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945DBE01EF60842005119E8 /* CypherplayCollectionViewCell.swift */; };
 		0945DBE31EF60842005119E8 /* CypherplayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0945DBE11EF60842005119E8 /* CypherplayCollectionViewCell.xib */; };
@@ -178,6 +181,9 @@
 		0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNStateResponder.swift; path = Cypherpunk/Helper/VPNStateResponder.swift; sourceTree = SOURCE_ROOT; };
 		091D05771F13AE3A0027C2D7 /* DrilldownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrilldownTableViewCell.swift; sourceTree = "<group>"; };
 		091D05781F13AE3A0027C2D7 /* DrilldownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrilldownTableViewCell.xib; sourceTree = "<group>"; };
+		091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNModeTableViewController.swift; sourceTree = "<group>"; };
+		091D057D1F13CAF90027C2D7 /* VPNModeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNModeTableViewCell.swift; sourceTree = "<group>"; };
+		091D057E1F13CAF90027C2D7 /* VPNModeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VPNModeTableViewCell.xib; sourceTree = "<group>"; };
 		0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transparency.swift"; sourceTree = "<group>"; };
 		0945DBE01EF60842005119E8 /* CypherplayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CypherplayCollectionViewCell.swift; sourceTree = "<group>"; };
 		0945DBE11EF60842005119E8 /* CypherplayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CypherplayCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -539,6 +545,8 @@
 				0945DBE41EF92CE4005119E8 /* LocationButton.swift */,
 				091D05771F13AE3A0027C2D7 /* DrilldownTableViewCell.swift */,
 				091D05781F13AE3A0027C2D7 /* DrilldownTableViewCell.xib */,
+				091D057D1F13CAF90027C2D7 /* VPNModeTableViewCell.swift */,
+				091D057E1F13CAF90027C2D7 /* VPNModeTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -629,6 +637,7 @@
 				20845B521DEEAA910066A906 /* Account */,
 				20845B511DEEAA610066A906 /* Configuration */,
 				20845B501DEEA9DD0066A906 /* FirstOpen */,
+				091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -900,6 +909,7 @@
 				2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */,
 				09ACCDCD1E71892200AF3E4F /* splashscreen-illustration@2x.png in Resources */,
 				09EAFBB91EF0AAC5001B9375 /* LocationSelectorViewController.xib in Resources */,
+				091D05801F13CAF90027C2D7 /* VPNModeTableViewCell.xib in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				09E60D951ED688CF0037BA0D /* MainViewController.xib in Resources */,
 				0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */,
@@ -1226,6 +1236,7 @@
 				2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */,
 				2B34557A1DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift in Sources */,
 				2B0A652B1DED904700905A2A /* RecoverPasswordAPI.swift in Sources */,
+				091D057F1F13CAF90027C2D7 /* VPNModeTableViewCell.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
 				2065DD0B1DB8D9A500D0F446 /* CongraturationsViewController.swift in Sources */,
@@ -1237,6 +1248,7 @@
 				09EAFBBC1EF0AE72001B9375 /* LocationCollectionViewCell.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */,
+				091D057C1F13C1560027C2D7 /* VPNModeTableViewController.swift in Sources */,
 				0948DBA71ED7C88500A7A475 /* ConfigurationViewController.swift in Sources */,
 				20D896001D23A84D002B9F9D /* AccountAction.swift in Sources */,
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,

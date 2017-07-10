@@ -13,13 +13,13 @@ import KeychainAccess
 import NetworkExtension
 
 enum VPNProtocolMode: Int {
-    //case IPSec = 1
+    case IPSec = 1
     case IKEv2 = 2
     
     var description: String {
         switch self {
-        //case .IPSec:
-        //    return "IPSec"
+        case .IPSec:
+            return "IPSec"
         case .IKEv2:
             return "IKEv2"
         }
