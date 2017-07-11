@@ -131,7 +131,7 @@ class AccountConfigurationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 104.5
+            return 247
         default:
             return 44.0
         }

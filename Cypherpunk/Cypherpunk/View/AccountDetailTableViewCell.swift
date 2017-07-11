@@ -10,14 +10,25 @@ import UIKit
 import ReSwift
 
 class AccountDetailTableViewCell: UITableViewCell {
-    @IBOutlet weak var usernameLabelButton: UIButton!
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var subscriptionTypeLabel: UILabel!
     @IBOutlet weak var expirationLabel: UILabel!
+    @IBOutlet weak var userIconView: UIImageView!
+    @IBOutlet weak var keyIconView: UIImageView!
+    @IBOutlet weak var bannerImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         mainStore.subscribe(self)
+        
+        let iconColor = UIColor(red: 0, green: 142 / 255.0, blue: 140 / 255.0, alpha: 1)
+        
+        self.userIconView.image = UIImage.fontAwesomeIcon(name: .user, textColor: iconColor, size: CGSize(width: 30, height: 30))
+        
+        self.keyIconView.image = UIImage.fontAwesomeIcon(name: .key, textColor: iconColor, size: CGSize(width: 30, height: 30))
+        
+        self.setBannerImage()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,6 +43,15 @@ class AccountDetailTableViewCell: UITableViewCell {
     
     deinit {
         mainStore.unsubscribe(self)
+    }
+    
+    fileprivate func setBannerImage() {
+        if mainStore.state.accountState.isFreeAccount {
+            self.bannerImageView.image = R.image.account_banner_free()
+        }
+        else {
+            self.bannerImageView.image = R.image.account_banner_premium()
+        }
     }
 }
 
@@ -59,7 +79,8 @@ extension AccountDetailTableViewCell: StoreSubscriber {
             self.subscriptionTypeLabel.text = state.accountState.accountType?.capitalized
         }
         
-        usernameLabelButton.setTitle(accountState.mailAddress, for: .normal)
+        usernameLabel.text = accountState.mailAddress
         
+        self.setBannerImage()
     }
 }
