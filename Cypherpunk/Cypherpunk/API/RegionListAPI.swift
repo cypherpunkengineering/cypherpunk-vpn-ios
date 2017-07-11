@@ -57,6 +57,7 @@ struct RegionListRequest: Request {
                         region.region = server["region"] as! String
                         region.level = server["level"] as! String
                         region.name = server["name"] as! String
+                        region.fullName = server["nameFull"] as! String
                         region.ovHostname = server["ovHostname"] as! String
                         region.ovDefault = (server["ovDefault"] as! [String]).joined(separator: "\n")
                         region.ovNone = (server["ovNone"] as! [String]).joined(separator: "\n")
@@ -81,6 +82,7 @@ struct RegionListRequest: Request {
                             region: server["region"] as! String,
                             level: server["level"] as! String,
                             name: server["name"] as! String,
+                            fullName: server["nameFull"] as! String,
                             ovHostname: server["ovHostname"] as! String,
                             ovDefault: (server["ovDefault"] as! [String]).joined(separator: "\n"),
                             ovNone: (server["ovNone"] as! [String]).joined(separator: "\n"),
@@ -140,10 +142,10 @@ struct RegionListRequest: Request {
     private func setFastestToLastConnected() {
         // set to fastest
         if let fastestRegion = ConnectionHelper.findFastest() {
-            mainStore.dispatch(RegionAction.changeRegion(regionId: fastestRegion.id, name: fastestRegion.name, serverIP: fastestRegion.ipsecHostname, countryCode: fastestRegion.country, remoteIdentifier: fastestRegion.ipsecHostname, level: fastestRegion.level))
+            mainStore.dispatch(RegionAction.changeRegion(regionId: fastestRegion.id, name: fastestRegion.name, fullName: fastestRegion.fullName, serverIP: fastestRegion.ipsecHostname, countryCode: fastestRegion.country, remoteIdentifier: fastestRegion.ipsecHostname, level: fastestRegion.level))
         }
         else {
-            mainStore.dispatch(RegionAction.changeRegion(regionId: "", name: "", serverIP: "", countryCode: "", remoteIdentifier: "", level: ""))
+            mainStore.dispatch(RegionAction.changeRegion(regionId: "", name: "", fullName: "", serverIP: "", countryCode: "", remoteIdentifier: "", level: ""))
         }
     }
 }
@@ -156,6 +158,7 @@ class Region: Object {
     dynamic var region: String = ""
     dynamic var level: String = ""
     dynamic var name: String = ""
+    dynamic var fullName: String = ""
     dynamic var ovHostname: String = ""
     dynamic var ovDefault: String = ""
     dynamic var ovNone: String = ""
@@ -175,7 +178,7 @@ class Region: Object {
     dynamic var longitude: Double = 0.0
     dynamic var locDisplayScale: CGFloat = 1.0
     
-    init(id: String, region: String, level: String, name: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, country: String, authorized: Bool, latitude: Double, longitude: Double, locDisplayScale: CGFloat) {
+    init(id: String, region: String, level: String, name: String, fullName: String, ovHostname: String, ovDefault: String, ovNone: String, ovStrong: String, ovStealth: String, ipsecHostname: String, ipsecDefault: String, httpDefault: String, socksDefault: String, country: String, authorized: Bool, latitude: Double, longitude: Double, locDisplayScale: CGFloat) {
 
         super.init()
         
@@ -183,6 +186,7 @@ class Region: Object {
         self.region = region
         self.level = level
         self.name = name
+        self.fullName = fullName
         self.ovHostname = ovHostname
         self.ovDefault = ovDefault
         self.ovNone = ovNone

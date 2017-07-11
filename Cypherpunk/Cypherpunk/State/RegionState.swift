@@ -14,6 +14,7 @@ import KeychainAccess
 struct RegionState: StateType {
     var regionId: String
     var name: String
+    var fullName: String
     var serverIP: String
     var countryCode: String
     var remoteIdentifier: String

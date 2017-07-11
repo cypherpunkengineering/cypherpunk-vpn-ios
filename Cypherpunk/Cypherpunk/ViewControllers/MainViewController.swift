@@ -183,6 +183,13 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if let locationSelector = self.locationSelectorVC {
+            // forcing the view to redraw and recompute size of cells
+            locationSelector.view.setNeedsLayout()
+            locationSelector.view.setNeedsDisplay()
+            locationSelector.reloadLocations()
+        }
+        
         self.mapImageView.setNeedsLayout()
         self.mapImageView.setNeedsDisplay()
         self.view.setNeedsDisplay()

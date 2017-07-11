@@ -29,11 +29,10 @@
                             <constraint firstAttribute="height" constant="30" id="nNo-qU-8K5"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8a-DL-YzK">
-                        <rect key="frame" x="64" y="1" width="188" height="34"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8a-DL-YzK">
+                        <rect key="frame" x="64" y="1" width="273" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="Job-7w-XLV"/>
-                            <constraint firstAttribute="width" constant="188" id="qOQ-xf-VBZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -45,6 +44,7 @@
                 <constraint firstItem="I8a-DL-YzK" firstAttribute="leading" secondItem="soR-lr-p4E" secondAttribute="trailing" constant="11" id="lto-Ct-pgf"/>
                 <constraint firstItem="soR-lr-p4E" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="lus-aR-kBr"/>
                 <constraint firstItem="soR-lr-p4E" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="q1g-7Y-Ida"/>
+                <constraint firstAttribute="trailing" secondItem="I8a-DL-YzK" secondAttribute="trailing" constant="11" id="s3B-yA-b0N"/>
                 <constraint firstItem="I8a-DL-YzK" firstAttribute="centerY" secondItem="soR-lr-p4E" secondAttribute="centerY" id="tD0-7n-J8B"/>
             </constraints>
             <size key="customSize" width="348" height="42"/>
@@ -52,7 +52,7 @@
                 <outlet property="flagView" destination="soR-lr-p4E" id="Y9p-gt-kQx"/>
                 <outlet property="locationLabel" destination="I8a-DL-YzK" id="Xbr-O9-O5m"/>
             </connections>
-            <point key="canvasLocation" x="174" y="48"/>
+            <point key="canvasLocation" x="174" y="47.5"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -29,7 +29,13 @@ class LocationCollectionViewCell: UICollectionViewCell {
     
     func displayRegion(region: Region) {
         self.flagView.image = UIImage(named: region.country.lowercased())
-        self.locationLabel.text = region.name
+        
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            self.locationLabel.text = region.fullName
+        }
+        else {
+            self.locationLabel.text = region.name
+        }
         
         if !region.authorized {
             self.showDisabledAppearance()

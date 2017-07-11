@@ -125,6 +125,10 @@ class LocationSelectorViewController: UIViewController {
     @IBAction func backPressed(_ sender: Any) {
         self.delegate?.dismissSelector()
     }
+    
+    func reloadLocations() {
+        self.collectionView.reloadData()
+    }
 }
 
 extension LocationSelectorViewController: UICollectionViewDelegate {

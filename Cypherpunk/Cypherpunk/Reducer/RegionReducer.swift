@@ -21,6 +21,7 @@ struct RegionReducer {
         var regionState = state ?? RegionState(
             regionId: "",
             name:  "",
+            fullName: "",
             serverIP: "",
             countryCode: "",
             remoteIdentifier: "",
@@ -58,15 +59,17 @@ struct RegionReducer {
                 if let region = target {
                     regionState.regionId = region.id
                     regionState.name = region.name
+                    regionState.fullName = region.fullName
                     regionState.serverIP = region.ipsecDefault.components(separatedBy: "\n")[0]
                     regionState.countryCode = region.country
                     regionState.remoteIdentifier = region.ipsecHostname
                     regionState.lastSelectedRegionId = region.id
                     regionState.level = region.level
                 }
-            case .changeRegion(let regionId, let name, let serverIP, let countryCode, let remoteidentifier, let level):
+            case .changeRegion(let regionId, let name, let fullName, let serverIP, let countryCode, let remoteidentifier, let level):
                 regionState.regionId = regionId
                 regionState.name = name
+                regionState.fullName = fullName
                 regionState.serverIP = serverIP.components(separatedBy: "\n")[0]
                 regionState.countryCode = countryCode
                 regionState.remoteIdentifier = remoteidentifier
