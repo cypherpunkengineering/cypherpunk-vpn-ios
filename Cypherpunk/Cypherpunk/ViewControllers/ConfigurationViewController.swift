@@ -137,12 +137,24 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             return drilldownCell
         case 2:
             cell.label.text = "Block Ads"
+            cell.toggle.isOn = mainStore.state.settingsState.blockAds
+            cell.toggle.addTarget(self, action: #selector(blockAdsChanged(_:)), for: .valueChanged)
         case 3:
             cell.label.text = "Block Malware"
+            cell.toggle.isOn = mainStore.state.settingsState.blockMalware
+            cell.toggle.addTarget(self, action: #selector(blockMalwareChanged(_:)), for: .valueChanged)
         default:
             cell.label.text = ""
         }
         
         return cell
+    }
+    
+    @IBAction func blockAdsChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.blockAds(block: sender.isOn))
+    }
+    
+    @IBAction func blockMalwareChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
     }
 }
