@@ -158,9 +158,14 @@ class AccountConfigurationTableViewController: UITableViewController {
         if let row = Rows(rawValue: (tableRow?.tag)!) {
             switch row {
             case .manageAccount:
-//                let url = URL(string: "https://cypherpunk.com/support/request/new")
-//                UIApplication.shared.openURL(url!)
-                break
+                let accountState = mainStore.state.accountState
+                
+                if let email = accountState.mailAddress {
+                    if let secret = accountState.secret {
+                        let url = URL(string: "https://cypherpunk.com/account?user=\(email)&secret=\(secret)")
+                        UIApplication.shared.openURL(url!)
+                    }
+                }
             case .paymentUpgrade:
                 self.performSegue(withIdentifier: "ShowUpgrade", sender: self)
             case .accountEmailDetail:
