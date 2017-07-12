@@ -24,8 +24,8 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         var nib = UINib(nibName: "ToggleTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "ToggleCell")
         
-        nib = UINib(nibName: "DrilldownTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "DrilldownCell")
+        nib = UINib(nibName: "MenuTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "MenuCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,7 +91,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         headerView.backgroundColor = UIColor.configTableCellBg
         let label = UILabel(frame: CGRect(x: 20, y: 0, width: 320, height: 30))
         label.textColor = UIColor.goldenYellow
-        label.font = R.font.dosisSemiBold(size: 13.0)
+        label.font = R.font.dosisSemiBold(size: 15.0)
         
         switch section {
         case 0:
@@ -107,7 +107,6 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 10))
-        footerView.backgroundColor = UIColor.configTableBg
         return footerView
     }
     
@@ -129,12 +128,12 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         
         switch row {
         case 0:
-            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "DrilldownCell") as! DrilldownTableViewCell
-            drilldownCell.label.text = "Automatic Protection"
+            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
+            drilldownCell.textLabel?.text = "Automatic Protection"
             return drilldownCell
         case 1:
-            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "DrilldownCell") as! DrilldownTableViewCell
-            drilldownCell.label.text = "VPN Mode"
+            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
+            drilldownCell.textLabel?.text = "VPN Mode"
             return drilldownCell
         case 2:
             cell.label.text = "Block Ads"
