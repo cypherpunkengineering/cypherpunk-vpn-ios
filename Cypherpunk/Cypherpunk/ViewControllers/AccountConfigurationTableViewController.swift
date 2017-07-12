@@ -22,6 +22,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         case help = 80
         case signOut = 90
         case share = 100
+        case manageAccount = 110
     }
 
     override func viewDidLoad() {
@@ -71,30 +72,44 @@ class AccountConfigurationTableViewController: UITableViewController {
         case 0:
             return 1
         case 1:
+            return 1
             // depending on the type of account and plan the upgrade button may not be shown
-            return shouldHideUpgradeMenuItem() ? 2 : 3
+//            return shouldHideUpgradeMenuItem() ? 2 : 3
         case 2:
-            return 5
+            return 3
+//            return 5
         default:
             return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var view: UIView?
+        var headerView: UIView?
         
         if section > 0 {
-            view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 36))
-            let titleLabel: UILabel
-            titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 304, height: 36))
-            titleLabel.font = R.font.dosisMedium(size: 13)
-            titleLabel.textColor = UIColor.peach
-            titleLabel.text = section == 1 ? "Account Settings" : "More"
+            headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
+            headerView?.backgroundColor = UIColor.configTableCellBg
+            let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
+            label.textColor = UIColor.goldenYellow
+            label.font = R.font.dosisMedium(size: 15.0)
             
-            view?.addSubview(titleLabel)
+            switch section {
+            case 1:
+                label.text = "Account Settings"
+            case 2:
+                label.text = "More"
+            default:
+                label.text = ""
+            }
+            
+            headerView?.addSubview(label)
         }
 
-        return view // section 0 will have a nil header view
+        return headerView // section 0 will have a nil header view
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 10))
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,14 +133,11 @@ class AccountConfigurationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 0.1
-        }
-        return 36
+        return section == 0 ? 0.0 : 30.0
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.1
+        return 10.0
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -145,6 +157,10 @@ class AccountConfigurationTableViewController: UITableViewController {
         
         if let row = Rows(rawValue: (tableRow?.tag)!) {
             switch row {
+            case .manageAccount:
+//                let url = URL(string: "https://cypherpunk.com/support/request/new")
+//                UIApplication.shared.openURL(url!)
+                break
             case .paymentUpgrade:
                 self.performSegue(withIdentifier: "ShowUpgrade", sender: self)
             case .accountEmailDetail:
@@ -152,7 +168,9 @@ class AccountConfigurationTableViewController: UITableViewController {
             case .accountPasswordDetail:
                 self.performSegue(withIdentifier: "ShowPassword", sender: self)
             case .share:
-                self.performSegue(withIdentifier: "ShowShare", sender: self)
+                let url = URL(string: "https://cypherpunk.com/account/refer")
+                UIApplication.shared.openURL(url!)
+//                self.performSegue(withIdentifier: "ShowShare", sender: self)
             case .rateOurService:
                 if let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(appID)") {
                     UIApplication.shared.openURL(url)
@@ -191,27 +209,30 @@ class AccountConfigurationTableViewController: UITableViewController {
         // Email, Password
         switch row {
         case 0:
-            if shouldHideUpgradeMenuItem() {
-                cell.textLabel?.text = "Email"
-                cell.tag = Rows.accountEmailDetail.rawValue
-            }
-            else {
-                let premium = mainStore.state.accountState.isPremiumAccount
-                cell.textLabel?.text = premium ? "Change Plan" : "Upgrade"
-                cell.tag = Rows.paymentUpgrade.rawValue
-            }
-        case 1:
-            if shouldHideUpgradeMenuItem() {
-                cell.textLabel?.text = "Password"
-                cell.tag = Rows.accountPasswordDetail.rawValue
-            }
-            else {
-                cell.textLabel?.text = "Email"
-                cell.tag = Rows.accountEmailDetail.rawValue
-            }
-        case 2:
-            cell.textLabel?.text = "Password"
-            cell.tag = Rows.accountPasswordDetail.rawValue
+            cell.textLabel?.text = "Manage Account"
+            cell.tag = Rows.manageAccount.rawValue
+//        case 0:
+//            if shouldHideUpgradeMenuItem() {
+//                cell.textLabel?.text = "Email"
+//                cell.tag = Rows.accountEmailDetail.rawValue
+//            }
+//            else {
+//                let premium = mainStore.state.accountState.isPremiumAccount
+//                cell.textLabel?.text = premium ? "Change Plan" : "Upgrade"
+//                cell.tag = Rows.paymentUpgrade.rawValue
+//            }
+//        case 1:
+//            if shouldHideUpgradeMenuItem() {
+//                cell.textLabel?.text = "Password"
+//                cell.tag = Rows.accountPasswordDetail.rawValue
+//            }
+//            else {
+//                cell.textLabel?.text = "Email"
+//                cell.tag = Rows.accountEmailDetail.rawValue
+//            }
+//        case 2:
+//            cell.textLabel?.text = "Password"
+//            cell.tag = Rows.accountPasswordDetail.rawValue
         default:
             break
         }
@@ -220,22 +241,25 @@ class AccountConfigurationTableViewController: UITableViewController {
     private func setupCellForMoreSection(row: Int, cell: UITableViewCell) {
         switch row {
         case 0:
-            cell.textLabel?.text = "Share With Your Friends"
+            cell.textLabel?.text = "Refer a Friend"
             cell.tag = Rows.share.rawValue
         case 1:
-            cell.textLabel?.text = "Rate Our Service"
-            cell.tag = Rows.rateOurService.rawValue
-        case 2:
-            cell.textLabel?.text = "Contact the Founders"
-            cell.tag = Rows.contactus.rawValue
-            cell.accessoryType = .none
-        case 3:
-            cell.textLabel?.text = "Help"
+            cell.textLabel?.text = "Go to Help Center"
             cell.tag = Rows.help.rawValue
-        case 4:
-            cell.textLabel?.text = "Log out"
+        case 2:
+            cell.textLabel?.text = "Sign Out"
             cell.tag = Rows.signOut.rawValue
             cell.accessoryType = .none
+//            cell.textLabel?.text = "Contact the Founders"
+//            cell.tag = Rows.contactus.rawValue
+//            cell.accessoryType = .none
+//        case 3:
+//            cell.textLabel?.text = "Help"
+//            cell.tag = Rows.help.rawValue
+//        case 4:
+//            cell.textLabel?.text = "Log out"
+//            cell.tag = Rows.signOut.rawValue
+//            cell.accessoryType = .none
         default:
             break
         }

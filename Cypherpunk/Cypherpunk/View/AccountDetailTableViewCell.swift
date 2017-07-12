@@ -29,6 +29,8 @@ class AccountDetailTableViewCell: UITableViewCell {
         self.keyIconView.image = UIImage.fontAwesomeIcon(name: .key, textColor: iconColor, size: CGSize(width: 30, height: 30))
         
         self.setBannerImage()
+        
+        self.isUserInteractionEnabled = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
