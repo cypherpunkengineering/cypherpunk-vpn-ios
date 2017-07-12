@@ -89,7 +89,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
         headerView.backgroundColor = UIColor.configTableCellBg
-        let label = UILabel(frame: CGRect(x: 20, y: 0, width: 320, height: 30))
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
         label.textColor = UIColor.goldenYellow
         label.font = R.font.dosisSemiBold(size: 15.0)
         
