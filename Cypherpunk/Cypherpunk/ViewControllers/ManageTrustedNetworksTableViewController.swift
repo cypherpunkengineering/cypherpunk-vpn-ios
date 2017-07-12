@@ -100,12 +100,12 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 65))
         headerView.backgroundColor = UIColor.configTableCellBg
-        let label = UILabel(frame: CGRect(x: 20, y: 0, width: 320, height: 30))
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
         label.textColor = UIColor.goldenYellow
-        label.font = R.font.dosisSemiBold(size: 13.0)
+        label.font = R.font.dosisMedium(size: 15.0)
         label.text = "Trusted Networks"
         
-        let descLabel = UILabel(frame: CGRect(x: 20, y: 30, width: tableView.bounds.width - 30, height: 35))
+        let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 35))
         descLabel.textColor = UIColor.white
         descLabel.numberOfLines = 2
         descLabel.lineBreakMode = .byWordWrapping
