@@ -62,7 +62,8 @@ open class VPNConfigurationCoordinator {
             }
         }
     }
-
+    
+    // if the VPN is active this will stop the tunnel
     class func start(_ completion: @escaping () -> ()) {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
@@ -104,28 +105,12 @@ open class VPNConfigurationCoordinator {
                 if let cert = accountState.certificate {
 
                     let p12 = Data(base64Encoded: cert) //cert.data(using: .utf8)
-                    print(cert)
-
-//                    let options = [ kSecImportExportPassphrase as String: "usr_cert" ]
-//
-//                    var rawItems: CFArray?
-//                    let status = SecPKCS12Import(p12! as CFData,
-//                                                 options as CFDictionary,
-//                                                 &rawItems)
-//
-////                    guard status == errSecSuccess else { throw Exception() }
-//                    let items = rawItems! as! Array<Dictionary<String, Any>>
-//                    let firstItem = items[0]
-//
-//                    let identity = firstItem[kSecImportItemIdentity as String] as! SecIdentity?
-//                    let trust = firstItem[kSecImportItemTrust as String] as! SecTrust?
 
                     if #available(iOS 9.0, *) {
                         newIPSec.identityReference = p12
                     }
-//                    else {
-                        newIPSec.identityData = p12
-//                    }
+                    
+                    newIPSec.identityData = p12
                     newIPSec.identityDataPassword = "usr_cert"
                 }
             }
@@ -185,6 +170,9 @@ open class VPNConfigurationCoordinator {
             }
             manager.isEnabled = true
 
+            if self.isConnected || self.isConnecting {
+                manager.connection.stopVPNTunnel()
+            }
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()
             })
@@ -215,13 +203,16 @@ open class VPNConfigurationCoordinator {
 
         let manager = NEVPNManager.shared()
         if manager.isOnDemandEnabled == false || manager.isEnabled == false {
-            manager.saveToPreferences(completionHandler: { (error) in
-                if let error = error {
-                    print(error)
-                } else {
-                    connectBlock()
-                }
-            })
+            manager.loadFromPreferences { (error) in
+                manager.isOnDemandEnabled = true
+                manager.saveToPreferences(completionHandler: { (error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        connectBlock()
+                    }
+                })
+            }
         } else {
             connectBlock()
         }
@@ -256,7 +247,7 @@ open class VPNConfigurationCoordinator {
                 print(manager.isEnabled)
 
                 // the profile is being enabled, connect to the VPN
-                if newValue {
+                if newValue && !self.isConnected {
                     VPNConfigurationCoordinator.connect()
                 }
                 else {

@@ -158,8 +158,6 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
                 self.lastSelectedRegionId = regionId
             }
         }
-        
-        self.vpnSwitch.isOn = VPNConfigurationCoordinator.isProfileEnabled
     }
 
     override func didReceiveMemoryWarning() {
@@ -173,6 +171,7 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         VPNConfigurationCoordinator.load {_ in
             let status = NEVPNManager.shared().connection.status
             self.updateView(vpnStatus: status)
+            self.vpnSwitch.isOn = VPNConfigurationCoordinator.isProfileEnabled
         }
     }
     
@@ -269,15 +268,6 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
                     self.view.setNeedsDisplay()
                     
                     self.lastSelectedRegionId = regionId
-                    
-                    if mainStore.state.isInstalledPreferences {
-                        // there is a valid region start VPN
-                        
-                        // updates the profile
-                        VPNConfigurationCoordinator.start {
-                            VPNConfigurationCoordinator.connect()
-                        }
-                    }
                 }
             }
         }
