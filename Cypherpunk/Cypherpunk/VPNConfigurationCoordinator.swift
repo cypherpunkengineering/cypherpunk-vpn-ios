@@ -31,7 +31,7 @@ open class VPNConfigurationCoordinator {
 
         newIPSec = NEVPNProtocolIKEv2()
         newIPSec.authenticationMethod = .none
-        newIPSec.serverAddress = regionState.serverIP // IPSecDefault
+        newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
 
         newIPSec.useExtendedAuthentication = true
         newIPSec.username = accountState.vpnUsername
@@ -77,7 +77,7 @@ open class VPNConfigurationCoordinator {
                 newIPSec = NEVPNProtocolIKEv2()
 
                 newIPSec.authenticationMethod = .none
-                newIPSec.serverAddress = regionState.serverIP // IPSecDefault
+                newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
 
                 newIPSec.useExtendedAuthentication = true
                 newIPSec.username = accountState.vpnUsername
@@ -91,7 +91,7 @@ open class VPNConfigurationCoordinator {
             {
                 newIPSec = NEVPNProtocolIPSec()
                 newIPSec.authenticationMethod = .certificate
-                newIPSec.serverAddress = regionState.serverIP // IPSecDefault
+                newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
 
                 newIPSec.useExtendedAuthentication = true
                 newIPSec.username = accountState.vpnUsername
