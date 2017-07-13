@@ -57,10 +57,10 @@ class VPNModeTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-            cell.label.text = "Always On + Killswitch"
+            cell.label.text = "IPSec protocol, Always On VPN, with Leak Protection"
             cell.accessoryType = protocolMode == VPNProtocolMode.IPSec ? .checkmark : .none
         case 1:
-            cell.label.text = "Auto Reconnect"
+            cell.label.text = "IKEv2 protocol, Auto Reconnect, no Leak Protection"
             cell.accessoryType = protocolMode == VPNProtocolMode.IKEv2 ? .checkmark : .none
         default:
             break
