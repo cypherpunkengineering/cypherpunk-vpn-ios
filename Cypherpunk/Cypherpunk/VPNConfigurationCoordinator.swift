@@ -93,8 +93,6 @@ open class VPNConfigurationCoordinator {
                 newIPSec.authenticationMethod = .certificate
                 newIPSec.serverAddress = regionState.serverIP // IPSecDefault
 
-                newIPSec.username = accountState.mailAddress
-
                 newIPSec.useExtendedAuthentication = true
                 newIPSec.username = accountState.vpnUsername
                 let password = accountState.vpnPassword
@@ -104,15 +102,31 @@ open class VPNConfigurationCoordinator {
                 newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
                 
                 if let cert = accountState.certificate {
-                    let p12 = cert.data(using: .utf8)
+
+                    let p12 = Data(base64Encoded: cert) //cert.data(using: .utf8)
                     print(cert)
+                    
+//                    let options = [ kSecImportExportPassphrase as String: "usr_cert" ]
+//                    
+//                    var rawItems: CFArray?
+//                    let status = SecPKCS12Import(p12! as CFData,
+//                                                 options as CFDictionary,
+//                                                 &rawItems)
+//                    
+////                    guard status == errSecSuccess else { throw Exception() }
+//                    let items = rawItems! as! Array<Dictionary<String, Any>>
+//                    let firstItem = items[0]
+//                    
+//                    let identity = firstItem[kSecImportItemIdentity as String] as! SecIdentity?
+//                    let trust = firstItem[kSecImportItemTrust as String] as! SecTrust?
                     
                     if #available(iOS 9.0, *) {
                         newIPSec.identityReference = p12
                     }
-                    else {
+//                    else {
                         newIPSec.identityData = p12
-                    }
+//                    }
+                    newIPSec.identityDataPassword = "usr_cert"
                 }
             }
 
