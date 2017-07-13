@@ -52,7 +52,7 @@ open class VPNConfigurationCoordinator {
 
         manager.isOnDemandEnabled = false
         manager.isEnabled = false
-        
+
         manager.loadFromPreferences { (error) in
             if error == nil {
                 manager.saveToPreferences(completionHandler: completion)
@@ -100,26 +100,26 @@ open class VPNConfigurationCoordinator {
 
                 newIPSec.localIdentifier = generateLocalIdentifier()
                 newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
-                
+
                 if let cert = accountState.certificate {
 
                     let p12 = Data(base64Encoded: cert) //cert.data(using: .utf8)
                     print(cert)
-                    
+
 //                    let options = [ kSecImportExportPassphrase as String: "usr_cert" ]
-//                    
+//
 //                    var rawItems: CFArray?
 //                    let status = SecPKCS12Import(p12! as CFData,
 //                                                 options as CFDictionary,
 //                                                 &rawItems)
-//                    
+//
 ////                    guard status == errSecSuccess else { throw Exception() }
 //                    let items = rawItems! as! Array<Dictionary<String, Any>>
 //                    let firstItem = items[0]
-//                    
+//
 //                    let identity = firstItem[kSecImportItemIdentity as String] as! SecIdentity?
 //                    let trust = firstItem[kSecImportItemTrust as String] as! SecTrust?
-                    
+
                     if #available(iOS 9.0, *) {
                         newIPSec.identityReference = p12
                     }
@@ -140,60 +140,50 @@ open class VPNConfigurationCoordinator {
 
             manager.localizedDescription = "Cypherpunk Privacy"
 
-            if settingsState.isTrustCellularNetworks && settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
-                let wifiConnectRule = NEOnDemandRuleConnect()
-                wifiConnectRule.interfaceTypeMatch = .wiFi
+            let alwaysConnectRule = NEOnDemandRuleConnect()
 
-                let cellularConnectRule = NEOnDemandRuleConnect()
-                cellularConnectRule.interfaceTypeMatch = .cellular
+            let realm = try! Realm()
+            let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
 
-                manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
-                manager.isOnDemandEnabled = true
-            } else if settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork {
+            var ssidList: [String] = []
+            for netInfo in whiteList {
+                ssidList.append(netInfo.name)
+            }
 
-                let realm = try! Realm()
-                let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
+            if settingsState.vpnProtocolMode == .IKEv2 {
 
-                var ssidList: [String] = []
-                for netInfo in whiteList {
-                    ssidList.append(netInfo.name)
-                }
+                manager.isOnDemandEnabled = false
 
-                let wifiConnectRule = NEOnDemandRuleConnect()
-                wifiConnectRule.interfaceTypeMatch = .wiFi
+            } else { // IPSec
 
-                let cellularConnectRule = NEOnDemandRuleConnect()
-                cellularConnectRule.interfaceTypeMatch = .cellular
+                let cellularDisconnectRule = NEOnDemandRuleDisconnect()
+                cellularDisconnectRule.interfaceTypeMatch = .cellular
 
-                if ssidList.count != 0 {
-                    let wifiDisconnectRule = NEOnDemandRuleDisconnect()
-                    wifiDisconnectRule.interfaceTypeMatch = .wiFi
-                    wifiDisconnectRule.ssidMatch = ssidList
-                    
-                    let wifiIggnoreRule = NEOnDemandRuleIgnore()
-                    wifiIggnoreRule.interfaceTypeMatch = .wiFi
-                    wifiIggnoreRule.ssidMatch = ssidList
-                    
-                    manager.onDemandRules = [wifiDisconnectRule,wifiIggnoreRule, wifiConnectRule, cellularConnectRule]
+                let cellularIgnoreRule = NEOnDemandRuleIgnore()
+                cellularIgnoreRule.interfaceTypeMatch = .cellular
+
+                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
+                wifiDisconnectRule.interfaceTypeMatch = .wiFi
+                wifiDisconnectRule.ssidMatch = ssidList
+
+                let wifiIgnoreRule = NEOnDemandRuleIgnore()
+                wifiIgnoreRule.interfaceTypeMatch = .wiFi
+                wifiIgnoreRule.ssidMatch = ssidList
+
+                if settingsState.isTrustCellularNetworks && ssidList.count != 0 {
+                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule, cellularDisconnectRule, cellularIgnoreRule]
+                } else if settingsState.isTrustCellularNetworks {
+                    manager.onDemandRules = [alwaysConnectRule, cellularDisconnectRule, cellularIgnoreRule]
+                } else if ssidList.count != 0 {
+                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule]
                 } else {
-                    manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
+                    manager.onDemandRules = [alwaysConnectRule]
                 }
 
                 manager.isOnDemandEnabled = true
-            } else {
-                manager.isOnDemandEnabled = false
-            }
 
-
-            if newIPSec.serverAddress != ""
-            {
-                manager.isEnabled = true
             }
-            else
-            {
-                manager.isOnDemandEnabled = false
-                manager.isEnabled = false
-            }
+            manager.isEnabled = true
 
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()
@@ -241,7 +231,7 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.isOnDemandEnabled = false
         manager.saveToPreferences(completionHandler: { error in
-            
+
         })
         if #available(iOS 9.0, *) {
             print("Stopping VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
@@ -256,7 +246,7 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.removeFromPreferences(completionHandler: nil)
     }
-    
+
     class var isProfileEnabled: Bool {
         set {
             let manager = NEVPNManager.shared()
@@ -264,7 +254,7 @@ open class VPNConfigurationCoordinator {
             manager.isOnDemandEnabled = newValue
             manager.saveToPreferences { (error) in
                 print(manager.isEnabled)
-                
+
                 // the profile is being enabled, connect to the VPN
                 if newValue {
                     VPNConfigurationCoordinator.connect()
@@ -274,7 +264,7 @@ open class VPNConfigurationCoordinator {
                         VPNConfigurationCoordinator.disconnect()
                     }
                 }
-                
+
             }
         }
         get {
@@ -290,20 +280,20 @@ open class VPNConfigurationCoordinator {
         }
         return false
     }
-    
+
     class var isConnecting: Bool {
         return NEVPNManager.shared().connection.status == .connecting
     }
-    
+
     private class func generateLocalIdentifier() -> String {
         let settingsState = mainStore.state.settingsState
-        
+
         var bitmask = 10
-        
+
         bitmask += settingsState.blockAds ? 1 : 0
         bitmask += settingsState.blockMalware ? 2 : 0
         bitmask += settingsState.cypherplayOn ? 4 : 0
-        
+
         print("Local Identifier: cypherpunk-vpn-ios-\(bitmask)")
         return "cypherpunk-vpn-ios-\(bitmask)"
     }
