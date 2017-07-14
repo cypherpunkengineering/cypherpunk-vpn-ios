@@ -172,7 +172,7 @@ open class VPNConfigurationCoordinator {
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()
                 manager.loadFromPreferences(completionHandler: { (error) in
-                    print(manager.protocolConfiguration!)
+//                    print(manager.protocolConfiguration!)
                 })
             })
         }
@@ -206,6 +206,9 @@ open class VPNConfigurationCoordinator {
                 manager.isOnDemandEnabled = true
                 manager.isEnabled = true
                 manager.saveToPreferences(completionHandler: { (error) in
+                    manager.loadFromPreferences(completionHandler: { (error) in
+                        //                    print(manager.protocolConfiguration!)
+                    })
                     if let error = error {
                         print(error)
                     } else {
@@ -226,7 +229,10 @@ open class VPNConfigurationCoordinator {
             manager.isEnabled = false
             
             manager.saveToPreferences(completionHandler: { error in
+                manager.connection.stopVPNTunnel()
                 
+                manager.loadFromPreferences(completionHandler: { error in
+                })
             })
         }
         if #available(iOS 9.0, *) {
@@ -235,7 +241,6 @@ open class VPNConfigurationCoordinator {
             // Fallback on earlier versions
             print("Stopping VPN tunnel to \(String(describing: manager.protocol?.serverAddress))")
         }
-        manager.connection.stopVPNTunnel()
     }
 
     class func removeFromPreferences() {
