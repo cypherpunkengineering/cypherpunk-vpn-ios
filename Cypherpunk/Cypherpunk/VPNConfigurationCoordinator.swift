@@ -79,8 +79,8 @@ open class VPNConfigurationCoordinator {
 //            else {
 //                newIPSec = buildIPSecConfiguration(accountState: accountState, regionState: regionState)
 //            }
-            
-            let newIPSec = buildIPSecConfiguration(accountState: accountState, regionState: regionState)
+
+            let newIPSec = buildIKEv2Configuration(accountState: accountState, regionState: regionState)
 
             if #available(iOS 9.0, *) {
                 manager.protocolConfiguration = newIPSec
@@ -102,9 +102,9 @@ open class VPNConfigurationCoordinator {
             for netInfo in blackList {
                 ssidBlacklist.append(netInfo.name)
             }
-            
-            if settingsState.vpnProtocolMode == .IPSec {
-
+/*
+            if settingsState.vpnProtocolMode == .IKEv2 {
+*/
                 let cellularConnectRule = NEOnDemandRuleConnect()
                 cellularConnectRule.interfaceTypeMatch = .cellular
 
@@ -121,8 +121,8 @@ open class VPNConfigurationCoordinator {
                 } else {
                     manager.onDemandRules = []
                 }
-            } else if settingsState.vpnProtocolMode == .IKEv2 {
-
+/*
+            } else if settingsState.vpnProtocolMode == .IPSec {
                 let alwaysConnectRule = NEOnDemandRuleConnect()
                 alwaysConnectRule.interfaceTypeMatch = .any
 
@@ -150,7 +150,7 @@ open class VPNConfigurationCoordinator {
                     manager.onDemandRules = [alwaysConnectRule]
                 }
             }
-
+*/
             manager.isOnDemandEnabled = true
             manager.isEnabled = true
 
