@@ -122,5 +122,38 @@ class ConnectionHelper {
         }
         return regions
     }
+    
+    static func checkLastConnectedServer(defaultRegion: Region?) {
+        let realm = try! Realm()
+        
+        // check that the selected server is still available
+        if let lastSelectedRegionId = mainStore.state.regionState.lastSelectedRegionId, let lastSelectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelectedRegionId) {
+            // found the region, check if authorized
+            if !lastSelectedRegion.authorized {
+                setFastestToLastConnected(defaultRegion: defaultRegion)
+            }
+        }
+        else {
+            setFastestToLastConnected(defaultRegion: defaultRegion)
+        }
+    }
+    
+    static func setFastestToLastConnected(defaultRegion: Region?) {
+        // set to fastest
+        if let fastestRegion = ConnectionHelper.findFastest() {
+            mainStore.dispatch(RegionAction.changeRegion(regionId: fastestRegion.id, name: fastestRegion.name, fullName: fastestRegion.fullName, serverIP: fastestRegion.ipsecHostname, countryCode: fastestRegion.country, remoteIdentifier: fastestRegion.ipsecHostname, level: fastestRegion.level))
+            VPNConfigurationCoordinator.start {
+                
+            }
+        }
+        else {
+            if let region = defaultRegion {
+                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+                VPNConfigurationCoordinator.start {
+                    
+                }
+            }
+        }
+    }
 }
 

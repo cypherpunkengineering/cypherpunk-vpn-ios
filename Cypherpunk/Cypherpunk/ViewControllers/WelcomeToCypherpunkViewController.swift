@@ -325,13 +325,12 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                                 self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
                                 return
                             }
-                            
+                            mainStore.dispatch(AccountAction.login(response: response))
                             let regionRequest = RegionListRequest(session: response.session, accountType: response.account.type)
                             Session.send(regionRequest) { (result) in
                                 switch result {
                                 case .success(_):
                                     mainStore.dispatch(RegionAction.setup)
-                                    mainStore.dispatch(AccountAction.login(response: response))
                                 case .failure:
                                     UIView.animate(withDuration: 0.3, animations: {
                                         self.welcomeLabel.alpha = 1.0
