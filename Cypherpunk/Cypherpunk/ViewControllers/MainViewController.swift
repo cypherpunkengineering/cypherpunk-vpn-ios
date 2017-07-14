@@ -164,6 +164,11 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
                 self.lastSelectedRegionId = regionId
             }
         }
+        
+        // HACK: This is to temporarily force everything to IKEv2
+        if mainStore.state.settingsState.vpnProtocolMode == .IPSec {
+            mainStore.dispatch(SettingsAction.vpnProtocolMode(value: .IKEv2))
+        }
     }
 
     override func didReceiveMemoryWarning() {

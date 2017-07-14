@@ -53,7 +53,8 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         var rows = 0
         switch section {
         case 0:
-            rows = 4
+//            rows = 4
+            rows = 3 // hiding VPN mode for now
         default:
             break
         }
@@ -116,10 +117,10 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             // automatic protection
             self.performSegue(withIdentifier: "PresentManageTrustedNetworks", sender: self)
         }
-        else if indexPath.section == 0 && indexPath.row == 1 {
-            // vpn mode
-            self.performSegue(withIdentifier: "PresentVPNMode", sender: self)
-        }
+//        else if indexPath.section == 0 && indexPath.row == 1 {
+//            // vpn mode
+//            self.performSegue(withIdentifier: "PresentVPNMode", sender: self)
+//        }
     }
     
     // MARK: Helper Methods
@@ -131,15 +132,15 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
             drilldownCell.textLabel?.text = "Automatic Protection"
             return drilldownCell
+//        case 1:
+//            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
+//            drilldownCell.textLabel?.text = "VPN Mode"
+//            return drilldownCell
         case 1:
-            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
-            drilldownCell.textLabel?.text = "VPN Mode"
-            return drilldownCell
-        case 2:
             cell.label.text = "Block Ads"
             cell.toggle.isOn = mainStore.state.settingsState.blockAds
             cell.toggle.addTarget(self, action: #selector(blockAdsChanged(_:)), for: .valueChanged)
-        case 3:
+        case 2:
             cell.label.text = "Block Malware"
             cell.toggle.isOn = mainStore.state.settingsState.blockMalware
             cell.toggle.addTarget(self, action: #selector(blockMalwareChanged(_:)), for: .valueChanged)
