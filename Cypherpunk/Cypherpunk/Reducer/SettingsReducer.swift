@@ -41,15 +41,13 @@ struct SettingsReducer {
             }
             
             let isConnected = VPNConfigurationCoordinator.isConnected
+            
             VPNConfigurationCoordinator.start{
                 let manager = NEVPNManager.shared()
                 if isConnected, manager.isOnDemandEnabled == false, !suppressReconnectDialog {
                     DispatchQueue.main.async {
                         ReconnectDialogView.show()
                     }
-                }
-                if isConnected {
-                    VPNConfigurationCoordinator.connect()
                 }
             }
         }

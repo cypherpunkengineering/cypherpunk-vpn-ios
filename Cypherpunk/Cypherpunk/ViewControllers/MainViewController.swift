@@ -66,6 +66,12 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
+//        notificationCenter.addObserver(
+//            self,
+//            selector: #selector(vpnCongfigurationChanged(_:)),
+//            name: NSNotification.Name.NEVPNConfigurationChange,
+//            object: nil
+//        )
         notificationCenter.addObserver(self, selector: #selector(regionsUpdated(_:)), name: regionUpdateNotification, object: nil)
         
         
@@ -116,7 +122,7 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             childView.width == 100.0
             childView.centerX == parentView.centerX
         }
-        self.vpnSwitch.delegate = self
+//        self.vpnSwitch.delegate = self
         
         self.view.addSubview(self.statusLabel)
         self.statusLabel.font = R.font.dosisMedium(size: 18)
@@ -172,7 +178,12 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             let status = NEVPNManager.shared().connection.status
             self.updateView(vpnStatus: status)
             self.vpnSwitch.isOn = VPNConfigurationCoordinator.isProfileEnabled
+            self.vpnSwitch.delegate = self
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.vpnSwitch.delegate = nil
     }
     
     override func viewDidLayoutSubviews() {
@@ -283,6 +294,10 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         self.updateView(vpnStatus: status)
     }
     
+//    func vpnCongfigurationChanged(_ notification: Notification) {
+//
+//    }
+    
     func regionsUpdated(_ notification: Notification) {
         self.mapImageView.drawLocationsOnMap()
     }
@@ -291,25 +306,6 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         print("NEW STATE")
         // TODO: is there really no way to target specific property changes?
         updateViewWithLastSeclectedRegion()
-        
-//        regionTitleLabel?.text = state.regionState.title
-//        regionFlagImageView?.image = UIImage(named: state.regionState.countryCode.lowercased())?.withRenderingMode(.alwaysOriginal)
-//        premiumLocationIconWidthConstraint?.constant = 0.0
-//        devLocationIconWidthConstraint?.constant = 0.0
-//        regionTrailingConstraint?.constant = 0.0
-//        premiumLocationIconView?.isHidden = true
-//        devLocationIconView?.isHidden = true
-//        if state.regionState.level == "premium" {
-//            premiumLocationIconWidthConstraint?.constant = 56.0
-//            devLocationIconWidthConstraint?.constant = 56.0
-//            regionTrailingConstraint?.constant = 32.0
-//            premiumLocationIconView?.isHidden = false
-//        } else if state.regionState.level == "developer" {
-//            premiumLocationIconWidthConstraint?.constant = 25.0
-//            devLocationIconWidthConstraint?.constant = 25.0
-//            devLocationIconView?.isHidden = false
-//        }
-//        self.view.layoutIfNeeded()
     }
     
     // MARK: - VPNSwitchDelegate

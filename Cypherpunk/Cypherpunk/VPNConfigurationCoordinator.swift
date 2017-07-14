@@ -171,10 +171,15 @@ open class VPNConfigurationCoordinator {
             manager.isEnabled = true
 
             if self.isConnected || self.isConnecting {
-                manager.connection.stopVPNTunnel()
+                // initiate a reconnect
+                VPNStateController.sharedInstance.reconnect()
             }
+            
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()
+                manager.loadFromPreferences(completionHandler: { (error) in
+                    print(manager.protocolConfiguration!)
+                })
             })
         }
     }
@@ -221,9 +226,11 @@ open class VPNConfigurationCoordinator {
     class func disconnect() {
         let manager = NEVPNManager.shared()
         manager.isOnDemandEnabled = false
-        manager.saveToPreferences(completionHandler: { error in
-
-        })
+        manager.loadFromPreferences { (error) in
+            manager.saveToPreferences(completionHandler: { error in
+                
+            })
+        }
         if #available(iOS 9.0, *) {
             print("Stopping VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
         } else {
@@ -243,20 +250,23 @@ open class VPNConfigurationCoordinator {
             let manager = NEVPNManager.shared()
             manager.isEnabled = newValue
             manager.isOnDemandEnabled = newValue
-            manager.saveToPreferences { (error) in
-                print(manager.isEnabled)
-
-                // the profile is being enabled, connect to the VPN
-                if newValue && !self.isConnected {
-                    VPNConfigurationCoordinator.connect()
-                }
-                else {
-                    if self.isConnected {
-                        VPNConfigurationCoordinator.disconnect()
+            
+            manager.loadFromPreferences(completionHandler: { error in
+                manager.saveToPreferences { (error) in
+                    print(manager.isEnabled)
+                    
+                    // the profile is being enabled, connect to the VPN
+                    if newValue && !self.isConnected {
+                        VPNConfigurationCoordinator.connect()
                     }
+                    else {
+                        if self.isConnected {
+                            VPNConfigurationCoordinator.disconnect()
+                        }
+                    }
+                    
                 }
-
-            }
+            })
         }
         get {
             let manager = NEVPNManager.shared()
@@ -274,6 +284,14 @@ open class VPNConfigurationCoordinator {
 
     class var isConnecting: Bool {
         return NEVPNManager.shared().connection.status == .connecting
+    }
+    
+    class var isDisconnecting: Bool {
+        return NEVPNManager.shared().connection.status == .disconnecting
+    }
+    
+    class var isDisconnected: Bool {
+        return NEVPNManager.shared().connection.status == .disconnected
     }
 
     private class func generateLocalIdentifier() -> String {

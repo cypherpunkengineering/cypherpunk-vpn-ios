@@ -162,6 +162,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
+        VPNStateController.sharedInstance // is this active?
+        
         // Override point for customization after application launch.
         var shouldPerformAdditionalDelegateHandling = true
         

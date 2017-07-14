@@ -15,6 +15,8 @@ final class VPNStateController: UIResponder {
     private var disconnectingServerOption: VPNServerOption?
     private var connectAfterDisconnectOption: VPNServerOption?
     
+    private var connectAfterDisconnect = false
+    
     private var responders: Array<VPNStateResponder> = Array()
     
     //MARK: Shared Instance
@@ -37,23 +39,25 @@ final class VPNStateController: UIResponder {
             return
         }
         
-        let status = connection.status
         
-        print("VPN Status: \(status)")
+        let status = connection.status
         
         switch status {
         case .connected:
+            print("VPN Connected")
             mainStore.state.regionState.serverPinger.cancelPinging()
             responders.forEach({ (responder) in
                 responder.connected(disconnectedOption: previousServerOption, connectedOption: activeServerOption)
             })
         case .connecting:
-            print()
+            print("VPN Connecting")
         case .disconnecting:
+            print("VPN Disconnecting")
             responders.forEach({ (responder) in
                 responder.disconnecting(disconnectingOption: activeServerOption)
             })
         case .disconnected:
+            print("VPN Disconnected")
             responders.forEach({ (responder) in
                 responder.disconnected(disconnectedOption: activeServerOption)
             })
@@ -67,8 +71,31 @@ final class VPNStateController: UIResponder {
                 connectAfterDisconnectOption = nil
                 activeServerOption = connectOption
             }
-        default:
-            print()
+            
+            if connectAfterDisconnect {
+                VPNConfigurationCoordinator.connect()
+                connectAfterDisconnect = false
+            }
+        case .reasserting:
+            print("VPN Reasserting")
+        case .invalid:
+            print("VPN Invalid")
+        }
+    }
+    
+    // orchestrates reconnecting after initiating a disconnect
+    func reconnect() {
+        if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting {
+            self.connectAfterDisconnect = true // wait for notification of disconnect
+            VPNConfigurationCoordinator.disconnect()
+        }
+        else if VPNConfigurationCoordinator.isDisconnecting {
+            // already disconnecting, just wait
+            self.connectAfterDisconnect = true // wait for notification of disconnect
+        }
+        else if VPNConfigurationCoordinator.isDisconnected {
+            // not connected just go ahead and connect
+            VPNConfigurationCoordinator.connect()
         }
     }
     

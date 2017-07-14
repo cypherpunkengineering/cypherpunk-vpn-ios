@@ -16,9 +16,6 @@ class ConnectionHelper {
         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
         
         VPNConfigurationCoordinator.start {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6, execute: {
-                VPNConfigurationCoordinator.connect()
-            })
         }
     }
         

@@ -46,6 +46,8 @@ struct RegionListRequest: Request {
         
         if let areaDictionary = object as? Dictionary<String, [String: Any]> {
             
+            var defaultRegion: Region?
+            
             let realm = try! Realm()
             
             try! realm.write({
@@ -76,6 +78,10 @@ struct RegionListRequest: Request {
                         if region.ipsecDefault == "" {
                             region.authorized = false
                         }
+                        
+                        if (server["default"] != nil) {
+                            defaultRegion = region
+                        }
                     } else {
                         let region = Region(
                             id: id as! String,
@@ -99,6 +105,10 @@ struct RegionListRequest: Request {
                             locDisplayScale: server["scale"] as! CGFloat
                         )
                         realm.add(region, update: true)
+                        
+                        if (server["default"] != nil) {
+                            defaultRegion = region
+                        }
                     }
                     regionIds.append(id as! String)
                 })
@@ -106,7 +116,7 @@ struct RegionListRequest: Request {
                 let oldRegions = realm.objects(Region.self).filter("NOT (id IN %@)", regionIds)
                 realm.delete(oldRegions)
                 
-                checkLastConnectedServer()
+                checkLastConnectedServer(defaultRegion: defaultRegion)
 
                 if !VPNConfigurationCoordinator.isConnected {
                     mainStore.state.regionState.serverPinger.updateLatencyForServers()
@@ -124,28 +134,36 @@ struct RegionListRequest: Request {
         return JSONDataParser(readingOptions: [])
     }
     
-    private func checkLastConnectedServer() {
+    private func checkLastConnectedServer(defaultRegion: Region?) {
         let realm = try! Realm()
         
         // check that the selected server is still available
         if let lastSelectedRegionId = mainStore.state.regionState.lastSelectedRegionId, let lastSelectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelectedRegionId) {
             // found the region, check if authorized
             if !lastSelectedRegion.authorized {
-                setFastestToLastConnected()
+                setFastestToLastConnected(defaultRegion: defaultRegion)
             }
         }
         else {
-            setFastestToLastConnected()
+            setFastestToLastConnected(defaultRegion: defaultRegion)
         }
     }
     
-    private func setFastestToLastConnected() {
+    private func setFastestToLastConnected(defaultRegion: Region?) {
         // set to fastest
         if let fastestRegion = ConnectionHelper.findFastest() {
             mainStore.dispatch(RegionAction.changeRegion(regionId: fastestRegion.id, name: fastestRegion.name, fullName: fastestRegion.fullName, serverIP: fastestRegion.ipsecHostname, countryCode: fastestRegion.country, remoteIdentifier: fastestRegion.ipsecHostname, level: fastestRegion.level))
+            VPNConfigurationCoordinator.start {
+                
+            }
         }
         else {
-            mainStore.dispatch(RegionAction.changeRegion(regionId: "", name: "", fullName: "", serverIP: "", countryCode: "", remoteIdentifier: "", level: ""))
+            if let region = defaultRegion {
+                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+                VPNConfigurationCoordinator.start {
+                    
+                }
+            }
         }
     }
 }

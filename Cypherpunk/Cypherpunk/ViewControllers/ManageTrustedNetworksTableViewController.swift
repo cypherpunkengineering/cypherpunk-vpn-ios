@@ -179,13 +179,9 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
             wifiInfo.isTrusted = sender.isOn
         }
         
-        let restartConnection = VPNConfigurationCoordinator.isConnecting || VPNConfigurationCoordinator.isConnected
         VPNConfigurationCoordinator.start {
-            if restartConnection {
-                DispatchQueue.main.async {
-                    ReconnectDialogView.show()
-                }
-                VPNConfigurationCoordinator.connect()
+            DispatchQueue.main.async {
+                ReconnectDialogView.show()
             }
         }
     }
