@@ -76,11 +76,14 @@ class SettingUpYourVPNViewController: UIViewController {
             NotificationCenter.default.removeObserver(self)
             performSegue(withIdentifier: "showAnalyticsStep", sender: nil)
         } else {
-            VPNConfigurationCoordinator.install() { (error) in
-                if error == nil {
-                    self.showAnalyticsStep()
-                }
-            }
+//            VPNConfigurationCoordinator.install() { (error) in
+//                if error == nil {
+//                    self.showAnalyticsStep()
+//                }
+//            }
+            VPNConfigurationCoordinator.start({ 
+                self.showAnalyticsStep()
+            })
         }
     }
     
