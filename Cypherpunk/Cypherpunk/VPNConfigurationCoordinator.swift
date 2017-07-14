@@ -27,9 +27,9 @@ open class VPNConfigurationCoordinator {
 
 
         let manager = NEVPNManager.shared()
-        let newIPSec : NEVPNProtocolIPSec
+        let newIPSec : NEVPNProtocolIPSec = NEVPNProtocolIPSec()
 
-        newIPSec = NEVPNProtocolIKEv2()
+//        newIPSec = NEVPNProtocolIKEv2()
         newIPSec.authenticationMethod = .none
         newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
 
@@ -72,48 +72,15 @@ open class VPNConfigurationCoordinator {
             let regionState = mainStore.state.regionState
             let accountState = mainStore.state.accountState
 
-            let newIPSec : NEVPNProtocolIPSec
-            if settingsState.vpnProtocolMode == .IKEv2
-            {
-                newIPSec = NEVPNProtocolIKEv2()
-
-                newIPSec.authenticationMethod = .none
-                newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
-
-                newIPSec.useExtendedAuthentication = true
-                newIPSec.username = accountState.vpnUsername
-                let password = accountState.vpnPassword
-                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
-
-                newIPSec.localIdentifier = generateLocalIdentifier()
-                newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
-            }
-            else
-            {
-                newIPSec = NEVPNProtocolIPSec()
-                newIPSec.authenticationMethod = .certificate
-                newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
-
-                newIPSec.useExtendedAuthentication = true
-                newIPSec.username = accountState.vpnUsername
-                let password = accountState.vpnPassword
-                newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
-
-                newIPSec.localIdentifier = generateLocalIdentifier()
-                newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
-
-                if let cert = accountState.certificate {
-
-                    let p12 = Data(base64Encoded: cert) //cert.data(using: .utf8)
-
-                    if #available(iOS 9.0, *) {
-                        newIPSec.identityReference = p12
-                    }
-                    
-                    newIPSec.identityData = p12
-                    newIPSec.identityDataPassword = "usr_cert"
-                }
-            }
+//            let newIPSec : NEVPNProtocolIPSec
+//            if settingsState.vpnProtocolMode == .IKEv2 {
+//                newIPSec = buildIKEv2Configuration(accountState: accountState, regionState: regionState)
+//            }
+//            else {
+//                newIPSec = buildIPSecConfiguration(accountState: accountState, regionState: regionState)
+//            }
+            
+            let newIPSec = buildIPSecConfiguration(accountState: accountState, regionState: regionState)
 
             newIPSec.disconnectOnSleep = false
 
@@ -135,41 +102,65 @@ open class VPNConfigurationCoordinator {
                 ssidList.append(netInfo.name)
             }
 
-/*
-            if settingsState.vpnProtocolMode == .IKEv2 {
+//            if settingsState.vpnProtocolMode == .IKEv2 {
+//
+//                manager.isOnDemandEnabled = false
+//
+//            } else { // IPSec
+//
+//                let cellularDisconnectRule = NEOnDemandRuleDisconnect()
+//                cellularDisconnectRule.interfaceTypeMatch = .cellular
+//
+//                let cellularIgnoreRule = NEOnDemandRuleIgnore()
+//                cellularIgnoreRule.interfaceTypeMatch = .cellular
+//
+//                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
+//                wifiDisconnectRule.interfaceTypeMatch = .wiFi
+//                wifiDisconnectRule.ssidMatch = ssidList
+//
+//                let wifiIgnoreRule = NEOnDemandRuleIgnore()
+//                wifiIgnoreRule.interfaceTypeMatch = .wiFi
+//                wifiIgnoreRule.ssidMatch = ssidList
+//
+//                if settingsState.isTrustCellularNetworks && ssidList.count != 0 {
+//                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule, cellularDisconnectRule, cellularIgnoreRule]
+//                } else if settingsState.isTrustCellularNetworks {
+//                    manager.onDemandRules = [alwaysConnectRule, cellularDisconnectRule, cellularIgnoreRule]
+//                } else if ssidList.count != 0 {
+//                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule]
+//                } else {
+//                    manager.onDemandRules = [alwaysConnectRule]
+//                }
+//
+//                manager.isOnDemandEnabled = true
+//
+//            }
+            
+            let cellularDisconnectRule = NEOnDemandRuleDisconnect()
+            cellularDisconnectRule.interfaceTypeMatch = .cellular
 
-                manager.isOnDemandEnabled = false
+            let cellularIgnoreRule = NEOnDemandRuleIgnore()
+            cellularIgnoreRule.interfaceTypeMatch = .cellular
 
-            } else { // IPSec
-*/
-                let cellularDisconnectRule = NEOnDemandRuleDisconnect()
-                cellularDisconnectRule.interfaceTypeMatch = .cellular
+            let wifiDisconnectRule = NEOnDemandRuleDisconnect()
+            wifiDisconnectRule.interfaceTypeMatch = .wiFi
+            wifiDisconnectRule.ssidMatch = ssidList
 
-                let cellularIgnoreRule = NEOnDemandRuleIgnore()
-                cellularIgnoreRule.interfaceTypeMatch = .cellular
+            let wifiIgnoreRule = NEOnDemandRuleIgnore()
+            wifiIgnoreRule.interfaceTypeMatch = .wiFi
+            wifiIgnoreRule.ssidMatch = ssidList
 
-                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
-                wifiDisconnectRule.interfaceTypeMatch = .wiFi
-                wifiDisconnectRule.ssidMatch = ssidList
-
-                let wifiIgnoreRule = NEOnDemandRuleIgnore()
-                wifiIgnoreRule.interfaceTypeMatch = .wiFi
-                wifiIgnoreRule.ssidMatch = ssidList
-
-                if settingsState.isTrustCellularNetworks && ssidList.count != 0 {
-                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule, cellularDisconnectRule, cellularIgnoreRule]
-                } else if settingsState.isTrustCellularNetworks {
-                    manager.onDemandRules = [alwaysConnectRule, cellularDisconnectRule, cellularIgnoreRule]
-                } else if ssidList.count != 0 {
-                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule]
-                } else {
-                    manager.onDemandRules = [alwaysConnectRule]
-                }
-
-                manager.isOnDemandEnabled = true
-/*
+            if settingsState.isTrustCellularNetworks && ssidList.count != 0 {
+                manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule, cellularDisconnectRule, cellularIgnoreRule]
+            } else if settingsState.isTrustCellularNetworks {
+                manager.onDemandRules = [alwaysConnectRule, cellularDisconnectRule, cellularIgnoreRule]
+            } else if ssidList.count != 0 {
+                manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule]
+            } else {
+                manager.onDemandRules = [alwaysConnectRule]
             }
-*/
+
+            manager.isOnDemandEnabled = true
             manager.isEnabled = true
 
             if self.isConnected || self.isConnecting {
@@ -212,6 +203,7 @@ open class VPNConfigurationCoordinator {
         if manager.isOnDemandEnabled == false || manager.isEnabled == false {
             manager.loadFromPreferences { (error) in
                 manager.isOnDemandEnabled = true
+                manager.isEnabled = true
                 manager.saveToPreferences(completionHandler: { (error) in
                     if let error = error {
                         print(error)
@@ -227,8 +219,11 @@ open class VPNConfigurationCoordinator {
 
     class func disconnect() {
         let manager = NEVPNManager.shared()
-        manager.isOnDemandEnabled = false
         manager.loadFromPreferences { (error) in
+            
+            manager.isOnDemandEnabled = false
+            manager.isEnabled = false
+            
             manager.saveToPreferences(completionHandler: { error in
                 
             })
@@ -250,12 +245,11 @@ open class VPNConfigurationCoordinator {
     class var isProfileEnabled: Bool {
         set {
             let manager = NEVPNManager.shared()
-            manager.isEnabled = newValue
-            manager.isOnDemandEnabled = newValue
             
             manager.loadFromPreferences(completionHandler: { error in
                 manager.saveToPreferences { (error) in
-                    print(manager.isEnabled)
+                    manager.isEnabled = newValue
+                    manager.isOnDemandEnabled = newValue
                     
                     // the profile is being enabled, connect to the VPN
                     if newValue && !self.isConnected {
@@ -272,6 +266,7 @@ open class VPNConfigurationCoordinator {
         }
         get {
             let manager = NEVPNManager.shared()
+            
             return manager.isEnabled
         }
     }
@@ -307,5 +302,50 @@ open class VPNConfigurationCoordinator {
 
         print("Local Identifier: cypherpunk-vpn-ios-\(bitmask)")
         return "cypherpunk-vpn-ios-\(bitmask)"
+    }
+    
+    private class func buildIPSecConfiguration(accountState: AccountState, regionState: RegionState) -> NEVPNProtocolIPSec {
+        let newIPSec : NEVPNProtocolIPSec = NEVPNProtocolIPSec()
+        newIPSec.authenticationMethod = .certificate
+        newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
+        
+        newIPSec.useExtendedAuthentication = true
+        newIPSec.username = accountState.vpnUsername
+        let password = accountState.vpnPassword
+        newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
+        
+        newIPSec.localIdentifier = generateLocalIdentifier()
+        newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
+        
+        if let cert = accountState.certificate {
+            
+            let p12 = Data(base64Encoded: cert)
+            
+            if #available(iOS 9.0, *) {
+                newIPSec.identityReference = p12
+            }
+            
+            newIPSec.identityData = p12
+            newIPSec.identityDataPassword = "usr_cert"
+        }
+        
+        return newIPSec
+    }
+    
+    private class func buildIKEv2Configuration(accountState: AccountState, regionState: RegionState) -> NEVPNProtocolIKEv2 {
+        let newIPSec = NEVPNProtocolIKEv2()
+        
+        newIPSec.authenticationMethod = .none
+        newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
+        
+        newIPSec.useExtendedAuthentication = true
+        newIPSec.username = accountState.vpnUsername
+        let password = accountState.vpnPassword
+        newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
+        
+        newIPSec.localIdentifier = generateLocalIdentifier()
+        newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
+        
+        return newIPSec
     }
 }
