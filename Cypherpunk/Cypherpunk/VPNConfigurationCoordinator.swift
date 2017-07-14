@@ -93,6 +93,7 @@ open class VPNConfigurationCoordinator {
             manager.localizedDescription = "Cypherpunk Privacy"
 
             let alwaysConnectRule = NEOnDemandRuleConnect()
+            alwaysConnectRule.interfaceTypeMatch = .any
 
             let realm = try! Realm()
             let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
