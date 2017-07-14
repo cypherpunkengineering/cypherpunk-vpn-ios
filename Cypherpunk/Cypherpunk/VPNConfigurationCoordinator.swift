@@ -135,12 +135,13 @@ open class VPNConfigurationCoordinator {
                 ssidList.append(netInfo.name)
             }
 
+/*
             if settingsState.vpnProtocolMode == .IKEv2 {
 
                 manager.isOnDemandEnabled = false
 
             } else { // IPSec
-
+*/
                 let cellularDisconnectRule = NEOnDemandRuleDisconnect()
                 cellularDisconnectRule.interfaceTypeMatch = .cellular
 
@@ -166,8 +167,9 @@ open class VPNConfigurationCoordinator {
                 }
 
                 manager.isOnDemandEnabled = true
-
+/*
             }
+*/
             manager.isEnabled = true
 
             if self.isConnected || self.isConnecting {
