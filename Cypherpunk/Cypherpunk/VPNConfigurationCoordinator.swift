@@ -164,15 +164,19 @@ open class VPNConfigurationCoordinator {
             manager.isOnDemandEnabled = true
             manager.isEnabled = true
 
-            if self.isConnected || self.isConnecting {
-                // initiate a reconnect
-                VPNStateController.sharedInstance.reconnect()
-            }
+            let reconnect = self.isConnected || self.isConnecting
+//            if self.isConnected || self.isConnecting {
+//                // initiate a reconnect
+////                VPNStateController.sharedInstance.reconnect()
+//            }
             
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()
                 manager.loadFromPreferences(completionHandler: { (error) in
-//                    print(manager.protocolConfiguration!)
+                    print(manager.protocolConfiguration!)
+                    if reconnect {
+                        VPNConfigurationCoordinator.connect()
+                    }
                 })
             })
         }
@@ -207,7 +211,7 @@ open class VPNConfigurationCoordinator {
                 manager.isEnabled = true
                 manager.saveToPreferences(completionHandler: { (error) in
                     manager.loadFromPreferences(completionHandler: { (error) in
-                        //                    print(manager.protocolConfiguration!)
+//                        print(manager.protocolConfiguration!)
                     })
                     if let error = error {
                         print(error)
