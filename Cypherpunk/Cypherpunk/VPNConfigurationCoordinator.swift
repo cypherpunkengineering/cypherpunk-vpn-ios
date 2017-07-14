@@ -82,8 +82,6 @@ open class VPNConfigurationCoordinator {
             
             let newIPSec = buildIPSecConfiguration(accountState: accountState, regionState: regionState)
 
-            newIPSec.disconnectOnSleep = false
-
             if #available(iOS 9.0, *) {
                 manager.protocolConfiguration = newIPSec
             } else {
@@ -92,73 +90,65 @@ open class VPNConfigurationCoordinator {
 
             manager.localizedDescription = "Cypherpunk Privacy"
 
-            let alwaysConnectRule = NEOnDemandRuleConnect()
-            alwaysConnectRule.interfaceTypeMatch = .any
-
             let realm = try! Realm()
             let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
+            let blackList = realm.objects(WifiNetworks.self).filter("isTrusted = false")
 
-            var ssidList: [String] = []
+            var ssidWhitelist: [String] = []
             for netInfo in whiteList {
-                ssidList.append(netInfo.name)
+                ssidWhitelist.append(netInfo.name)
             }
-
-//            if settingsState.vpnProtocolMode == .IKEv2 {
-//
-//                manager.isOnDemandEnabled = false
-//
-//            } else { // IPSec
-//
-//                let cellularDisconnectRule = NEOnDemandRuleDisconnect()
-//                cellularDisconnectRule.interfaceTypeMatch = .cellular
-//
-//                let cellularIgnoreRule = NEOnDemandRuleIgnore()
-//                cellularIgnoreRule.interfaceTypeMatch = .cellular
-//
-//                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
-//                wifiDisconnectRule.interfaceTypeMatch = .wiFi
-//                wifiDisconnectRule.ssidMatch = ssidList
-//
-//                let wifiIgnoreRule = NEOnDemandRuleIgnore()
-//                wifiIgnoreRule.interfaceTypeMatch = .wiFi
-//                wifiIgnoreRule.ssidMatch = ssidList
-//
-//                if settingsState.isTrustCellularNetworks && ssidList.count != 0 {
-//                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule, cellularDisconnectRule, cellularIgnoreRule]
-//                } else if settingsState.isTrustCellularNetworks {
-//                    manager.onDemandRules = [alwaysConnectRule, cellularDisconnectRule, cellularIgnoreRule]
-//                } else if ssidList.count != 0 {
-//                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule]
-//                } else {
-//                    manager.onDemandRules = [alwaysConnectRule]
-//                }
-//
-//                manager.isOnDemandEnabled = true
-//
-//            }
+            var ssidBlacklist: [String] = []
+            for netInfo in blackList {
+                ssidBlacklist.append(netInfo.name)
+            }
             
-            let cellularDisconnectRule = NEOnDemandRuleDisconnect()
-            cellularDisconnectRule.interfaceTypeMatch = .cellular
+            if settingsState.vpnProtocolMode == .IPSec {
 
-            let cellularIgnoreRule = NEOnDemandRuleIgnore()
-            cellularIgnoreRule.interfaceTypeMatch = .cellular
+                let cellularConnectRule = NEOnDemandRuleConnect()
+                cellularConnectRule.interfaceTypeMatch = .cellular
 
-            let wifiDisconnectRule = NEOnDemandRuleDisconnect()
-            wifiDisconnectRule.interfaceTypeMatch = .wiFi
-            wifiDisconnectRule.ssidMatch = ssidList
+                let wifiConnectRule = NEOnDemandRuleConnect()
+                wifiConnectRule.interfaceTypeMatch = .wiFi
+                wifiConnectRule.ssidMatch = ssidBlacklist
 
-            let wifiIgnoreRule = NEOnDemandRuleIgnore()
-            wifiIgnoreRule.interfaceTypeMatch = .wiFi
-            wifiIgnoreRule.ssidMatch = ssidList
+                if settingsState.isTrustCellularNetworks && ssidWhitelist.count != 0 {
+                    manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
+                } else if settingsState.isTrustCellularNetworks {
+                    manager.onDemandRules = [cellularConnectRule]
+                } else if ssidWhitelist.count != 0 {
+                    manager.onDemandRules = [wifiConnectRule]
+                } else {
+                    manager.onDemandRules = []
+                }
+            } else if settingsState.vpnProtocolMode == .IKEv2 {
 
-            if settingsState.isTrustCellularNetworks && ssidList.count != 0 {
-                manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule, cellularDisconnectRule, cellularIgnoreRule]
-            } else if settingsState.isTrustCellularNetworks {
-                manager.onDemandRules = [alwaysConnectRule, cellularDisconnectRule, cellularIgnoreRule]
-            } else if ssidList.count != 0 {
-                manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule]
-            } else {
-                manager.onDemandRules = [alwaysConnectRule]
+                let alwaysConnectRule = NEOnDemandRuleConnect()
+                alwaysConnectRule.interfaceTypeMatch = .any
+
+                let cellularDisconnectRule = NEOnDemandRuleDisconnect()
+                cellularDisconnectRule.interfaceTypeMatch = .cellular
+
+                let cellularIgnoreRule = NEOnDemandRuleIgnore()
+                cellularIgnoreRule.interfaceTypeMatch = .cellular
+
+                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
+                wifiDisconnectRule.interfaceTypeMatch = .wiFi
+                wifiDisconnectRule.ssidMatch = ssidWhitelist
+
+                let wifiIgnoreRule = NEOnDemandRuleIgnore()
+                wifiIgnoreRule.interfaceTypeMatch = .wiFi
+                wifiIgnoreRule.ssidMatch = ssidWhitelist
+
+                if settingsState.isTrustCellularNetworks && ssidWhitelist.count != 0 {
+                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule, cellularDisconnectRule, cellularIgnoreRule]
+                } else if settingsState.isTrustCellularNetworks {
+                    manager.onDemandRules = [alwaysConnectRule, cellularDisconnectRule, cellularIgnoreRule]
+                } else if ssidWhitelist.count != 0 {
+                    manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule]
+                } else {
+                    manager.onDemandRules = [alwaysConnectRule]
+                }
             }
 
             manager.isOnDemandEnabled = true
@@ -339,6 +329,7 @@ open class VPNConfigurationCoordinator {
             newIPSec.identityDataPassword = "usr_cert"
         }
         
+        newIPSec.disconnectOnSleep = false
         return newIPSec
     }
     
@@ -356,6 +347,7 @@ open class VPNConfigurationCoordinator {
         newIPSec.localIdentifier = generateLocalIdentifier()
         newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
         
+        newIPSec.disconnectOnSleep = false
         return newIPSec
     }
 }
