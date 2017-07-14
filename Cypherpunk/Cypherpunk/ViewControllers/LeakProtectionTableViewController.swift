@@ -1,14 +1,14 @@
 //
-//  VPNModeTableViewController.swift
+//  LeakProtectionTableViewController.swift
 //  Cypherpunk
 //
-//  Created by Julie Ann Sakuda on 7/10/17.
+//  Created by Julie Ann Sakuda on 7/14/17.
 //  Copyright © 2017 Cypherpunk. All rights reserved.
 //
 
 import UIKit
 
-class VPNModeTableViewController: UITableViewController {
+class LeakProtectionTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,18 +16,18 @@ class VPNModeTableViewController: UITableViewController {
         let nib = UINib(nibName: "OptionSelectorTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "OptionCell")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -43,29 +43,27 @@ class VPNModeTableViewController: UITableViewController {
             let label = UILabel(frame: CGRect(x: 20, y: 0, width: 320, height: 30))
             label.textColor = UIColor.goldenYellow
             label.font = R.font.dosisMedium(size: 15.0)
-            label.text = "VPN Mode"
+            label.text = "Leak Protection"
             headerView.addSubview(label)
             return headerView
         }
         return nil
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as! OptionSelectorTableViewCell
         
-        let protocolMode = mainStore.state.settingsState.vpnProtocolMode
-        
         switch indexPath.row {
         case 0:
-            cell.label.text = "IPSec protocol, Always On VPN, with Leak Protection"
-            cell.accessoryType = protocolMode == VPNProtocolMode.IPSec ? .checkmark : .none
+            cell.label.text = "Always On"
+            cell.accessoryType = mainStore.state.settingsState.alwaysOn ? .checkmark : .none
         case 1:
-            cell.label.text = "IKEv2 protocol, Auto Reconnect, no Leak Protection"
-            cell.accessoryType = protocolMode == VPNProtocolMode.IKEv2 ? .checkmark : .none
+            cell.label.text = "Off"
+            cell.accessoryType = mainStore.state.settingsState.alwaysOn ? .none : .checkmark
         default:
             break
         }
-
+        
         return cell
     }
     
@@ -81,12 +79,9 @@ class VPNModeTableViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
         
-        var mode = VPNProtocolMode.IKEv2
+        let on = indexPath.row == 0 ? true : false
         
-        if indexPath.row == 0 {
-            mode = VPNProtocolMode.IPSec
-        }
-        
-        mainStore.dispatch(SettingsAction.vpnProtocolMode(value: mode))
+        mainStore.dispatch(SettingsAction.alwaysOn(isOn: on))
     }
+
 }

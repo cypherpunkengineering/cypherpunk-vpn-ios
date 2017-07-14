@@ -132,14 +132,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Protocol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E2r-ZR-pU2">
-                                                    <rect key="frame" x="15" y="12" width="64" height="20"/>
+                                                    <rect key="frame" x="15" y="11" width="53.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ly0-4D-n7L">
-                                                    <rect key="frame" x="299" y="13" width="41" height="19"/>
+                                                    <rect key="frame" x="304.5" y="12" width="35.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -219,6 +219,7 @@
                         <outlet property="tableView" destination="1vb-2p-wOn" id="9Ki-aC-QPA"/>
                         <segue destination="lkW-0y-Max" kind="presentation" identifier="PresentManageTrustedNetworks" id="RPa-sJ-6a0"/>
                         <segue destination="6Ur-Pn-orT" kind="presentation" identifier="PresentVPNMode" id="BNN-ok-5UV"/>
+                        <segue destination="RBW-49-uzv" kind="presentation" identifier="PresentLeakProtection" id="KCC-IA-emQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iv7-cP-HSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,6 +241,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dL9-Yq-9dr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-182" y="1199"/>
+        </scene>
+        <!--LeakProtection-->
+        <scene sceneID="cY6-W7-eXk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LeakProtection" id="RBW-49-uzv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DMH-Rs-Yna" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-148" y="1297"/>
         </scene>
     </scenes>
 </document>

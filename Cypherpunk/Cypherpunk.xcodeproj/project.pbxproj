@@ -12,8 +12,8 @@
 		0910AE4A1E7C0A4C003802DB /* VPNStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE491E7C0A4C003802DB /* VPNStateController.swift */; };
 		0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */; };
 		091D057C1F13C1560027C2D7 /* VPNModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */; };
-		091D057F1F13CAF90027C2D7 /* VPNModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D057D1F13CAF90027C2D7 /* VPNModeTableViewCell.swift */; };
-		091D05801F13CAF90027C2D7 /* VPNModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091D057E1F13CAF90027C2D7 /* VPNModeTableViewCell.xib */; };
+		091D057F1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */; };
+		091D05801F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */; };
 		0932DFEB1F00AF4600DD2EE6 /* UIImage+Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */; };
 		0945DBE21EF60842005119E8 /* CypherplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945DBE01EF60842005119E8 /* CypherplayCollectionViewCell.swift */; };
 		0945DBE31EF60842005119E8 /* CypherplayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0945DBE11EF60842005119E8 /* CypherplayCollectionViewCell.xib */; };
@@ -32,6 +32,8 @@
 		0959A5171E69883D00A95A49 /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */; };
 		0959A5181E69883D00A95A49 /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */; };
 		095DB96D1E87C1E200A3E874 /* UIDevice+Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */; };
+		09636DB31F18EFAC004C42F5 /* LeakProtection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */; };
+		09636DB51F18F17F004C42F5 /* LeakProtectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */; };
 		09661F2B1EE645B200F242E6 /* MapImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09661F2A1EE645B200F242E6 /* MapImageView.swift */; };
 		0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */; };
 		0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */; };
@@ -178,8 +180,8 @@
 		0910AE491E7C0A4C003802DB /* VPNStateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNStateController.swift; sourceTree = "<group>"; };
 		0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNStateResponder.swift; path = Cypherpunk/Helper/VPNStateResponder.swift; sourceTree = SOURCE_ROOT; };
 		091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNModeTableViewController.swift; sourceTree = "<group>"; };
-		091D057D1F13CAF90027C2D7 /* VPNModeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNModeTableViewCell.swift; sourceTree = "<group>"; };
-		091D057E1F13CAF90027C2D7 /* VPNModeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VPNModeTableViewCell.xib; sourceTree = "<group>"; };
+		091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSelectorTableViewCell.swift; sourceTree = "<group>"; };
+		091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionSelectorTableViewCell.xib; sourceTree = "<group>"; };
 		0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transparency.swift"; sourceTree = "<group>"; };
 		0945DBE01EF60842005119E8 /* CypherplayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CypherplayCollectionViewCell.swift; sourceTree = "<group>"; };
 		0945DBE11EF60842005119E8 /* CypherplayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CypherplayCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -198,6 +200,8 @@
 		0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
 		095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Simulator.swift"; sourceTree = "<group>"; };
+		09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LeakProtection.storyboard; sourceTree = "<group>"; };
+		09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeakProtectionTableViewController.swift; sourceTree = "<group>"; };
 		09661F2A1EE645B200F242E6 /* MapImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapImageView.swift; sourceTree = "<group>"; };
 		0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = Cypherpunk/View/MenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuTableViewCell.xib; path = Cypherpunk/View/MenuTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -539,8 +543,8 @@
 				0945DBE01EF60842005119E8 /* CypherplayCollectionViewCell.swift */,
 				0945DBE11EF60842005119E8 /* CypherplayCollectionViewCell.xib */,
 				0945DBE41EF92CE4005119E8 /* LocationButton.swift */,
-				091D057D1F13CAF90027C2D7 /* VPNModeTableViewCell.swift */,
-				091D057E1F13CAF90027C2D7 /* VPNModeTableViewCell.xib */,
+				091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */,
+				091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -562,11 +566,13 @@
 		20845B511DEEAA610066A906 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */,
 				2BDBD0C51D6514AB00080E67 /* ConfigurationTableViewController.swift */,
 				2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */,
 				2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */,
 				205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */,
 				0948DBA61ED7C88500A7A475 /* ConfigurationViewController.swift */,
+				09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -631,7 +637,6 @@
 				20845B521DEEAA910066A906 /* Account */,
 				20845B511DEEAA610066A906 /* Configuration */,
 				20845B501DEEA9DD0066A906 /* FirstOpen */,
-				091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -660,6 +665,7 @@
 				20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */,
 				2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */,
 				2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */,
+				09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -892,6 +898,7 @@
 				0959A5181E69883D00A95A49 /* PlanCollectionViewCell.xib in Resources */,
 				2B45C16B1D20D64600D4326C /* Dosis-Light.otf in Resources */,
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
+				09636DB31F18EFAC004C42F5 /* LeakProtection.storyboard in Resources */,
 				0948DBAB1ED7D1CB00A7A475 /* ToggleTableViewCell.xib in Resources */,
 				203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */,
 				2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */,
@@ -902,7 +909,7 @@
 				2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */,
 				09ACCDCD1E71892200AF3E4F /* splashscreen-illustration@2x.png in Resources */,
 				09EAFBB91EF0AAC5001B9375 /* LocationSelectorViewController.xib in Resources */,
-				091D05801F13CAF90027C2D7 /* VPNModeTableViewCell.xib in Resources */,
+				091D05801F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				09E60D951ED688CF0037BA0D /* MainViewController.xib in Resources */,
 				0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */,
@@ -1222,6 +1229,7 @@
 				0959A50B1E69768100A95A49 /* PlanTableViewCell.swift in Sources */,
 				203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */,
 				203C62F21D7035D800891F91 /* TwoColorGradientButton.swift in Sources */,
+				09636DB51F18F17F004C42F5 /* LeakProtectionTableViewController.swift in Sources */,
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */,
 				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
@@ -1229,7 +1237,7 @@
 				2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */,
 				2B34557A1DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift in Sources */,
 				2B0A652B1DED904700905A2A /* RecoverPasswordAPI.swift in Sources */,
-				091D057F1F13CAF90027C2D7 /* VPNModeTableViewCell.swift in Sources */,
+				091D057F1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,
 				2065DD0B1DB8D9A500D0F446 /* CongraturationsViewController.swift in Sources */,

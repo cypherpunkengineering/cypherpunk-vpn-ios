@@ -1,5 +1,5 @@
 //
-//  VPNModeTableViewCell.swift
+//  OptionSelectorTableViewCell.swift
 //  Cypherpunk
 //
 //  Created by Julie Ann Sakuda on 7/10/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VPNModeTableViewCell: UITableViewCell {
+class OptionSelectorTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     
 
