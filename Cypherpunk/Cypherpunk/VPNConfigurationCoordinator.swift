@@ -27,9 +27,9 @@ open class VPNConfigurationCoordinator {
 
 
         let manager = NEVPNManager.shared()
-        let newIPSec : NEVPNProtocolIPSec = NEVPNProtocolIPSec()
+        let newIPSec : NEVPNProtocolIPSec
 
-//        newIPSec = NEVPNProtocolIKEv2()
+        newIPSec = NEVPNProtocolIKEv2()
         newIPSec.authenticationMethod = .none
         newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
 
