@@ -57,27 +57,19 @@ open class VPNConfigurationCoordinator {
             let cellularDisconnectRule = NEOnDemandRuleDisconnect()
             cellularDisconnectRule.interfaceTypeMatch = .cellular
 
-            let cellularIgnoreRule = NEOnDemandRuleIgnore()
-            cellularIgnoreRule.interfaceTypeMatch = .cellular
-
             let wifiDisconnectRule = NEOnDemandRuleDisconnect()
             wifiDisconnectRule.interfaceTypeMatch = .wiFi
             wifiDisconnectRule.ssidMatch = ssidWhitelist
 
-            let wifiIgnoreRule = NEOnDemandRuleIgnore()
-            wifiIgnoreRule.interfaceTypeMatch = .wiFi
-            wifiIgnoreRule.ssidMatch = ssidWhitelist
-
             if settingsState.isTrustCellularNetworks && ssidWhitelist.count != 0 {
-                manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule, cellularDisconnectRule, cellularIgnoreRule]
+                manager.onDemandRules = [wifiDisconnectRule, cellularDisconnectRule, alwaysConnectRule]
             } else if settingsState.isTrustCellularNetworks {
-                manager.onDemandRules = [alwaysConnectRule, cellularDisconnectRule, cellularIgnoreRule]
+                manager.onDemandRules = [cellularDisconnectRule, alwaysConnectRule]
             } else if ssidWhitelist.count != 0 {
-                manager.onDemandRules = [alwaysConnectRule, wifiDisconnectRule, wifiIgnoreRule]
+                manager.onDemandRules = [wifiDisconnectRule, alwaysConnectRule]
             } else {
                 manager.onDemandRules = [alwaysConnectRule]
             }
-
 /*
 			// if Leak Protection is "Off"
             let cellularConnectRule = NEOnDemandRuleConnect()
@@ -262,7 +254,7 @@ open class VPNConfigurationCoordinator {
         newIPSec.localIdentifier = generateLocalIdentifier()
         newIPSec.remoteIdentifier = regionState.remoteIdentifier // IPSecHostname
 
-        newIPSec.deadPeerDetectionRate = .high
+        newIPSec.deadPeerDetectionRate = .medium
         newIPSec.enablePFS = true
         newIPSec.serverCertificateCommonName = regionState.remoteIdentifier
 
