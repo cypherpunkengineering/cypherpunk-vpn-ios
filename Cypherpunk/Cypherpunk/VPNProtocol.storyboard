@@ -30,10 +30,11 @@
         <scene sceneID="0BR-Va-sbd">
             <objects>
                 <tableViewController id="zVp-Cd-fBc" customClass="VPNModeTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EIO-oB-p3T">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="EIO-oB-p3T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" white="1" alpha="0.70114511986301364" colorSpace="calibratedWhite"/>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="zVp-Cd-fBc" id="r2f-A9-lml"/>
@@ -66,7 +67,7 @@
         <scene sceneID="aFQ-0y-UrO">
             <objects>
                 <navigationController id="TV3-HH-e9M" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="IKF-0z-Puj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="IKF-0z-Puj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
