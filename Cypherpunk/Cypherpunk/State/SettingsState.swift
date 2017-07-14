@@ -56,7 +56,6 @@ struct SettingsState: StateType {
         }
     }
     
-    @available(*, deprecated)
     var isAutoSecureConnectionsWhenConnectedUntrustedNetwork: Bool {
         get{
             if mainStore.state.isInstalledPreferences == false {
@@ -170,7 +169,6 @@ struct SettingsState: StateType {
     fileprivate struct SettingsStateKey {
         static let vpnProtocolMode = "vpnProtocolMode"
         static let isTrustCellularNetworks = "isTrustCellularNetworks"
-        @available(*, deprecated)
         static let isAutoSecureConnectionsWhenConnectedUntrustedNetwork = "isAutoSecureConnectionsWhenConnectedUntrustedNetwork"
         @available(*, deprecated)
         static let isAutoSecureConnectionsWhenConnectedOtherNetwork = "isAutoSecureConnectionsWhenConnectedOtherNetwork"

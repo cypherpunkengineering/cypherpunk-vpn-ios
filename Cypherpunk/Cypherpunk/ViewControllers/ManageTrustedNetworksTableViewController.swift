@@ -73,13 +73,15 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows = 0
         switch section {
         case 0:
+            rows = 1
+        case 1:
             rows = 1
             
             if let results = wifiNetworksResult {
@@ -92,34 +94,75 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = cellForTrustedNetworks(tableView, row: indexPath.row)
-        return cell
+        if indexPath.section == 0 {
+            return cellForAutoSecureUntrusted(tableView, row: indexPath.row)
+        }
+        else {
+            return cellForTrustedNetworks(tableView, row: indexPath.row)
+        }
     }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 65))
-        headerView.backgroundColor = UIColor.configTableCellBg
-        let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
-        label.textColor = UIColor.goldenYellow
-        label.font = R.font.dosisMedium(size: 15.0)
-        label.text = "Trusted Networks"
+        let headerView = UIView()
         
-        let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 35))
-        descLabel.textColor = UIColor.white
-        descLabel.numberOfLines = 2
-        descLabel.lineBreakMode = .byWordWrapping
-        descLabel.font = R.font.dosisRegular(size: 12)
-        descLabel.text = "Cypherpunk Privacy will automatically connect, except when on the following trusted networks"
-        
-        headerView.addSubview(label)
-        headerView.addSubview(descLabel)
+        if section == 0 {
+            headerView.frame = CGRect(x: 0, y: 0, width: 320, height: 55)
+            headerView.backgroundColor = UIColor.configTableCellBg
+            let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
+            label.textColor = UIColor.goldenYellow
+            label.font = R.font.dosisMedium(size: 15.0)
+            label.text = "Auto Secure"
+            
+            let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 35))
+            descLabel.textColor = UIColor.white
+            descLabel.numberOfLines = 2
+            descLabel.lineBreakMode = .byWordWrapping
+            descLabel.font = R.font.dosisRegular(size: 12)
+            descLabel.text = "Cypherpunk can automatically secure connections to untrusted networks."
+            
+            headerView.addSubview(label)
+            headerView.addSubview(descLabel)
+        }
+        else if section == 1 {
+            headerView.frame = CGRect(x: 0, y: 0, width: 320, height: 65)
+            headerView.backgroundColor = UIColor.configTableCellBg
+            let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
+            label.textColor = UIColor.goldenYellow
+            label.font = R.font.dosisMedium(size: 15.0)
+            label.text = "Trusted Networks"
+            
+            let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 35))
+            descLabel.textColor = UIColor.white
+            descLabel.numberOfLines = 2
+            descLabel.lineBreakMode = .byWordWrapping
+            descLabel.font = R.font.dosisRegular(size: 12)
+            descLabel.text = "Cypherpunk Privacy will automatically connect, except when on the following trusted networks."
+            
+            headerView.addSubview(label)
+            headerView.addSubview(descLabel)
+        }
         
         return headerView
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 65.0
+        switch section {
+        case 0:
+            return 55.0
+        case 1:
+            return 65.0
+        default:
+            return 0.0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10.0
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 10))
     }
     
     
@@ -162,6 +205,26 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
             cell.toggle.tag = row
             
             cell.label.text = wifiInfo.name
+        }
+        
+        return cell
+    }
+    
+    private func cellForAutoSecureUntrusted(_ tableView: UITableView, row: Int) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell") as! ToggleTableViewCell
+        
+        switch row {
+        case 0:
+            cell.label.text = "Auto Secure Untrusted Networks"
+            cell.toggle.addTarget(self, action: #selector(valueChangedOfAutoSecureSwitchAction(_:)), for: .valueChanged)
+            cell.toggle.isOn = mainStore.state.settingsState.isAutoSecureConnectionsWhenConnectedUntrustedNetwork
+            
+            if mainStore.state.settingsState.vpnProtocolMode == .IPSec {
+                cell.isUserInteractionEnabled = false
+                cell.toggle.isEnabled = false
+            }
+        default:
+            break
         }
         
         return cell
