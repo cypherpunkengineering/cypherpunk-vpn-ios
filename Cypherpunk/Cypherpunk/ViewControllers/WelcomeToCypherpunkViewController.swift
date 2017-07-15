@@ -325,6 +325,11 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                                 self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
                                 return
                             }
+                            else if response.account.type == "invitation" || response.account.type == "pending" {
+                                // not actived yet
+                                self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.showNotActivated, sender: nil)
+                                return
+                            }
                             mainStore.dispatch(AccountAction.login(response: response))
                             let regionRequest = RegionListRequest(session: response.session, accountType: response.account.type)
                             Session.send(regionRequest) { (result) in

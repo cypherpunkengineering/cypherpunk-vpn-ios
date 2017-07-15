@@ -34,6 +34,7 @@
 		095DB96D1E87C1E200A3E874 /* UIDevice+Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */; };
 		09636DB31F18EFAC004C42F5 /* LeakProtection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */; };
 		09636DB51F18F17F004C42F5 /* LeakProtectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */; };
+		09636DB71F1A11F4004C42F5 /* NotActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09636DB61F1A11F4004C42F5 /* NotActivatedViewController.swift */; };
 		09661F2B1EE645B200F242E6 /* MapImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09661F2A1EE645B200F242E6 /* MapImageView.swift */; };
 		0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */; };
 		0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */; };
@@ -202,6 +203,7 @@
 		095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Simulator.swift"; sourceTree = "<group>"; };
 		09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LeakProtection.storyboard; sourceTree = "<group>"; };
 		09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeakProtectionTableViewController.swift; sourceTree = "<group>"; };
+		09636DB61F1A11F4004C42F5 /* NotActivatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotActivatedViewController.swift; sourceTree = "<group>"; };
 		09661F2A1EE645B200F242E6 /* MapImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapImageView.swift; sourceTree = "<group>"; };
 		0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = Cypherpunk/View/MenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuTableViewCell.xib; path = Cypherpunk/View/MenuTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -559,6 +561,7 @@
 				208F1A701DB896BB00576355 /* WelcomeToCypherpunkViewController.swift */,
 				2018AB091DB8AF0E00649D03 /* EmailConfirmationViewController.swift */,
 				2018AB071DB8ADD200649D03 /* ResetYourPasswordViewController.swift */,
+				09636DB61F1A11F4004C42F5 /* NotActivatedViewController.swift */,
 			);
 			name = FirstOpen;
 			sourceTree = "<group>";
@@ -1291,6 +1294,7 @@
 				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
 				205EE3241DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift in Sources */,
 				2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */,
+				09636DB71F1A11F4004C42F5 /* NotActivatedViewController.swift in Sources */,
 				0959A5171E69883D00A95A49 /* PlanCollectionViewCell.swift in Sources */,
 				2064B3A41DBF38BD00F85148 /* PopoverRootViewController.swift in Sources */,
 				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
