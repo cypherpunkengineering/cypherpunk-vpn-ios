@@ -50,54 +50,53 @@ open class VPNConfigurationCoordinator {
                 ssidBlacklist.append(netInfo.name)
             }
 
-			// if Leak Protection is "Always On"
-            let alwaysConnectRule = NEOnDemandRuleConnect()
-            alwaysConnectRule.interfaceTypeMatch = .any
-
-            let cellularDisconnectRule = NEOnDemandRuleDisconnect()
-            cellularDisconnectRule.interfaceTypeMatch = .cellular
-
-            let wifiDisconnectRule = NEOnDemandRuleDisconnect()
-            wifiDisconnectRule.interfaceTypeMatch = .wiFi
-            wifiDisconnectRule.ssidMatch = ssidWhitelist
-
-            if settingsState.isTrustCellularNetworks && ssidWhitelist.count != 0 {
-                manager.onDemandRules = [wifiDisconnectRule, cellularDisconnectRule, alwaysConnectRule]
-            } else if settingsState.isTrustCellularNetworks {
-                manager.onDemandRules = [cellularDisconnectRule, alwaysConnectRule]
-            } else if ssidWhitelist.count != 0 {
-                manager.onDemandRules = [wifiDisconnectRule, alwaysConnectRule]
-            } else {
-                manager.onDemandRules = [alwaysConnectRule]
+            if settingsState.alwaysOn && settingsState.toggleOn {
+                // if Leak Protection is "Always On"
+                let alwaysConnectRule = NEOnDemandRuleConnect()
+                alwaysConnectRule.interfaceTypeMatch = .any
+                
+                let cellularDisconnectRule = NEOnDemandRuleDisconnect()
+                cellularDisconnectRule.interfaceTypeMatch = .cellular
+                
+                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
+                wifiDisconnectRule.interfaceTypeMatch = .wiFi
+                wifiDisconnectRule.ssidMatch = ssidWhitelist
+                
+                if settingsState.isTrustCellularNetworks && ssidWhitelist.count != 0 {
+                    manager.onDemandRules = [wifiDisconnectRule, cellularDisconnectRule, alwaysConnectRule]
+                } else if settingsState.isTrustCellularNetworks {
+                    manager.onDemandRules = [cellularDisconnectRule, alwaysConnectRule]
+                } else if ssidWhitelist.count != 0 {
+                    manager.onDemandRules = [wifiDisconnectRule, alwaysConnectRule]
+                } else {
+                    manager.onDemandRules = [alwaysConnectRule]
+                }
             }
-/*
-			// if Leak Protection is "Off"
-            let cellularConnectRule = NEOnDemandRuleConnect()
-            cellularConnectRule.interfaceTypeMatch = .cellular
-
-            let wifiConnectRule = NEOnDemandRuleConnect()
-            wifiConnectRule.interfaceTypeMatch = .wiFi
-            wifiConnectRule.ssidMatch = ssidBlacklist
-
-            if settingsState.isTrustCellularNetworks && ssidWhitelist.count != 0 {
-                manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
-            } else if settingsState.isTrustCellularNetworks {
-                manager.onDemandRules = [cellularConnectRule]
-            } else if ssidWhitelist.count != 0 {
-                manager.onDemandRules = [wifiConnectRule]
-            } else {
-                manager.onDemandRules = []
+            else {
+                 // if Leak Protection is "Off"
+                 let cellularConnectRule = NEOnDemandRuleConnect()
+                 cellularConnectRule.interfaceTypeMatch = .cellular
+                 
+                 let wifiConnectRule = NEOnDemandRuleConnect()
+                 wifiConnectRule.interfaceTypeMatch = .wiFi
+                 wifiConnectRule.ssidMatch = ssidBlacklist
+                 
+                 if settingsState.isTrustCellularNetworks && ssidBlacklist.count != 0 {
+                 manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
+                 } else if settingsState.isTrustCellularNetworks {
+                 manager.onDemandRules = [cellularConnectRule]
+                 } else if ssidWhitelist.count != 0 {
+                 manager.onDemandRules = [wifiConnectRule]
+                 } else {
+                 manager.onDemandRules = []
+                 }
             }
-*/
+            
             manager.localizedDescription = "Cypherpunk Privacy"
             manager.isOnDemandEnabled = true
             manager.isEnabled = true
 
             let reconnect = self.isConnected || self.isConnecting
-//            if self.isConnected || self.isConnecting {
-//                // initiate a reconnect
-////                VPNStateController.sharedInstance.reconnect()
-//            }
 
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()

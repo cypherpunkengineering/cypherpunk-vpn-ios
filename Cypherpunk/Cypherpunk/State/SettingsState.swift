@@ -165,6 +165,21 @@ struct SettingsState: StateType {
         }
     }
     
+    var toggleOn : Bool {
+        get {
+            if !mainStore.state.isInstalledPreferences {
+                return false
+            }
+            
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.toggleOn] ?? "false").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.toggleOn] = String(newValue)
+        }
+    }
+    
 
     fileprivate struct SettingsStateKey {
         static let vpnProtocolMode = "vpnProtocolMode"
@@ -176,5 +191,6 @@ struct SettingsState: StateType {
         static let blockMalware = "blockMalware"
         static let cypherplayOn = "cypherplayOn"
         static let alwaysOn = "alwaysOn"
+        static let toggleOn = "toggleOn"
     }
 }

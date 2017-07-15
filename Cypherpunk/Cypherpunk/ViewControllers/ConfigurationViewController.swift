@@ -133,7 +133,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             return drilldownCell
         case 1:
             let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
-            drilldownCell.textLabel?.text = "Leak Proection"
+            drilldownCell.textLabel?.text = "Leak Protection"
             return drilldownCell
         case 2:
             cell.label.text = "Block Ads"

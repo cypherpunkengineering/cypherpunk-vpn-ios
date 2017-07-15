@@ -182,7 +182,16 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         VPNConfigurationCoordinator.load {_ in
             let status = NEVPNManager.shared().connection.status
             self.updateView(vpnStatus: status)
-            self.vpnSwitch.isOn = VPNConfigurationCoordinator.isProfileEnabled
+            
+            if mainStore.state.settingsState.alwaysOn {
+                // leak protection is set to always on
+                self.vpnSwitch.isOn = mainStore.state.settingsState.toggleOn
+            }
+            else {
+                // leak protection is off
+                self.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
+            }
+            
             self.vpnSwitch.delegate = self
         }
     }
@@ -314,14 +323,20 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     }
     
     // MARK: - VPNSwitchDelegate
-    func stateChanged(on: Bool) {
-        if UIDevice.current.isSimulator {
-            mainStore.dispatch(RegionAction.connect)
-            self.updateView(vpnStatus: .connected)
+    func stateChanged(on: Bool) {        
+        if mainStore.state.settingsState.alwaysOn {
+            // leak protection is set to always on
         }
         else {
-            VPNConfigurationCoordinator.isProfileEnabled = on
+            // leak protection is off
+            if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnected {
+                VPNConfigurationCoordinator.disconnect()
+            }
+            else if VPNConfigurationCoordinator.isDisconnected || VPNConfigurationCoordinator.isDisconnecting {
+                VPNConfigurationCoordinator.connect()
+            }
         }
+        mainStore.dispatch(SettingsAction.toggleOn(isOn: on))
     }
 }
 
