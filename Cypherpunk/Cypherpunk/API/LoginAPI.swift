@@ -95,11 +95,17 @@ struct Privacy: Decodable {
 struct Subscription: Decodable {
     let renewal: String
     let expiration: String
+    let renews: Bool
+    let active: Bool
+    let type: String
     
     static func decode(_ e: Extractor) throws -> Subscription {
         return try Subscription(
             renewal: e.value("renewal"),
-            expiration: e.value("expiration")
+            expiration: e.value("expiration"),
+            renews: e.value("renews"),
+            active: e.value("active"),
+            type: e.value("type")
         )
     }
 

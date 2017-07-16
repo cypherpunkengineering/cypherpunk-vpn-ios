@@ -28,7 +28,7 @@ class AccountDetailTableViewCell: UITableViewCell {
         
         self.keyIconView.image = UIImage.fontAwesomeIcon(name: .key, textColor: iconColor, size: CGSize(width: 30, height: 30))
         
-        self.setBannerImage()
+        self.populateInfo()
         
         self.isUserInteractionEnabled = false
     }
@@ -55,34 +55,20 @@ class AccountDetailTableViewCell: UITableViewCell {
             self.bannerImageView.image = R.image.account_banner_premium()
         }
     }
+    
+    fileprivate func populateInfo() {
+        expirationLabel.text = AccountHelper.accountExpirationString()
+        subscriptionTypeLabel.text = AccountHelper.accountTypeString()
+        
+        let accountState = mainStore.state.accountState
+        usernameLabel.text = accountState.mailAddress
+        
+        self.setBannerImage()
+    }
 }
 
 extension AccountDetailTableViewCell: StoreSubscriber {
     func newState(state: AppState) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yy"
-        dateFormatter.locale = Locale.current
-        
-        let accountState = mainStore.state.accountState
-        let dateString: String
-        if let subscriptionType = accountState.subscriptionType {
-            if let d = accountState.expiredDate {
-                dateString = dateFormatter.string(from: d)
-                expirationLabel.text = "\(subscriptionType.detailMessage) on \(dateString)"
-            } else {
-                expirationLabel.text = subscriptionType.detailMessage
-            }
-        } else {
-            expirationLabel.text = ""
-        }
-        
-        if self.subscriptionTypeLabel.text?.lowercased() != state.accountState.accountType?.lowercased() {
-            self.subscriptionTypeLabel.text = state.accountState.accountType?.capitalized
-        }
-        
-        usernameLabel.text = accountState.mailAddress
-        
-        self.setBannerImage()
+        self.populateInfo()
     }
 }

@@ -16,7 +16,7 @@ struct AccountReducer {
     
     func handleAction(action: Action, state: AccountState?) -> AccountState {
         
-        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, expiredDate: nil, accountType: nil, certificate: nil)
+        var accountState = state ?? AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, subscriptionRenews: false, subscriptionActive: false, expiredDate: nil, accountType: nil, certificate: nil)
         
         guard let accountAction = action as? AccountAction else {
             return accountState
@@ -45,29 +45,38 @@ struct AccountReducer {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale.current
             
-            switch status.renewal.lowercased() {
+            accountState.expiredDate = dateFormatter.date(from: status.expiration)
+            switch status.type.lowercased() {
             case "none":
                 accountState.subscriptionType = nil
-                accountState.expiredDate = dateFormatter.date(from: status.expiration)
             case "monthly":
                 accountState.subscriptionType = .monthly
-                accountState.expiredDate = dateFormatter.date(from: status.expiration)
             case "semiannually":
                 accountState.subscriptionType = .semiannually
-                accountState.expiredDate = dateFormatter.date(from: status.expiration)
             case "annually":
                 accountState.subscriptionType = .annually
-                accountState.expiredDate = dateFormatter.date(from: status.expiration)
             case "lifetime":
                 accountState.subscriptionType = .lifetime
-                accountState.expiredDate = dateFormatter.date(from: status.expiration)
             case "forever":
                 accountState.subscriptionType = .forever
-                accountState.expiredDate = dateFormatter.date(from: status.expiration)
+            case "12m":
+                accountState.subscriptionType = .twelveMonths
+            case "1y":
+                accountState.subscriptionType = .oneYear
+            case "6m":
+                accountState.subscriptionType = .sixMonths
+            case "3m":
+                accountState.subscriptionType = .threeMonths
+            case "1m":
+                accountState.subscriptionType = .oneMonth
             default:
                 accountState.subscriptionType = nil
                 accountState.expiredDate = nil
             }
+            
+            accountState.subscriptionRenews = response.subscription.renews
+            accountState.subscriptionActive = response.subscription.active
+            
             accountState.save()
         case .logout:
             accountState.isLoggedIn = false

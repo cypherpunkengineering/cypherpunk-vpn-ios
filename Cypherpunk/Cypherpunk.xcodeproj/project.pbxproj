@@ -35,6 +35,7 @@
 		09636DB31F18EFAC004C42F5 /* LeakProtection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */; };
 		09636DB51F18F17F004C42F5 /* LeakProtectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */; };
 		09636DB71F1A11F4004C42F5 /* NotActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09636DB61F1A11F4004C42F5 /* NotActivatedViewController.swift */; };
+		09636DB91F1A9F55004C42F5 /* AccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09636DB81F1A9F55004C42F5 /* AccountHelper.swift */; };
 		09661F2B1EE645B200F242E6 /* MapImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09661F2A1EE645B200F242E6 /* MapImageView.swift */; };
 		0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */; };
 		0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */; };
@@ -204,6 +205,7 @@
 		09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LeakProtection.storyboard; sourceTree = "<group>"; };
 		09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeakProtectionTableViewController.swift; sourceTree = "<group>"; };
 		09636DB61F1A11F4004C42F5 /* NotActivatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotActivatedViewController.swift; sourceTree = "<group>"; };
+		09636DB81F1A9F55004C42F5 /* AccountHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountHelper.swift; path = Cypherpunk/Helper/AccountHelper.swift; sourceTree = SOURCE_ROOT; };
 		09661F2A1EE645B200F242E6 /* MapImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapImageView.swift; sourceTree = "<group>"; };
 		0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = Cypherpunk/View/MenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuTableViewCell.xib; path = Cypherpunk/View/MenuTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -379,6 +381,7 @@
 				094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */,
 				0910AE471E7BFC93003802DB /* VPNServerOption.swift */,
 				0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */,
+				09636DB81F1A9F55004C42F5 /* AccountHelper.swift */,
 			);
 			name = Helper;
 			path = ViewControllers;
@@ -1232,6 +1235,7 @@
 				0959A50B1E69768100A95A49 /* PlanTableViewCell.swift in Sources */,
 				203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */,
 				203C62F21D7035D800891F91 /* TwoColorGradientButton.swift in Sources */,
+				09636DB91F1A9F55004C42F5 /* AccountHelper.swift in Sources */,
 				09636DB51F18F17F004C42F5 /* LeakProtectionTableViewController.swift in Sources */,
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */,

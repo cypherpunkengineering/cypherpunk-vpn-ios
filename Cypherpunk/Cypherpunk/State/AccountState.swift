@@ -17,15 +17,23 @@ enum SubscriptionType: Int {
     case annually
     case lifetime
     case forever
-        
+    case twelveMonths
+    case oneYear
+    case sixMonths
+    case threeMonths
+    case oneMonth
+    
+    
     var detailMessage: String {
         switch self {
-        case .monthly:
-            return "Renews monthly"
-        case .semiannually:
-            return "Renews semiannually"
-        case .annually:
-            return "Renews annually"
+        case .monthly, .oneMonth:
+            return "1 Month Plan"
+        case .semiannually, .sixMonths:
+            return "6 Month Plan"
+        case .annually, .twelveMonths, .oneYear:
+            return "1 Year Plan"
+        case .threeMonths:
+            return "3 Month Plan"
         case .lifetime:
             return "Lifetime"
         case .forever:
@@ -67,6 +75,8 @@ struct AccountState: StateType {
         static let session = "session"
         static let nickName = "nickName"
         static let rawSubscriptionType = "rawSubscriptionType"
+        static let subscriptionRenews = "subscriptionRenews"
+        static let subscriptionActive = "subscriptionActive"
         static let expiredDate = "expiredDate"
         static let accountType = "accountType"
         static let certificate = "certificate"
@@ -80,6 +90,8 @@ struct AccountState: StateType {
     var session: String?
     var nickName: String?
     var subscriptionType: SubscriptionType?
+    var subscriptionRenews: Bool
+    var subscriptionActive: Bool
     var expiredDate: Date?
     var accountType: String?
     var certificate: String?
@@ -140,7 +152,7 @@ struct AccountState: StateType {
     }
     
     static func restore() -> AccountState {
-        var state = AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, expiredDate: nil, accountType: nil, certificate: nil)
+        var state = AccountState(isLoggedIn: false, mailAddress: nil, vpnUsername: nil, vpnPassword: nil, secret: nil, session: nil, nickName: nil, subscriptionType: nil, subscriptionRenews: false, subscriptionActive: false, expiredDate: nil, accountType: nil, certificate: nil)
         let defaults = UserDefaults.standard
         if let service = defaults.string(forKey: AccountStateKey.mailAddress) {
             let keychain = Keychain(service: service)
@@ -159,6 +171,9 @@ struct AccountState: StateType {
             } else {
                 state.subscriptionType = nil
             }
+            state.subscriptionActive = Bool(keychain[AccountStateKey.subscriptionActive] ?? "false")!
+            state.subscriptionRenews = Bool(keychain[AccountStateKey.subscriptionRenews] ?? "false")!
+            
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
             dateFormatter.locale = Locale.current
