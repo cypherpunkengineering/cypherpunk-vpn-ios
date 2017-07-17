@@ -264,7 +264,10 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             status = "Invalid"
         case .connecting:
             status = "Connecting"
-            self.vpnSwitch.isOn = true
+            if !mainStore.state.settingsState.alwaysOn {
+                // leak protection is set to always on
+                self.vpnSwitch.isOn = true
+            }
         case .connected:
             status = "Connected"
         case .disconnecting:
