@@ -263,6 +263,19 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                                 }
                             case .failure(let error):
                                 print(error)
+                                switch error {
+                                case .responseError(let responseError as ResponseError):
+                                    switch responseError {
+                                    case .unacceptableStatusCode(let statusCode):
+                                        if statusCode == 402 {
+                                            self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.showNotActivated, sender: nil)
+                                        }
+                                    default:
+                                        break
+                                    }
+                                default:
+                                    break
+                                }
                                 self.state = .getStarted
                             }
                             self.startAnimation()
