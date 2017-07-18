@@ -281,9 +281,13 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         self.statusLabel.text = status.uppercased()
         self.statusLabel.sizeToFit()
         
-        if UIDevice.current.isSimulator {
-            // TODO what should be done here
+        if !mainStore.state.settingsState.alwaysOn {
+            self.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
         }
+        
+//        if UIDevice.current.isSimulator {
+//            // TODO what should be done here
+//        }
     }
     
     private func updateViewWithLastSeclectedRegion() {
