@@ -165,43 +165,6 @@ extension LocationSelectorViewController: UICollectionViewDelegate {
             cell?.backgroundColor = UIColor.clear
         }
     }
-    
-    // MARK: UIScrollViewDelegate
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        notifyScrolledLocation(scrollView)
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        // if decelerate is true didEndDecelerating will be used instead
-        if !decelerate {
-            notifyScrolledLocation(scrollView)
-        }
-    }
-    
-    private func notifyScrolledLocation(_ scrollView: UIScrollView) {
-        // get the cell at the center of the scroll view
-        let center = self.view.convert(self.view.center, to: self.collectionView)
-        var scrolledToIndexPath: IndexPath? = nil
-        if let indexPath = collectionView.indexPathForItem(at: center) {
-            if indexPath.section > 0 {
-                scrolledToIndexPath = indexPath
-            }
-        }
-        else {
-            // failed to find an item, this is likely a section header at the point
-            let headerPaths = self.collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionElementKindSectionHeader)
-            if headerPaths.count > 0 {
-                scrolledToIndexPath = headerPaths[0]
-            }
-        }
-        
-        if scrolledToIndexPath != nil {
-            // zoom to the first item in the section instead
-            let section = LocationSection(rawValue: (scrolledToIndexPath! as NSIndexPath).section)!
-            let location = section.realmResults[(scrolledToIndexPath?.row)!]
-            self.delegate?.scrolledTo(location: location)
-        }
-    }
 }
 
 extension LocationSelectorViewController: UICollectionViewDataSource {
@@ -233,65 +196,6 @@ extension LocationSelectorViewController: UICollectionViewDataSource {
             let region = section.realmResults[indexPath.row]
             locCell.displayRegion(region: region)
             cell = locCell
-            
-            //            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.regionBasic, for: indexPath)
-            //            cell?.starButton.isHidden = false
-            //            cell?.flagImageView.image = nil
-            //            cell?.titleLabel.isEnabled = true
-            //            cell?.starButton.alpha = 1.0
-            //            cell?.starButton.isUserInteractionEnabled = true
-            //            cell?.isUserInteractionEnabled = true
-            //            cell?.titleLabel.textColor = UIColor.white
-            //            cell?.flagImageView.alpha = 1.0
-            //            cell?.devLocationIconView.alpha = 1.0
-            //            cell?.premiumLocationIconView.alpha = 1.0
-            //            cell?.unavailableLocationIconView.alpha = 1.0
-            //            cell?.devLocationIconView.isHidden = true
-            //            cell?.premiumLocationIconView.isHidden = true
-            //            cell?.unavailableLocationIconView.isHidden = true
-            //
-            //            let region = section.realmResults[indexPath.row]
-            //
-            //            if mainStore.state.regionState.regionId == region.id {
-            //                cell?.applySelectedStyle()
-            //            }
-            //
-            //            cell?.titleLabel.text = region.name
-            //            if region.isFavorite {
-            //                cell?.starButton.setImage(R.image.locationIconStared(), for: .normal)
-            //            } else {
-            //                cell?.starButton.setImage(R.image.locationIconStar(), for: .normal)
-            //            }
-            //            cell?.flagImageView.image = UIImage(named: region.country.lowercased())
-            //
-            //            if region.httpDefault.isEmpty || !region.authorized {
-            //                cell?.unavailableLocationIconView.isHidden = false
-            //            }
-            //            else if region.level == "premium" {
-            //                cell?.premiumLocationIconView.isHidden = false
-            //            }
-            //            else if region.level == "developer" {
-            //                cell?.devLocationIconView.isHidden = false
-            //            }
-            //
-            //
-            //            if region.authorized == false {
-            //                cell?.titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
-            //                cell?.titleLabel.isEnabled = false
-            //                cell?.starButton.alpha = 0.5
-            //                cell?.flagImageView.alpha = 0.5
-            //                cell?.devLocationIconView.alpha = 0.5
-            //                cell?.premiumLocationIconView.alpha = 0.5
-            //                cell?.unavailableLocationIconView
-            //                    .alpha = 0.5
-            //                
-            //                cell?.starButton.isUserInteractionEnabled = false
-            //                cell?.isUserInteractionEnabled = false
-            //            }
-            //            
-            //            cell?.starButton.tag = indexPath.section * 100000 + indexPath.row
-            //            
-            //            return cell!
         }
         return cell
     }
