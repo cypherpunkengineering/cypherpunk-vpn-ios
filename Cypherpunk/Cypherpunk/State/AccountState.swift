@@ -203,3 +203,21 @@ struct AccountState: StateType {
         return months
     }
 }
+
+extension AccountState: Equatable {
+    static func == (lhs: AccountState, rhs: AccountState) -> Bool {
+        return
+            lhs.isLoggedIn == rhs.isLoggedIn &&
+            lhs.mailAddress == rhs.mailAddress &&
+            lhs.vpnUsername == rhs.vpnUsername &&
+            lhs.vpnPassword == rhs.vpnPassword &&
+            lhs.secret == rhs.secret &&
+            lhs.session == rhs.session &&
+            lhs.nickName == rhs.nickName &&
+            lhs.subscriptionType == rhs.subscriptionType &&
+            lhs.subscriptionRenews == rhs.subscriptionRenews &&
+            lhs.subscriptionActive == rhs.subscriptionActive &&
+            lhs.expiredDate == rhs.expiredDate &&
+            lhs.accountType == rhs.accountType
+    }
+}

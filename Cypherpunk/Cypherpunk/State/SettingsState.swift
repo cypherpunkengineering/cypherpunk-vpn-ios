@@ -157,7 +157,7 @@ struct SettingsState: StateType {
             }
             
             let keychain = Keychain.userKeychain()
-            return NSString(string: keychain[SettingsStateKey.alwaysOn] ?? "false").boolValue
+            return NSString(string: keychain[SettingsStateKey.alwaysOn] ?? "true").boolValue
         }
         set(newValue) {
             let keychain = Keychain.userKeychain()

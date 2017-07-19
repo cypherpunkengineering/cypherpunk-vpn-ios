@@ -10,8 +10,9 @@ import UIKit
 import RealmSwift
 import NetworkExtension.NEHotspotHelper
 import SystemConfiguration.CaptiveNetwork
+import ReSwift
 
-class ConfigurationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ConfigurationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoreSubscriber {
     @IBOutlet weak var tableView: UITableView!
 
     var notificationToken: NotificationToken!
@@ -26,6 +27,8 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         
         nib = UINib(nibName: "MenuTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "MenuCell")
+        
+        mainStore.subscribe(self) { $0.select { state in state.accountState } }
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +56,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         var rows = 0
         switch section {
         case 0:
-            rows = 4
+            rows = mainStore.state.accountState.isDeveloperAccount ? 4 : 3
         default:
             break
         }
@@ -112,11 +115,11 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 0 && indexPath.row == 0 {
+        if indexPath.section == 0 && indexPath.row == 2 {
             // automatic protection
             self.performSegue(withIdentifier: "PresentManageTrustedNetworks", sender: self)
         }
-        else if indexPath.section == 0 && indexPath.row == 1 {
+        else if indexPath.section == 0 && indexPath.row == 3 {
             // leak protection
             self.performSegue(withIdentifier: "PresentLeakProtection", sender: self)
         }
@@ -128,21 +131,21 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         
         switch row {
         case 0:
-            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
-            drilldownCell.textLabel?.text = "Automatic Protection"
-            return drilldownCell
-        case 1:
-            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
-            drilldownCell.textLabel?.text = "Leak Protection"
-            return drilldownCell
-        case 2:
             cell.label.text = "Block Ads"
             cell.toggle.isOn = mainStore.state.settingsState.blockAds
             cell.toggle.addTarget(self, action: #selector(blockAdsChanged(_:)), for: .valueChanged)
-        case 3:
+        case 1:
             cell.label.text = "Block Malware"
             cell.toggle.isOn = mainStore.state.settingsState.blockMalware
             cell.toggle.addTarget(self, action: #selector(blockMalwareChanged(_:)), for: .valueChanged)
+        case 2:
+            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
+            drilldownCell.textLabel?.text = "Automatic Protection"
+            return drilldownCell
+        case 3:
+            let drilldownCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTableViewCell
+            drilldownCell.textLabel?.text = "Leak Protection"
+            return drilldownCell
         default:
             cell.label.text = ""
         }
@@ -157,4 +160,13 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func blockMalwareChanged(_ sender: UISwitch) {
         mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
     }
+    
+    deinit {
+        mainStore.unsubscribe(self)
+    }
+    
+    func newState(state: AccountState) {
+        self.tableView.reloadData()
+    }
 }
+

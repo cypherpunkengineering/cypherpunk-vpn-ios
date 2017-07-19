@@ -36,7 +36,7 @@ PODS:
   - RealmSwift (2.5.1):
     - Realm (= 2.5.1)
   - Result (3.1.0)
-  - ReSwift (3.0.0)
+  - ReSwift (4.0.0)
   - SVProgressHUD (2.1.2)
   - SwiftyStoreKit (0.6.1)
   - TinySwift (1.0.1)
@@ -100,7 +100,7 @@ CHECKOUT OPTIONS:
     :commit: 17dfc26d7c779a84568ead9a29bbef49904ee62a
     :git: https://github.com/antitypical/Result.git
   ReSwift:
-    :commit: d3530509e0602d03edc536005a9c4f517f2bf1c0
+    :commit: 8d6efaf2367fcd4daf4cc1b8f5b1fe0af5310d14
     :git: https://github.com/ReSwift/ReSwift.git
   SVProgressHUD:
     :commit: 5d459e4bc09df23cbce92ad4d510004c1b58c1c7
@@ -133,7 +133,7 @@ SPEC CHECKSUMS:
   Realm: 32f86104d37c8521f864d4274050b38ba6190733
   RealmSwift: f719e7511c902b8908593e8f143f59e47931bdb6
   Result: 7bf0849344f557cd4beee129c876965e4bbdd7dd
-  ReSwift: 00add9a3eb1b5c93a3728ea88393de390ef6ddff
+  ReSwift: 85cb57267026cf4df4f6b05306bfce8ef74842c0
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyStoreKit: bcaf2ec585a66b04c0175ffc9e2b84d0d106a033
   TinySwift: d2cab7518495a9a862c296ce86e3223230a45bae
@@ -142,4 +142,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: cf1d38281733aa4d85c9b54feef2e12dd9db6d3b
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1
