@@ -5,187 +5,9 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Dosis-Medium.otf">
-            <string>Dosis-Medium</string>
-        </array>
-        <array key="Dosis-Regular.otf">
-            <string>Dosis-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
-        <!--Configuration Table View Controller-->
-        <scene sceneID="8rp-gE-ayl">
-            <objects>
-                <tableViewController id="dVY-5W-C5Z" customClass="ConfigurationTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dIa-BD-jJV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.050980392156862744" green="0.11764705882352941" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <sections>
-                            <tableViewSection headerTitle="Basic Settings" id="7lB-RC-vP6">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="hbe-OB-T0T" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hbe-OB-T0T" id="BGX-xg-rDj">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatic Protection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9l-GN-Qwa">
-                                                    <rect key="frame" x="16" y="0.0" width="326" height="44"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="o9l-GN-Qwa" firstAttribute="top" secondItem="BGX-xg-rDj" secondAttribute="top" id="DPU-DS-WLq"/>
-                                                <constraint firstItem="o9l-GN-Qwa" firstAttribute="centerY" secondItem="BGX-xg-rDj" secondAttribute="centerY" id="EmF-KT-cq8"/>
-                                                <constraint firstAttribute="trailing" secondItem="o9l-GN-Qwa" secondAttribute="trailing" id="iSP-0W-MfI"/>
-                                                <constraint firstItem="o9l-GN-Qwa" firstAttribute="leading" secondItem="BGX-xg-rDj" secondAttribute="leadingMargin" constant="8" id="l3a-0G-aUj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="Rz3-Gx-IdV" kind="presentation" modalPresentationStyle="formSheet" id="tho-da-vjN"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="28w-D9-Yz0" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="28w-D9-Yz0" id="eOT-2u-7O5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Ads" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jW8-cZ-1cp">
-                                                    <rect key="frame" x="16" y="0.0" width="359" height="44"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CNG-uq-hA4">
-                                                    <rect key="frame" x="306" y="6" width="51" height="31"/>
-                                                    <color key="onTintColor" red="0.37254901960784315" green="0.73333333333333328" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <connections>
-                                                        <action selector="blockAdsChanged:" destination="dVY-5W-C5Z" eventType="valueChanged" id="yLi-ak-7M8"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="CNG-uq-hA4" secondAttribute="trailing" constant="12" id="BRF-R1-pNn"/>
-                                                <constraint firstItem="jW8-cZ-1cp" firstAttribute="leading" secondItem="eOT-2u-7O5" secondAttribute="leadingMargin" constant="8" id="GEm-84-PKZ"/>
-                                                <constraint firstItem="jW8-cZ-1cp" firstAttribute="top" secondItem="eOT-2u-7O5" secondAttribute="top" id="GgS-aI-rm3"/>
-                                                <constraint firstAttribute="trailing" secondItem="jW8-cZ-1cp" secondAttribute="trailing" id="KBR-Kj-E7q"/>
-                                                <constraint firstItem="jW8-cZ-1cp" firstAttribute="centerY" secondItem="eOT-2u-7O5" secondAttribute="centerY" id="gln-W0-Qga"/>
-                                                <constraint firstItem="CNG-uq-hA4" firstAttribute="centerY" secondItem="eOT-2u-7O5" secondAttribute="centerY" id="jLr-ii-dT0"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="dkG-iu-Rd0" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dkG-iu-Rd0" id="kq7-oe-anz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Malware" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9b-x3-E8b">
-                                                    <rect key="frame" x="16" y="0.0" width="359" height="44"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3G6-J7-9QQ">
-                                                    <rect key="frame" x="306" y="6" width="51" height="31"/>
-                                                    <color key="onTintColor" red="0.37254901959999998" green="0.73333333329999995" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <connections>
-                                                        <action selector="blockMalwareChanged:" destination="dVY-5W-C5Z" eventType="valueChanged" id="bDP-66-A8s"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="3G6-J7-9QQ" secondAttribute="trailing" constant="12" id="3NB-JU-zXm"/>
-                                                <constraint firstItem="3G6-J7-9QQ" firstAttribute="centerY" secondItem="kq7-oe-anz" secondAttribute="centerY" id="K2O-8g-vgb"/>
-                                                <constraint firstItem="U9b-x3-E8b" firstAttribute="centerY" secondItem="kq7-oe-anz" secondAttribute="centerY" id="Q5R-TM-BoT"/>
-                                                <constraint firstItem="U9b-x3-E8b" firstAttribute="leading" secondItem="kq7-oe-anz" secondAttribute="leadingMargin" constant="8" id="Vm6-Gb-9Fl"/>
-                                                <constraint firstAttribute="trailing" secondItem="U9b-x3-E8b" secondAttribute="trailing" id="XOt-oP-bFg"/>
-                                                <constraint firstItem="U9b-x3-E8b" firstAttribute="top" secondItem="kq7-oe-anz" secondAttribute="top" id="hkl-VE-4XJ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="VPN Settings" id="skh-iY-bG6">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="E2r-ZR-pU2" detailTextLabel="ly0-4D-n7L" style="IBUITableViewCellStyleValue1" id="MV0-jF-THB" customClass="ThemedTableViewCell" customModule="Cypherpunk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MV0-jF-THB" id="kaG-OX-x6Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Protocol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E2r-ZR-pU2">
-                                                    <rect key="frame" x="15" y="11" width="53.5" height="21.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ly0-4D-n7L">
-                                                    <rect key="frame" x="304.5" y="12" width="35.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
-                                                    <color key="textColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="0.16" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="eTC-cg-CjH" kind="presentation" modalPresentationStyle="formSheet" id="1h9-sm-iI7"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="dVY-5W-C5Z" id="SjU-vS-yYS"/>
-                            <outlet property="delegate" destination="dVY-5W-C5Z" id="5cp-h6-Mgt"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <outlet property="blockAdsSwitch" destination="CNG-uq-hA4" id="k1s-1K-XKm"/>
-                        <outlet property="blockMalwareSwitch" destination="3G6-J7-9QQ" id="9Kl-mL-fjr"/>
-                        <outlet property="vpnProtocolValueLabel" destination="ly0-4D-n7L" id="Euf-4n-5pt"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nnf-wv-VQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-780" y="267.61619190404798"/>
-        </scene>
-        <!--ManageTrustedNetworks-->
-        <scene sceneID="w6X-NE-Hde">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ManageTrustedNetworks" id="Rz3-Gx-IdV" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ae2-zF-LOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-90" y="62"/>
-        </scene>
-        <!--VPNProtocol-->
-        <scene sceneID="T2n-Jb-wJI">
-            <objects>
-                <viewControllerPlaceholder storyboardName="VPNProtocol" id="eTC-cg-CjH" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WcQ-an-lXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-89" y="291"/>
-        </scene>
         <!--Configuration View Controller-->
         <scene sceneID="4XJ-op-BUm">
             <objects>
@@ -218,7 +40,6 @@
                     <connections>
                         <outlet property="tableView" destination="1vb-2p-wOn" id="9Ki-aC-QPA"/>
                         <segue destination="lkW-0y-Max" kind="presentation" identifier="PresentManageTrustedNetworks" id="RPa-sJ-6a0"/>
-                        <segue destination="6Ur-Pn-orT" kind="presentation" identifier="PresentVPNMode" id="BNN-ok-5UV"/>
                         <segue destination="RBW-49-uzv" kind="presentation" identifier="PresentLeakProtection" id="KCC-IA-emQ"/>
                     </connections>
                 </viewController>
@@ -233,14 +54,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIe-2O-YXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-182" y="1104"/>
-        </scene>
-        <!--VPNProtocol-->
-        <scene sceneID="Jp7-Jl-HSt">
-            <objects>
-                <viewControllerPlaceholder storyboardName="VPNProtocol" id="6Ur-Pn-orT" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dL9-Yq-9dr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-182" y="1199"/>
         </scene>
         <!--LeakProtection-->
         <scene sceneID="cY6-W7-eXk">

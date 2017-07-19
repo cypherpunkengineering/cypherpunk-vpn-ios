@@ -11,7 +11,6 @@
 		0910AE481E7BFC93003802DB /* VPNServerOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE471E7BFC93003802DB /* VPNServerOption.swift */; };
 		0910AE4A1E7C0A4C003802DB /* VPNStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE491E7C0A4C003802DB /* VPNStateController.swift */; };
 		0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */; };
-		091D057C1F13C1560027C2D7 /* VPNModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */; };
 		091D057F1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */; };
 		091D05801F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */; };
 		0932DFEB1F00AF4600DD2EE6 /* UIImage+Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */; };
@@ -117,11 +116,9 @@
 		20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */; };
 		2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */; };
 		2B0A652B1DED904700905A2A /* RecoverPasswordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A652A1DED904700905A2A /* RecoverPasswordAPI.swift */; };
-		2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */; };
 		2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */; };
 		2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */; };
 		2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2B59E41D3F98D0003FA705 /* RegionAction.swift */; };
-		2B2DE2851DA6530800C22098 /* VPNProtocol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */; };
 		2B34557A1DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3455791DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift */; };
 		2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */; };
 		2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2B45C1611D20D64600D4326C /* Dosis-Bold.otf */; };
@@ -144,7 +141,6 @@
 		2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */; };
 		2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */; };
 		2BDBD0C01D64F30B00080E67 /* ThemedNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */; };
-		2BDBD0C61D6514AB00080E67 /* ConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C51D6514AB00080E67 /* ConfigurationTableViewController.swift */; };
 		2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C71D65191400080E67 /* Email.storyboard */; };
 		2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0C91D651C8100080E67 /* ThemedTextField.swift */; };
 		2BDBD0CC1D651D6700080E67 /* UpdateEmailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */; };
@@ -181,7 +177,6 @@
 		0910AE471E7BFC93003802DB /* VPNServerOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNServerOption.swift; path = Cypherpunk/Helper/VPNServerOption.swift; sourceTree = SOURCE_ROOT; };
 		0910AE491E7C0A4C003802DB /* VPNStateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNStateController.swift; sourceTree = "<group>"; };
 		0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNStateResponder.swift; path = Cypherpunk/Helper/VPNStateResponder.swift; sourceTree = SOURCE_ROOT; };
-		091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNModeTableViewController.swift; sourceTree = "<group>"; };
 		091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSelectorTableViewCell.swift; sourceTree = "<group>"; };
 		091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionSelectorTableViewCell.xib; sourceTree = "<group>"; };
 		0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transparency.swift"; sourceTree = "<group>"; };
@@ -296,11 +291,9 @@
 		20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManageTrustedNetworks.storyboard; sourceTree = "<group>"; };
 		2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B0A652A1DED904700905A2A /* RecoverPasswordAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverPasswordAPI.swift; sourceTree = "<group>"; };
-		2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNProtocolSelectViewController.swift; sourceTree = "<group>"; };
 		2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountStatusAPI.swift; sourceTree = "<group>"; };
 		2B2B59E01D3F4A8F003FA705 /* RegionListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAPI.swift; sourceTree = "<group>"; };
 		2B2B59E41D3F98D0003FA705 /* RegionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionAction.swift; sourceTree = "<group>"; };
-		2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VPNProtocol.storyboard; sourceTree = "<group>"; };
 		2B3455791DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingNavigationViewController.swift; sourceTree = "<group>"; };
 		2B4489271D2E5C7000D202F9 /* TwoColorGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoColorGradientView.swift; sourceTree = "<group>"; };
 		2B45C1611D20D64600D4326C /* Dosis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.otf"; sourceTree = "<group>"; };
@@ -325,7 +318,6 @@
 		2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewConfiguration.storyboard; sourceTree = "<group>"; };
 		2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordTableViewController.swift; sourceTree = "<group>"; };
 		2BDBD0BF1D64F30B00080E67 /* ThemedNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedNavigationViewController.swift; sourceTree = "<group>"; };
-		2BDBD0C51D6514AB00080E67 /* ConfigurationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewController.swift; sourceTree = "<group>"; };
 		2BDBD0C71D65191400080E67 /* Email.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Email.storyboard; sourceTree = "<group>"; };
 		2BDBD0C91D651C8100080E67 /* ThemedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTextField.swift; sourceTree = "<group>"; };
 		2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateEmailTableViewController.swift; sourceTree = "<group>"; };
@@ -572,10 +564,7 @@
 		20845B511DEEAA610066A906 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				091D057B1F13C1560027C2D7 /* VPNModeTableViewController.swift */,
-				2BDBD0C51D6514AB00080E67 /* ConfigurationTableViewController.swift */,
 				2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */,
-				2B193EC41D591BDE00308DCA /* VPNProtocolSelectViewController.swift */,
 				205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */,
 				0948DBA61ED7C88500A7A475 /* ConfigurationViewController.swift */,
 				09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */,
@@ -662,7 +651,6 @@
 				203C62EF1D702CD900891F91 /* FirstOpen.storyboard */,
 				20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
-				2B2DE2841DA6530800C22098 /* VPNProtocol.storyboard */,
 				200A0B011D9E29BB00D59249 /* RateApp.storyboard */,
 				203C62EB1D7014B700891F91 /* Upgrade.storyboard */,
 				2BFBE9DC1DC0A33F008D9F5D /* Share.storyboard */,
@@ -929,7 +917,6 @@
 				200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
-				2B2DE2851DA6530800C22098 /* VPNProtocol.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
 				2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */,
 				09ACCDCF1E71892E00AF3E4F /* splashscreen-illustration.png in Resources */,
@@ -1256,7 +1243,6 @@
 				09EAFBBC1EF0AE72001B9375 /* LocationCollectionViewCell.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */,
-				091D057C1F13C1560027C2D7 /* VPNModeTableViewController.swift in Sources */,
 				0948DBA71ED7C88500A7A475 /* ConfigurationViewController.swift in Sources */,
 				20D896001D23A84D002B9F9D /* AccountAction.swift in Sources */,
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
@@ -1282,7 +1268,6 @@
 				0959A5071E681FB200A95A49 /* AccountDetailTableViewCell.swift in Sources */,
 				2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */,
 				20EC4A381D2F7BAE00785399 /* RegionState.swift in Sources */,
-				2B193EC51D591BDE00308DCA /* VPNProtocolSelectViewController.swift in Sources */,
 				0959A50E1E69879A00A95A49 /* PlanCollectionViewController.swift in Sources */,
 				20F07FD91DD47CCD005FC1D6 /* UpgradeAPI.swift in Sources */,
 				09591ACD1F13878C0035247D /* CertificateAPI.swift in Sources */,
@@ -1320,7 +1305,6 @@
 				203809691D13D89D005145CD /* AppDelegate.swift in Sources */,
 				203F4EFF1D5B079D00EA2536 /* UIColor+CIAdditions.swift in Sources */,
 				09661F2B1EE645B200F242E6 /* MapImageView.swift in Sources */,
-				2BDBD0C61D6514AB00080E67 /* ConfigurationTableViewController.swift in Sources */,
 				2090F7171DD5AC1300BAB626 /* ChangeEmailAPI.swift in Sources */,
 				0948DBAA1ED7D1CB00A7A475 /* ToggleTableViewCell.swift in Sources */,
 				094C1B9B1E4D31CD00D9036F /* ConnectionHelper.swift in Sources */,
