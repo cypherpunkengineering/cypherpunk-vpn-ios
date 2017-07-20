@@ -51,7 +51,7 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
         sliderContainerLayer.strokeColor = UIColor(red: 0.0, green: 255.0 / 255.0, blue: 155.0 / 255.0, alpha: 0.2).cgColor
         sliderContainerLayer.lineWidth = 2
         
-        let sliderOutlinePath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 100, height: 50), cornerRadius: 25)
+        let sliderOutlinePath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), cornerRadius: self.frame.height / 2)
         sliderContainerLayer.path = sliderOutlinePath.cgPath
         
         self.layer.addSublayer(sliderContainerLayer)
@@ -60,18 +60,19 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
         // base layer for thumb
         sliderThumbLayer.fillColor = UIColor(red: 17.0 / 255.0, green: 119.0 / 255.0, blue: 119.0 / 255.0, alpha: 1.0).cgColor
         
-        let thumbOutlinePath = UIBezierPath(ovalIn: CGRect(x: 4, y: 5, width: 40, height: 40))
+        let thumbDiameter = self.frame.height - 10
+        let thumbOutlinePath = UIBezierPath(ovalIn: CGRect(x: 4, y: 5, width: thumbDiameter, height: thumbDiameter))
         sliderThumbLayer.path = thumbOutlinePath.cgPath
         
         // create inner gradient circle
         thumbGradientLayer.startPoint = CGPoint(x: 0, y: 0)
         thumbGradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        thumbGradientLayer.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        thumbGradientLayer.frame = CGRect(x: 0, y: 0, width: self.frame.height, height: self.frame.height)
         
         thumbGradientLayer.colors = thumbGradientColors
         
         let gradientLayerMask = CAShapeLayer()
-        gradientLayerMask.path = UIBezierPath(ovalIn: CGRect(x: 8, y: 9, width: 32, height: 32)).cgPath
+        gradientLayerMask.path = UIBezierPath(ovalIn: CGRect(x: 8, y: 9, width: thumbDiameter - 8, height: thumbDiameter - 8)).cgPath
         
         thumbGradientLayer.mask = gradientLayerMask
         
@@ -86,10 +87,13 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
     }
 
     @IBAction func updateToggle(on: Bool) {
+        let thumbDiameter = self.frame.height - 10
+        let onXCoord = self.frame.width - thumbDiameter - 8
+        
         if on {
             let animation = CABasicAnimation(keyPath: "position")
             animation.fromValue = [0, 0]
-            animation.toValue = [50, 0]
+            animation.toValue = [onXCoord, 0]
             animation.duration = 1
             
             let toColors: [AnyObject] = [UIColor.white.cgColor, UIColor.white.cgColor]
@@ -106,11 +110,11 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
             sliderThumbLayer.add(animation, forKey: "position")
             thumbGradientLayer.add(colorAnimation, forKey: "animateGradient")
             
-            sliderThumbLayer.position = CGPoint(x: 50, y: 0)
+            sliderThumbLayer.position = CGPoint(x: onXCoord, y: 0)
         }
         else {
             let animation = CABasicAnimation(keyPath: "position")
-            animation.fromValue = [50, 0]
+            animation.fromValue = [onXCoord, 0]
             animation.toValue = [0, 0]
             animation.duration = 1
             

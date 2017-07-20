@@ -46,7 +46,7 @@ class MainViewController: UIViewController, StoreSubscriber {
         
         self.mapImageView = MapImageView()
         
-        self.vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        self.vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 115, height: 60))
         
         self.locationSelectorButton = LocationButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         
@@ -116,8 +116,8 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.view.addSubview(self.vpnSwitch)
         constrain(self.view, self.vpnSwitch) { parentView, childView in
             childView.bottom == parentView.centerY - 75
-            childView.height == 50.0
-            childView.width == 100.0
+            childView.height == self.vpnSwitch.frame.height
+            childView.width == self.vpnSwitch.frame.width
             childView.centerX == parentView.centerX
         }
 //        self.vpnSwitch.delegate = self
