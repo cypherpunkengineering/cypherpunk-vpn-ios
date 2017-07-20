@@ -14,7 +14,7 @@ import NetworkExtension
 import ReSwift
 import TinySwift
 
-class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
+class MainViewController: UIViewController, StoreSubscriber {
     
     var topBarView: UIView
     var bottomBorderLayer: CALayer
@@ -55,8 +55,6 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mainStore.subscribe(self)
         
         // listen for VPN status changes
         let notificationCenter = NotificationCenter.default
@@ -194,10 +192,13 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
             
             self.vpnSwitch.delegate = self
         }
+        
+        mainStore.subscribe(self) { $0.select { state in state.regionState } }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.vpnSwitch.delegate = nil
+        mainStore.unsubscribe(self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -323,27 +324,10 @@ class MainViewController: UIViewController, StoreSubscriber, VPNSwitchDelegate {
         self.mapImageView.drawLocationsOnMap()
     }
     
-    func newState(state: AppState) {
+    func newState(state: RegionState) {
         print("NEW STATE")
         // TODO: is there really no way to target specific property changes?
         updateViewWithLastSeclectedRegion()
-    }
-    
-    // MARK: - VPNSwitchDelegate
-    func stateChanged(on: Bool) {        
-        if mainStore.state.settingsState.alwaysOn {
-            // leak protection is set to always on
-        }
-        else {
-            // leak protection is off
-            if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnected {
-                VPNConfigurationCoordinator.disconnect()
-            }
-            else if VPNConfigurationCoordinator.isDisconnected || VPNConfigurationCoordinator.isDisconnecting {
-                VPNConfigurationCoordinator.connect()
-            }
-        }
-        mainStore.dispatch(SettingsAction.toggleOn(isOn: on))
     }
 }
 
@@ -393,5 +377,23 @@ extension MainViewController: LocationSelectionDelegate {
 extension MainViewController: LocationButtonDelgate {
     func buttonPressed() {
         showLocationSelector(self)
+    }
+}
+
+extension MainViewController: VPNSwitchDelegate {
+    func stateChanged(on: Bool) {
+        if mainStore.state.settingsState.alwaysOn {
+            // leak protection is set to always on
+        }
+        else {
+            // leak protection is off
+            if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnected {
+                VPNConfigurationCoordinator.disconnect()
+            }
+            else if VPNConfigurationCoordinator.isDisconnected || VPNConfigurationCoordinator.isDisconnecting {
+                VPNConfigurationCoordinator.connect()
+            }
+        }
+        mainStore.dispatch(SettingsAction.toggleOn(isOn: on))
     }
 }
