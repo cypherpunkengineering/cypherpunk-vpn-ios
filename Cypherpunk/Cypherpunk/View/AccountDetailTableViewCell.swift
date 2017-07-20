@@ -20,7 +20,7 @@ class AccountDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        mainStore.subscribe(self)
+        mainStore.subscribe(self) { $0.select { state in state.accountState } }
         
         let iconColor = UIColor(red: 0, green: 142 / 255.0, blue: 140 / 255.0, alpha: 1)
         
@@ -40,7 +40,7 @@ class AccountDetailTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.newState(state: AppState.getSharedState())
+        populateInfo()
     }
     
     deinit {
@@ -68,7 +68,7 @@ class AccountDetailTableViewCell: UITableViewCell {
 }
 
 extension AccountDetailTableViewCell: StoreSubscriber {
-    func newState(state: AppState) {
+    func newState(state: AccountState) {
         self.populateInfo()
     }
 }
