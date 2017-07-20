@@ -431,6 +431,11 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         self.inputField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: placeholderAttributes)
         self.inputField.text = ""
     }
+    
+    @IBAction func forgotPasswordPressed(_ sender: Any) {
+        let url = URL(string: "https://cypherpunk.com/recover?email=\(email)")
+        UIApplication.shared.openURL(url!)
+    }
 }
 
 extension WelcomeToCypherpunkViewController: UITextFieldDelegate {
