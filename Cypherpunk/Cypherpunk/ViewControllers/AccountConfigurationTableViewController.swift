@@ -46,7 +46,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         let accountDetailNib = UINib(nibName: "AccountDetailTableViewCell", bundle: nil)
         self.tableView.register(accountDetailNib, forCellReuseIdentifier: "AccountDetailCell")
 
-        mainStore.subscribe(self)
+        mainStore.subscribe(self) { $0.select { state in state.accountState } }
         
         self.tableView.reloadData()
     }
@@ -272,7 +272,7 @@ class AccountConfigurationTableViewController: UITableViewController {
 }
 
 extension AccountConfigurationTableViewController: StoreSubscriber {
-    func newState(state: AppState) {
+    func newState(state: AccountState) {
         self.tableView.reloadSections([0, 1], with: .automatic)
     }
 }
