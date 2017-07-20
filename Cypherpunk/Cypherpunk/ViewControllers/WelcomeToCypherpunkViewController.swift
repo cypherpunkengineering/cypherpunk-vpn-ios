@@ -100,7 +100,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         self.termsLabel.addLink(to: URL(string: "https://cypherpunk.com/privacy-policy"), with: privacyPolicyRange)
         self.termsLabel.delegate = self
 
-        mainStore.subscribe(self)
+        mainStore.subscribe(self) { $0.select { state in state.accountState } }
         registerKeyboardNotification()
     }
     
@@ -416,9 +416,9 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         let url = URL(string: "https://cypherpunk.com/privacy-policy")
         UIApplication.shared.openURL(url!)
     }
-    func newState(state: AppState)
+    func newState(state: AccountState)
     {
-        if state.accountState.isLoggedIn {
+        if state.isLoggedIn {
             // TODO: transition to send email screen
             
             let destination = R.storyboard.walkthrough.instantiateInitialViewController()
