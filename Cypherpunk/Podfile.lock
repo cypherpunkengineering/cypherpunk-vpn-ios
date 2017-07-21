@@ -16,7 +16,7 @@ PODS:
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (1.0.8)
   - FontAwesome.swift (1.0.0)
-  - GBPing (1.4.0)
+  - GBPing (1.4.1)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
@@ -120,7 +120,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 03da1cb32615569bbc2830a22f9ad753d9a02ef5
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
-  GBPing: 1d91d253c93d01bbdcf797658e8cc0376e2e6842
+  GBPing: 3bf8bf81f74da35d3b94d83d0290ba78bbde7e0f
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
