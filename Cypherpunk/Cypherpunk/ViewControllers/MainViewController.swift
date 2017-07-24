@@ -21,6 +21,7 @@ class MainViewController: UIViewController, StoreSubscriber {
     var gradientLayer: CAGradientLayer
     var mapImageView: MapImageView
     var vpnSwitch: VPNSwitch
+    var vpnSwitchAnimationView: VPNSwitchAnimationView
     var locationSelectorButton: LocationButton
     var locationSelectorVC: LocationSelectorViewController?
     var statusTitleLabel = UILabel()
@@ -47,6 +48,7 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.mapImageView = MapImageView()
         
         self.vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 115, height: 60))
+        self.vpnSwitchAnimationView = VPNSwitchAnimationView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         
         self.locationSelectorButton = LocationButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         
@@ -113,14 +115,25 @@ class MainViewController: UIViewController, StoreSubscriber {
             childView.width == 60.0
         }
         
-        self.view.addSubview(self.vpnSwitch)
-        constrain(self.view, self.vpnSwitch) { parentView, childView in
-            childView.bottom == parentView.centerY - 75
-            childView.height == self.vpnSwitch.frame.height
-            childView.width == self.vpnSwitch.frame.width
-            childView.centerX == parentView.centerX
-        }
+//        self.view.addSubview(self.vpnSwitch)
+//        constrain(self.view, self.vpnSwitch) { parentView, childView in
+//            childView.bottom == parentView.centerY - 75
+//            childView.height == self.vpnSwitch.frame.height
+//            childView.width == self.vpnSwitch.frame.width
+//            childView.centerX == parentView.centerX
+//        }
 //        self.vpnSwitch.delegate = self
+        
+        self.view.addSubview(self.vpnSwitchAnimationView)
+        constrain(self.view, self.vpnSwitchAnimationView) { parentView, childView in
+            childView.bottom == parentView.centerY - 75
+//            childView.height == self.vpnSwitch.frame.height
+//            childView.width == self.vpnSwitch.frame.width
+            childView.centerX == parentView.centerX
+            childView.width == parentView.width
+            childView.height == 75
+        }
+        self.vpnSwitchAnimationView.vpnSwitchDelegate = self
         
         self.view.addSubview(self.statusLabel)
         self.statusLabel.font = R.font.dosisMedium(size: 18)
@@ -269,12 +282,16 @@ class MainViewController: UIViewController, StoreSubscriber {
                 // leak protection is set to always on
                 self.vpnSwitch.isOn = true
             }
+            self.vpnSwitchAnimationView.beginConnectAnimation()
         case .connected:
             status = "Connected"
+            self.vpnSwitchAnimationView.cancelConnectAnimation()
         case .disconnecting:
             status = "Disconnecting"
+            self.vpnSwitchAnimationView.cancelConnectAnimation()
         case .disconnected:
             status = "Disconnected"
+            self.vpnSwitchAnimationView.cancelConnectAnimation()
         case .reasserting:
             status = "Reasserting"
         }
@@ -395,5 +412,12 @@ extension MainViewController: VPNSwitchDelegate {
             }
         }
         mainStore.dispatch(SettingsAction.toggleOn(isOn: on))
+        
+        if on {
+            self.vpnSwitchAnimationView.beginConnectAnimation()
+        }
+        else {
+            self.vpnSwitchAnimationView.cancelConnectAnimation()
+        }
     }
 }
