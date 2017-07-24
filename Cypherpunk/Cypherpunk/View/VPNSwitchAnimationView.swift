@@ -18,10 +18,14 @@ class VPNSwitchAnimationView: UIView {
     let vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 115, height: 60))
     let lineLayer = CAShapeLayer()
     let ovalLayer = CAShapeLayer()
-    let leftLineLayer = CAShapeLayer()
-    let rightLineLayer = CAShapeLayer()
-    let chaserLayer = CAShapeLayer()
+    let leftLineGradientLayer = CAGradientLayer()
+    let rightLineGradientLayer = CAGradientLayer()
     let chaserGradientLayer = CAGradientLayer()
+    
+    let gradientColors = [UIColor.disconnectedLineColor.cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.1).cgColor] as [Any]
+    
+    let connectingGradientColors = [UIColor.connectingLineColor.cgColor, UIColor.connectingLineColor.withAlphaComponent(0.1).cgColor] as [Any]
+
     
     var vpnSwitchDelegate: VPNSwitchDelegate? {
         didSet {
@@ -56,31 +60,20 @@ class VPNSwitchAnimationView: UIView {
         
         // left of the switch
         let leftLineFrame = CGRect(x: 0, y: self.bounds.height / 2.0 - nonConnectedLineHeight / 2.0, width: widthBetweenSwitchAndEdge, height: nonConnectedLineHeight)
-        let leftLinePath = UIBezierPath(rect: leftLineFrame)
-        self.leftLineLayer.path = leftLinePath.cgPath
-        self.leftLineLayer.fillColor = UIColor(red: 0.0, green: 255.0 / 255.0, blue: 155.0 / 255.0, alpha: 1.0).cgColor
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor(white: 0.0, alpha: 0.75).cgColor, UIColor.clear.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
-        gradientLayer.frame = leftLineFrame
-        self.leftLineLayer.mask = gradientLayer
+        self.leftLineGradientLayer.colors = self.gradientColors
+        self.leftLineGradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
+        self.leftLineGradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
+        self.leftLineGradientLayer.frame = leftLineFrame
         
         // right of the switch
         let rightLineFrame = CGRect(x: self.bounds.width - widthBetweenSwitchAndEdge, y: self.bounds.height / 2.0 - nonConnectedLineHeight / 2.0, width: widthBetweenSwitchAndEdge, height: nonConnectedLineHeight)
-        let rightLinePath = UIBezierPath(rect: rightLineFrame)
-        self.rightLineLayer.path = rightLinePath.cgPath
-        self.rightLineLayer.fillColor = UIColor(red: 0.0, green: 255.0 / 255.0, blue: 155.0 / 255.0, alpha: 1.0).cgColor
+        self.rightLineGradientLayer.colors = self.gradientColors
+        self.rightLineGradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        self.rightLineGradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        self.rightLineGradientLayer.frame = rightLineFrame
         
-        let rightLineGradientLayer = CAGradientLayer()
-        rightLineGradientLayer.colors = [UIColor(white: 0.0, alpha: 0.75).cgColor, UIColor.clear.cgColor]
-        rightLineGradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-        rightLineGradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        rightLineGradientLayer.frame = rightLineFrame
-        self.rightLineLayer.mask = rightLineGradientLayer
-        self.layer.addSublayer(self.leftLineLayer)
-        self.layer.addSublayer(self.rightLineLayer)
+        self.layer.addSublayer(self.leftLineGradientLayer)
+        self.layer.addSublayer(self.rightLineGradientLayer)
     }
 
     override func layoutSubviews() {
@@ -92,6 +85,9 @@ class VPNSwitchAnimationView: UIView {
     func beginConnectAnimation() {
         let chaserYValue = self.bounds.height / 2 // - nonConnectedLineHeight / 2
         let originalChaserBounds = CGRect(x: 0, y: chaserYValue, width: lineWidth, height: nonConnectedLineHeight)
+        
+        self.leftLineGradientLayer.colors = self.connectingGradientColors
+        self.rightLineGradientLayer.colors = self.connectingGradientColors
         
         self.chaserGradientLayer.colors = [UIColor.clear.cgColor, UIColor(white: 0.0, alpha: 0.2).cgColor, UIColor.white.cgColor, UIColor(white: 0.0, alpha: 0.2).cgColor, UIColor.clear.cgColor]
         self.chaserGradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
@@ -215,6 +211,9 @@ class VPNSwitchAnimationView: UIView {
     }
     
     func cancelConnectAnimation() {
+        self.leftLineGradientLayer.colors = self.gradientColors
+        self.rightLineGradientLayer.colors = self.gradientColors
+        
         self.chaserGradientLayer.removeAnimation(forKey: "heartbeatAnimation")
         self.chaserGradientLayer.removeFromSuperlayer()
     }

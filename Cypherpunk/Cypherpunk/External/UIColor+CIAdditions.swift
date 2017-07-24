@@ -87,6 +87,14 @@ extension UIColor {
         return UIColor(red: 5.0 / 255.0, green: 53.0 / 255.0, blue: 54.0 / 255.0, alpha: 1.0)
     }
     
+    class var disconnectedLineColor: UIColor {
+        return UIColor(red: 0, green: 112 / 255.0, blue: 112 / 255.0, alpha: 1.0)
+    }
+    
+    class var connectingLineColor: UIColor {
+        return UIColor(red: 0, green: 240 / 255.0, blue: 250 / 255.0, alpha: 1.0)
+    }
+    
     
     /**    https://gist.github.com/mbigatti/c6be210a6bbc0ff25972 */
     /**
