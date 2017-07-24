@@ -10,9 +10,9 @@ import UIKit
 import Cartography
 
 class VPNSwitchAnimationView: UIView {
-    let nonConnectedLineHeight: CGFloat = 6.0
+    let nonConnectedLineHeight: CGFloat = 5.0
     let lineWidth: CGFloat = 45.0
-    let dotHeight: CGFloat = 6.0
+    let dotHeight: CGFloat = 5.0
     let ellipsisRadius: CGFloat = 20.0
     
     let vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 115, height: 60))
