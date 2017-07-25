@@ -42,10 +42,9 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
         setupSublayers()
     }
     
-    // TODO make this not reliant on a fixed size
     private func setupSublayers() {
         self.backgroundColor = UIColor.clear
-        
+
         // slider container
         sliderContainerLayer.fillColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3).cgColor
         sliderContainerLayer.strokeColor = UIColor(red: 0.0, green: 255.0 / 255.0, blue: 155.0 / 255.0, alpha: 0.2).cgColor
