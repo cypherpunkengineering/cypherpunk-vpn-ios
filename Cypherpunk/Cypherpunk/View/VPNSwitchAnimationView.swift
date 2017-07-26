@@ -57,36 +57,27 @@ class VPNSwitchAnimationView: UIView {
     }
     
     private func setupLineLayers() {
-        let widthBetweenSwitchAndEdge = (self.frame.width - self.vpnSwitch.frame.width) / 2
+        let bezierPath = UIBezierPath()
+        bezierPath.usesEvenOddFillRule = true
         
-        let radius = self.bounds.height / 2
-        let arcPointDelta: CGFloat = 18 // used to "pull" the arc point onto the switch to have the arc surround the switch
+        let outerShapeDelta: CGFloat = 18
         
-        let baseRect = CGRect(x: self.vpnSwitch.frame.minX - arcPointDelta, y: 0, width: self.vpnSwitch.bounds.width + 2 * arcPointDelta, height: self.bounds.height)
+        let baseRect = CGRect(x: self.vpnSwitch.frame.minX - outerShapeDelta, y: 0, width: self.vpnSwitch.bounds.width + 2 * outerShapeDelta, height: self.bounds.height)
         let curvedShapePath = UIBezierPath(roundedRect: baseRect, cornerRadius: self.bounds.height / 2)
         curvedShapePath.usesEvenOddFillRule = true
         curvedShapePath.close()
         
-        let leftArcCenterPoint = CGPoint(x: baseRect.minX + baseRect.height / 2, y: self.bounds.height / 2)
-        let rightArcCenterPoint = CGPoint(x: baseRect.maxX - baseRect.height / 2, y: self.bounds.height / 2)
+        bezierPath.append(curvedShapePath)
         
-        let innerPath = UIBezierPath()
-        innerPath.move(to: CGPoint(x: rightArcCenterPoint.x, y: 0))
-        innerPath.addCurve(to: CGPoint(x: rightArcCenterPoint.x, y: self.bounds.height), controlPoint1: CGPoint(x: rightArcCenterPoint.x + radius, y: 10), controlPoint2: CGPoint(x: rightArcCenterPoint.x + radius, y: self.bounds.height - 10))
-        innerPath.addLine(to: CGPoint(x: leftArcCenterPoint.x, y: self.bounds.height))
-        innerPath.addCurve(to: CGPoint(x: leftArcCenterPoint.x, y: 0), controlPoint1: CGPoint(x: leftArcCenterPoint.x - radius, y: self.bounds.height - 10), controlPoint2: CGPoint(x: leftArcCenterPoint.x - radius, y: 10))
-        innerPath.addLine(to: CGPoint(x: rightArcCenterPoint.x, y: 0))
-        innerPath.close()
+        let innerPath = UIBezierPath(roundedRect: CGRect(x: self.vpnSwitch.frame.minX - 10, y: 0, width: self.vpnSwitch.bounds.width + 2 * 10, height: self.bounds.height), cornerRadius: self.bounds.height / 2 - 5)
         
-        curvedShapePath.append(innerPath)
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = curvedShapePath.cgPath
-        maskLayer.backgroundColor = UIColor.clear.cgColor
-        maskLayer.fillRule = kCAFillRuleEvenOdd
-        self.switchGlowShapeLayer.mask = maskLayer
+        bezierPath.append(innerPath)
         
+        self.switchGlowShapeLayer.path = bezierPath.cgPath
         self.switchGlowShapeLayer.fillColor = UIColor.disconnectedLineColor.cgColor
-        self.switchGlowShapeLayer.path = curvedShapePath.cgPath
+        self.switchGlowShapeLayer.fillRule = kCAFillRuleEvenOdd
+        
+        let widthBetweenSwitchAndEdge = (self.frame.width - self.vpnSwitch.frame.width) / 2
         
         // left of the switch
         let leftLineFrame = CGRect(x: 0, y: self.bounds.height / 2.0 - nonConnectedLineHeight / 2.0, width: widthBetweenSwitchAndEdge - 10, height: nonConnectedLineHeight)
@@ -114,67 +105,7 @@ class VPNSwitchAnimationView: UIView {
     }
     
     func beginConnectAnimation() {
-        // surround the switch
-        let vpnSwitchFrame = self.vpnSwitch.frame
-        let vpnSwitchHeight = vpnSwitchFrame.height
-        let vpnSwitchWidth = vpnSwitchFrame.width
-
-        let baseRect = CGRect(x: vpnSwitchFrame.minX - 10, y: vpnSwitchFrame.minY - 10, width: vpnSwitchFrame.width + 20, height: vpnSwitchFrame.height + 20)
-        let path = UIBezierPath(roundedRect: baseRect, cornerRadius: self.bounds.height / 2)
-        path.usesEvenOddFillRule = true
-        
-        let innerPath = UIBezierPath(roundedRect: CGRect(x: vpnSwitchFrame.minX, y: vpnSwitchFrame.minY, width: vpnSwitchWidth, height: vpnSwitchHeight), cornerRadius: vpnSwitchHeight / 2)
-        path.append(innerPath)
-        
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = path.cgPath
-        maskLayer.backgroundColor = UIColor.clear.cgColor
-        maskLayer.fillRule = kCAFillRuleEvenOdd
-        self.switchGlowShapeLayer.mask = maskLayer
-        
-        
-        let switchGlowPathAnimation = CABasicAnimation(keyPath: "path")
-        switchGlowPathAnimation.fromValue = self.switchGlowShapeLayer.path
-        switchGlowPathAnimation.toValue = path
-        switchGlowPathAnimation.duration = 0.5
-        
-        let switchGlowMaskAnimation = CABasicAnimation(keyPath: "mask")
-        switchGlowMaskAnimation.fromValue = self.switchGlowShapeLayer.mask
-        switchGlowMaskAnimation.toValue = maskLayer
-        switchGlowMaskAnimation.duration = 0.5
-        switchGlowMaskAnimation.isAdditive = true
-        
-        let switchGlowFillColorAnimation = CABasicAnimation(keyPath: "fillColor")
-        switchGlowFillColorAnimation.fromValue = self.switchGlowShapeLayer.fillColor
-        switchGlowFillColorAnimation.toValue = UIColor.connectingLineColor.cgColor
-        switchGlowFillColorAnimation.duration = 0.5
-        
-        let switchGlowAnimationGroup = CAAnimationGroup()
-        switchGlowAnimationGroup.animations = [
-            switchGlowPathAnimation,
-            switchGlowMaskAnimation,
-            switchGlowFillColorAnimation
-        ]
-        
-        self.switchGlowShapeLayer.add(switchGlowAnimationGroup, forKey: "switchGlowAnimation")
-        
-        self.switchGlowShapeLayer.path = path.cgPath
-        self.switchGlowShapeLayer.fillColor = UIColor.connectingLineColor.cgColor
-        self.switchGlowShapeLayer.fillRule = kCAFillRuleEvenOdd
-        
-        let chaserYValue = self.bounds.height / 2 // - nonConnectedLineHeight / 2
-        let originalChaserBounds = CGRect(x: 0, y: chaserYValue, width: lineWidth, height: nonConnectedLineHeight)
-        
-        self.leftLineGradientLayer.colors = self.connectingGradientColors
-        self.rightLineGradientLayer.colors = self.connectingGradientColors
-        
-        self.chaserGradientLayer.colors = [UIColor.clear.cgColor, UIColor(white: 0.0, alpha: 0.2).cgColor, UIColor.white.cgColor, UIColor(white: 0.0, alpha: 0.2).cgColor, UIColor.clear.cgColor]
-        self.chaserGradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        self.chaserGradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
-        self.chaserGradientLayer.locations = [0.1, 0.2, 0.5, 0.8, 0.9]
-        self.chaserGradientLayer.frame = CGRect(x: 0, y: chaserYValue, width: lineWidth, height: nonConnectedLineHeight)
-
-        self.layer.insertSublayer(self.chaserGradientLayer, below: self.vpnSwitch.layer)
+        transformShapeAroundSwitch()
         
         // move to min
         
@@ -287,6 +218,49 @@ class VPNSwitchAnimationView: UIView {
         heartbeatAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         
         self.chaserGradientLayer.add(heartbeatAnimation, forKey: "heartbeatAnimation")
+    }
+    
+    private func transformShapeAroundSwitch() {
+        // surround the switch
+        let vpnSwitchFrame = self.vpnSwitch.frame
+        let vpnSwitchHeight = vpnSwitchFrame.height
+        let vpnSwitchWidth = vpnSwitchFrame.width
+        
+        let bezierPath = UIBezierPath()
+        bezierPath.usesEvenOddFillRule = true
+        
+        let outerShapeDelta: CGFloat = 10
+        
+        let curvedShapePath = UIBezierPath(roundedRect: CGRect(x: vpnSwitchFrame.minX - outerShapeDelta, y: vpnSwitchFrame.minY - outerShapeDelta, width: vpnSwitchWidth + 2 * outerShapeDelta, height: vpnSwitchHeight + 2 * outerShapeDelta), cornerRadius: (vpnSwitchHeight + 2 * outerShapeDelta) / 2)
+        curvedShapePath.usesEvenOddFillRule = true
+        curvedShapePath.close()
+        
+        bezierPath.append(curvedShapePath)
+        
+        let innerPath = UIBezierPath(roundedRect: CGRect(x: vpnSwitchFrame.minX, y: vpnSwitchFrame.minY, width: vpnSwitchWidth, height: vpnSwitchHeight), cornerRadius: vpnSwitchHeight / 2)
+        
+        bezierPath.append(innerPath)
+        
+        let switchGlowPathAnimation = CABasicAnimation(keyPath: "path")
+        switchGlowPathAnimation.fromValue = self.switchGlowShapeLayer.path
+        switchGlowPathAnimation.toValue = bezierPath.cgPath
+        switchGlowPathAnimation.duration = 0.3
+        
+        let switchGlowFillColorAnimation = CABasicAnimation(keyPath: "fillColor")
+        switchGlowFillColorAnimation.fromValue = self.switchGlowShapeLayer.fillColor
+        switchGlowFillColorAnimation.toValue = UIColor.connectingLineColor.cgColor
+        switchGlowFillColorAnimation.duration = 0.1
+        
+        let switchGlowAnimationGroup = CAAnimationGroup()
+        switchGlowAnimationGroup.animations = [
+            switchGlowPathAnimation,
+            switchGlowFillColorAnimation
+        ]
+        
+        self.switchGlowShapeLayer.add(switchGlowAnimationGroup, forKey: "switchGlowAnimation")
+        
+        self.switchGlowShapeLayer.path = bezierPath.cgPath
+        self.switchGlowShapeLayer.fillColor = UIColor.connectingLineColor.cgColor
     }
     
     func cancelConnectAnimation() {
