@@ -23,6 +23,8 @@ class VPNSwitchAnimationView: UIView {
     let chaserGradientLayer = CAGradientLayer()
     let switchGlowShapeLayer = CAShapeLayer()
     
+    var originalCurvedPath: UIBezierPath?
+    
     let gradientColors = [UIColor.disconnectedLineColor.cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.1).cgColor] as [Any]
     
     let connectingGradientColors = [UIColor.connectingLineColor.cgColor, UIColor.connectingLineColor.withAlphaComponent(0.1).cgColor] as [Any]
@@ -77,6 +79,8 @@ class VPNSwitchAnimationView: UIView {
         self.switchGlowShapeLayer.fillColor = UIColor.disconnectedLineColor.cgColor
         self.switchGlowShapeLayer.fillRule = kCAFillRuleEvenOdd
         
+        self.originalCurvedPath = bezierPath
+        
         let widthBetweenSwitchAndEdge = (self.frame.width - self.vpnSwitch.frame.width) / 2
         
         // left of the switch
@@ -106,6 +110,20 @@ class VPNSwitchAnimationView: UIView {
     
     func beginConnectAnimation() {
         transformShapeAroundSwitch()
+        
+        let chaserYValue = self.bounds.height / 2 // - nonConnectedLineHeight / 2
+        let originalChaserBounds = CGRect(x: 0, y: chaserYValue, width: lineWidth, height: nonConnectedLineHeight)
+        
+        self.leftLineGradientLayer.colors = self.connectingGradientColors
+        self.rightLineGradientLayer.colors = self.connectingGradientColors
+        
+        self.chaserGradientLayer.colors = [UIColor.clear.cgColor, UIColor(white: 0.0, alpha: 0.2).cgColor, UIColor.white.cgColor, UIColor(white: 0.0, alpha: 0.2).cgColor, UIColor.clear.cgColor]
+        self.chaserGradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        self.chaserGradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
+        self.chaserGradientLayer.locations = [0.1, 0.2, 0.5, 0.8, 0.9]
+        self.chaserGradientLayer.frame = CGRect(x: 0, y: chaserYValue, width: lineWidth, height: nonConnectedLineHeight)
+        
+        self.layer.insertSublayer(self.chaserGradientLayer, below: self.vpnSwitch.layer)
         
         // move to min
         
@@ -270,7 +288,27 @@ class VPNSwitchAnimationView: UIView {
         self.chaserGradientLayer.removeAnimation(forKey: "heartbeatAnimation")
         self.chaserGradientLayer.removeFromSuperlayer()
         
-        self.setupLineLayers()
+        let switchGlowPathAnimation = CABasicAnimation(keyPath: "path")
+        switchGlowPathAnimation.fromValue = self.switchGlowShapeLayer.path
+        switchGlowPathAnimation.toValue = self.originalCurvedPath?.cgPath
+        switchGlowPathAnimation.duration = 0.3
+        self.switchGlowShapeLayer.add(switchGlowPathAnimation, forKey: "path")
+        
+        let switchGlowFillColorAnimation = CABasicAnimation(keyPath: "fillColor")
+        switchGlowFillColorAnimation.fromValue = self.switchGlowShapeLayer.fillColor
+        switchGlowFillColorAnimation.toValue = UIColor.disconnectedLineColor.cgColor
+        switchGlowFillColorAnimation.duration = 0.1
+        
+        let switchGlowAnimationGroup = CAAnimationGroup()
+        switchGlowAnimationGroup.animations = [
+            switchGlowPathAnimation,
+            switchGlowFillColorAnimation
+        ]
+        
+        self.switchGlowShapeLayer.add(switchGlowAnimationGroup, forKey: "switchGlowAnimation")
+        
+        self.switchGlowShapeLayer.path = self.originalCurvedPath?.cgPath
+        self.switchGlowShapeLayer.fillColor = UIColor.disconnectedLineColor.cgColor
     }
     
     func transitionToConnectedAnimation() {
