@@ -23,6 +23,9 @@ class AccountConfigurationTableViewController: UITableViewController {
         case signOut = 90
         case share = 100
         case manageAccount = 110
+        case tos = 120
+        case license = 130
+        case privacy = 140
     }
 
     override func viewDidLoad() {
@@ -64,7 +67,7 @@ class AccountConfigurationTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3 // account detail, account settings, more
+        return 4 // account detail, account settings, more, other
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,6 +81,8 @@ class AccountConfigurationTableViewController: UITableViewController {
         case 2:
             return 3
 //            return 5
+        case 3:
+            return 3
         default:
             return 0
         }
@@ -98,6 +103,8 @@ class AccountConfigurationTableViewController: UITableViewController {
                 label.text = "Account Settings"
             case 2:
                 label.text = "More"
+            case 3:
+                label.text = "Other"
             default:
                 label.text = ""
             }
@@ -127,6 +134,9 @@ class AccountConfigurationTableViewController: UITableViewController {
             }
             else if indexPath.section == 2 {
                 setupCellForMoreSection(row: indexPath.row, cell: cell!)
+            }
+            else if indexPath.section == 3 {
+                setupCellForOtherSection(row: indexPath.row, cell: cell!)
             }
         }
         return cell!
@@ -193,6 +203,15 @@ class AccountConfigurationTableViewController: UITableViewController {
                 UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
                     NotificationCenter.default.post(name: kResetCenterViewNotification, object: nil)
                 }
+            case .tos:
+                let url = URL(string: "https://cypherpunk.com/terms-of-service")
+                UIApplication.shared.openURL(url!)
+            case .privacy:
+                let url = URL(string: "https://cypherpunk.com/privacy-policy")
+                UIApplication.shared.openURL(url!)
+            case .license:
+                let url = URL(string: "https://cypherpunk.com/legal/license/ios")
+                UIApplication.shared.openURL(url!)
             default:
                 break
             }
@@ -265,6 +284,22 @@ class AccountConfigurationTableViewController: UITableViewController {
 //            cell.textLabel?.text = "Log out"
 //            cell.tag = Rows.signOut.rawValue
 //            cell.accessoryType = .none
+        default:
+            break
+        }
+    }
+    
+    private func setupCellForOtherSection(row: Int, cell: UITableViewCell) {
+        switch row {
+        case 0:
+            cell.textLabel?.text = "Terms of Service"
+            cell.tag = Rows.tos.rawValue
+        case 1:
+            cell.textLabel?.text = "Privacy Policy"
+            cell.tag = Rows.privacy.rawValue
+        case 2:
+            cell.textLabel?.text = "License Information"
+            cell.tag = Rows.license.rawValue
         default:
             break
         }
