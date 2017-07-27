@@ -99,6 +99,10 @@ extension UIColor {
         return UIColor(red: 196 / 255.0, green: 255 / 255.0, blue: 254 / 255.0, alpha: 1.0)
     }
     
+    class var switchThumbBaseColor: UIColor {
+        return UIColor(red: 17.0 / 255.0, green: 119.0 / 255.0, blue: 119.0 / 255.0, alpha: 1.0)
+    }
+    
     /**    https://gist.github.com/mbigatti/c6be210a6bbc0ff25972 */
     /**
      Construct a UIColor using an HTML/CSS RGB formatted value and an alpha value

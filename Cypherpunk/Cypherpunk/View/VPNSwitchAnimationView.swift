@@ -11,6 +11,7 @@ import Cartography
 
 class VPNSwitchAnimationView: UIView {
     let nonConnectedLineHeight: CGFloat = 5.0
+    let connectedLineHeight: CGFloat = 25.0
     let lineWidth: CGFloat = 45.0
     let dotHeight: CGFloat = 5.0
     let ellipsisRadius: CGFloat = 20.0
@@ -25,9 +26,9 @@ class VPNSwitchAnimationView: UIView {
     
     var originalCurvedPath: UIBezierPath?
     
-    let gradientColors = [UIColor.disconnectedLineColor.cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.1).cgColor] as [Any]
+    let disconnectGradientColors = [UIColor.disconnectedLineColor.cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.1).cgColor] as [Any]
     
-    let connectingGradientColors = [UIColor.connectingLineColor.cgColor, UIColor.connectingLineColor.withAlphaComponent(0.1).cgColor] as [Any]
+    let connectGradientColors = [UIColor.connectingLineColor.cgColor, UIColor.connectingLineColor.withAlphaComponent(0.1).cgColor] as [Any]
 
     
     var vpnSwitchDelegate: VPNSwitchDelegate? {
@@ -85,21 +86,21 @@ class VPNSwitchAnimationView: UIView {
         
         // left of the switch
         let leftLineFrame = CGRect(x: 0, y: self.bounds.height / 2.0 - nonConnectedLineHeight / 2.0, width: widthBetweenSwitchAndEdge - 10, height: nonConnectedLineHeight)
-        self.leftLineGradientLayer.colors = self.gradientColors
+        self.leftLineGradientLayer.colors = self.connectGradientColors
         self.leftLineGradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
         self.leftLineGradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
         self.leftLineGradientLayer.frame = leftLineFrame
         
         // right of the switch
         let rightLineFrame = CGRect(x: self.bounds.width - widthBetweenSwitchAndEdge + 10, y: self.bounds.height / 2.0 - nonConnectedLineHeight / 2.0, width: widthBetweenSwitchAndEdge - 10, height: nonConnectedLineHeight)
-        self.rightLineGradientLayer.colors = self.gradientColors
+        self.rightLineGradientLayer.colors = self.connectGradientColors
         self.rightLineGradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         self.rightLineGradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         self.rightLineGradientLayer.frame = rightLineFrame
         
-        self.layer.addSublayer(self.leftLineGradientLayer)
-        self.layer.addSublayer(self.rightLineGradientLayer)
         self.layer.addSublayer(self.switchGlowShapeLayer)
+        self.layer.insertSublayer(self.leftLineGradientLayer, below: self.vpnSwitch.layer)
+        self.layer.insertSublayer(self.rightLineGradientLayer, below: self.vpnSwitch.layer)
     }
 
     override func layoutSubviews() {
@@ -110,12 +111,12 @@ class VPNSwitchAnimationView: UIView {
     
     func beginConnectAnimation() {
         transformShapeAroundSwitch()
+
+        self.leftLineGradientLayer.colors = connectGradientColors
+        self.rightLineGradientLayer.colors = connectGradientColors
         
         let chaserYValue = self.bounds.height / 2 // - nonConnectedLineHeight / 2
         let originalChaserBounds = CGRect(x: 0, y: chaserYValue, width: lineWidth, height: nonConnectedLineHeight)
-        
-        self.leftLineGradientLayer.colors = self.connectingGradientColors
-        self.rightLineGradientLayer.colors = self.connectingGradientColors
         
         self.chaserGradientLayer.colors = [UIColor.clear.cgColor, UIColor(white: 0.0, alpha: 0.2).cgColor, UIColor.white.cgColor, UIColor(white: 0.0, alpha: 0.2).cgColor, UIColor.clear.cgColor]
         self.chaserGradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
@@ -282,8 +283,7 @@ class VPNSwitchAnimationView: UIView {
     }
     
     func cancelConnectAnimation() {
-        self.leftLineGradientLayer.colors = self.gradientColors
-        self.rightLineGradientLayer.colors = self.gradientColors
+        animateLine(connect: false)
         
         self.chaserGradientLayer.removeAnimation(forKey: "heartbeatAnimation")
         self.chaserGradientLayer.removeFromSuperlayer()
@@ -312,18 +312,56 @@ class VPNSwitchAnimationView: UIView {
     }
     
     func transitionToConnectedAnimation() {
+        transformShapeAroundSwitch()
+        animateLine(connect: true)
+        
         self.chaserGradientLayer.removeAnimation(forKey: "heartbeatAnimation")
         self.chaserGradientLayer.removeFromSuperlayer()
+    }
+    
+    private func animateLine(connect: Bool) {
         
-        let originalBounds = self.leftLineGradientLayer.bounds
-        let newBounds = CGRect(x: originalBounds.minX, y: self.bounds.height / 2 - (self.vpnSwitch.bounds.height - 10) / 2, width: originalBounds.width, height: self.vpnSwitch.bounds.height - 10)
+        let leftOriginalBounds = self.leftLineGradientLayer.bounds
+        let rightOriginalBounds = self.rightLineGradientLayer.bounds
+        var leftNewBounds: CGRect
+        var rightNewBounds: CGRect
+        
+        if connect {
+            self.leftLineGradientLayer.colors = self.connectGradientColors
+            self.rightLineGradientLayer.colors = self.connectGradientColors
+            
+            let lineHeightDifference: CGFloat = 10
+            let lineDelta: CGFloat = 14 // this is used because the shape around the switch moves inward
+            
+            let newHeight = self.vpnSwitch.bounds.height - lineHeightDifference
+            
+            leftNewBounds = CGRect(x: leftOriginalBounds.minX, y: self.bounds.height / 2.0 - connectedLineHeight / 2.0, width: leftOriginalBounds.width + lineDelta, height: newHeight)
+            
+            rightNewBounds = CGRect(x: rightOriginalBounds.minX - lineDelta, y: self.bounds.height / 2 - connectedLineHeight / 2, width: rightOriginalBounds.width + lineDelta, height: newHeight)
+        }
+        else {
+            self.leftLineGradientLayer.colors = self.disconnectGradientColors
+            self.rightLineGradientLayer.colors = self.disconnectGradientColors
+            
+            let widthBetweenSwitchAndEdge = (self.frame.width - self.vpnSwitch.frame.width) / 2
+            
+            leftNewBounds = CGRect(x: 0, y: self.bounds.height / 2.0 - nonConnectedLineHeight / 2.0, width: widthBetweenSwitchAndEdge - 10, height: nonConnectedLineHeight)
+            rightNewBounds = CGRect(x: self.bounds.width - widthBetweenSwitchAndEdge + 10, y: self.bounds.height / 2.0 - nonConnectedLineHeight / 2.0, width: widthBetweenSwitchAndEdge - 10, height: nonConnectedLineHeight)
+        }
+        
+        // animate right and left line bounds
+        let leftLineBoundsAnimation = CABasicAnimation(keyPath: "bounds")
+        leftLineBoundsAnimation.fromValue = leftOriginalBounds
+        leftLineBoundsAnimation.toValue = leftNewBounds
+        
+        let rightLineBoundsAnimation = CABasicAnimation(keyPath: "bounds")
+        rightLineBoundsAnimation.fromValue = rightOriginalBounds
+        rightLineBoundsAnimation.toValue = rightNewBounds
+        
+        self.leftLineGradientLayer.add(leftLineBoundsAnimation, forKey: "bounds")
+        self.rightLineGradientLayer.add(rightLineBoundsAnimation, forKey: "bounds")
 
-        let leftLineHeightAnimation = CABasicAnimation(keyPath: "bounds")
-        leftLineHeightAnimation.fromValue = originalBounds
-        leftLineHeightAnimation.toValue = newBounds
-        
-        self.leftLineGradientLayer.add(leftLineHeightAnimation, forKey: "heightChange")
-        
-        self.leftLineGradientLayer.bounds = newBounds
+        self.leftLineGradientLayer.bounds = leftNewBounds
+        self.rightLineGradientLayer.bounds = rightNewBounds
     }
 }

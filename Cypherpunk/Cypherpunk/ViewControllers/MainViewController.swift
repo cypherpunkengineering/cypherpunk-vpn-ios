@@ -263,6 +263,7 @@ class MainViewController: UIViewController, StoreSubscriber {
         UIView.animate(withDuration: 0.5) { 
             self.locationSelectorVC?.view.alpha = 1.0
             self.vpnSwitch.isHidden = true
+            self.vpnSwitchAnimationView.isHidden = true
             self.locationSelectorButton.isHidden = true
             self.statusTitleLabel.isHidden = true
             self.statusLabel.isHidden = true
@@ -285,7 +286,7 @@ class MainViewController: UIViewController, StoreSubscriber {
             self.vpnSwitchAnimationView.beginConnectAnimation()
         case .connected:
             status = "Connected"
-            self.vpnSwitchAnimationView.cancelConnectAnimation()
+            self.vpnSwitchAnimationView.transitionToConnectedAnimation()
         case .disconnecting:
             status = "Disconnecting"
             self.vpnSwitchAnimationView.cancelConnectAnimation()
@@ -375,6 +376,7 @@ extension MainViewController: LocationSelectionDelegate {
             self.locationSelectorVC?.view.removeFromSuperview()
             
             self.vpnSwitch.isHidden = false
+            self.vpnSwitchAnimationView.isHidden = false
             self.locationSelectorButton.isHidden = false
             self.statusTitleLabel.isHidden = false
             self.statusLabel.isHidden = false

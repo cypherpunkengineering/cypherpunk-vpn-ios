@@ -57,7 +57,7 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
         
         // slider thumb
         // base layer for thumb
-        sliderThumbLayer.fillColor = UIColor(red: 17.0 / 255.0, green: 119.0 / 255.0, blue: 119.0 / 255.0, alpha: 1.0).cgColor
+        sliderThumbLayer.fillColor = UIColor.switchThumbBaseColor.cgColor
         
         let thumbDiameter = self.frame.height - 10
         let thumbOutlinePath = UIBezierPath(ovalIn: CGRect(x: 4, y: 5, width: thumbDiameter, height: thumbDiameter))
@@ -106,10 +106,16 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
             //animation.delegate = self
             thumbGradientLayer.colors = toColors
             
+            let thumbFillColorAnimation = CABasicAnimation(keyPath: "fillColor")
+            thumbFillColorAnimation.fromValue = sliderThumbLayer.fillColor
+            thumbFillColorAnimation.toValue = UIColor.connectGlowColor.cgColor
+            
             sliderThumbLayer.add(animation, forKey: "position")
             thumbGradientLayer.add(colorAnimation, forKey: "animateGradient")
+            sliderThumbLayer.add(thumbFillColorAnimation, forKey: "fillColor")
             
             sliderThumbLayer.position = CGPoint(x: onXCoord, y: 0)
+            sliderThumbLayer.fillColor = UIColor.connectGlowColor.cgColor
         }
         else {
             let animation = CABasicAnimation(keyPath: "position")
@@ -127,10 +133,16 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
             //animation.delegate = self
             thumbGradientLayer.colors = thumbGradientColors
             
+            let thumbFillColorAnimation = CABasicAnimation(keyPath: "fillColor")
+            thumbFillColorAnimation.fromValue = sliderThumbLayer.fillColor
+            thumbFillColorAnimation.toValue = UIColor.connectGlowColor.cgColor
+            
             sliderThumbLayer.add(animation, forKey: "position")
             thumbGradientLayer.add(colorAnimation, forKey: "animateGradient")
+            sliderThumbLayer.add(thumbFillColorAnimation, forKey: "fillColor")
             
             sliderThumbLayer.position = CGPoint(x: 0, y: 0)
+            sliderThumbLayer.fillColor = UIColor.switchThumbBaseColor.cgColor
         }
     }
     
