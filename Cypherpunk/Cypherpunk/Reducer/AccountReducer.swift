@@ -80,7 +80,6 @@ struct AccountReducer {
             accountState.save()
         case .logout:
             accountState.isLoggedIn = false
-            VPNConfigurationCoordinator.disconnect()
             VPNConfigurationCoordinator.removeFromPreferences()
             AccountState.removeLastLoggedInService()
         case .upgrade(let subscription, let expiredDate):
