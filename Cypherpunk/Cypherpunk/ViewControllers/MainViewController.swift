@@ -25,6 +25,7 @@ class MainViewController: UIViewController, StoreSubscriber {
     var locationSelectorVC: LocationSelectorViewController?
     var statusTitleLabel = UILabel()
     var statusLabel = UILabel()
+    var statusDetailLabel = UILabel()
     let leftButton = AccountButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     let rightButton = ConfigurationButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     
@@ -115,19 +116,29 @@ class MainViewController: UIViewController, StoreSubscriber {
         
         self.view.addSubview(self.vpnSwitch)
         constrain(self.view, self.vpnSwitch) { parentView, childView in
-            childView.bottom == parentView.centerY - 75
+            childView.bottom == parentView.centerY - 80
             childView.height == self.vpnSwitch.frame.height
             childView.width == self.vpnSwitch.frame.width
             childView.centerX == parentView.centerX
         }
 //        self.vpnSwitch.delegate = self
         
+        statusDetailLabel.textColor = UIColor.seafoamBlue
+        statusDetailLabel.text = "Status details"
+        statusDetailLabel.font = R.font.dosisRegular(size: 14)
+        self.view.addSubview(self.statusDetailLabel)
+        constrain(self.view, self.statusDetailLabel) { parentView, childView in
+            childView.bottom == parentView.centerY
+            childView.centerX == parentView.centerX
+            childView.height == 20
+        }
+        
         self.view.addSubview(self.statusLabel)
         self.statusLabel.font = R.font.dosisMedium(size: 18)
         self.statusLabel.text = "DISCONNECTED"
         self.statusLabel.textColor = UIColor.white
-        constrain(self.view, self.statusLabel) { parentView, childView in
-            childView.bottom == parentView.centerY
+        constrain(self.view, self.statusLabel, self.statusDetailLabel) { parentView, childView, statusDetailLabel in
+            childView.bottom == statusDetailLabel.top - 10
             childView.centerX == parentView.centerX
         }
         
@@ -180,15 +191,6 @@ class MainViewController: UIViewController, StoreSubscriber {
         VPNConfigurationCoordinator.load {_ in
             let status = NEVPNManager.shared().connection.status
             self.updateView(vpnStatus: status)
-            
-            if mainStore.state.settingsState.alwaysOn {
-                // leak protection is set to always on
-                self.vpnSwitch.isOn = mainStore.state.settingsState.toggleOn
-            }
-            else {
-                // leak protection is off
-                self.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
-            }
             
             self.vpnSwitch.delegate = self
         }
@@ -253,28 +255,39 @@ class MainViewController: UIViewController, StoreSubscriber {
             self.locationSelectorButton.isHidden = true
             self.statusTitleLabel.isHidden = true
             self.statusLabel.isHidden = true
+            self.statusDetailLabel.isHidden = true
             self.mapImageView.isMarkerInBackground = true
         }
     }
     
     private func updateView(vpnStatus: NEVPNStatus) {
         var status = ""
+        var statusDetail = ""
         
         switch vpnStatus {
         case .invalid:
             status = "Invalid"
+            statusDetail = "VPN configuration error occurred"
         case .connecting:
-            status = "Connecting"
-            if !mainStore.state.settingsState.alwaysOn {
-                // leak protection is set to always on
-                self.vpnSwitch.isOn = true
-            }
+            status = "Connecting..."
         case .connected:
             status = "Connected"
+            if let ssid = ConnectionHelper.currentWifiSSID(), !ConnectionHelper.currentWifiNetworkTrusted() {
+                statusDetail = "\(ssid) is not a trusted network"
+            }
+            else if ConnectionHelper.connectedToCellular() && !mainStore.state.settingsState.isTrustCellularNetworks {
+                statusDetail = "Cellular networks are not trusted"
+            }
         case .disconnecting:
-            status = "Disconnecting"
+            status = "Disconnecting..."
         case .disconnected:
             status = "Disconnected"
+            if ConnectionHelper.currentWifiNetworkTrusted() {
+                statusDetail = "\(ConnectionHelper.currentWifiSSID()!) is a trusted network"
+            }
+            else if ConnectionHelper.connectedToCellular() && mainStore.state.settingsState.isTrustCellularNetworks {
+                statusDetail = "Cellular networks are trusted"
+            }
         case .reasserting:
             status = "Reasserting"
         }
@@ -282,9 +295,10 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.statusLabel.text = status.uppercased()
         self.statusLabel.sizeToFit()
         
-        if !mainStore.state.settingsState.alwaysOn {
-            self.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
-        }
+        self.statusDetailLabel.text = statusDetail
+        self.statusDetailLabel.sizeToFit()
+        
+        self.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
         
 //        if UIDevice.current.isSimulator {
 //            // TODO what should be done here
@@ -325,7 +339,6 @@ class MainViewController: UIViewController, StoreSubscriber {
     }
     
     func newState(state: RegionState) {
-        print("NEW STATE")
         // TODO: is there really no way to target specific property changes?
         updateViewWithLastSeclectedRegion()
     }
@@ -361,6 +374,7 @@ extension MainViewController: LocationSelectionDelegate {
             self.locationSelectorButton.isHidden = false
             self.statusTitleLabel.isHidden = false
             self.statusLabel.isHidden = false
+            self.statusDetailLabel.isHidden = false
             
             self.mapImageView.isMarkerInBackground = false
         }) { (completed) in
@@ -382,17 +396,11 @@ extension MainViewController: LocationButtonDelgate {
 
 extension MainViewController: VPNSwitchDelegate {
     func stateChanged(on: Bool) {
-        if mainStore.state.settingsState.alwaysOn {
-            // leak protection is set to always on
+        if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnected {
+            VPNConfigurationCoordinator.disconnect()
         }
-        else {
-            // leak protection is off
-            if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnected {
-                VPNConfigurationCoordinator.disconnect()
-            }
-            else if VPNConfigurationCoordinator.isDisconnected || VPNConfigurationCoordinator.isDisconnecting {
-                VPNConfigurationCoordinator.connect()
-            }
+        else if VPNConfigurationCoordinator.isDisconnected || VPNConfigurationCoordinator.isDisconnecting {
+            VPNConfigurationCoordinator.connect()
         }
         mainStore.dispatch(SettingsAction.toggleOn(isOn: on))
     }

@@ -50,7 +50,7 @@ open class VPNConfigurationCoordinator {
                 ssidBlacklist.append(netInfo.name)
             }
 
-            if settingsState.alwaysOn && settingsState.toggleOn {
+            if settingsState.alwaysOn {
                 // if Leak Protection is "Always On"
                 let alwaysConnectRule = NEOnDemandRuleConnect()
                 alwaysConnectRule.interfaceTypeMatch = .any
@@ -73,23 +73,23 @@ open class VPNConfigurationCoordinator {
                 }
             }
             else {
-                 // if Leak Protection is "Off"
-                 let cellularConnectRule = NEOnDemandRuleConnect()
-                 cellularConnectRule.interfaceTypeMatch = .cellular
-                 
-                 let wifiConnectRule = NEOnDemandRuleConnect()
-                 wifiConnectRule.interfaceTypeMatch = .wiFi
-                 wifiConnectRule.ssidMatch = ssidBlacklist
-                 
-                 if settingsState.isTrustCellularNetworks && ssidBlacklist.count != 0 {
-                 manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
-                 } else if settingsState.isTrustCellularNetworks {
-                 manager.onDemandRules = [cellularConnectRule]
-                 } else if ssidWhitelist.count != 0 {
-                 manager.onDemandRules = [wifiConnectRule]
-                 } else {
-                 manager.onDemandRules = []
-                 }
+                // if Leak Protection is "Off"
+                let cellularConnectRule = NEOnDemandRuleConnect()
+                cellularConnectRule.interfaceTypeMatch = .cellular
+
+                let wifiConnectRule = NEOnDemandRuleConnect()
+                wifiConnectRule.interfaceTypeMatch = .wiFi
+                wifiConnectRule.ssidMatch = ssidBlacklist
+
+                if settingsState.isTrustCellularNetworks && ssidBlacklist.count != 0 {
+                    manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
+                } else if settingsState.isTrustCellularNetworks {
+                    manager.onDemandRules = [cellularConnectRule]
+                } else if ssidWhitelist.count != 0 {
+                    manager.onDemandRules = [wifiConnectRule]
+                } else {
+                    manager.onDemandRules = []
+                }
             }
             
             manager.localizedDescription = "Cypherpunk Privacy"
@@ -101,7 +101,7 @@ open class VPNConfigurationCoordinator {
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()
                 manager.loadFromPreferences(completionHandler: { (error) in
-                    print(manager.protocolConfiguration!)
+//                    print(manager.protocolConfiguration!)
                     if reconnect {
                         VPNConfigurationCoordinator.connect()
                     }
