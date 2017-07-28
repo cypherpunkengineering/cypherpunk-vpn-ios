@@ -158,12 +158,12 @@ open class VPNConfigurationCoordinator {
 
             manager.isOnDemandEnabled = false
 
-            manager.saveToPreferences(completionHandler: { error in
+//            manager.saveToPreferences(completionHandler: { error in
                 manager.connection.stopVPNTunnel()
 
-                manager.loadFromPreferences(completionHandler: { error in
-                })
-            })
+//                manager.loadFromPreferences(completionHandler: { error in
+//                })
+//            })
         }
         if #available(iOS 9.0, *) {
             print("Stopping VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
@@ -176,34 +176,6 @@ open class VPNConfigurationCoordinator {
     class func removeFromPreferences() {
         let manager = NEVPNManager.shared()
         manager.removeFromPreferences(completionHandler: nil)
-    }
-
-    class var isProfileEnabled: Bool {
-        set {
-            let manager = NEVPNManager.shared()
-
-            manager.loadFromPreferences(completionHandler: { error in
-                manager.saveToPreferences { (error) in
-                    manager.isOnDemandEnabled = newValue
-
-                    // the profile is being enabled, connect to the VPN
-                    if newValue && !self.isConnected {
-                        VPNConfigurationCoordinator.connect()
-                    }
-                    else {
-                        if self.isConnected {
-                            VPNConfigurationCoordinator.disconnect()
-                        }
-                    }
-
-                }
-            })
-        }
-        get {
-            let manager = NEVPNManager.shared()
-
-            return manager.isEnabled
-        }
     }
 
     class var isConnected: Bool {
