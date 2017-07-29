@@ -300,6 +300,8 @@ class MainViewController: UIViewController, StoreSubscriber {
         
         self.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
         
+        print(status)
+        
 //        if UIDevice.current.isSimulator {
 //            // TODO what should be done here
 //        }

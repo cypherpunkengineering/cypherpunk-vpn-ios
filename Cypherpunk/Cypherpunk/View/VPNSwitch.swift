@@ -19,7 +19,6 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
         didSet {
             if oldValue != isOn {
                 updateToggle(on: isOn)
-                delegate?.stateChanged(on: isOn)
             }
         }
     }
@@ -137,5 +136,6 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
     
     func handleTap(sender: UITapGestureRecognizer) {
         isOn = !isOn
+        delegate?.stateChanged(on: isOn) // only call if triggered by user
     }
 }
