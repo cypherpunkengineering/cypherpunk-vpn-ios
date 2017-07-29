@@ -8,14 +8,14 @@
 
 import NetworkExtension
 import RealmSwift
+import SystemConfiguration.CaptiveNetwork
+import ReachabilitySwift
 
 class ConnectionHelper {
     static func connectTo(region: Region, cypherplay: Bool) {
-         mainStore.dispatch(SettingsAction.cypherplayOn(isOn: cypherplay))
+        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level, cypherplayOn: cypherplay))
         
-        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
-        
-        VPNConfigurationCoordinator.start {
+        VPNConfigurationCoordinator.start(connectIfDisconnected: true) {
         }
     }
         
@@ -139,21 +139,68 @@ class ConnectionHelper {
     }
     
     static func setFastestToLastConnected(defaultRegion: Region?) {
+        let cypherplayOn = mainStore.state.regionState.cypherplayOn
+        
         // set to fastest
         if let fastestRegion = ConnectionHelper.findFastest() {
-            mainStore.dispatch(RegionAction.changeRegion(regionId: fastestRegion.id, name: fastestRegion.name, fullName: fastestRegion.fullName, serverIP: fastestRegion.ipsecHostname, countryCode: fastestRegion.country, remoteIdentifier: fastestRegion.ipsecHostname, level: fastestRegion.level))
+            mainStore.dispatch(RegionAction.changeRegion(regionId: fastestRegion.id, name: fastestRegion.name, fullName: fastestRegion.fullName, serverIP: fastestRegion.ipsecHostname, countryCode: fastestRegion.country, remoteIdentifier: fastestRegion.ipsecHostname, level: fastestRegion.level, cypherplayOn: cypherplayOn))
             VPNConfigurationCoordinator.start {
                 
             }
         }
         else {
             if let region = defaultRegion {
-                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level, cypherplayOn: cypherplayOn))
                 VPNConfigurationCoordinator.start {
                     
                 }
             }
         }
+    }
+    
+    /*
+     * Determines if the current wifi network is trusted by the user.
+     * NOTE: If not connected to wifi this function will also return false.
+     */
+    static func currentWifiNetworkTrusted() -> Bool {
+        var trusted = false
+        
+        if let currentSSID = ConnectionHelper.currentWifiSSID() {
+            let realm = try! Realm()
+            if let network = realm.object(ofType: WifiNetworks.self, forPrimaryKey: currentSSID) {
+                trusted = network.isTrusted
+            }
+        }
+        return trusted
+    }
+    
+    // https://stackoverflow.com/questions/10967511/ios-get-current-wlan-network-name
+    static func currentWifiSSID() -> String? {
+        var ssid: String? = nil
+        
+        if let interface = CNCopySupportedInterfaces() {
+            for i in 0..<CFArrayGetCount(interface) {
+                let interfaceName: UnsafeRawPointer = CFArrayGetValueAtIndex(interface, i)
+                let rec = unsafeBitCast(interfaceName, to: AnyObject.self)
+                if let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)" as CFString), let interfaceData = unsafeInterfaceData as? [String : AnyObject] {
+                    // connected wifi
+//                    print("BSSID: \(interfaceData["BSSID"]), SSID: \(interfaceData["SSID"]), SSIDDATA: \(interfaceData["SSIDDATA"])")
+                    ssid = interfaceData["SSID"]?.description
+                    break
+                    
+                } else {
+                    // not connected wifi
+                }
+            }
+        }
+        return ssid
+    }
+    
+    static func connectedToCellular() -> Bool {
+        let r = Reachability(hostname: "https://cypherpunk.com")
+        let currentStatus = r?.currentReachabilityStatus
+        
+        return currentStatus == Reachability.NetworkStatus.reachableViaWWAN
     }
 }
 

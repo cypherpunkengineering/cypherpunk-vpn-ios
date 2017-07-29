@@ -21,7 +21,7 @@ open class VPNConfigurationCoordinator {
     }
 
     // if the VPN is active this will stop the tunnel
-    class func start(_ completion: @escaping () -> ()) {
+    class func start(connectIfDisconnected: Bool = false, _ completion: @escaping () -> ()) {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
 
@@ -50,7 +50,7 @@ open class VPNConfigurationCoordinator {
                 ssidBlacklist.append(netInfo.name)
             }
 
-            if settingsState.alwaysOn && settingsState.toggleOn {
+            if settingsState.alwaysOn {
                 // if Leak Protection is "Always On"
                 let alwaysConnectRule = NEOnDemandRuleConnect()
                 alwaysConnectRule.interfaceTypeMatch = .any
@@ -73,35 +73,35 @@ open class VPNConfigurationCoordinator {
                 }
             }
             else {
-                 // if Leak Protection is "Off"
-                 let cellularConnectRule = NEOnDemandRuleConnect()
-                 cellularConnectRule.interfaceTypeMatch = .cellular
-                 
-                 let wifiConnectRule = NEOnDemandRuleConnect()
-                 wifiConnectRule.interfaceTypeMatch = .wiFi
-                 wifiConnectRule.ssidMatch = ssidBlacklist
-                 
-                 if settingsState.isTrustCellularNetworks && ssidBlacklist.count != 0 {
-                 manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
-                 } else if settingsState.isTrustCellularNetworks {
-                 manager.onDemandRules = [cellularConnectRule]
-                 } else if ssidWhitelist.count != 0 {
-                 manager.onDemandRules = [wifiConnectRule]
-                 } else {
-                 manager.onDemandRules = []
-                 }
+                // if Leak Protection is "Off"
+                let cellularConnectRule = NEOnDemandRuleConnect()
+                cellularConnectRule.interfaceTypeMatch = .cellular
+
+                let wifiConnectRule = NEOnDemandRuleConnect()
+                wifiConnectRule.interfaceTypeMatch = .wiFi
+                wifiConnectRule.ssidMatch = ssidBlacklist
+
+                if settingsState.isTrustCellularNetworks && ssidBlacklist.count != 0 {
+                    manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
+                } else if settingsState.isTrustCellularNetworks {
+                    manager.onDemandRules = [cellularConnectRule]
+                } else if ssidWhitelist.count != 0 {
+                    manager.onDemandRules = [wifiConnectRule]
+                } else {
+                    manager.onDemandRules = []
+                }
             }
             
             manager.localizedDescription = "Cypherpunk Privacy"
             manager.isOnDemandEnabled = true
             manager.isEnabled = true
 
-            let reconnect = self.isConnected || self.isConnecting
+            let reconnect = self.isConnected || self.isConnecting || connectIfDisconnected
 
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()
                 manager.loadFromPreferences(completionHandler: { (error) in
-                    print(manager.protocolConfiguration!)
+//                    print(manager.protocolConfiguration!)
                     if reconnect {
                         VPNConfigurationCoordinator.connect()
                     }
@@ -156,14 +156,20 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
 
-            manager.isOnDemandEnabled = false
-
-            manager.saveToPreferences(completionHandler: { error in
-                manager.connection.stopVPNTunnel()
-
-                manager.loadFromPreferences(completionHandler: { error in
+            if manager.isOnDemandEnabled {
+                manager.isOnDemandEnabled = false
+                
+                // need to save is on demand enabled
+                manager.saveToPreferences(completionHandler: { error in
+                    manager.connection.stopVPNTunnel()
+                    
+                    manager.loadFromPreferences(completionHandler: { error in
+                    })
                 })
-            })
+            }
+            else {
+                manager.connection.stopVPNTunnel()
+            }
         }
         if #available(iOS 9.0, *) {
             print("Stopping VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
@@ -176,34 +182,6 @@ open class VPNConfigurationCoordinator {
     class func removeFromPreferences() {
         let manager = NEVPNManager.shared()
         manager.removeFromPreferences(completionHandler: nil)
-    }
-
-    class var isProfileEnabled: Bool {
-        set {
-            let manager = NEVPNManager.shared()
-
-            manager.loadFromPreferences(completionHandler: { error in
-                manager.saveToPreferences { (error) in
-                    manager.isOnDemandEnabled = newValue
-
-                    // the profile is being enabled, connect to the VPN
-                    if newValue && !self.isConnected {
-                        VPNConfigurationCoordinator.connect()
-                    }
-                    else {
-                        if self.isConnected {
-                            VPNConfigurationCoordinator.disconnect()
-                        }
-                    }
-
-                }
-            })
-        }
-        get {
-            let manager = NEVPNManager.shared()
-
-            return manager.isEnabled
-        }
     }
 
     class var isConnected: Bool {
@@ -228,12 +206,13 @@ open class VPNConfigurationCoordinator {
 
     private class func generateLocalIdentifier() -> String {
         let settingsState = mainStore.state.settingsState
+        let regionState = mainStore.state.regionState
 
         var bitmask = 10
 
         bitmask += settingsState.blockAds ? 1 : 0
         bitmask += settingsState.blockMalware ? 2 : 0
-        bitmask += settingsState.cypherplayOn ? 4 : 0
+        bitmask += regionState.cypherplayOn ? 4 : 0
 
         print("Local Identifier: cypherpunk-vpn-ios-\(bitmask)")
         return "cypherpunk-vpn-ios-\(bitmask)"

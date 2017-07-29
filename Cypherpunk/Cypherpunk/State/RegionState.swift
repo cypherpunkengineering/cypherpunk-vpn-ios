@@ -35,4 +35,19 @@ struct RegionState: StateType {
             keychain["lastSelectedRegionId"] = newValue
         }
     }
+    
+    var cypherplayOn : Bool {
+        get {
+            if !mainStore.state.isInstalledPreferences {
+                return false
+            }
+            
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain["cypherplayOn"] ?? "false").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain["cypherplayOn"] = String(newValue)
+        }
+    }
 }
