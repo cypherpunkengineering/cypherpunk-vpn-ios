@@ -33,10 +33,6 @@ struct SettingsReducer {
                 state.blockAds = block
             case .blockMalware(let block):
                 state.blockMalware = block
-            case .cypherplayOn(let isOn):
-                state.cypherplayOn = isOn
-                // do not show user the dialog if we are changing cypherplay setting
-                suppressReconnectDialog = true
             case .alwaysOn(let isOn): // leak protection
                 state.alwaysOn = isOn
             case .toggleOn(let isOn):

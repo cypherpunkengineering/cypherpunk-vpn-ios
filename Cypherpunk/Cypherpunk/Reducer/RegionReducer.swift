@@ -66,7 +66,7 @@ struct RegionReducer {
                     regionState.lastSelectedRegionId = region.id
                     regionState.level = region.level
                 }
-            case .changeRegion(let regionId, let name, let fullName, let serverIP, let countryCode, let remoteidentifier, let level):
+            case .changeRegion(let regionId, let name, let fullName, let serverIP, let countryCode, let remoteidentifier, let level, let cypherplayOn):
                 regionState.regionId = regionId
                 regionState.name = name
                 regionState.fullName = fullName
@@ -75,6 +75,7 @@ struct RegionReducer {
                 regionState.remoteIdentifier = remoteidentifier
                 regionState.lastSelectedRegionId = regionId
                 regionState.level = level
+                regionState.cypherplayOn = cypherplayOn
             case .connect:
                 let realm = try! Realm()
                 if let region = realm.object(ofType: Region.self, forPrimaryKey: regionState.regionId) {

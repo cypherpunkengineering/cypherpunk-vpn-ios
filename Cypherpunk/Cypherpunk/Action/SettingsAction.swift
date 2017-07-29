@@ -18,7 +18,6 @@ enum SettingsAction: Action {
     case isAutoSecureConnectionsWhenConnectedOtherNetwork(isOn: Bool)
     case blockAds(block: Bool)
     case blockMalware(block: Bool)
-    case cypherplayOn(isOn: Bool)
     case alwaysOn(isOn: Bool) // leak protection
     case toggleOn(isOn: Bool)
 }

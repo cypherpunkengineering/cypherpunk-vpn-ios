@@ -135,21 +135,6 @@ struct SettingsState: StateType {
         }
     }
     
-    var cypherplayOn : Bool {
-        get {
-            if !mainStore.state.isInstalledPreferences {
-                return false
-            }
-            
-            let keychain = Keychain.userKeychain()
-            return NSString(string: keychain[SettingsStateKey.cypherplayOn] ?? "false").boolValue
-        }
-        set(newValue) {
-            let keychain = Keychain.userKeychain()
-            keychain[SettingsStateKey.cypherplayOn] = String(newValue)
-        }
-    }
-    
     var alwaysOn : Bool {
         get {
             if !mainStore.state.isInstalledPreferences {
@@ -189,7 +174,6 @@ struct SettingsState: StateType {
         static let isAutoSecureConnectionsWhenConnectedOtherNetwork = "isAutoSecureConnectionsWhenConnectedOtherNetwork"
         static let blockAds = "blockAds"
         static let blockMalware = "blockMalware"
-        static let cypherplayOn = "cypherplayOn"
         static let alwaysOn = "alwaysOn"
         static let toggleOn = "toggleOn"
     }

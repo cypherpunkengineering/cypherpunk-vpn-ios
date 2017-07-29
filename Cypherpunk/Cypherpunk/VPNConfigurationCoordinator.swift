@@ -156,15 +156,20 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
 
-            manager.isOnDemandEnabled = false
-
-            // need to save is on demand enabled
-            manager.saveToPreferences(completionHandler: { error in
-                manager.connection.stopVPNTunnel()
+            if manager.isOnDemandEnabled {
+                manager.isOnDemandEnabled = false
                 
-                manager.loadFromPreferences(completionHandler: { error in
+                // need to save is on demand enabled
+                manager.saveToPreferences(completionHandler: { error in
+                    manager.connection.stopVPNTunnel()
+                    
+                    manager.loadFromPreferences(completionHandler: { error in
+                    })
                 })
-            })
+            }
+            else {
+                manager.connection.stopVPNTunnel()
+            }
         }
         if #available(iOS 9.0, *) {
             print("Stopping VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
@@ -201,12 +206,13 @@ open class VPNConfigurationCoordinator {
 
     private class func generateLocalIdentifier() -> String {
         let settingsState = mainStore.state.settingsState
+        let regionState = mainStore.state.regionState
 
         var bitmask = 10
 
         bitmask += settingsState.blockAds ? 1 : 0
         bitmask += settingsState.blockMalware ? 2 : 0
-        bitmask += settingsState.cypherplayOn ? 4 : 0
+        bitmask += regionState.cypherplayOn ? 4 : 0
 
         print("Local Identifier: cypherpunk-vpn-ios-\(bitmask)")
         return "cypherpunk-vpn-ios-\(bitmask)"

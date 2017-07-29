@@ -13,9 +13,7 @@ import ReachabilitySwift
 
 class ConnectionHelper {
     static func connectTo(region: Region, cypherplay: Bool) {
-         mainStore.dispatch(SettingsAction.cypherplayOn(isOn: cypherplay))
-        
-        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+        mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level, cypherplayOn: cypherplay))
         
         VPNConfigurationCoordinator.start {
         }
@@ -141,16 +139,18 @@ class ConnectionHelper {
     }
     
     static func setFastestToLastConnected(defaultRegion: Region?) {
+        let cypherplayOn = mainStore.state.regionState.cypherplayOn
+        
         // set to fastest
         if let fastestRegion = ConnectionHelper.findFastest() {
-            mainStore.dispatch(RegionAction.changeRegion(regionId: fastestRegion.id, name: fastestRegion.name, fullName: fastestRegion.fullName, serverIP: fastestRegion.ipsecHostname, countryCode: fastestRegion.country, remoteIdentifier: fastestRegion.ipsecHostname, level: fastestRegion.level))
+            mainStore.dispatch(RegionAction.changeRegion(regionId: fastestRegion.id, name: fastestRegion.name, fullName: fastestRegion.fullName, serverIP: fastestRegion.ipsecHostname, countryCode: fastestRegion.country, remoteIdentifier: fastestRegion.ipsecHostname, level: fastestRegion.level, cypherplayOn: cypherplayOn))
             VPNConfigurationCoordinator.start {
                 
             }
         }
         else {
             if let region = defaultRegion {
-                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level))
+                mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level, cypherplayOn: cypherplayOn))
                 VPNConfigurationCoordinator.start {
                     
                 }
