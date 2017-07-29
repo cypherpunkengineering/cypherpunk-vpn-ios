@@ -158,12 +158,13 @@ open class VPNConfigurationCoordinator {
 
             manager.isOnDemandEnabled = false
 
-//            manager.saveToPreferences(completionHandler: { error in
+            // need to save is on demand enabled
+            manager.saveToPreferences(completionHandler: { error in
                 manager.connection.stopVPNTunnel()
-
-//                manager.loadFromPreferences(completionHandler: { error in
-//                })
-//            })
+                
+                manager.loadFromPreferences(completionHandler: { error in
+                })
+            })
         }
         if #available(iOS 9.0, *) {
             print("Stopping VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
