@@ -21,7 +21,7 @@ open class VPNConfigurationCoordinator {
     }
 
     // if the VPN is active this will stop the tunnel
-    class func start(_ completion: @escaping () -> ()) {
+    class func start(connectIfDisconnected: Bool = false, _ completion: @escaping () -> ()) {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
 
@@ -96,7 +96,7 @@ open class VPNConfigurationCoordinator {
             manager.isOnDemandEnabled = true
             manager.isEnabled = true
 
-            let reconnect = self.isConnected || self.isConnecting
+            let reconnect = self.isConnected || self.isConnecting || connectIfDisconnected
 
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()

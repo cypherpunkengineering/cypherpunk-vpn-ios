@@ -15,7 +15,7 @@ class ConnectionHelper {
     static func connectTo(region: Region, cypherplay: Bool) {
         mainStore.dispatch(RegionAction.changeRegion(regionId: region.id, name: region.name, fullName: region.fullName, serverIP: region.ipsecHostname, countryCode: region.country, remoteIdentifier: region.ipsecHostname, level: region.level, cypherplayOn: cypherplay))
         
-        VPNConfigurationCoordinator.start {
+        VPNConfigurationCoordinator.start(connectIfDisconnected: true) {
         }
     }
         
