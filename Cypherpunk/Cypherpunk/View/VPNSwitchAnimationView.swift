@@ -16,6 +16,7 @@ class VPNSwitchAnimationView: UIView {
     let dotHeight: CGFloat = 5.0
     let ellipsisRadius: CGFloat = 20.0
     let outerShapeDelta: CGFloat = 18.0
+    let surroundShapeDelta: CGFloat = 10.0
     
     let vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 115, height: 60))
     let lineLayer = CAShapeLayer()
@@ -267,9 +268,7 @@ class VPNSwitchAnimationView: UIView {
         let bezierPath = UIBezierPath()
         bezierPath.usesEvenOddFillRule = true
         
-        let outerShapeDelta: CGFloat = 10
-        
-        let curvedShapePath = UIBezierPath(roundedRect: CGRect(x: vpnSwitchFrame.minX - outerShapeDelta, y: vpnSwitchFrame.minY - outerShapeDelta, width: vpnSwitchWidth + 2 * outerShapeDelta, height: vpnSwitchHeight + 2 * outerShapeDelta), cornerRadius: (vpnSwitchHeight + 2 * outerShapeDelta) / 2)
+        let curvedShapePath = UIBezierPath(roundedRect: CGRect(x: vpnSwitchFrame.minX - surroundShapeDelta, y: vpnSwitchFrame.minY - surroundShapeDelta, width: vpnSwitchWidth + 2 * surroundShapeDelta, height: vpnSwitchHeight + 2 * surroundShapeDelta), cornerRadius: (vpnSwitchHeight + 2 * surroundShapeDelta) / 2)
         curvedShapePath.usesEvenOddFillRule = true
         curvedShapePath.close()
         
@@ -331,7 +330,7 @@ class VPNSwitchAnimationView: UIView {
     }
     
     func transitionToConnectedAnimation() {
-//        transformShapeAroundSwitch()
+        transformShapeAroundSwitch()
         animateLine(connect: true)
         
         self.chaserGradientLayer.removeAnimation(forKey: "heartbeatAnimation")
@@ -351,8 +350,8 @@ class VPNSwitchAnimationView: UIView {
             let vpnSwitchHeight = vpnSwitchFrame.height
             let vpnSwitchWidth = vpnSwitchFrame.width
             
-            let outerShapeHeight: CGFloat = vpnSwitchHeight + 2 * outerShapeDelta
-            let outerShapeWidth: CGFloat = vpnSwitchWidth + 2 * outerShapeDelta
+            let outerShapeHeight: CGFloat = vpnSwitchHeight + 2 * surroundShapeDelta
+            let outerShapeWidth: CGFloat = vpnSwitchWidth + 2 * surroundShapeDelta
             let outerShapeMinX = self.bounds.midX - outerShapeWidth / 2
             
             // left line
@@ -375,7 +374,7 @@ class VPNSwitchAnimationView: UIView {
             leftLineGradientMaskNew.frame = leftBezier.bounds
             leftLineGradientLayer.mask = leftLineGradientMaskNew
             
-            leftLineGradientLayer.fillColor = UIColor.green.cgColor
+            leftLineGradientLayer.fillColor = UIColor.connectingLineColor.cgColor
             leftLineGradientLayer.path = leftBezier.cgPath
             
             // right line
@@ -394,10 +393,10 @@ class VPNSwitchAnimationView: UIView {
             rightLineGradientMaskNew.colors = connectGradientColors
             rightLineGradientMaskNew.endPoint = CGPoint(x: 1.0, y: 0.5)
             rightLineGradientMaskNew.startPoint = CGPoint(x: 0.0, y: 0.5)
-            rightLineGradientMaskNew.frame = rightBezier.bounds
+            rightLineGradientMaskNew.frame = CGRect(x: 0, y: rightBezier.bounds.minY, width: rightBezier.bounds.width, height: rightBezier.bounds.height)
             rightLineGradientLayer.mask = rightLineGradientMaskNew
             
-            rightLineGradientLayer.fillColor = UIColor.green.cgColor
+            rightLineGradientLayer.fillColor = UIColor.connectingLineColor.cgColor
             rightLineGradientLayer.path = rightBezier.cgPath
         }
         else {
