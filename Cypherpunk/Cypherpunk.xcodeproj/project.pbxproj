@@ -46,6 +46,7 @@
 		09ACCDD11E71894800AF3E4F /* bk-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD01E71894800AF3E4F /* bk-overlay.png */; };
 		09ACCDD31E71894F00AF3E4F /* bk-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */; };
 		09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */; };
+		09DB51AF1F2E60A0002DFACE /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB51AE1F2E60A0002DFACE /* String+Size.swift */; };
 		09DDDE551EF289E000E7F2B7 /* LocationHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DDDE531EF289E000E7F2B7 /* LocationHeaderReusableView.swift */; };
 		09DDDE561EF289E000E7F2B7 /* LocationHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DDDE541EF289E000E7F2B7 /* LocationHeaderReusableView.xib */; };
 		09E60D8F1ED521490037BA0D /* UIButton+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E60D8E1ED521490037BA0D /* UIButton+BackgroundColor.swift */; };
@@ -213,6 +214,7 @@
 		09ACCDD01E71894800AF3E4F /* bk-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay.png"; sourceTree = "<group>"; };
 		09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay@2x.png"; sourceTree = "<group>"; };
 		09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationTableViewCell.swift; sourceTree = "<group>"; };
+		09DB51AE1F2E60A0002DFACE /* String+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Size.swift"; path = "Cypherpunk/Extension/String+Size.swift"; sourceTree = SOURCE_ROOT; };
 		09DDDE531EF289E000E7F2B7 /* LocationHeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHeaderReusableView.swift; sourceTree = "<group>"; };
 		09DDDE541EF289E000E7F2B7 /* LocationHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationHeaderReusableView.xib; sourceTree = "<group>"; };
 		09E60D8E1ED521490037BA0D /* UIButton+BackgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+BackgroundColor.swift"; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				0910AE471E7BFC93003802DB /* VPNServerOption.swift */,
 				0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */,
 				09636DB81F1A9F55004C42F5 /* AccountHelper.swift */,
+				09DB51AE1F2E60A0002DFACE /* String+Size.swift */,
 			);
 			name = Helper;
 			path = ViewControllers;
@@ -1284,6 +1287,7 @@
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */,
 				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
+				09DB51AF1F2E60A0002DFACE /* String+Size.swift in Sources */,
 				205EE3241DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift in Sources */,
 				2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */,
 				09636DB71F1A11F4004C42F5 /* NotActivatedViewController.swift in Sources */,

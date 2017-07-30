@@ -8,8 +8,12 @@
 
 import UIKit
 import Cartography
+import MarqueeLabel
 
 class VPNSwitchAnimationView: UIView {
+    let PIPE_UPPER_TEXT = "x`8 0 # = v 7 mb\" | y 9 # 8 M } _ + kl $ #mn x -( }e f l]> ! 03 @jno x~`.xl ty }[sx k j"
+    let PIPE_LOWER_TEXT = "dsK 7 & [*h ^% u x 5 8 00 M< K! @ &6^d jkn 70 :93jx p0 bx, 890 Qw ;é \" >?7 9 3@ { 5x3 >"
+    
     let nonConnectedLineHeight: CGFloat = 5.0
     let connectedLineHeight: CGFloat = 25.0
     let lineWidth: CGFloat = 45.0
@@ -28,6 +32,9 @@ class VPNSwitchAnimationView: UIView {
     
     let chaserGradientLayer = CAGradientLayer()
     let switchGlowShapeLayer = CAShapeLayer()
+    
+    let topMarqueeLabel = MarqueeLabel()
+    let bottomMarqueeLabel = MarqueeLabel()
     
     var originalCurvedPath: UIBezierPath?
     
@@ -64,6 +71,70 @@ class VPNSwitchAnimationView: UIView {
         self.layer.addSublayer(leftLineGradientLayer)
         self.layer.addSublayer(rightLineGradientLayer)
         self.layer.addSublayer(switchGlowShapeLayer)
+        
+        let marqueeFont = R.font.dosisMedium(size: 11.0)
+        
+        var upperTextWidth = PIPE_UPPER_TEXT.widthOfString(usingFont: marqueeFont!)
+        
+        var upperText: String = PIPE_UPPER_TEXT
+
+        var maxWidth: CGFloat = 0
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            maxWidth = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+        }
+        else {
+            maxWidth = UIScreen.main.bounds.width
+        }
+        
+        while upperTextWidth <= maxWidth {
+            upperText.append(PIPE_UPPER_TEXT)
+            upperTextWidth = upperText.widthOfString(usingFont: marqueeFont!)
+        }
+        
+        var lowerTextWidth = PIPE_LOWER_TEXT.widthOfString(usingFont: marqueeFont!)
+        
+        var lowerText: String = PIPE_LOWER_TEXT
+        
+        while lowerTextWidth <= maxWidth {
+            lowerText.append(PIPE_UPPER_TEXT)
+            lowerTextWidth = lowerText.widthOfString(usingFont: marqueeFont!)
+        }
+        
+        topMarqueeLabel.frame = CGRect(x: 0, y: 20, width: 300, height: 20)
+        topMarqueeLabel.text = upperText
+        topMarqueeLabel.fadeLength = 5.0
+        topMarqueeLabel.type = .continuous
+        topMarqueeLabel.animationDelay = 0.0
+        topMarqueeLabel.speed = .duration(30.0)
+        topMarqueeLabel.font = marqueeFont
+        topMarqueeLabel.textColor = UIColor.white
+        topMarqueeLabel.isHidden = true
+        
+        bottomMarqueeLabel.frame = CGRect(x: 0, y: 40, width: 300, height: 20)
+        bottomMarqueeLabel.text = lowerText
+        bottomMarqueeLabel.fadeLength = 5.0
+        bottomMarqueeLabel.type = .continuousReverse
+        bottomMarqueeLabel.animationDelay = 0.0
+        bottomMarqueeLabel.speed = .duration(30.0)
+        bottomMarqueeLabel.font = marqueeFont
+        bottomMarqueeLabel.textColor = UIColor.white
+        bottomMarqueeLabel.isHidden = true
+        
+        self.insertSubview(self.topMarqueeLabel, belowSubview: self.vpnSwitch)
+        constrain(self, self.topMarqueeLabel) { parentView, childView in
+            childView.height == 20
+            childView.top == parentView.top + 20
+            childView.leading == parentView.leading
+            childView.trailing == parentView.trailing
+        }
+        
+        self.insertSubview(self.bottomMarqueeLabel, belowSubview: self.vpnSwitch)
+        constrain(self, self.bottomMarqueeLabel) { parentView, childView in
+            childView.height == 20
+            childView.bottom == parentView.bottom - 20
+            childView.leading == parentView.leading
+            childView.trailing == parentView.trailing
+        }
         
         setupLineLayers()
     }
@@ -383,10 +454,13 @@ class VPNSwitchAnimationView: UIView {
             rightLineGradientLayer.colors = connectGradientColors
             rightLineShapeLayer.path = rightBezier.cgPath
             rightLineGradientLayer.mask = rightLineShapeLayer
+            
+            self.topMarqueeLabel.isHidden = false
+            self.bottomMarqueeLabel.isHidden = false
         }
         else {
-//            self.leftLineGradientLayer.colors = self.disconnectGradientColors
-//            self.rightLineGradientLayer.colors = self.disconnectGradientColors
+            self.topMarqueeLabel.isHidden = true
+            self.bottomMarqueeLabel.isHidden = true
             
             setupLineLayers()
         }

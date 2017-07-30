@@ -26,6 +26,7 @@ PODS:
   - Hero (0.3.6)
   - Himotoki (3.0.0)
   - KeychainAccess (3.0.1)
+  - MarqueeLabel/Swift (3.1.1)
   - R.swift (3.2.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - Hero
   - Himotoki (from `https://github.com/ikesyo/Himotoki.git`)
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
+  - MarqueeLabel/Swift
   - R.swift
   - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift.git`)
   - RealmSwift
@@ -127,6 +129,7 @@ SPEC CHECKSUMS:
   Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   Himotoki: df74b01035e86e021b7b04a15b033a7fd189b84f
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  MarqueeLabel: 17c5148b6f7144498eff5e0d286bd2e7e866f972
   R.swift: 207a372a2b5977caef440c696a368009460641d1
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
@@ -140,6 +143,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: cf1d38281733aa4d85c9b54feef2e12dd9db6d3b
+PODFILE CHECKSUM: 2176807a8a0d7cb5556e661e568acb7142bef53c
 
 COCOAPODS: 1.2.1

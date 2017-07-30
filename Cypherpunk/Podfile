@@ -22,6 +22,7 @@ target 'Cypherpunk' do
        pod 'Cartography'
        pod 'TinySwift'
        pod 'Hero'
+       pod 'MarqueeLabel/Swift'
 end
 
 target 'CypherpunkTests' do
