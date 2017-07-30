@@ -17,9 +17,7 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
     
     var isOn: Bool = false {
         didSet {
-            if oldValue != isOn {
-                updateToggle(on: isOn)
-            }
+            updateToggle(on: isOn)
         }
     }
     
@@ -30,6 +28,8 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
         UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 0.4).cgColor,
         UIColor(white: 1, alpha: 0).cgColor
     ]
+    
+    private var isThumbInOnPostion = false
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -85,6 +85,11 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
     }
 
     @IBAction func updateToggle(on: Bool) {
+        // don't animate the button to the same state
+        if isThumbInOnPostion == on {
+            return
+        }
+        
         let thumbDiameter = self.frame.height - 10
         let onXCoord = self.frame.width - thumbDiameter - 8
         
@@ -92,7 +97,7 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
             let animation = CABasicAnimation(keyPath: "position")
             animation.fromValue = [0, 0]
             animation.toValue = [onXCoord, 0]
-            animation.duration = 1
+            animation.duration = 0.5
             
             let toColors: [AnyObject] = [UIColor.white.cgColor, UIColor.white.cgColor]
             let colorAnimation = CABasicAnimation(keyPath: "colors")
@@ -115,12 +120,14 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
             
             sliderThumbLayer.position = CGPoint(x: onXCoord, y: 0)
             sliderThumbLayer.fillColor = UIColor.connectGlowColor.cgColor
+            
+            isThumbInOnPostion = true
         }
         else {
             let animation = CABasicAnimation(keyPath: "position")
             animation.fromValue = [onXCoord, 0]
             animation.toValue = [0, 0]
-            animation.duration = 1
+            animation.duration = 0.5
             
             let colorAnimation = CABasicAnimation(keyPath: "colors")
             colorAnimation.fromValue = thumbGradientLayer.colors
@@ -142,6 +149,8 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
             
             sliderThumbLayer.position = CGPoint(x: 0, y: 0)
             sliderThumbLayer.fillColor = UIColor.switchThumbBaseColor.cgColor
+            
+            isThumbInOnPostion = false
         }
     }
     

@@ -20,7 +20,6 @@ class MainViewController: UIViewController, StoreSubscriber {
     var bottomBorderLayer: CALayer
     var gradientLayer: CAGradientLayer
     var mapImageView: MapImageView
-    var vpnSwitch: VPNSwitch
     var vpnSwitchAnimationView: VPNSwitchAnimationView
     var locationSelectorButton: LocationButton
     var locationSelectorVC: LocationSelectorViewController?
@@ -48,7 +47,6 @@ class MainViewController: UIViewController, StoreSubscriber {
         
         self.mapImageView = MapImageView()
         
-        self.vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 115, height: 60))
         self.vpnSwitchAnimationView = VPNSwitchAnimationView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         
         self.locationSelectorButton = LocationButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
@@ -205,14 +203,14 @@ class MainViewController: UIViewController, StoreSubscriber {
             let status = NEVPNManager.shared().connection.status
             self.updateView(vpnStatus: status)
             
-            self.vpnSwitch.delegate = self
+            self.vpnSwitchAnimationView.vpnSwitch.delegate = self
         }
         
         mainStore.subscribe(self) { $0.select { state in state.regionState } }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.vpnSwitch.delegate = nil
+        self.vpnSwitchAnimationView.vpnSwitch.delegate = nil
         mainStore.unsubscribe(self)
     }
     
@@ -264,7 +262,6 @@ class MainViewController: UIViewController, StoreSubscriber {
         
         UIView.animate(withDuration: 0.5) { 
             self.locationSelectorVC?.view.alpha = 1.0
-            self.vpnSwitch.isHidden = true
             self.vpnSwitchAnimationView.isHidden = true
             self.locationSelectorButton.isHidden = true
             self.statusTitleLabel.isHidden = true
@@ -282,8 +279,10 @@ class MainViewController: UIViewController, StoreSubscriber {
         case .invalid:
             status = "Invalid"
             statusDetail = "VPN configuration error occurred"
+            self.vpnSwitchAnimationView.cancelConnectAnimation()
         case .connecting:
             status = "Connecting..."
+            self.vpnSwitchAnimationView.beginConnectAnimation()
         case .connected:
             status = "Connected"
             if let ssid = ConnectionHelper.currentWifiSSID(), !ConnectionHelper.currentWifiNetworkTrusted() {
@@ -292,8 +291,10 @@ class MainViewController: UIViewController, StoreSubscriber {
             else if ConnectionHelper.connectedToCellular() && !mainStore.state.settingsState.isTrustCellularNetworks {
                 statusDetail = "Cellular networks are not trusted"
             }
+            self.vpnSwitchAnimationView.transitionToConnectedAnimation()
         case .disconnecting:
             status = "Disconnecting..."
+            self.vpnSwitchAnimationView.cancelConnectAnimation()
         case .disconnected:
             status = "Disconnected"
             if ConnectionHelper.currentWifiNetworkTrusted() {
@@ -302,8 +303,10 @@ class MainViewController: UIViewController, StoreSubscriber {
             else if ConnectionHelper.connectedToCellular() && mainStore.state.settingsState.isTrustCellularNetworks {
                 statusDetail = "Cellular networks are trusted"
             }
+            self.vpnSwitchAnimationView.cancelConnectAnimation()
         case .reasserting:
             status = "Reasserting"
+            self.vpnSwitchAnimationView.cancelConnectAnimation()
         }
         
         self.statusLabel.text = status.uppercased()
@@ -312,7 +315,7 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.statusDetailLabel.text = statusDetail
         self.statusDetailLabel.sizeToFit()
         
-        self.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
+        self.vpnSwitchAnimationView.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
         
         print(status)
         
@@ -386,7 +389,6 @@ extension MainViewController: LocationSelectionDelegate {
         UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
             self.locationSelectorVC?.view.removeFromSuperview()
             
-            self.vpnSwitch.isHidden = false
             self.vpnSwitchAnimationView.isHidden = false
             self.locationSelectorButton.isHidden = false
             self.statusTitleLabel.isHidden = false
