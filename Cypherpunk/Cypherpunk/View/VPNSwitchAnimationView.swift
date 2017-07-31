@@ -108,7 +108,7 @@ class VPNSwitchAnimationView: UIView {
         topMarqueeLabel.speed = .duration(30.0)
         topMarqueeLabel.font = marqueeFont
         topMarqueeLabel.textColor = UIColor.white
-        topMarqueeLabel.isHidden = true
+        topMarqueeLabel.layer.opacity = 0.0
         
         bottomMarqueeLabel.frame = CGRect(x: 0, y: 40, width: 300, height: 20)
         bottomMarqueeLabel.text = lowerText
@@ -118,7 +118,7 @@ class VPNSwitchAnimationView: UIView {
         bottomMarqueeLabel.speed = .duration(30.0)
         bottomMarqueeLabel.font = marqueeFont
         bottomMarqueeLabel.textColor = UIColor.white
-        bottomMarqueeLabel.isHidden = true
+        bottomMarqueeLabel.layer.opacity = 0.0
         
         self.insertSubview(self.topMarqueeLabel, belowSubview: self.vpnSwitch)
         constrain(self, self.topMarqueeLabel) { parentView, childView in
@@ -139,7 +139,7 @@ class VPNSwitchAnimationView: UIView {
         setupLineLayers()
     }
     
-    private func setupLineLayers() {
+    private func setupLineLayers(animate: Bool = false) {
         let bezierPath = UIBezierPath()
         bezierPath.usesEvenOddFillRule = true
         
@@ -156,6 +156,20 @@ class VPNSwitchAnimationView: UIView {
         
         bezierPath.append(innerPath)
         
+        if animate {
+            let glowPathAnim = createPathChangeAnimation(currentPath: switchGlowShapeLayer.path!, newPath: bezierPath.cgPath)
+            glowPathAnim.beginTime = 0.5
+            
+            let fillColorAnim = createFillColorAnimation(currentColor: switchGlowShapeLayer.fillColor, newColor: UIColor.disconnectedLineColor.cgColor)
+            fillColorAnim.beginTime = 0.0
+            
+            let animGroup = CAAnimationGroup()
+            animGroup.animations = [glowPathAnim, fillColorAnim]
+            animGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            
+            self.switchGlowShapeLayer.add(animGroup, forKey: "glowLayerAnim")
+        }
+        
         self.switchGlowShapeLayer.path = bezierPath.cgPath
         self.switchGlowShapeLayer.fillColor = UIColor.disconnectedLineColor.cgColor
         self.switchGlowShapeLayer.fillRule = kCAFillRuleEvenOdd
@@ -164,35 +178,45 @@ class VPNSwitchAnimationView: UIView {
         
         let widthBetweenSwitchAndEdge = (self.frame.width - self.vpnSwitch.frame.width) / 2
         
-        leftLineGradientLayer.frame = CGRect(x: 0, y: 0, width: widthBetweenSwitchAndEdge - 10, height: self.bounds.height)
-        
-        rightLineGradientLayer.frame = CGRect(x: self.bounds.width - widthBetweenSwitchAndEdge + 10, y: 0, width: widthBetweenSwitchAndEdge - 10, height: self.bounds.height)
-
-        
         // left of the switch
         let leftLinePath = UIBezierPath(rect: CGRect(x: 0, y: self.bounds.height / 2.0 - nonConnectedLineHeight / 2.0, width: widthBetweenSwitchAndEdge - 10, height: nonConnectedLineHeight))
         
         leftLineGradientLayer.frame = self.bounds
-        leftLineGradientLayer.colors = disconnectGradientColors
         leftLineGradientLayer.locations = [0.5, 0.8, 1.0]
         leftLineGradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
         leftLineGradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
         
-        leftLineShapeLayer.path = leftLinePath.cgPath
+        if animate {
+            let leftLineGradientAnimation = createGradientChangeAnimation(useConnectColors: false)
+            let leftPathChangeAnimation = createPathChangeAnimation(currentPath: leftLineShapeLayer.path!, newPath: leftLinePath.cgPath)
+            
+            leftLineShapeLayer.add(leftPathChangeAnimation, forKey: "path")
+            leftLineGradientLayer.add(leftLineGradientAnimation, forKey: "colors")
+        }
         
+        leftLineGradientLayer.colors = disconnectGradientColors
+        leftLineShapeLayer.path = leftLinePath.cgPath
         leftLineGradientLayer.mask = leftLineShapeLayer
+        
         
         // right of the switch
         let rightLinePath = UIBezierPath(rect: CGRect(x: self.bounds.width - widthBetweenSwitchAndEdge + 10, y: self.bounds.height / 2.0 - nonConnectedLineHeight / 2.0, width: widthBetweenSwitchAndEdge - 10, height: nonConnectedLineHeight))
         
         rightLineGradientLayer.frame = self.bounds
-        rightLineGradientLayer.colors = disconnectGradientColors
         rightLineGradientLayer.locations = [0.5, 0.8, 1.0]
         rightLineGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         rightLineGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         
-        rightLineShapeLayer.path = rightLinePath.cgPath
+        if animate {
+            let rightLineGradientAnimation = createGradientChangeAnimation(useConnectColors: false)
+            let rightPathChangeAnimation = createPathChangeAnimation(currentPath: rightLineShapeLayer.path!, newPath: rightLinePath.cgPath)
+            
+            rightLineShapeLayer.add(rightPathChangeAnimation, forKey: "path")
+            rightLineGradientLayer.add(rightLineGradientAnimation, forKey: "colors")
+        }
         
+        rightLineGradientLayer.colors = disconnectGradientColors
+        rightLineShapeLayer.path = rightLinePath.cgPath
         rightLineGradientLayer.mask = rightLineShapeLayer
     }
 
@@ -435,6 +459,12 @@ class VPNSwitchAnimationView: UIView {
             
             leftBezier.close()
             
+            let leftLineGradientAnimation = createGradientChangeAnimation(useConnectColors: true)
+            let leftPathChangeAnimation = createPathChangeAnimation(currentPath: leftLineShapeLayer.path!, newPath: leftBezier.cgPath)
+            
+//            leftLineShapeLayer.add(leftPathChangeAnimation, forKey: "path")
+            leftLineGradientLayer.add(leftLineGradientAnimation, forKey: "colors")
+            
             leftLineGradientLayer.colors = connectGradientColors
             leftLineShapeLayer.path = leftBezier.cgPath
             leftLineGradientLayer.mask = leftLineShapeLayer
@@ -450,19 +480,82 @@ class VPNSwitchAnimationView: UIView {
             rightBezier.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height - arcMinY))
             
             rightBezier.close()
+
+            let rightLineGradientAnimation = createGradientChangeAnimation(useConnectColors: true)
+            let rightPathChangeAnimation = createPathChangeAnimation(currentPath: rightLineShapeLayer.path!, newPath: rightBezier.cgPath)
+            
+//            rightLineShapeLayer.add(rightPathChangeAnimation, forKey: "path")
+            rightLineGradientLayer.add(rightLineGradientAnimation, forKey: "colors")
             
             rightLineGradientLayer.colors = connectGradientColors
             rightLineShapeLayer.path = rightBezier.cgPath
             rightLineGradientLayer.mask = rightLineShapeLayer
             
-            self.topMarqueeLabel.isHidden = false
-            self.bottomMarqueeLabel.isHidden = false
+            // marquee labels
+            self.topMarqueeLabel.layer.add(createShowHideAnimation(show: true), forKey: "opacity")
+            self.bottomMarqueeLabel.layer.add(createShowHideAnimation(show: true), forKey: "opacity")
+            
+            self.topMarqueeLabel.layer.opacity = 1.0
+            self.bottomMarqueeLabel.layer.opacity = 1.0
         }
         else {
-            self.topMarqueeLabel.isHidden = true
-            self.bottomMarqueeLabel.isHidden = true
+//            self.topMarqueeLabel.layer.add(createShowHideAnimation(show: false), forKey: "opacity")
+//            self.bottomMarqueeLabel.layer.add(createShowHideAnimation(show: false), forKey: "opacity")
             
-            setupLineLayers()
+            self.topMarqueeLabel.layer.opacity = 0.0
+            self.bottomMarqueeLabel.layer.opacity = 0.0
+            
+            setupLineLayers(animate: true)
         }
+    }
+    
+    private func createShowHideAnimation(show: Bool) -> CAAnimation {
+        let animation: CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        
+        if show {
+            animation.fromValue = 0.0
+            animation.toValue = 1.0
+        }
+        else {
+            animation.fromValue = 1.0
+            animation.toValue = 0.0
+        }
+        animation.duration = 0.2
+        
+        return animation
+    }
+    
+    private func createGradientChangeAnimation(useConnectColors: Bool) -> CAAnimation {
+        let colorChangeAnimation = CABasicAnimation(keyPath: "colors")
+        
+        if useConnectColors {
+            colorChangeAnimation.fromValue = disconnectGradientColors
+            colorChangeAnimation.toValue = connectGradientColors
+        }
+        else {
+            colorChangeAnimation.fromValue = connectGradientColors
+            colorChangeAnimation.toValue = disconnectGradientColors
+        }
+        colorChangeAnimation.duration = 0.3
+        
+        return colorChangeAnimation
+    }
+    
+    private func createPathChangeAnimation(currentPath: CGPath, newPath: CGPath) -> CAAnimation {
+        let pathChangeAnimation = CABasicAnimation(keyPath: "path")
+        pathChangeAnimation.fromValue = currentPath
+        pathChangeAnimation.toValue = newPath
+        pathChangeAnimation.duration = 0.3
+        
+        return pathChangeAnimation
+    }
+    
+    private func createFillColorAnimation(currentColor: CGColor?, newColor: CGColor) -> CAAnimation {
+        let fillColorAnim = CABasicAnimation(keyPath: "fillColor")
+        fillColorAnim.fromValue = currentColor != nil ? currentColor! : nil
+        fillColorAnim.toValue = newColor
+        fillColorAnim.duration = 0.3
+        
+        return fillColorAnim
     }
 }
