@@ -39,6 +39,8 @@
 		0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */; };
 		0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */; };
 		09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796A611E49456D00CBF912 /* ServerPinger.swift */; };
+		099601631F308365005F9D11 /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099601621F308365005F9D11 /* ScrollingTextView.swift */; };
+		099601651F308436005F9D11 /* ScrollingTextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099601641F308436005F9D11 /* ScrollingTextHelper.swift */; };
 		099FE72A1E8A6EA30017CF89 /* MainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099FE7291E8A6EA30017CF89 /* MainButtonView.swift */; };
 		09AC76261F20AFDC00896388 /* VPNSwitchAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC76251F20AFDC00896388 /* VPNSwitchAnimationView.swift */; };
 		09ACCDCD1E71892200AF3E4F /* splashscreen-illustration@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */; };
@@ -207,6 +209,8 @@
 		0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = Cypherpunk/View/MenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuTableViewCell.xib; path = Cypherpunk/View/MenuTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		09796A611E49456D00CBF912 /* ServerPinger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerPinger.swift; path = Util/ServerPinger.swift; sourceTree = "<group>"; };
+		099601621F308365005F9D11 /* ScrollingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
+		099601641F308436005F9D11 /* ScrollingTextHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScrollingTextHelper.swift; path = Cypherpunk/Helper/ScrollingTextHelper.swift; sourceTree = SOURCE_ROOT; };
 		099FE7291E8A6EA30017CF89 /* MainButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainButtonView.swift; path = Buttons/MainButtonView.swift; sourceTree = "<group>"; };
 		09AC76251F20AFDC00896388 /* VPNSwitchAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNSwitchAnimationView.swift; sourceTree = "<group>"; };
 		09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen-illustration@2x.png"; sourceTree = "<group>"; };
@@ -379,6 +383,7 @@
 				0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */,
 				09636DB81F1A9F55004C42F5 /* AccountHelper.swift */,
 				09DB51AE1F2E60A0002DFACE /* String+Size.swift */,
+				099601641F308436005F9D11 /* ScrollingTextHelper.swift */,
 			);
 			name = Helper;
 			path = ViewControllers;
@@ -548,6 +553,7 @@
 				091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */,
 				091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */,
 				09AC76251F20AFDC00896388 /* VPNSwitchAnimationView.swift */,
+				099601621F308365005F9D11 /* ScrollingTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1249,6 +1255,7 @@
 				09EAFBBC1EF0AE72001B9375 /* LocationCollectionViewCell.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
 				09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */,
+				099601631F308365005F9D11 /* ScrollingTextView.swift in Sources */,
 				0948DBA71ED7C88500A7A475 /* ConfigurationViewController.swift in Sources */,
 				20D896001D23A84D002B9F9D /* AccountAction.swift in Sources */,
 				201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */,
@@ -1262,6 +1269,7 @@
 				2BDB6B531D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift in Sources */,
 				2033FB451DB89E4D004D14B7 /* LoadingAnimationView.swift in Sources */,
 				2B2B59E51D3F98D0003FA705 /* RegionAction.swift in Sources */,
+				099601651F308436005F9D11 /* ScrollingTextHelper.swift in Sources */,
 				0945DBE51EF92CE4005119E8 /* LocationButton.swift in Sources */,
 				09E60D971ED6E0430037BA0D /* AccountButton.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
