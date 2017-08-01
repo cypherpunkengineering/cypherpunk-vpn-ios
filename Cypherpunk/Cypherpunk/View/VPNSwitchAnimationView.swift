@@ -65,6 +65,17 @@ class VPNSwitchAnimationView: UIView {
     }
     
     private func setup() {
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(applicationWillEnterForeground(_:)),
+                                               name:NSNotification.Name.UIApplicationWillEnterForeground,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(applicationDidEnterBackground(_:)),
+                                               name:NSNotification.Name.UIApplicationDidEnterBackground,
+                                               object: nil)
+
+        
         self.addSubview(self.vpnSwitch)
         constrain(self, self.vpnSwitch) { parentView, childView in
             childView.height == self.vpnSwitch.frame.height
@@ -537,5 +548,20 @@ class VPNSwitchAnimationView: UIView {
         fillColorAnim.duration = 0.3
         
         return fillColorAnim
+    }
+    
+    func applicationWillEnterForeground(_ notification: NSNotification) {
+        self.topMarqueeLabel.restartLabel()
+        self.bottomMarqueeLabel.restartLabel()
+    }
+    
+    func applicationDidEnterBackground(_ notification: NSNotification) {
+        self.topMarqueeLabel.shutdownLabel()
+        self.bottomMarqueeLabel.shutdownLabel()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
 }
