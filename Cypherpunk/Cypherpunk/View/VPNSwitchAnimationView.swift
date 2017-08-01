@@ -77,51 +77,23 @@ class VPNSwitchAnimationView: UIView {
         self.layer.addSublayer(rightLineGradientLayer)
         self.layer.addSublayer(switchGlowShapeLayer)
         
-        let marqueeFont = R.font.dosisMedium(size: 11.0)
-        
-        var upperTextWidth = PIPE_UPPER_TEXT.widthOfString(usingFont: marqueeFont!)
-        
-        var upperText: String = PIPE_UPPER_TEXT
-
-        var maxWidth: CGFloat = 0
-        if UI_USER_INTERFACE_IDIOM() == .pad {
-            maxWidth = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
-        }
-        else {
-            maxWidth = UIScreen.main.bounds.width
-        }
-        
-        while upperTextWidth <= maxWidth {
-            upperText.append(PIPE_UPPER_TEXT)
-            upperTextWidth = upperText.widthOfString(usingFont: marqueeFont!)
-        }
-        
-        var lowerTextWidth = PIPE_LOWER_TEXT.widthOfString(usingFont: marqueeFont!)
-        
-        var lowerText: String = PIPE_LOWER_TEXT
-        
-        while lowerTextWidth <= maxWidth {
-            lowerText.append(PIPE_UPPER_TEXT)
-            lowerTextWidth = lowerText.widthOfString(usingFont: marqueeFont!)
-        }
-        
         topMarqueeLabel.frame = CGRect(x: 0, y: 20, width: 300, height: 20)
-        topMarqueeLabel.text = upperText
+        topMarqueeLabel.text = ScrollingTextHelper.upperText()
         topMarqueeLabel.fadeLength = 5.0
         topMarqueeLabel.type = .continuous
         topMarqueeLabel.animationDelay = 0.0
         topMarqueeLabel.speed = .duration(30.0)
-        topMarqueeLabel.font = marqueeFont
+        topMarqueeLabel.font = ScrollingTextHelper.marqueeFont
         topMarqueeLabel.textColor = UIColor.white
         topMarqueeLabel.layer.opacity = 0.0
         
         bottomMarqueeLabel.frame = CGRect(x: 0, y: 40, width: 300, height: 20)
-        bottomMarqueeLabel.text = lowerText
+        bottomMarqueeLabel.text = ScrollingTextHelper.lowerText()
         bottomMarqueeLabel.fadeLength = 5.0
         bottomMarqueeLabel.type = .continuousReverse
         bottomMarqueeLabel.animationDelay = 0.0
         bottomMarqueeLabel.speed = .duration(30.0)
-        bottomMarqueeLabel.font = marqueeFont
+        bottomMarqueeLabel.font = ScrollingTextHelper.marqueeFont
         bottomMarqueeLabel.textColor = UIColor.white
         bottomMarqueeLabel.layer.opacity = 0.0
         
