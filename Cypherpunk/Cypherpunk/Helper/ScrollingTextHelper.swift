@@ -14,28 +14,28 @@ class ScrollingTextHelper {
     static let marqueeFont = R.font.dosisMedium(size: 11.0)!
     
     static func upperText() -> String {
+        var upperText: String = PIPE_UPPER_TEXT + PIPE_UPPER_TEXT // start with the text 2x
         let maxWidth: CGFloat = maxScreenWidth()
-        var upperTextWidth = PIPE_UPPER_TEXT.widthOfString(usingFont: ScrollingTextHelper.marqueeFont)
-        var upperText: String = PIPE_UPPER_TEXT
+        var upperTextWidth = upperText.widthOfString(usingFont: ScrollingTextHelper.marqueeFont)
         
         while upperTextWidth <= maxWidth {
             upperText.append(PIPE_UPPER_TEXT)
             upperTextWidth = upperText.widthOfString(usingFont: ScrollingTextHelper.marqueeFont)
         }
-        
+
         return upperText
     }
     
     static func lowerText() -> String {
+        var lowerText: String = PIPE_LOWER_TEXT + PIPE_LOWER_TEXT // start with the text 2x
         let maxWidth: CGFloat = maxScreenWidth()
-        var lowerTextWidth = PIPE_LOWER_TEXT.widthOfString(usingFont: ScrollingTextHelper.marqueeFont)
-        var lowerText: String = PIPE_LOWER_TEXT
+        var lowerTextWidth = lowerText.widthOfString(usingFont: ScrollingTextHelper.marqueeFont)
         
         while lowerTextWidth <= maxWidth {
             lowerText.append(PIPE_UPPER_TEXT)
             lowerTextWidth = lowerText.widthOfString(usingFont: ScrollingTextHelper.marqueeFont)
         }
-        
+
         return lowerText
     }
     
@@ -47,7 +47,7 @@ class ScrollingTextHelper {
         else {
             maxWidth = UIScreen.main.bounds.width
         }
-        
+
         return maxWidth
     }
 }

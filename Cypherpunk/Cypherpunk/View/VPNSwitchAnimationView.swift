@@ -11,8 +11,6 @@ import Cartography
 import MarqueeLabel
 
 class VPNSwitchAnimationView: UIView {
-    let PIPE_UPPER_TEXT = "x`8 0 # = v 7 mb\" | y 9 # 8 M } _ + kl $ #mn x -( }e f l]> ! 03 @jno x~`.xl ty }[sx k j"
-    let PIPE_LOWER_TEXT = "dsK 7 & [*h ^% u x 5 8 00 M< K! @ &6^d jkn 70 :93jx p0 bx, 890 Qw ;é \" >?7 9 3@ { 5x3 >"
     
     let nonConnectedLineHeight: CGFloat = 5.0
     let connectedLineHeight: CGFloat = 25.0
@@ -281,6 +279,8 @@ class VPNSwitchAnimationView: UIView {
         heartbeatAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         
         self.chaserGradientLayer.add(heartbeatAnimation, forKey: "heartbeatAnimation")
+        
+        transitionToConnectedAnimation()
     }
     
     private func transformShapeAroundSwitch(connect: Bool, animate: Bool = true) {
