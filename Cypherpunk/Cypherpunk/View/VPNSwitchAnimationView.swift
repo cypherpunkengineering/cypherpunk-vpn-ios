@@ -279,8 +279,6 @@ class VPNSwitchAnimationView: UIView {
         heartbeatAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         
         self.chaserGradientLayer.add(heartbeatAnimation, forKey: "heartbeatAnimation")
-        
-        transitionToConnectedAnimation()
     }
     
     private func transformShapeAroundSwitch(connect: Bool, animate: Bool = true) {
