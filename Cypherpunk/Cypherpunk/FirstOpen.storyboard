@@ -161,7 +161,7 @@
                                 </connections>
                             </button>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmG-ZZ-5OX">
-                                <rect key="frame" x="23" y="514" width="274" height="34"/>
+                                <rect key="frame" x="23" y="394" width="274" height="34"/>
                                 <subviews>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-CJ-Dm2" userLabel="Terms Label" customClass="TTTAttributedLabel">
                                         <rect key="frame" x="-15" y="-12" width="305" height="66"/>
@@ -174,13 +174,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="f7O-wK-Zda"/>
                                     <constraint firstAttribute="width" constant="274" id="zcI-gn-TRi"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="100" verticalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Hfr-WV-idt" userLabel="Spacer View">
-                                <rect key="frame" x="-15" y="386" width="350" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="Upv-7C-JJD"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="65" id="Y13-vg-FMj"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="FfU-Tv-Qkt" customClass="LoadingAnimationView" customModule="Cypherpunk" customModuleProvider="target">
@@ -219,21 +212,19 @@
                             <constraint firstItem="oVi-SW-B2h" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leading" id="51Z-SA-7UK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OVX-L7-3OC" secondAttribute="trailing" constant="24" id="9lU-hc-5RN"/>
                             <constraint firstItem="6zJ-ue-9dj" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="20.5" id="EEC-ec-Zen"/>
+                            <constraint firstItem="qmG-ZZ-5OX" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="15" id="GOB-Zl-Nlb"/>
                             <constraint firstItem="Quh-4L-vOV" firstAttribute="top" secondItem="A1N-sG-hSC" secondAttribute="bottom" constant="12" id="K3G-NC-Xs4"/>
                             <constraint firstItem="jAH-ax-SL5" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leadingMargin" priority="750" constant="-16" id="KAD-Ia-JdT"/>
-                            <constraint firstItem="Hfr-WV-idt" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="ZwY-i0-ejr"/>
+                            <constraint firstItem="PdL-ZB-Ytk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qmG-ZZ-5OX" secondAttribute="bottom" constant="15" id="Xam-G0-WkV"/>
                             <constraint firstItem="vIy-7x-T35" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="b5p-Vn-O8m"/>
                             <constraint firstItem="FfU-Tv-Qkt" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="bpu-ny-GPM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jAH-ax-SL5" secondAttribute="trailing" priority="750" constant="-16" id="cT2-3H-Gki"/>
                             <constraint firstItem="pHg-wa-el4" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="eq1-Wx-516"/>
                             <constraint firstItem="jAH-ax-SL5" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="guq-5s-BMj"/>
-                            <constraint firstItem="qmG-ZZ-5OX" firstAttribute="top" secondItem="Hfr-WV-idt" secondAttribute="bottom" id="hEL-bh-rkW"/>
                             <constraint firstAttribute="trailing" secondItem="oVi-SW-B2h" secondAttribute="trailing" id="hcY-fw-dPl"/>
                             <constraint firstItem="qmG-ZZ-5OX" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="j9W-b3-0GI"/>
-                            <constraint firstItem="Hfr-WV-idt" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="7" id="lQs-lG-mUe"/>
                             <constraint firstItem="jAH-ax-SL5" firstAttribute="top" secondItem="OVX-L7-3OC" secondAttribute="bottom" constant="-4" id="ows-mD-idj"/>
                             <constraint firstItem="OVX-L7-3OC" firstAttribute="top" secondItem="A1N-sG-hSC" secondAttribute="bottom" constant="14" id="qAd-1B-4LI"/>
-                            <constraint firstItem="PdL-ZB-Ytk" firstAttribute="top" secondItem="qmG-ZZ-5OX" secondAttribute="bottom" constant="20" id="sTb-ot-v7A"/>
                             <constraint firstItem="NCz-mW-Egf" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="ske-Pt-3bP"/>
                             <constraint firstItem="oVi-SW-B2h" firstAttribute="top" secondItem="jAH-ax-SL5" secondAttribute="bottom" id="xYc-tg-PjU"/>
                             <constraint firstItem="Quh-4L-vOV" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leadingMargin" constant="-16" id="xcQ-9U-aid"/>
