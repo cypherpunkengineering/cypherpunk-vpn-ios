@@ -23,7 +23,7 @@ struct ConfirmEmailRequest: Request {
     }
     
     var path: String {
-        return "/api/v1/account/email/confirm"
+        return "/api/v1/account/confirm/resend"
     }
     
     var parameters: Any? {
