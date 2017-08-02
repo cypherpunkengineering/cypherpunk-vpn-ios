@@ -157,14 +157,14 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                 break
             case .logIn:
                 self.welcomeLabel.text = "Please enter your password to login"
-                self.setPlaceholderText("Type your password", color: UIColor.white)
+                self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
                 self.actionButton.setTitle("Log In", for: .normal)
                 self.inputField.isSecureTextEntry = true
                 self.inputField.returnKeyType = UIReturnKeyType.send
 //                self.inputField.becomeFirstResponder()
             case .signUp:
                 self.welcomeLabel.text = "Please create a password to begin"
-                self.setPlaceholderText("Type your password", color: UIColor.white)
+                self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
                 self.actionButton.setTitle("Sign Up", for: .normal)
                 self.inputField.isSecureTextEntry = true
                 self.inputField.returnKeyType = UIReturnKeyType.send
@@ -194,7 +194,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                         })
                     case .logIn:
                         self.welcomeLabel.text = "Please enter your password to login"
-                        self.setPlaceholderText("Type your password", color: UIColor.white)
+                        self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
                         self.actionButton.isEnabled = false
                         self.actionButton.setTitle("Log In", for: .normal)
 
@@ -211,7 +211,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                             
                         })
                     case .signUp:
-                        self.setPlaceholderText("Type your password", color: UIColor.white)
+                        self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
                         self.actionButton.isEnabled = false
                         self.actionButton.setTitle("Sign Up", for: .normal)
                         
