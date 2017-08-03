@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -266,36 +265,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation email was sent to you" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-HY-MRX">
-                                <rect key="frame" x="45.5" y="45" width="229" height="67"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check your email to confirm your account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CR-Se-Zlv">
+                                <rect key="frame" x="71" y="248" width="179" height="65"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="Vbj-lX-Gq2"/>
-                                    <constraint firstAttribute="width" constant="229" id="ZeT-xl-gBP"/>
+                                    <constraint firstAttribute="height" constant="65" id="Anl-pq-WfW"/>
+                                    <constraint firstAttribute="width" constant="179" id="fvS-Dh-HS5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="23"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" image="illustEmailConfirmation" translatesAutoresizingMaskIntoConstraints="NO" id="R2C-A1-EUr">
-                                <rect key="frame" x="84.5" y="127" width="150" height="238"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnQ-A2-RB1" customClass="LoadingAnimationView" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="110" y="321" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="R2C-A1-EUr" secondAttribute="height" multiplier="75:119" id="dVb-w0-2pE"/>
+                                    <constraint firstAttribute="width" constant="100" id="0eH-IW-6TI"/>
+                                    <constraint firstAttribute="height" constant="100" id="faX-yW-6hz"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIz-Gg-2QJ">
-                                <rect key="frame" x="54" y="456" width="212" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="212" id="A0k-1c-WVc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="23"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
-                                <state key="normal" title="Resend Email" backgroundImage="tutorialBtn">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="resendAction:" destination="mR6-J3-kHM" eventType="touchUpInside" id="ETe-cg-oSi"/>
-                                </connections>
-                            </button>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-hB-YoU">
                                 <rect key="frame" x="88" y="498" width="144" height="35"/>
                                 <constraints>
@@ -309,40 +296,147 @@
                                     <action selector="backAction:" destination="mR6-J3-kHM" eventType="touchUpInside" id="uEK-Iz-L4e"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check your email and follow the instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPN-7y-nl4">
-                                <rect key="frame" x="67.5" y="380" width="184" height="51"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZ6-iy-dat" customClass="ScrollingTextView" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="130" width="320" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="7AN-N0-Mnl"/>
-                                    <constraint firstAttribute="width" constant="184" id="KyO-3h-gjm"/>
+                                    <constraint firstAttribute="height" constant="35" id="IFn-Du-FjG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
-                                <color key="textColor" red="0.56862745100000001" green="1" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_illustration_waiting" translatesAutoresizingMaskIntoConstraints="NO" id="m3U-3b-4Lb">
+                                <rect key="frame" x="198" y="48" width="80" height="82"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJG-Bk-MnQ">
+                                <rect key="frame" x="0.0" y="165" width="320" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="jsakuda@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWU-b2-jwV">
+                                        <rect key="frame" x="87.5" y="32" width="145.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="8fC-YE-IHn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="19"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting up..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pof-GK-pnF">
+                                        <rect key="frame" x="87.5" y="12" width="97" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="97" id="Q2e-HU-D6S"/>
+                                            <constraint firstAttribute="height" constant="20" id="SeU-xh-lbM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="15"/>
+                                        <color key="textColor" red="0.31372549020000001" green="0.68235294120000001" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.035294117647058823" green="0.14901960784313725" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Pof-GK-pnF" firstAttribute="top" secondItem="eJG-Bk-MnQ" secondAttribute="top" constant="12" id="Gtb-ZZ-RpU"/>
+                                    <constraint firstItem="Pof-GK-pnF" firstAttribute="leading" secondItem="AWU-b2-jwV" secondAttribute="leading" id="OO9-eb-sot"/>
+                                    <constraint firstAttribute="height" constant="75" id="S1J-U3-qL1"/>
+                                    <constraint firstItem="AWU-b2-jwV" firstAttribute="top" secondItem="Pof-GK-pnF" secondAttribute="bottom" id="hkq-qh-9wG"/>
+                                    <constraint firstItem="AWU-b2-jwV" firstAttribute="centerX" secondItem="eJG-Bk-MnQ" secondAttribute="centerX" id="z9o-hC-k8F"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We haven't received your email confirmation yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0O-mG-sho">
+                                <rect key="frame" x="71" y="248" width="179" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="179" id="HO1-vV-h7P"/>
+                                    <constraint firstAttribute="height" constant="65" id="xBl-IL-9vg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2n-Ig-qAR">
+                                <rect key="frame" x="85" y="321" width="150" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="1lY-gD-1Ow"/>
+                                    <constraint firstAttribute="width" constant="150" id="OMR-w0-DU3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                <state key="normal" title="Check again">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.43529411764705883" green="0.52156862745098043" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="checkAgainAction:" destination="mR6-J3-kHM" eventType="touchUpInside" id="e5Z-8O-nkz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8o-2D-vHG">
+                                <rect key="frame" x="85" y="371" width="150" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Fnx-HX-dIs"/>
+                                    <constraint firstAttribute="height" constant="35" id="Sga-TO-W1m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                <state key="normal" title="Resend email">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.43529411764705883" green="0.52156862745098043" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resendAction:" destination="mR6-J3-kHM" eventType="touchUpInside" id="PZQ-d6-qfa"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.086274509803921567" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.047058823529411764" green="0.20000000000000001" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="t7N-hB-YoU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DIz-Gg-2QJ" secondAttribute="bottom" priority="750" constant="15" id="2pO-qJ-iTQ"/>
-                            <constraint firstItem="jPN-7y-nl4" firstAttribute="centerX" secondItem="R2C-A1-EUr" secondAttribute="centerX" id="LmA-OK-cAv"/>
-                            <constraint firstItem="R2C-A1-EUr" firstAttribute="top" secondItem="sNz-HY-MRX" secondAttribute="bottom" constant="15" id="W1V-Ha-mMO"/>
-                            <constraint firstItem="sNz-HY-MRX" firstAttribute="top" secondItem="75w-Eh-KNw" secondAttribute="bottom" constant="25" id="izz-Zd-lLX"/>
-                            <constraint firstItem="sNz-HY-MRX" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="o9q-B0-zew"/>
-                            <constraint firstItem="DIz-Gg-2QJ" firstAttribute="top" secondItem="jPN-7y-nl4" secondAttribute="bottom" constant="25" id="pE4-Tg-QG1"/>
+                            <constraint firstItem="u8o-2D-vHG" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="43E-op-tmz"/>
+                            <constraint firstItem="2CR-Se-Zlv" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="4ZY-S8-LxX"/>
+                            <constraint firstItem="lnQ-A2-RB1" firstAttribute="top" secondItem="2CR-Se-Zlv" secondAttribute="bottom" constant="8" id="8Au-Zb-Dox"/>
+                            <constraint firstAttribute="trailing" secondItem="eJG-Bk-MnQ" secondAttribute="trailing" id="EF3-bp-9ce"/>
+                            <constraint firstItem="r0O-mG-sho" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="QfQ-an-miw"/>
+                            <constraint firstItem="eJG-Bk-MnQ" firstAttribute="leading" secondItem="sWd-9b-dYD" secondAttribute="leading" id="SUh-BF-tj8"/>
+                            <constraint firstItem="lnQ-A2-RB1" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="W4H-xA-knI"/>
+                            <constraint firstItem="e2n-Ig-qAR" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="W9e-Hs-Qy3"/>
+                            <constraint firstItem="u8o-2D-vHG" firstAttribute="top" secondItem="e2n-Ig-qAR" secondAttribute="bottom" constant="15" id="Z5r-v3-s1o"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="m3U-3b-4Lb" secondAttribute="trailing" constant="26" id="bhL-Pt-KsZ"/>
+                            <constraint firstItem="eJG-Bk-MnQ" firstAttribute="top" secondItem="BZ6-iy-dat" secondAttribute="bottom" id="bpi-Q2-SYw"/>
+                            <constraint firstItem="r0O-mG-sho" firstAttribute="top" secondItem="eJG-Bk-MnQ" secondAttribute="bottom" constant="8" id="hGY-h7-FDZ"/>
+                            <constraint firstItem="e2n-Ig-qAR" firstAttribute="top" secondItem="r0O-mG-sho" secondAttribute="bottom" constant="8" id="kRO-h7-qGS"/>
+                            <constraint firstItem="m3U-3b-4Lb" firstAttribute="top" secondItem="75w-Eh-KNw" secondAttribute="bottom" constant="28" id="mLt-Uh-Izw"/>
+                            <constraint firstAttribute="trailing" secondItem="BZ6-iy-dat" secondAttribute="trailing" id="ndK-jy-1Nz"/>
                             <constraint firstItem="ygU-hS-aiM" firstAttribute="top" secondItem="t7N-hB-YoU" secondAttribute="bottom" constant="35" id="pN0-cz-W7H"/>
-                            <constraint firstItem="jPN-7y-nl4" firstAttribute="top" secondItem="R2C-A1-EUr" secondAttribute="bottom" constant="15" id="pj9-T5-zWt"/>
                             <constraint firstItem="t7N-hB-YoU" firstAttribute="centerX" secondItem="sWd-9b-dYD" secondAttribute="centerX" id="q5o-FJ-3PM"/>
-                            <constraint firstItem="R2C-A1-EUr" firstAttribute="centerX" secondItem="sNz-HY-MRX" secondAttribute="centerX" id="r1T-LX-vz1"/>
-                            <constraint firstItem="DIz-Gg-2QJ" firstAttribute="centerX" secondItem="t7N-hB-YoU" secondAttribute="centerX" id="vbs-Q7-RzZ"/>
+                            <constraint firstItem="BZ6-iy-dat" firstAttribute="leading" secondItem="sWd-9b-dYD" secondAttribute="leading" id="qGu-PH-hXu"/>
+                            <constraint firstItem="BZ6-iy-dat" firstAttribute="top" secondItem="m3U-3b-4Lb" secondAttribute="bottom" id="rJ1-ra-pmG"/>
+                            <constraint firstItem="2CR-Se-Zlv" firstAttribute="top" secondItem="eJG-Bk-MnQ" secondAttribute="bottom" constant="8" id="twf-lV-iNC"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="resendEmailButton" destination="DIz-Gg-2QJ" id="Sk2-UI-xyk"/>
+                        <outlet property="checkAgainButton" destination="e2n-Ig-qAR" id="iEn-gP-N2u"/>
+                        <outlet property="checkEmailLabel" destination="2CR-Se-Zlv" id="mZH-Px-sAQ"/>
+                        <outlet property="confirmEmailLabel" destination="r0O-mG-sho" id="eWC-XX-sF4"/>
+                        <outlet property="emailLabel" destination="AWU-b2-jwV" id="Ugb-Dt-N2t"/>
+                        <outlet property="emailPanelView" destination="eJG-Bk-MnQ" id="Jfm-WN-YEm"/>
+                        <outlet property="loadingAnimationView" destination="lnQ-A2-RB1" id="LXs-0k-g8j"/>
+                        <outlet property="resendEmailButton" destination="u8o-2D-vHG" id="cvS-eT-d44"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aB-lp-eqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968.79999999999995" y="-528.48575712143929"/>
+            <point key="canvasLocation" x="888.75" y="-592.6056338028169"/>
         </scene>
         <!--Reset your password-->
         <scene sceneID="ldx-0L-wx4">
@@ -436,7 +530,7 @@ reset your password.</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.086274509803921567" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.047058823529411764" green="0.20000000000000001" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="R2H-fg-e8v" firstAttribute="top" secondItem="Rtm-xp-Msg" secondAttribute="bottom" constant="44" id="3VV-YT-emJ"/>
                             <constraint firstItem="Rtm-xp-Msg" firstAttribute="top" secondItem="65p-cw-kyR" secondAttribute="bottom" constant="20" id="6UE-Yq-CxP"/>
@@ -473,7 +567,7 @@ reset your password.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56n-iU-mHj" customClass="ScrollingTextView" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="112" width="320" height="35"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="375" id="9rc-aJ-17u"/>
@@ -494,7 +588,7 @@ reset your password.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll let you know as soon as we launch, so please keep an eye on your inbox!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reU-dN-eOf">
-                                <rect key="frame" x="22.5" y="261" width="275" height="101"/>
+                                <rect key="frame" x="22.5" y="279" width="275" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="275" id="jla-N5-dCh"/>
                                     <constraint firstAttribute="height" constant="101" id="yhk-0Y-X9u"/>
@@ -504,7 +598,7 @@ reset your password.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, we are currently only offering limited previews via invitations only." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFD-DK-Gad">
-                                <rect key="frame" x="22.5" y="192" width="275" height="75"/>
+                                <rect key="frame" x="22.5" y="210" width="275" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="275" id="2JL-vh-LiF"/>
                                     <constraint firstAttribute="height" constant="75" id="c6B-nV-e2B"/>
@@ -514,10 +608,10 @@ reset your password.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_illustration_waiting" translatesAutoresizingMaskIntoConstraints="NO" id="le3-9R-YAc">
-                                <rect key="frame" x="198" y="34" width="80" height="82"/>
+                                <rect key="frame" x="198" y="52" width="80" height="82"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.086274509799999996" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.047058823529411764" green="0.20000000000000001" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="reU-dN-eOf" firstAttribute="centerX" secondItem="D5e-Gk-VBh" secondAttribute="centerX" id="2EN-xO-gm2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="56n-iU-mHj" secondAttribute="trailing" priority="750" constant="-16" id="2MJ-zw-JzT"/>
@@ -531,7 +625,7 @@ reset your password.</string>
                             <constraint firstItem="PJn-Ad-bE0" firstAttribute="centerX" secondItem="D5e-Gk-VBh" secondAttribute="centerX" id="o6m-Mn-MKW"/>
                             <constraint firstItem="56n-iU-mHj" firstAttribute="leading" secondItem="D5e-Gk-VBh" secondAttribute="leadingMargin" priority="750" constant="-16" id="pMQ-QJ-V1E"/>
                             <constraint firstItem="gFD-DK-Gad" firstAttribute="top" secondItem="56n-iU-mHj" secondAttribute="bottom" constant="45" id="swE-ej-Loz"/>
-                            <constraint firstItem="le3-9R-YAc" firstAttribute="top" secondItem="wEg-bz-U2l" secondAttribute="bottom" constant="14" id="tBf-WZ-uvB"/>
+                            <constraint firstItem="le3-9R-YAc" firstAttribute="top" secondItem="wEg-bz-U2l" secondAttribute="bottom" constant="32" id="tBf-WZ-uvB"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
@@ -544,7 +638,6 @@ reset your password.</string>
     <resources>
         <image name="headerIconLogo" width="165" height="18"/>
         <image name="iconBack" width="12" height="18"/>
-        <image name="illustEmailConfirmation" width="150" height="238"/>
         <image name="loading" width="72" height="72"/>
         <image name="login_illustration3" width="82" height="100"/>
         <image name="login_illustration_waiting" width="80" height="82"/>
