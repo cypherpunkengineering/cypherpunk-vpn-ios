@@ -50,6 +50,11 @@ class LeakProtectionTableViewController: UITableViewController {
         return nil
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // need this because on iPad the accessory view background is not correctly drawn
+        cell.backgroundColor = UIColor.configTableCellBg
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as! OptionSelectorTableViewCell
         

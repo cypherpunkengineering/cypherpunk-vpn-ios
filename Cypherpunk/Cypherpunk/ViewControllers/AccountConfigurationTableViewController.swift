@@ -158,8 +158,12 @@ class AccountConfigurationTableViewController: UITableViewController {
             return 44.0
         }
     }
-
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // need this because on iPad the accessory view background is not correctly drawn
+        cell.backgroundColor = UIColor.configTableCellBg
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         

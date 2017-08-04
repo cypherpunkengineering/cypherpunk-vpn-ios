@@ -125,6 +125,11 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // need this because on iPad the accessory view background is not correctly drawn
+        cell.backgroundColor = UIColor.configTableCellBg
+    }
+    
     // MARK: Helper Methods
     private func cellForPrivacySettings(_ tableView: UITableView, row: Int) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell") as! ToggleTableViewCell

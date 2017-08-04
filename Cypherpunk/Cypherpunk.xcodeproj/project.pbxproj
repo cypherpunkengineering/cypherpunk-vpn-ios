@@ -519,7 +519,6 @@
 		203F4EF31D5AFC8200EA2536 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */,
 				201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */,
 				201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */,
 				201809E91D5B3BF100730FA4 /* ThemedNavigationBar.swift */,
@@ -554,6 +553,9 @@
 				091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */,
 				09AC76251F20AFDC00896388 /* VPNSwitchAnimationView.swift */,
 				099601621F308365005F9D11 /* ScrollingTextView.swift */,
+				203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */,
+				0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */,
+				0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -593,8 +595,6 @@
 				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
 				20073E0C1D9E387400BCD690 /* RateAppViewController.swift */,
 				2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */,
-				0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */,
-				0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */,
 				0959A50D1E69879A00A95A49 /* PlanCollectionViewController.swift */,
 			);
 			name = Account;

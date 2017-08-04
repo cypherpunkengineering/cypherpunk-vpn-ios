@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djX-jy-SyT">
-                        <rect key="frame" x="15" y="15.5" width="225" height="19"/>
+                        <rect key="frame" x="15" y="15" width="225" height="20.5"/>
                         <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -34,7 +34,7 @@
                         <color key="onTintColor" red="0.99607843137254903" green="0.81176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </switch>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" red="0.1529411765" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="zBn-NZ-bPD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8r8-fG-w6S"/>
                     <constraint firstItem="zBn-NZ-bPD" firstAttribute="leading" secondItem="djX-jy-SyT" secondAttribute="trailing" constant="10" id="Dn6-af-r3C"/>
