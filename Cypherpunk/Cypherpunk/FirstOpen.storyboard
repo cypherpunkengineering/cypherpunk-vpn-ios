@@ -570,7 +570,6 @@ reset your password.</string>
                                 <rect key="frame" x="0.0" y="130" width="320" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="375" id="9rc-aJ-17u"/>
                                     <constraint firstAttribute="height" constant="35" id="cCV-Wi-UXH"/>
                                 </constraints>
                             </view>
@@ -608,24 +607,24 @@ reset your password.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_illustration_waiting" translatesAutoresizingMaskIntoConstraints="NO" id="le3-9R-YAc">
-                                <rect key="frame" x="198" y="52" width="80" height="82"/>
+                                <rect key="frame" x="198" y="48" width="80" height="82"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.047058823529411764" green="0.20000000000000001" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="reU-dN-eOf" firstAttribute="centerX" secondItem="D5e-Gk-VBh" secondAttribute="centerX" id="2EN-xO-gm2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="56n-iU-mHj" secondAttribute="trailing" priority="750" constant="-16" id="2MJ-zw-JzT"/>
-                            <constraint firstItem="56n-iU-mHj" firstAttribute="top" secondItem="le3-9R-YAc" secondAttribute="bottom" constant="-4" id="506-Ab-ZMm"/>
+                            <constraint firstItem="56n-iU-mHj" firstAttribute="top" secondItem="le3-9R-YAc" secondAttribute="bottom" id="506-Ab-ZMm"/>
                             <constraint firstItem="dWU-Lu-Cjl" firstAttribute="top" secondItem="PJn-Ad-bE0" secondAttribute="bottom" constant="35" id="5qM-bL-KBf"/>
                             <constraint firstItem="PJn-Ad-bE0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="reU-dN-eOf" secondAttribute="bottom" constant="15" id="G98-6x-Jvm"/>
                             <constraint firstItem="reU-dN-eOf" firstAttribute="top" secondItem="gFD-DK-Gad" secondAttribute="bottom" constant="-6" id="J9a-2R-2tZ"/>
                             <constraint firstItem="gFD-DK-Gad" firstAttribute="centerX" secondItem="D5e-Gk-VBh" secondAttribute="centerX" id="QsK-Sr-8aX"/>
+                            <constraint firstAttribute="trailing" secondItem="56n-iU-mHj" secondAttribute="trailing" id="V6e-tP-59C"/>
                             <constraint firstAttribute="trailingMargin" secondItem="le3-9R-YAc" secondAttribute="trailing" constant="26" id="h16-bp-vg1"/>
                             <constraint firstItem="56n-iU-mHj" firstAttribute="centerX" secondItem="D5e-Gk-VBh" secondAttribute="centerX" id="kEd-Gz-me4"/>
                             <constraint firstItem="PJn-Ad-bE0" firstAttribute="centerX" secondItem="D5e-Gk-VBh" secondAttribute="centerX" id="o6m-Mn-MKW"/>
-                            <constraint firstItem="56n-iU-mHj" firstAttribute="leading" secondItem="D5e-Gk-VBh" secondAttribute="leadingMargin" priority="750" constant="-16" id="pMQ-QJ-V1E"/>
+                            <constraint firstItem="56n-iU-mHj" firstAttribute="leading" secondItem="D5e-Gk-VBh" secondAttribute="leading" id="pLN-Lq-RKg"/>
                             <constraint firstItem="gFD-DK-Gad" firstAttribute="top" secondItem="56n-iU-mHj" secondAttribute="bottom" constant="45" id="swE-ej-Loz"/>
-                            <constraint firstItem="le3-9R-YAc" firstAttribute="top" secondItem="wEg-bz-U2l" secondAttribute="bottom" constant="32" id="tBf-WZ-uvB"/>
+                            <constraint firstItem="le3-9R-YAc" firstAttribute="top" secondItem="wEg-bz-U2l" secondAttribute="bottom" constant="28" id="tBf-WZ-uvB"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
