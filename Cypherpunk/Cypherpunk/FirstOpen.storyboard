@@ -58,7 +58,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="HBE-bg-mIC"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="375" id="SWh-qk-j3R"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="oVi-SW-B2h" userLabel="Logo View">
@@ -208,16 +207,16 @@
                         <constraints>
                             <constraint firstItem="6zJ-ue-9dj" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="0ac-Dl-A1o"/>
                             <constraint firstItem="FfU-Tv-Qkt" firstAttribute="centerY" secondItem="cK6-8c-cze" secondAttribute="centerY" id="19R-dj-0Ix"/>
+                            <constraint firstItem="jAH-ax-SL5" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leading" id="2YX-N8-DfJ"/>
                             <constraint firstItem="oVi-SW-B2h" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leading" id="51Z-SA-7UK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OVX-L7-3OC" secondAttribute="trailing" constant="24" id="9lU-hc-5RN"/>
                             <constraint firstItem="6zJ-ue-9dj" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="20.5" id="EEC-ec-Zen"/>
                             <constraint firstItem="qmG-ZZ-5OX" firstAttribute="top" secondItem="NCz-mW-Egf" secondAttribute="bottom" constant="15" id="GOB-Zl-Nlb"/>
                             <constraint firstItem="Quh-4L-vOV" firstAttribute="top" secondItem="A1N-sG-hSC" secondAttribute="bottom" constant="12" id="K3G-NC-Xs4"/>
-                            <constraint firstItem="jAH-ax-SL5" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leadingMargin" priority="750" constant="-16" id="KAD-Ia-JdT"/>
                             <constraint firstItem="PdL-ZB-Ytk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qmG-ZZ-5OX" secondAttribute="bottom" constant="15" id="Xam-G0-WkV"/>
                             <constraint firstItem="vIy-7x-T35" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="b5p-Vn-O8m"/>
+                            <constraint firstAttribute="trailing" secondItem="jAH-ax-SL5" secondAttribute="trailing" id="bJ0-x4-IPN"/>
                             <constraint firstItem="FfU-Tv-Qkt" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="bpu-ny-GPM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jAH-ax-SL5" secondAttribute="trailing" priority="750" constant="-16" id="cT2-3H-Gki"/>
                             <constraint firstItem="pHg-wa-el4" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="eq1-Wx-516"/>
                             <constraint firstItem="jAH-ax-SL5" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="guq-5s-BMj"/>
                             <constraint firstAttribute="trailing" secondItem="oVi-SW-B2h" secondAttribute="trailing" id="hcY-fw-dPl"/>
