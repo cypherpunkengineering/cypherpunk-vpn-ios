@@ -165,7 +165,13 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.view.addSubview(self.locationSelectorButton)
         locationButtonConstraintGroup = constrain(self.view, self.locationSelectorButton) { parentView, childView in
             // do not constrain the width of the location button, it needs to flex based on the text shown
-            childView.top == parentView.centerY + 100
+            
+            if UI_USER_INTERFACE_IDIOM() == .phone && UIScreen.main.bounds.height < 600 {
+                childView.bottom == parentView.bottom - 50
+            }
+            else {
+                childView.bottom == parentView.bottom - 100
+            }
             childView.height == 40.0
             childView.centerX == parentView.centerX
         }

@@ -69,6 +69,14 @@ class ScrollingTextView: UIView {
             childView.leading == parentView.leading
             childView.trailing == parentView.trailing
         }
+        
+        self.layer.masksToBounds = false;
+        self.layer.shadowOffset = CGSize(width: 0, height: 5)
+        self.layer.shadowRadius = 10
+        self.layer.shadowOpacity = 0.4
+        self.layer.shadowColor = UIColor.black.cgColor
+        
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
     }
     
     override func layoutSublayers(of layer: CALayer) {

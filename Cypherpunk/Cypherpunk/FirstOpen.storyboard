@@ -53,13 +53,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAH-ax-SL5" customClass="ScrollingTextView" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="130" width="320" height="35"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="HBE-bg-mIC"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="oVi-SW-B2h" userLabel="Logo View">
                                 <rect key="frame" x="0.0" y="165" width="320" height="75"/>
                                 <subviews>
@@ -87,6 +80,13 @@
                                     <constraint firstItem="6br-cd-izv" firstAttribute="top" secondItem="oVi-SW-B2h" secondAttribute="top" constant="15" id="a4r-qY-tzr"/>
                                     <constraint firstItem="6br-cd-izv" firstAttribute="leading" secondItem="NXP-uP-Eeb" secondAttribute="leading" id="kes-BQ-UJA"/>
                                     <constraint firstItem="NXP-uP-Eeb" firstAttribute="centerX" secondItem="oVi-SW-B2h" secondAttribute="centerX" id="znC-eb-dtm"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAH-ax-SL5" customClass="ScrollingTextView" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="130" width="320" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="HBE-bg-mIC"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Please input your email to begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-7x-T35">
@@ -295,16 +295,6 @@
                                     <action selector="backAction:" destination="mR6-J3-kHM" eventType="touchUpInside" id="uEK-Iz-L4e"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZ6-iy-dat" customClass="ScrollingTextView" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="130" width="320" height="35"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="IFn-Du-FjG"/>
-                                </constraints>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_illustration_waiting" translatesAutoresizingMaskIntoConstraints="NO" id="m3U-3b-4Lb">
-                                <rect key="frame" x="198" y="48" width="80" height="82"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJG-Bk-MnQ">
                                 <rect key="frame" x="0.0" y="165" width="320" height="75"/>
                                 <subviews>
@@ -337,6 +327,16 @@
                                     <constraint firstItem="AWU-b2-jwV" firstAttribute="centerX" secondItem="eJG-Bk-MnQ" secondAttribute="centerX" id="z9o-hC-k8F"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZ6-iy-dat" customClass="ScrollingTextView" customModule="Cypherpunk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="130" width="320" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="IFn-Du-FjG"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_illustration_waiting" translatesAutoresizingMaskIntoConstraints="NO" id="m3U-3b-4Lb">
+                                <rect key="frame" x="198" y="48" width="80" height="82"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We haven't received your email confirmation yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0O-mG-sho">
                                 <rect key="frame" x="71" y="248" width="179" height="65"/>
                                 <constraints>
