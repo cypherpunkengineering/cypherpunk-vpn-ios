@@ -69,7 +69,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         loadingAnimationView.startAnimation()
         
         self.state = .getStarted
-        self.welcomeLabel.text = "Please enter your email to begin"
+        self.welcomeLabel.text = "Please input your email to begin"
         setPlaceholderText("Type your email", color: UIColor.greenyBlue)
         self.inputField.text = self.email
         
@@ -177,7 +177,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                 DispatchQueue.main.async {
                     switch self.state {
                     case .getStarted:
-                        self.welcomeLabel.text = "Please enter your email to begin"
+                        self.welcomeLabel.text = "Please input your email to begin"
                         self.setPlaceholderText("Type your email", color: UIColor.greenyBlue)
                         self.inputField.text = self.email
                         self.actionButton.isEnabled = isValidMailAddress(self.inputField.text!)

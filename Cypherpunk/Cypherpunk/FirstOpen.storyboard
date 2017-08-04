@@ -61,17 +61,17 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="oVi-SW-B2h" userLabel="Logo View">
-                                <rect key="frame" x="0.0" y="165" width="320" height="59"/>
+                                <rect key="frame" x="0.0" y="165" width="320" height="75"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerIconLogo" translatesAutoresizingMaskIntoConstraints="NO" id="NXP-uP-Eeb">
-                                        <rect key="frame" x="77.5" y="31" width="165" height="18"/>
+                                        <rect key="frame" x="77.5" y="38" width="165" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="165" id="5nF-8f-qu0"/>
                                             <constraint firstAttribute="height" constant="18" id="aaf-hP-KNx"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6br-cd-izv">
-                                        <rect key="frame" x="77.5" y="10" width="73.5" height="18"/>
+                                        <rect key="frame" x="77.5" y="15" width="73.5" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="8sw-e9-HB6"/>
                                         </constraints>
@@ -80,23 +80,23 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0039215686274509803" green="0.0" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.035294117649999998" green="0.14901960780000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="NXP-uP-Eeb" firstAttribute="top" secondItem="6br-cd-izv" secondAttribute="bottom" constant="3" id="IWx-FQ-IEG"/>
-                                    <constraint firstItem="6br-cd-izv" firstAttribute="top" secondItem="oVi-SW-B2h" secondAttribute="top" constant="10" id="a4r-qY-tzr"/>
+                                    <constraint firstAttribute="height" constant="75" id="8rf-oz-XQh"/>
+                                    <constraint firstItem="NXP-uP-Eeb" firstAttribute="top" secondItem="6br-cd-izv" secondAttribute="bottom" constant="5" id="IWx-FQ-IEG"/>
+                                    <constraint firstItem="6br-cd-izv" firstAttribute="top" secondItem="oVi-SW-B2h" secondAttribute="top" constant="15" id="a4r-qY-tzr"/>
                                     <constraint firstItem="6br-cd-izv" firstAttribute="leading" secondItem="NXP-uP-Eeb" secondAttribute="leading" id="kes-BQ-UJA"/>
                                     <constraint firstItem="NXP-uP-Eeb" firstAttribute="centerX" secondItem="oVi-SW-B2h" secondAttribute="centerX" id="znC-eb-dtm"/>
-                                    <constraint firstAttribute="bottom" secondItem="NXP-uP-Eeb" secondAttribute="bottom" constant="10" id="zsP-aW-L6N"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Please enter your email to begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-7x-T35">
-                                <rect key="frame" x="51" y="230" width="218.5" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Please input your email to begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-7x-T35">
+                                <rect key="frame" x="51.5" y="246" width="217.5" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="0.37254901960784315" green="0.73333333333333328" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-wa-el4" customClass="ThemedTextField" customModule="Cypherpunk" customModuleProvider="target">
-                                <rect key="frame" x="20.5" y="261" width="279" height="48"/>
+                                <rect key="frame" x="20.5" y="277" width="279" height="48"/>
                                 <color key="backgroundColor" red="0.050980392156862744" green="0.11764705882352941" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -122,7 +122,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCz-mW-Egf">
-                                <rect key="frame" x="60" y="329" width="200" height="50"/>
+                                <rect key="frame" x="60" y="345" width="200" height="50"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.49803921569999998" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="N5X-b3-Zzl"/>
@@ -159,7 +159,7 @@
                                 </connections>
                             </button>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmG-ZZ-5OX">
-                                <rect key="frame" x="23" y="394" width="274" height="34"/>
+                                <rect key="frame" x="23" y="410" width="274" height="34"/>
                                 <subviews>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-CJ-Dm2" userLabel="Terms Label" customClass="TTTAttributedLabel">
                                         <rect key="frame" x="-15" y="-12" width="305" height="66"/>
@@ -182,7 +182,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-ue-9dj">
-                                <rect key="frame" x="85" y="399.5" width="150" height="17"/>
+                                <rect key="frame" x="85" y="415.5" width="150" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="MJh-xq-cJp"/>
                                     <constraint firstAttribute="width" constant="150" id="aie-3O-GsV"/>
