@@ -30,10 +30,10 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
     ]
     
     private let containerOffFillColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3).cgColor
-    private let containerOffStrokeColor = UIColor(red: 0.0, green: 255.0 / 255.0, blue: 155.0 / 255.0, alpha: 0.2).cgColor
+    private let containerOffStrokeColor = UIColor.disconnectedLineColor.withAlphaComponent(0.5).cgColor
     
-    private let containerOnFillColor = UIColor(red: 0.0, green: 128 / 255.0, blue: 128 / 255.0, alpha: 0.5).cgColor
-    private let containerOnStrokeColor = UIColor(red: 0.0, green: 255.0 / 255.0, blue: 155.0 / 255.0, alpha: 0.2).cgColor
+    private let containerOnFillColor = UIColor(red: 0.0, green: 91 / 255.0, blue: 91 / 255.0, alpha: 0.5).cgColor
+    private let containerOnStrokeColor = UIColor(red: 0.0, green: 175.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0).cgColor
     
     private var isThumbInOnPostion = false
 
@@ -53,7 +53,7 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
         // slider container
         sliderContainerLayer.fillColor = containerOffFillColor
         sliderContainerLayer.strokeColor = containerOffStrokeColor
-        sliderContainerLayer.lineWidth = 2
+        sliderContainerLayer.lineWidth = 3
         
         let sliderOutlinePath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), cornerRadius: self.frame.height / 2)
         sliderContainerLayer.path = sliderOutlinePath.cgPath
@@ -129,6 +129,7 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
             sliderThumbLayer.add(thumbFillColorAnimation, forKey: "fillColor")
             
             sliderContainerLayer.fillColor = containerOnFillColor
+            sliderContainerLayer.strokeColor = containerOnFillColor
             thumbGradientLayer.colors = toColors
             sliderThumbLayer.position = CGPoint(x: onXCoord, y: 0)
             sliderThumbLayer.fillColor = UIColor.connectGlowColor.cgColor
@@ -164,6 +165,7 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
             sliderThumbLayer.add(thumbFillColorAnimation, forKey: "fillColor")
             
             sliderContainerLayer.fillColor = containerOffFillColor
+            sliderContainerLayer.strokeColor = containerOffStrokeColor
             thumbGradientLayer.colors = thumbGradientColors
             sliderThumbLayer.position = CGPoint(x: 0, y: 0)
             sliderThumbLayer.fillColor = UIColor.switchThumbBaseColor.cgColor
