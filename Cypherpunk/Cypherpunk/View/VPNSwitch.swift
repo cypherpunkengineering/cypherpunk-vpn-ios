@@ -32,7 +32,7 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
     private let containerOffFillColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3).cgColor
     private let containerOffStrokeColor = UIColor(red: 0.0, green: 255.0 / 255.0, blue: 155.0 / 255.0, alpha: 0.2).cgColor
     
-    private let containerOnFillColor = UIColor(red: 0.0, green: 150 / 255.0, blue: 150 / 255.0, alpha: 0.3).cgColor
+    private let containerOnFillColor = UIColor(red: 0.0, green: 128 / 255.0, blue: 128 / 255.0, alpha: 0.5).cgColor
     private let containerOnStrokeColor = UIColor(red: 0.0, green: 255.0 / 255.0, blue: 155.0 / 255.0, alpha: 0.2).cgColor
     
     private var isThumbInOnPostion = false

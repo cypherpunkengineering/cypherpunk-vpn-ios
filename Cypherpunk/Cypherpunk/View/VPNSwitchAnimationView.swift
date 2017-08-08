@@ -36,9 +36,9 @@ class VPNSwitchAnimationView: UIView {
     
     var originalCurvedPath: UIBezierPath?
     
-    let disconnectGradientColors = [UIColor.disconnectedLineColor.cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.7).cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.1).cgColor] as [Any]
+    let disconnectGradientColors = [UIColor.disconnectedLineColor.cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.7).cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.2).cgColor] as [Any]
     
-    let connectGradientColors = [UIColor.connectingLineColor.cgColor, UIColor.connectingLineColor.withAlphaComponent(0.7).cgColor, UIColor.connectingLineColor.withAlphaComponent(0.1).cgColor] as [Any]
+    let connectGradientColors = [UIColor.connectingLineColor.cgColor, UIColor.connectingLineColor.withAlphaComponent(0.7).cgColor, UIColor.connectingLineColor.withAlphaComponent(0.2).cgColor] as [Any]
 
     
     var vpnSwitchDelegate: VPNSwitchDelegate? {
@@ -93,7 +93,7 @@ class VPNSwitchAnimationView: UIView {
         topMarqueeLabel.animationDelay = 0.0
         topMarqueeLabel.speed = .duration(30.0)
         topMarqueeLabel.font = ScrollingTextHelper.marqueeFont
-        topMarqueeLabel.textColor = UIColor.white
+        topMarqueeLabel.textColor = UIColor(hex: "#7ffffb", alpha: 1.0)
         topMarqueeLabel.layer.opacity = 0.0
         
         bottomMarqueeLabel.frame = CGRect(x: 0, y: 40, width: 300, height: 20)
@@ -103,7 +103,7 @@ class VPNSwitchAnimationView: UIView {
         bottomMarqueeLabel.animationDelay = 0.0
         bottomMarqueeLabel.speed = .duration(30.0)
         bottomMarqueeLabel.font = ScrollingTextHelper.marqueeFont
-        bottomMarqueeLabel.textColor = UIColor.white
+        bottomMarqueeLabel.textColor = UIColor(hex: "#5fbfbb", alpha: 1.0)
         bottomMarqueeLabel.layer.opacity = 0.0
         
         self.insertSubview(self.topMarqueeLabel, belowSubview: self.vpnSwitch)
@@ -309,7 +309,7 @@ class VPNSwitchAnimationView: UIView {
                 
                 let switchGlowFillColorAnimation = CABasicAnimation(keyPath: "fillColor")
                 switchGlowFillColorAnimation.fromValue = self.switchGlowShapeLayer.fillColor
-                switchGlowFillColorAnimation.toValue = UIColor.connectingLineColor.cgColor
+                switchGlowFillColorAnimation.toValue = UIColor.connectGlowColor.cgColor
                 switchGlowFillColorAnimation.duration = 0.1
                 
                 let switchGlowAnimationGroup = CAAnimationGroup()
@@ -322,7 +322,7 @@ class VPNSwitchAnimationView: UIView {
             }
             
             self.switchGlowShapeLayer.path = bezierPath.cgPath
-            self.switchGlowShapeLayer.fillColor = UIColor.connectingLineColor.cgColor
+            self.switchGlowShapeLayer.fillColor = UIColor.connectGlowColor.cgColor
         }
         else {
             let bezierPath = UIBezierPath()
