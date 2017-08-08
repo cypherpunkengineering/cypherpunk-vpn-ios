@@ -14,6 +14,7 @@ class ScrollingTextView: UIView {
     private let topLabel = MarqueeLabel()
     private let bottomLabel = MarqueeLabel()
     
+    private let gradientFadeLayer = CAGradientLayer()
     private let blackLineLayer = CAShapeLayer()
 
     override init(frame: CGRect) {
@@ -77,6 +78,13 @@ class ScrollingTextView: UIView {
         self.layer.shadowColor = UIColor.black.cgColor
         
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        
+        self.gradientFadeLayer.colors = [UIColor.black.withAlphaComponent(0.5), UIColor.black.cgColor, UIColor.black.cgColor, UIColor.black.withAlphaComponent(0.5)]
+        self.gradientFadeLayer.locations = [0, 0.3, 0.7, 1]
+        self.gradientFadeLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        self.gradientFadeLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        self.gradientFadeLayer.frame = self.bounds
+        self.layer.mask = self.gradientFadeLayer
     }
     
     override func layoutSublayers(of layer: CALayer) {
@@ -86,15 +94,17 @@ class ScrollingTextView: UIView {
             
             topLabel.text = ScrollingTextHelper.upperText()
             bottomLabel.text = ScrollingTextHelper.lowerText()
+            
+            self.gradientFadeLayer.frame = self.bounds
         }
     }
     
     private func updateLineLayerPath() {
         // create black line at the top of the view
         let linePath = UIBezierPath()
-        linePath.lineWidth = 10
         linePath.move(to: CGPoint(x: 0, y: 0))
         linePath.addLine(to: CGPoint(x: self.bounds.width, y: 0))
+        self.blackLineLayer.lineWidth = 4
         self.blackLineLayer.strokeColor = UIColor.black.cgColor
         self.blackLineLayer.path = linePath.cgPath
     }
