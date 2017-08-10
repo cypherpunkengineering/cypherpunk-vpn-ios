@@ -143,7 +143,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WS1-CA-Qff" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="ooe-aL-HE2"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ooe-aL-HE2">
+                    <connections>
+                        <action selector="reconizePanGestureAction:" destination="rgN-tT-18u" id="5N2-kn-PYm"/>
+                    </connections>
+                </panGestureRecognizer>
                 <tapGestureRecognizer id="6Hj-WP-7Vb">
                     <connections>
                         <action selector="recognizeResetTapActionWithRecognizer:" destination="rgN-tT-18u" id="aiX-pE-hbC"/>

@@ -35,7 +35,8 @@ class SlidingNavigationViewController: UIViewController {
             }
         }
     }
-    var slideWidth: CGFloat = 274
+    var slideWidth: CGFloat = 276
+    var sidePanelOffset: CGFloat = -138 // half the width of the side panels
     
     static let animationTime: Double = 0.3
 
@@ -78,7 +79,7 @@ class SlidingNavigationViewController: UIViewController {
 
         } else {
             self.centerConstraint.constant = 0.0
-            self.configTrailingConstraint.constant = -138.0
+            self.configTrailingConstraint.constant = sidePanelOffset
             self.view.setNeedsUpdateConstraints()
             self.centerState = .center
             UIView.animate(withDuration: SlidingNavigationViewController.animationTime, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
@@ -100,7 +101,7 @@ class SlidingNavigationViewController: UIViewController {
             
         } else {
             self.centerConstraint.constant = 0.0
-            self.accountLeadingConstraint.constant = -138.0
+            self.accountLeadingConstraint.constant = sidePanelOffset
             self.view.setNeedsUpdateConstraints()
             self.centerState = .center
             UIView.animate(withDuration: SlidingNavigationViewController.animationTime, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
@@ -118,8 +119,8 @@ class SlidingNavigationViewController: UIViewController {
     func resetCenterView() {
         self.centerState = .center
         self.centerConstraint.constant = 0.0
-        self.accountLeadingConstraint.constant = -138.0
-        self.configTrailingConstraint.constant = -138.0
+        self.accountLeadingConstraint.constant = sidePanelOffset
+        self.configTrailingConstraint.constant = sidePanelOffset
         self.view.setNeedsUpdateConstraints()
         self.centerState = .center
         UIView.animate(withDuration: SlidingNavigationViewController.animationTime, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
@@ -151,44 +152,54 @@ class SlidingNavigationViewController: UIViewController {
             let finalX = translated.x + (0.35 * velocity.x);
             let moved = beganTranslatedPositionX + finalX
             let lastConstant: CGFloat
-            if UI_USER_INTERFACE_IDIOM() == .pad {
-                lastConstant = min(max(-slideWidth, beganPositionX + moved), 0)
-            } else {
-                lastConstant = min(max(-slideWidth, beganPositionX + moved), slideWidth)
-            }
+            lastConstant = min(max(-slideWidth, beganPositionX + moved), slideWidth)
             
             
             if lastConstant <= -slideWidth * 0.5 {
                 if self.centerState == .right {
                     self.centerConstraint.constant = 0
                     self.centerState = .center
-                    UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                        self.view.layoutIfNeeded()
-                        }, completion: nil)
-                } else {
-                    self.centerConstraint.constant = -slideWidth
-                    self.centerState = .left
+                    self.accountLeadingConstraint.constant = sidePanelOffset
+                    self.configTrailingConstraint.constant = sidePanelOffset
                     UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                         self.view.layoutIfNeeded()
                         }, completion: nil)
                 }
-            } else if lastConstant >= slideWidth * 0.5 {
-                if self.centerState == .left {
-                    self.centerConstraint.constant = 0
-                    self.centerState = .center
+                else {
+                    self.centerConstraint.constant = -slideWidth
+                    self.centerState = .left
+                    self.configTrailingConstraint.constant = 0
+                    self.view.sendSubview(toBack: self.accountContainerView)
                     UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                         self.view.layoutIfNeeded()
                         }, completion: nil)
-                } else {
+                }
+            }
+            else if lastConstant >= slideWidth * 0.5 {
+                if self.centerState == .left {
+                    self.centerConstraint.constant = 0
+                    self.centerState = .center
+                    self.accountLeadingConstraint.constant = sidePanelOffset
+                    self.configTrailingConstraint.constant = sidePanelOffset
+                    UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                        self.view.layoutIfNeeded()
+                        }, completion: nil)
+                }
+                else {
                     self.centerConstraint.constant = slideWidth
                     self.centerState = .right
+                    self.accountLeadingConstraint.constant = 0
+                    self.view.sendSubview(toBack: self.configContainerView)
                     UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                         self.view.layoutIfNeeded()
                         }, completion: nil)                    
                 }
-            } else  {
+            }
+            else  {
                 self.centerConstraint.constant = 0.0
                 self.centerState = .center
+                self.accountLeadingConstraint.constant = sidePanelOffset
+                self.configTrailingConstraint.constant = sidePanelOffset
                 UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                     self.view.layoutIfNeeded()
                     }, completion: nil)
@@ -196,13 +207,33 @@ class SlidingNavigationViewController: UIViewController {
             
         default:
             let moved = beganTranslatedPositionX + translated.x
-            if UI_USER_INTERFACE_IDIOM() == .pad {
-                centerConstraint.constant = min(max(-slideWidth, beganPositionX + moved), 0)
-            } else if UI_USER_INTERFACE_IDIOM() == .phone {
-                centerConstraint.constant = min(max(-slideWidth, beganPositionX + moved), slideWidth)
+            centerConstraint.constant = min(max(-slideWidth, beganPositionX + moved), slideWidth)
+            
+            if centerConstraint.constant < 0 {
+                self.view.sendSubview(toBack: self.accountContainerView)
+            }
+            else {
+                self.view.sendSubview(toBack: self.configContainerView)
+            }
+
+            // <-- negative move
+            // --> positive move
+            if moved > 0 {
+                // moving to the right
+                if beganPositionX + (moved / 2) < slideWidth {
+                    accountLeadingConstraint.constant = min(sidePanelOffset + moved / 2, 0)
+                    configTrailingConstraint.constant = max(-(moved / 2), sidePanelOffset)
+                }
+            }
+            else {
+                // moving to the left
+                if abs(beganPositionX + moved / 2) < slideWidth {
+                    accountLeadingConstraint.constant = max((moved / 2), sidePanelOffset)
+                    configTrailingConstraint.constant = min(sidePanelOffset - moved / 2, 0)
+                }
             }
         }
-        
+    
     }
 
 }
