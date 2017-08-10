@@ -204,10 +204,7 @@ open class VPNConfigurationCoordinator {
         return NEVPNManager.shared().connection.status == .disconnected
     }
 
-    private class func generateLocalIdentifier() -> String {
-        let settingsState = mainStore.state.settingsState
-        let regionState = mainStore.state.regionState
-
+    private class func generateRandomPrefix() -> String {
         // generate random prefix to keep localIdentifier unique
         let alphabet : NSString = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let len = UInt32(alphabet.length)
@@ -217,6 +214,12 @@ open class VPNConfigurationCoordinator {
             var nextChar = alphabet.character(at: Int(rand))
             randomPrefix += NSString(characters: &nextChar, length: 1) as String
         }
+        return randomPrefix
+    }
+
+    private class func generateLocalIdentifier() -> String {
+        let settingsState = mainStore.state.settingsState
+        let regionState = mainStore.state.regionState
 
         // generate bitmask from user settings
         var bitmask = 10
@@ -225,7 +228,8 @@ open class VPNConfigurationCoordinator {
         bitmask += regionState.cypherplayOn ? 4 : 0
 
         // cat strings together
-        let localIdentifier = randomPrefix + "-ios-\(bitmask)"
+        //let localIdentifier = generateRandomPrefix() + "-ios-\(bitmask)"
+        let localIdentifier = "cypherpunk-vpn-ios-\(bitmask)"
 
         // done
         print("Local Identifier: \(localIdentifier)")
@@ -239,7 +243,7 @@ open class VPNConfigurationCoordinator {
         newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
 
         newIPSec.useExtendedAuthentication = true
-        newIPSec.username = accountState.vpnUsername
+        newIPSec.username = accountState.vpnUsername! + "+" + generateRandomPrefix()
         let password = accountState.vpnPassword
         newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
