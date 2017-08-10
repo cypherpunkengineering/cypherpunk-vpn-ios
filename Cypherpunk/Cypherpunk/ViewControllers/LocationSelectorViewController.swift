@@ -98,7 +98,7 @@ class LocationSelectorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 80.0 / 255.0, green: 1.0, blue: 1.0, alpha: 0.10)
+        self.view.backgroundColor = UIColor(hex: "#002828", alpha: 0.5)!
 
         self.collectionView.register(UINib(nibName: "LocationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LocationCell")
         self.collectionView.register(UINib(nibName: "CypherplayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CypherPlayCell")
@@ -226,7 +226,7 @@ extension LocationSelectorViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         let locationSection = LocationSection(rawValue: section)
-        if (locationSection?.realmResults.count)! > 0 {
+        if section > 0 && (locationSection?.realmResults.count)! > 0  {
             return CGSize(width: collectionView.bounds.width, height: 40)
         }
         else {

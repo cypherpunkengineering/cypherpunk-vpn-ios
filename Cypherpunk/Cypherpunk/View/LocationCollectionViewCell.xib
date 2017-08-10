@@ -30,7 +30,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8a-DL-YzK">
-                        <rect key="frame" x="64" y="1" width="273" height="34"/>
+                        <rect key="frame" x="59" y="1" width="278" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="Job-7w-XLV"/>
                         </constraints>
@@ -41,7 +41,7 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="I8a-DL-YzK" firstAttribute="leading" secondItem="soR-lr-p4E" secondAttribute="trailing" constant="11" id="lto-Ct-pgf"/>
+                <constraint firstItem="I8a-DL-YzK" firstAttribute="leading" secondItem="soR-lr-p4E" secondAttribute="trailing" constant="6" id="lto-Ct-pgf"/>
                 <constraint firstItem="soR-lr-p4E" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="lus-aR-kBr"/>
                 <constraint firstItem="soR-lr-p4E" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="q1g-7Y-Ida"/>
                 <constraint firstAttribute="trailing" secondItem="I8a-DL-YzK" secondAttribute="trailing" constant="11" id="s3B-yA-b0N"/>
