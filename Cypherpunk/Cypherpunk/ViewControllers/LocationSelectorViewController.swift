@@ -142,7 +142,12 @@ extension LocationSelectorViewController: UICollectionViewDelegate {
         let section = LocationSection(rawValue: (indexPath as NSIndexPath).section)!
         
         if section == .cypherplay {
-            ConnectionHelper.connectToFastest(cypherplay: true)
+            if indexPath.row == 0 {
+                ConnectionHelper.connectToFastest(cypherplay: true)
+            }
+            else {
+                ConnectionHelper.connectToFastest(cypherplay: false)
+            }
             self.delegate?.dismissSelector()
         }
         else {
@@ -177,7 +182,7 @@ extension LocationSelectorViewController: UICollectionViewDataSource {
         
         switch section {
         case .cypherplay:
-            return 1
+            return 2
         default:
             return section.realmResults.count
         }
@@ -190,7 +195,18 @@ extension LocationSelectorViewController: UICollectionViewDataSource {
         
         switch section {
         case .cypherplay:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CypherPlayCell", for: indexPath)
+            if indexPath.row == 0 {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CypherPlayCell", for: indexPath)
+            }
+            else {
+                let locCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
+                if let region = ConnectionHelper.findFastest() {
+                    locCell.displayRegion(region: region)
+                    locCell.locationLabel.text = "Fastest Location" // override the name with Fastest Location
+                    locCell.showBoldText()
+                }
+                cell = locCell
+            }
         default:
             let locCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCell", for: indexPath) as! LocationCollectionViewCell
             let region = section.realmResults[indexPath.row]

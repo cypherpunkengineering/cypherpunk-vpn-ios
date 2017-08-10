@@ -34,7 +34,7 @@
                             <fragment content="Fastest Location">
                                 <attributes>
                                     <color key="NSColor" red="0.82352941176470584" green="0.6588235294117647" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="17" name="Dosis-SemiBold"/>
+                                    <font key="NSFont" size="18" name="Dosis-SemiBold"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -62,7 +62,7 @@
                             <fragment content="CypherPlay™">
                                 <attributes>
                                     <color key="NSColor" red="0.83529411764705885" green="0.38823529411764707" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="17" name="Dosis-SemiBold"/>
+                                    <font key="NSFont" size="18" name="Dosis-SemiBold"/>
                                     <font key="NSOriginalFont" size="17" name="Dosis-SemiBold"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>

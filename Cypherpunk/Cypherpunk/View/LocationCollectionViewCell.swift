@@ -19,12 +19,18 @@ class LocationCollectionViewCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         self.locationLabel.textColor = UIColor.white
+        self.locationLabel.font = R.font.dosisRegular(size: 17)
         self.flagView.alpha = 1.0
     }
     
     func showDisabledAppearance() {
         self.locationLabel.textColor = UIColor(white: 1.0, alpha: 0.5)
         self.flagView.alpha = 0.5
+    }
+    
+    func showBoldText() {
+        self.locationLabel.font = R.font.dosisSemiBold(size: 18)
+        self.locationLabel.textColor = UIColor(red: 162 / 255.0, green: 181 / 255.0, blue: 181 / 255.0, alpha: 1.0)
     }
     
     func displayRegion(region: Region) {
