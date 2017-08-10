@@ -208,14 +208,28 @@ open class VPNConfigurationCoordinator {
         let settingsState = mainStore.state.settingsState
         let regionState = mainStore.state.regionState
 
-        var bitmask = 10
+        // generate random prefix to keep localIdentifier unique
+        let alphabet : NSString = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let len = UInt32(alphabet.length)
+        var randomPrefix = ""
+        for _ in 0 ..< 10 {
+            let rand = arc4random_uniform(len)
+            var nextChar = alphabet.character(at: Int(rand))
+            randomPrefix += NSString(characters: &nextChar, length: 1) as String
+        }
 
+        // generate bitmask from user settings
+        var bitmask = 10
         bitmask += settingsState.blockAds ? 1 : 0
         bitmask += settingsState.blockMalware ? 2 : 0
         bitmask += regionState.cypherplayOn ? 4 : 0
 
-        print("Local Identifier: cypherpunk-vpn-ios-\(bitmask)")
-        return "cypherpunk-vpn-ios-\(bitmask)"
+        // cat strings together
+        let localIdentifier = randomPrefix + "-ios-\(bitmask)"
+
+        // done
+        print("Local Identifier: \(localIdentifier)")
+        return localIdentifier
     }
 
     private class func buildIKEv2Configuration(accountState: AccountState, regionState: RegionState) -> NEVPNProtocolIKEv2 {
