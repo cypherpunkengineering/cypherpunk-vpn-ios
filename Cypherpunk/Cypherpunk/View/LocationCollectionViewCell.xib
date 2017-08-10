@@ -30,7 +30,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8a-DL-YzK">
-                        <rect key="frame" x="59" y="1" width="278" height="34"/>
+                        <rect key="frame" x="59" y="1" width="228" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="Job-7w-XLV"/>
                         </constraints>
@@ -38,18 +38,31 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0B-8j-N8C">
+                        <rect key="frame" x="297" y="7" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="RUI-HL-L80"/>
+                            <constraint firstAttribute="width" constant="42" id="wvI-vV-jFf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="15"/>
+                        <color key="textColor" red="0.18823529411764706" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="i0B-8j-N8C" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Buw-Vl-IoP"/>
+                <constraint firstAttribute="trailing" secondItem="i0B-8j-N8C" secondAttribute="trailing" constant="9" id="eoA-k2-hA9"/>
                 <constraint firstItem="I8a-DL-YzK" firstAttribute="leading" secondItem="soR-lr-p4E" secondAttribute="trailing" constant="6" id="lto-Ct-pgf"/>
                 <constraint firstItem="soR-lr-p4E" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="lus-aR-kBr"/>
+                <constraint firstItem="i0B-8j-N8C" firstAttribute="leading" secondItem="I8a-DL-YzK" secondAttribute="trailing" constant="10" id="mZo-Wn-ijB"/>
                 <constraint firstItem="soR-lr-p4E" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="q1g-7Y-Ida"/>
-                <constraint firstAttribute="trailing" secondItem="I8a-DL-YzK" secondAttribute="trailing" constant="11" id="s3B-yA-b0N"/>
                 <constraint firstItem="I8a-DL-YzK" firstAttribute="centerY" secondItem="soR-lr-p4E" secondAttribute="centerY" id="tD0-7n-J8B"/>
             </constraints>
             <size key="customSize" width="348" height="42"/>
             <connections>
                 <outlet property="flagView" destination="soR-lr-p4E" id="Y9p-gt-kQx"/>
+                <outlet property="latencyLabel" destination="i0B-8j-N8C" id="lf8-LB-2My"/>
                 <outlet property="locationLabel" destination="I8a-DL-YzK" id="Xbr-O9-O5m"/>
             </connections>
             <point key="canvasLocation" x="174" y="47.5"/>

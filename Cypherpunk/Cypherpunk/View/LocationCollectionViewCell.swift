@@ -11,6 +11,7 @@ import UIKit
 class LocationCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var flagView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var latencyLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,6 +43,15 @@ class LocationCollectionViewCell: UICollectionViewCell {
         else {
             self.locationLabel.text = region.name
         }
+        
+        if region.latencySeconds < 10 {
+            let millis = String(format: "%dms", Int(region.latencySeconds * 1000))
+            latencyLabel.text = millis
+        }
+        else {
+            latencyLabel.text = ""
+        }
+        
         
         if !region.authorized {
             self.showDisabledAppearance()
