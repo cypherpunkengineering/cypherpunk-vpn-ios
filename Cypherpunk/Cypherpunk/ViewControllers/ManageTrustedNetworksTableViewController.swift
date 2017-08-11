@@ -31,6 +31,9 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
     
     var notificationToken: NotificationToken!
     var wifiNetworksResult: Results<WifiNetworks>!
+    
+    private let helperTextColor = UIColor(red: 100 / 255.0, green: 160 / 255.0, blue: 160 / 255.0, alpha: 1)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -107,18 +110,18 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
         let headerView = UIView()
         
         if section == 0 {
-            headerView.frame = CGRect(x: 0, y: 0, width: 320, height: 55)
+            headerView.frame = CGRect(x: 0, y: 0, width: 320, height: 65)
             headerView.backgroundColor = UIColor.configTableCellBg
             let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
             label.textColor = UIColor.goldenYellow
             label.font = R.font.dosisMedium(size: 15.0)
-            label.text = "Auto Secure"
+            label.text = "AUTO-SECURE"
             
-            let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 35))
-            descLabel.textColor = UIColor.white
-            descLabel.numberOfLines = 2
+            let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 45))
+            descLabel.textColor = self.helperTextColor
+            descLabel.numberOfLines = 0
             descLabel.lineBreakMode = .byWordWrapping
-            descLabel.font = R.font.dosisRegular(size: 12)
+            descLabel.font = R.font.dosisRegular(size: 14)
             descLabel.text = "Cypherpunk can automatically secure connections to untrusted networks."
             
             headerView.addSubview(label)
@@ -130,13 +133,13 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
             let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
             label.textColor = UIColor.goldenYellow
             label.font = R.font.dosisMedium(size: 15.0)
-            label.text = "Trusted Networks"
+            label.text = "TRUSTED NETWORKS"
             
-            let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 35))
-            descLabel.textColor = UIColor.white
-            descLabel.numberOfLines = 2
+            let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 45))
+            descLabel.textColor = self.helperTextColor
+            descLabel.numberOfLines = 0
             descLabel.lineBreakMode = .byWordWrapping
-            descLabel.font = R.font.dosisRegular(size: 12)
+            descLabel.font = R.font.dosisRegular(size: 14)
             descLabel.text = "Cypherpunk Privacy will automatically connect, except when on the following trusted networks."
             
             headerView.addSubview(label)
@@ -148,10 +151,8 @@ class ManageTrustedNetworksTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 0:
-            return 55.0
-        case 1:
-            return 65.0
+        case 0, 1:
+            return 75.0
         default:
             return 0.0
         }
