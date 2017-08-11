@@ -260,7 +260,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // handle shortcut if one was launched
         guard let shortcut = launchedShortcutItem else { return }
-        handleShortCutItem(shortcut)
+        let _ = handleShortCutItem(shortcut)
         launchedShortcutItem = nil
     }
     
@@ -301,17 +301,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             items.append(fastestShortcut)
             
-            let regions = ConnectionHelper.getUserLocations(count: 1)
-            if regions.count > 0 {
-                let region = regions.first
-                let nameComponents = region?.name.components(separatedBy: ",")
-                let locationShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Location.type, localizedTitle: (nameComponents?.first)!, localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "location70x70"), userInfo: [
-                    AppDelegate.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Location.rawValue,
-                    AppDelegate.applicationShortcutUserInfoServerKey: region?.id as Any
-                    ]
-                )
-                items.append(locationShortcut)
-            }
+//            let regions = ConnectionHelper.getUserLocations(count: 1)
+//            if regions.count > 0 {
+//                let region = regions.first
+//                let nameComponents = region?.name.components(separatedBy: ",")
+//                let locationShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Location.type, localizedTitle: (nameComponents?.first)!, localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "location70x70"), userInfo: [
+//                    AppDelegate.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Location.rawValue,
+//                    AppDelegate.applicationShortcutUserInfoServerKey: region?.id as Any
+//                    ]
+//                )
+//                items.append(locationShortcut)
+//            }
             
             application.shortcutItems = items
         }
