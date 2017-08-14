@@ -23,6 +23,7 @@ target 'Cypherpunk' do
        pod 'TinySwift'
        pod 'Hero'
        pod 'MarqueeLabel/Swift'
+       pod 'PMAlertController'
 end
 
 target 'CypherpunkTests' do

@@ -13,6 +13,7 @@ import RealmSwift
 import NetworkExtension
 import ReSwift
 import TinySwift
+import PMAlertController
 
 class MainViewController: UIViewController, StoreSubscriber {
     
@@ -420,6 +421,62 @@ extension MainViewController: LocationButtonDelgate {
 }
 
 extension MainViewController: VPNSwitchDelegate {
+    func shouldChangeSwitchState() -> Bool {
+        var allowSwitchToChangeState = true
+        
+        let isOn = self.vpnSwitchAnimationView.vpnSwitch.isOn
+        let currentWifiSSID = ConnectionHelper.currentWifiSSID()
+        
+        if isOn {
+            // user is trying to turn off the VPN
+            if let ssid = currentWifiSSID, !ConnectionHelper.currentWifiNetworkTrusted() {
+                // current wifi network is not trusted! tell user turning off the switch will trust this network
+                showAlertView(title: "Trust Network?", description: "Turning off the VPN will treat the current network as trusted and transmit your traffic directly without privacy protection. Proceed to trust the network \(ssid)?", trust: true, confirmAction: { 
+                    self.trustWifiNetwork(ssid: ssid)
+                })
+                
+                // do not allow the switch to change when showing the dialog!
+                allowSwitchToChangeState = false
+                // we will handle if the user selects Trust
+            }
+            else {
+                if ConnectionHelper.connectedToCellular() && !mainStore.state.settingsState.isTrustCellularNetworks {
+                    // cellular is connected and currently trusted, turning off the switch will trust cellular
+                    showAlertView(title: "Trust Cellular Networks?", description: "Turning off the VPN will treat cellular networks as trusted and transmit your traffic directly without privacy protection. Proceed to trust cellular networks?", trust: true, confirmAction: {
+                        self.trustCellularNetworks(trust: true)
+                    })
+                    
+                    allowSwitchToChangeState = false
+                }
+            }
+        }
+        else {
+            // user is trying to turn on the VPN
+            if let ssid = currentWifiSSID, ConnectionHelper.currentWifiNetworkTrusted() {
+                // current wifi network is trusted! tell user turning on the switch will untrust this network
+                showAlertView(title: "Untrust Network?", description: "Turning on the VPN will treat the current network as untrusted and will transmit your traffic with privacy protection. Proceed to untrust the network \(ssid)?", trust: false, confirmAction: {
+                    self.trustWifiNetwork(trust: false, ssid: ssid)
+                })
+                
+                // do not allow the switch to change when showing the dialog!
+                allowSwitchToChangeState = false
+                // we will handle if the user selects untrust
+            }
+            else {
+                if ConnectionHelper.connectedToCellular() && mainStore.state.settingsState.isTrustCellularNetworks {
+                    // cellular is connected and NOT currently trusted, turning on the switch will untrust cellular
+                    showAlertView(title: "Untrust Cellular Networks?", description: "Turning on the VPN will treat cellular networks as untrusted and transmit your traffic with privacy protection. Proceed to untrust cellular networks?", trust: false, confirmAction: {
+                        self.trustCellularNetworks(trust: false)
+                    })
+                    
+                    allowSwitchToChangeState = false
+                }
+            }
+        }
+        
+        return allowSwitchToChangeState
+    }
+
     func stateChanged(on: Bool) {
         if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnected {
             VPNConfigurationCoordinator.disconnect()
@@ -435,5 +492,43 @@ extension MainViewController: VPNSwitchDelegate {
         else {
             self.vpnSwitchAnimationView.cancelConnectAnimation()
         }
+    }
+    
+    private func showAlertView(title: String, description: String, trust: Bool, confirmAction: (() -> Void)?) {
+        let alertVC = PMAlertController(title: title, description: description, image: nil, style: .alert)
+        alertVC.alertTitle.font = R.font.dosisSemiBold(size: 16)
+        alertVC.alertTitle.textColor = UIColor.greenyBlue
+        
+        let cancelAction = PMAlertAction(title: "Cancel", style: .cancel, action: { () -> Void in
+            // do nothing for now
+        })
+        cancelAction.titleLabel?.font = R.font.dosisMedium(size: 16)
+        alertVC.addAction(cancelAction)
+        
+        let confirmTitle = trust ? "TRUST" : "UNSTRUST"
+        let confirmAction = PMAlertAction(title: confirmTitle, style: .default, action: confirmAction)
+        confirmAction.setTitleColor(UIColor.greenyBlue, for: .normal)
+        confirmAction.titleLabel?.font = R.font.dosisBold(size: 16)
+        alertVC.addAction(confirmAction)
+        
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    private func trustWifiNetwork(trust: Bool = true, ssid: String) {
+        let realm = try! Realm()
+        if let network = realm.object(ofType: WifiNetworks.self, forPrimaryKey: ssid) {
+            try! realm.write {
+                network.isTrusted = trust
+                
+                // write the new configuration, this should stop the VPN
+                VPNConfigurationCoordinator.start(connectIfDisconnected: !trust, {
+                    
+                })
+            }
+        }
+    }
+    
+    private func trustCellularNetworks(trust: Bool = true) {
+        mainStore.dispatch(SettingsAction.isTrustCellularNetworks(isOn: trust))
     }
 }

@@ -104,6 +104,7 @@ open class VPNConfigurationCoordinator {
 //                    print(manager.protocolConfiguration!)
                     if reconnect {
                         VPNConfigurationCoordinator.connect()
+//                        VPNStateController.sharedInstance.reconnect()
                     }
                 })
             })
@@ -133,43 +134,43 @@ open class VPNConfigurationCoordinator {
         }
 
         let manager = NEVPNManager.shared()
-        if manager.isOnDemandEnabled == false {
-            manager.loadFromPreferences { (error) in
-                manager.isOnDemandEnabled = true
-                manager.saveToPreferences(completionHandler: { (error) in
-                    manager.loadFromPreferences(completionHandler: { (error) in
-//                        print(manager.protocolConfiguration!)
-                    })
-                    if let error = error {
-                        print(error)
-                    } else {
-                        connectBlock()
-                    }
-                })
-            }
-        } else {
+//        if manager.isOnDemandEnabled == false {
+//            manager.loadFromPreferences { (error) in
+//                manager.isOnDemandEnabled = true
+//                manager.saveToPreferences(completionHandler: { (error) in
+//                    manager.loadFromPreferences(completionHandler: { (error) in
+////                        print(manager.protocolConfiguration!)
+//                    })
+//                    if let error = error {
+//                        print(error)
+//                    } else {
+//                        connectBlock()
+//                    }
+//                })
+//            }
+//        } else {
             connectBlock()
-        }
+//        }
     }
 
     class func disconnect() {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
 
-            if manager.isOnDemandEnabled {
-                manager.isOnDemandEnabled = false
-                
-                // need to save is on demand enabled
-                manager.saveToPreferences(completionHandler: { error in
-                    manager.connection.stopVPNTunnel()
-                    
-                    manager.loadFromPreferences(completionHandler: { error in
-                    })
-                })
-            }
-            else {
+//            if manager.isOnDemandEnabled {
+//                manager.isOnDemandEnabled = false
+//                
+//                // need to save is on demand enabled
+//                manager.saveToPreferences(completionHandler: { error in
+//                    manager.connection.stopVPNTunnel()
+//                    
+//                    manager.loadFromPreferences(completionHandler: { error in
+//                    })
+//                })
+//            }
+//            else {
                 manager.connection.stopVPNTunnel()
-            }
+//            }
         }
         if #available(iOS 9.0, *) {
             print("Stopping VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")

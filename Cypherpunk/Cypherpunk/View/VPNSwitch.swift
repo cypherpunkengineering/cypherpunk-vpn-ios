@@ -10,6 +10,7 @@ import UIKit
 
 protocol VPNSwitchDelegate: class {
     func stateChanged(on: Bool)
+    func shouldChangeSwitchState() -> Bool
 }
 
 class VPNSwitch: UIView, UIGestureRecognizerDelegate {
@@ -175,6 +176,18 @@ class VPNSwitch: UIView, UIGestureRecognizerDelegate {
     }
     
     func handleTap(sender: UITapGestureRecognizer) {
+        if let vpnDelegate = delegate {
+            if vpnDelegate.shouldChangeSwitchState() {
+                toggleSwitch()
+            }
+        }
+        else {
+            // no delegate, just toggle the switch
+            toggleSwitch()
+        }
+    }
+    
+    private func toggleSwitch() {
         isOn = !isOn
         delegate?.stateChanged(on: isOn) // only call if triggered by user
     }
