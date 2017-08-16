@@ -12,7 +12,7 @@ import simd
 
 class MapImageView: UIView {
     static let mapPanDuration = 1.25 // duration of the map animation when it pans/zooms
-    var parentMidYOffset: CGFloat = 70 {
+    var parentMidYOffset: CGFloat = 125 {
         didSet {
             self.setNeedsLayout()
         }
@@ -86,6 +86,10 @@ class MapImageView: UIView {
     }
     
     private func setupMap() {
+        if UI_USER_INTERFACE_IDIOM() == .phone && UIScreen.main.bounds.height < 520 {
+            parentMidYOffset = 115
+        }
+        
         let mapImage = createTransparentMapImage()
         self.mapLayer.contents = mapImage?.cgImage
         self.mapLayer.contentsScale = UIScreen.main.scale
@@ -219,8 +223,10 @@ class MapImageView: UIView {
         // scale values were based on 350x500 res, need to compute the right values for iOS
         let height = superviewFrame.height
         
+        let iOSAdjustment: CGFloat = 1.25
+        
         // scale it based on the height
-        let scale = height / 500 * regionScale
+        let scale = height / 500 * iOSAdjustment * regionScale
         
         return scale
     }

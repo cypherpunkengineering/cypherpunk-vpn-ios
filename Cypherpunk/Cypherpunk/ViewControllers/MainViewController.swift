@@ -115,20 +115,9 @@ class MainViewController: UIViewController, StoreSubscriber {
             childView.width == 60.0
         }
         
-//        self.view.addSubview(self.vpnSwitch)
-//        constrain(self.view, self.vpnSwitch) { parentView, childView in
-//            childView.bottom == parentView.centerY - 75
-//            childView.height == self.vpnSwitch.frame.height
-//            childView.width == self.vpnSwitch.frame.width
-//            childView.centerX == parentView.centerX
-//        }
-//        self.vpnSwitch.delegate = self
-        
         self.view.addSubview(self.vpnSwitchAnimationView)
         constrain(self.view, self.vpnSwitchAnimationView) { parentView, childView in
             childView.bottom == parentView.centerY - 75
-//            childView.height == self.vpnSwitch.frame.height
-//            childView.width == self.vpnSwitch.frame.width
             childView.centerX == parentView.centerX
             childView.width == parentView.width
             childView.height == 75
@@ -140,7 +129,7 @@ class MainViewController: UIViewController, StoreSubscriber {
         statusDetailLabel.font = R.font.dosisRegular(size: 14)
         self.view.addSubview(self.statusDetailLabel)
         constrain(self.view, self.statusDetailLabel) { parentView, childView in
-            childView.bottom == parentView.centerY
+            childView.bottom == parentView.centerY + 35
             childView.centerX == parentView.centerX
             childView.height == 20
         }
