@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 import RealmSwift
 import simd
 
@@ -17,9 +18,10 @@ class MapImageView: UIView {
             self.setNeedsLayout()
         }
     }
-    var isMarkerInBackground = false {
+
+    var isMapInBackground = false {
         didSet {
-            if isMarkerInBackground {
+            if isMapInBackground {
                 self.markerLayer.foregroundColor = UIColor(hex: "#448888")?.cgColor
             }
             else {
@@ -28,8 +30,10 @@ class MapImageView: UIView {
         }
     }
     
-    private let locationColor = UIColor.init(hex: "#008888")!.cgColor
-    private let locationBorderColor = UIColor.init(hex: "#004444")!.cgColor
+    private let locationColor = UIColor.init(hex: "#01adad")!.cgColor
+    private let locationBorderColor = UIColor(red: 0, green: 118 / 255.0, blue: 118 / 255.0, alpha: 1.0).cgColor
+    private let locationColorDark = UIColor(red: 0, green: 83 / 255.0, blue: 83 / 255.0, alpha: 1.0).cgColor
+    private let locationBorderColorDark = UIColor.init(hex: "#004444")!.cgColor
     private let markerLayer = CATextLayer()
     private let mapLayer = CALayer()
     private var scaleTransform: CATransform3D? = nil
@@ -132,12 +136,12 @@ class MapImageView: UIView {
         let dotPath = UIBezierPath(ovalIn: CGRect(x: imageCoordinates.x - 3, y: imageCoordinates.y - 3, width: 6, height: 6))
 
         let layer = CAShapeLayer()
+        layer.borderWidth = 6.0
         layer.path = dotPath.cgPath
-        layer.fillColor = locationColor
-        layer.strokeColor = locationBorderColor
-        
         layer.setValue(regionId, forKey: "regionId")
         layer.contentsScale = UIScreen.main.scale
+        
+        setLocationLayerColors(shapeLayer: layer, selected: mainStore.state.regionState.lastSelectedRegionId == regionId)
         
         self.mapLayer.addSublayer(layer)
     }
@@ -209,6 +213,13 @@ class MapImageView: UIView {
             self.lastPosition = position
             self.mapLayer.position = position
             self.mapLayer.add(animationGroup, forKey: "panAndZoom")
+            
+            let sublayers = self.mapLayer.sublayers
+            sublayers?.forEach({ (sublayer) in
+                let shapeLayer = sublayer as! CAShapeLayer
+                let regionId = shapeLayer.value(forKey: "regionId") as! String
+                setLocationLayerColors(shapeLayer: shapeLayer, selected: regionId == region.id)
+            })
         }
     }
     
@@ -216,6 +227,31 @@ class MapImageView: UIView {
         let realm = try! Realm()
         if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
             zoomToRegion(region: region)
+        }
+    }
+    
+    private func setLocationLayerColors(shapeLayer: CAShapeLayer, selected: Bool) {
+        if selected {
+            shapeLayer.fillColor = locationColor
+            shapeLayer.borderColor = locationBorderColor
+            shapeLayer.strokeColor = locationBorderColor
+            
+            shapeLayer.shadowColor = UIColor.cyan.cgColor
+            shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
+            shapeLayer.shadowRadius = 8.0
+            shapeLayer.shadowOpacity = 0.7
+            shapeLayer.setNeedsDisplay()
+            
+            shapeLayer.zPosition = 1000
+        }
+        else {
+            shapeLayer.fillColor = locationColorDark
+            shapeLayer.borderColor = locationBorderColorDark
+            shapeLayer.strokeColor = locationBorderColorDark
+            
+            shapeLayer.shadowColor = UIColor.clear.cgColor
+            
+            shapeLayer.zPosition = 100
         }
     }
     

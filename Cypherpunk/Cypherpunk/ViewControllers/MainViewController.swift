@@ -263,7 +263,7 @@ class MainViewController: UIViewController, StoreSubscriber {
             self.statusTitleLabel.isHidden = true
             self.statusLabel.isHidden = true
             self.statusDetailLabel.isHidden = true
-            self.mapImageView.isMarkerInBackground = true
+            self.mapImageView.isMapInBackground = true
         }
     }
     
@@ -391,7 +391,7 @@ extension MainViewController: LocationSelectionDelegate {
             self.statusLabel.isHidden = false
             self.statusDetailLabel.isHidden = false
             
-            self.mapImageView.isMarkerInBackground = false
+            self.mapImageView.isMapInBackground = false
         }) { (completed) in
             self.locationSelectorVC?.removeFromParentViewController()
             if let block = completion {
