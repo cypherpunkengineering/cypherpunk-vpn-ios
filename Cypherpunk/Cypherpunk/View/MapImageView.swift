@@ -236,9 +236,9 @@ class MapImageView: UIView {
             shapeLayer.borderColor = locationBorderColor
             shapeLayer.strokeColor = locationBorderColor
             
-            shapeLayer.shadowColor = UIColor.cyan.cgColor
+            shapeLayer.shadowColor = UIColor.locShadowColor.cgColor
             shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
-            shapeLayer.shadowRadius = 8.0
+            shapeLayer.shadowRadius = 4.0
             shapeLayer.shadowOpacity = 0.7
             shapeLayer.shadowPath = shapeLayer.path?.copy()!
             shapeLayer.setNeedsDisplay()

@@ -107,6 +107,18 @@ extension UIColor {
         return UIColor(red: 12.0 / 255.0, green: 51.0 / 255.0, blue: 57.0 / 255.0, alpha: 1.0)
     }
     
+    class var loginButtonColor: UIColor {
+        return UIColor(red: 47.0 / 255.0, green: 132.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var loginButtonLightColor: UIColor {
+        return UIColor(red: 85.0 / 255.0, green: 156.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var locShadowColor: UIColor {
+        return UIColor.cyan.darkerColor(percent: 0.2)
+    }
+    
     /**    https://gist.github.com/mbigatti/c6be210a6bbc0ff25972 */
     /**
      Construct a UIColor using an HTML/CSS RGB formatted value and an alpha value
