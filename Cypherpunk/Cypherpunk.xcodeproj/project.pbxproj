@@ -47,6 +47,7 @@
 		09ACCDD11E71894800AF3E4F /* bk-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD01E71894800AF3E4F /* bk-overlay.png */; };
 		09ACCDD31E71894F00AF3E4F /* bk-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */; };
 		09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */; };
+		09D55AD11F56F7430030C706 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D55AD01F56F7430030C706 /* BlueButton.swift */; };
 		09DB51AF1F2E60A0002DFACE /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB51AE1F2E60A0002DFACE /* String+Size.swift */; };
 		09DDDE551EF289E000E7F2B7 /* LocationHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DDDE531EF289E000E7F2B7 /* LocationHeaderReusableView.swift */; };
 		09DDDE561EF289E000E7F2B7 /* LocationHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DDDE541EF289E000E7F2B7 /* LocationHeaderReusableView.xib */; };
@@ -216,6 +217,7 @@
 		09ACCDD01E71894800AF3E4F /* bk-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay.png"; sourceTree = "<group>"; };
 		09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay@2x.png"; sourceTree = "<group>"; };
 		09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationTableViewCell.swift; sourceTree = "<group>"; };
+		09D55AD01F56F7430030C706 /* BlueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueButton.swift; path = Buttons/BlueButton.swift; sourceTree = "<group>"; };
 		09DB51AE1F2E60A0002DFACE /* String+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Size.swift"; path = "Cypherpunk/Extension/String+Size.swift"; sourceTree = SOURCE_ROOT; };
 		09DDDE531EF289E000E7F2B7 /* LocationHeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHeaderReusableView.swift; sourceTree = "<group>"; };
 		09DDDE541EF289E000E7F2B7 /* LocationHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationHeaderReusableView.xib; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 			children = (
 				09E60D961ED6E0430037BA0D /* AccountButton.swift */,
 				0948DBA41ED776F400A7A475 /* ConfigurationButton.swift */,
+				09D55AD01F56F7430030C706 /* BlueButton.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -1298,6 +1301,7 @@
 				0959A5171E69883D00A95A49 /* PlanCollectionViewCell.swift in Sources */,
 				2064B3A41DBF38BD00F85148 /* PopoverRootViewController.swift in Sources */,
 				2BDBD0D61D6575AA00080E67 /* ContactusViewController.swift in Sources */,
+				09D55AD11F56F7430030C706 /* BlueButton.swift in Sources */,
 				20B634B61DC3591B0036169D /* AppAction.swift in Sources */,
 				2090F7191DD5AF8D00BAB626 /* ChangePasswordAPI.swift in Sources */,
 				09DDDE551EF289E000E7F2B7 /* LocationHeaderReusableView.swift in Sources */,
