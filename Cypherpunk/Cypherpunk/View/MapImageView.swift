@@ -240,6 +240,7 @@ class MapImageView: UIView {
             shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
             shapeLayer.shadowRadius = 8.0
             shapeLayer.shadowOpacity = 0.7
+            shapeLayer.shadowPath = shapeLayer.path?.copy()!
             shapeLayer.setNeedsDisplay()
             
             shapeLayer.zPosition = 1000
