@@ -54,11 +54,11 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         actionButton.layer.shadowRadius = 5.0
         actionButton.layer.shadowColor = UIColor.darkBlueGreyTwo.cgColor
         
-        actionButton.setBackgroundColor(color: UIColor.burntSienna, forState: .normal)
+        actionButton.setBackgroundColor(color: UIColor.loginButtonColor, forState: .normal)
         
-        actionButton.setBackgroundColor(color: UIColor.tacao, forState: .highlighted)
+        actionButton.setBackgroundColor(color: UIColor.loginButtonLightColor, forState: .highlighted)
         
-        actionButton.setBackgroundColor(color: UIColor.burntSienna.darkerColor(percent: 0.2), forState: .disabled)
+        actionButton.setBackgroundColor(color: UIColor.loginButtonColor.darkerColor(percent: 0.2), forState: .disabled)
         
         actionButton.layer.masksToBounds = false
     }
