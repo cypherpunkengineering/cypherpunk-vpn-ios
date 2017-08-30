@@ -90,7 +90,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Please input your email to begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-7x-T35">
-                                <rect key="frame" x="52" y="246" width="217.5" height="23"/>
+                                <rect key="frame" x="51.5" y="246" width="217.5" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="0.37254901960784315" green="0.73333333333333328" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -148,12 +148,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Quh-4L-vOV">
-                                <rect key="frame" x="0.0" y="32" width="34" height="44"/>
+                                <rect key="frame" x="6" y="32" width="60" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="QQ7-aM-yco"/>
+                                    <constraint firstAttribute="width" constant="60" id="QQ7-aM-yco"/>
                                     <constraint firstAttribute="height" constant="44" id="yQJ-6J-ykY"/>
                                 </constraints>
-                                <state key="normal" image="iconBack"/>
+                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Back" image="iconBack"/>
                                 <connections>
                                     <action selector="backAction:" destination="rah-Zv-HVw" eventType="touchUpInside" id="RoV-Cm-Nfb"/>
                                 </connections>
@@ -225,7 +227,7 @@
                             <constraint firstItem="OVX-L7-3OC" firstAttribute="top" secondItem="A1N-sG-hSC" secondAttribute="bottom" constant="14" id="qAd-1B-4LI"/>
                             <constraint firstItem="NCz-mW-Egf" firstAttribute="centerX" secondItem="cK6-8c-cze" secondAttribute="centerX" id="ske-Pt-3bP"/>
                             <constraint firstItem="oVi-SW-B2h" firstAttribute="top" secondItem="jAH-ax-SL5" secondAttribute="bottom" id="xYc-tg-PjU"/>
-                            <constraint firstItem="Quh-4L-vOV" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leadingMargin" constant="-16" id="xcQ-9U-aid"/>
+                            <constraint firstItem="Quh-4L-vOV" firstAttribute="leading" secondItem="cK6-8c-cze" secondAttribute="leadingMargin" constant="-10" id="xcQ-9U-aid"/>
                             <constraint firstItem="pHg-wa-el4" firstAttribute="top" secondItem="vIy-7x-T35" secondAttribute="bottom" constant="8" id="yY5-sc-ZEY"/>
                             <constraint firstItem="NCz-mW-Egf" firstAttribute="top" secondItem="pHg-wa-el4" secondAttribute="bottom" constant="20" id="zGy-c7-wEZ"/>
                             <constraint firstItem="vIy-7x-T35" firstAttribute="top" secondItem="oVi-SW-B2h" secondAttribute="bottom" constant="6" id="zR3-Sb-VW5"/>
