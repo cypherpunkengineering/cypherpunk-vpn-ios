@@ -244,7 +244,8 @@ open class VPNConfigurationCoordinator {
         newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
 
         newIPSec.useExtendedAuthentication = true
-        newIPSec.username = accountState.vpnUsername! + "+" + generateRandomPrefix()
+        newIPSec.username = accountState.vpnUsername!
+//        newIPSec.username = accountState.vpnUsername! + "+" + generateRandomPrefix()
         let password = accountState.vpnPassword
         newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
