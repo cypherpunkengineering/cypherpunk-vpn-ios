@@ -41,7 +41,6 @@
 		09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09796A611E49456D00CBF912 /* ServerPinger.swift */; };
 		099601631F308365005F9D11 /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099601621F308365005F9D11 /* ScrollingTextView.swift */; };
 		099601651F308436005F9D11 /* ScrollingTextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099601641F308436005F9D11 /* ScrollingTextHelper.swift */; };
-		099FE72A1E8A6EA30017CF89 /* MainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099FE7291E8A6EA30017CF89 /* MainButtonView.swift */; };
 		09AC76261F20AFDC00896388 /* VPNSwitchAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC76251F20AFDC00896388 /* VPNSwitchAnimationView.swift */; };
 		09ACCDCD1E71892200AF3E4F /* splashscreen-illustration@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */; };
 		09ACCDCF1E71892E00AF3E4F /* splashscreen-illustration.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDCE1E71892E00AF3E4F /* splashscreen-illustration.png */; };
@@ -211,7 +210,6 @@
 		09796A611E49456D00CBF912 /* ServerPinger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerPinger.swift; path = Util/ServerPinger.swift; sourceTree = "<group>"; };
 		099601621F308365005F9D11 /* ScrollingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
 		099601641F308436005F9D11 /* ScrollingTextHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScrollingTextHelper.swift; path = Cypherpunk/Helper/ScrollingTextHelper.swift; sourceTree = SOURCE_ROOT; };
-		099FE7291E8A6EA30017CF89 /* MainButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainButtonView.swift; path = Buttons/MainButtonView.swift; sourceTree = "<group>"; };
 		09AC76251F20AFDC00896388 /* VPNSwitchAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNSwitchAnimationView.swift; sourceTree = "<group>"; };
 		09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen-illustration@2x.png"; sourceTree = "<group>"; };
 		09ACCDCE1E71892E00AF3E4F /* splashscreen-illustration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen-illustration.png"; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 			children = (
 				09E60D961ED6E0430037BA0D /* AccountButton.swift */,
 				0948DBA41ED776F400A7A475 /* ConfigurationButton.swift */,
-				099FE7291E8A6EA30017CF89 /* MainButtonView.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -1290,7 +1287,6 @@
 				09099D6D1EEE567200891128 /* VPNSwitch.swift in Sources */,
 				09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */,
 				2BDBD0D01D65286D00080E67 /* EditingRootViewController.swift in Sources */,
-				099FE72A1E8A6EA30017CF89 /* MainButtonView.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
 				0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */,
