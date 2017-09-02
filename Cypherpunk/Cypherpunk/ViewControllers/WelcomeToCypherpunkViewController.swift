@@ -180,6 +180,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                 case .logIn:
                     self.welcomeLabel.text = "Please enter your password to login"
                     self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
+                    self.actionButton.isEnabled = !self.inputField.text!.isEmpty
                     self.actionButton.setTitle("Log In", for: .normal)
                     self.inputField.isSecureTextEntry = true
                     self.inputField.returnKeyType = UIReturnKeyType.send
@@ -189,6 +190,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                 case .signUp:
                     self.welcomeLabel.text = "Please create a password to begin"
                     self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
+                    self.actionButton.isEnabled = !self.inputField.text!.isEmpty
                     self.actionButton.setTitle("Sign Up", for: .normal)
                     self.inputField.isSecureTextEntry = true
                     self.inputField.returnKeyType = UIReturnKeyType.send
