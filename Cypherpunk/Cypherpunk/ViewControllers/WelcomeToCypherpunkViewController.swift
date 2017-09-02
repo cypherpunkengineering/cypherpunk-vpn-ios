@@ -27,6 +27,12 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
     @IBOutlet weak var inputField: ThemedTextField!
     @IBOutlet weak var actionButton: UIButton!
     
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var welcomeToLabel: UILabel!
+    
+    @IBOutlet weak var userEmailLabel: UILabel!
+    @IBOutlet weak var welcomeBackLabel: UILabel!
+    
     @IBOutlet weak var loadingAnimationView: LoadingAnimationView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var termOfServiceAndPrivacyPolicyView: UIView!
@@ -61,6 +67,9 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
         actionButton.setBackgroundColor(color: UIColor.loginButtonColor.darkerColor(percent: 0.2), forState: .disabled)
         
         actionButton.layer.masksToBounds = false
+        
+        welcomeBackLabel.alpha = 0
+        userEmailLabel.alpha = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,62 +154,147 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
     func startAnimation() {
         UIView.animate(withDuration: 0.3, animations: {
             self.welcomeLabel.alpha = 0.0
-            self.inputField.alpha = 1.0
+            self.inputField.alpha = 0.0
             self.actionButton.alpha = 0.0
             self.loadingAnimationView.alpha = 1.0
             self.backButton.alpha = 0.0
             self.forgotPasswordButton.alpha = 0.0
             self.termOfServiceAndPrivacyPolicyView.alpha = 0.0
-
-            switch self.state {
-            case .getStarted:
-                break
-            case .logIn:
-                self.welcomeLabel.text = "Please enter your password to login"
-                self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
-                self.actionButton.setTitle("Log In", for: .normal)
-                self.inputField.isSecureTextEntry = true
-                self.inputField.returnKeyType = UIReturnKeyType.send
-//                self.inputField.becomeFirstResponder()
-            case .signUp:
-                self.welcomeLabel.text = "Please create a password to begin"
-                self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
-                self.actionButton.setTitle("Sign Up", for: .normal)
-                self.inputField.isSecureTextEntry = true
-                self.inputField.returnKeyType = UIReturnKeyType.send
-//                self.inputField.becomeFirstResponder()
-            }
-
             })
         { (finished) in
             if finished {
+                switch self.state {
+                case .getStarted:
+                    self.welcomeLabel.text = "Please input your email to begin"
+                    self.setPlaceholderText("Type your email", color: UIColor.greenyBlue)
+                    self.inputField.text = self.email
+                    self.actionButton.isEnabled = isValidMailAddress(self.inputField.text!)
+                    self.actionButton.setTitle("Get Started", for: .normal)
+                    self.inputField.keyboardType = .emailAddress
+                    self.inputField.isSecureTextEntry = false
+                    self.inputField.returnKeyType = UIReturnKeyType.next
+                case .logIn:
+                    self.welcomeLabel.text = "Please enter your password to login"
+                    self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
+                    self.actionButton.setTitle("Log In", for: .normal)
+                    self.inputField.isSecureTextEntry = true
+                    self.inputField.returnKeyType = UIReturnKeyType.send
+    //                self.inputField.becomeFirstResponder()
+                case .signUp:
+                    self.welcomeLabel.text = "Please create a password to begin"
+                    self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
+                    self.actionButton.setTitle("Sign Up", for: .normal)
+                    self.inputField.isSecureTextEntry = true
+                    self.inputField.returnKeyType = UIReturnKeyType.send
+    //                self.inputField.becomeFirstResponder()
+                }
+                
                 DispatchQueue.main.async {
-                    switch self.state {
-                    case .getStarted:
-                        self.welcomeLabel.text = "Please input your email to begin"
-                        self.setPlaceholderText("Type your email", color: UIColor.greenyBlue)
-                        self.inputField.text = self.email
-                        self.actionButton.isEnabled = isValidMailAddress(self.inputField.text!)
-                        self.actionButton.setTitle("Get Started", for: .normal)
-                        self.inputField.keyboardType = .emailAddress
-                        self.inputField.isSecureTextEntry = false
-                        self.inputField.returnKeyType = UIReturnKeyType.next
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.welcomeLabel.alpha = 1.0
+                        self.inputField.alpha = 1.0
+                        self.actionButton.alpha = 1.0
+                        self.loadingAnimationView.alpha = 0.0
                         
-                        UIView.animate(withDuration: 0.3, animations: {
-                            self.welcomeLabel.alpha = 1.0
-                            self.inputField.alpha = 1.0
-                            self.actionButton.alpha = 1.0
-                            self.loadingAnimationView.alpha = 0.0
-                        })
-                    case .logIn:
-                        self.welcomeLabel.text = "Please enter your password to login"
-                        self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
-                        self.actionButton.isEnabled = false
-                        self.actionButton.setTitle("Log In", for: .normal)
-
-                        self.inputField.isSecureTextEntry = true
-                        self.inputField.returnKeyType = UIReturnKeyType.send
-//                        self.inputField.becomeFirstResponder()
+                        if self.state == .logIn {
+                            self.backButton.alpha = 1.0
+                            self.forgotPasswordButton.alpha = 1.0
+                        }
+                        else if self.state == .signUp {
+                            self.backButton.alpha = 1.0
+                            self.termOfServiceAndPrivacyPolicyView.alpha = 1.0
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    @IBAction func actionButtonPressed() {
+        inputField.resignFirstResponder()
+        UIView.animate(withDuration: 0.3, animations: {
+            // hide the controls while showing the loading animation
+            self.welcomeLabel.alpha = 0.0
+            self.inputField.alpha = 0.0
+            self.actionButton.alpha = 0.0
+            self.loadingAnimationView.alpha = 1.0
+            self.backButton.alpha = 0.0
+            self.forgotPasswordButton.alpha = 0.0
+        }) { (finished) in
+            if finished {
+                switch self.state {
+                case .getStarted:
+                   self.handleGetStarted()
+                case .logIn:
+                    self.handleLogin()
+                case .signUp:
+                    self.handleSignUp()
+                }
+            }
+        }
+    }
+    
+    private func handleGetStarted() {
+        if let email = self.inputField.text, isValidMailAddress(email) {
+            let identifyRequest = IdentifyEmailRequest(email: email)
+            Session.send(identifyRequest) {
+                (result) in
+                switch result {
+                case .success(let isAlreadyRegistered):
+                    self.email = email
+                    if isAlreadyRegistered {
+                        self.state = .logIn
+                    } else {
+                        self.state = .signUp
+                    }
+                case .failure(let error):
+                    print(error)
+                    switch error {
+                    case .responseError(let responseError as ResponseError):
+                        switch responseError {
+                        case .unacceptableStatusCode(let statusCode):
+                            if statusCode == 402 {
+                                self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.showNotActivated, sender: nil)
+                            }
+                        default:
+                            break
+                        }
+                    default:
+                        break
+                    }
+                    self.state = .getStarted
+                }
+                self.startAnimation()
+            }
+        }
+        else {
+            self.state = .getStarted
+            self.startAnimation()
+        }
+    }
+    
+    private func handleLogin() {
+        let password = self.inputField.text!
+        let request = LoginRequest(login: self.email, password: password)
+        Session.send(request, callbackQueue: nil, handler: { (result) in
+            switch result {
+            case .success(let response):
+                if response.account.confirmed == false {
+                    self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
+                    return
+                }
+                else if response.account.type == "invitation" || response.account.type == "pending" {
+                    // not activated yet
+                    self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.showNotActivated, sender: nil)
+                    return
+                }
+                mainStore.dispatch(AccountAction.login(response: response))
+                let regionRequest = RegionListRequest(session: response.session, accountType: response.account.type)
+                Session.send(regionRequest) { (result) in
+                    switch result {
+                    case .success(_):
+                        mainStore.dispatch(RegionAction.setup)
+                    case .failure:
                         UIView.animate(withDuration: 0.3, animations: {
                             self.welcomeLabel.alpha = 1.0
                             self.inputField.alpha = 1.0
@@ -208,191 +302,55 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                             self.loadingAnimationView.alpha = 0.0
                             self.backButton.alpha = 1.0
                             self.forgotPasswordButton.alpha = 1.0
-                            
-                        })
-                    case .signUp:
-                        self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
-                        self.actionButton.isEnabled = false
-                        self.actionButton.setTitle("Sign Up", for: .normal)
-                        
-                        self.inputField.isSecureTextEntry = true
-                        self.inputField.returnKeyType = UIReturnKeyType.send
-//                        self.inputField.becomeFirstResponder()
-                        
-                        self.welcomeLabel.text = "Please create a password to begin"
-
-                        UIView.animate(withDuration: 0.3, animations: {
-                            self.welcomeLabel.alpha = 1.0
-                            self.inputField.alpha = 1.0
-                            self.actionButton.alpha = 1.0
-                            self.loadingAnimationView.alpha = 0.0
-                            self.backButton.alpha = 1.0
-                            self.termOfServiceAndPrivacyPolicyView.alpha = 1.0
                         })
                     }
                 }
+                
+                let certRequest = CertificateRequest(session: response.session)
+                Session.send(certRequest) { result in
+                    switch result {
+                    case .success(let certResponse):
+                        mainStore.dispatch(AccountAction.certificate(p12: certResponse.p12))
+                    case .failure:
+                        break
+                    }
+                }
+            case .failure:
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.welcomeLabel.alpha = 1.0
+                    self.inputField.alpha = 1.0
+                    self.actionButton.alpha = 1.0
+                    self.loadingAnimationView.alpha = 0.0
+                    self.backButton.alpha = 1.0
+                    self.forgotPasswordButton.alpha = 1.0
+                })
+                
+                let alertController = UIAlertController(title: "Invalid Password", message: "The password that was entered is incorrect. Please try again.", preferredStyle: .alert)
+                
+                // Create OK button
+                let okAction = UIAlertAction(title: "OK", style: .default)
+                alertController.addAction(okAction)
+                
+                // Present Dialog message
+                self.present(alertController, animated: true, completion:nil)
             }
-        }
+        })
     }
     
-    @IBAction func startAction() {
-        inputField.resignFirstResponder()
-        switch state {
-        case .getStarted:
-            UIView.animate(withDuration: 0.3, animations: {
-                self.welcomeLabel.alpha = 0.0
-                self.inputField.alpha = 0.0
-                self.actionButton.alpha = 0.0
-                self.loadingAnimationView.alpha = 1.0
-                self.backButton.alpha = 0.0
-                self.forgotPasswordButton.alpha = 0.0
-            })
-            { (finished) in
-                if finished {
-                    if let email = self.inputField.text, isValidMailAddress(email) {
-                        let identifyRequest = IdentifyEmailRequest(email: email)
-                        Session.send(identifyRequest) {
-                            (result) in
-                            switch result {
-                            case .success(let isAlreadyRegistered):
-                                self.email = email
-                                if isAlreadyRegistered {
-                                    self.state = .logIn
-                                } else {
-                                    self.state = .signUp
-                                }
-                            case .failure(let error):
-                                print(error)
-                                switch error {
-                                case .responseError(let responseError as ResponseError):
-                                    switch responseError {
-                                    case .unacceptableStatusCode(let statusCode):
-                                        if statusCode == 402 {
-                                            self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.showNotActivated, sender: nil)
-                                        }
-                                    default:
-                                        break
-                                    }
-                                default:
-                                    break
-                                }
-                                self.state = .getStarted
-                            }
-                            self.startAnimation()
-                        }
-                    }else {
-                        self.state = .getStarted
-                        self.startAnimation()
-                    }
-                }
+    private func handleSignUp() {
+        let password = self.inputField.text!
+        let request = SignUpRequest(email: self.email, password: password)
+        
+        Session.send(request) {
+            (result) in
+            switch result {
+            case .success(let session):
+                mainStore.dispatch(AccountAction.signUp(mailAddress: self.email, session: session))
+                self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
+            case .failure:
+                self.state = .getStarted
+                self.startAnimation()
             }
-
-        case .signUp:
-            UIView.animate(withDuration: 0.3, animations: {
-                self.welcomeLabel.alpha = 0.0
-                self.inputField.alpha = 0.0
-                self.actionButton.alpha = 0.0
-                self.loadingAnimationView.alpha = 1.0
-                self.backButton.alpha = 0.0
-                self.forgotPasswordButton.alpha = 0.0
-            }) {
-                (finished) in
-                if finished == false {
-                    return
-                }
-                
-                let password = self.inputField.text!
-                let request = SignUpRequest(email: self.email, password: password)
-                
-                Session.send(request) {
-                    (result) in
-                    switch result {
-                    case .success(let session):
-                        mainStore.dispatch(AccountAction.signUp(mailAddress: self.email, session: session))
-                        self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
-                    case .failure:
-                        self.state = .getStarted
-                        self.startAnimation()
-                    }
-                }
-                
-            }
-
-        case .logIn:
-            UIView.animate(withDuration: 0.3, animations: {
-                self.welcomeLabel.alpha = 0.0
-                self.inputField.alpha = 0.0
-                self.actionButton.alpha = 0.0
-                self.loadingAnimationView.alpha = 1.0
-                self.backButton.alpha = 0.0
-                self.forgotPasswordButton.alpha = 0.0
-                })
-            { (finished) in
-                if finished {
-                    let password = self.inputField.text!
-                    let request = LoginRequest(login: self.email, password: password)
-                    Session.send(request, callbackQueue: nil, handler: { (result) in
-                        switch result {
-                        case .success(let response):
-                            if response.account.confirmed == false {
-                                self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.signUp, sender: nil)
-                                return
-                            }
-                            else if response.account.type == "invitation" || response.account.type == "pending" {
-                                // not actived yet
-                                self.performSegue(withIdentifier: R.segue.welcomeToCypherpunkViewController.showNotActivated, sender: nil)
-                                return
-                            }
-                            mainStore.dispatch(AccountAction.login(response: response))
-                            let regionRequest = RegionListRequest(session: response.session, accountType: response.account.type)
-                            Session.send(regionRequest) { (result) in
-                                switch result {
-                                case .success(_):
-                                    mainStore.dispatch(RegionAction.setup)
-                                case .failure:
-                                    UIView.animate(withDuration: 0.3, animations: {
-                                        self.welcomeLabel.alpha = 1.0
-                                        self.inputField.alpha = 1.0
-                                        self.actionButton.alpha = 1.0
-                                        self.loadingAnimationView.alpha = 0.0
-                                        self.backButton.alpha = 1.0
-                                        self.forgotPasswordButton.alpha = 1.0
-                                    })
-                                }
-                            }
-
-                            let certRequest = CertificateRequest(session: response.session)
-                            Session.send(certRequest) { result in
-                                switch result {
-                                case .success(let certResponse):
-                                    mainStore.dispatch(AccountAction.certificate(p12: certResponse.p12))
-                                case .failure:
-                                    break
-                                }
-                            }
-                        case .failure:
-                            UIView.animate(withDuration: 0.3, animations: {
-                                self.welcomeLabel.alpha = 1.0
-                                self.inputField.alpha = 1.0
-                                self.actionButton.alpha = 1.0
-                                self.loadingAnimationView.alpha = 0.0
-                                self.backButton.alpha = 1.0
-                                self.forgotPasswordButton.alpha = 1.0
-                            })
-                            
-                            let alertController = UIAlertController(title: "Invalid Password", message: "The password that was entered is incorrect. Please try again.", preferredStyle: .alert)
-                            
-                            // Create OK button
-                            let okAction = UIAlertAction(title: "OK", style: .default)
-                            alertController.addAction(okAction)
-
-                            // Present Dialog message
-                            self.present(alertController, animated: true, completion:nil)
-                        }
-                    })
-                }
-            }
-            
         }
     }
     
@@ -441,7 +399,7 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
 extension WelcomeToCypherpunkViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if actionButton.isEnabled {
-            startAction()
+            actionButtonPressed()
         }
         return false
     }
