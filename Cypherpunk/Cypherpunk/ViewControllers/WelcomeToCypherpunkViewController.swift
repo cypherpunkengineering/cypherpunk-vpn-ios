@@ -160,6 +160,10 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
             self.backButton.alpha = 0.0
             self.forgotPasswordButton.alpha = 0.0
             self.termOfServiceAndPrivacyPolicyView.alpha = 0.0
+            self.userEmailLabel.alpha = 0.0
+            self.welcomeBackLabel.alpha = 0.0
+            self.logoImageView.alpha = 0.0
+            self.welcomeToLabel.alpha = 0.0
             })
         { (finished) in
             if finished {
@@ -180,6 +184,8 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                     self.inputField.isSecureTextEntry = true
                     self.inputField.returnKeyType = UIReturnKeyType.send
     //                self.inputField.becomeFirstResponder()
+                    self.welcomeBackLabel.text = "Welcome back,"
+                    self.userEmailLabel.text = "\(self.email)!"
                 case .signUp:
                     self.welcomeLabel.text = "Please create a password to begin"
                     self.setPlaceholderText("Type your password", color: UIColor.greenyBlue)
@@ -187,6 +193,8 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                     self.inputField.isSecureTextEntry = true
                     self.inputField.returnKeyType = UIReturnKeyType.send
     //                self.inputField.becomeFirstResponder()
+                    self.welcomeBackLabel.text = "Welcome,"
+                    self.userEmailLabel.text = "\(self.email)!"
                 }
                 
                 DispatchQueue.main.async {
@@ -199,10 +207,20 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
                         if self.state == .logIn {
                             self.backButton.alpha = 1.0
                             self.forgotPasswordButton.alpha = 1.0
+                            
+                            self.userEmailLabel.alpha = 1.0
+                            self.welcomeBackLabel.alpha = 1.0
                         }
                         else if self.state == .signUp {
                             self.backButton.alpha = 1.0
                             self.termOfServiceAndPrivacyPolicyView.alpha = 1.0
+
+                            self.userEmailLabel.alpha = 1.0
+                            self.welcomeBackLabel.alpha = 1.0
+                        }
+                        else if self.state == .getStarted {
+                            self.logoImageView.alpha = 1.0
+                            self.welcomeToLabel.alpha = 1.0
                         }
                     })
                 }
@@ -220,6 +238,11 @@ class WelcomeToCypherpunkViewController: UIViewController, StoreSubscriber, TTTA
             self.loadingAnimationView.alpha = 1.0
             self.backButton.alpha = 0.0
             self.forgotPasswordButton.alpha = 0.0
+            self.termOfServiceAndPrivacyPolicyView.alpha = 0.0
+            self.userEmailLabel.alpha = 0.0
+            self.welcomeBackLabel.alpha = 0.0
+            self.logoImageView.alpha = 0.0
+            self.welcomeToLabel.alpha = 0.0
         }) { (finished) in
             if finished {
                 switch self.state {
