@@ -21,7 +21,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         case contactus = 70
         case help = 80
         case signOut = 90
-        case share = 100
+        case report = 100
         case manageAccount = 110
         case tos = 120
         case license = 130
@@ -183,8 +183,8 @@ class AccountConfigurationTableViewController: UITableViewController {
                 self.performSegue(withIdentifier: "ShowEmail", sender: self)
             case .accountPasswordDetail:
                 self.performSegue(withIdentifier: "ShowPassword", sender: self)
-            case .share:
-                let url = URL(string: "https://cypherpunk.com/account/refer")
+            case .report:
+                let url = URL(string: "https://cypherpunk.com/support/request/new")
                 UIApplication.shared.openURL(url!)
 //                self.performSegue(withIdentifier: "ShowShare", sender: self)
             case .rateOurService:
@@ -266,8 +266,8 @@ class AccountConfigurationTableViewController: UITableViewController {
     private func setupCellForMoreSection(row: Int, cell: UITableViewCell) {
         switch row {
         case 0:
-            cell.textLabel?.text = "Refer a Friend"
-            cell.tag = Rows.share.rawValue
+            cell.textLabel?.text = "Report an Issue"
+            cell.tag = Rows.report.rawValue
         case 1:
             cell.textLabel?.text = "Go to Help Center"
             cell.tag = Rows.help.rawValue
