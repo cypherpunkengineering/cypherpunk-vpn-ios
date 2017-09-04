@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		09099D6D1EEE567200891128 /* VPNSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09099D6C1EEE567200891128 /* VPNSwitch.swift */; };
-		090D99CC1F5D7B8600279044 /* LegalLinksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090D99CB1F5D7B8600279044 /* LegalLinksView.xib */; };
-		090D99CE1F5D7BAE00279044 /* LegalLinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D99CD1F5D7BAE00279044 /* LegalLinksView.swift */; };
+		090D99D11F5DF13D00279044 /* LegalLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D99CF1F5DF13D00279044 /* LegalLinksTableViewCell.swift */; };
+		090D99D21F5DF13D00279044 /* LegalLinksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090D99D01F5DF13D00279044 /* LegalLinksTableViewCell.xib */; };
 		0910AE481E7BFC93003802DB /* VPNServerOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE471E7BFC93003802DB /* VPNServerOption.swift */; };
 		0910AE4A1E7C0A4C003802DB /* VPNStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE491E7C0A4C003802DB /* VPNStateController.swift */; };
 		0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */; };
@@ -180,8 +180,8 @@
 
 /* Begin PBXFileReference section */
 		09099D6C1EEE567200891128 /* VPNSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNSwitch.swift; sourceTree = "<group>"; };
-		090D99CB1F5D7B8600279044 /* LegalLinksView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalLinksView.xib; sourceTree = "<group>"; };
-		090D99CD1F5D7BAE00279044 /* LegalLinksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalLinksView.swift; sourceTree = "<group>"; };
+		090D99CF1F5DF13D00279044 /* LegalLinksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalLinksTableViewCell.swift; sourceTree = "<group>"; };
+		090D99D01F5DF13D00279044 /* LegalLinksTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalLinksTableViewCell.xib; sourceTree = "<group>"; };
 		0910AE471E7BFC93003802DB /* VPNServerOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNServerOption.swift; path = Cypherpunk/Helper/VPNServerOption.swift; sourceTree = SOURCE_ROOT; };
 		0910AE491E7C0A4C003802DB /* VPNStateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNStateController.swift; sourceTree = "<group>"; };
 		0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNStateResponder.swift; path = Cypherpunk/Helper/VPNStateResponder.swift; sourceTree = SOURCE_ROOT; };
@@ -560,8 +560,8 @@
 				203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */,
 				0970EE6F1E68161600BB77A0 /* MenuTableViewCell.swift */,
 				0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */,
-				090D99CB1F5D7B8600279044 /* LegalLinksView.xib */,
-				090D99CD1F5D7BAE00279044 /* LegalLinksView.swift */,
+				090D99CF1F5DF13D00279044 /* LegalLinksTableViewCell.swift */,
+				090D99D01F5DF13D00279044 /* LegalLinksTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -926,7 +926,6 @@
 				09E60D951ED688CF0037BA0D /* MainViewController.xib in Resources */,
 				0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */,
 				20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */,
-				090D99CC1F5D7B8600279044 /* LegalLinksView.xib in Resources */,
 				09ACCDD11E71894800AF3E4F /* bk-overlay.png in Resources */,
 				0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */,
 				0959A50C1E69768100A95A49 /* PlanTableViewCell.xib in Resources */,
@@ -942,6 +941,7 @@
 				20DA369B1DB5E6C1003F4999 /* Inconsolata-Regular.ttf in Resources */,
 				20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */,
 				2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */,
+				090D99D21F5DF13D00279044 /* LegalLinksTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1261,7 +1261,6 @@
 				20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */,
 				09EAFBBC1EF0AE72001B9375 /* LocationCollectionViewCell.swift in Sources */,
 				2B4489281D2E5C7000D202F9 /* TwoColorGradientView.swift in Sources */,
-				090D99CE1F5D7BAE00279044 /* LegalLinksView.swift in Sources */,
 				09796A621E49456D00CBF912 /* ServerPinger.swift in Sources */,
 				099601631F308365005F9D11 /* ScrollingTextView.swift in Sources */,
 				0948DBA71ED7C88500A7A475 /* ConfigurationViewController.swift in Sources */,
@@ -1270,6 +1269,7 @@
 				201809EA1D5B3BF100730FA4 /* ThemedNavigationBar.swift in Sources */,
 				2BA4E2A41DD06372006ACDC5 /* ShareAppViewController.swift in Sources */,
 				2B95C9191DC7749900F79A2D /* SignUpAPI.swift in Sources */,
+				090D99D11F5DF13D00279044 /* LegalLinksTableViewCell.swift in Sources */,
 				2BDBD0CE1D65200100080E67 /* ConfigurationRootViewController.swift in Sources */,
 				2B2B59E11D3F4A8F003FA705 /* RegionListAPI.swift in Sources */,
 				09EAFBB81EF0AAC5001B9375 /* LocationSelectorViewController.swift in Sources */,

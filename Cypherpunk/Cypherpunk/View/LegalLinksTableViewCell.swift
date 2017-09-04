@@ -1,5 +1,5 @@
 //
-//  LegalLinksView.swift
+//  LegalLinksTableViewCell.swift
 //  Cypherpunk
 //
 //  Created by Julie Ann Sakuda on 9/4/17.
@@ -8,16 +8,19 @@
 
 import UIKit
 
-class LegalLinksView: UIView {
+class LegalLinksTableViewCell: UITableViewCell {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
-    */
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
     @IBAction func tosClicked(_ sender: Any) {
         openUrl("https://cypherpunk.com/terms-of-service")
     }

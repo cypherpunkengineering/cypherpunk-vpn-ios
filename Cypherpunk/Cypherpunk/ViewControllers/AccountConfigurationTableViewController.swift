@@ -24,9 +24,7 @@ class AccountConfigurationTableViewController: UITableViewController {
         case signOut = 90
         case report = 100
         case manageAccount = 110
-        case tos = 120
-        case license = 130
-        case privacy = 140
+        case legal = 120
     }
 
     override func viewDidLoad() {
@@ -37,10 +35,6 @@ class AccountConfigurationTableViewController: UITableViewController {
         if UI_USER_INTERFACE_IDIOM() == .pad {
             self.tableView.isScrollEnabled = false
         }
-        
-        let viewFromNib: UIView? = Bundle.main.loadNibNamed("LegalLinksView", owner: nil, options: nil)?.first as! UIView?
-        viewFromNib?.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 115)
-        self.tableView.tableFooterView = viewFromNib
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +47,9 @@ class AccountConfigurationTableViewController: UITableViewController {
         
         let accountDetailNib = UINib(nibName: "AccountDetailTableViewCell", bundle: nil)
         self.tableView.register(accountDetailNib, forCellReuseIdentifier: "AccountDetailCell")
+        
+        let legalLinksNib = UINib(nibName: "LegalLinksTableViewCell", bundle: nil)
+        self.tableView.register(legalLinksNib, forCellReuseIdentifier: "LegalLinksCell")
 
         mainStore.subscribe(self) { $0.select { state in state.accountState } }
         
@@ -72,7 +69,7 @@ class AccountConfigurationTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3 // account detail, account settings, more
+        return 4 // account detail, account settings, more, legal links
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,6 +83,8 @@ class AccountConfigurationTableViewController: UITableViewController {
         case 2:
             return 4
 //            return 5
+        case 3:
+            return 1
         default:
             return 0
         }
@@ -94,7 +93,7 @@ class AccountConfigurationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var headerView: UIView?
         
-        if section > 0 {
+        if section != 0 && section != 3 {
             headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
             headerView?.backgroundColor = UIColor.configTableCellBg
             let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
@@ -126,6 +125,9 @@ class AccountConfigurationTableViewController: UITableViewController {
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: "AccountDetailCell")
         }
+        else if indexPath.section == 3 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "LegalLinksCell")
+        }
         else {
             // special handling for account settings because upgrade button is not always shown
             cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell")
@@ -141,7 +143,7 @@ class AccountConfigurationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0.0 : 30.0
+        return section == 0 || section == 3 ? 0.0 : 30.0
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -152,6 +154,8 @@ class AccountConfigurationTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             return 247
+        case 3:
+            return 110
         default:
             return 44.0
         }
@@ -159,7 +163,9 @@ class AccountConfigurationTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // need this because on iPad the accessory view background is not correctly drawn
-        cell.backgroundColor = UIColor.configTableCellBg
+        if indexPath.section != 3 {
+            cell.backgroundColor = UIColor.configTableCellBg
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -187,7 +193,6 @@ class AccountConfigurationTableViewController: UITableViewController {
             case .report:
                 let url = URL(string: "https://cypherpunk.com/support/request/new")
                 UIApplication.shared.openURL(url!)
-//                self.performSegue(withIdentifier: "ShowShare", sender: self)
             case .rateOurService:
                 if #available(iOS 10.3, *) {
                     SKStoreReviewController.requestReview()
@@ -212,15 +217,6 @@ class AccountConfigurationTableViewController: UITableViewController {
                 UIApplication.shared.delegate!.window!?.rootViewController!.present(vc!, animated: true) {
                     NotificationCenter.default.post(name: kResetCenterViewNotification, object: nil)
                 }
-            case .tos:
-                let url = URL(string: "https://cypherpunk.com/terms-of-service")
-                UIApplication.shared.openURL(url!)
-            case .privacy:
-                let url = URL(string: "https://cypherpunk.com/privacy-policy")
-                UIApplication.shared.openURL(url!)
-            case .license:
-                let url = URL(string: "https://cypherpunk.com/legal/license/ios")
-                UIApplication.shared.openURL(url!)
             default:
                 break
             }
