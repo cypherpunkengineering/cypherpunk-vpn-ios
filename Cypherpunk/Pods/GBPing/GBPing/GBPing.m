@@ -59,6 +59,8 @@ static NSTimeInterval const kDefaultTimeout =           2.0;
     NSUInteger                                          _ttl;
     NSTimeInterval                                      _timeout;
     NSTimeInterval                                      _pingPeriod;
+    NSThread *_listenThread;
+    NSThread *_sendThread;
 }
 
 #pragma mark - custom acc
@@ -335,17 +337,17 @@ static NSTimeInterval const kDefaultTimeout =           2.0;
 -(void)startPinging {
     if (self.isReady && !self.isPinging) {
         //go into infinite listenloop on a new thread (listenThread)
-        NSThread *listenThread = [[NSThread alloc] initWithTarget:self selector:@selector(listenLoop) object:nil];
-        listenThread.name = @"listenThread";
+        _listenThread = [[NSThread alloc] initWithTarget:self selector:@selector(listenLoop) object:nil];
+        _listenThread.name = @"listenThread";
         
         //set up loop that sends packets on a new thread (sendThread)
-        NSThread *sendThread = [[NSThread alloc] initWithTarget:self selector:@selector(sendLoop) object:nil];
-        sendThread.name = @"sendThread";
+        _sendThread = [[NSThread alloc] initWithTarget:self selector:@selector(sendLoop) object:nil];
+        _sendThread.name = @"sendThread";
         
         //we're pinging now
         self.isPinging = YES;
-        [listenThread start];
-        [sendThread start];
+        [_listenThread start];
+        [_sendThread start];
     }
 }
 
@@ -366,7 +368,7 @@ static NSTimeInterval const kDefaultTimeout =           2.0;
     enum { kBufferSize = 65535 };
     
     buffer = malloc(kBufferSize);
-    assert(buffer);
+    
     
     //read the data.
     addrLen = sizeof(addr);
@@ -388,7 +390,6 @@ static NSTimeInterval const kDefaultTimeout =           2.0;
             NSMutableData *packet;
 
             packet = [NSMutableData dataWithBytes:buffer length:(NSUInteger) bytesRead];
-            assert(packet);
 
             //complete the ping summary
             const struct ICMPHeader *headerPointer;
@@ -498,7 +499,6 @@ static NSTimeInterval const kDefaultTimeout =           2.0;
                 packet = [self pingPacketWithType:kICMPv6TypeEchoRequest payload:payload requiresChecksum:NO];
             } break;
             default: {
-                assert(NO);
             } break;
         }
         
@@ -728,8 +728,6 @@ static uint16_t in_cksum(const void *buffer, size_t bufferLen)
     result = NSNotFound;
     if ([packet length] >= (sizeof(IPHeader) + sizeof(ICMPHeader))) {
         ipPtr = (const IPHeader *) [packet bytes];
-        assert((ipPtr->versionAndHeaderLength & 0xF0) == 0x40);     // IPv4
-        assert(ipPtr->protocol == 1);                               // ICMP
         ipHeaderLength = (ipPtr->versionAndHeaderLength & 0x0F) * sizeof(uint32_t);
         if ([packet length] >= (ipHeaderLength + sizeof(ICMPHeader))) {
             result = ipHeaderLength;
@@ -764,7 +762,6 @@ static uint16_t in_cksum(const void *buffer, size_t bufferLen)
             result = [self isValidPing6ResponsePacket:packet];
         } break;
         default: {
-            assert(NO);
             result = NO;
         } break;
     }
@@ -854,8 +851,7 @@ static uint16_t in_cksum(const void *buffer, size_t bufferLen)
     ICMPHeader *            icmpPtr;
     
     packet = [NSMutableData dataWithLength:sizeof(*icmpPtr) + payload.length];
-    assert(packet != nil);
-    
+
     icmpPtr = packet.mutableBytes;
     icmpPtr->type = type;
     icmpPtr->code = 0;
