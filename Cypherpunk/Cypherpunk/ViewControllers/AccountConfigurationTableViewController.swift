@@ -8,6 +8,7 @@
 
 import UIKit
 import ReSwift
+import StoreKit
 
 class AccountConfigurationTableViewController: UITableViewController {
     
@@ -83,7 +84,7 @@ class AccountConfigurationTableViewController: UITableViewController {
             // depending on the type of account and plan the upgrade button may not be shown
 //            return shouldHideUpgradeMenuItem() ? 2 : 3
         case 2:
-            return 3
+            return 4
 //            return 5
         default:
             return 0
@@ -188,8 +189,15 @@ class AccountConfigurationTableViewController: UITableViewController {
                 UIApplication.shared.openURL(url!)
 //                self.performSegue(withIdentifier: "ShowShare", sender: self)
             case .rateOurService:
-                if let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(appID)") {
-                    UIApplication.shared.openURL(url)
+                if #available(iOS 10.3, *) {
+                    SKStoreReviewController.requestReview()
+                    
+                }
+                else {
+                    // Fallback for iOS versions before 10.3
+                    if let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(appID)") {
+                        UIApplication.shared.openURL(url)
+                    }
                 }
             case .contactus:
                 let url = URL(string: "https://cypherpunk.com/support/request/new")
@@ -266,12 +274,15 @@ class AccountConfigurationTableViewController: UITableViewController {
     private func setupCellForMoreSection(row: Int, cell: UITableViewCell) {
         switch row {
         case 0:
+            cell.textLabel?.text = "Review on iTunes Store"
+            cell.tag = Rows.rateOurService.rawValue
+        case 1:
             cell.textLabel?.text = "Report an Issue"
             cell.tag = Rows.report.rawValue
-        case 1:
+        case 2:
             cell.textLabel?.text = "Go to Help Center"
             cell.tag = Rows.help.rawValue
-        case 2:
+        case 3:
             cell.textLabel?.text = "Sign Out"
             cell.tag = Rows.signOut.rawValue
             cell.accessoryType = .none
