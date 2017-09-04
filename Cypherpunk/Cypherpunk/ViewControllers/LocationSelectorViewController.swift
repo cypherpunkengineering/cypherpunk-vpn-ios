@@ -91,14 +91,19 @@ enum LocationSection: Int {
 class LocationSelectorViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var backButtonView: UIView!
     @IBOutlet weak var backButton: UIButton!
     
     var delegate: LocationSelectionDelegate?
+    var topGradientFadeLayer = CAGradientLayer()
+    var bottomtopGradientFadeLayer = CAGradientLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(hex: "#002828", alpha: 0.5)!
+        let backgroundColor = UIColor(hex: "#002828", alpha: 0.5)!
+        
+        self.view.backgroundColor = backgroundColor
 
         self.collectionView.register(UINib(nibName: "LocationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LocationCell")
         self.collectionView.register(UINib(nibName: "CypherplayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CypherPlayCell")
@@ -115,6 +120,22 @@ class LocationSelectorViewController: UIViewController {
         mutableString.addAttribute(NSFontAttributeName, value: R.font.dosisSemiBold(size: 17)!, range: NSRange(location: 2, length: 4))
         mutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenyBlue, range: NSRange(location: 0, length: 6))
         self.backButton.setAttributedTitle(mutableString, for: .normal)
+        
+        self.collectionView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+        
+        self.topGradientFadeLayer.colors = [backgroundColor.withAlphaComponent(0.6).cgColor, backgroundColor.withAlphaComponent(0.3).cgColor, UIColor.clear.cgColor]
+        self.topGradientFadeLayer.locations = [0, 0.4, 1.0]
+        self.topGradientFadeLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        self.topGradientFadeLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        self.view.layer.addSublayer(self.topGradientFadeLayer)
+        
+        self.bottomtopGradientFadeLayer.colors = [UIColor.clear.cgColor, backgroundColor.withAlphaComponent(0.3).cgColor, backgroundColor.withAlphaComponent(0.6).cgColor]
+        self.bottomtopGradientFadeLayer.locations = [0, 0.4, 1.0]
+        self.bottomtopGradientFadeLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        self.bottomtopGradientFadeLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        self.view.layer.addSublayer(self.bottomtopGradientFadeLayer)
+        
+        setGradientLayerFrames()
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,8 +147,17 @@ class LocationSelectorViewController: UIViewController {
         self.delegate?.dismissSelector()
     }
     
+    override func viewDidLayoutSubviews() {
+        setGradientLayerFrames()
+    }
+    
     func reloadLocations() {
         self.collectionView.reloadData()
+    }
+    
+    private func setGradientLayerFrames() {
+        self.topGradientFadeLayer.frame = CGRect(x: 0, y: 40, width: self.collectionView.bounds.width, height: 20)
+        self.bottomtopGradientFadeLayer.frame = CGRect(x: 0, y: self.backButtonView.frame.minY - 20, width: self.collectionView.bounds.width, height: 20)
     }
 }
 
