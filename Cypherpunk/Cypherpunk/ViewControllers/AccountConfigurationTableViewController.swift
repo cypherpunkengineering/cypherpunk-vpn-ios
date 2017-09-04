@@ -36,6 +36,10 @@ class AccountConfigurationTableViewController: UITableViewController {
         if UI_USER_INTERFACE_IDIOM() == .pad {
             self.tableView.isScrollEnabled = false
         }
+        
+        let viewFromNib: UIView? = Bundle.main.loadNibNamed("LegalLinksView", owner: nil, options: nil)?.first as! UIView?
+        viewFromNib?.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 115)
+        self.tableView.tableFooterView = viewFromNib
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +71,7 @@ class AccountConfigurationTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4 // account detail, account settings, more, other
+        return 3 // account detail, account settings, more
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,8 +85,6 @@ class AccountConfigurationTableViewController: UITableViewController {
         case 2:
             return 3
 //            return 5
-        case 3:
-            return 3
         default:
             return 0
         }
@@ -103,8 +105,6 @@ class AccountConfigurationTableViewController: UITableViewController {
                 label.text = "Account Settings"
             case 2:
                 label.text = "More"
-            case 3:
-                label.text = "Other"
             default:
                 label.text = ""
             }
@@ -134,9 +134,6 @@ class AccountConfigurationTableViewController: UITableViewController {
             }
             else if indexPath.section == 2 {
                 setupCellForMoreSection(row: indexPath.row, cell: cell!)
-            }
-            else if indexPath.section == 3 {
-                setupCellForOtherSection(row: indexPath.row, cell: cell!)
             }
         }
         return cell!
@@ -288,22 +285,6 @@ class AccountConfigurationTableViewController: UITableViewController {
 //            cell.textLabel?.text = "Log out"
 //            cell.tag = Rows.signOut.rawValue
 //            cell.accessoryType = .none
-        default:
-            break
-        }
-    }
-    
-    private func setupCellForOtherSection(row: Int, cell: UITableViewCell) {
-        switch row {
-        case 0:
-            cell.textLabel?.text = "Terms of Service"
-            cell.tag = Rows.tos.rawValue
-        case 1:
-            cell.textLabel?.text = "Privacy Policy"
-            cell.tag = Rows.privacy.rawValue
-        case 2:
-            cell.textLabel?.text = "License Information"
-            cell.tag = Rows.license.rawValue
         default:
             break
         }

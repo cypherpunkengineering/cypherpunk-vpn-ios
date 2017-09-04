@@ -22,6 +22,6 @@ class MenuTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.accessoryType = .disclosureIndicator
+//        self.accessoryType = .disclosureIndicator
     }
 }
