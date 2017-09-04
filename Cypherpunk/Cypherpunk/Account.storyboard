@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YE0-Dn-P5x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YE0-Dn-P5x">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,11 +12,11 @@
         <scene sceneID="17h-GL-NXd">
             <objects>
                 <tableViewController storyboardIdentifier="Account" title="Account" id="YE0-Dn-P5x" customClass="AccountConfigurationTableViewController" customModule="Cypherpunk" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="h9O-HD-e9e">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="h9O-HD-e9e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" red="0.0039215686274509803" green="0.0" blue="0.062745098039215685" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="YE0-Dn-P5x" id="pIB-vj-F4C"/>
