@@ -57,6 +57,7 @@ class ServerPinger : NSObject, GBPingDelegate {
             if (success) {
                 ping.startPinging()
                 self.delegates.append(delegate)
+                self.pingers.append(ping)
             }
             else {
 //                print("Failed to setup pinger for \(hostname) - \(String(describing: error))")
