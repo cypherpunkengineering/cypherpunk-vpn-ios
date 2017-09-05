@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,28 +21,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bk-overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="apD-uv-ubH">
-                                <rect key="frame" x="99.5" y="0.5" width="177" height="539"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen-illustration.png" translatesAutoresizingMaskIntoConstraints="NO" id="eu4-jP-k0V">
-                                <rect key="frame" x="59" y="89" width="257" height="489"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="I4t-Pa-30j">
+                                <rect key="frame" x="57" y="139" width="261" height="56"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="490" id="C9t-qp-Swx"/>
-                                    <constraint firstAttribute="width" secondItem="eu4-jP-k0V" secondAttribute="height" multiplier="129:245" id="qoI-76-1r6"/>
+                                    <constraint firstAttribute="width" constant="261" id="HNU-IB-ex5"/>
+                                    <constraint firstAttribute="height" constant="56" id="hbs-vL-uGM"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.050980392156862744" green="0.11764705882352941" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eu4-jP-k0V" secondAttribute="bottom" constant="10" id="2LK-cy-cXO"/>
-                            <constraint firstItem="eu4-jP-k0V" firstAttribute="top" secondItem="apD-uv-ubH" secondAttribute="bottom" constant="-450.5" id="Bsr-6T-nav"/>
-                            <constraint firstItem="eu4-jP-k0V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="10" id="L8D-lz-W87"/>
-                            <constraint firstItem="apD-uv-ubH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="bkJ-wF-cSr"/>
-                            <constraint firstItem="apD-uv-ubH" firstAttribute="width" secondItem="eu4-jP-k0V" secondAttribute="height" multiplier="59:163" id="mzY-w5-t9J"/>
-                            <constraint firstItem="eu4-jP-k0V" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vHy-bd-n2s"/>
-                            <constraint firstItem="eu4-jP-k0V" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vfO-V1-eyE"/>
+                            <constraint firstItem="I4t-Pa-30j" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.5" id="d9D-Q4-CW8"/>
+                            <constraint firstItem="I4t-Pa-30j" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gBZ-df-U76"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logoImageView" destination="I4t-Pa-30j" id="QWQ-7e-hAd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,7 +45,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bk-overlay.png" width="177" height="539"/>
-        <image name="splashscreen-illustration.png" width="257" height="489"/>
+        <image name="logo" width="260" height="55"/>
     </resources>
 </document>

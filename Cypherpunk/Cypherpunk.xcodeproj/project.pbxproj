@@ -44,10 +44,6 @@
 		099601631F308365005F9D11 /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099601621F308365005F9D11 /* ScrollingTextView.swift */; };
 		099601651F308436005F9D11 /* ScrollingTextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099601641F308436005F9D11 /* ScrollingTextHelper.swift */; };
 		09AC76261F20AFDC00896388 /* VPNSwitchAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC76251F20AFDC00896388 /* VPNSwitchAnimationView.swift */; };
-		09ACCDCD1E71892200AF3E4F /* splashscreen-illustration@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */; };
-		09ACCDCF1E71892E00AF3E4F /* splashscreen-illustration.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDCE1E71892E00AF3E4F /* splashscreen-illustration.png */; };
-		09ACCDD11E71894800AF3E4F /* bk-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD01E71894800AF3E4F /* bk-overlay.png */; };
-		09ACCDD31E71894F00AF3E4F /* bk-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */; };
 		09D2CA1F1E55507600B8BE22 /* CurrentLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */; };
 		09D55AD11F56F7430030C706 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D55AD01F56F7430030C706 /* BlueButton.swift */; };
 		09DB51AF1F2E60A0002DFACE /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB51AE1F2E60A0002DFACE /* String+Size.swift */; };
@@ -216,10 +212,6 @@
 		099601621F308365005F9D11 /* ScrollingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
 		099601641F308436005F9D11 /* ScrollingTextHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScrollingTextHelper.swift; path = Cypherpunk/Helper/ScrollingTextHelper.swift; sourceTree = SOURCE_ROOT; };
 		09AC76251F20AFDC00896388 /* VPNSwitchAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNSwitchAnimationView.swift; sourceTree = "<group>"; };
-		09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen-illustration@2x.png"; sourceTree = "<group>"; };
-		09ACCDCE1E71892E00AF3E4F /* splashscreen-illustration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen-illustration.png"; sourceTree = "<group>"; };
-		09ACCDD01E71894800AF3E4F /* bk-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay.png"; sourceTree = "<group>"; };
-		09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bk-overlay@2x.png"; sourceTree = "<group>"; };
 		09D2CA1E1E55507600B8BE22 /* CurrentLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationTableViewCell.swift; sourceTree = "<group>"; };
 		09D55AD01F56F7430030C706 /* BlueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueButton.swift; path = Buttons/BlueButton.swift; sourceTree = "<group>"; };
 		09DB51AE1F2E60A0002DFACE /* String+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Size.swift"; path = "Cypherpunk/Extension/String+Size.swift"; sourceTree = SOURCE_ROOT; };
@@ -403,17 +395,6 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
-		09ACCDD41E7189A300AF3E4F /* Launch Images */ = {
-			isa = PBXGroup;
-			children = (
-				09ACCDD21E71894F00AF3E4F /* bk-overlay@2x.png */,
-				09ACCDD01E71894800AF3E4F /* bk-overlay.png */,
-				09ACCDCE1E71892E00AF3E4F /* splashscreen-illustration.png */,
-				09ACCDCC1E71892200AF3E4F /* splashscreen-illustration@2x.png */,
-			);
-			name = "Launch Images";
-			sourceTree = "<group>";
-		};
 		2038095C1D13D89D005145CD = {
 			isa = PBXGroup;
 			children = (
@@ -439,7 +420,6 @@
 		203809671D13D89D005145CD /* Cypherpunk */ = {
 			isa = PBXGroup;
 			children = (
-				09ACCDD41E7189A300AF3E4F /* Launch Images */,
 				2B45C1601D20D61B00D4326C /* Font */,
 				203809981D13DAF3005145CD /* Cypherpunk.entitlements */,
 				2B4489241D2A623A00D202F9 /* Protocol */,
@@ -901,7 +881,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B45C1691D20D64600D4326C /* Dosis-ExtraBold.otf in Resources */,
-				09ACCDD31E71894F00AF3E4F /* bk-overlay@2x.png in Resources */,
 				09EAFBBD1EF0AE72001B9375 /* LocationCollectionViewCell.xib in Resources */,
 				2B8D3F401DBA965A0096EEF7 /* Account.storyboard in Resources */,
 				2B45C16C1D20D64600D4326C /* Dosis-Medium.otf in Resources */,
@@ -919,14 +898,12 @@
 				09DDDE561EF289E000E7F2B7 /* LocationHeaderReusableView.xib in Resources */,
 				203809701D13D89D005145CD /* Assets.xcassets in Resources */,
 				2BAA550B1DAE133200FE8FE9 /* NewConfiguration.storyboard in Resources */,
-				09ACCDCD1E71892200AF3E4F /* splashscreen-illustration@2x.png in Resources */,
 				09EAFBB91EF0AAC5001B9375 /* LocationSelectorViewController.xib in Resources */,
 				091D05801F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib in Resources */,
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				09E60D951ED688CF0037BA0D /* MainViewController.xib in Resources */,
 				0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */,
 				20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */,
-				09ACCDD11E71894800AF3E4F /* bk-overlay.png in Resources */,
 				0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */,
 				0959A50C1E69768100A95A49 /* PlanTableViewCell.xib in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
@@ -937,7 +914,6 @@
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
 				2BDBD0D21D65295F00080E67 /* Password.storyboard in Resources */,
-				09ACCDCF1E71892E00AF3E4F /* splashscreen-illustration.png in Resources */,
 				20DA369B1DB5E6C1003F4999 /* Inconsolata-Regular.ttf in Resources */,
 				20BF04D51DB8B90F0007B633 /* Walkthrough.storyboard in Resources */,
 				2B45C1681D20D64600D4326C /* Dosis-Bold.otf in Resources */,
