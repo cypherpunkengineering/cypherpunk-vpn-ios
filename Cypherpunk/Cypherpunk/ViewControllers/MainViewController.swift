@@ -133,6 +133,7 @@ class MainViewController: UIViewController, StoreSubscriber {
             childView.centerX == parentView.centerX
             childView.height == 20
         }
+        self.statusDetailLabel.isHidden = true // hide this for now, may use later
         
         self.view.addSubview(self.statusLabel)
         self.statusLabel.font = R.font.dosisMedium(size: 18)
@@ -389,7 +390,7 @@ extension MainViewController: LocationSelectionDelegate {
             self.locationSelectorButton.isHidden = false
             self.statusTitleLabel.isHidden = false
             self.statusLabel.isHidden = false
-            self.statusDetailLabel.isHidden = false
+//            self.statusDetailLabel.isHidden = false
             
             self.mapImageView.isMapInBackground = false
         }) { (completed) in
