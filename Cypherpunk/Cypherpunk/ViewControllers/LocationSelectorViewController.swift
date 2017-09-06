@@ -13,8 +13,8 @@ import NetworkExtension
 
 protocol LocationSelectionDelegate {
     func dismissSelector()
-    func scrolledTo(location: Region)
     func locationSelected(location: Region)
+    func fastestSelected(cypherplay: Bool)
 }
 
 enum LocationSection: Int {
@@ -172,17 +172,10 @@ extension LocationSelectorViewController: UICollectionViewDelegate {
         let section = LocationSection(rawValue: (indexPath as NSIndexPath).section)!
         
         if section == .cypherplay {
-            if indexPath.row == 0 {
-                ConnectionHelper.connectToFastest(cypherplay: true)
-            }
-            else {
-                ConnectionHelper.connectToFastest(cypherplay: false)
-            }
-            self.delegate?.dismissSelector()
+            delegate?.fastestSelected(cypherplay: indexPath.row == 0)
         }
         else {
             let location = section.realmResults[indexPath.row]
-            ConnectionHelper.connectTo(region: location, cypherplay: false)
             self.delegate?.locationSelected(location: location)
         }
     }

@@ -257,15 +257,15 @@ class MainViewController: UIViewController, StoreSubscriber {
             childView.bottom == parentView.bottom
         }
         
-        UIView.animate(withDuration: 0.5) { 
+        self.mapImageView.isMapInBackground = true
+//        UIView.animate(withDuration: 0.5) { 
             self.locationSelectorVC?.view.alpha = 1.0
             self.vpnSwitchAnimationView.isHidden = true
             self.locationSelectorButton.isHidden = true
             self.statusTitleLabel.isHidden = true
             self.statusLabel.isHidden = true
             self.statusDetailLabel.isHidden = true
-            self.mapImageView.isMapInBackground = true
-        }
+//        }
     }
     
     private func updateView(vpnStatus: NEVPNStatus) {
@@ -362,28 +362,28 @@ class MainViewController: UIViewController, StoreSubscriber {
 
 extension MainViewController: LocationSelectionDelegate {
     func dismissSelector() {
-        showControls() {
-            // check if the user actually selected a new region, if not reset to last selected
-            if let regionId = mainStore.state.regionState.lastSelectedRegionId {
-                if self.lastSelectedRegionId == regionId {
-                    self.mapImageView.zoomToRegion(regionId: regionId)
-                }
-            }
-        }
-    }
-    
-    func scrolledTo(location: Region) {
-        self.mapImageView.zoomToRegion(region: location)
+        self.mapImageView.isMapInBackground = false
+        showControls()
     }
     
     func locationSelected(location: Region) {
-        showControls() // the state change will handle the map movement
+        self.mapImageView.isMapInBackground = false
+        showControls() {
+            ConnectionHelper.connectTo(region: location, cypherplay: false)
+        }
+    }
+    
+    func fastestSelected(cypherplay: Bool) {
+        self.mapImageView.isMapInBackground = false
+        showControls() {
+            ConnectionHelper.connectToFastest(cypherplay: cypherplay)
+        }
     }
     
     private func showControls(_ completion: (() -> Void)? = nil) {
         self.locationSelectorVC?.willMove(toParentViewController: nil)
         
-        UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
+//        UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
             self.locationSelectorVC?.view.removeFromSuperview()
             
             self.vpnSwitchAnimationView.isHidden = false
@@ -392,13 +392,13 @@ extension MainViewController: LocationSelectionDelegate {
             self.statusLabel.isHidden = false
 //            self.statusDetailLabel.isHidden = false
             
-            self.mapImageView.isMapInBackground = false
-        }) { (completed) in
+//            self.mapImageView.isMapInBackground = false
+//        }) { (completed) in
             self.locationSelectorVC?.removeFromParentViewController()
             if let block = completion {
                 block()
             }
-        }
+//        }
     
         self.locationSelectorVC = nil
     }
