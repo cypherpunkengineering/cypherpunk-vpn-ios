@@ -89,7 +89,7 @@ class VPNSwitchAnimationView: UIView {
         topMarqueeLabel.fadeLength = 5.0
         topMarqueeLabel.type = .continuous
         topMarqueeLabel.animationDelay = 0.0
-        topMarqueeLabel.speed = .duration(30.0)
+        topMarqueeLabel.speed = .duration(45.0)
         topMarqueeLabel.font = ScrollingTextHelper.marqueeFont
         topMarqueeLabel.textColor = UIColor(hex: "#7ffffb", alpha: 1.0)
         topMarqueeLabel.layer.opacity = 0.0
@@ -99,7 +99,7 @@ class VPNSwitchAnimationView: UIView {
         bottomMarqueeLabel.fadeLength = 5.0
         bottomMarqueeLabel.type = .continuousReverse
         bottomMarqueeLabel.animationDelay = 0.0
-        bottomMarqueeLabel.speed = .duration(30.0)
+        bottomMarqueeLabel.speed = .duration(45.0)
         bottomMarqueeLabel.font = ScrollingTextHelper.marqueeFont
         bottomMarqueeLabel.textColor = UIColor(hex: "#5fbfbb", alpha: 1.0)
         bottomMarqueeLabel.layer.opacity = 0.0
