@@ -34,8 +34,6 @@ class VPNSwitchAnimationView: UIView {
     let topMarqueeLabel = MarqueeLabel()
     let bottomMarqueeLabel = MarqueeLabel()
     
-    var originalCurvedPath: UIBezierPath?
-    
     let disconnectGradientColors = [UIColor.disconnectedLineColor.cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.7).cgColor, UIColor.disconnectedLineColor.withAlphaComponent(0.2).cgColor] as [Any]
     
     let connectGradientColors = [UIColor.connectingLineColor.cgColor, UIColor.connectingLineColor.withAlphaComponent(0.7).cgColor, UIColor.connectingLineColor.withAlphaComponent(0.2).cgColor] as [Any]
@@ -127,18 +125,29 @@ class VPNSwitchAnimationView: UIView {
     
     private func setupLineLayers() {
         leftLineGradientLayer.frame = self.bounds
-        leftLineGradientLayer.locations = [0.5, 0.8, 1.0]
-        leftLineGradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
-        leftLineGradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
-        leftLineGradientLayer.mask = leftLineShapeLayer
-        
         rightLineGradientLayer.frame = self.bounds
-        rightLineGradientLayer.locations = [0.5, 0.8, 1.0]
-        rightLineGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        rightLineGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        rightLineGradientLayer.mask = rightLineShapeLayer
         
-        transitionToDisconnected(animate: false)
+        if VPNConfigurationCoordinator.isConnected {
+            transitionToConnectedAnimation()
+        }
+        else {
+            leftLineGradientLayer.locations = [0.5, 0.8, 1.0]
+            leftLineGradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
+            leftLineGradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
+            leftLineGradientLayer.mask = leftLineShapeLayer
+            
+            rightLineGradientLayer.locations = [0.5, 0.8, 1.0]
+            rightLineGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+            rightLineGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+            rightLineGradientLayer.mask = rightLineShapeLayer
+            
+            if VPNConfigurationCoordinator.isConnecting {
+                beginConnectAnimation()
+            }
+            else {
+                transitionToDisconnected(animate: false)
+            }
+        }
     }
     
     private func transitionToDisconnected(animate: Bool) {
@@ -330,6 +339,7 @@ class VPNSwitchAnimationView: UIView {
             
             let outerShapeDelta: CGFloat = 18
             
+            // vpn switch frame is wrong on rotation?
             let baseRect = CGRect(x: self.vpnSwitch.frame.minX - outerShapeDelta, y: 0, width: self.vpnSwitch.bounds.width + 2 * outerShapeDelta, height: self.bounds.height)
             let curvedShapePath = UIBezierPath(roundedRect: baseRect, cornerRadius: self.bounds.height / 2)
             curvedShapePath.usesEvenOddFillRule = true
@@ -358,8 +368,6 @@ class VPNSwitchAnimationView: UIView {
             self.switchGlowShapeLayer.path = bezierPath.cgPath
             self.switchGlowShapeLayer.fillColor = UIColor.disconnectedLineColor.cgColor
             self.switchGlowShapeLayer.fillRule = kCAFillRuleEvenOdd
-            
-            self.originalCurvedPath = bezierPath
         }
     }
     
@@ -369,9 +377,26 @@ class VPNSwitchAnimationView: UIView {
         self.chaserGradientLayer.removeAnimation(forKey: "heartbeatAnimation")
         self.chaserGradientLayer.removeFromSuperlayer()
         
+        let bezierPath = UIBezierPath()
+        bezierPath.usesEvenOddFillRule = true
+        
+        let outerShapeDelta: CGFloat = 18
+        
+        // vpn switch frame is wrong on rotation?
+        let baseRect = CGRect(x: self.vpnSwitch.frame.minX - outerShapeDelta, y: 0, width: self.vpnSwitch.bounds.width + 2 * outerShapeDelta, height: self.bounds.height)
+        let curvedShapePath = UIBezierPath(roundedRect: baseRect, cornerRadius: self.bounds.height / 2)
+        curvedShapePath.usesEvenOddFillRule = true
+        curvedShapePath.close()
+        
+        bezierPath.append(curvedShapePath)
+        
+        let innerPath = UIBezierPath(roundedRect: CGRect(x: self.vpnSwitch.frame.minX - 10, y: 0, width: self.vpnSwitch.bounds.width + 2 * 10, height: self.bounds.height), cornerRadius: self.bounds.height / 2 - 5)
+        
+        bezierPath.append(innerPath)
+        
         let switchGlowPathAnimation = CABasicAnimation(keyPath: "path")
         switchGlowPathAnimation.fromValue = self.switchGlowShapeLayer.path
-        switchGlowPathAnimation.toValue = self.originalCurvedPath?.cgPath
+        switchGlowPathAnimation.toValue = bezierPath.cgPath
         switchGlowPathAnimation.duration = 0.3
         self.switchGlowShapeLayer.add(switchGlowPathAnimation, forKey: "path")
         
@@ -388,7 +413,7 @@ class VPNSwitchAnimationView: UIView {
         
         self.switchGlowShapeLayer.add(switchGlowAnimationGroup, forKey: "switchGlowAnimation")
         
-        self.switchGlowShapeLayer.path = self.originalCurvedPath?.cgPath
+        self.switchGlowShapeLayer.path = bezierPath.cgPath
         self.switchGlowShapeLayer.fillColor = UIColor.disconnectedLineColor.cgColor
     }
     
