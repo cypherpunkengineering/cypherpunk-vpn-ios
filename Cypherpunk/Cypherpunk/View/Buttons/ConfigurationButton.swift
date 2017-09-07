@@ -14,7 +14,7 @@ class ConfigurationButton: UIButton {
         super.init(frame: frame)
         self.backgroundColor = UIColor.aztec
         
-        self.titleLabel?.font = UIFont.fontAwesome(ofSize: 30)
+        self.titleLabel?.font = UIFont.fontAwesome(ofSize: 26)
         self.setTitle(String.fontAwesomeIcon(name: .cogs), for: .normal)
         
         self.setTitleColor(UIColor.gray, for: .highlighted)
