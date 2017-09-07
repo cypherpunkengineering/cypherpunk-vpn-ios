@@ -38,7 +38,7 @@ class SlidingNavigationViewController: UIViewController {
     var slideWidth: CGFloat = 276
     var sidePanelOffset: CGFloat = -138 // half the width of the side panels
     
-    static let animationTime: Double = 0.3
+    static let animationTime: Double = 0.5
 
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var configTrailingConstraint: NSLayoutConstraint!
