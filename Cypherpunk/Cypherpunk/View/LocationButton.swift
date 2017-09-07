@@ -41,6 +41,9 @@ class LocationButton: UIView {
     var backgroundLayer: CAShapeLayer?
     var shadowLayer: CAShapeLayer?
     
+    var bgLayerColor: CGColor = UIColor(red: 80.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 0.15).cgColor
+    var bgLayerHighlightedColor: CGColor = UIColor(red: 80.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 0.15).lighterColor(percent: 0.5).cgColor
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -68,7 +71,7 @@ class LocationButton: UIView {
         }
 
         // setup the label
-        self.labelView.font = R.font.dosisMedium(size: 16)
+        self.labelView.font = R.font.dosisMedium(size: 17)
         self.labelView.textColor = UIColor.white
         constrain(self, self.labelView, self.flagView) { parentView, childView, flagView in
             childView.height == self.bounds.height
@@ -119,7 +122,8 @@ class LocationButton: UIView {
             childView.trailing == parentView.trailing - 2
         }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        let tapGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        tapGesture.minimumPressDuration = 0.0
         self.addGestureRecognizer(tapGesture)
     }
 
@@ -149,7 +153,7 @@ class LocationButton: UIView {
             self.backgroundLayer = CAShapeLayer()
             self.backgroundLayer?.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
             self.backgroundLayer?.path = bglayerPath.cgPath
-            self.backgroundLayer?.fillColor = UIColor(red: 80.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 0.15).cgColor
+            self.backgroundLayer?.fillColor = self.bgLayerColor
             
             self.backgroundLayer?.cornerRadius = self.bounds.height / 2
             self.layer.addSublayer(backgroundLayer!)
@@ -162,6 +166,12 @@ class LocationButton: UIView {
     }
     
     func handleTap(sender: UITapGestureRecognizer) {
-        delegate?.buttonPressed()
+        if sender.state == .began {
+            self.backgroundLayer?.fillColor = self.bgLayerHighlightedColor
+        }
+        else if sender.state == .ended {
+            self.backgroundLayer?.fillColor = self.bgLayerColor
+            delegate?.buttonPressed()
+        }
     }
 }
