@@ -43,10 +43,10 @@ class ScrollingTextView: UIView {
         bottomLabel.type = .continuousReverse
         
         topLabel.animationDelay = 0.0
-        topLabel.speed = .duration(30.0)
+        topLabel.speed = .duration(45.0)
         
         bottomLabel.animationDelay = 0.0
-        bottomLabel.speed = .duration(30.0)
+        bottomLabel.speed = .duration(45.0)
         
         topLabel.fadeLength = 5.0
         bottomLabel.fadeLength = 5.0
