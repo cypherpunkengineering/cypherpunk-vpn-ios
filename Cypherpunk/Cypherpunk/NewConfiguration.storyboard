@@ -40,29 +40,11 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="1vb-2p-wOn" id="9Ki-aC-QPA"/>
-                        <segue destination="lkW-0y-Max" kind="presentation" identifier="PresentManageTrustedNetworks" id="RPa-sJ-6a0"/>
-                        <segue destination="RBW-49-uzv" kind="presentation" identifier="PresentLeakProtection" id="KCC-IA-emQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iv7-cP-HSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-781.60000000000002" y="1104.1979010494754"/>
-        </scene>
-        <!--ManageTrustedNetworks-->
-        <scene sceneID="LmK-Vx-Msq">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ManageTrustedNetworks" id="lkW-0y-Max" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jIe-2O-YXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-182" y="1104"/>
-        </scene>
-        <!--LeakProtection-->
-        <scene sceneID="cY6-W7-eXk">
-            <objects>
-                <viewControllerPlaceholder storyboardName="LeakProtection" id="RBW-49-uzv" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DMH-Rs-Yna" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-148" y="1297"/>
         </scene>
     </scenes>
 </document>

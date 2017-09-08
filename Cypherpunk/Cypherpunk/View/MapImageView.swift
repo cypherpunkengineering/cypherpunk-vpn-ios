@@ -12,7 +12,7 @@ import RealmSwift
 import simd
 
 class MapImageView: UIView {
-    static let mapPanDuration = 1.25 // duration of the map animation when it pans/zooms
+    static let mapPanDuration = 1.75 // duration of the map animation when it pans/zooms
     var parentMidYOffset: CGFloat = 110 {
         didSet {
             self.setNeedsLayout()
@@ -208,7 +208,7 @@ class MapImageView: UIView {
             
             // animation the position of the marker
             let bounceAnimation = CABasicAnimation(keyPath: "position.y")
-            bounceAnimation.duration = 0.75
+            bounceAnimation.duration = MapImageView.mapPanDuration
             bounceAnimation.speed = 1.25
             bounceAnimation.fromValue = 0
             bounceAnimation.toValue = -25

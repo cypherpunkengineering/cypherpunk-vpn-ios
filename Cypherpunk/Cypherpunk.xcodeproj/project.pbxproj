@@ -33,8 +33,6 @@
 		0959A5171E69883D00A95A49 /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */; };
 		0959A5181E69883D00A95A49 /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */; };
 		095DB96D1E87C1E200A3E874 /* UIDevice+Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */; };
-		09636DB31F18EFAC004C42F5 /* LeakProtection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */; };
-		09636DB51F18F17F004C42F5 /* LeakProtectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */; };
 		09636DB71F1A11F4004C42F5 /* NotActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09636DB61F1A11F4004C42F5 /* NotActivatedViewController.swift */; };
 		09636DB91F1A9F55004C42F5 /* AccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09636DB81F1A9F55004C42F5 /* AccountHelper.swift */; };
 		09661F2B1EE645B200F242E6 /* MapImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09661F2A1EE645B200F242E6 /* MapImageView.swift */; };
@@ -201,8 +199,6 @@
 		0959A5151E69883D00A95A49 /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		0959A5161E69883D00A95A49 /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
 		095DB96C1E87C1E200A3E874 /* UIDevice+Simulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Simulator.swift"; sourceTree = "<group>"; };
-		09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LeakProtection.storyboard; sourceTree = "<group>"; };
-		09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeakProtectionTableViewController.swift; sourceTree = "<group>"; };
 		09636DB61F1A11F4004C42F5 /* NotActivatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotActivatedViewController.swift; sourceTree = "<group>"; };
 		09636DB81F1A9F55004C42F5 /* AccountHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountHelper.swift; path = Cypherpunk/Helper/AccountHelper.swift; sourceTree = SOURCE_ROOT; };
 		09661F2A1EE645B200F242E6 /* MapImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapImageView.swift; sourceTree = "<group>"; };
@@ -567,7 +563,6 @@
 				2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */,
 				205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */,
 				0948DBA61ED7C88500A7A475 /* ConfigurationViewController.swift */,
-				09636DB41F18F17F004C42F5 /* LeakProtectionTableViewController.swift */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -657,7 +652,6 @@
 				20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */,
 				2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */,
 				2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */,
-				09636DB21F18EFAC004C42F5 /* LeakProtection.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -889,7 +883,6 @@
 				0959A5181E69883D00A95A49 /* PlanCollectionViewCell.xib in Resources */,
 				2B45C16B1D20D64600D4326C /* Dosis-Light.otf in Resources */,
 				203809731D13D89D005145CD /* LaunchScreen.storyboard in Resources */,
-				09636DB31F18EFAC004C42F5 /* LeakProtection.storyboard in Resources */,
 				0948DBAB1ED7D1CB00A7A475 /* ToggleTableViewCell.xib in Resources */,
 				203C62EC1D7014B700891F91 /* Upgrade.storyboard in Resources */,
 				2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */,
@@ -1218,7 +1211,6 @@
 				203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */,
 				203C62F21D7035D800891F91 /* TwoColorGradientButton.swift in Sources */,
 				09636DB91F1A9F55004C42F5 /* AccountHelper.swift in Sources */,
-				09636DB51F18F17F004C42F5 /* LeakProtectionTableViewController.swift in Sources */,
 				20EC4A461D3780BC00785399 /* SettingsState.swift in Sources */,
 				2B75524A1D6AE80700E07A4B /* VPNPersistentDataGenerator.m in Sources */,
 				203C62F41D7036C900891F91 /* FirstOpenViewController.swift in Sources */,
