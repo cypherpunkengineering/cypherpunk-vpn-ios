@@ -55,8 +55,6 @@
 		09EAFBB91EF0AAC5001B9375 /* LocationSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EAFBB71EF0AAC5001B9375 /* LocationSelectorViewController.xib */; };
 		09EAFBBC1EF0AE72001B9375 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EAFBBA1EF0AE72001B9375 /* LocationCollectionViewCell.swift */; };
 		09EAFBBD1EF0AE72001B9375 /* LocationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EAFBBB1EF0AE72001B9375 /* LocationCollectionViewCell.xib */; };
-		20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20073E0C1D9E387400BCD690 /* RateAppViewController.swift */; };
-		200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200A0B011D9E29BB00D59249 /* RateApp.storyboard */; };
 		2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */; };
 		201809E61D5B394900730FA4 /* ThemedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */; };
 		201809E81D5B3A9F00730FA4 /* ThemedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */; };
@@ -220,8 +218,6 @@
 		09EAFBBA1EF0AE72001B9375 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		09EAFBBB1EF0AE72001B9375 /* LocationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCollectionViewCell.xib; sourceTree = "<group>"; };
 		1DD10B28D37D23FAE9E7891D /* Pods-Cypherpunk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cypherpunk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cypherpunk/Pods-Cypherpunk.debug.xcconfig"; sourceTree = "<group>"; };
-		20073E0C1D9E387400BCD690 /* RateAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateAppViewController.swift; sourceTree = "<group>"; };
-		200A0B011D9E29BB00D59249 /* RateApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RateApp.storyboard; sourceTree = "<group>"; };
 		2016F5F11D23C2BA0094BA72 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		201809E51D5B394900730FA4 /* ThemedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTableViewCell.swift; sourceTree = "<group>"; };
 		201809E71D5B3A9F00730FA4 /* ThemedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTableView.swift; sourceTree = "<group>"; };
@@ -569,7 +565,6 @@
 				2BDBD0CB1D651D6700080E67 /* UpdateEmailTableViewController.swift */,
 				2BDB6B521D7EA7B3008B13F1 /* UpdatePasswordTableViewController.swift */,
 				2BDBD0D51D6575AA00080E67 /* ContactusViewController.swift */,
-				20073E0C1D9E387400BCD690 /* RateAppViewController.swift */,
 				2BA4E2A31DD06372006ACDC5 /* ShareAppViewController.swift */,
 				0959A50D1E69879A00A95A49 /* PlanCollectionViewController.swift */,
 			);
@@ -639,7 +634,6 @@
 				203C62EF1D702CD900891F91 /* FirstOpen.storyboard */,
 				20BF04D41DB8B90F0007B633 /* Walkthrough.storyboard */,
 				20D895EB1D1D0F67002B9F9D /* Top.storyboard */,
-				200A0B011D9E29BB00D59249 /* RateApp.storyboard */,
 				203C62EB1D7014B700891F91 /* Upgrade.storyboard */,
 				2BFBE9DC1DC0A33F008D9F5D /* Share.storyboard */,
 				2BDBD0C71D65191400080E67 /* Email.storyboard */,
@@ -895,7 +889,6 @@
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
 				20CF42A51DFFB1E500BC8267 /* ReconnectDialogView.xib in Resources */,
 				2B45C16E1D20D64600D4326C /* Dosis-SemiBold.otf in Resources */,
-				200A0B021D9E29BB00D59249 /* RateApp.storyboard in Resources */,
 				2B45C16D1D20D64600D4326C /* Dosis-Regular.otf in Resources */,
 				20D895EC1D1D0F67002B9F9D /* Top.storyboard in Resources */,
 				2B45C16A1D20D64600D4326C /* Dosis-ExtraLight.otf in Resources */,
@@ -1246,7 +1239,6 @@
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
 				0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */,
 				0945DBE21EF60842005119E8 /* CypherplayCollectionViewCell.swift in Sources */,
-				20073E0D1D9E387400BCD690 /* RateAppViewController.swift in Sources */,
 				2018AB081DB8ADD200649D03 /* ResetYourPasswordViewController.swift in Sources */,
 				0959A5071E681FB200A95A49 /* AccountDetailTableViewCell.swift in Sources */,
 				2B95C9171DC7429A00F79A2D /* IdentifyEmailAPI.swift in Sources */,
