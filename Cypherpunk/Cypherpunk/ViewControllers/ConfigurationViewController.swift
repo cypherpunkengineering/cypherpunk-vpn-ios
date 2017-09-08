@@ -12,6 +12,15 @@ import NetworkExtension.NEHotspotHelper
 import SystemConfiguration.CaptiveNetwork
 import ReSwift
 
+class WifiNetworks: Object {
+    dynamic var name: String = ""
+    dynamic var isTrusted: Bool = false
+    
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+}
+
 class ConfigurationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoreSubscriber {
     @IBOutlet weak var tableView: UITableView!
 
