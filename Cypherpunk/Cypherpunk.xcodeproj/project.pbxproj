@@ -80,7 +80,6 @@
 		203F4EFD1D5B06BD00EA2536 /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */; };
 		203F4EFF1D5B079D00EA2536 /* UIColor+CIAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */; };
 		204398601E0BA64900DCBE8E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2043985F1E0BA64900DCBE8E /* StoreKit.framework */; };
-		205EE3241DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */; };
 		2061342D1D8296AC00480621 /* BlurredIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2061342C1D8296AC00480621 /* BlurredIndicatorView.xib */; };
 		2064B3A41DBF38BD00F85148 /* PopoverRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2064B3A31DBF38BD00F85148 /* PopoverRootViewController.swift */; };
 		2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2064B3A51DBF426700F85148 /* PopoverNavigationViewController.swift */; };
@@ -113,7 +112,6 @@
 		20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4A491D378CBC00785399 /* SettingsAction.swift */; };
 		20F07FD91DD47CCD005FC1D6 /* UpgradeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */; };
 		20F850911D3DF40A009079A0 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F850901D3DF40A009079A0 /* LoginAPI.swift */; };
-		20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */; };
 		2302FFC41DD5C9BF00F30D41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */; };
 		2B0A652B1DED904700905A2A /* RecoverPasswordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A652A1DED904700905A2A /* RecoverPasswordAPI.swift */; };
 		2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */; };
@@ -254,7 +252,6 @@
 		203F4EFC1D5B06BD00EA2536 /* ThemedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
 		203F4EFE1D5B079D00EA2536 /* UIColor+CIAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+CIAdditions.swift"; sourceTree = "<group>"; };
 		2043985F1E0BA64900DCBE8E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageTrustedNetworksTableViewController.swift; sourceTree = "<group>"; };
 		2061342C1D8296AC00480621 /* BlurredIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlurredIndicatorView.xib; sourceTree = "<group>"; };
 		2064B3A31DBF38BD00F85148 /* PopoverRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverRootViewController.swift; sourceTree = "<group>"; };
 		2064B3A51DBF426700F85148 /* PopoverNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverNavigationViewController.swift; sourceTree = "<group>"; };
@@ -288,7 +285,6 @@
 		20EC4A491D378CBC00785399 /* SettingsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
 		20F07FD81DD47CCD005FC1D6 /* UpgradeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeAPI.swift; sourceTree = "<group>"; };
 		20F850901D3DF40A009079A0 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManageTrustedNetworks.storyboard; sourceTree = "<group>"; };
 		2302FFC31DD5C9BF00F30D41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B0A652A1DED904700905A2A /* RecoverPasswordAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverPasswordAPI.swift; sourceTree = "<group>"; };
 		2B242D8D1DEC1DCE002BD97B /* AccountStatusAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountStatusAPI.swift; sourceTree = "<group>"; };
@@ -561,7 +557,6 @@
 			isa = PBXGroup;
 			children = (
 				2BDBD0CD1D65200100080E67 /* ConfigurationRootViewController.swift */,
-				205EE3231DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift */,
 				0948DBA61ED7C88500A7A475 /* ConfigurationViewController.swift */,
 			);
 			name = Configuration;
@@ -649,7 +644,6 @@
 				2BFBE9DC1DC0A33F008D9F5D /* Share.storyboard */,
 				2BDBD0C71D65191400080E67 /* Email.storyboard */,
 				2BDBD0D11D65295F00080E67 /* Password.storyboard */,
-				20FB5DFF1DCC57E1003B3129 /* ManageTrustedNetworks.storyboard */,
 				2BAA550A1DAE133200FE8FE9 /* NewConfiguration.storyboard */,
 				2B8D3F3F1DBA965A0096EEF7 /* Account.storyboard */,
 			);
@@ -896,7 +890,6 @@
 				2BDBD0C81D65191400080E67 /* Email.storyboard in Resources */,
 				09E60D951ED688CF0037BA0D /* MainViewController.xib in Resources */,
 				0959A5081E681FB200A95A49 /* AccountDetailTableViewCell.xib in Resources */,
-				20FB5E001DCC57E1003B3129 /* ManageTrustedNetworks.storyboard in Resources */,
 				0970EE721E68161600BB77A0 /* MenuTableViewCell.xib in Resources */,
 				0959A50C1E69768100A95A49 /* PlanTableViewCell.xib in Resources */,
 				203C62F01D702CD900891F91 /* FirstOpen.storyboard in Resources */,
@@ -1271,7 +1264,6 @@
 				0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */,
 				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
 				09DB51AF1F2E60A0002DFACE /* String+Size.swift in Sources */,
-				205EE3241DAFAADB002B322D /* ManageTrustedNetworksTableViewController.swift in Sources */,
 				2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */,
 				09636DB71F1A11F4004C42F5 /* NotActivatedViewController.swift in Sources */,
 				0959A5171E69883D00A95A49 /* PlanCollectionViewCell.swift in Sources */,
