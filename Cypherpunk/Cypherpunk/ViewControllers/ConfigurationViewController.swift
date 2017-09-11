@@ -59,7 +59,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         let realm = try! Realm()
-        wifiNetworksResult = realm.objects(WifiNetworks.self)
+        wifiNetworksResult = realm.objects(WifiNetworks.self).sorted(byKeyPath: "name")
         // Listen to changes for wifi networks
         notificationToken = wifiNetworksResult.addNotificationBlock({ (change) in
             self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
