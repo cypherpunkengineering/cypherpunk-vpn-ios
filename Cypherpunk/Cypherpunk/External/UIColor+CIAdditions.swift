@@ -72,6 +72,10 @@ extension UIColor {
     class var configTableCellBg: UIColor {
         return UIColor(red: 39.0 / 255.0, green: 97.0 /  255.0, blue: 97.0 / 255.0, alpha: 1.0)
     }
+    
+    class var configTableHelperTextColor: UIColor {
+        return UIColor(red: 100 / 255.0, green: 160 / 255.0, blue: 160 / 255.0, alpha: 1)
+    }
 
     class var greenVogue: UIColor {
 //        26,71,76

@@ -86,15 +86,19 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
 
     // MARK: UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows = 0
         switch section {
         case 0:
-            rows = 2
+            rows = 2 // privacy settings
         case 1:
+            rows = 1 // connection settings
+        case 2:
+            rows = 1 // auto wi-fi settings
+        case 3:
             rows = 1 // trust cellular networks toggle
             
             if let results = wifiNetworksResult {
@@ -113,6 +117,20 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         case 0:
             cell = cellForPrivacySettings(tableView, row: indexPath.row)
         case 1:
+            let toggleCell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell")! as! ToggleTableViewCell
+            toggleCell.label.text = "Auto-Reconnect"
+            toggleCell.toggle.isOn = mainStore.state.settingsState.blockAds
+            toggleCell.toggle.addTarget(self, action: #selector(blockAdsChanged(_:)), for: .valueChanged)
+            toggleCell.descriptionLabel.text = "Cypherpunk Privacy will attempt to automatically reconnect if the connection is interrupted."
+            cell = toggleCell
+        case 2:
+            let toggleCell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell")! as! ToggleTableViewCell
+            toggleCell.label.text = "Auto Secure Networks"
+            toggleCell.toggle.isOn = mainStore.state.settingsState.blockAds
+            toggleCell.toggle.addTarget(self, action: #selector(blockAdsChanged(_:)), for: .valueChanged)
+            toggleCell.descriptionLabel.text = "Cypherpunk Privacy can automatically secure connections to untrusted networks."
+            cell = toggleCell
+        case 3:
             cell = cellForTrustedNetworks(tableView, row: indexPath.row)
         default:
             cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell")!
@@ -123,16 +141,17 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        var height: CGFloat = 50.0
+        if indexPath.section == 1 || indexPath.section == 2 {
+            height = 100.0
+        }
+        return height
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         var height: CGFloat = 30.0
-        switch section {
-        case 1:
+        if section == 3 {
             height = 65.0
-        default:
-            break
         }
         return height
     }
@@ -142,7 +161,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
+        var headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
         headerView.backgroundColor = UIColor.configTableCellBg
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
         label.textColor = UIColor.goldenYellow
@@ -152,24 +171,11 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         case 0:
             label.text = "Privacy Settings"
         case 1:
-            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 65))
-            headerView.backgroundColor = UIColor.configTableCellBg
-            let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 30))
-            label.textColor = UIColor.goldenYellow
-            label.font = R.font.dosisSemiBold(size: 15.0)
-            label.text = "Trusted Networks"
-            
-            let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 35))
-            descLabel.textColor = self.helperTextColor
-            descLabel.numberOfLines = 2
-            descLabel.lineBreakMode = .byWordWrapping
-            descLabel.font = R.font.dosisRegular(size: 13)
-            descLabel.text = "Cypherpunk Privacy will automatically connect, except when on the following trusted networks"
-            
-            headerView.addSubview(label)
-            headerView.addSubview(descLabel)
-            
-            return headerView
+            label.text = "Connection Settings"
+        case 2:
+            label.text = "Network Auto Security"
+        case 3:
+            headerView = createHeaderWithDescriptionView(title: "Trusted Networks", description: "Select networks you trust that will be exempt from Auto Security.", numOfLines: 2)
         default:
             label.text = ""
         }
@@ -202,6 +208,27 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     // MARK: Helper Methods
+    private func createHeaderWithDescriptionView(title: String, description: String, numOfLines: Int) -> UIView {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 65))
+        headerView.backgroundColor = UIColor.configTableCellBg
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: 320, height: 25))
+        label.textColor = UIColor.goldenYellow
+        label.font = R.font.dosisSemiBold(size: 15.0)
+        label.text = title
+        
+        let descLabel = UILabel(frame: CGRect(x: 15, y: 30, width: tableView.bounds.width - 30, height: 40))
+        descLabel.textColor = self.helperTextColor
+        descLabel.numberOfLines = numOfLines
+        descLabel.lineBreakMode = .byWordWrapping
+        descLabel.font = R.font.dosisRegular(size: 15)
+        descLabel.text = description
+        
+        headerView.addSubview(label)
+        headerView.addSubview(descLabel)
+        
+        return headerView
+    }
+    
     private func cellForPrivacySettings(_ tableView: UITableView, row: Int) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell") as! ToggleTableViewCell
         
@@ -262,6 +289,14 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func blockMalwareChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
+    }
+    
+    @IBAction func autoReconnectChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
+    }
+    
+    @IBAction func autoSecureWifiNetworksChanged(_ sender: UISwitch) {
         mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
     }
     

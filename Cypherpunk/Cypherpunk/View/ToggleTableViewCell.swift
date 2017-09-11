@@ -11,12 +11,13 @@ import UIKit
 class ToggleTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var toggle: UISwitch!
-    
+    @IBOutlet weak var descriptionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.selectionStyle = .none
+        self.descriptionLabel.textColor = UIColor.configTableHelperTextColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
