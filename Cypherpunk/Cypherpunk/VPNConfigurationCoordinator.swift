@@ -205,19 +205,6 @@ open class VPNConfigurationCoordinator {
         return NEVPNManager.shared().connection.status == .disconnected
     }
 
-    private class func generateRandomPrefix() -> String {
-        // generate random prefix to keep localIdentifier unique
-        let alphabet : NSString = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        let len = UInt32(alphabet.length)
-        var randomPrefix = ""
-        for _ in 0 ..< 10 {
-            let rand = arc4random_uniform(len)
-            var nextChar = alphabet.character(at: Int(rand))
-            randomPrefix += NSString(characters: &nextChar, length: 1) as String
-        }
-        return randomPrefix
-    }
-
     private class func generateLocalIdentifier() -> String {
         let settingsState = mainStore.state.settingsState
         let regionState = mainStore.state.regionState
@@ -244,8 +231,8 @@ open class VPNConfigurationCoordinator {
         newIPSec.serverAddress = regionState.remoteIdentifier // IPSecHostname
 
         newIPSec.useExtendedAuthentication = true
-        newIPSec.username = accountState.vpnUsername!
-//        newIPSec.username = accountState.vpnUsername! + "+" + generateRandomPrefix()
+        newIPSec.username = regionState.cypherplayOn ? "\(accountState.vpnUsername!)@14" : accountState.vpnUsername!
+
         let password = accountState.vpnPassword
         newIPSec.passwordReference = VPNPersistentDataGenerator.persistentReference(forSavedPassword: password, forKey: "password")
 
