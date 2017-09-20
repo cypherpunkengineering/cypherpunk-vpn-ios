@@ -44,7 +44,7 @@ class ServerPinger : NSObject, GBPingDelegate {
     }
     
     func ping(server: Region) {
-        let hostname = server.ovHostname
+        let hostname = server.ipsecDefault
         
         let delegate = PingHandler(serverId: server.id, numPings: 2, pinger: self)
         
