@@ -453,7 +453,7 @@ class VPNSwitchAnimationView: UIView {
             let leftLineGradientAnimation = createGradientChangeAnimation(useConnectColors: true)
             let leftPathChangeAnimation = createPathChangeAnimation(currentPath: leftLineShapeLayer.path!, newPath: leftBezier.cgPath)
             
-//            leftLineShapeLayer.add(leftPathChangeAnimation, forKey: "path")
+            leftLineShapeLayer.add(leftPathChangeAnimation, forKey: "path")
             leftLineGradientLayer.add(leftLineGradientAnimation, forKey: "colors")
             
             leftLineGradientLayer.colors = connectGradientColors
@@ -475,7 +475,7 @@ class VPNSwitchAnimationView: UIView {
             let rightLineGradientAnimation = createGradientChangeAnimation(useConnectColors: true)
             let rightPathChangeAnimation = createPathChangeAnimation(currentPath: rightLineShapeLayer.path!, newPath: rightBezier.cgPath)
             
-//            rightLineShapeLayer.add(rightPathChangeAnimation, forKey: "path")
+            rightLineShapeLayer.add(rightPathChangeAnimation, forKey: "path")
             rightLineGradientLayer.add(rightLineGradientAnimation, forKey: "colors")
             
             rightLineGradientLayer.colors = connectGradientColors

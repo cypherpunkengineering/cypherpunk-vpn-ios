@@ -204,9 +204,10 @@ class SlidingNavigationViewController: UIViewController {
                     self.view.layoutIfNeeded()
                     }, completion: nil)
             }
-            
         default:
+
             let moved = beganTranslatedPositionX + translated.x
+            
             centerConstraint.constant = min(max(-slideWidth, beganPositionX + moved), slideWidth)
             
             if centerConstraint.constant < 0 {
@@ -220,9 +221,13 @@ class SlidingNavigationViewController: UIViewController {
             // --> positive move
             if moved > 0 {
                 // moving to the right
-                if beganPositionX + (moved / 2) < slideWidth {
+                if beganPositionX + (moved / 2) <= slideWidth {
                     accountLeadingConstraint.constant = min(sidePanelOffset + moved / 2, 0)
                     configTrailingConstraint.constant = max(-(moved / 2), sidePanelOffset)
+                }
+                else {
+                    accountLeadingConstraint.constant = 0
+                    configTrailingConstraint.constant = sidePanelOffset
                 }
             }
             else {
@@ -231,9 +236,12 @@ class SlidingNavigationViewController: UIViewController {
                     accountLeadingConstraint.constant = max((moved / 2), sidePanelOffset)
                     configTrailingConstraint.constant = min(sidePanelOffset - moved / 2, 0)
                 }
+                else {
+                    accountLeadingConstraint.constant = sidePanelOffset
+                    configTrailingConstraint.constant = 0
+                }
             }
         }
-    
     }
 
 }

@@ -220,10 +220,7 @@ class AccountConfigurationTableViewController: UITableViewController {
             default:
                 break
             }
-        } else {
-            fatalError()
         }
-        
     }
     
     private func shouldHideUpgradeMenuItem() -> Bool {
