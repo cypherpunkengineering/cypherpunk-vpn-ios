@@ -210,8 +210,6 @@ class SlidingNavigationViewController: UIViewController {
             
             centerConstraint.constant = min(max(-slideWidth, beganPositionX + moved), slideWidth)
             
-            print(centerConstraint.constant)
-            
             if centerConstraint.constant < 0 {
                 self.view.sendSubview(toBack: self.accountContainerView)
             }
