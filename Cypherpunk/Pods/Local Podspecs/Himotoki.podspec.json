@@ -1,6 +1,6 @@
 {
   "name": "Himotoki",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "summary": "A type-safe JSON decoding library purely written in Swift",
   "description": "Himotoki (紐解き) is a type-safe JSON decoding library purely written in Swift. This library is highly inspired by popular JSON parsing libraries in Swift: [Argo](https://github.com/thoughtbot/Argo) and [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper).\n\n_Himotoki_ has the same meaning of 'decoding' in Japanese.\n\n- Just do JSON decoding (deserialization) well. JSON encoding (serialization) would not be supported going forward. :wink:\n- Much simpler API.\n- Fail-fast conditional model building. This is useful for some `struct`s with non-optional `let` properties.\n- No external dependencies.",
   "homepage": "https://github.com/ikesyo/Himotoki",
@@ -17,7 +17,7 @@
   },
   "source": {
     "git": "https://github.com/ikesyo/Himotoki.git",
-    "tag": "3.0.0"
+    "tag": "3.1.0"
   },
   "source_files": "Sources/**/*.swift",
   "requires_arc": true

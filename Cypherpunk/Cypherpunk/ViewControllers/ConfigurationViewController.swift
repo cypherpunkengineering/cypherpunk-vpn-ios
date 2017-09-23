@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-import NetworkExtension.NEHotspotHelper
+import NetworkExtension
 import SystemConfiguration.CaptiveNetwork
 import ReSwift
 

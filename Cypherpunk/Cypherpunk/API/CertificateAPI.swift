@@ -1,14 +1,4 @@
 //
-//  CertificateAPI.swift
-//  Cypherpunk
-//
-//  Created by Julie Ann Sakuda on 7/9/17.
-//  Copyright © 2017 Cypherpunk. All rights reserved.
-//
-
-import Foundation
-
-//
 //  LoginAPI.swift
 //  Cypherpunk
 //
@@ -56,7 +46,7 @@ struct CertificateRequest: Request {
     }
 }
 
-struct CertificateResponse: Decodable {
+struct CertificateResponse: Himotoki.Decodable {
     let p12: String
     
     static func decode(_ e: Extractor) throws -> CertificateResponse {

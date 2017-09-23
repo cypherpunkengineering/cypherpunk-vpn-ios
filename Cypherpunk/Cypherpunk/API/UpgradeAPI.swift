@@ -56,7 +56,7 @@ struct UpgradeRequest: Request {
     }
 }
 
-struct UpgradeResponse: Decodable {
+struct UpgradeResponse: Himotoki.Decodable {
     let message: String
     let status: String
     let login: String

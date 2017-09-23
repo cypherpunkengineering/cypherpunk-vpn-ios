@@ -61,7 +61,7 @@ struct LoginRequest: Request {
     }
 }
 
-struct LoginResponse: Decodable {
+struct LoginResponse: Himotoki.Decodable {
     let secret: String
     let account: Account
     let privacy: Privacy
@@ -79,7 +79,7 @@ struct LoginResponse: Decodable {
     }
 }
 
-struct Privacy: Decodable {
+struct Privacy: Himotoki.Decodable {
     let username: String
     let password: String
     
@@ -92,7 +92,7 @@ struct Privacy: Decodable {
     
 }
 
-struct Subscription: Decodable {
+struct Subscription: Himotoki.Decodable {
     let renewal: String
     let expiration: String
     let renews: Bool
@@ -110,7 +110,7 @@ struct Subscription: Decodable {
     }
 
 }
-struct Account: Decodable {
+struct Account: Himotoki.Decodable {
     let email: String
     let confirmed: Bool
     let type: String
