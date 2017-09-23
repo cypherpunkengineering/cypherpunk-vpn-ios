@@ -21,7 +21,7 @@ open class VPNConfigurationCoordinator {
     }
 
     // if the VPN is active this will stop the tunnel
-    class func start(connectIfDisconnected: Bool = false, _ completion: @escaping () -> ()) {
+    class func start(connectIfDisconnected: Bool = false, enableProfile: Bool = true, _ completion: @escaping () -> ()) {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
 
@@ -39,62 +39,39 @@ open class VPNConfigurationCoordinator {
 
             let realm = try! Realm()
             let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
-            let blackList = realm.objects(WifiNetworks.self).filter("isTrusted = false")
 
             var ssidWhitelist: [String] = []
             for netInfo in whiteList {
                 ssidWhitelist.append(netInfo.name)
             }
-            var ssidBlacklist: [String] = []
-            for netInfo in blackList {
-                ssidBlacklist.append(netInfo.name)
-            }
-
-            if settingsState.alwaysOn {
-                // if Leak Protection is "Always On"
-                let alwaysConnectRule = NEOnDemandRuleConnect()
-                alwaysConnectRule.interfaceTypeMatch = .any
-                
-                let cellularDisconnectRule = NEOnDemandRuleDisconnect()
-                cellularDisconnectRule.interfaceTypeMatch = .cellular
-                
+            
+            var onDemandRules: [NEOnDemandRule] = []
+            
+            // disconnect from trusted wifi networks
+            if ssidWhitelist.count > 0 {
                 let wifiDisconnectRule = NEOnDemandRuleDisconnect()
                 wifiDisconnectRule.interfaceTypeMatch = .wiFi
                 wifiDisconnectRule.ssidMatch = ssidWhitelist
-                
-                if settingsState.isTrustCellularNetworks && ssidWhitelist.count != 0 {
-                    manager.onDemandRules = [wifiDisconnectRule, cellularDisconnectRule, alwaysConnectRule]
-                } else if settingsState.isTrustCellularNetworks {
-                    manager.onDemandRules = [cellularDisconnectRule, alwaysConnectRule]
-                } else if ssidWhitelist.count != 0 {
-                    manager.onDemandRules = [wifiDisconnectRule, alwaysConnectRule]
-                } else {
-                    manager.onDemandRules = [alwaysConnectRule]
-                }
-            }
-            else {
-                // if Leak Protection is "Off"
-                let cellularConnectRule = NEOnDemandRuleConnect()
-                cellularConnectRule.interfaceTypeMatch = .cellular
-
-                let wifiConnectRule = NEOnDemandRuleConnect()
-                wifiConnectRule.interfaceTypeMatch = .wiFi
-                wifiConnectRule.ssidMatch = ssidBlacklist
-
-                if settingsState.isTrustCellularNetworks && ssidBlacklist.count != 0 {
-                    manager.onDemandRules = [wifiConnectRule, cellularConnectRule]
-                } else if settingsState.isTrustCellularNetworks {
-                    manager.onDemandRules = [cellularConnectRule]
-                } else if ssidWhitelist.count != 0 {
-                    manager.onDemandRules = [wifiConnectRule]
-                } else {
-                    manager.onDemandRules = []
-                }
+                onDemandRules.append(wifiDisconnectRule)
             }
             
+            // disconnect when on celluar if cellular is trusted
+            if settingsState.isTrustCellularNetworks {
+                let cellularDisconnectRule = NEOnDemandRuleDisconnect()
+                cellularDisconnectRule.interfaceTypeMatch = .cellular
+                onDemandRules.append(cellularDisconnectRule)
+            }
+            
+            // On Demand should always be on
+            let alwaysConnectRule = NEOnDemandRuleConnect()
+            alwaysConnectRule.interfaceTypeMatch = .any
+            onDemandRules.append(alwaysConnectRule)
+            
+            manager.onDemandRules = onDemandRules
+            
             manager.localizedDescription = "Cypherpunk Privacy"
-            manager.isOnDemandEnabled = true
-            manager.isEnabled = true
+            manager.isOnDemandEnabled = enableProfile
+            manager.isEnabled = enableProfile
 
             let reconnect = self.isConnected || self.isConnecting || connectIfDisconnected
 
@@ -203,6 +180,10 @@ open class VPNConfigurationCoordinator {
 
     class var isDisconnected: Bool {
         return NEVPNManager.shared().connection.status == .disconnected
+    }
+    
+    class var isEnabled: Bool {
+        return NEVPNManager.shared().isEnabled
     }
 
     private class func generateLocalIdentifier() -> String {
