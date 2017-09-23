@@ -33,11 +33,8 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        var nib = UINib(nibName: "ToggleTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "ToggleTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "ToggleCell")
-        
-        nib = UINib(nibName: "MenuTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "MenuCell")
         
         // Load wifi networks
         if #available(iOS 9.0, *) {
@@ -141,7 +138,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height: CGFloat = 50.0
+        var height: CGFloat = 55.0
         if indexPath.section == 1 || indexPath.section == 2 {
             height = 100.0
         }
