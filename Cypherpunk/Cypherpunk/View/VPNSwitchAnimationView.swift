@@ -20,7 +20,7 @@ class VPNSwitchAnimationView: UIView {
     let outerShapeDelta: CGFloat = 18.0
     let surroundShapeDelta: CGFloat = 10.0
     
-    let vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: 115, height: 60))
+    var vpnSwitch: VPNSwitch!
     let lineLayer = CAShapeLayer()
     let ovalLayer = CAShapeLayer()
     let leftLineShapeLayer = CAShapeLayer()
@@ -71,7 +71,8 @@ class VPNSwitchAnimationView: UIView {
                                                name:NSNotification.Name.UIApplicationDidEnterBackground,
                                                object: nil)
 
-        
+        let switchSize = ControlSizeHelper.computeControlSize(baseSize: ControlSizeHelper.SWITCH_BASE_SIZE)
+        self.vpnSwitch = VPNSwitch(frame: CGRect(x: 0, y: 0, width: switchSize.width, height: switchSize.height))
         self.addSubview(self.vpnSwitch)
         constrain(self, self.vpnSwitch) { parentView, childView in
             childView.height == self.vpnSwitch.frame.height

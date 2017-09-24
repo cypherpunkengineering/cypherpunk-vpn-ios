@@ -16,6 +16,7 @@
 		091D057F1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */; };
 		091D05801F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */; };
 		0932DFEB1F00AF4600DD2EE6 /* UIImage+Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */; };
+		094195721F76A6270055F9D9 /* ControlSizeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094195711F76A6270055F9D9 /* ControlSizeHelper.swift */; };
 		0945DBE21EF60842005119E8 /* CypherplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945DBE01EF60842005119E8 /* CypherplayCollectionViewCell.swift */; };
 		0945DBE31EF60842005119E8 /* CypherplayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0945DBE11EF60842005119E8 /* CypherplayCollectionViewCell.xib */; };
 		0945DBE51EF92CE4005119E8 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945DBE41EF92CE4005119E8 /* LocationButton.swift */; };
@@ -178,6 +179,7 @@
 		091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSelectorTableViewCell.swift; sourceTree = "<group>"; };
 		091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionSelectorTableViewCell.xib; sourceTree = "<group>"; };
 		0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transparency.swift"; sourceTree = "<group>"; };
+		094195711F76A6270055F9D9 /* ControlSizeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ControlSizeHelper.swift; path = Cypherpunk/Helper/ControlSizeHelper.swift; sourceTree = SOURCE_ROOT; };
 		0945DBE01EF60842005119E8 /* CypherplayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CypherplayCollectionViewCell.swift; sourceTree = "<group>"; };
 		0945DBE11EF60842005119E8 /* CypherplayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CypherplayCollectionViewCell.xib; sourceTree = "<group>"; };
 		0945DBE41EF92CE4005119E8 /* LocationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				09636DB81F1A9F55004C42F5 /* AccountHelper.swift */,
 				09DB51AE1F2E60A0002DFACE /* String+Size.swift */,
 				099601641F308436005F9D11 /* ScrollingTextHelper.swift */,
+				094195711F76A6270055F9D9 /* ControlSizeHelper.swift */,
 			);
 			name = Helper;
 			path = ViewControllers;
@@ -1290,6 +1293,7 @@
 				09E60D8F1ED521490037BA0D /* UIButton+BackgroundColor.swift in Sources */,
 				2B6798E71DAC179500099064 /* AccountConfigurationTableViewController.swift in Sources */,
 				20EC4A481D37851200785399 /* SettingsReducer.swift in Sources */,
+				094195721F76A6270055F9D9 /* ControlSizeHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -120,7 +120,7 @@ class MainViewController: UIViewController, StoreSubscriber {
             childView.bottom == parentView.centerY - 75
             childView.centerX == parentView.centerX
             childView.width == parentView.width
-            childView.height == 75
+            childView.height == self.vpnSwitchAnimationView.vpnSwitch.bounds.height + 15
         }
         self.vpnSwitchAnimationView.vpnSwitchDelegate = self
         
