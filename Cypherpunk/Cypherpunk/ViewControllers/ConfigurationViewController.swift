@@ -114,7 +114,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         case 1:
             let toggleCell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell")! as! ToggleTableViewCell
             toggleCell.label.text = "Stay Connected When Idle"
-            toggleCell.toggle.isOn = mainStore.state.settingsState.blockAds
+            toggleCell.toggle.isOn = mainStore.state.settingsState.connectedOnIdle
             toggleCell.toggle.addTarget(self, action: #selector(idleConnectedChanged(_:)), for: .valueChanged)
             toggleCell.descriptionLabel.text = "Increases responsiveness of the VPN connection at the expense of battery life."
             cell = toggleCell

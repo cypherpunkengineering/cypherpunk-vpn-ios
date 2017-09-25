@@ -21,7 +21,7 @@ open class VPNConfigurationCoordinator {
     }
 
     // if the VPN is active this will stop the tunnel
-    class func start(connectIfDisconnected: Bool = false, enableProfile: Bool = true, _ completion: @escaping () -> ()) {
+    class func start(connectIfDisconnected: Bool = false, enableProfileIfDisabled: Bool = false, _ completion: @escaping () -> ()) {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
 
@@ -70,8 +70,11 @@ open class VPNConfigurationCoordinator {
             manager.onDemandRules = onDemandRules
             
             manager.localizedDescription = "Cypherpunk Privacy"
-            manager.isOnDemandEnabled = enableProfile
-            manager.isEnabled = enableProfile
+            manager.isOnDemandEnabled = true
+            
+            // check if we should enable the profile, if not use the existing state
+            var profileEnabled = enableProfileIfDisabled ? true : manager.isEnabled
+            manager.isEnabled = profileEnabled
 
             let reconnect = self.isConnected || self.isConnecting || connectIfDisconnected
 
@@ -164,7 +167,10 @@ open class VPNConfigurationCoordinator {
     
     class func enableProfile(enable: Bool) {
         let manager = NEVPNManager.shared()
-        manager.isEnabled = enable
+        manager.loadFromPreferences { (error) in
+            manager.isEnabled = enable
+            manager.saveToPreferences(completionHandler: nil)
+        }
     }
 
     class var isConnected: Bool {
