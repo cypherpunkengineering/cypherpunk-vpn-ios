@@ -20,4 +20,5 @@ enum SettingsAction: Action {
     case blockMalware(block: Bool)
     case alwaysOn(isOn: Bool) // leak protection
     case toggleOn(isOn: Bool)
+    case connectedOnIdle(isOn: Bool)
 }

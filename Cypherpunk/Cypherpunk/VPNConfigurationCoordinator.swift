@@ -29,7 +29,7 @@ open class VPNConfigurationCoordinator {
             let regionState = mainStore.state.regionState
             let accountState = mainStore.state.accountState
 
-            let newIPSec = buildIKEv2Configuration(accountState: accountState, regionState: regionState)
+            let newIPSec = buildIKEv2Configuration(accountState: accountState, regionState: regionState, settingsState: settingsState)
 
             if #available(iOS 9.0, *) {
                 manager.protocolConfiguration = newIPSec
@@ -205,7 +205,7 @@ open class VPNConfigurationCoordinator {
         return localIdentifier
     }
 
-    private class func buildIKEv2Configuration(accountState: AccountState, regionState: RegionState) -> NEVPNProtocolIKEv2 {
+    private class func buildIKEv2Configuration(accountState: AccountState, regionState: RegionState, settingsState: SettingsState) -> NEVPNProtocolIKEv2 {
         let newIPSec = NEVPNProtocolIKEv2()
 
         newIPSec.authenticationMethod = .none
@@ -224,7 +224,7 @@ open class VPNConfigurationCoordinator {
         newIPSec.enablePFS = true
         newIPSec.serverCertificateCommonName = regionState.remoteIdentifier
 
-        newIPSec.disconnectOnSleep = false
+        newIPSec.disconnectOnSleep = !settingsState.connectedOnIdle
 
         return newIPSec
     }

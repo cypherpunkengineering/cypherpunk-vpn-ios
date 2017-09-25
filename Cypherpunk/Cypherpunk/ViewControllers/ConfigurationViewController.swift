@@ -83,7 +83,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
 
     // MARK: UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,8 +94,6 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         case 1:
             rows = 1 // connection settings
         case 2:
-            rows = 1 // auto wi-fi settings
-        case 3:
             rows = 1 // trust cellular networks toggle
             
             if let results = wifiNetworksResult {
@@ -115,19 +113,12 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             cell = cellForPrivacySettings(tableView, row: indexPath.row)
         case 1:
             let toggleCell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell")! as! ToggleTableViewCell
-            toggleCell.label.text = "Auto-Reconnect"
+            toggleCell.label.text = "Stay Connected When Idle"
             toggleCell.toggle.isOn = mainStore.state.settingsState.blockAds
-            toggleCell.toggle.addTarget(self, action: #selector(blockAdsChanged(_:)), for: .valueChanged)
-            toggleCell.descriptionLabel.text = "Cypherpunk Privacy will attempt to automatically reconnect if the connection is interrupted."
+            toggleCell.toggle.addTarget(self, action: #selector(idleConnectedChanged(_:)), for: .valueChanged)
+            toggleCell.descriptionLabel.text = "Increases responsiveness of the VPN connection at the expense of battery life."
             cell = toggleCell
         case 2:
-            let toggleCell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell")! as! ToggleTableViewCell
-            toggleCell.label.text = "Auto Secure Networks"
-            toggleCell.toggle.isOn = mainStore.state.settingsState.blockAds
-            toggleCell.toggle.addTarget(self, action: #selector(blockAdsChanged(_:)), for: .valueChanged)
-            toggleCell.descriptionLabel.text = "Cypherpunk Privacy can automatically secure connections to untrusted networks."
-            cell = toggleCell
-        case 3:
             cell = cellForTrustedNetworks(tableView, row: indexPath.row)
         default:
             cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell")!
@@ -139,7 +130,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height: CGFloat = 55.0
-        if indexPath.section == 1 || indexPath.section == 2 {
+        if indexPath.section == 1 {
             height = 100.0
         }
         return height
@@ -147,7 +138,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         var height: CGFloat = 30.0
-        if section == 3 {
+        if section == 2 {
             height = 65.0
         }
         return height
@@ -170,8 +161,6 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         case 1:
             label.text = "Connection Settings"
         case 2:
-            label.text = "Network Auto Security"
-        case 3:
             headerView = createHeaderWithDescriptionView(title: "Trusted Networks", description: "Select networks you trust that will be exempt from Auto Security.", numOfLines: 2)
         default:
             label.text = ""
@@ -185,18 +174,6 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 10))
         return footerView
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 0 && indexPath.row == 2 {
-            // automatic protection
-            self.performSegue(withIdentifier: "PresentManageTrustedNetworks", sender: self)
-        }
-        else if indexPath.section == 0 && indexPath.row == 3 {
-            // leak protection
-            self.performSegue(withIdentifier: "PresentLeakProtection", sender: self)
-        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -289,12 +266,8 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
     }
     
-    @IBAction func autoReconnectChanged(_ sender: UISwitch) {
-        mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
-    }
-    
-    @IBAction func autoSecureWifiNetworksChanged(_ sender: UISwitch) {
-        mainStore.dispatch(SettingsAction.blockMalware(block: sender.isOn))
+    @IBAction func idleConnectedChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.connectedOnIdle(isOn: sender.isOn))
     }
     
     deinit {
