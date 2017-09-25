@@ -161,6 +161,11 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.removeFromPreferences(completionHandler: nil)
     }
+    
+    class func enableProfile(enable: Bool) {
+        let manager = NEVPNManager.shared()
+        manager.isEnabled = enable
+    }
 
     class var isConnected: Bool {
         let manager = NEVPNManager.shared()
