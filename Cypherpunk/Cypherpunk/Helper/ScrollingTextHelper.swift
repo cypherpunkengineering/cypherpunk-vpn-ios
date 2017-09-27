@@ -39,6 +39,13 @@ class ScrollingTextHelper {
         return lowerText
     }
     
+    static func scaledMarqueeFont(height: CGFloat) -> UIFont {
+        let pointsPerPixel =  self.marqueeFont.pointSize / 25
+        let desiredPointSize = height * pointsPerPixel
+        
+        return R.font.dosisMedium(size: desiredPointSize)!
+    }
+    
     private static func maxScreenWidth() -> CGFloat {
         var maxWidth: CGFloat = 0
         if UI_USER_INTERFACE_IDIOM() == .pad {

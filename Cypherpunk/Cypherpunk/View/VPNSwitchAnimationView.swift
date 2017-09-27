@@ -85,38 +85,41 @@ class VPNSwitchAnimationView: UIView {
         self.layer.addSublayer(rightLineGradientLayer)
         self.layer.addSublayer(switchGlowShapeLayer)
         
-        topMarqueeLabel.frame = CGRect(x: 0, y: 20, width: 300, height: 20)
+        let labelHeight = self.bounds.height / 2 - 20
+        let marqueeFont = ScrollingTextHelper.scaledMarqueeFont(height: labelHeight)
+        
+        topMarqueeLabel.frame = CGRect(x: 0, y: 20, width: 300, height: labelHeight)
         topMarqueeLabel.text = ScrollingTextHelper.upperText()
         topMarqueeLabel.fadeLength = 5.0
         topMarqueeLabel.type = .continuous
         topMarqueeLabel.animationDelay = 0.0
         topMarqueeLabel.speed = .duration(45.0)
-        topMarqueeLabel.font = ScrollingTextHelper.marqueeFont
+        topMarqueeLabel.font = marqueeFont
         topMarqueeLabel.textColor = UIColor(hex: "#7ffffb", alpha: 1.0)
         topMarqueeLabel.layer.opacity = 0.0
         
-        bottomMarqueeLabel.frame = CGRect(x: 0, y: 40, width: 300, height: 20)
+        bottomMarqueeLabel.frame = CGRect(x: 0, y: 40, width: 300, height: labelHeight)
         bottomMarqueeLabel.text = ScrollingTextHelper.lowerText()
         bottomMarqueeLabel.fadeLength = 5.0
         bottomMarqueeLabel.type = .continuousReverse
         bottomMarqueeLabel.animationDelay = 0.0
         bottomMarqueeLabel.speed = .duration(45.0)
-        bottomMarqueeLabel.font = ScrollingTextHelper.marqueeFont
+        bottomMarqueeLabel.font = marqueeFont
         bottomMarqueeLabel.textColor = UIColor(hex: "#5fbfbb", alpha: 1.0)
         bottomMarqueeLabel.layer.opacity = 0.0
         
         self.insertSubview(self.topMarqueeLabel, belowSubview: self.vpnSwitch)
         constrain(self, self.topMarqueeLabel) { parentView, childView in
-            childView.height == 20
-            childView.top == parentView.top + 20
+            childView.height == labelHeight
+            childView.top == parentView.centerY - labelHeight + 5
             childView.leading == parentView.leading
             childView.trailing == parentView.trailing
         }
         
         self.insertSubview(self.bottomMarqueeLabel, belowSubview: self.vpnSwitch)
         constrain(self, self.bottomMarqueeLabel) { parentView, childView in
-            childView.height == 20
-            childView.bottom == parentView.bottom - 20
+            childView.height == labelHeight
+            childView.bottom == parentView.centerY + labelHeight - 5
             childView.leading == parentView.leading
             childView.trailing == parentView.trailing
         }
