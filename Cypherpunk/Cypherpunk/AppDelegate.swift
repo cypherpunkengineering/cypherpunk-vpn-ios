@@ -327,7 +327,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         switch (shortCutType) {
         case ShortcutIdentifier.Connect.type:
-            VPNConfigurationCoordinator.connect()
+//            VPNConfigurationCoordinator.connect()
+            VPNStateController.sharedInstance.reconnect()
             handled = true
             break
         case ShortcutIdentifier.Cypherplay.type:

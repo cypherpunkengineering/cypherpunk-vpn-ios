@@ -83,8 +83,8 @@ open class VPNConfigurationCoordinator {
                 manager.loadFromPreferences(completionHandler: { (error) in
 //                    print(manager.protocolConfiguration!)
                     if reconnect {
-                        VPNConfigurationCoordinator.connect()
-//                        VPNStateController.sharedInstance.reconnect()
+//                        VPNConfigurationCoordinator.connect()
+                        VPNStateController.sharedInstance.reconnect()
                     }
                 })
             })
