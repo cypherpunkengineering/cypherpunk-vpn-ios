@@ -66,12 +66,12 @@ class MainViewController: UIViewController, StoreSubscriber {
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
-//        notificationCenter.addObserver(
-//            self,
-//            selector: #selector(vpnCongfigurationChanged(_:)),
-//            name: NSNotification.Name.NEVPNConfigurationChange,
-//            object: nil
-//        )
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(vpnCongfigurationChanged(_:)),
+            name: NSNotification.Name.NEVPNConfigurationChange,
+            object: nil
+        )
         notificationCenter.addObserver(self, selector: #selector(regionsUpdated(_:)), name: regionUpdateNotification, object: nil)
         
         
@@ -272,37 +272,44 @@ class MainViewController: UIViewController, StoreSubscriber {
         var status = ""
         var statusDetail = ""
         
-        switch vpnStatus {
-        case .invalid:
-            status = "Invalid"
-            statusDetail = "VPN configuration error occurred"
-            self.vpnSwitchAnimationView.cancelConnectAnimation()
-        case .connecting:
-            status = "Connecting..."
-            self.vpnSwitchAnimationView.beginConnectAnimation()
-        case .connected:
-            status = "Connected"
-            if let ssid = ConnectionHelper.currentWifiSSID(), !ConnectionHelper.currentWifiNetworkTrusted() {
-                statusDetail = "\(ssid) is not a trusted network"
+        if VPNConfigurationCoordinator.isEnabled {
+            switch vpnStatus {
+            case .invalid:
+                status = "Invalid"
+                statusDetail = "VPN configuration error occurred"
+                self.vpnSwitchAnimationView.cancelConnectAnimation()
+            case .connecting:
+                status = "Connecting..."
+                self.vpnSwitchAnimationView.beginConnectAnimation()
+            case .connected:
+                status = "Connected"
+                if let ssid = ConnectionHelper.currentWifiSSID(), !ConnectionHelper.currentWifiNetworkTrusted() {
+                    statusDetail = "\(ssid) is not a trusted network"
+                }
+                else if ConnectionHelper.connectedToCellular() && !mainStore.state.settingsState.isTrustCellularNetworks {
+                    statusDetail = "Cellular networks are not trusted"
+                }
+                self.vpnSwitchAnimationView.transitionToConnectedAnimation()
+            case .disconnecting:
+                status = "Disconnecting..."
+                self.vpnSwitchAnimationView.cancelConnectAnimation()
+            case .disconnected:
+                if ConnectionHelper.currentWifiNetworkTrusted() {
+                    status = "Trusted"
+                    statusDetail = "\(ConnectionHelper.currentWifiSSID()!) is a trusted network"
+                }
+                else if ConnectionHelper.connectedToCellular() && mainStore.state.settingsState.isTrustCellularNetworks {
+                    status = "Disconnected"
+                    statusDetail = "Cellular networks are trusted"
+                }
+                self.vpnSwitchAnimationView.cancelConnectAnimation()
+            case .reasserting:
+                status = "Reasserting"
+                self.vpnSwitchAnimationView.cancelConnectAnimation()
             }
-            else if ConnectionHelper.connectedToCellular() && !mainStore.state.settingsState.isTrustCellularNetworks {
-                statusDetail = "Cellular networks are not trusted"
-            }
-            self.vpnSwitchAnimationView.transitionToConnectedAnimation()
-        case .disconnecting:
-            status = "Disconnecting..."
-            self.vpnSwitchAnimationView.cancelConnectAnimation()
-        case .disconnected:
-            status = "Disconnected"
-            if ConnectionHelper.currentWifiNetworkTrusted() {
-                statusDetail = "\(ConnectionHelper.currentWifiSSID()!) is a trusted network"
-            }
-            else if ConnectionHelper.connectedToCellular() && mainStore.state.settingsState.isTrustCellularNetworks {
-                statusDetail = "Cellular networks are trusted"
-            }
-            self.vpnSwitchAnimationView.cancelConnectAnimation()
-        case .reasserting:
-            status = "Reasserting"
+        }
+        else {
+            status = "Disabled"
             self.vpnSwitchAnimationView.cancelConnectAnimation()
         }
         
@@ -346,9 +353,9 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.updateView(vpnStatus: status)
     }
     
-//    func vpnCongfigurationChanged(_ notification: Notification) {
-//
-//    }
+    func vpnCongfigurationChanged(_ notification: Notification) {
+        self.updateView(vpnStatus: .disconnected)
+    }
     
     func regionsUpdated(_ notification: Notification) {
         self.mapImageView.drawLocationsOnMap()
@@ -412,92 +419,11 @@ extension MainViewController: LocationButtonDelgate {
 
 extension MainViewController: VPNSwitchDelegate {
     func shouldChangeSwitchState() -> Bool {
-        var allowSwitchToChangeState = true
-        
-//        let isOn = self.vpnSwitchAnimationView.vpnSwitch.isOn
-//        let currentWifiSSID = ConnectionHelper.currentWifiSSID()
-//
-//        if isOn {
-//            // user is trying to turn off the VPN
-//            if let ssid = currentWifiSSID, !ConnectionHelper.currentWifiNetworkTrusted() {
-//                // current wifi network is not trusted! tell user turning off the switch will trust this network
-//                showAlertView(title: "Trust Network?", description: "Turning off the VPN will treat this network as trusted and will transmit your traffic directly without privacy protection.", networkName: ssid, trust: true, confirmAction: {
-//                    self.trustWifiNetwork(ssid: ssid)
-//                })
-//
-//                // do not allow the switch to change when showing the dialog!
-//                allowSwitchToChangeState = false
-//                // we will handle if the user selects Trust
-//            }
-//            else {
-//                if ConnectionHelper.connectedToCellular() && !mainStore.state.settingsState.isTrustCellularNetworks {
-//                    // cellular is connected and currently trusted, turning off the switch will trust cellular
-//                    showAlertView(title: "Trust Cellular Networks?", description: "Turning off the VPN will treat cellular networks as trusted and transmit your traffic directly without privacy protection. Proceed to trust cellular networks?", trust: true, confirmAction: {
-//                        self.trustCellularNetworks(trust: true)
-//                    })
-//
-//                    allowSwitchToChangeState = false
-//                }
-//            }
-//        }
-//        else {
-//            // user is trying to turn on the VPN
-//            if let ssid = currentWifiSSID, ConnectionHelper.currentWifiNetworkTrusted() {
-//                // untrust wifi network and let the user connect to the VPN
-//                self.trustWifiNetwork(trust: false, ssid: ssid)
-//            }
-//            else {
-//                if ConnectionHelper.connectedToCellular() && mainStore.state.settingsState.isTrustCellularNetworks {
-//                    // cellular is connected and NOT currently trusted, untrust it and allow them to connect to the VPN
-//                    self.trustCellularNetworks(trust: false)
-//                }
-//            }
-//        }
-        
-        return allowSwitchToChangeState
+        return true
     }
 
     func stateChanged(on: Bool) {
-//        if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnected {
-//            VPNConfigurationCoordinator.disconnect()
-//        }
-//        else if VPNConfigurationCoordinator.isDisconnected || VPNConfigurationCoordinator.isDisconnecting {
-//            VPNConfigurationCoordinator.connect()
-//        }
-//        mainStore.dispatch(SettingsAction.toggleOn(isOn: on))
-//
-//        if on {
-//            self.vpnSwitchAnimationView.beginConnectAnimation()
-//        }
-//        else {
-//            self.vpnSwitchAnimationView.cancelConnectAnimation()
-//        }
         VPNConfigurationCoordinator.enableProfile(enable: on)
-    }
-    
-    private func showAlertView(title: String, description: String, networkName: String? = nil, trust: Bool, confirmAction: (() -> Void)?) {
-        var fullDescription = description
-        if let ssid = networkName {
-            fullDescription = "\(ssid)\n\n\(description)"
-        }
-        
-        let alertVC = PMAlertController(title: title, description: fullDescription, image: nil, style: .alert)
-        alertVC.alertTitle.font = R.font.dosisSemiBold(size: 16)
-        alertVC.alertTitle.textColor = UIColor.greenyBlue
-        
-        let cancelAction = PMAlertAction(title: "Cancel", style: .cancel, action: { () -> Void in
-            // do nothing for now
-        })
-        cancelAction.titleLabel?.font = R.font.dosisMedium(size: 16)
-        alertVC.addAction(cancelAction)
-        
-        let confirmTitle = trust ? "TRUST" : "UNSTRUST"
-        let confirmAction = PMAlertAction(title: confirmTitle, style: .default, action: confirmAction)
-        confirmAction.setTitleColor(UIColor.greenyBlue, for: .normal)
-        confirmAction.titleLabel?.font = R.font.dosisBold(size: 16)
-        alertVC.addAction(confirmAction)
-        
-        self.present(alertVC, animated: true, completion: nil)
     }
     
     private func trustWifiNetwork(trust: Bool = true, ssid: String) {
