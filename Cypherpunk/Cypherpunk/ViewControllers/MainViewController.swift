@@ -302,6 +302,9 @@ class MainViewController: UIViewController, StoreSubscriber {
                     status = "Disconnected"
                     statusDetail = "Cellular networks are trusted"
                 }
+                else {
+                    status = "Disconnected"
+                }
                 self.vpnSwitchAnimationView.cancelConnectAnimation()
             case .reasserting:
                 status = "Reasserting"
