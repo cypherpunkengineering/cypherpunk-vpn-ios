@@ -208,7 +208,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
         
         switch row {
         case 0:
-            cell.label.text = "Block Ads"
+            cell.label.text = "Block Ads & Trackers"
             cell.toggle.isOn = mainStore.state.settingsState.blockAds
             cell.toggle.addTarget(self, action: #selector(blockAdsChanged(_:)), for: .valueChanged)
         case 1:
