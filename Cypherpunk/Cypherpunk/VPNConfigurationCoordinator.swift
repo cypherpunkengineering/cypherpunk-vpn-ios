@@ -37,23 +37,23 @@ open class VPNConfigurationCoordinator {
                 manager.`protocol` = newIPSec
             }
 
-            let realm = try! Realm()
-            let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
-
-            var ssidWhitelist: [String] = []
-            for netInfo in whiteList {
-                ssidWhitelist.append(netInfo.name)
-            }
+//            let realm = try! Realm()
+//            let whiteList = realm.objects(WifiNetworks.self).filter("isTrusted = true")
+//
+//            var ssidWhitelist: [String] = []
+//            for netInfo in whiteList {
+//                ssidWhitelist.append(netInfo.name)
+//            }
             
             var onDemandRules: [NEOnDemandRule] = []
             
             // disconnect from trusted wifi networks
-            if ssidWhitelist.count > 0 {
-                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
-                wifiDisconnectRule.interfaceTypeMatch = .wiFi
-                wifiDisconnectRule.ssidMatch = ssidWhitelist
-                onDemandRules.append(wifiDisconnectRule)
-            }
+//            if ssidWhitelist.count > 0 {
+//                let wifiDisconnectRule = NEOnDemandRuleDisconnect()
+//                wifiDisconnectRule.interfaceTypeMatch = .wiFi
+//                wifiDisconnectRule.ssidMatch = ssidWhitelist
+//                onDemandRules.append(wifiDisconnectRule)
+//            }
             
             // disconnect when on celluar if cellular is trusted
             if settingsState.isTrustCellularNetworks {

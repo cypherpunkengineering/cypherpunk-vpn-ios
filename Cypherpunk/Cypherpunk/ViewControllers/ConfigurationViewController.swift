@@ -54,13 +54,14 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
                 }
             }
         }
-        
-        let realm = try! Realm()
-        wifiNetworksResult = realm.objects(WifiNetworks.self).sorted(byKeyPath: "name")
-        // Listen to changes for wifi networks
-        notificationToken = wifiNetworksResult.addNotificationBlock({ (change) in
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
-        })
+
+        // removing temporarily until trusted networks is re-enabled
+//        let realm = try! Realm()
+//        wifiNetworksResult = realm.objects(WifiNetworks.self).sorted(byKeyPath: "name")
+//        // Listen to changes for wifi networks
+//        notificationToken = wifiNetworksResult.addNotificationBlock({ (change) in
+//            self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+//        })
         
         mainStore.subscribe(self) { $0.select { state in state.accountState } }
     }
@@ -83,7 +84,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
 
     // MARK: UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1 // hiding connection settings and trusted networks for now
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
