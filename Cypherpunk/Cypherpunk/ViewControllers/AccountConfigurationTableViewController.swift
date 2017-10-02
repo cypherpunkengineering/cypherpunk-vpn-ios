@@ -235,7 +235,8 @@ class AccountConfigurationTableViewController: UITableViewController {
         // Email, Password
         switch row {
         case 0:
-            cell.textLabel?.text = "Manage Account"
+            let menuCell = cell as! MenuTableViewCell
+            menuCell.titleLabel?.text = "Manage Account"
             cell.tag = Rows.manageAccount.rawValue
 //        case 0:
 //            if shouldHideUpgradeMenuItem() {
@@ -265,20 +266,21 @@ class AccountConfigurationTableViewController: UITableViewController {
     }
     
     private func setupCellForMoreSection(row: Int, cell: UITableViewCell) {
+        let menuCell = cell as! MenuTableViewCell
         switch row {
         case 0:
-            cell.textLabel?.text = "Review on iTunes Store"
-            cell.tag = Rows.rateOurService.rawValue
+            menuCell.titleLabel?.text = "Review on iTunes Store"
+            menuCell.tag = Rows.rateOurService.rawValue
         case 1:
-            cell.textLabel?.text = "Report an Issue"
-            cell.tag = Rows.report.rawValue
+            menuCell.titleLabel?.text = "Report an Issue"
+            menuCell.tag = Rows.report.rawValue
         case 2:
-            cell.textLabel?.text = "Go to Help Center"
-            cell.tag = Rows.help.rawValue
+            menuCell.titleLabel?.text = "Go to Help Center"
+            menuCell.tag = Rows.help.rawValue
         case 3:
-            cell.textLabel?.text = "Sign Out"
-            cell.tag = Rows.signOut.rawValue
-            cell.accessoryType = .none
+            menuCell.titleLabel?.text = "Sign Out"
+            menuCell.tag = Rows.signOut.rawValue
+            menuCell.accessoryType = .none
 //            cell.textLabel?.text = "Contact the Founders"
 //            cell.tag = Rows.contactus.rawValue
 //            cell.accessoryType = .none
