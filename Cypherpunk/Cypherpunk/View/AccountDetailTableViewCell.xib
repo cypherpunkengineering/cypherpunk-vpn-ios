@@ -31,7 +31,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aST-jx-kik">
-                        <rect key="frame" x="48" y="193" width="63" height="23"/>
+                        <rect key="frame" x="48" y="193" width="68" height="23"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="23" id="0My-0G-cSx"/>
                         </constraints>
@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Renews On 02/22/2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUK-ph-lUX">
-                        <rect key="frame" x="48" y="216" width="129" height="18"/>
+                        <rect key="frame" x="48" y="216" width="148" height="16.5"/>
                         <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
                         <color key="textColor" red="0.4549019608" green="0.70588235290000001" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0906DAB11F82706F00573464 /* ShortcutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0906DAB01F82706F00573464 /* ShortcutHelper.swift */; };
 		09099D6D1EEE567200891128 /* VPNSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09099D6C1EEE567200891128 /* VPNSwitch.swift */; };
 		090D99D11F5DF13D00279044 /* LegalLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D99CF1F5DF13D00279044 /* LegalLinksTableViewCell.swift */; };
 		090D99D21F5DF13D00279044 /* LegalLinksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090D99D01F5DF13D00279044 /* LegalLinksTableViewCell.xib */; };
@@ -170,6 +171,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0906DAB01F82706F00573464 /* ShortcutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShortcutHelper.swift; path = Cypherpunk/Helper/ShortcutHelper.swift; sourceTree = SOURCE_ROOT; };
 		09099D6C1EEE567200891128 /* VPNSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNSwitch.swift; sourceTree = "<group>"; };
 		090D99CF1F5DF13D00279044 /* LegalLinksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalLinksTableViewCell.swift; sourceTree = "<group>"; };
 		090D99D01F5DF13D00279044 /* LegalLinksTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalLinksTableViewCell.xib; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				09DB51AE1F2E60A0002DFACE /* String+Size.swift */,
 				099601641F308436005F9D11 /* ScrollingTextHelper.swift */,
 				094195711F76A6270055F9D9 /* ControlSizeHelper.swift */,
+				0906DAB01F82706F00573464 /* ShortcutHelper.swift */,
 			);
 			name = Helper;
 			path = ViewControllers;
@@ -1238,6 +1241,7 @@
 				0945DBE51EF92CE4005119E8 /* LocationButton.swift in Sources */,
 				09E60D971ED6E0430037BA0D /* AccountButton.swift in Sources */,
 				2B45C1781D21321100D4326C /* VPNConfigurationCoordinator.swift in Sources */,
+				0906DAB11F82706F00573464 /* ShortcutHelper.swift in Sources */,
 				2B88F7E91DE6CFAB00DAB027 /* ShadowView.swift in Sources */,
 				20EC4A4A1D378CBC00785399 /* SettingsAction.swift in Sources */,
 				0970EE711E68161600BB77A0 /* MenuTableViewCell.swift in Sources */,
