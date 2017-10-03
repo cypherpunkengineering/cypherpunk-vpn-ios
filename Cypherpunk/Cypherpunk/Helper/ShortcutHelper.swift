@@ -12,9 +12,10 @@ import RealmSwift
 // MARK: - Shortcut Types
 enum ShortcutIdentifier: String {
     case Connect
+    case Disconnect
+    case Location
     case Cypherplay
     case Fastest
-    case Location
     
     init?(fullType: String) {
         guard let last = fullType.components(separatedBy: ".").last else { return nil }
@@ -31,46 +32,38 @@ class ShortcutHelper {
     static let applicationShortcutUserInfoIconKey = "applicationShortcutUserInfoIconKey"
     static let applicationShortcutUserInfoServerKey = "applicationShortcutUserInfoServerKey"
     
+    static let showLocationListNotification = Notification.Name("com.cypherpunk.showLocationListNotificationKey")
+    
     static func registerShortcutItems(_ application: UIApplication) {
-        if application.shortcutItems != nil {
-            // Construct the items.
-            var items = [UIApplicationShortcutItem]()
-            
-            let connectShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Connect.type, localizedTitle: "Connect", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "3DmenuConnect"), userInfo: [
-                ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Connect.rawValue
-                ]
-            )
-            
-            items.append(connectShortcut)
-            
-            let cypherplayShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Cypherplay.type, localizedTitle: "CypherPlay™", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "cypherplay70x70"), userInfo: [
-                ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Cypherplay.rawValue
-                ]
-            )
-            
-            items.append(cypherplayShortcut)
-            
-            let fastestShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Cypherplay.type, localizedTitle: "Fastest Server", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "fastest-server70x70"), userInfo: [
-                ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Fastest.rawValue
-                ]
-            )
-            
-            items.append(fastestShortcut)
-            
-            //            let regions = ConnectionHelper.getUserLocations(count: 1)
-            //            if regions.count > 0 {
-            //                let region = regions.first
-            //                let nameComponents = region?.name.components(separatedBy: ",")
-            //                let locationShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Location.type, localizedTitle: (nameComponents?.first)!, localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "location70x70"), userInfo: [
-            //                    AppDelegate.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Location.rawValue,
-            //                    AppDelegate.applicationShortcutUserInfoServerKey: region?.id as Any
-            //                    ]
-            //                )
-            //                items.append(locationShortcut)
-            //            }
-            
-            application.shortcutItems = items
-        }
+        // Construct the items.
+        var items = [UIApplicationShortcutItem]()
+        
+        let connectShortcut = createConnectDisconnectShortcut(application)
+        
+        items.append(connectShortcut)
+        
+        let chooseLocShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Location.type, localizedTitle: "Choose Location", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "fastest-server70x70"), userInfo: [
+            ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Location.rawValue
+            ]
+        )
+        
+        items.append(chooseLocShortcut)
+        
+        let cypherplayShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Cypherplay.type, localizedTitle: "CypherPlay™", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "cypherplay70x70"), userInfo: [
+            ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Cypherplay.rawValue
+            ]
+        )
+        
+        items.append(cypherplayShortcut)
+        
+        let fastestShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Cypherplay.type, localizedTitle: "Fastest Location", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "fastest-server70x70"), userInfo: [
+            ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Fastest.rawValue
+            ]
+        )
+        
+        items.append(fastestShortcut)
+        
+        application.shortcutItems = items
     }
     
     static func handleShortCutItem(_ shortcutItem: UIApplicationShortcutItem) -> Bool {
@@ -83,8 +76,14 @@ class ShortcutHelper {
         
         switch (shortCutType) {
         case ShortcutIdentifier.Connect.type:
-            //            VPNConfigurationCoordinator.connect()
-            VPNStateController.sharedInstance.reconnect()
+            VPNConfigurationCoordinator.enableProfile(enable: true)
+            handled = true
+            break
+        case ShortcutIdentifier.Disconnect.type:
+            VPNConfigurationCoordinator.enableProfile(enable: false)
+            handled = true
+        case ShortcutIdentifier.Location.type:
+            NotificationCenter.default.post(name: showLocationListNotification, object: self)
             handled = true
             break
         case ShortcutIdentifier.Cypherplay.type:
@@ -95,18 +94,33 @@ class ShortcutHelper {
             ConnectionHelper.connectToFastest(cypherplay: false)
             handled = true
             break
-        case ShortcutIdentifier.Location.type:
-            let regionId = shortcutItem.userInfo?[ShortcutHelper.applicationShortcutUserInfoServerKey]
-            let realm = try! Realm()
-            if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
-                ConnectionHelper.connectTo(region: region, cypherplay: false)
-            }
-            handled = true
-            break
         default:
             break
         }
         
         return handled
+    }
+
+    private static func createConnectDisconnectShortcut(_ application: UIApplication) -> UIApplicationShortcutItem {
+        var locationName: String = ""
+        if let regionId = mainStore.state.regionState.lastSelectedRegionId {
+            let realm = try! Realm()
+            if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
+                locationName = region.name
+            }
+        }
+        
+        if VPNConfigurationCoordinator.isDisconnected || VPNConfigurationCoordinator.isDisconnecting || !VPNConfigurationCoordinator.isEnabled {
+            return UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Connect.type, localizedTitle: "Connect To", localizedSubtitle: locationName, icon: UIApplicationShortcutIcon(templateImageName: "3DmenuConnect"), userInfo: [
+                ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Connect.rawValue
+                ]
+            )
+        }
+        else {
+            return UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Disconnect.type, localizedTitle: "Disconnect From", localizedSubtitle: locationName, icon: UIApplicationShortcutIcon(templateImageName: "3DmenuConnect"), userInfo: [
+                ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Disconnect.rawValue
+                ]
+            )
+        }
     }
 }

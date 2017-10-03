@@ -73,7 +73,7 @@ class MainViewController: UIViewController, StoreSubscriber {
             object: nil
         )
         notificationCenter.addObserver(self, selector: #selector(regionsUpdated(_:)), name: regionUpdateNotification, object: nil)
-        
+        notificationCenter.addObserver(self, selector: #selector(showLocationSelector(_:)), name: ShortcutHelper.showLocationListNotification, object: nil)
         
         // Add gradient layer for gradient background color
         self.gradientLayer.frame = self.view.bounds
