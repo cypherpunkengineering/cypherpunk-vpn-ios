@@ -42,7 +42,7 @@ class ShortcutHelper {
         
         items.append(connectShortcut)
         
-        let chooseLocShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Location.type, localizedTitle: "Choose Location", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "fastest-server70x70"), userInfo: [
+        let chooseLocShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Location.type, localizedTitle: "Choose Location", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "location70x70"), userInfo: [
             ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Location.rawValue
             ]
         )
