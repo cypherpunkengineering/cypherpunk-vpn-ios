@@ -5,19 +5,12 @@
 //  Created by Julie Ann Sakuda on 3/17/17.
 //  Copyright © 2017 Cypherpunk. All rights reserved.
 //
-
+// TODO: This class isn't being used for it's original purpose anymore. Remaining functionality should be merged elsewhere.
 import NetworkExtension
 
 final class VPNStateController: UIResponder {
-    private var activeServerOption: VPNServerOption?
-    private var previousServerOption: VPNServerOption?
-    
-    private var disconnectingServerOption: VPNServerOption?
-    private var connectAfterDisconnectOption: VPNServerOption?
     
     private var connectAfterDisconnect = false
-    
-    private var responders: Array<VPNStateResponder> = Array()
     
     //MARK: Shared Instance
     static let sharedInstance: VPNStateController = VPNStateController()
@@ -39,39 +32,19 @@ final class VPNStateController: UIResponder {
             return
         }
         
-        
         let status = connection.status
         
         switch status {
         case .connected:
             print("VPN Connected")
             mainStore.state.regionState.serverPinger.cancelPinging()
-            responders.forEach({ (responder) in
-                responder.connected(disconnectedOption: previousServerOption, connectedOption: activeServerOption)
-            })
         case .connecting:
             print("VPN Connecting")
         case .disconnecting:
             print("VPN Disconnecting")
-            responders.forEach({ (responder) in
-                responder.disconnecting(disconnectingOption: activeServerOption)
-            })
         case .disconnected:
             print("VPN Disconnected")
-            responders.forEach({ (responder) in
-                responder.disconnected(disconnectedOption: activeServerOption)
-            })
-            
-            previousServerOption = activeServerOption
-            activeServerOption = nil
-            
             // check if we need to connect to another VPN
-            if let connectOption = connectAfterDisconnectOption {
-                connectOption.connect()
-                connectAfterDisconnectOption = nil
-                activeServerOption = connectOption
-            }
-            
             if connectAfterDisconnect {
                 VPNConfigurationCoordinator.connect()
                 connectAfterDisconnect = false
@@ -97,38 +70,6 @@ final class VPNStateController: UIResponder {
             // not connected just go ahead and connect
             VPNConfigurationCoordinator.connect()
         }
-    }
-    
-    func addResponder(vpnStateResponder: VPNStateResponder) {
-        if !responders.contains(where: { $0 === vpnStateResponder }) {
-            responders.append(vpnStateResponder)
-        }
-    }
-    
-    func removeResponder(vpnStateResponder: VPNStateResponder) {
-        responders = responders.filter({ $0 !== vpnStateResponder })
-    }
-    
-    func connect(newOption: VPNServerOption) {
-        // if the VPN is connected, disconnect it
-        if VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting {
-            connectAfterDisconnectOption = newOption
-            VPNConfigurationCoordinator.disconnect()
-        }
-        else {
-            previousServerOption = activeServerOption
-            activeServerOption = newOption
-            
-            // else just start the connection
-            newOption.connect()
-        }
-    }
-    
-    func disconnect() {
-//        previousServerOption = activeServerOption
-//        activeServerOption = nil
-        VPNConfigurationCoordinator.disconnect()
-        disconnectingServerOption = activeServerOption
     }
     
     deinit {

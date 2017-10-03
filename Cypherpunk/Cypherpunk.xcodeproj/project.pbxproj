@@ -11,9 +11,7 @@
 		09099D6D1EEE567200891128 /* VPNSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09099D6C1EEE567200891128 /* VPNSwitch.swift */; };
 		090D99D11F5DF13D00279044 /* LegalLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D99CF1F5DF13D00279044 /* LegalLinksTableViewCell.swift */; };
 		090D99D21F5DF13D00279044 /* LegalLinksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090D99D01F5DF13D00279044 /* LegalLinksTableViewCell.xib */; };
-		0910AE481E7BFC93003802DB /* VPNServerOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE471E7BFC93003802DB /* VPNServerOption.swift */; };
 		0910AE4A1E7C0A4C003802DB /* VPNStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE491E7C0A4C003802DB /* VPNStateController.swift */; };
-		0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */; };
 		091D057F1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */; };
 		091D05801F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */; };
 		0932DFEB1F00AF4600DD2EE6 /* UIImage+Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */; };
@@ -175,9 +173,7 @@
 		09099D6C1EEE567200891128 /* VPNSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNSwitch.swift; sourceTree = "<group>"; };
 		090D99CF1F5DF13D00279044 /* LegalLinksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalLinksTableViewCell.swift; sourceTree = "<group>"; };
 		090D99D01F5DF13D00279044 /* LegalLinksTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalLinksTableViewCell.xib; sourceTree = "<group>"; };
-		0910AE471E7BFC93003802DB /* VPNServerOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNServerOption.swift; path = Cypherpunk/Helper/VPNServerOption.swift; sourceTree = SOURCE_ROOT; };
 		0910AE491E7C0A4C003802DB /* VPNStateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNStateController.swift; sourceTree = "<group>"; };
-		0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNStateResponder.swift; path = Cypherpunk/Helper/VPNStateResponder.swift; sourceTree = SOURCE_ROOT; };
 		091D057D1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSelectorTableViewCell.swift; sourceTree = "<group>"; };
 		091D057E1F13CAF90027C2D7 /* OptionSelectorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionSelectorTableViewCell.xib; sourceTree = "<group>"; };
 		0932DFEA1F00AF4600DD2EE6 /* UIImage+Transparency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transparency.swift"; sourceTree = "<group>"; };
@@ -367,8 +363,6 @@
 			isa = PBXGroup;
 			children = (
 				094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */,
-				0910AE471E7BFC93003802DB /* VPNServerOption.swift */,
-				0910AE4B1E7C0E12003802DB /* VPNStateResponder.swift */,
 				09636DB81F1A9F55004C42F5 /* AccountHelper.swift */,
 				09DB51AE1F2E60A0002DFACE /* String+Size.swift */,
 				099601641F308436005F9D11 /* ScrollingTextHelper.swift */,
@@ -1260,7 +1254,6 @@
 				2BDBD0D01D65286D00080E67 /* EditingRootViewController.swift in Sources */,
 				2038099D1D13EEA9005145CD /* AppState.swift in Sources */,
 				20D896051D23AEA0002B9F9D /* MailAddressValidator.swift in Sources */,
-				0910AE4C1E7C0E12003802DB /* VPNStateResponder.swift in Sources */,
 				2BDBD0CA1D651C8100080E67 /* ThemedTextField.swift in Sources */,
 				09DB51AF1F2E60A0002DFACE /* String+Size.swift in Sources */,
 				2064B3A61DBF426700F85148 /* PopoverNavigationViewController.swift in Sources */,
@@ -1276,7 +1269,6 @@
 				208F1A711DB896BB00576355 /* WelcomeToCypherpunkViewController.swift in Sources */,
 				2073AE331DE44A300090B472 /* UIPageControl+Disable.m in Sources */,
 				2065DD091DB8D98100D0F446 /* OneFinalStepViewController.swift in Sources */,
-				0910AE481E7BFC93003802DB /* VPNServerOption.swift in Sources */,
 				0932DFEB1F00AF4600DD2EE6 /* UIImage+Transparency.swift in Sources */,
 				095DB96D1E87C1E200A3E874 /* UIDevice+Simulator.swift in Sources */,
 				2038099F1D13EEEB005145CD /* AppReducer.swift in Sources */,
