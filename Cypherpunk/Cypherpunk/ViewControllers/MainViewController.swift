@@ -33,6 +33,7 @@ class MainViewController: UIViewController, StoreSubscriber {
     var locationButtonConstraintGroup: ConstraintGroup?
     
     var lastSelectedRegionId: String?
+    var lastCypherplayEnabled: Bool = false
     
     required init?(coder aDecoder: NSCoder) {
         self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
@@ -174,7 +175,7 @@ class MainViewController: UIViewController, StoreSubscriber {
             let realm = try! Realm()
             if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
                 self.mapImageView.zoomToRegion(region: region)
-                self.locationSelectorButton.location = region
+                self.locationSelectorButton.setLocation(location: region, cypherplay: mainStore.state.regionState.cypherplayOn)
                 self.view.setNeedsDisplay()
                 self.view.setNeedsLayout()
                 
@@ -333,14 +334,16 @@ class MainViewController: UIViewController, StoreSubscriber {
     
     private func updateViewWithLastSeclectedRegion() {
         if let regionId = mainStore.state.regionState.lastSelectedRegionId {
-            if self.lastSelectedRegionId != regionId {
+            let cypherplayOn = mainStore.state.regionState.cypherplayOn
+            if self.lastSelectedRegionId != regionId || self.lastCypherplayEnabled != cypherplayOn {
                 let realm = try! Realm()
                 if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
                     self.mapImageView.zoomToRegion(region: region)
-                    self.locationSelectorButton.location = region
+                    self.locationSelectorButton.setLocation(location: region, cypherplay: cypherplayOn)
                     self.view.setNeedsDisplay()
                     
                     self.lastSelectedRegionId = regionId
+                    self.lastCypherplayEnabled = cypherplayOn
                 }
             }
         }

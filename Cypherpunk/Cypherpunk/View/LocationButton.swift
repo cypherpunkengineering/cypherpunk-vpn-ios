@@ -16,21 +16,7 @@ protocol LocationButtonDelgate {
 
 class LocationButton: UIView {
     
-    var location: Region? {
-        didSet {
-            if let loc = self.location {
-                self.flagView.image = UIImage(named: loc.country.lowercased())
-                self.labelView.text = loc.name
-                
-                self.labelView.sizeToFit() // resizes label to text length
-                
-                DispatchQueue.main.async {
-                    self.setNeedsLayout() // causes views to be layed out again using constraints
-                    self.setNeedsDisplay() // causes a redraw, needed for the background layers
-                }
-            }
-        }
-    }
+    private var flagViewConstraintsGroup: ConstraintGroup?
     
     var delegate: LocationButtonDelgate?
     
@@ -63,7 +49,7 @@ class LocationButton: UIView {
         // setup flag image view
         self.flagView.contentMode = .center
 
-        constrain(self, self.flagView) { parentView, childView in
+        self.flagViewConstraintsGroup = constrain(self, self.flagView) { parentView, childView in
             childView.height == self.bounds.height
             childView.width == 25.0
             childView.centerY == parentView.centerY + 2
@@ -172,6 +158,39 @@ class LocationButton: UIView {
         else if sender.state == .ended {
             self.backgroundLayer?.fillColor = self.bgLayerColor
             delegate?.buttonPressed()
+        }
+    }
+    
+    func setLocation(location: Region, cypherplay: Bool = false) {
+        if cypherplay {
+            self.flagView.image = R.image.cypherPlay()
+            self.flagView.contentMode = .scaleAspectFit
+            self.labelView.text = "CypherPlay™"
+            self.flagViewConstraintsGroup = constrain(self, self.flagView, replace: self.flagViewConstraintsGroup!) { parentView, childView in
+                childView.height == self.bounds.height
+                childView.width == 35.0
+                childView.centerY == parentView.centerY + 2
+                childView.leading == parentView.leading + 15
+            }
+        }
+        else {
+            self.flagView.image = UIImage(named: location.country.lowercased())
+            self.flagView.contentMode = .center
+            self.labelView.text = location.name
+            
+            self.flagViewConstraintsGroup = constrain(self, self.flagView, replace: self.flagViewConstraintsGroup!) { parentView, childView in
+                childView.height == self.bounds.height
+                childView.width == 25.0
+                childView.centerY == parentView.centerY + 2
+                childView.leading == parentView.leading + 15
+            }
+        }
+        
+        self.labelView.sizeToFit() // resizes label to text length
+
+        DispatchQueue.main.async {
+            self.setNeedsLayout() // causes views to be layed out again using constraints
+            self.setNeedsDisplay() // causes a redraw, needed for the background layers
         }
     }
 }
