@@ -138,7 +138,11 @@ open class VPNConfigurationCoordinator {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
             manager.isEnabled = enable
-            manager.saveToPreferences(completionHandler: nil)
+            manager.saveToPreferences(completionHandler: { (error) in
+                if enable {
+                    VPNConfigurationCoordinator.connect()
+                }
+            })
         }
     }
 
