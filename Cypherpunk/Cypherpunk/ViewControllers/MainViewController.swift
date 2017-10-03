@@ -431,22 +431,4 @@ extension MainViewController: VPNSwitchDelegate {
     func stateChanged(on: Bool) {
         VPNConfigurationCoordinator.enableProfile(enable: on)
     }
-    
-    private func trustWifiNetwork(trust: Bool = true, ssid: String) {
-        let realm = try! Realm()
-        if let network = realm.object(ofType: WifiNetworks.self, forPrimaryKey: ssid) {
-            try! realm.write {
-                network.isTrusted = trust
-                
-                // write the new configuration, this should stop the VPN
-                VPNConfigurationCoordinator.start(connectIfDisconnected: !trust, {
-                    
-                })
-            }
-        }
-    }
-    
-    private func trustCellularNetworks(trust: Bool = true) {
-        mainStore.dispatch(SettingsAction.isTrustCellularNetworks(isOn: trust))
-    }
 }
