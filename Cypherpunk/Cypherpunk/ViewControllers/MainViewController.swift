@@ -313,7 +313,8 @@ class MainViewController: UIViewController, StoreSubscriber {
             }
         }
         else {
-            status = "Disabled"
+//            status = "Disabled"
+            status = "Disconnected"
             self.vpnSwitchAnimationView.cancelConnectAnimation()
         }
         
