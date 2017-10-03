@@ -124,6 +124,8 @@ class VPNSwitchAnimationView: UIView {
             childView.trailing == parentView.trailing
         }
         
+//        self.bringSubview(toFront: self.vpnSwitch)
+        
         setupLineLayers()
     }
     
@@ -323,7 +325,7 @@ class VPNSwitchAnimationView: UIView {
                 let switchGlowFillColorAnimation = CABasicAnimation(keyPath: "fillColor")
                 switchGlowFillColorAnimation.fromValue = self.switchGlowShapeLayer.fillColor
                 switchGlowFillColorAnimation.toValue = UIColor.connectGlowColor.cgColor
-                switchGlowFillColorAnimation.duration = 0.1
+                switchGlowFillColorAnimation.duration = 0.3
                 
                 let switchGlowAnimationGroup = CAAnimationGroup()
                 switchGlowAnimationGroup.animations = [
@@ -402,7 +404,6 @@ class VPNSwitchAnimationView: UIView {
         switchGlowPathAnimation.fromValue = self.switchGlowShapeLayer.path
         switchGlowPathAnimation.toValue = bezierPath.cgPath
         switchGlowPathAnimation.duration = 0.3
-        self.switchGlowShapeLayer.add(switchGlowPathAnimation, forKey: "path")
         
         let switchGlowFillColorAnimation = CABasicAnimation(keyPath: "fillColor")
         switchGlowFillColorAnimation.fromValue = self.switchGlowShapeLayer.fillColor
