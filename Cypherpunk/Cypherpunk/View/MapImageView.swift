@@ -40,6 +40,7 @@ class MapImageView: UIView {
     private let locationBorderColorDark = UIColor.init(hex: "#004444")!.cgColor
     private let markerLayer = CATextLayer()
     private let mapLayer = CALayer()
+    private let markerHeightOffset: CGFloat = 17.0
     private var scaleTransform: CATransform3D? = nil
     private var mapScale: CGFloat = 1.0
     private var lastPosition: CGPoint? = nil
@@ -289,11 +290,13 @@ class MapImageView: UIView {
                 if let superView = self.superview {
                     let superviewFrame = superView.frame
                     let superViewFrameMidX = isMapInBackground ? superviewFrame.midX + parentMidXOffset : superviewFrame.midX
-                    let superViewFrameMidY = superviewFrame.midY + parentMidYOffset
+                    let superViewFrameMidY = superviewFrame.midY + markerHeightOffset // center vertically when map is shifted to the right
                     
                     let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
                     
                     let position = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
+                    
+                    let animationDuration = 0.4
                     
                     // scale animation
                     let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
@@ -313,19 +316,19 @@ class MapImageView: UIView {
                     
                     // animation group
                     let animationGroup = CAAnimationGroup()
-                    animationGroup.duration = MapImageView.mapPanDuration / 2
+                    animationGroup.duration = animationDuration
                     animationGroup.fillMode = kCAFillModeForwards
                     animationGroup.isRemovedOnCompletion = false
                     animationGroup.animations = [positionAnimation, scaleAnimation]
                     
                     // animate the position of the marker
                     let xCoord = isMapInBackground ? superviewFrame.midX + parentMidXOffset : superviewFrame.midX
-                    let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY + parentMidYOffset - 17)
+                    let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY) // y-coord should be centered
                     
                     let markerPositionAnimation = CABasicAnimation(keyPath: "position")
                     markerPositionAnimation.fromValue = self.markerLayer.position
                     markerPositionAnimation.toValue = markerPosition
-                    markerPositionAnimation.duration = MapImageView.mapPanDuration / 2
+                    markerPositionAnimation.duration = animationDuration
                     
                     self.mapScale = scale
                     self.lastPosition = position
