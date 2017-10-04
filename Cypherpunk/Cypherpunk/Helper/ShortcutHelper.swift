@@ -103,7 +103,11 @@ class ShortcutHelper {
 
     private static func createConnectDisconnectShortcut(_ application: UIApplication) -> UIApplicationShortcutItem {
         var locationName: String = ""
-        if let regionId = mainStore.state.regionState.lastSelectedRegionId {
+        
+        if mainStore.state.regionState.cypherplayOn {
+            locationName = "CypherPlay™"
+        }
+        else if let regionId = mainStore.state.regionState.lastSelectedRegionId {
             let realm = try! Realm()
             if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
                 locationName = region.name
