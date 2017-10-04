@@ -35,6 +35,8 @@ class MainViewController: UIViewController, StoreSubscriber {
     var lastSelectedRegionId: String?
     var lastCypherplayEnabled: Bool = false
     
+    var lastVPNEnabled: Bool = false
+    
     required init?(coder aDecoder: NSCoder) {
         self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
         self.topBarView.backgroundColor = UIColor.aztec
@@ -183,10 +185,7 @@ class MainViewController: UIViewController, StoreSubscriber {
             }
         }
         
-        // HACK: This is to temporarily force everything to IKEv2
-        if mainStore.state.settingsState.vpnProtocolMode == .IPSec {
-            mainStore.dispatch(SettingsAction.vpnProtocolMode(value: .IKEv2))
-        }
+        self.lastVPNEnabled = VPNConfigurationCoordinator.isEnabled
     }
 
     override func didReceiveMemoryWarning() {
@@ -360,9 +359,9 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.updateView(vpnStatus: status)
     }
     
-    func vpnCongfigurationChanged(_ notification: Notification) {
-        self.updateView(vpnStatus: .disconnected)
-    }
+//    func vpnCongfigurationChanged(_ notification: Notification) {
+//
+//    }
     
     func regionsUpdated(_ notification: Notification) {
         self.mapImageView.drawLocationsOnMap()
