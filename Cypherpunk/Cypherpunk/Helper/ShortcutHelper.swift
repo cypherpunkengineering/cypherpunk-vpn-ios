@@ -56,7 +56,7 @@ class ShortcutHelper {
         
         items.append(cypherplayShortcut)
         
-        let fastestShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Cypherplay.type, localizedTitle: "Fastest Location", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "fastest-server70x70"), userInfo: [
+        let fastestShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.Fastest.type, localizedTitle: "Fastest Location", localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "fastest-server70x70"), userInfo: [
             ShortcutHelper.applicationShortcutUserInfoIconKey: ShortcutIdentifier.Fastest.rawValue
             ]
         )
