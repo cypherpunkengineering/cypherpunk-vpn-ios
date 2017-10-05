@@ -12,7 +12,8 @@ class ToggleTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var toggle: UISwitch!
     @IBOutlet weak var descriptionLabel: UILabel!
-
+    @IBOutlet weak var separatorView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

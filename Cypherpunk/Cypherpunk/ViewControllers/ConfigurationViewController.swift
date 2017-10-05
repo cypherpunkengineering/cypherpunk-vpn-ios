@@ -174,6 +174,11 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 10))
+        if section == tableView.numberOfSections - 1 {
+            let lineView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 1))
+            lineView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+            footerView.addSubview(lineView)
+        }
         return footerView
     }
     
@@ -216,6 +221,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             cell.label.text = "Block Malware"
             cell.toggle.isOn = mainStore.state.settingsState.blockMalware
             cell.toggle.addTarget(self, action: #selector(blockMalwareChanged(_:)), for: .valueChanged)
+            cell.separatorView.isHidden = true
         default:
             cell.label.text = ""
         }

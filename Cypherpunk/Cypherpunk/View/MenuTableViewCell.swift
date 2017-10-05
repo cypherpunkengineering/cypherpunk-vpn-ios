@@ -10,6 +10,7 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var separatorView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +25,6 @@ class MenuTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
 //        self.accessoryType = .disclosureIndicator
+        self.separatorView.isHidden = false
     }
 }

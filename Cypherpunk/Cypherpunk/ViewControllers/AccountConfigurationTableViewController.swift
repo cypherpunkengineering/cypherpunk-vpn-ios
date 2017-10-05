@@ -116,7 +116,13 @@ class AccountConfigurationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 10))
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 10))
+        if section == 2 {
+            let lineView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 1))
+            lineView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+            footerView.addSubview(lineView)
+        }
+        return footerView
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -143,7 +149,7 @@ class AccountConfigurationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 || section == 3 ? 0.0 : 30.0
+        return section == 0 || section == 3 ? CGFloat.leastNonzeroMagnitude : 30.0
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -238,6 +244,7 @@ class AccountConfigurationTableViewController: UITableViewController {
             let menuCell = cell as! MenuTableViewCell
             menuCell.titleLabel?.text = "Manage Account"
             cell.tag = Rows.manageAccount.rawValue
+            menuCell.separatorView.isHidden = true
 //        case 0:
 //            if shouldHideUpgradeMenuItem() {
 //                cell.textLabel?.text = "Email"
@@ -281,6 +288,7 @@ class AccountConfigurationTableViewController: UITableViewController {
             menuCell.titleLabel?.text = "Sign Out"
             menuCell.tag = Rows.signOut.rawValue
             menuCell.accessoryType = .none
+            menuCell.separatorView?.isHidden = true
 //            cell.textLabel?.text = "Contact the Founders"
 //            cell.tag = Rows.contactus.rawValue
 //            cell.accessoryType = .none

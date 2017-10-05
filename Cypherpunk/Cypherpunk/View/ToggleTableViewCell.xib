@@ -46,6 +46,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttM-cf-9zv" userLabel="Separator View">
+                        <rect key="frame" x="15" y="55.5" width="305" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="0.095542594178082196" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="JIf-gB-QMY"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.1529411765" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
@@ -56,7 +63,10 @@
                     <constraint firstAttribute="bottomMargin" secondItem="yWE-M3-CIo" secondAttribute="bottom" constant="5" id="GBG-3s-WSl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="zBn-NZ-bPD" secondAttribute="trailing" constant="7" id="NUU-9b-BBL"/>
                     <constraint firstItem="yWE-M3-CIo" firstAttribute="leading" secondItem="djX-jy-SyT" secondAttribute="leading" id="OCd-bh-tBf"/>
+                    <constraint firstAttribute="trailing" secondItem="ttM-cf-9zv" secondAttribute="trailing" id="hba-uG-nr5"/>
                     <constraint firstItem="djX-jy-SyT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="jsc-qy-2bf"/>
+                    <constraint firstAttribute="bottom" secondItem="ttM-cf-9zv" secondAttribute="bottom" id="pab-wp-LvD"/>
+                    <constraint firstItem="ttM-cf-9zv" firstAttribute="leading" secondItem="djX-jy-SyT" secondAttribute="leading" id="xUG-Pc-yiS"/>
                     <constraint firstItem="yWE-M3-CIo" firstAttribute="top" secondItem="zBn-NZ-bPD" secondAttribute="bottom" constant="5" id="xyC-6b-gEU"/>
                 </constraints>
             </tableViewCellContentView>
@@ -64,6 +74,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="yWE-M3-CIo" id="86e-nK-i1C"/>
                 <outlet property="label" destination="djX-jy-SyT" id="46b-Yv-Crd"/>
+                <outlet property="separatorView" destination="ttM-cf-9zv" id="t3Z-rJ-X4v"/>
                 <outlet property="toggle" destination="zBn-NZ-bPD" id="CgJ-sN-M6O"/>
             </connections>
             <point key="canvasLocation" x="25" y="58.5"/>

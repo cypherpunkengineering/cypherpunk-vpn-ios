@@ -69,12 +69,12 @@ class MainViewController: UIViewController, StoreSubscriber {
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil
         )
-        notificationCenter.addObserver(
-            self,
-            selector: #selector(vpnCongfigurationChanged(_:)),
-            name: NSNotification.Name.NEVPNConfigurationChange,
-            object: nil
-        )
+//        notificationCenter.addObserver(
+//            self,
+//            selector: #selector(vpnCongfigurationChanged(_:)),
+//            name: NSNotification.Name.NEVPNConfigurationChange,
+//            object: nil
+//        )
         notificationCenter.addObserver(self, selector: #selector(regionsUpdated(_:)), name: regionUpdateNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(showLocationSelector(_:)), name: ShortcutHelper.showLocationListNotification, object: nil)
         
