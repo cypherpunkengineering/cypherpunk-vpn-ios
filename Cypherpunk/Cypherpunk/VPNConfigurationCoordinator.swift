@@ -209,6 +209,13 @@ open class VPNConfigurationCoordinator {
         newIPSec.serverCertificateCommonName = regionState.remoteIdentifier
 
         newIPSec.disconnectOnSleep = !settingsState.connectedOnIdle
+        newIPSec.ikeSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256GCM
+        newIPSec.ikeSecurityAssociationParameters.integrityAlgorithm = .SHA512
+        newIPSec.ikeSecurityAssociationParameters.diffieHellmanGroup = .group16
+        
+        newIPSec.childSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256GCM
+        newIPSec.childSecurityAssociationParameters.integrityAlgorithm = .SHA512
+        newIPSec.childSecurityAssociationParameters.diffieHellmanGroup = .group16
 
         return newIPSec
     }
