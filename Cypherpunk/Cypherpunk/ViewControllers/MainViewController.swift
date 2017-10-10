@@ -173,19 +173,21 @@ class MainViewController: UIViewController, StoreSubscriber {
         
         
         // set the map and location button based on the last selected region
-        if let regionId = mainStore.state.regionState.lastSelectedRegionId {
-            let realm = try! Realm()
-            if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
-                self.mapImageView.zoomToRegion(region: region)
-                self.locationSelectorButton.setLocation(location: region, cypherplay: mainStore.state.regionState.cypherplayOn)
-                self.view.setNeedsDisplay()
-                self.view.setNeedsLayout()
-                
-                self.lastSelectedRegionId = regionId
-            }
-        }
+//        if let regionId = mainStore.state.regionState.lastSelectedRegionId {
+//            let realm = try! Realm()
+//            if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
+//                mainStore.state.regionState.cypherplayOn ? self.mapImageView.zoomOut() : self.mapImageView.zoomToRegion(region: region)
+//                self.locationSelectorButton.setLocation(location: region, cypherplay: mainStore.state.regionState.cypherplayOn)
+//                self.view.setNeedsDisplay()
+//                self.view.setNeedsLayout()
+//                
+//                self.lastSelectedRegionId = regionId
+//            }
+//        }
         
         self.lastVPNEnabled = VPNConfigurationCoordinator.isEnabled
+        
+        self.mapImageView.zoomOut()
     }
 
     override func didReceiveMemoryWarning() {
@@ -338,10 +340,10 @@ class MainViewController: UIViewController, StoreSubscriber {
             if self.lastSelectedRegionId != regionId || self.lastCypherplayEnabled != cypherplayOn {
                 let realm = try! Realm()
                 if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
-                    self.mapImageView.zoomToRegion(region: region)
+                    cypherplayOn ? self.mapImageView.zoomOut() : self.mapImageView.zoomToRegion(region: region)
                     self.locationSelectorButton.setLocation(location: region, cypherplay: cypherplayOn)
                     self.view.setNeedsDisplay()
-                    
+
                     self.lastSelectedRegionId = regionId
                     self.lastCypherplayEnabled = cypherplayOn
                 }

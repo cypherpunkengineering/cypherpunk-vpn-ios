@@ -44,7 +44,11 @@ class MapImageView: UIView {
     private var scaleTransform: CATransform3D? = nil
     private var mapScale: CGFloat = 1.0
     private var lastPosition: CGPoint? = nil
-
+    
+    private let centerLat = 42.9719
+    private let centerLong = 12.5674
+    private let centerDisplayScale: CGFloat = 0.35
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -156,32 +160,48 @@ class MapImageView: UIView {
         self.mapLayer.addSublayer(layer)
     }
     
-//    func zoomToScale(_ scale: CGFloat) {
-//        UIView.animate(withDuration: MapImageView.mapPanDuration) {
-//            self.mapLayer.setAffineTransform(CGAffineTransform.init(scaleX: scale, y: scale))
-//        }
-//    }
-    
     func zoomToLastSelected() {
         if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
             // zoom/pan to this region id
             let realm = try! Realm()
-            if let selectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
+            if mainStore.state.regionState.cypherplayOn {
+                zoomOut()
+            }
+            else if let selectedRegion = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
                 zoomToRegion(region: selectedRegion)
             }
         }
     }
     
     func zoomToRegion(region: Region) {
-        let coords = transformToXY(lat: region.latitude, long: region.longitude)
+        self.markerLayer.isHidden = false
         
+        self.zoomToLatLong(lat: region.latitude, long: region.longitude, locationDisplayScale: region.locDisplayScale, yCoordOffset: self.parentMidYOffset)
+        
+        let sublayers = self.mapLayer.sublayers
+        sublayers?.forEach({ (sublayer) in
+            let shapeLayer = sublayer as! CAShapeLayer
+            let regionId = shapeLayer.value(forKey: "regionId") as! String
+            setLocationLayerColors(shapeLayer: shapeLayer, selected: regionId == region.id)
+        })
+    }
+    
+    func zoomToRegion(regionId: String) {
+        let realm = try! Realm()
+        if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
+            zoomToRegion(region: region)
+        }
+    }
+    
+    private func zoomToLatLong(lat: Double, long: Double, locationDisplayScale: CGFloat, yCoordOffset: CGFloat) {
         if let superView = self.superview {
             let superviewFrame = superView.frame
             let superViewFrameMidX = isMapInBackground ? superviewFrame.midX + parentMidXOffset : superviewFrame.midX
-            let superViewFrameMidY = superviewFrame.midY + parentMidYOffset
+            let superViewFrameMidY = superviewFrame.midY + yCoordOffset
             
-            let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
+            let scale = translateScaleToiOS(regionScale: locationDisplayScale, superviewFrame: superviewFrame)
             
+            let coords = transformToXY(lat: lat, long: long)
             let position = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
             
             // scale animation
@@ -218,26 +238,25 @@ class MapImageView: UIView {
             bounceAnimation.isRemovedOnCompletion = true
             bounceAnimation.isAdditive = true
             self.markerLayer.add(bounceAnimation, forKey: "bounceMarker")
-
+            
             self.mapScale = scale
             self.lastPosition = position
             self.mapLayer.position = position
             self.mapLayer.add(animationGroup, forKey: "panAndZoom")
-            
-            let sublayers = self.mapLayer.sublayers
-            sublayers?.forEach({ (sublayer) in
-                let shapeLayer = sublayer as! CAShapeLayer
-                let regionId = shapeLayer.value(forKey: "regionId") as! String
-                setLocationLayerColors(shapeLayer: shapeLayer, selected: regionId == region.id)
-            })
         }
     }
     
-    func zoomToRegion(regionId: String) {
-        let realm = try! Realm()
-        if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
-            zoomToRegion(region: region)
-        }
+    func zoomOut() {
+        self.markerLayer.isHidden = true
+        
+        // 41.8719° N, 12.5674° E - approx center of the map
+        self.zoomToLatLong(lat: centerLat, long: centerLong, locationDisplayScale: centerDisplayScale, yCoordOffset: 0)
+
+        let sublayers = self.mapLayer.sublayers
+        sublayers?.forEach({ (sublayer) in
+            let shapeLayer = sublayer as! CAShapeLayer
+            setLocationLayerColors(shapeLayer: shapeLayer, selected: false)
+        })
     }
     
     private func setLocationLayerColors(shapeLayer: CAShapeLayer, selected: Bool) {
@@ -280,7 +299,7 @@ class MapImageView: UIView {
     
     private var lastRegion: Region?
     private func shiftMapToRight() {
-        if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
+        if let lastSelected = mainStore.state.regionState.lastSelectedRegionId, !mainStore.state.regionState.cypherplayOn {
             // zoom/pan to this region id
             let realm = try! Realm()
             if let region = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
