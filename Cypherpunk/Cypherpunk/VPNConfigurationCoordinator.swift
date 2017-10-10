@@ -81,7 +81,7 @@ open class VPNConfigurationCoordinator {
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()
                 manager.loadFromPreferences(completionHandler: { (error) in
-//                    print(manager.protocolConfiguration!)
+                    print(manager.protocolConfiguration!)
                     if reconnect {
 //                        VPNConfigurationCoordinator.connect()
                         VPNStateController.sharedInstance.reconnect()
@@ -209,11 +209,13 @@ open class VPNConfigurationCoordinator {
         newIPSec.serverCertificateCommonName = regionState.remoteIdentifier
 
         newIPSec.disconnectOnSleep = !settingsState.connectedOnIdle
-        newIPSec.ikeSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256GCM
+//        newIPSec.ikeSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256GCM
+        newIPSec.ikeSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256
         newIPSec.ikeSecurityAssociationParameters.integrityAlgorithm = .SHA512
         newIPSec.ikeSecurityAssociationParameters.diffieHellmanGroup = .group16
         
-        newIPSec.childSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256GCM
+//        newIPSec.childSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256GCM
+        newIPSec.childSecurityAssociationParameters.encryptionAlgorithm = .algorithmAES256
         newIPSec.childSecurityAssociationParameters.integrityAlgorithm = .SHA512
         newIPSec.childSecurityAssociationParameters.diffieHellmanGroup = .group16
 
