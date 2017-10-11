@@ -21,9 +21,7 @@ target 'Cypherpunk' do
        pod 'GBPing'
        pod 'Cartography'
        pod 'TinySwift'
-       pod 'Hero'
        pod 'MarqueeLabel/Swift'
-       pod 'PMAlertController'
 end
 
 target 'CypherpunkTests' do

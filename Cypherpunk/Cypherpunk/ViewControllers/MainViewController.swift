@@ -13,7 +13,6 @@ import RealmSwift
 import NetworkExtension
 import ReSwift
 import TinySwift
-import PMAlertController
 
 class MainViewController: UIViewController, StoreSubscriber {
     
