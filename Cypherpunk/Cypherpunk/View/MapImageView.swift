@@ -29,7 +29,7 @@ class MapImageView: UIView {
             }
             else {
                 self.markerLayer.foregroundColor = UIColor(red: 136.0 / 255.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
-                shiftMapToLeft()
+//                shiftMapToLeft()
             }
         }
     }
@@ -41,6 +41,7 @@ class MapImageView: UIView {
     private let markerLayer = CATextLayer()
     private let mapLayer = CALayer()
     private let markerHeightOffset: CGFloat = 17.0
+    private let markerWidthOffset: CGFloat = 5.0
     private var scaleTransform: CATransform3D? = nil
     private var mapScale: CGFloat = 1.0
     private var lastPosition: CGPoint? = nil
@@ -85,7 +86,7 @@ class MapImageView: UIView {
 //              let superViewMidY _ = superViewFrame.midY + parentMidYOffset
 //                self.markerLayer.position = CGPoint(x: (self.superview?.frame.midX)!, y: superViewMidY - self.markerLayer.frame.midY - 3)
                 let xCoord = isMapInBackground ? superViewFrame.midX + parentMidXOffset : superViewFrame.midX
-                self.markerLayer.position = CGPoint(x: xCoord, y: superViewFrame.midY + parentMidYOffset - 17)
+                self.markerLayer.position = CGPoint(x: xCoord, y: superViewFrame.midY + parentMidYOffset - markerHeightOffset)
                 
                 if UI_USER_INTERFACE_IDIOM() == .pad {
                     zoomToLastSelected() // TODO figure out how to detect rotation and do this
@@ -228,21 +229,25 @@ class MapImageView: UIView {
             animationGroup.animations = [positionAnimation, scaleAnimation]
             
             // animation the position of the marker
-            let bounceAnimation = CABasicAnimation(keyPath: "position.y")
-            bounceAnimation.duration = MapImageView.mapPanDuration
-            bounceAnimation.speed = 1.25
-            bounceAnimation.fromValue = 0
-            bounceAnimation.toValue = -25
-            bounceAnimation.autoreverses = true
-            bounceAnimation.fillMode = kCAFillModeForwards
-            bounceAnimation.isRemovedOnCompletion = true
-            bounceAnimation.isAdditive = true
-            self.markerLayer.add(bounceAnimation, forKey: "bounceMarker")
+            let bounceAnimation = CAKeyframeAnimation(keyPath: "position.y")
+            let currPostionY = self.markerLayer.position.y
+            bounceAnimation.values = [currPostionY, superviewFrame.midY + parentMidYOffset - markerHeightOffset]
+//            bounceAnimation.calculationMode = kCAAnimationCubic
+            bounceAnimation.duration = 2.0
+
+            let markerXAnimation = CABasicAnimation(keyPath: "position.x")
+            markerXAnimation.fromValue = self.markerLayer.position.x
+            markerXAnimation.toValue = superviewFrame.midX
+            markerXAnimation.duration = 2.0 * 0.9 //MapImageView.mapPanDuration
             
             self.mapScale = scale
             self.lastPosition = position
             self.mapLayer.position = position
+            self.markerLayer.position = CGPoint(x: superviewFrame.midX, y: superviewFrame.midY + parentMidYOffset - markerHeightOffset)
+            
             self.mapLayer.add(animationGroup, forKey: "panAndZoom")
+            self.markerLayer.add(markerXAnimation, forKey: "markerXPan")
+            self.markerLayer.add(bounceAnimation, forKey: "bounceMarker")
         }
     }
     
@@ -367,7 +372,7 @@ class MapImageView: UIView {
         }
     }
     
-    private func shiftMapToLeft() {
+    func shiftMapToLeft() {
         if let region = lastRegion {
             
             let coords = transformToXY(lat: region.latitude, long: region.longitude)
@@ -406,7 +411,7 @@ class MapImageView: UIView {
                 
                 // animate the position of the marker
                 let xCoord = isMapInBackground ? superviewFrame.midX + parentMidXOffset : superviewFrame.midX
-                let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY + parentMidYOffset - 17)
+                let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY + parentMidYOffset - markerHeightOffset)
                 
                 let markerPositionAnimation = CABasicAnimation(keyPath: "position")
                 markerPositionAnimation.fromValue = self.markerLayer.position

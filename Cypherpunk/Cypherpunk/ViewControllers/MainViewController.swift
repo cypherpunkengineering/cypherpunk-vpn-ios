@@ -378,11 +378,15 @@ class MainViewController: UIViewController, StoreSubscriber {
 extension MainViewController: LocationSelectionDelegate {
     func dismissSelector() {
         self.mapImageView.isMapInBackground = false
+        self.mapImageView.shiftMapToLeft()
         showControls()
     }
     
     func locationSelected(location: Region) {
         self.mapImageView.isMapInBackground = false
+        if location.id == self.lastSelectedRegionId {
+            self.mapImageView.shiftMapToLeft()
+        }
         showControls() {
             ConnectionHelper.connectTo(region: location, cypherplay: false)
         }
@@ -406,7 +410,7 @@ extension MainViewController: LocationSelectionDelegate {
             self.statusTitleLabel.isHidden = false
             self.statusLabel.isHidden = false
 //            self.statusDetailLabel.isHidden = false
-            
+        
 //            self.mapImageView.isMapInBackground = false
 //        }) { (completed) in
             self.locationSelectorVC?.removeFromParentViewController()
