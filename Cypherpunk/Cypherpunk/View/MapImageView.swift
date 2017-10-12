@@ -350,7 +350,9 @@ class MapImageView: UIView {
                     let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY) // y-coord should be centered
                     
                     let markerPositionAnimation = CABasicAnimation(keyPath: "position")
-                    markerPositionAnimation.fromValue = self.markerLayer.position
+//                    markerPositionAnimation.fromValue = self.markerLayer.position
+                    // use the position in the presentation layer because another animation might be in progress
+                    markerPositionAnimation.fromValue = self.markerLayer.presentation()?.position
                     markerPositionAnimation.toValue = markerPosition
                     markerPositionAnimation.duration = animationDuration
                     
@@ -358,6 +360,10 @@ class MapImageView: UIView {
                     self.lastPosition = position
                     self.mapLayer.position = position
                     self.markerLayer.position = markerPosition
+                    
+                    // remove any existing animations
+                    self.markerLayer.removeAllAnimations()
+                    
                     self.mapLayer.add(animationGroup, forKey: "panAndZoom")
                     self.markerLayer.add(markerPositionAnimation, forKey: "markerPosition")
                     
