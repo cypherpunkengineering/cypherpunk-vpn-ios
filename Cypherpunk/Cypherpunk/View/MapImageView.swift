@@ -46,9 +46,18 @@ class MapImageView: UIView {
     private var mapScale: CGFloat = 1.0
     private var lastPosition: CGPoint? = nil
     
+    // used for zooming out when cyhperplay is selected
     private let centerLat = 42.9719
     private let centerLong = 12.5674
     private let centerDisplayScale: CGFloat = 0.35
+    
+    // variables used when zooming to locations
+    private static let markerAnimationDuration = 2.0
+    private static let markerPanStartRelativeTiming: NSNumber = 0.2 // time in which marker finish going up and is ready to pan
+    private static let markerPanEndRelativeTiming: NSNumber = 0.8 // time in which marker is done panning and is ready to go down
+    private static let mapMoveDelay = markerAnimationDuration * markerPanStartRelativeTiming.doubleValue // map should only start moving after marker has gone up
+    private let mapMoveDuration = markerAnimationDuration * markerPanEndRelativeTiming.doubleValue - mapMoveDelay // time the map is animating
+    private let mapPinJumpHeight: CGFloat = 20.0
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -83,8 +92,6 @@ class MapImageView: UIView {
             
             if let superView = self.superview {
                 let superViewFrame = superView.frame
-//              let superViewMidY _ = superViewFrame.midY + parentMidYOffset
-//                self.markerLayer.position = CGPoint(x: (self.superview?.frame.midX)!, y: superViewMidY - self.markerLayer.frame.midY - 3)
                 let xCoord = isMapInBackground ? superViewFrame.midX + parentMidXOffset : superViewFrame.midX
                 self.markerLayer.position = CGPoint(x: xCoord, y: superViewFrame.midY + parentMidYOffset - markerHeightOffset)
                 
@@ -210,16 +217,8 @@ class MapImageView: UIView {
             let coords = transformToXY(lat: lat, long: long)
             let newMapLayerPosition = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
             
-            let markerAnimationDuration = 2.0
-            let markerPanStartRelativeTiming: NSNumber = 0.2 // time in which marker finish going up and is ready to pan
-            let markerPanEndRelativeTiming: NSNumber = 0.8 // time in which marker is done panning and is ready to go down
-            let mapMoveDelay = markerAnimationDuration * markerPanStartRelativeTiming.doubleValue // map should only start moving after marker has gone up
-            let mapMoveDuration = markerAnimationDuration * markerPanEndRelativeTiming.doubleValue - mapMoveDelay // time the map is animating
-            let mapPinJumpHeight: CGFloat = 20.0
-            
             // scale animation
             let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-            scaleAnimation.beginTime = CACurrentMediaTime()
             scaleAnimation.fromValue = self.mapScale
             scaleAnimation.toValue = scale
             scaleAnimation.duration = mapMoveDuration
@@ -228,7 +227,6 @@ class MapImageView: UIView {
             
             // move the map
             let positionAnimation = CABasicAnimation(keyPath: "position")
-            scaleAnimation.beginTime = CACurrentMediaTime()
             positionAnimation.fromValue = self.mapLayer.presentation()?.position
             positionAnimation.toValue = newMapLayerPosition
             positionAnimation.duration = mapMoveDuration
@@ -278,18 +276,11 @@ class MapImageView: UIView {
             let coords = transformToXY(lat: lat, long: long)
             let newMapLayerPosition = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
             
-            let markerAnimationDuration = 2.0
-            let markerPanStartRelativeTiming: NSNumber = 0.2 // time in which marker finish going up and is ready to pan
-            let markerPanEndRelativeTiming: NSNumber = 0.8 // time in which marker is done panning and is ready to go down
-            let mapMoveDelay = markerAnimationDuration * markerPanStartRelativeTiming.doubleValue // map should only start moving after marker has gone up
-            let mapMoveDuration = markerAnimationDuration * markerPanEndRelativeTiming.doubleValue - mapMoveDelay // time the map is animating
-            let mapPinJumpHeight: CGFloat = 20.0
-            
             // scale animation
             let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
             scaleAnimation.fromValue = self.mapScale
             scaleAnimation.toValue = scale
-            scaleAnimation.beginTime = CACurrentMediaTime() + mapMoveDelay
+            scaleAnimation.beginTime = CACurrentMediaTime() + MapImageView.mapMoveDelay
             scaleAnimation.duration = mapMoveDuration
             scaleAnimation.isRemovedOnCompletion = false
             scaleAnimation.fillMode = kCAFillModeForwards
@@ -304,7 +295,7 @@ class MapImageView: UIView {
                 positionAnimation.fromValue = CGPoint(x: superViewFrameMidX, y: superViewFrameMidY)
             }
             positionAnimation.toValue = newMapLayerPosition
-            positionAnimation.beginTime = CACurrentMediaTime() + mapMoveDelay
+            positionAnimation.beginTime = CACurrentMediaTime() + MapImageView.mapMoveDelay
             positionAnimation.duration = mapMoveDuration
             positionAnimation.isRemovedOnCompletion = false
             positionAnimation.fillMode = kCAFillModeForwards
@@ -314,11 +305,11 @@ class MapImageView: UIView {
             let currPostionX = self.markerLayer.position.x
             
             let bounceAnimation = CAKeyframeAnimation(keyPath: "position.y")
-            bounceAnimation.keyTimes = [0.0, markerPanStartRelativeTiming, markerPanEndRelativeTiming, 1.0]
-            bounceAnimation.values = [currPostionY, currPostionY - mapPinJumpHeight, superviewFrame.midY + parentMidYOffset - markerHeightOffset - mapPinJumpHeight, superviewFrame.midY + parentMidYOffset - markerHeightOffset]
+            bounceAnimation.keyTimes = [0.0, MapImageView.markerPanStartRelativeTiming, MapImageView.markerPanEndRelativeTiming, 1.0]
+            bounceAnimation.values = [currPostionY, currPostionY - mapPinJumpHeight, superViewFrameMidY - markerHeightOffset - mapPinJumpHeight, superViewFrameMidY - markerHeightOffset]
             
             let markerXAnimation = CAKeyframeAnimation(keyPath: "position.x")
-            markerXAnimation.keyTimes = [0.0, markerPanStartRelativeTiming, markerPanEndRelativeTiming]
+            markerXAnimation.keyTimes = [0.0, MapImageView.markerPanStartRelativeTiming, MapImageView.markerPanEndRelativeTiming]
             markerXAnimation.values = [currPostionX, currPostionX, superviewFrame.midX]
             
             self.mapScale = scale
@@ -331,7 +322,7 @@ class MapImageView: UIView {
             
             let markerAnimationGroup = CAAnimationGroup()
             markerAnimationGroup.animations = [markerXAnimation, bounceAnimation]
-            markerAnimationGroup.duration = markerAnimationDuration
+            markerAnimationGroup.duration = MapImageView.markerAnimationDuration
             self.markerLayer.add(markerAnimationGroup, forKey: "markerAnim")
         }
     }
@@ -436,7 +427,6 @@ class MapImageView: UIView {
                     let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY) // y-coord should be centered
                     
                     let markerPositionAnimation = CABasicAnimation(keyPath: "position")
-//                    markerPositionAnimation.fromValue = self.markerLayer.position
                     // use the position in the presentation layer because another animation might be in progress
                     markerPositionAnimation.fromValue = self.markerLayer.presentation()?.position
                     markerPositionAnimation.toValue = markerPosition
