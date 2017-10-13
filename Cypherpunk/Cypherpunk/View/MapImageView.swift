@@ -133,7 +133,7 @@ class MapImageView: UIView {
         self.markerLayer.foregroundColor = UIColor(red: 136.0 / 255.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
         self.markerLayer.opacity = 1.0
         self.markerLayer.contentsScale = UIScreen.main.scale
-        //        self.markerLayer.isHidden = true
+        self.markerLayer.isHidden = true
 
         self.layer.addSublayer(self.markerLayer)
     }
@@ -175,9 +175,14 @@ class MapImageView: UIView {
     }
     
     func zoomToRegion(region: Region) {
-        self.markerLayer.isHidden = false
-        
-        self.zoomToLatLong(lat: region.latitude, long: region.longitude, locationDisplayScale: region.locDisplayScale, yCoordOffset: self.parentMidYOffset)
+        if self.markerLayer.isHidden {
+            zoomInToLatLong(lat: region.latitude, long: region.longitude, locationDisplayScale: region.locDisplayScale)
+        }
+        else {
+            self.markerLayer.isHidden = false
+            self.markerLayer.opacity = 1.0
+            self.zoomToLatLong(lat: region.latitude, long: region.longitude, locationDisplayScale: region.locDisplayScale, yCoordOffset: self.parentMidYOffset)
+        }
         
         let sublayers = self.mapLayer.sublayers
         sublayers?.forEach({ (sublayer) in
@@ -191,6 +196,74 @@ class MapImageView: UIView {
         let realm = try! Realm()
         if let region = realm.object(ofType: Region.self, forPrimaryKey: regionId) {
             zoomToRegion(region: region)
+        }
+    }
+    
+    private func zoomInToLatLong(lat: Double, long: Double, locationDisplayScale: CGFloat) {
+        if let superView = self.superview {
+            let superviewFrame = superView.frame
+            let superViewFrameMidX = isMapInBackground ? superviewFrame.midX + parentMidXOffset : superviewFrame.midX
+            let superViewFrameMidY = superviewFrame.midY + self.parentMidYOffset
+            
+            let scale = translateScaleToiOS(regionScale: locationDisplayScale, superviewFrame: superviewFrame)
+            
+            let coords = transformToXY(lat: lat, long: long)
+            let newMapLayerPosition = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
+            
+            let markerAnimationDuration = 2.0
+            let markerPanStartRelativeTiming: NSNumber = 0.2 // time in which marker finish going up and is ready to pan
+            let markerPanEndRelativeTiming: NSNumber = 0.8 // time in which marker is done panning and is ready to go down
+            let mapMoveDelay = markerAnimationDuration * markerPanStartRelativeTiming.doubleValue // map should only start moving after marker has gone up
+            let mapMoveDuration = markerAnimationDuration * markerPanEndRelativeTiming.doubleValue - mapMoveDelay // time the map is animating
+            let mapPinJumpHeight: CGFloat = 20.0
+            
+            // scale animation
+            let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+            scaleAnimation.beginTime = CACurrentMediaTime()
+            scaleAnimation.fromValue = self.mapScale
+            scaleAnimation.toValue = scale
+            scaleAnimation.duration = mapMoveDuration
+            scaleAnimation.isRemovedOnCompletion = false
+            scaleAnimation.fillMode = kCAFillModeForwards
+            
+            // move the map
+            let positionAnimation = CABasicAnimation(keyPath: "position")
+            scaleAnimation.beginTime = CACurrentMediaTime()
+            positionAnimation.fromValue = self.mapLayer.presentation()?.position
+            positionAnimation.toValue = newMapLayerPosition
+            positionAnimation.duration = mapMoveDuration
+            positionAnimation.isRemovedOnCompletion = false
+            positionAnimation.fillMode = kCAFillModeForwards
+            
+            // animation the position of the marker
+            let appearAnimation = CABasicAnimation(keyPath: "opacity")
+            appearAnimation.beginTime = CACurrentMediaTime() + mapMoveDuration
+            appearAnimation.fromValue = 0
+            appearAnimation.toValue = 1.0
+            appearAnimation.fillMode = kCAFillModeBoth
+            appearAnimation.duration = 0.5
+            
+            let startPostion = CGPoint(x: superviewFrame.midX, y: superViewFrameMidY - markerHeightOffset - mapPinJumpHeight)
+            let endPosition = CGPoint(x: superviewFrame.midX, y: superViewFrameMidY - markerHeightOffset)
+            
+            let dropAnimation = CAKeyframeAnimation(keyPath: "position")
+            dropAnimation.beginTime = CACurrentMediaTime() + mapMoveDuration
+            dropAnimation.duration = 1.0
+            dropAnimation.keyTimes = [0.0, 0.3, 1.0]
+            dropAnimation.values = [startPostion, startPostion, endPosition]
+            
+            self.mapScale = scale
+            self.lastPosition = newMapLayerPosition
+            self.mapLayer.position = newMapLayerPosition
+            self.markerLayer.isHidden = false
+            self.markerLayer.position = endPosition
+            self.markerLayer.opacity = 1.0
+            
+            self.mapLayer.add(positionAnimation, forKey: "position")
+            self.mapLayer.add(scaleAnimation, forKey: "transform.scale")
+            
+            self.markerLayer.add(appearAnimation, forKey: "opacity")
+            self.markerLayer.add(dropAnimation, forKey: "position")
         }
     }
     
@@ -264,6 +337,7 @@ class MapImageView: UIView {
     }
     
     func zoomOut() {
+        self.markerLayer.opacity = 0.0
         self.markerLayer.isHidden = true
         
         // 41.8719° N, 12.5674° E - approx center of the map
