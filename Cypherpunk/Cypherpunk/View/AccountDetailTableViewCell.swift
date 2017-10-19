@@ -13,10 +13,10 @@ class AccountDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var subscriptionTypeLabel: UILabel!
     @IBOutlet weak var expirationLabel: UILabel!
-    @IBOutlet weak var userIconView: UIImageView!
-    @IBOutlet weak var keyIconView: UIImageView!
     @IBOutlet weak var bannerImageView: UIImageView!
-
+    @IBOutlet weak var userIconLabel: UILabel!
+    @IBOutlet weak var keyIconLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,9 +24,19 @@ class AccountDetailTableViewCell: UITableViewCell {
         
         let iconColor = UIColor(red: 0, green: 142 / 255.0, blue: 140 / 255.0, alpha: 1)
         
-        self.userIconView.image = UIImage.fontAwesomeIcon(name: .user, textColor: iconColor, size: CGSize(width: 30, height: 30))
+        let userIconString = String.fontAwesomeIcon(name: .user)
+        let keyIconString = String.fontAwesomeIcon(name: .key)
         
-        self.keyIconView.image = UIImage.fontAwesomeIcon(name: .key, textColor: iconColor, size: CGSize(width: 30, height: 30))
+        let font = UIFont.fontAwesome(ofSize: 22.0)
+        
+        self.userIconLabel.textColor = iconColor
+        self.keyIconLabel.textColor = iconColor
+        
+        self.userIconLabel.font = font
+        self.keyIconLabel.font = font
+        
+        self.userIconLabel.text = userIconString
+        self.keyIconLabel.text = keyIconString
         
         self.populateInfo()
         
