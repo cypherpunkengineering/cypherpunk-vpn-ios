@@ -331,6 +331,11 @@ class MainViewController: UIViewController, StoreSubscriber {
                     self.lastCypherplayEnabled = cypherplayOn
                 }
             }
+            else {
+                if !mainStore.state.regionState.cypherplayOn {
+                    self.mapImageView.shiftMapToLeft()
+                }
+            }
         }
     }
     
@@ -367,9 +372,6 @@ extension MainViewController: LocationSelectionDelegate {
     
     func locationSelected(location: Region) {
         self.mapImageView.isMapInBackground = false
-        if location.id == self.lastSelectedRegionId {
-            self.mapImageView.shiftMapToLeft()
-        }
         showControls() {
             ConnectionHelper.connectTo(region: location, cypherplay: false)
         }

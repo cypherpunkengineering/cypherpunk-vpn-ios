@@ -81,7 +81,7 @@ open class VPNConfigurationCoordinator {
             manager.saveToPreferences(completionHandler: { (error) in
                 completion()
                 manager.loadFromPreferences(completionHandler: { (error) in
-                    print(manager.protocolConfiguration!)
+//                    print(manager.protocolConfiguration!)
                     if reconnect {
 //                        VPNConfigurationCoordinator.connect()
                         VPNStateController.sharedInstance.reconnect()

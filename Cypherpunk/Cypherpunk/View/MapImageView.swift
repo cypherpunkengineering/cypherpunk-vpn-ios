@@ -227,11 +227,18 @@ class MapImageView: UIView {
             
             // move the map
             let positionAnimation = CABasicAnimation(keyPath: "position")
-            positionAnimation.fromValue = self.mapLayer.presentation()?.position
+//            positionAnimation.fromValue = self.mapLayer.position
             positionAnimation.toValue = newMapLayerPosition
             positionAnimation.duration = mapMoveDuration
             positionAnimation.isRemovedOnCompletion = false
             positionAnimation.fillMode = kCAFillModeForwards
+            
+            if let currentPosition = self.lastPosition {
+                positionAnimation.fromValue = currentPosition
+            }
+            else {
+                positionAnimation.fromValue = CGPoint(x: superViewFrameMidX, y: superViewFrameMidY)
+            }
             
             // animation the position of the marker
             let appearAnimation = CABasicAnimation(keyPath: "opacity")
