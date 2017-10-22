@@ -15,7 +15,6 @@ enum SettingsAction: Action {
     case vpnProtocolMode(value: VPNProtocolMode)
     case isTrustCellularNetworks(isOn: Bool)
     case isAutoSecureConnectionsWhenConnectedUntrustedNetwork(isOn: Bool)
-    case isAutoSecureConnectionsWhenConnectedOtherNetwork(isOn: Bool)
     case blockAds(block: Bool)
     case blockMalware(block: Bool)
     case alwaysOn(isOn: Bool) // leak protection

@@ -87,23 +87,6 @@ struct SettingsState: StateType {
         }
 
     }
-
-    @available(*, deprecated)
-    var isAutoSecureConnectionsWhenConnectedOtherNetwork: Bool {
-        get{
-            if mainStore.state.isInstalledPreferences == false {
-                return false
-            }
-
-            let keychain = Keychain.userKeychain()
-            return NSString(string: keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedOtherNetwork] ?? "false").boolValue
-        }
-        set(newValue) {
-            let keychain = Keychain.userKeychain()
-            keychain[SettingsStateKey.isAutoSecureConnectionsWhenConnectedOtherNetwork] = String(newValue)
-        }
-        
-    }
     
     var blockAds: Bool {
         get {
@@ -200,8 +183,6 @@ struct SettingsState: StateType {
         static let vpnProtocolMode = "vpnProtocolMode"
         static let isTrustCellularNetworks = "isTrustCellularNetworks"
         static let isAutoSecureConnectionsWhenConnectedUntrustedNetwork = "isAutoSecureConnectionsWhenConnectedUntrustedNetwork"
-        @available(*, deprecated)
-        static let isAutoSecureConnectionsWhenConnectedOtherNetwork = "isAutoSecureConnectionsWhenConnectedOtherNetwork"
         static let blockAds = "blockAds"
         static let blockMalware = "blockMalware"
         static let alwaysOn = "alwaysOn"

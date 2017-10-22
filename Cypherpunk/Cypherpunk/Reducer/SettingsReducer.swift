@@ -27,8 +27,6 @@ struct SettingsReducer {
                 state.isTrustCellularNetworks = isOn
             case .isAutoSecureConnectionsWhenConnectedUntrustedNetwork(let isOn):
                 state.isAutoSecureConnectionsWhenConnectedUntrustedNetwork = isOn
-            case .isAutoSecureConnectionsWhenConnectedOtherNetwork(let isOn):
-                state.isAutoSecureConnectionsWhenConnectedOtherNetwork = isOn
             case .blockAds(let block):
                 state.blockAds = block
             case .blockMalware(let block):
