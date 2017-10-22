@@ -21,4 +21,5 @@ enum SettingsAction: Action {
     case alwaysOn(isOn: Bool) // leak protection
     case toggleOn(isOn: Bool)
     case connectedOnIdle(isOn: Bool)
+    case autoReconnect(isOn: Bool)
 }

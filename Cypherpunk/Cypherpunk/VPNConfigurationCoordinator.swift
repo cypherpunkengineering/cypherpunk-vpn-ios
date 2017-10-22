@@ -70,11 +70,12 @@ open class VPNConfigurationCoordinator {
             manager.onDemandRules = onDemandRules
             
             manager.localizedDescription = "Cypherpunk Privacy"
-            manager.isOnDemandEnabled = true
+            manager.isOnDemandEnabled = settingsState.autoReconnect
             
             // check if we should enable the profile, if not use the existing state
-            let profileEnabled = enableProfileIfDisabled ? true : manager.isEnabled
-            manager.isEnabled = profileEnabled
+//            let profileEnabled = enableProfileIfDisabled ? true : manager.isEnabled
+//            manager.isEnabled = profileEnabled
+            manager.isEnabled = true
 
             let reconnect = self.isConnected || self.isConnecting || connectIfDisconnected
 

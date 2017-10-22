@@ -40,6 +40,8 @@ struct SettingsReducer {
                 noConfigUpdateRequired = !state.alwaysOn
             case .connectedOnIdle(let isOn):
                 state.connectedOnIdle = isOn
+            case .autoReconnect(let isOn):
+                state.autoReconnect = isOn
             }
             
             if !noConfigUpdateRequired {

@@ -84,7 +84,7 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
 
     // MARK: UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1 // hiding connection settings and trusted networks for now
+        return 2 // hiding trusted networks for now
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -114,10 +114,14 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
             cell = cellForPrivacySettings(tableView, row: indexPath.row)
         case 1:
             let toggleCell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell")! as! ToggleTableViewCell
-            toggleCell.label.text = "Stay Connected When Idle"
-            toggleCell.toggle.isOn = mainStore.state.settingsState.connectedOnIdle
-            toggleCell.toggle.addTarget(self, action: #selector(idleConnectedChanged(_:)), for: .valueChanged)
-            toggleCell.descriptionLabel.text = "Increases responsiveness of the VPN connection at the expense of battery life."
+            toggleCell.label.text = "Automatically Reconnect"
+            toggleCell.toggle.isOn = mainStore.state.settingsState.autoReconnect
+            toggleCell.toggle.addTarget(self, action: #selector(autoReconnectChanged(_:)), for: .valueChanged)
+            toggleCell.descriptionLabel.text = "Cypherpunk Privacy will automatically attempt to reconnect if the connection is interrupted."
+//            toggleCell.label.text = "Stay Connected When Idle"
+//            toggleCell.toggle.isOn = mainStore.state.settingsState.connectedOnIdle
+//            toggleCell.toggle.addTarget(self, action: #selector(idleConnectedChanged(_:)), for: .valueChanged)
+//            toggleCell.descriptionLabel.text = "Increases responsiveness of the VPN connection at the expense of battery life."
             cell = toggleCell
         case 2:
             cell = cellForTrustedNetworks(tableView, row: indexPath.row)
@@ -275,6 +279,10 @@ class ConfigurationViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func idleConnectedChanged(_ sender: UISwitch) {
         mainStore.dispatch(SettingsAction.connectedOnIdle(isOn: sender.isOn))
+    }
+    
+    @IBAction func autoReconnectChanged(_ sender: UISwitch) {
+        mainStore.dispatch(SettingsAction.autoReconnect(isOn: sender.isOn))
     }
     
     deinit {

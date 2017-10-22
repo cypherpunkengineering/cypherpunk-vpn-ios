@@ -292,7 +292,8 @@ class MainViewController: UIViewController, StoreSubscriber {
                 }
                 self.vpnSwitchAnimationView.cancelConnectAnimation()
             case .reasserting:
-                status = "Reasserting"
+//                status = "Reasserting"
+                status = "Disconnected" // user won't know what this is, use disconneted
                 self.vpnSwitchAnimationView.cancelConnectAnimation()
             }
         }
@@ -308,7 +309,8 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.statusDetailLabel.text = statusDetail
         self.statusDetailLabel.sizeToFit()
         
-        self.vpnSwitchAnimationView.vpnSwitch.isOn = VPNConfigurationCoordinator.isEnabled //VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
+//        self.vpnSwitchAnimationView.vpnSwitch.isOn = VPNConfigurationCoordinator.isEnabled //VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
+        self.vpnSwitchAnimationView.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
         
         print(status)
         
@@ -420,6 +422,7 @@ extension MainViewController: VPNSwitchDelegate {
     }
 
     func stateChanged(on: Bool) {
-        VPNConfigurationCoordinator.enableProfile(enable: on)
+//        VPNConfigurationCoordinator.enableProfile(enable: on)
+        on ? VPNConfigurationCoordinator.connect() : VPNConfigurationCoordinator.disconnect()
     }
 }

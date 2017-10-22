@@ -180,6 +180,21 @@ struct SettingsState: StateType {
         }
     }
     
+    var autoReconnect : Bool {
+        get {
+            if !mainStore.state.isInstalledPreferences {
+                return false
+            }
+            
+            let keychain = Keychain.userKeychain()
+            return NSString(string: keychain[SettingsStateKey.autoReconnect] ?? "false").boolValue
+        }
+        set(newValue) {
+            let keychain = Keychain.userKeychain()
+            keychain[SettingsStateKey.autoReconnect] = String(newValue)
+        }
+    }
+    
 
     fileprivate struct SettingsStateKey {
         static let vpnProtocolMode = "vpnProtocolMode"
@@ -192,5 +207,6 @@ struct SettingsState: StateType {
         static let alwaysOn = "alwaysOn"
         static let toggleOn = "toggleOn"
         static let connectedOnIdle = "connectedOnIdle"
+        static let autoReconnect = "autoReconnect"
     }
 }
