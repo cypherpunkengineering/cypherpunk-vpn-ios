@@ -70,12 +70,14 @@ open class VPNConfigurationCoordinator {
             manager.onDemandRules = onDemandRules
             
             manager.localizedDescription = "Cypherpunk Privacy"
-            manager.isOnDemandEnabled = settingsState.autoReconnect
+            manager.isOnDemandEnabled = settingsState.autoReconnect && (self.isConnected || self.isConnecting)
             
             // check if we should enable the profile, if not use the existing state
-            let profileEnabled = enableProfileIfDisabled ? true : manager.isEnabled
-            manager.isEnabled = profileEnabled
+//            let profileEnabled = enableProfileIfDisabled ? true : manager.isEnabled
+//            manager.isEnabled = profileEnabled
 
+            manager.isEnabled = true
+            
             let reconnect = self.isConnected || self.isConnecting || connectIfDisconnected
 
             manager.saveToPreferences(completionHandler: { (error) in
@@ -92,17 +94,10 @@ open class VPNConfigurationCoordinator {
     }
 
     class func connect() {
-
+        
         let connectBlock = {
-            let manager = NEVPNManager.shared()
-
             do {
-                if #available(iOS 9.0, *) {
-                    print("Starting VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
-                } else {
-                    // Fallback on earlier versions
-                    print("Starting VPN tunnel to \(String(describing: manager.protocol?.serverAddress))")
-                }
+                let manager = NEVPNManager.shared()
                 try manager.connection.startVPNTunnel()
             } catch NEVPNError.configurationInvalid {
                 print("NEVPNError.configurationInvalid")
@@ -113,13 +108,32 @@ open class VPNConfigurationCoordinator {
             }
         }
 
-        connectBlock()
+        if mainStore.state.settingsState.autoReconnect {
+            let manager = NEVPNManager.shared()
+            
+            manager.loadFromPreferences(completionHandler: { (error) in
+                manager.isOnDemandEnabled = true
+                manager.saveToPreferences(completionHandler: { (error) in
+                    connectBlock()
+                })
+            })
+        }
+        else {
+            connectBlock()
+        }
     }
 
     class func disconnect() {
         let manager = NEVPNManager.shared()
         manager.loadFromPreferences { (error) in
-        manager.connection.stopVPNTunnel()
+            manager.connection.stopVPNTunnel()
+            
+            if mainStore.state.settingsState.autoReconnect {
+                manager.isOnDemandEnabled = false
+                manager.saveToPreferences(completionHandler: { (error) in
+
+                })
+            }
         }
         if #available(iOS 9.0, *) {
             print("Stopping VPN tunnel to \(String(describing: manager.protocolConfiguration?.serverAddress))")
