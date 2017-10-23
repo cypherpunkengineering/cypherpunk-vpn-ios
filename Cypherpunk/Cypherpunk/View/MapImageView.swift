@@ -386,13 +386,11 @@ class MapImageView: UIView {
         return scale
     }
     
-    private var lastRegion: Region?
     private func shiftMapToRight() {
         if let lastSelected = mainStore.state.regionState.lastSelectedRegionId, !mainStore.state.regionState.cypherplayOn {
             // zoom/pan to this region id
             let realm = try! Realm()
             if let region = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
-                lastRegion = region
                 let coords = transformToXY(lat: region.latitude, long: region.longitude)
                 
                 if let superView = self.superview {
@@ -462,66 +460,68 @@ class MapImageView: UIView {
     }
     
     func shiftMapToLeft() {
-        if let region = lastRegion {
-            
-            let coords = transformToXY(lat: region.latitude, long: region.longitude)
-            
-            if let superView = self.superview {
-                let superviewFrame = superView.frame
-                let superViewFrameMidX = superviewFrame.midX
-                let superViewFrameMidY = superviewFrame.midY + parentMidYOffset
+        if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
+            // zoom/pan to this region id
+            let realm = try! Realm()
+            if let region = realm.object(ofType: Region.self, forPrimaryKey: lastSelected) {
+                let coords = transformToXY(lat: region.latitude, long: region.longitude)
                 
-                let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
-                
-                let position = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
-                
-                // scale animation
-                let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-                scaleAnimation.fromValue = self.mapScale
-                scaleAnimation.toValue = scale
-                
-                // move the map
-                let positionAnimation = CABasicAnimation(keyPath: "position")
-                
-                if let currentPosition = self.lastPosition {
-                    positionAnimation.fromValue = currentPosition
+                if let superView = self.superview {
+                    let superviewFrame = superView.frame
+                    let superViewFrameMidX = superviewFrame.midX
+                    let superViewFrameMidY = superviewFrame.midY + parentMidYOffset
+                    
+                    let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
+                    
+                    let position = CGPoint(x: superViewFrameMidX - CGFloat(coords.x) * scale, y: superViewFrameMidY - CGFloat(coords.y) * scale)
+                    
+                    // scale animation
+                    let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+                    scaleAnimation.fromValue = self.mapScale
+                    scaleAnimation.toValue = scale
+                    
+                    // move the map
+                    let positionAnimation = CABasicAnimation(keyPath: "position")
+                    
+                    if let currentPosition = self.lastPosition {
+                        positionAnimation.fromValue = currentPosition
+                    }
+                    else {
+                        positionAnimation.fromValue = CGPoint(x: superViewFrameMidX, y: superViewFrameMidY)
+                    }
+                    positionAnimation.toValue = position
+                    
+                    // animation group
+                    let animationGroup = CAAnimationGroup()
+                    animationGroup.duration = MapImageView.mapPanDuration / 2
+                    animationGroup.fillMode = kCAFillModeForwards
+                    animationGroup.isRemovedOnCompletion = false
+                    animationGroup.animations = [positionAnimation, scaleAnimation]
+                    
+                    // animate the position of the marker
+                    let xCoord = isMapInBackground ? superviewFrame.midX + parentMidXOffset : superviewFrame.midX
+                    let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY + parentMidYOffset - markerHeightOffset)
+                    
+                    let markerPositionAnimation = CABasicAnimation(keyPath: "position")
+                    markerPositionAnimation.fromValue = self.markerLayer.position
+                    markerPositionAnimation.toValue = markerPosition
+                    markerPositionAnimation.duration = MapImageView.mapPanDuration / 2
+                    
+                    self.mapScale = scale
+                    self.lastPosition = position
+                    self.mapLayer.position = position
+                    self.markerLayer.position = markerPosition
+                    self.mapLayer.add(animationGroup, forKey: "panAndZoom")
+                    self.markerLayer.add(markerPositionAnimation, forKey: "markerPosition")
+                    
+                    let sublayers = self.mapLayer.sublayers
+                    sublayers?.forEach({ (sublayer) in
+                        let shapeLayer = sublayer as! CAShapeLayer
+                        let regionId = shapeLayer.value(forKey: "regionId") as! String
+                        setLocationLayerColors(shapeLayer: shapeLayer, selected: regionId == region.id)
+                    })
                 }
-                else {
-                    positionAnimation.fromValue = CGPoint(x: superViewFrameMidX, y: superViewFrameMidY)
-                }
-                positionAnimation.toValue = position
-                
-                // animation group
-                let animationGroup = CAAnimationGroup()
-                animationGroup.duration = MapImageView.mapPanDuration / 2
-                animationGroup.fillMode = kCAFillModeForwards
-                animationGroup.isRemovedOnCompletion = false
-                animationGroup.animations = [positionAnimation, scaleAnimation]
-                
-                // animate the position of the marker
-                let xCoord = isMapInBackground ? superviewFrame.midX + parentMidXOffset : superviewFrame.midX
-                let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY + parentMidYOffset - markerHeightOffset)
-                
-                let markerPositionAnimation = CABasicAnimation(keyPath: "position")
-                markerPositionAnimation.fromValue = self.markerLayer.position
-                markerPositionAnimation.toValue = markerPosition
-                markerPositionAnimation.duration = MapImageView.mapPanDuration / 2
-                
-                self.mapScale = scale
-                self.lastPosition = position
-                self.mapLayer.position = position
-                self.markerLayer.position = markerPosition
-                self.mapLayer.add(animationGroup, forKey: "panAndZoom")
-                self.markerLayer.add(markerPositionAnimation, forKey: "markerPosition")
-                
-                let sublayers = self.mapLayer.sublayers
-                sublayers?.forEach({ (sublayer) in
-                    let shapeLayer = sublayer as! CAShapeLayer
-                    let regionId = shapeLayer.value(forKey: "regionId") as! String
-                    setLocationLayerColors(shapeLayer: shapeLayer, selected: regionId == region.id)
-                })
             }
-            lastRegion = nil
         }
     }
     
