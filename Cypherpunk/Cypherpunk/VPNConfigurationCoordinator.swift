@@ -73,9 +73,8 @@ open class VPNConfigurationCoordinator {
             manager.isOnDemandEnabled = settingsState.autoReconnect
             
             // check if we should enable the profile, if not use the existing state
-//            let profileEnabled = enableProfileIfDisabled ? true : manager.isEnabled
-//            manager.isEnabled = profileEnabled
-            manager.isEnabled = true
+            let profileEnabled = enableProfileIfDisabled ? true : manager.isEnabled
+            manager.isEnabled = profileEnabled
 
             let reconnect = self.isConnected || self.isConnecting || connectIfDisconnected
 

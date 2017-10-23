@@ -202,5 +202,14 @@ class ConnectionHelper {
         
         return currentStatus == Reachability.NetworkStatus.reachableViaWWAN
     }
+    
+    static func handleVPNStateChange(on: Bool) {
+        if mainStore.state.settingsState.autoReconnect {
+            VPNConfigurationCoordinator.enableProfile(enable: on)
+        }
+        else {
+            on ? VPNConfigurationCoordinator.connect() : VPNConfigurationCoordinator.disconnect()
+        }
+    }
 }
 

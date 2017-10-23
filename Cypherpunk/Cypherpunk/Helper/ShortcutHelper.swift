@@ -76,11 +76,11 @@ class ShortcutHelper {
         
         switch (shortCutType) {
         case ShortcutIdentifier.Connect.type:
-            VPNConfigurationCoordinator.enableProfile(enable: true)
+            ConnectionHelper.handleVPNStateChange(on: true)
             handled = true
             break
         case ShortcutIdentifier.Disconnect.type:
-            VPNConfigurationCoordinator.enableProfile(enable: false)
+            ConnectionHelper.handleVPNStateChange(on: false)
             handled = true
         case ShortcutIdentifier.Location.type:
             NotificationCenter.default.post(name: showLocationListNotification, object: self)

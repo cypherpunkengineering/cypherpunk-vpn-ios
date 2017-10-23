@@ -422,7 +422,6 @@ extension MainViewController: VPNSwitchDelegate {
     }
 
     func stateChanged(on: Bool) {
-//        VPNConfigurationCoordinator.enableProfile(enable: on)
-        on ? VPNConfigurationCoordinator.connect() : VPNConfigurationCoordinator.disconnect()
+        ConnectionHelper.handleVPNStateChange(on: on)
     }
 }
