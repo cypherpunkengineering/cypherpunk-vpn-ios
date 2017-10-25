@@ -351,7 +351,8 @@ class MapImageView: UIView {
     }
     
     func resetMap() {
-        if self.mapShiftedToRight {
+        // check if the map is shifted to the right and if the marker hidden (indicates we are zoomed out)
+        if self.mapShiftedToRight && !self.markerLayer.isHidden {
             self.shiftMapToLeft()
         }
     }
