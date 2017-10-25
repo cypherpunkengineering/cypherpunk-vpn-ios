@@ -23,6 +23,7 @@
 		0948DBA71ED7C88500A7A475 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948DBA61ED7C88500A7A475 /* ConfigurationViewController.swift */; };
 		0948DBAA1ED7D1CB00A7A475 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948DBA81ED7D1CB00A7A475 /* ToggleTableViewCell.swift */; };
 		0948DBAB1ED7D1CB00A7A475 /* ToggleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0948DBA91ED7D1CB00A7A475 /* ToggleTableViewCell.xib */; };
+		0949D7431FA0D079000C18A3 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949D7421FA0D079000C18A3 /* CustomNavBar.swift */; };
 		094C1B9B1E4D31CD00D9036F /* ConnectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */; };
 		09591ACD1F13878C0035247D /* CertificateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09591ACC1F13878C0035247D /* CertificateAPI.swift */; };
 		0959A5071E681FB200A95A49 /* AccountDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */; };
@@ -185,6 +186,7 @@
 		0948DBA61ED7C88500A7A475 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		0948DBA81ED7D1CB00A7A475 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
 		0948DBA91ED7D1CB00A7A475 /* ToggleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToggleTableViewCell.xib; sourceTree = "<group>"; };
+		0949D7421FA0D079000C18A3 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		094C1B9A1E4D31CD00D9036F /* ConnectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionHelper.swift; path = Cypherpunk/Helper/ConnectionHelper.swift; sourceTree = SOURCE_ROOT; };
 		09591ACC1F13878C0035247D /* CertificateAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificateAPI.swift; sourceTree = "<group>"; };
 		0959A5051E681FB200A95A49 /* AccountDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				0970EE701E68161600BB77A0 /* MenuTableViewCell.xib */,
 				090D99CF1F5DF13D00279044 /* LegalLinksTableViewCell.swift */,
 				090D99D01F5DF13D00279044 /* LegalLinksTableViewCell.xib */,
+				0949D7421FA0D079000C18A3 /* CustomNavBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1276,6 +1279,7 @@
 				2B242D8E1DEC1DCE002BD97B /* AccountStatusAPI.swift in Sources */,
 				2B34557A1DBDF6A600DEDEE3 /* SlidingNavigationViewController.swift in Sources */,
 				2B0A652B1DED904700905A2A /* RecoverPasswordAPI.swift in Sources */,
+				0949D7431FA0D079000C18A3 /* CustomNavBar.swift in Sources */,
 				091D057F1F13CAF90027C2D7 /* OptionSelectorTableViewCell.swift in Sources */,
 				2016F5F21D23C2BA0094BA72 /* UIView+IBInspectable.swift in Sources */,
 				2085F33B1D6C3B40002D35C2 /* PresentContainerViewController.swift in Sources */,

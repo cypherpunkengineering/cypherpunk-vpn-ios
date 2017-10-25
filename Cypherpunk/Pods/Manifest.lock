@@ -1,7 +1,7 @@
 PODS:
   - APIKit (3.1.2):
     - Result (~> 3.0)
-  - Cartography (1.1.0)
+  - Cartography (2.1.0)
   - Firebase/Core (3.11.0):
     - FirebaseAnalytics (= 3.6.0)
     - FirebaseCore (= 3.4.6)
@@ -114,7 +114,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   APIKit: 923b510c13eb4d977d2d0ffcd51c88e9dfe7a74a
-  Cartography: 0538ccb4044acbbda2266335fc58cb4228794d90
+  Cartography: 19c2223a8dfed35d82b098d365213b7ceb25ab2b
   Firebase: b8134e285eb33201115bc688bc5d7f112923bc1f
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseCore: 03da1cb32615569bbc2830a22f9ad753d9a02ef5

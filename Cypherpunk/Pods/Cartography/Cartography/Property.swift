@@ -8,14 +8,19 @@
 
 #if os(iOS) || os(tvOS)
 import UIKit
+
+public typealias LayoutAttribute = NSLayoutAttribute
 #else
 import AppKit
+
+public typealias LayoutAttribute = NSLayoutConstraint.Attribute
 #endif
 
 public protocol Property {
-    var attribute: NSLayoutAttribute { get }
+    var attribute: LayoutAttribute { get }
     var context: Context { get }
     var view: View { get }
+    var needsSafeArea: Bool { get }
 }
 
 // MARK: Equality
@@ -77,7 +82,7 @@ public protocol NumericalInequality : Property { }
 /// - returns: An `NSLayoutConstraint`.
 ///
 @discardableResult public func <= (lhs: NumericalInequality, rhs: CGFloat) -> NSLayoutConstraint {
-    return lhs.context.addConstraint(lhs, coefficients: Coefficients(1, rhs), relation: NSLayoutRelation.lessThanOrEqual)
+    return lhs.context.addConstraint(lhs, coefficients: Coefficients(1, rhs), relation: .lessThanOrEqual)
 }
 
 /// Declares a property greater than or equal to a numerical constant.
@@ -89,7 +94,7 @@ public protocol NumericalInequality : Property { }
 /// - returns: An `NSLayoutConstraint`.
 ///
 @discardableResult public func >= (lhs: NumericalInequality, rhs: CGFloat) -> NSLayoutConstraint {
-    return lhs.context.addConstraint(lhs, coefficients: Coefficients(1, rhs), relation: NSLayoutRelation.greaterThanOrEqual)
+    return lhs.context.addConstraint(lhs, coefficients: Coefficients(1, rhs), relation: .greaterThanOrEqual)
 }
 
 /// Properties conforming to this protocol can use the `<=` and `>=` operators
@@ -105,7 +110,7 @@ public protocol RelativeInequality : Property { }
 /// - returns: An `NSLayoutConstraint`.
 ///
 @discardableResult public func <= <P: RelativeInequality>(lhs: P, rhs: P) -> NSLayoutConstraint {
-    return lhs.context.addConstraint(lhs, to: rhs, relation: NSLayoutRelation.lessThanOrEqual)
+    return lhs.context.addConstraint(lhs, to: rhs, relation: .lessThanOrEqual)
 }
 
 /// Declares a property greater than or equal to another property.
@@ -117,7 +122,7 @@ public protocol RelativeInequality : Property { }
 /// - returns: An `NSLayoutConstraint`.
 ///
 @discardableResult public func >= <P: RelativeInequality>(lhs: P, rhs: P) -> NSLayoutConstraint {
-    return lhs.context.addConstraint(lhs, to: rhs, relation: NSLayoutRelation.greaterThanOrEqual)
+    return lhs.context.addConstraint(lhs, to: rhs, relation: .greaterThanOrEqual)
 }
 
 /// Declares a property less than or equal to the result of an expression.
@@ -129,7 +134,7 @@ public protocol RelativeInequality : Property { }
 /// - returns: An `NSLayoutConstraint`.
 ///
 @discardableResult public func <= <P: RelativeInequality>(lhs: P, rhs: Expression<P>) -> NSLayoutConstraint {
-    return lhs.context.addConstraint(lhs, to: rhs.value, coefficients: rhs.coefficients[0], relation: NSLayoutRelation.lessThanOrEqual)
+    return lhs.context.addConstraint(lhs, to: rhs.value, coefficients: rhs.coefficients[0], relation: .lessThanOrEqual)
 }
 
 /// Declares a property greater than or equal to the result of an expression.
@@ -141,7 +146,7 @@ public protocol RelativeInequality : Property { }
 /// - returns: An `NSLayoutConstraint`.
 ///
 @discardableResult public func >= <P: RelativeInequality>(lhs: P, rhs: Expression<P>) -> NSLayoutConstraint {
-    return lhs.context.addConstraint(lhs, to: rhs.value, coefficients: rhs.coefficients[0], relation: NSLayoutRelation.greaterThanOrEqual)
+    return lhs.context.addConstraint(lhs, to: rhs.value, coefficients: rhs.coefficients[0], relation: .greaterThanOrEqual)
 }
 
 // MARK: Addition

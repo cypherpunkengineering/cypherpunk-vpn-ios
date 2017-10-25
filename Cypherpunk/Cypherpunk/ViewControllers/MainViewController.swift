@@ -16,7 +16,6 @@ import TinySwift
 
 class MainViewController: UIViewController, StoreSubscriber {
     
-    var topBarView: UIView
     var bottomBorderLayer: CALayer
     var gradientLayer: CAGradientLayer
     var mapImageView: MapImageView
@@ -25,7 +24,6 @@ class MainViewController: UIViewController, StoreSubscriber {
     var locationSelectorVC: LocationSelectorViewController?
     var statusTitleLabel = UILabel()
     var statusLabel = UILabel()
-    var statusDetailLabel = UILabel()
     let leftButton = AccountButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     let rightButton = ConfigurationButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
     
@@ -37,13 +35,10 @@ class MainViewController: UIViewController, StoreSubscriber {
     var resetMapOnNextUpdate: Bool = false
     
     required init?(coder aDecoder: NSCoder) {
-        self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
-        self.topBarView.backgroundColor = UIColor.aztec
-        
+        // create custom border layer to nav bar to override default color
         self.bottomBorderLayer = CALayer()
-        self.bottomBorderLayer.frame = CGRect(x: 0, y: 0, width: 200.0, height: 1)
-        self.bottomBorderLayer.backgroundColor = UIColor.greenVogue.cgColor
-        self.topBarView.layer.addSublayer(self.bottomBorderLayer)
+        self.bottomBorderLayer.borderColor = UIColor.greenVogue.cgColor
+        self.bottomBorderLayer.borderWidth = 1
         
         self.gradientLayer = CAGradientLayer()
         self.gradientLayer.colors = [UIColor(hex: "#0F2125")!.cgColor, UIColor(hex: "#004444")!.cgColor]
@@ -84,73 +79,57 @@ class MainViewController: UIViewController, StoreSubscriber {
         // add map image view
         self.view.addSubview(self.mapImageView)
         
-        self.view.addSubview(self.topBarView)
-        constrain(self.view, self.topBarView) { parentView, childView in
-            childView.leading == parentView.leading
-            childView.trailing == parentView.trailing
-            childView.top == parentView.top
-            childView.height == 64.0
-        }
-        
+        // add logo to the navigation bar
         let logoImageView = UIImageView(image: R.image.headerIconLogo())
-        self.topBarView.addSubview(logoImageView)
-        constrain(self.topBarView, logoImageView) { parentView, childView in
-            childView.centerX == parentView.centerX
-            childView.top == parentView.top + 32
-        }
+        self.navigationItem.titleView = logoImageView
         
+        // add custom border layer to nav bar
+        let navBarLayer = self.navigationController?.navigationBar.layer
+        self.bottomBorderLayer.frame = CGRect(x: 0, y: (navBarLayer?.bounds.size.height)!, width: (navBarLayer?.bounds.size.width)!, height: 1)
+        navBarLayer?.addSublayer(self.bottomBorderLayer)
+        
+        self.navigationController?.navigationBar.clipsToBounds = false
         self.leftButton.addTarget(self, action: #selector(openOrCloseAccountAction(_:)), for: .touchUpInside)
-        self.view.addSubview(self.leftButton)
-        constrain(self.view, self.leftButton) { parentView, childView in
+        self.navigationController?.navigationBar.addSubview(self.leftButton)
+        constrain((self.navigationController?.navigationBar)!, self.leftButton) { parentView, childView in
             childView.leading == parentView.leading
-            childView.top == parentView.top + 36.0
+            childView.top == parentView.top + 16.0
             childView.height == 60.0
             childView.width == 60.0
         }
         
         self.rightButton.addTarget(self, action: #selector(openOrCloseConfigurationAction(_:)), for: .touchUpInside)
-        self.view.addSubview(self.rightButton)
-        constrain(self.view, self.rightButton) { parentView, childView in
+        self.navigationController?.navigationBar.addSubview(self.rightButton)
+        constrain((self.navigationController?.navigationBar)!, self.rightButton) { parentView, childView in
             childView.trailing == parentView.trailing
-            childView.top == parentView.top + 36.0
+            childView.top == parentView.top + 16.0
             childView.height == 60.0
             childView.width == 60.0
         }
         
         self.view.addSubview(self.vpnSwitchAnimationView)
         constrain(self.view, self.vpnSwitchAnimationView) { parentView, childView in
-            childView.bottom == parentView.centerY - 75
+            childView.bottom == parentView.centerY - 110
             childView.centerX == parentView.centerX
             childView.width == parentView.width
             childView.height == self.vpnSwitchAnimationView.vpnSwitch.bounds.height + 15
         }
         self.vpnSwitchAnimationView.vpnSwitchDelegate = self
         
-        statusDetailLabel.textColor = UIColor.seafoamBlue
-        statusDetailLabel.text = "Status details"
-        statusDetailLabel.font = R.font.dosisRegular(size: 14)
-        self.view.addSubview(self.statusDetailLabel)
-        constrain(self.view, self.statusDetailLabel) { parentView, childView in
-            childView.bottom == parentView.centerY + 35
-            childView.centerX == parentView.centerX
-            childView.height == 20
-        }
-        self.statusDetailLabel.isHidden = true // hide this for now, may use later
-        
         self.view.addSubview(self.statusLabel)
         self.statusLabel.font = R.font.dosisMedium(size: 18)
         self.statusLabel.text = "DISCONNECTED"
         self.statusLabel.textColor = UIColor.white
-        constrain(self.view, self.statusLabel, self.statusDetailLabel) { parentView, childView, statusDetailLabel in
-            childView.bottom == statusDetailLabel.top - 10
+        constrain(self.view, self.statusLabel, self.vpnSwitchAnimationView) { parentView, childView, vpnSwitchView in
+            childView.bottom == vpnSwitchView.bottom + 75
             childView.centerX == parentView.centerX
         }
         
         statusTitleLabel.textColor = UIColor.greenyBlue
         statusTitleLabel.text = "STATUS"
         statusTitleLabel.font = R.font.dosisMedium(size: 10)
-        self.view.addSubview(statusTitleLabel)
-        constrain(self.view, statusTitleLabel, self.statusLabel) { parentView, childView, statusLabel in
+        self.view.addSubview(self.statusTitleLabel)
+        constrain(self.view, self.statusTitleLabel, self.statusLabel) { parentView, childView, statusLabel in
             childView.leading == statusLabel.leading
             childView.bottom == statusLabel.top
         }
@@ -196,7 +175,9 @@ class MainViewController: UIViewController, StoreSubscriber {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.bottomBorderLayer.frame = CGRect(x: 0, y: self.topBarView.frame.height - 1, width: self.topBarView.frame.width, height: 1)
+        
+        let navBarLayer = self.navigationController?.navigationBar.layer
+        self.bottomBorderLayer.frame = CGRect(x: 0, y: (navBarLayer?.bounds.size.height)!, width: (navBarLayer?.bounds.size.width)!, height: 1)
         self.gradientLayer.frame = self.view.bounds
     }
     
@@ -233,8 +214,8 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.view.bringSubview(toFront: self.rightButton)
         
         
-        constrain(self.view, (self.locationSelectorVC?.view)!, self.topBarView) { parentView, childView, topBarView in
-            childView.top == topBarView.bottom
+        constrain(self.view, (self.locationSelectorVC?.view)!, (self.navigationController?.navigationBar)!) { parentView, childView, navBar in
+            childView.top == navBar.bottom
             childView.leading == parentView.leading
             childView.trailing == parentView.trailing
             childView.bottom == parentView.bottom
@@ -247,7 +228,6 @@ class MainViewController: UIViewController, StoreSubscriber {
             self.locationSelectorButton.isHidden = true
             self.statusTitleLabel.isHidden = true
             self.statusLabel.isHidden = true
-            self.statusDetailLabel.isHidden = true
 //        }
     }
     
@@ -303,9 +283,6 @@ class MainViewController: UIViewController, StoreSubscriber {
         
         self.statusLabel.text = status.uppercased()
         self.statusLabel.sizeToFit()
-        
-        self.statusDetailLabel.text = statusDetail
-        self.statusDetailLabel.sizeToFit()
         
         self.vpnSwitchAnimationView.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
         

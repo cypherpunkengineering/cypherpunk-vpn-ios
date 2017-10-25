@@ -13,7 +13,7 @@ import simd
 
 class MapImageView: UIView {
     static let mapPanDuration = 1.75 // duration of the map animation when it pans/zooms
-    var parentMidYOffset: CGFloat = 110 {
+    var parentMidYOffset: CGFloat = 20 {
         didSet {
             self.setNeedsLayout()
         }
@@ -115,7 +115,7 @@ class MapImageView: UIView {
     
     private func setupMap() {
         if UI_USER_INTERFACE_IDIOM() == .phone && UIScreen.main.bounds.height < 520 {
-            parentMidYOffset = 115
+            parentMidYOffset = 25
         }
         
         let mapImage = createTransparentMapImage()
@@ -403,9 +403,12 @@ class MapImageView: UIView {
                 let coords = transformToXY(lat: region.latitude, long: region.longitude)
                 
                 if let superView = self.superview {
+                    // TODO make this not hard coded, this is the height of the "Back" button bar, need this to make pin look centered
+                    let bottomPadding: CGFloat = 55
+                    
                     let superviewFrame = superView.frame
                     let superViewFrameMidX = isMapInBackground ? superviewFrame.midX + parentMidXOffset : superviewFrame.midX
-                    let superViewFrameMidY = superviewFrame.midY + markerHeightOffset // center vertically when map is shifted to the right
+                    let superViewFrameMidY = superviewFrame.midY - bottomPadding + markerHeightOffset // center vertically when map is shifted to the right
                     
                     let scale = translateScaleToiOS(regionScale: region.locDisplayScale, superviewFrame: superviewFrame)
                     
@@ -432,7 +435,7 @@ class MapImageView: UIView {
                     
                     // animate the position of the marker
                     let xCoord = isMapInBackground ? superviewFrame.midX + parentMidXOffset : superviewFrame.midX
-                    let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY) // y-coord should be centered
+                    let markerPosition = CGPoint(x: xCoord, y: superviewFrame.midY - bottomPadding) // y-coord should look centered
                     
                     let markerPositionAnimation = CABasicAnimation(keyPath: "position")
                     // use the position in the presentation layer because another animation might be in progress
