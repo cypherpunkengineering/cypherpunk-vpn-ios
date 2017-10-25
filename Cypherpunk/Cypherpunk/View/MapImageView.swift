@@ -59,6 +59,8 @@ class MapImageView: UIView {
     private let mapMoveDuration = markerAnimationDuration * markerPanEndRelativeTiming.doubleValue - mapMoveDelay // time the map is animating
     private let mapPinJumpHeight: CGFloat = 20.0
     
+    private var mapShiftedToRight = false
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -253,7 +255,7 @@ class MapImageView: UIView {
             
             let dropAnimation = CAKeyframeAnimation(keyPath: "position")
             dropAnimation.beginTime = CACurrentMediaTime() + mapMoveDuration
-            dropAnimation.duration = 1.0
+            dropAnimation.duration = MapImageView.markerPanEndRelativeTiming.doubleValue
             dropAnimation.keyTimes = [0.0, 0.3, 1.0]
             dropAnimation.values = [startPostion, startPostion, endPosition]
             
@@ -348,6 +350,12 @@ class MapImageView: UIView {
         })
     }
     
+    func resetMap() {
+        if self.mapShiftedToRight {
+            self.shiftMapToLeft()
+        }
+    }
+    
     private func setLocationLayerColors(shapeLayer: CAShapeLayer, selected: Bool) {
         if selected {
             shapeLayer.fillColor = locationColor
@@ -411,13 +419,7 @@ class MapImageView: UIView {
                     
                     // move the map
                     let positionAnimation = CABasicAnimation(keyPath: "position")
-                    
-                    if let currentPosition = self.lastPosition {
-                        positionAnimation.fromValue = currentPosition
-                    }
-                    else {
-                        positionAnimation.fromValue = CGPoint(x: superViewFrameMidX, y: superViewFrameMidY)
-                    }
+                    positionAnimation.fromValue = self.mapLayer.presentation()?.position
                     positionAnimation.toValue = position
                     
                     // animation group
@@ -443,6 +445,7 @@ class MapImageView: UIView {
                     self.markerLayer.position = markerPosition
                     
                     // remove any existing animations
+                    self.mapLayer.removeAllAnimations()
                     self.markerLayer.removeAllAnimations()
                     
                     self.mapLayer.add(animationGroup, forKey: "panAndZoom")
@@ -454,12 +457,14 @@ class MapImageView: UIView {
                         let regionId = shapeLayer.value(forKey: "regionId") as! String
                         setLocationLayerColors(shapeLayer: shapeLayer, selected: regionId == region.id)
                     })
+                    
+                    self.mapShiftedToRight = true
                 }
             }
         }
     }
     
-    func shiftMapToLeft() {
+    private func shiftMapToLeft() {
         if let lastSelected = mainStore.state.regionState.lastSelectedRegionId {
             // zoom/pan to this region id
             let realm = try! Realm()
@@ -520,6 +525,8 @@ class MapImageView: UIView {
                         let regionId = shapeLayer.value(forKey: "regionId") as! String
                         setLocationLayerColors(shapeLayer: shapeLayer, selected: regionId == region.id)
                     })
+                    
+                    self.mapShiftedToRight = false
                 }
             }
         }

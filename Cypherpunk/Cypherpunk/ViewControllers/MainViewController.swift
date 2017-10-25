@@ -34,7 +34,7 @@ class MainViewController: UIViewController, StoreSubscriber {
     var lastSelectedRegionId: String?
     var lastCypherplayEnabled: Bool = false
     
-    var lastVPNEnabled: Bool = false
+    var resetMapOnNextUpdate: Bool = false
     
     required init?(coder aDecoder: NSCoder) {
         self.topBarView = UIView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 70.0))
@@ -169,8 +169,6 @@ class MainViewController: UIViewController, StoreSubscriber {
             childView.centerX == parentView.centerX
         }
         self.locationSelectorButton.delegate = self
-        
-        self.lastVPNEnabled = VPNConfigurationCoordinator.isEnabled
     }
 
     override func didReceiveMemoryWarning() {
@@ -309,7 +307,6 @@ class MainViewController: UIViewController, StoreSubscriber {
         self.statusDetailLabel.text = statusDetail
         self.statusDetailLabel.sizeToFit()
         
-//        self.vpnSwitchAnimationView.vpnSwitch.isOn = VPNConfigurationCoordinator.isEnabled //VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
         self.vpnSwitchAnimationView.vpnSwitch.isOn = VPNConfigurationCoordinator.isConnected || VPNConfigurationCoordinator.isConnecting
         
         print(status)
@@ -334,10 +331,12 @@ class MainViewController: UIViewController, StoreSubscriber {
                 }
             }
             else {
-                if !mainStore.state.regionState.cypherplayOn {
-                    self.mapImageView.shiftMapToLeft()
+                if !mainStore.state.regionState.cypherplayOn && resetMapOnNextUpdate {
+                    self.mapImageView.resetMap()
                 }
             }
+            
+            self.resetMapOnNextUpdate = false
         }
     }
     
@@ -368,13 +367,14 @@ class MainViewController: UIViewController, StoreSubscriber {
 extension MainViewController: LocationSelectionDelegate {
     func dismissSelector() {
         self.mapImageView.isMapInBackground = false
-        self.mapImageView.shiftMapToLeft()
+        self.mapImageView.resetMap()
         showControls()
     }
     
     func locationSelected(location: Region) {
         self.mapImageView.isMapInBackground = false
         showControls() {
+            self.resetMapOnNextUpdate = true
             ConnectionHelper.connectTo(region: location, cypherplay: false)
         }
     }
@@ -382,6 +382,7 @@ extension MainViewController: LocationSelectionDelegate {
     func fastestSelected(cypherplay: Bool) {
         self.mapImageView.isMapInBackground = false
         showControls() {
+            self.resetMapOnNextUpdate = true
             ConnectionHelper.connectToFastest(cypherplay: cypherplay)
         }
     }
@@ -389,22 +390,17 @@ extension MainViewController: LocationSelectionDelegate {
     private func showControls(_ completion: (() -> Void)? = nil) {
         self.locationSelectorVC?.willMove(toParentViewController: nil)
         
-//        UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
             self.locationSelectorVC?.view.removeFromSuperview()
             
             self.vpnSwitchAnimationView.isHidden = false
             self.locationSelectorButton.isHidden = false
             self.statusTitleLabel.isHidden = false
             self.statusLabel.isHidden = false
-//            self.statusDetailLabel.isHidden = false
         
-//            self.mapImageView.isMapInBackground = false
-//        }) { (completed) in
             self.locationSelectorVC?.removeFromParentViewController()
             if let block = completion {
                 block()
             }
-//        }
     
         self.locationSelectorVC = nil
     }
